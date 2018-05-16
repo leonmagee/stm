@@ -17,6 +17,7 @@ class DatabaseSeeder extends Seeder
         $this->call(SimTableSeeder::class);
         $this->call(SimUserTableSeeder::class);
         $this->call(UserTableSeeder::class);
+        $this->call(ReportTypeTableSeeder::class);
 
 
         //DB::table('users')->truncate();

@@ -27,9 +27,9 @@ Route::get('/', function () {
 **/
 Route::get('sims', 'SimController@index');
 Route::get('sims/upload', 'SimController@upload_form');
+Route::get('sims/create', 'SimController@addSim');
 Route::post('upload', 'SimController@upload');
 Route::get('sims/{sim}', 'SimController@show');
-Route::get('add-sim', 'SimController@addSim');
 Route::post('sims', 'SimController@store');
 
 /**

@@ -5,7 +5,7 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
-//require('./bootstrap');
+require('./bootstrap');
 
 //window.Vue = require('vue');
 
@@ -22,4 +22,9 @@
 // });
 
 
-console.log('js file is loading');
+console.log('app.js is loading');
+
+$('#jquery-test.title').css({'color':'cornflowerblue'});
+
+
+//$('div').hide();

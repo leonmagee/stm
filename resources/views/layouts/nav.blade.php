@@ -10,7 +10,6 @@
 
 	@endif
 
-
 	<li>
 		<a href="/sims">Sims</a>
 
@@ -22,7 +21,7 @@
 
 	</li>
 
-	<li><a href="/add-sim">Add Sim</a></li>
+	<li><a href="/sims/create">Add Sim</a></li>
 
 	<li><a href="/assign-sims">Assign Sims</a></li>
 

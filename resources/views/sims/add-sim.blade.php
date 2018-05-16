@@ -6,39 +6,62 @@
         {{ csrf_field() }}
 
         
-        <div class="grid-x grid-padding-x">
+        <div class="form-wrap">
 
-            <div class="cell small-8">
-                <label>Sim Number</label>
-                <input type="text" name="sim_number" />
+          <div class="field">
+            <label class="label">Sim Number</label>
+            <div class="control">
+                <input class="input" type="text" name="sim_number" />
             </div>
+        </div>
 
-            <div class="cell small-4">
-                <label>Sim Value</label>
-                <input type="text" name="value" />
+        <div class="field">
+            <label class="label">Sim Value</label>
+            <div class="control">
+                <input class="input" type="text" name="value" />
             </div>
+        </div>
 
-            <div class="cell small-4">
-                <label>Activation Date</label>
-                <input type="text" name="activation_date" />
+        <div class="field">
+            <label class="label">Activation Date</label>
+            <div class="control">
+                <input class="input" type="text" name="activation_date" />
             </div> 
+        </div>
 
-            <div class="cell small-4">
-                <label>Mobile Number</label>
-                <input type="text" name="mobile_number" />
+        <div class="field">
+            <label class="label">Mobile Number</label>
+            <div class="control">
+                <input class="input" type="text" name="mobile_number" />
             </div> 
+        </div>
 
-            <div class="cell small-4">
-                <label>Carrier</label>
-                <input type="text" name="carrier" />
+        <div class="field">
+            <label class="label">Carrier</label>
+            <div class="control">
+                <input class="input" type="text" name="carrier" />
             </div> 
+        </div>
 
-        </div> 
+        <div class="field">
+            <label class="label">Report Type ID</label>
+            <div class="control">
+                <input class="input" type="text" name="report_type_id" />
+            </div> 
+        </div>
 
-        <button class="button" type="submit" value="Publish">Publish</button>
-    </form>
+        <div class="field">
+            <div class="control">
+                <button class="button is-link" type="submit" value="Publish">Publish</button>
+            </div>
+        </div>
 
-    @include('layouts.errors')
+    </div> 
+    
+
+</form>
+
+@include('layouts.errors')
 </div>
 @endsection
 
