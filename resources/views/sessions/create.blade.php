@@ -4,23 +4,23 @@
 
 <div class="container">
 
-	<h1 class="title">Log In!!!!!!!!</h1>
+	<h1 class="title">Log In</h1>
 
 	<form method="POST" action="/login">
 
 		{{ csrf_field() }}
 
 		<div class="field">
-			<label class="label">Email</label>
+			<label class="label" for="email">Email</label>
 			<div class="control">
-				<input class="input" type="email" name="email" />
+				<input class="input" type="email" id="email" name="email" />
 			</div>
 		</div>
 
 		<div class="field">
-			<label class="label">Password</label>
+			<label class="label" for="password">Password</label>
 			<div class="control">
-				<input class="input" type="text" name="password" />
+				<input class="input" type="password" id="password" name="password" />
 			</div>
 		</div>
 
@@ -30,9 +30,13 @@
             </div>
         </div>
 
-	</form>
+        <div class="field">
+        	
+        	@include('layouts.errors')
+        	
+        </div>
 
-	@include('layouts.errors')
+	</form>
 
 </div>
 

@@ -6,4 +6,14 @@
 		</a>
 	</div>
 
+	<div class="login-wrap">
+		<div class="login-text">
+			@if (Auth::check())
+				Welcome {{ Auth::user()->name }} - <a href="/logout">log out</a>
+			@else
+				<a href="/login">log in</a> - <a href="/register">register</a>
+			@endif
+		</div>
+	</div>
+
 </div>

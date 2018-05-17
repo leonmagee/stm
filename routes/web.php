@@ -31,7 +31,7 @@ Route::get('/', function () {
 	$sites = Site::where('company_id', '=', $user_company_id)->get();
 
     return view('index', compact('sites'));
-});
+})->name('home');
 
 /**
 * I might want to disable this for now... I'm not sure how to handle the multisite functionality
@@ -75,7 +75,9 @@ Route::get('report_types/{report_type}', 'ReportTypeController@show');
 Route::get('register', 'RegistrationController@create');
 Route::post('register', 'RegistrationController@store');
 //Route::get('login', 'AuthController@login');
-Route::get('login', 'SessionsController@create');
+Route::get('login', 'SessionsController@create')->name('login');
+Route::post('login', 'SessionsController@store');
+Route::get('logout', 'SessionsController@destroy');
 
 
 

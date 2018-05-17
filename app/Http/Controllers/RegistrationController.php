@@ -8,30 +8,40 @@ use App\User;
 
 class RegistrationController extends Controller
 {
-    public function create() {
 
-    	return view('registration.create');
-    }
+	public function __construct() {
 
-    public function store() {
+		$this->middleware('guest');
+	}
+
+	public function create() {
+
+		return view('registration.create');
+	}
+
+	public function store(Request $request) {
 
     	// validate the form
-    	$this->validate(request(), [
-    		'name' => 'required',
-    		'email' => 'required|email',
-    		'password' => 'required'
-    		]
-    	);
+		$this->validate(request(), [
+			'name' => 'required',
+			'email' => 'required|email',
+			'company' => 'required',
+			'role' => 'required',
+			'password' => 'required|confirmed'
+		]);
 
     	// create and save new user
-    	$user = User::create(request(['name','email','password']));
+		$user = User::create([
+			'name' => $request->name,
+			'email' => $request->email,
+			'company' => $request->company,
+			'role' => $request->role,
+			'password' => bcrypt($request->password)
+		]);
 
     	// log in new user
-    	auth()->login($user);
+		auth()->login($user);
 
-
-
-    	//return redirect()->home();
-    	return redirect('/');
-    }
+		return redirect()->home();
+	}
 }

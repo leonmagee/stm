@@ -2,12 +2,31 @@
 
 	@include background_pattern;
 	//background-color: #222323;
+	display: flex;
+	justify-content: space-between;
 
 	.logo-wrap {
 		padding: 13px 10px 10px;
 		margin-left: 5px;
 		img {
 			max-width: 170px;
+		}
+	}
+
+	.login-wrap {
+		font-size: 16px;
+		color: #FFF;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		a {
+			color: #FFF;
+			&:hover {
+				color: $brand-primary;
+			}
+		}
+		@media(min-width: 700px) {
+			margin-right: 80px;
 		}
 	}
 }

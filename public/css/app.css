@@ -33,23 +33,16 @@ body.stm-body .middle-content-wrap {
   padding: 20px;
 }
 
-.callout {
-  padding: 10px;
-  border: 1px solid rgba(0, 0, 0, 0.3);
-}
-
-.callout.alert {
-  background: tomato;
-}
-
-.form-wrap {
-  max-width: 300px;
-}
-
 .header-wrap {
   background-color: #333;
   background-image: url(/img/footer_lodyas.png);
   background-size: 500px 500px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 
 .header-wrap .logo-wrap {
@@ -59,6 +52,34 @@ body.stm-body .middle-content-wrap {
 
 .header-wrap .logo-wrap img {
   max-width: 170px;
+}
+
+.header-wrap .login-wrap {
+  font-size: 16px;
+  color: #FFF;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.header-wrap .login-wrap a {
+  color: #FFF;
+}
+
+.header-wrap .login-wrap a:hover {
+  color: #3097D1;
+}
+
+@media (min-width: 700px) {
+  .header-wrap .login-wrap {
+    margin-right: 80px;
+  }
 }
 
 .sidebar-wrap {

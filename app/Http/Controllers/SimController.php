@@ -12,7 +12,7 @@ class SimController extends Controller
     * Only Logged In Users can see this
     **/
     public function __construct() {
-        //$this->middleware('auth');
+        $this->middleware('auth');
     }
 
 
