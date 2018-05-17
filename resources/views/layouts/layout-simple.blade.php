@@ -14,8 +14,6 @@
 
 	<div class="main-wrap">
 
-		@include('layouts.sidebar')
-		
 		<div class="middle-content-wrap">
 			<div class="container">
 				<div id="content">

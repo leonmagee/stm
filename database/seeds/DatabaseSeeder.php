@@ -18,7 +18,8 @@ class DatabaseSeeder extends Seeder
         $this->call(SimUserTableSeeder::class);
         $this->call(UserTableSeeder::class);
         $this->call(ReportTypeTableSeeder::class);
-
+        $this->call(CompanyTableSeeder::class);
+        $this->call(SiteTableSeeder::class);
 
         //DB::table('users')->truncate();
         // foreach( $this->toTruncate as $table ) {

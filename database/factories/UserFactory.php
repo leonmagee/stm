@@ -14,10 +14,12 @@ use Faker\Generator as Faker;
 */
 
 $factory->define(App\User::class, function (Faker $faker) {
+	$role_array = array('admin', 'user');
     return [
         'name' => $faker->name,
         'email' => $faker->unique()->safeEmail,
         'company' => 'GS Wireless',
+        'role' => $role_array[rand(0,1)],
         'password' => '$2y$10$TKh8H1.PfQx37YgCzwiKb.KjNyWgaHb9cbcoQgdIVFlYg7B77UdFm', // secret
         'remember_token' => str_random(10),
     ];
