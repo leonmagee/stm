@@ -2,7 +2,7 @@
 
 @section('content')
 
-	<h1 class="title">All Sims</h1>
+	<h1 class="title">Archive Sims for {{ $name }}</h1>
 
     @foreach( $sims as $sim )
 

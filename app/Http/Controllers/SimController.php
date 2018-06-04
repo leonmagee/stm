@@ -50,6 +50,13 @@ class SimController extends Controller
         return view('sims.index', compact('sims'));
     }
 
+    public function archive($id) {
+        $report_type = ReportType::find($id);
+        $name = $report_type->carrier . ' ' . $report_type->name;
+        $sims = Sim::where('report_type_id', $id)->get();
+        return view('sims.archive', compact('sims', 'name'));
+    }
+
     /**
      * Display a listing of the resource.
      *

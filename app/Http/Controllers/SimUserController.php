@@ -58,9 +58,9 @@ class SimUserController extends AuthorizedController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(SimUser $sim)
     {
-        //
+        return view('sim_users.show', compact('sim'));
     }
 
     /**

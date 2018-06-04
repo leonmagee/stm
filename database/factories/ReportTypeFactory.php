@@ -1,6 +1,6 @@
 <?php
 
-use Faker\Generator as Faker;
+use Faker\Generator as Faker;  // @todo this is not being used?
 
 /*
 |--------------------------------------------------------------------------

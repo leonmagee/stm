@@ -2,8 +2,11 @@
 $screen-sm: '768px';
 
 // Brands
-$brand-primary: #3097D1;
+//$brand-primary: #3097D1;
+$brand-primary: rgb(0, 209, 178); // bulma teal
+$brand-danger: rgb(255, 56, 96); // bulma read
+
 $brand-info: #8eb4cb;
 $brand-success: #2ab27b;
 $brand-warning: #cbb956;
-$brand-danger: #bf5329;
+//$brand-danger: #bf5329;

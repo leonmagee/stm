@@ -1,24 +1,30 @@
 .header-wrap {
 
 	@include background_pattern;
-	//background-color: #222323;
 	display: flex;
 	justify-content: space-between;
 
 	.logo-wrap {
-		padding: 13px 10px 10px;
-		margin-left: 5px;
+		padding: 21px 10px 15px;
+		margin-left: 15px;
 		img {
-			max-width: 170px;
+			max-width: 160px;
 		}
 	}
 
 	.login-wrap {
-		font-size: 16px;
+		font-size: 14px;
 		color: #FFF;
 		display: flex;
 		align-items: center;
 		justify-content: center;
+		text-transform: uppercase;
+		span {
+			color: rgba(255,255,255,0.3);	
+			&.name {
+				color: $brand-primary;
+			}
+		}
 		a {
 			color: #FFF;
 			&:hover {

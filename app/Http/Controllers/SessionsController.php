@@ -19,7 +19,9 @@ class SessionsController extends Controller
 
 
     	if (! auth()->attempt(request(['email','password']))) {
-    		return back()->withErrors();
+    		return back()->withErrors([
+                'message' => 'Login Failed'
+            ]);
     	}
 
     	return redirect()->home();

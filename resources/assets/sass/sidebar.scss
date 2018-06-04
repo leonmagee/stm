@@ -1,47 +1,4 @@
 .sidebar-wrap {
 
 	background-color: #DDD;
-	//border-right: 1px solid #CCC;
-
-
-	ul.menu {
-		list-style-type: none;
-		margin: 0;
-		padding: 0;
-		font-size: 18px;
-		width: 200px;
-		li {
-			position: relative;
-			a {
-				text-decoration: none;
-				padding: 10px 20px;
-				display: block;
-				color: #222;
-			}
-			ul.sub-menu {
-				display: none;
-				list-style-type: none;
-				margin: 0;
-				padding: 0;
-				background-color: #CCC;
-				position: absolute;
-				top: 0;
-				left: 200px;
-				width: 250px;
-				font-size: 16px;
-			}
-			&:hover {
-				background-color: cornflowerblue;
-				ul.sub-menu {
-					display: block;
-					li {
-						&:hover {
-							background-color: tomato;
-						}
-					}
-
-				}
-			}
-		}
-	}
 }
