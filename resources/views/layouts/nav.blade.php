@@ -5,7 +5,7 @@
 
 		<ul class="sub-menu">
 			@foreach( $report_types as $report_type )
-				<li><a href="/sims/archive/{{ $report_type->id }}">{{ $report_type->carrier }} {{ $report_type->name }}</a></li>
+				<li><a href="/sims/archive/{{ $report_type->id }}">{{ $report_type->carrier->name }} {{ $report_type->name }}</a></li>
 			@endforeach
 		</ul>
 
@@ -19,7 +19,7 @@
 		<a href="/report_types">Report Types</a>
 		<ul class="sub-menu">
 			@foreach( $report_types as $report_type )
-				<li><a href="/report_types/{{ $report_type->id }}">{{ $report_type->carrier }} {{ $report_type->name }}</a></li>
+				<li><a href="/report_types/{{ $report_type->id }}">{{ $report_type->carrier->name }} {{ $report_type->name }}</a></li>
 			@endforeach
 		</ul>
 	</li>
@@ -27,5 +27,7 @@
 	<li><a href="/sims/upload">Upload</a></li>
 	
 	<li><a href="/sim_users">Sim Users</a></li>
+	
+	<li><a href="/carriers">Carriers</a></li>
 
 </ul>

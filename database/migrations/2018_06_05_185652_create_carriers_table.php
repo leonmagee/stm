@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class ReportTypesTable extends Migration
+class CreateCarriersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,9 @@ class ReportTypesTable extends Migration
      */
     public function up()
     {
-        Schema::create('report_types', function (Blueprint $table) {
+        Schema::create('carriers', function (Blueprint $table) {
             $table->increments('id');
-            $table->text('name');
-            $table->integer('carrier_id');
-            $table->integer('spiff')->default(1);
+            $table->string('name');
             $table->timestamps();
         });
     }
@@ -29,8 +27,6 @@ class ReportTypesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('report_types');
+        Schema::dropIfExists('carriers');
     }
-
-
 }

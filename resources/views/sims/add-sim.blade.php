@@ -3,8 +3,8 @@
 @section('content')
 <div class="form-wrapper">
     <form method="POST" action="/sims">
-        {{ csrf_field() }}
 
+        {{ csrf_field() }}
         
         <div class="form-wrap">
 
@@ -33,13 +33,6 @@
             <label class="label">Mobile Number</label>
             <div class="control">
                 <input class="input" type="text" name="mobile_number" />
-            </div> 
-        </div>
-
-        <div class="field">
-            <label class="label">Carrier</label>
-            <div class="control">
-                <input class="input" type="text" name="carrier" />
             </div> 
         </div>
 

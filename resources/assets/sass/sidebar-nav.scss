@@ -6,6 +6,7 @@ ul.sidebar-menu {
 	width: 200px;
 	li {
 		position: relative;
+		border-bottom: 1px solid #DFDFDF;
 		a {
 			text-decoration: none;
 			padding: 10px 20px;
@@ -17,7 +18,7 @@ ul.sidebar-menu {
 			list-style-type: none;
 			margin: 0;
 			padding: 0;
-			background-color: #DDD;
+			background-color: #EEE;
 			position: absolute;
 			z-index: 1000;
 			top: 10px;

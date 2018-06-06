@@ -25,4 +25,9 @@ class ReportType extends Model
     	//return static::where('spiff',0)->get();
     	return $query->where('spiff',1);
     }
+
+    public function carrier() {
+
+        return $this->belongsTo(Carrier::class);
+    }
 }

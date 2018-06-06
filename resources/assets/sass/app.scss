@@ -4,6 +4,8 @@
 
 @import "~bulma/css/bulma.min.css";
 
+@import "~datatables/media/css/jquery.dataTables.min.css";
+
 @import "variables";
 
 @import "mixins";
@@ -17,3 +19,5 @@
 @import "sidebar-nav";
 
 @import "footer";
+
+@import "datatables";

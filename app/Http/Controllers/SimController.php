@@ -21,7 +21,7 @@ class SimController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
 
         /**
@@ -39,7 +39,9 @@ class SimController extends Controller
         //$sims = \DB::table('sims')->get(); // query builder
         //$sims = Sim::oldest()->get();
         //$sims = Sim::all();
-
+        // how to add session variables?
+        //dd($request);
+        //dd($request->session());
         $sims = Sim::latest()->get();
         //return $sims;
         //dd($sims);
@@ -52,7 +54,7 @@ class SimController extends Controller
 
     public function archive($id) {
         $report_type = ReportType::find($id);
-        $name = $report_type->carrier . ' ' . $report_type->name;
+        $name = $report_type->carrier->name . ' ' . $report_type->name;
         $sims = Sim::where('report_type_id', $id)->get();
         return view('sims.archive', compact('sims', 'name'));
     }
@@ -73,8 +75,7 @@ class SimController extends Controller
      */
     public function create()
     {
-        //
-        dd('this methid create is called');
+        dd('the method create is called');
     }
 
     /**
@@ -249,8 +250,6 @@ class SimController extends Controller
      */
     public function show(Sim $sim)
     {
-        //
-        //return $sim;
         return view('sims.show', compact('sim'));
     }
 

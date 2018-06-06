@@ -14,12 +14,14 @@ class DatabaseSeeder extends Seeder
 
     public function run()
     {
+        $this->call(CarrierTableSeeder::class);
         $this->call(SimTableSeeder::class);
         $this->call(UserTableSeeder::class);
         $this->call(SimUserTableSeeder::class);
         $this->call(ReportTypeTableSeeder::class);
         $this->call(CompanyTableSeeder::class);
         $this->call(SiteTableSeeder::class);
+
 
         //DB::table('users')->truncate();
         // foreach( $this->toTruncate as $table ) {

@@ -7,4 +7,3 @@
     {{ $sim->sim_number }} - {{ $sim->user->name }}
 
 @endsection
-

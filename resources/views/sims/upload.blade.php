@@ -2,18 +2,31 @@
 
 @section('content')
 
-    <h2>Upload Sims</h2>
+<h2>Upload Sims</h2>
 
 
-    	<form action="/upload" method="POST" enctype="multipart/form-data">
+<form action="/upload" method="POST" enctype="multipart/form-data">
 
-			{{ csrf_field() }}
+	<div class="form-wrap">
+
+		{{ csrf_field() }}
+
+		<div class="field">
+
 			<label>Upload</label>
 			<input type="file" name="upload-file" />
 
-			<button class="button" type="submit">Upload</button>
+		</div>
 
-    	</form>
+		<div class="control">
+
+			<button class="button is-link" type="submit">Upload</button>
+
+		</div>
+
+	</div>
+
+</form>
 
 @endsection
 

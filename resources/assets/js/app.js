@@ -1,4 +1,3 @@
-
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -6,6 +5,10 @@
  */
 
 require('./bootstrap');
+
+require('datatables');
+
+$('#sims_table').DataTable();
 
 //window.Vue = require('vue');
 
@@ -21,10 +24,12 @@ require('./bootstrap');
 //     el: '#app'
 // });
 
+// console.log('app.js is loading');
 
-console.log('app.js is loading');
+// $('#jquery-test.title').css({'color':'cornflowerblue'});
 
-$('#jquery-test.title').css({'color':'cornflowerblue'});
-
+// $(document).ready(function() {
+//     $('#example').DataTable();
+// } );
 
 //$('div').hide();

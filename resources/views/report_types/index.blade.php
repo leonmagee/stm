@@ -6,12 +6,7 @@
     @foreach( $report_types as $report_type )
 
         <div>
-            <a href="/report_types/{{ $report_type->id }}">{{ $report_type->carrier }} {{ $report_type->name }}</a>
-            @if( $report_type->spiff )
-				<span class="spiff-resid">Spiff</span>
-            @else
-				<span class="spiff-resid">Residual</span>
-            @endif
+            <a href="/report_types/{{ $report_type->id }}">{{ $report_type->carrier->name }} {{ $report_type->name }}</a>
             - Added: {{ $report_type->created_at->toFormattedDateString() }}
 
         </div>

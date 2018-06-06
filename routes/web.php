@@ -20,6 +20,9 @@ use App\Site;
 * @todo - this could really just depend on who's logged in - if a Company Admin is logged in, then 
 * they will see data tied to their company, and there will be an admin page listing different sites...
 * so the number 1 landing page will be the login form - this will take a user to an admin page with different sites to navigate - and hopefully I can do away with the different icon ctas... 
+
+
+* so maybe I can manage the current 'site' just with Session details, rather than with different routes - so basically you choose which site you're part of 'Agents' / 'Dealers' / 'Signature Store' - and this is displayed in the header in bold... and you can change this in an admin panel in accordance with 'company'? I might want to have a 'super' admin that only I see, and then Kareem will see an admin page for GS Wireless - so that way when I login I can have what amounts to multisite functionality, but he will just see everything under the umbrella of GS Wireless... 
 **/
 
 
@@ -27,6 +30,11 @@ use App\Site;
 Route::get('/', function () {
 	// get logged in user company ID...
 	// regurn all fo the sites for that logged in users company
+	//$config_tester = config('mail.driver');
+	//dd($config_tester);
+	// session_start();
+	// $session = $_SESSION;
+	// dd($session);
 	$user_company_id = 1;
 	$sites = Site::where('company_id', '=', $user_company_id)->get();
 
@@ -68,6 +76,12 @@ Route::post('assign-sims', 'SimUserController@store');
 */
 Route::get('report_types', 'ReportTypeController@index');
 Route::get('report_types/{report_type}', 'ReportTypeController@show');
+
+/**
+* Carriers Routes
+*/
+Route::get('carriers', 'CarrierController@index');
+Route::get('carriers/{carrier}', 'CarrierController@show');
 
 /**
 * Auth Routes
