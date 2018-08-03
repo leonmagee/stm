@@ -1,6 +1,7 @@
 .header-wrap {
 
-	@include background_pattern;
+	//@include background_pattern;
+	@include background_gradient;
 	display: flex;
 	justify-content: space-between;
 
@@ -8,7 +9,7 @@
 		padding: 21px 10px 15px;
 		margin-left: 15px;
 		img {
-			max-width: 160px;
+			max-width: 180px;
 		}
 	}
 
@@ -21,8 +22,11 @@
 		text-transform: uppercase;
 		span {
 			color: rgba(255,255,255,0.3);	
+			color: #DDD;
 			&.name {
-				color: $brand-primary;
+				//color: $brand-primary;
+				color: #FFF;
+				font-weight: bold;
 			}
 		}
 		a {

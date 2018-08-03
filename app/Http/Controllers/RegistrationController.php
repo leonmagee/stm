@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 
 use App\User;
 
+//use App\Mail\Welcome;
+use App\Mail\NewUser;
+
 class RegistrationController extends Controller
 {
 
@@ -38,6 +41,8 @@ class RegistrationController extends Controller
 			'role' => $request->role,
 			'password' => bcrypt($request->password)
 		]);
+
+		\Mail::to($user)->send(new NewUser($user));
 
     	// log in new user
 		auth()->login($user);

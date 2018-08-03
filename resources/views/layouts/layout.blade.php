@@ -10,6 +10,10 @@
 
 <body class='stm-body'>
 
+	<div class="stm-absolute-wrap" id="loader-wrap">
+		<div class="loader"></div>
+	</div>
+
 	@include('layouts.header')
 
 	<div class="main-wrap">
@@ -18,6 +22,9 @@
 		
 		<div class="middle-content-wrap">
 			<div class="container">
+
+
+
 				<div id="content">
 					@yield('content')
 				</div>

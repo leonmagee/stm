@@ -2,7 +2,7 @@
 	
 	<div class="logo-wrap">
 		<a href="/">
-			<img src="{{ URL::asset('img/stm_logo_new.png') }}" />
+			<img src="{{ URL::asset('img/stm_logo_white.png') }}" />
 		</a>
 	</div>
 

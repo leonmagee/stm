@@ -4,3 +4,12 @@
 	//background-size: 600px 600px;
 	background-size: 500px 500px;
 }
+
+@mixin background_gradient {
+/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#2a998a+0,3be2d4+100 */
+background: #2a998a; /* Old browsers */
+background: -moz-linear-gradient(left, #2a998a 0%, #3be2d4 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(left, #2a998a 0%,#3be2d4 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to right, #2a998a 0%,#3be2d4 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2a998a', endColorstr='#3be2d4',GradientType=1 ); /* IE6-9 */
+}

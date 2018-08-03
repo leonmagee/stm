@@ -34,7 +34,9 @@ Route::get('/', function () {
 	//dd($config_tester);
 	// session_start();
 	// $session = $_SESSION;
-	// dd($session);
+	//dd($session);
+	// $array = array('one', 'two', 'three');
+	// dd($array);
 	$user_company_id = 1;
 	$sites = Site::where('company_id', '=', $user_company_id)->get();
 
