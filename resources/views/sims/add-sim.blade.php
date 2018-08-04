@@ -1,7 +1,9 @@
 @extends('layouts.layout')
 
 @section('content')
+
 <div class="form-wrapper">
+
     <form method="POST" action="/sims">
 
         {{ csrf_field() }}
@@ -37,9 +39,13 @@
         </div>
 
         <div class="field">
-            <label class="label">Report Type ID</label>
-            <div class="control">
-                <input class="input" type="text" name="report_type_id" />
+            <label class="label">Report Type</label>
+            <div class="select">
+                <select name="report_type_id">
+                    @foreach( $report_types as $report_type )
+                        <option value="{{ $report_type->id }}">{{ $report_type->name }}</option> 
+                    @endforeach        
+                </select>
             </div> 
         </div>
 
@@ -55,6 +61,8 @@
 </form>
 
 @include('layouts.errors')
+
 </div>
+
 @endsection
 

@@ -25,7 +25,7 @@
 .loader {
   border: 8px solid #555;
   /* Light grey */
-  border-top: 8px solid #1B998B;
+  border-top: 8px solid #00bde6;
   /* Teal Blue */
   border-radius: 50%;
   width: 100px;
@@ -93,28 +93,24 @@ body.stm-body .middle-content-wrap {
 }
 
 body.stm-body button.button {
-  background-color: #1B998B;
+  background-color: #00bde6;
   -webkit-transition: 0.3s;
   transition: 0.3s;
-  text-shadow: 1px 1px #199083;
+  text-shadow: 1px 1px #00b5db;
 }
 
 body.stm-body button.button:hover {
-  background-color: #198c7f;
-  text-shadow: 1px 1px #178377;
+  background-color: #00b0d6;
+  text-shadow: 1px 1px #00a8cc;
 }
 
 .header-wrap {
-  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#2a998a+0,3be2d4+100 */
-  background: #2a998a;
-  /* Old browsers */
-  /* FF3.6-15 */
-  /* Chrome10-25,Safari5.1-6 */
-  background: -webkit-gradient(linear, left top, right top, from(#2a998a), to(#3be2d4));
-  background: linear-gradient(to right, #2a998a 0%, #3be2d4 100%);
-  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2a998a', endColorstr='#3be2d4',GradientType=1 );
-  /* IE6-9 */
+  background: #00F260;
+  /* fallback for old browsers */
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: -webkit-gradient(linear, left top, right top, from(#0575E6), to(#00F260));
+  background: linear-gradient(to right, #0575E6, #00F260);
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -162,7 +158,7 @@ body.stm-body button.button:hover {
 }
 
 .header-wrap .login-wrap a:hover {
-  color: #1B998B;
+  color: #00bde6;
 }
 
 @media (min-width: 700px) {
@@ -187,6 +183,7 @@ ul.sidebar-menu {
 ul.sidebar-menu li {
   position: relative;
   border-bottom: 1px solid #DFDFDF;
+  font-size: 16px;
 }
 
 ul.sidebar-menu li a {
@@ -194,6 +191,7 @@ ul.sidebar-menu li a {
   padding: 10px 20px;
   display: block;
   color: #222;
+  font-weight: bold;
 }
 
 ul.sidebar-menu li ul.sub-menu {
@@ -210,18 +208,23 @@ ul.sidebar-menu li ul.sub-menu {
   font-size: 16px;
 }
 
+ul.sidebar-menu li ul.sub-menu li {
+  font-size: 14px;
+}
+
 ul.sidebar-menu li ul.sub-menu a {
   padding: 5px 20px;
 }
 
 ul.sidebar-menu li:hover {
-  background-color: #1B998B;
+  background-color: #00bde6;
+  border-color: #00bde6;
   cursor: pointer;
 }
 
 ul.sidebar-menu li:hover a {
   color: #FFF;
-  text-shadow: 1px 1px #178377;
+  text-shadow: 1px 1px #00b9e0;
 }
 
 ul.sidebar-menu li:hover ul.sub-menu {
@@ -237,22 +240,21 @@ ul.sidebar-menu li:hover ul.sub-menu li a {
 }
 
 ul.sidebar-menu li:hover ul.sub-menu li:hover {
-  background-color: #1B998B;
+  background-color: #00bde6;
 }
 
 ul.sidebar-menu li:hover ul.sub-menu li:hover a {
   color: #FFF;
-  text-shadow: 1px 1px #178377;
+  text-shadow: 1px 1px #00a8cc;
 }
 
 .footer-wrap {
-  background-color: #333;
-  background-image: url(/img/footer_lodyas.png);
-  background-size: 500px 500px;
+  background-color: #DDD;
+  border-top: 1px solid #CCC;
   font-size: 12px;
   padding: 15px;
   text-align: center;
-  color: #EEE;
+  color: #777;
 }
 
 .dataTables_paginate.paging_simple_numbers a.paginate_button {
@@ -263,16 +265,16 @@ ul.sidebar-menu li:hover ul.sub-menu li:hover a {
 .dataTables_paginate.paging_simple_numbers a.paginate_button.current,
 .dataTables_paginate.paging_simple_numbers a.paginate_button:focus,
 .dataTables_paginate.paging_simple_numbers a.paginate_button:hover {
-  background: #1B998B;
+  background: #00bde6;
   color: #FFF !important;
-  border-color: #1B998B;
-  text-shadow: 1px 1px #178377;
+  border-color: #00bde6;
+  text-shadow: 1px 1px #00a8cc;
 }
 
 .dataTables_paginate.paging_simple_numbers a.paginate_button.current:hover {
-  background: #1B998B;
+  background: #00bde6;
   color: #FFF !important;
-  border-color: #1B998B;
+  border-color: #00bde6;
 }
 
 .dataTables_paginate.paging_simple_numbers a.paginate_button.disabled {
@@ -284,11 +286,11 @@ ul.sidebar-menu li:hover ul.sub-menu li:hover a {
 }
 
 #sims_table a {
-  color: #178377;
+  color: #00a8cc;
 }
 
 #sims_table a:hover {
-  color: #1B998B;
+  color: #00bde6;
   text-decoration: underline;
 }
 
@@ -298,5 +300,9 @@ ul.sidebar-menu li:hover ul.sub-menu li:hover a {
 
 #sims_table.dataTable.no-footer {
   border-color: #DDD;
+}
+
+.chart-wrap {
+  max-width: 70%;
 }
 

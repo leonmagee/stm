@@ -7,11 +7,13 @@ ul.sidebar-menu {
 	li {
 		position: relative;
 		border-bottom: 1px solid #DFDFDF;
+		font-size: 16px;
 		a {
 			text-decoration: none;
 			padding: 10px 20px;
 			display: block;
 			color: #222;
+			font-weight: bold;
 		}
 		ul.sub-menu {
 			display: none;
@@ -25,16 +27,20 @@ ul.sidebar-menu {
 			left: 180px;
 			width: 250px;
 			font-size: 16px;
+			li {
+				font-size: 14px;
+			}
 			a {
 				padding: 5px 20px;
 			}
 		}
 		&:hover {
 			background-color: $brand-primary;
+			border-color: $brand-primary;
 			cursor: pointer;
 			a {
 				color: #FFF;
-				text-shadow: 1px 1px darken($brand-primary, 5%);
+				text-shadow: 1px 1px darken($brand-primary, 1%);
 			}
 			ul.sub-menu {
 				display: block;

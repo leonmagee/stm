@@ -65,7 +65,8 @@ class SimController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function addSim() {
-        return view('sims.add-sim');
+        $report_types = ReportType::all();
+        return view('sims.add-sim', compact('report_types'));
     }
 
     /**

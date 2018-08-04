@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 
 use App\User;
 
-//use App\Mail\Welcome;
 use App\Mail\NewUser;
 
 class RegistrationController extends Controller

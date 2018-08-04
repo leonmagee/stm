@@ -18,8 +18,7 @@ $factory->define(App\SimUser::class, function (Faker $faker) {
         'sim_number' => rand(98729237491111111, 98729237499999999),
         'user_id' => function() {
         	/**
-        	* @todo this doens't seem to do anything
-        	* just auto incrementing 1-10?
+            * This creates a user
         	*/
         	return factory(App\User::class)->create()->id;
         }

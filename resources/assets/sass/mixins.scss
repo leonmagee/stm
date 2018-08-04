@@ -5,11 +5,27 @@
 	background-size: 500px 500px;
 }
 
+// @mixin background_gradient {
+// /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#2a998a+0,3be2d4+100 */
+// background: #2a998a; /* Old browsers */
+// background: -moz-linear-gradient(left, #2a998a 0%, #3be2d4 100%); /* FF3.6-15 */
+// background: -webkit-linear-gradient(left, #2a998a 0%,#3be2d4 100%); /* Chrome10-25,Safari5.1-6 */
+// background: linear-gradient(to right, #2a998a 0%,#3be2d4 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+// filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2a998a', endColorstr='#3be2d4',GradientType=1 ); /* IE6-9 */
+// }
+
+// @mixin background_gradient {
+// 	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#3a7bd5+0,00d2ff+100 */
+// background: #3a7bd5; /* Old browsers */
+// background: -moz-linear-gradient(left, #3a7bd5 0%, #00d2ff 100%); /* FF3.6-15 */
+// background: -webkit-linear-gradient(left, #3a7bd5 0%,#00d2ff 100%); /* Chrome10-25,Safari5.1-6 */
+// background: linear-gradient(to right, #3a7bd5 0%,#00d2ff 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+// filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3a7bd5', endColorstr='#00d2ff',GradientType=1 ); /* IE6-9 */
+// }
+
 @mixin background_gradient {
-/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#2a998a+0,3be2d4+100 */
-background: #2a998a; /* Old browsers */
-background: -moz-linear-gradient(left, #2a998a 0%, #3be2d4 100%); /* FF3.6-15 */
-background: -webkit-linear-gradient(left, #2a998a 0%,#3be2d4 100%); /* Chrome10-25,Safari5.1-6 */
-background: linear-gradient(to right, #2a998a 0%,#3be2d4 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2a998a', endColorstr='#3be2d4',GradientType=1 ); /* IE6-9 */
+background: #00F260;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #0575E6, #00F260);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #0575E6, #00F260); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
 }

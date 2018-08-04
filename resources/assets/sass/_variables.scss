@@ -5,7 +5,11 @@ $screen-sm: '768px';
 //$brand-primary: #3097D1;
 // $brand-primary: rgb(0, 209, 178); // bulma teal
 // $brand-primary: darken( $brand-primary, 5%);
-$brand-primary: #1B998B;
+//$brand-primary: #1B998B; 
+//$brand-primary: rgba(27, 153, 139, 0.3);
+//$light-blue: #00D2FF;
+$light-blue: rgba(0,210,255,1);
+$brand-primary: darken($light-blue, 5%);
 //$brand-danger: rgb(255, 56, 96); // bulma red
 $brand-danger: #ED3D64;
 
