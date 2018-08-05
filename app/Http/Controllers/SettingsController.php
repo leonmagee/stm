@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Settings;
+use App\Site;
 use Illuminate\Http\Request;
 
 class SettingsController extends Controller
@@ -30,7 +31,8 @@ class SettingsController extends Controller
             'December',
         );
         $years = array(2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025);
-        return view('settings.index', compact('months', 'years'));
+        $sites = Site::all();
+        return view('settings.index', compact('months', 'years', 'sites'));
     }
 
     /**
