@@ -5061,6 +5061,49 @@ body.stm-body button.button:hover {
   color: #00adf6;
 }
 
+.header-sub-wrap {
+  background-color: red;
+  min-height: 35px;
+  text-transform: uppercase;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  font-weight: 700;
+}
+
+.header-sub-wrap .sub {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 auto;
+          flex: 1 1 auto;
+  background-color: #DDD;
+  border-bottom: 1px solid #CCC;
+  padding: 5px;
+  text-align: center;
+}
+
+.header-sub-wrap .sub.sub-1 {
+  border-right: 1px solid #CCC;
+}
+
+.header-sub-wrap .sub.sub-2 {
+  border-right: 1px solid #CCC;
+}
+
+.header-sub-wrap .sub.sub-3 {
+  color: #FFF;
+  -webkit-box-flex: 0;
+      -ms-flex: 0 1 10%;
+          flex: 0 1 10%;
+}
+
+.header-sub-wrap .sub.sub-3.online {
+  background-color: #20BF55;
+}
+
+.header-sub-wrap .sub.sub-3.locked {
+  background-color: #F71735;
+}
+
 .sidebar-wrap {
   background-color: #EEE;
   border-right: 1px solid #DFDFDF;

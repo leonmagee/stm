@@ -27,16 +27,16 @@ class AppServiceProvider extends ServiceProvider
         });
 
         view()->composer('layouts.header', function($view) {
-            $site_id = 1; //@todo this will be changed when you switch sites
 
-            $settings = Settings::where('site_id', $site_id)->get()->first();
+            $settings = Settings::first();
             $date_array = explode('_', $settings->current_date);
-
             $month = Carbon::createFromFormat('m', $date_array[0])->format('F');
-
             $date = $month . ' ' . $date_array[1];
 
-            $view->with('current_date', $date);
+            $view->with('current_date', $date)
+                ->with('company', $settings->company)
+                ->with('mode', $settings->mode)
+                ->with('site', $settings->site->name);
         });
     }
 

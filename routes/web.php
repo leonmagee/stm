@@ -37,10 +37,10 @@ Route::get('/', function () {
 	//dd($session);
 	// $array = array('one', 'two', 'three');
 	// dd($array);
-	$user_company_id = 1;
-	$sites = Site::where('company_id', '=', $user_company_id)->get();
+	//$user_company_id = 1;
+	//$sites = Site::where('company_id', '=', $user_company_id)->get();
 
-    return view('index', compact('sites'));
+    return view('index');
 })->name('home');
 
 /**
@@ -70,6 +70,7 @@ Route::post('sims', 'SimController@store');
 */
 Route::get('settings', 'SettingsController@index');
 Route::post('current_date', 'SettingsController@update');
+Route::post('mode', 'SettingsController@update_mode');
 
 /**
 * SIM Users Routes

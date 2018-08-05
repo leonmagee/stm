@@ -15,10 +15,10 @@ class CreateSettingsTable extends Migration
     {
         Schema::create('settings', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('site_id');
+            $table->string('company');
             $table->string('current_date');
-            $table->integer('default_residual_percent');
-            $table->integer('default_spiff_amount');
+            $table->string('mode');
+            $table->integer('site_id');
             $table->timestamps();
         });
     }

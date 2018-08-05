@@ -15,23 +15,18 @@ class SiteTableSeeder extends Seeder
         DB::table('sites')->insert([
             [
                 'name' => 'Agents',
-                'company_id' => 1
+                'default_residual_percent' => 5,
+                'default_spiff_amount' => 10
             ],
             [
                 'name' => 'Dealers',
-                'company_id' => 1
+                'default_residual_percent' => 3,
+                'default_spiff_amount' => 5
             ],
             [
                 'name' => 'Signature Store',
-                'company_id' => 1
-            ],
-            [
-                'name' => 'Misc Dudes',
-                'company_id' => 2
-            ],
-            [
-                'name' => 'Random Peeps',
-                'company_id' => 3
+                'default_residual_percent' => 4,
+                'default_spiff_amount' => 8
             ],
         ]);
     }

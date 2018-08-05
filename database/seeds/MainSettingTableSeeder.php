@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class SettingTableSeeder extends Seeder
+class MainSettingTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -17,7 +17,6 @@ class SettingTableSeeder extends Seeder
                 'company' => 'GS Wireless',
                 'mode' => 'online',
                 'current_date' => '07_2018',
-                'site_id' => 1,
             ]
         ]);
     }

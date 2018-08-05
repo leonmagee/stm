@@ -7,7 +7,7 @@
     <form method="POST" action="/current_date">
 
         {{ csrf_field() }}
-        
+
         <div class="form-wrap">
 
             <div class="field">
@@ -53,6 +53,32 @@
                 <div class="control">
                     <input class="input" type="text" name="sim_number" />
                 </div>
+            </div>
+
+            <div class="field">
+                <div class="control">
+                    <button class="button is-link" type="submit" value="Publish">Update</button>
+                </div>
+            </div>
+
+        </div> 
+    
+    </form>
+
+    <form method="POST" action="/mode">
+
+        {{ csrf_field() }}
+        
+        <div class="form-wrap">
+
+        <div class="field">
+                <label class="label">Current Mode</label>
+                <div class="select">
+                    <select name="mode">
+                        <option value="online">Online</option> 
+                        <option value="locked">Locked</option> 
+                    </select>
+                </div> 
             </div>
 
             <div class="field">

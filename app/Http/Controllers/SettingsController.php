@@ -89,9 +89,7 @@ class SettingsController extends Controller
         //dd($request->current_year);
         $new_current_date = $request->current_month . '_' . $request->current_year;
 
-        $site_id = 1; //@todo this will be changed when you switch sites
-
-        $settings = Settings::where('site_id', $site_id)->get()->first();
+        $settings = Settings::first();
         $settings->current_date = $new_current_date;
         $settings->save();
         //dd($settings->current_date);
@@ -112,6 +110,24 @@ class SettingsController extends Controller
         //     'mobile_number', 
         //     'report_type_id'
         // ]));
+
+        return redirect('/settings');
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Settings  $settings
+     * @return \Illuminate\Http\Response
+     */
+    public function update_mode(Request $request, Settings $settings)
+    {
+        $mode = $request->mode; //@todo validation?
+        $settings = Settings::first();
+        $settings->mode = $mode;
+        $settings->save();
+
 
         return redirect('/settings');
     }

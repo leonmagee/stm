@@ -31,5 +31,7 @@
 	<li><a href="/carriers">Carriers</a></li>
 	
 	<li><a href="/settings">Settings</a></li>
+	
+	<li><a href="/settings">Site Settings</a></li>
 
 </ul>

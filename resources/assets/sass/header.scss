@@ -106,3 +106,36 @@
 	// 	}
 	// }
 }
+
+.header-sub-wrap {
+	background-color: red;
+	min-height: 35px;
+	text-transform: uppercase;
+	display: flex;
+	font-weight: 700;
+	.sub {
+		flex: 1 1 auto;
+		background-color: #DDD;
+		border-bottom: 1px solid #CCC;
+		padding: 5px;
+		text-align: center;
+		&.sub-1 {
+			//background-color: rebeccapurple;
+			border-right: 1px solid #CCC;
+		}
+		&.sub-2 {
+			border-right: 1px solid #CCC;
+			//background-color: cornflowerblue;
+		}
+		&.sub-3 {
+			color: #FFF;
+			flex: 0 1 10%;
+			&.online {
+				background-color: $color-green;
+			}
+			&.locked {
+				background-color: $color-red;
+			}
+		}
+	}
+}

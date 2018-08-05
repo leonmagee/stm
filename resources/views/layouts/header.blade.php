@@ -28,18 +28,13 @@
 		</div>
 	</div>
 
-	<div class="header-area">
-		<div class="date-wrap">
-				<div>Active Date</div>
-				<div>{{ $current_date }}</div>
-		</div>
-	</div>
-
-	<div class="header-area">
-		<div class="date-wrap">
-				<div>Current Mode</div>
-				<div>Active</div>
-		</div>
-	</div>
-
 </div>
+<div class="header-sub-wrap">
+	<div class="sub sub-1">{{ $company }} > {{ $site }}</div>
+	<div class="sub sub-2">Active Date: {{ $current_date }}</div>
+	<div class="sub sub-3 {{ $mode }}">{{ $mode }}</div>
+</div>
+
+
+
+
