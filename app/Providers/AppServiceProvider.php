@@ -6,7 +6,11 @@ use Illuminate\Support\ServiceProvider;
 
 //use App\Billing\Stripe;
 
+use App\Settings;
+
 use App\ReportType;
+
+use \Carbon\Carbon;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -20,6 +24,19 @@ class AppServiceProvider extends ServiceProvider
         view()->composer('layouts.nav', function($view) {
 
             $view->with('report_types', ReportType::all());
+        });
+
+        view()->composer('layouts.header', function($view) {
+            $site_id = 1; //@todo this will be changed when you switch sites
+
+            $settings = Settings::where('site_id', $site_id)->get()->first();
+            $date_array = explode('_', $settings->current_date);
+
+            $month = Carbon::createFromFormat('m', $date_array[0])->format('F');
+
+            $date = $month . ' ' . $date_array[1];
+
+            $view->with('current_date', $date);
         });
     }
 

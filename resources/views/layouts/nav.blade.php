@@ -29,5 +29,7 @@
 	<li><a href="/sim_users">Sim Users</a></li>
 	
 	<li><a href="/carriers">Carriers</a></li>
+	
+	<li><a href="/settings">Settings</a></li>
 
 </ul>

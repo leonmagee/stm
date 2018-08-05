@@ -2,6 +2,13 @@
 // Fonts
 // @import url("https://fonts.googleapis.com/css?family=Raleway:300,400,600");
 
+@import url("https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700,800");
+
+@import '~@fortawesome/fontawesome-free/scss/brands';
+@import '~@fortawesome/fontawesome-free/scss/regular';
+@import '~@fortawesome/fontawesome-free/scss/solid';
+@import '~@fortawesome/fontawesome-free/scss/fontawesome';
+
 @import "~bulma/css/bulma.min.css";
 
 @import "~datatables/media/css/jquery.dataTables.min.css";
@@ -25,3 +32,5 @@
 @import "datatables";
 
 @import "charts";
+
+@import "settings";

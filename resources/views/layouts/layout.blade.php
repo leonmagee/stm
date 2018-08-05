@@ -39,6 +39,8 @@
 		@include('layouts.footer')
 
 		@include('layouts.scripts')
+	
+		@yield('page-script')
 
 	</body>
 

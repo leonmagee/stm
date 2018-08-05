@@ -11,12 +11,27 @@
 
 		{{ csrf_field() }}
 
-		<div class="field">
 
-			<label>Upload</label>
-			<input type="file" name="upload-file" />
 
-		</div>
+<div class="field">
+<div class="file">
+  <label class="file-label">
+    <input class="file-input" type="file" name="upload-file">
+    <span class="file-cta">
+      <span class="file-icon">
+        <i class="fas fa-file-upload"></i>
+      </span>
+      <span class="file-label">
+        Select File
+      </span>
+    </span>
+  </label>
+</div>
+</div>
+
+
+
+
 
 		<div class="control">
 

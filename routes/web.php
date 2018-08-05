@@ -66,6 +66,12 @@ Route::get('sims/{sim}', 'SimController@show');
 Route::post('sims', 'SimController@store');
 
 /**
+* Settings Routes
+*/
+Route::get('settings', 'SettingsController@index');
+Route::post('current_date', 'SettingsController@update');
+
+/**
 * SIM Users Routes
 */
 Route::get('sim_users', 'SimUserController@index');
