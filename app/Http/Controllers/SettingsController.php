@@ -35,7 +35,21 @@ class SettingsController extends Controller
         );
         $years = array(2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025);
         $sites = Site::all();
-        return view('settings.index', compact('months', 'years', 'sites'));
+        $settings = Settings::first();
+        $mode = $settings->mode;
+        $current_site = $settings->site_id;
+        $date_array = explode('_', $settings->current_date);
+        $current_month = $date_array[0];
+        $current_year = $date_array[1];
+        return view('settings.index', compact(
+            'months',
+            'years',
+            'sites',
+            'mode',
+            'current_site',
+            'current_month',
+            'current_year')
+        );
     }
 
     /**
@@ -88,7 +102,7 @@ class SettingsController extends Controller
      * @param  \App\Settings  $settings
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Settings $settings)
+    public function update_date(Request $request, Settings $settings)
     {
         //dd($request->current_month);
         //dd($request->current_year);
@@ -131,6 +145,24 @@ class SettingsController extends Controller
         $mode = $request->mode; //@todo validation?
         $settings = Settings::first();
         $settings->mode = $mode;
+        $settings->save();
+
+
+        return redirect('/settings');
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Settings  $settings
+     * @return \Illuminate\Http\Response
+     */
+    public function update_site(Request $request, Settings $settings)
+    {
+        $site = $request->site; //@todo validation?
+        $settings = Settings::first();
+        $settings->site_id = $site;
         $settings->save();
 
 
