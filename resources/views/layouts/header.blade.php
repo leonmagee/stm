@@ -46,6 +46,9 @@
 				  </p>
 				  <p class="control">
 				    <a class="button logout" href="/logout">
+				      <span class="icon is-small">
+				        <i class="fas fa-times-circle"></i>
+				      </span>
 				      <span class="text">Log Out</span>
 				    </a>
 				  </p>

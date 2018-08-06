@@ -31,6 +31,13 @@
 		a.button {
 			color: #555;
 			border: none;
+			font-size: 15px;
+			text-transform: uppercase;
+			padding-left: 1em;
+			padding-right: 1em;
+			&:hover {
+				z-index: 0 !important;
+			}
 			&.logout, &.register {
 				//background-color: #EAEAEA;
 				border-left: 1px solid #CCC;	

@@ -5046,6 +5046,14 @@ body.stm-body button.button:hover {
 .header-wrap .header-area a.button {
   color: #555;
   border: none;
+  font-size: 15px;
+  text-transform: uppercase;
+  padding-left: 1em;
+  padding-right: 1em;
+}
+
+.header-wrap .header-area a.button:hover {
+  z-index: 0 !important;
 }
 
 .header-wrap .header-area a.button.logout,
