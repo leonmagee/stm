@@ -1,9 +1,9 @@
 .header-wrap {
 
-	//@include background_pattern;
 	@include background_gradient;
 	display: flex;
 	justify-content: space-between;
+	padding: 10px;
 
 	.logo-wrap {
 		//padding: 21px 10px 15px;
@@ -13,12 +13,6 @@
 		// 	max-width: 180px;
 		// }
 
-		// no image
-		// .logo-top {
-		// 	font-weight: 800;
-		// 	color: #FFF;
-		// 	font-size: 50px;
-		// }
 		a {
 			text-transform: uppercase;
 			font-weight: 800;
@@ -29,82 +23,50 @@
 	}
 
 	.header-area {
-		font-size: 14px;
-		font-weight: 700;
-		color: #FFF;
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		text-transform: uppercase;
-		background-color: rgba(255,255,255,0.15);
 		padding: 0 20px;
-		margin: 0 20px;
-		margin-right: 20px;
-		//   -webkit-clip-path: polygon(0 0, 1600px 0, 1600px 87%, 0 100%);
-  // clip-path: polygon(0 0, 1600px 0, 1600px 87%, 0 100%);
-		span {
-			// color: rgba(255,255,255,0.3);	
-			// color: #DDD;
-			&.name {
-				//color: $brand-primary;
+
+		a.button {
+			color: #555;
+			border: none;
+			&.logout, &.register {
+				//background-color: #EAEAEA;
+				border-left: 1px solid #CCC;	
+			}
+			&.type {
+				//border: 1px solid red !important;
+			}
+			&.date {
+				border-left: 1px solid #CCC;
+			}
+			&.logout {
+				&:hover {
+					background-color: $color-red;
+					color: #FFF;
+				}
+			}
+			&.login, &.register {
+				&:hover {
+					color: #FFF;
+					background-color: $color-green;
+				}
+			}
+			&.online {
 				color: #FFF;
-				//font-weight: bold;
+				background-color: $color-green;
+			}
+			&.locked {
+				color: #FFF;
+				background-color: $color-red;
+			}
+			span.text {
+				font-weight: 700;
 			}
 		}
-		a {
-			color: #FFF;
-			&:hover {
-				color: $brand-primary;
-			}
-		}
-		// @media(min-width: 700px) {
-		// 	margin-right: 80px;
-		// }
+
 	}
-
-
-
-// .header-area {
-//     //background: blue;
-//     height: 100px;
-//     position: relative;
-//     width: 150px;
-// }
-// .header-area::before {
-//     background: rgba(255,255,255,0.2) none repeat scroll 0 0;
-//     content: "";
-//     height: 100px;
-//     position: absolute;
-//     right: -25px;
-//     transform: skew(-20deg);
-//     width: 50px;
-// }
-	// .login-wrap {
-	// 	font-size: 14px;
-	// 	color: #FFF;
-	// 	display: flex;
-	// 	align-items: center;
-	// 	justify-content: center;
-	// 	text-transform: uppercase;
-	// 	span {
-	// 		color: rgba(255,255,255,0.3);	
-	// 		color: #DDD;
-	// 		&.name {
-	// 			//color: $brand-primary;
-	// 			color: #FFF;
-	// 			font-weight: bold;
-	// 		}
-	// 	}
-	// 	a {
-	// 		color: #FFF;
-	// 		&:hover {
-	// 			color: $brand-primary;
-	// 		}
-	// 	}
-	// 	@media(min-width: 700px) {
-	// 		margin-right: 80px;
-	// 	}
-	// }
 }
 
 .header-sub-wrap {

@@ -91,6 +91,11 @@ class SimController extends Controller
     */
     public function upload(Request $request)
     {
+
+        /**
+        * Right now I'm able to upload a file without re-arranging the columns and just by naming the column headers... this is easier but it could also make things more difficult if the total file size winds up being a lot bigger, and maybe php needs to read all of the columns? It might be necessary to still process the files... and then it might actually be more difficult if I rely on having to name the columns - but I could do that instead of re-arranging things - just name and then delete instead of dragging to reorder?
+        */
+
         //dd($request->file('upload-file'));
         //$request->file
         // get file
