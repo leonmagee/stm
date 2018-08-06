@@ -58,7 +58,8 @@ class SimController extends Controller
     */
     public function upload_form()
     {
-        return view('sims.upload');
+        $report_types = ReportType::all();
+        return view('sims.upload', compact('report_types'));
     }
 
     /**
@@ -87,7 +88,7 @@ class SimController extends Controller
                 continue;
             }
 
-            $row[] = 2; // adding report type id
+            $row[] = $request->report_type; // adding report type id
             // this should come from a select field when you upload. 
             /**
             * @todo test this with a large file by setting headers, not changing column order
