@@ -39,15 +39,8 @@
 			&:hover {
 				z-index: 0 !important;
 			}
-			&.logout, &.register {
-				//background-color: #EAEAEA;
+			&.logout, &.register, &.date, &.user {
 				border-left: 1px solid #CCC;	
-			}
-			&.type {
-				//border: 1px solid red !important;
-			}
-			&.date {
-				border-left: 1px solid #CCC;
 			}
 			&.logout {
 				&:hover {

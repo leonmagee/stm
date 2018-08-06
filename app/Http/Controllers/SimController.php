@@ -67,41 +67,22 @@ class SimController extends Controller
     public function upload(Request $request)
     {
 
-        /**
-        * Right now I'm able to upload a file without re-arranging the columns and just by naming the column headers... this is easier but it could also make things more difficult if the total file size winds up being a lot bigger, and maybe php needs to read all of the columns? It might be necessary to still process the files... and then it might actually be more difficult if I rely on having to name the columns - but I could do that instead of re-arranging things - just name and then delete instead of dragging to reorder?
-        */
+        $current_date = Settings::first()->current_date;
 
-        //dd($request->file('upload-file'));
-        //$request->file
-        // get file
         $upload = $request->file('upload-file');
+        
         $filePath = $upload->getRealPath();
-        // open and read
+        
         $file = fopen($filePath, 'r');
 
-        /**
-        * Get header row - this will remove the first row (like array_shift).
-        * So if I'm not validating I need to ensure that the first row actually has
-        * specific headers... 
-        */
         $header = fgetcsv($file);
-        //dd($file, $header);
-
-        // then loop through this data
-        // validate
-        //  $new_header = [];
-        // foreach( $header as $key => $value ) {
-        //     //var_dump($value);
-        //     $lheader = strtolower($value); // not necessary here
-        //     $escaped_items = preg_replace('/[^a-z]/','',$lheader);
-        //     $new_header[] = $escaped_items;
-        // }
-        // add header for report type id
+        
         $header[] = 'report_type_id';
-        //dd($new_header);
 
         $data_array = [];
+
         while( $row = fgetcsv($file)) {
+
             if ( $row[0] == '') {
                 continue;
             }
@@ -154,7 +135,8 @@ class SimController extends Controller
                     'value' => $data['value'], 
                     'activation_date' => $data['activation_date'], 
                     'mobile_number' => $data['mobile_number'], 
-                    'report_type_id' => $data['report_type_id']
+                    'report_type_id' => $data['report_type_id'],
+                    'upload_date' => $current_date
                 ));
             }
 

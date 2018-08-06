@@ -1,11 +1,12 @@
 .footer-wrap {
-	//@include background_pattern;
+	@include background_pattern;
 	//@include background_gradient;
-	background-color: #DDD;
-	border-top: 1px solid #CCC;
-	//font-weight: bold;
+	//background-color: #DDD;
+	//border-top: 1px solid #CCC;
+	font-weight: bold;
 	font-size: 12px;
 	padding: 15px;
 	text-align: center;
-	color: #777;
+	//color: #777;
+	color: #FFF;
 }

@@ -2,6 +2,8 @@
 
 @section('content')
 
+<h1 class="title">Settings</h1>
+
 <div class="form-wrapper">
 
     <div class="form-wrapper-inner">

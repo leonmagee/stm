@@ -69,6 +69,7 @@ Route::post('sims', 'SimController@store');
 * Settings Routes
 */
 Route::get('settings', 'SettingsController@index');
+Route::get('site_settings', 'SettingsController@index_site');
 Route::post('date', 'SettingsController@update_date');
 Route::post('mode', 'SettingsController@update_mode');
 Route::post('site', 'SettingsController@update_site');

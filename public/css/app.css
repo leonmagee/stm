@@ -4891,6 +4891,11 @@ readers do not read off random characters that represent icons */
   width: auto;
 }
 
+body.stm-body h1.title {
+  font-size: 1.9em;
+  margin-bottom: 10px;
+}
+
 .stm-absolute-wrap {
   position: absolute;
   z-index: 10000;
@@ -4999,8 +5004,8 @@ body.stm-body button.button:hover {
 
 .header-wrap {
   background-color: #333;
-  background-image: url(/img/footer_lodyas.png);
-  background-size: 500px 500px;
+  background-image: url(/img/connectwork.png);
+  background-size: 300px 300px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -5049,11 +5054,9 @@ body.stm-body button.button:hover {
 }
 
 .header-wrap .header-area a.button.logout,
-.header-wrap .header-area a.button.register {
-  border-left: 1px solid #CCC;
-}
-
-.header-wrap .header-area a.button.date {
+.header-wrap .header-area a.button.register,
+.header-wrap .header-area a.button.date,
+.header-wrap .header-area a.button.user {
   border-left: 1px solid #CCC;
 }
 
@@ -5207,12 +5210,14 @@ ul.sidebar-menu li:hover ul.sub-menu li:hover a {
 }
 
 .footer-wrap {
-  background-color: #DDD;
-  border-top: 1px solid #CCC;
+  background-color: #333;
+  background-image: url(/img/connectwork.png);
+  background-size: 300px 300px;
+  font-weight: bold;
   font-size: 12px;
   padding: 15px;
   text-align: center;
-  color: #777;
+  color: #FFF;
 }
 
 .dataTables_paginate.paging_simple_numbers a.paginate_button {

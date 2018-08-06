@@ -29,15 +29,7 @@
 				    </a>
 				  </p>
 				  <p class="control">
-				    <a class="button {{ $mode }}" href="/settings">
-				      <span class="icon is-small">
-				        <i class="fas fa-check"></i>
-				      </span>
-				      <span class="text">{{ $mode }}</span>
-				    </a>
-				  </p>
-				  <p class="control">
-				    <a class="button">
+				    <a class="button user">
 				      <span class="icon is-small">
 				        <i class="fas fa-user"></i>
 				      </span>
@@ -50,6 +42,18 @@
 				        <i class="fas fa-times-circle"></i>
 				      </span>
 				      <span class="text">Log Out</span>
+				    </a>
+				  </p>
+				  <p class="control">
+				    <a class="button mode {{ $mode }}" href="/settings">
+				      <span class="icon is-small">
+				      	@if($mode == 'online')
+				        <i class="fas fa-signal"></i>
+				        @else
+				        <i class="fas fa-lock"></i>
+				        @endif
+				      </span>
+				      <span class="text">{{ $mode }}</span>
 				    </a>
 				  </p>
 				</div>

@@ -2,7 +2,7 @@
 
 @section('content')
 
-	<h1 class="title">Archive Sims for {{ $name }}</h1>
+	<h1 class="title">{{ $name }} Sims | {{ CURRENT_SITE_DATE }}</h1>
 
     <table id="sims_table" class="stripe compact">
 

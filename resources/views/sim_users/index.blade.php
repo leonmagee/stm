@@ -2,7 +2,7 @@
 
 @section('content')
 
-<h4 class="subtitle">Sims For Logged In User</h4>
+<h1 class="title">Sims For Logged In User</h1>
 
     @foreach( $sims_user as $sim )
 

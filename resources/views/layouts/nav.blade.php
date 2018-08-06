@@ -32,6 +32,6 @@
 	
 	<li><a href="/settings">Settings</a></li>
 	
-	<li><a href="/settings">Site Settings</a></li>
+	<li><a href="/site_settings">Site Settings</a></li>
 
 </ul>

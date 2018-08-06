@@ -2,7 +2,9 @@
 
 @section('content')
 
-<div class="form-wrapper">
+<h1 class="title">Add One Sim</h1>
+
+<div class="form-wrapper"><!-- consistency with form groups - this is effectd by settings form scss??? -->
 
     <form method="POST" action="/sims">
 

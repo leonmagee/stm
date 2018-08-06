@@ -2,8 +2,7 @@
 
 @section('content')
 
-<h2>Upload Sims</h2>
-
+<h1 class="title">Upload Sims</h1>
 
 <form action="/upload" method="POST" enctype="multipart/form-data">
 

@@ -1,6 +1,9 @@
 @extends('layouts.layout')
 
 @section('content')
+
+<h1 class="title">Assign SIM</h1>
+
 <div class="form-wrapper">
     <form method="POST" action="/assign-sims">
         {{ csrf_field() }}
