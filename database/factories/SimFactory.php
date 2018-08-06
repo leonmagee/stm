@@ -20,6 +20,7 @@ $factory->define(App\Sim::class, function (Faker $faker) {
         'activation_date' => '12/17/2017',
         'mobile_number' => rand(6191111111,6199999999),
         'report_type_id' => rand(1,7), // report type id will tell you the name and carrier
+        'upload_date' => '6_2018',
         //'carrier' => 'H2O Wireless',
         //'email' => $faker->unique()->safeEmail,
         //'password' => '$2y$10$TKh8H1.PfQx37YgCzwiKb.KjNyWgaHb9cbcoQgdIVFlYg7B77UdFm', // secret

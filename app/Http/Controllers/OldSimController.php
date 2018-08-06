@@ -4,11 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Sim;
 use App\ReportType;
-use App\Settings;
 use Illuminate\Http\Request;
 
-class SimController extends Controller
+class OldSimController extends Controller
 {
+    /**
+    * Only Logged In Users can see this
+    **/
     public function __construct() {
         $this->middleware('auth');
     }
@@ -20,16 +22,39 @@ class SimController extends Controller
      */
     public function index(Request $request)
     {
-        $current_date = Settings::first()->current_date;
-        $sims = Sim::where('upload_date', $current_date)->latest()->get();
+
+        /**
+        * Query sims by month?
+        **/
+        // $archives = Sim::selectRaw('year(created_at) year, monthname(created_at) month, count(*) published')->groupBy('year', 'month')->orderByRaw('min(created_at)')->get()->toArray();
+
+        // return $archives;
+
+        //return Post::latest()->get();
+        // $posts = Post::latest()->get();
+        // $cats = Category::latest()->get();
+        // //return $posts; //output json for api
+        // return view('posts.index', compact('posts', 'cats'));
+        //$sims = \DB::table('sims')->get(); // query builder
+        //$sims = Sim::oldest()->get();
+        //$sims = Sim::all();
+        // how to add session variables?
+        //dd($request);
+        //dd($request->session());
+        $sims = Sim::latest()->get();
+        //return $sims;
+        //dd($sims);
+        // foreach( $sims as $sim ) {
+        //     dd($sim->report_type->name);
+        // }
+        //return $sims;
         return view('sims.index', compact('sims'));
     }
 
     public function archive($id) {
-        $current_date = Settings::first()->current_date;
         $report_type = ReportType::find($id);
         $name = $report_type->carrier->name . ' ' . $report_type->name;
-        $sims = Sim::where(['report_type_id' => $id, 'upload_date' => $current_date])->get();
+        $sims = Sim::where('report_type_id', $id)->get();
         return view('sims.archive', compact('sims', 'name'));
     }
 

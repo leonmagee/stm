@@ -20,6 +20,7 @@ class CreateSimsTable extends Migration
             $table->string('activation_date', 15);
             $table->string('mobile_number', 20);
             $table->integer('report_type_id'); // link with other table?
+            $table->string('upload_date'); // might need to do a table of dates?
             // we will query by report type id when outputting sims on a sim page or just
             // tabulating what to pay agents... 
             $table->timestamps();

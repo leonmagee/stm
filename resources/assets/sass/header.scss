@@ -1,6 +1,7 @@
 .header-wrap {
 
-	@include background_gradient;
+	//@include background_gradient;
+	@include background_pattern;
 	display: flex;
 	justify-content: space-between;
 	padding: 10px;
@@ -18,7 +19,7 @@
 			font-weight: 800;
 			color: #FFF;
 			font-size: 25px;
-			text-shadow: 1px 1px darken($brand-primary, 15%);
+			//text-shadow: 1px 1px darken($brand-primary, 15%);
 		}
 	}
 

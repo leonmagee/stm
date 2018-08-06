@@ -1,9 +1,9 @@
-// @mixin background_pattern {
-// 	background-color: #333;
-// 	background-image: url(/img/footer_lodyas.png);
-// 	//background-size: 600px 600px;
-// 	background-size: 500px 500px;
-// }
+@mixin background_pattern {
+	background-color: #333;
+	background-image: url(/img/footer_lodyas.png);
+	//background-size: 600px 600px;
+	background-size: 500px 500px;
+}
 
 @mixin current_font {
 	font-family: 'Open Sans', sans-serif;

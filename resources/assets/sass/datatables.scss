@@ -28,6 +28,8 @@
 #sims_table {
 	a {
 		color: darken($brand-primary, 5%);
+		color: $brand-primary;
+		font-weight: 700;
 		&:hover {
 			color: $brand-primary;
 			text-decoration: underline;

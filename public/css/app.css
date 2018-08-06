@@ -4917,7 +4917,7 @@ readers do not read off random characters that represent icons */
 .loader {
   border: 8px solid #555;
   /* Light grey */
-  border-top: 8px solid #00adf6;
+  border-top: 8px solid #1B9AAA;
   /* Teal Blue */
   border-radius: 50%;
   width: 100px;
@@ -4986,28 +4986,21 @@ body.stm-body .middle-content-wrap {
 }
 
 body.stm-body button.button {
-  background-color: #00adf6;
+  background-color: #1B9AAA;
   -webkit-transition: 0.3s;
   transition: 0.3s;
-  text-shadow: 1px 1px #00a6ec;
+  text-shadow: 1px 1px #1a92a1;
 }
 
 body.stm-body button.button:hover {
-  background-color: #00a3e7;
-  text-shadow: 1px 1px #009bdd;
+  background-color: #198e9d;
+  text-shadow: 1px 1px #188694;
 }
 
 .header-wrap {
-  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#5433ff+0,20bdff+68,20bdff+99 */
-  background: #5433ff;
-  /* Old browsers */
-  /* FF3.6-15 */
-  /* Chrome10-25,Safari5.1-6 */
-  background: -webkit-gradient(linear, left top, right top, from(#5433ff), color-stop(68%, #20bdff), color-stop(99%, #20bdff));
-  background: linear-gradient(to right, #5433ff 0%, #20bdff 68%, #20bdff 99%);
-  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#5433ff', endColorstr='#20bdff',GradientType=1 );
-  /* IE6-9 */
+  background-color: #333;
+  background-image: url(/img/footer_lodyas.png);
+  background-size: 500px 500px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -5027,7 +5020,6 @@ body.stm-body button.button:hover {
   font-weight: 800;
   color: #FFF;
   font-size: 25px;
-  text-shadow: 1px 1px #0077aa;
 }
 
 .header-wrap .header-area {
@@ -5066,24 +5058,24 @@ body.stm-body button.button:hover {
 }
 
 .header-wrap .header-area a.button.logout:hover {
-  background-color: #F71735;
+  background-color: #EF476F;
   color: #FFF;
 }
 
 .header-wrap .header-area a.button.login:hover,
 .header-wrap .header-area a.button.register:hover {
   color: #FFF;
-  background-color: #56E39F;
+  background-color: #06E5AA;
 }
 
 .header-wrap .header-area a.button.online {
   color: #FFF;
-  background-color: #56E39F;
+  background-color: #06E5AA;
 }
 
 .header-wrap .header-area a.button.locked {
   color: #FFF;
-  background-color: #F71735;
+  background-color: #EF476F;
 }
 
 .header-wrap .header-area a.button span.text {
@@ -5126,11 +5118,11 @@ body.stm-body button.button:hover {
 }
 
 .header-sub-wrap .sub.sub-3.online {
-  background-color: #56E39F;
+  background-color: #06E5AA;
 }
 
 .header-sub-wrap .sub.sub-3.locked {
-  background-color: #F71735;
+  background-color: #EF476F;
 }
 
 .sidebar-wrap {
@@ -5183,14 +5175,14 @@ ul.sidebar-menu li ul.sub-menu a {
 }
 
 ul.sidebar-menu li:hover {
-  background-color: #00adf6;
-  border-color: #00adf6;
+  background-color: #1B9AAA;
+  border-color: #1B9AAA;
   cursor: pointer;
 }
 
 ul.sidebar-menu li:hover a {
   color: #FFF;
-  text-shadow: 1px 1px #00aaf1;
+  text-shadow: 1px 1px #1a96a6;
 }
 
 ul.sidebar-menu li:hover ul.sub-menu {
@@ -5206,12 +5198,12 @@ ul.sidebar-menu li:hover ul.sub-menu li a {
 }
 
 ul.sidebar-menu li:hover ul.sub-menu li:hover {
-  background-color: #00adf6;
+  background-color: #1B9AAA;
 }
 
 ul.sidebar-menu li:hover ul.sub-menu li:hover a {
   color: #FFF;
-  text-shadow: 1px 1px #009bdd;
+  text-shadow: 1px 1px #188694;
 }
 
 .footer-wrap {
@@ -5231,16 +5223,16 @@ ul.sidebar-menu li:hover ul.sub-menu li:hover a {
 .dataTables_paginate.paging_simple_numbers a.paginate_button.current,
 .dataTables_paginate.paging_simple_numbers a.paginate_button:focus,
 .dataTables_paginate.paging_simple_numbers a.paginate_button:hover {
-  background: #00adf6;
+  background: #1B9AAA;
   color: #FFF !important;
-  border-color: #00adf6;
-  text-shadow: 1px 1px #009bdd;
+  border-color: #1B9AAA;
+  text-shadow: 1px 1px #188694;
 }
 
 .dataTables_paginate.paging_simple_numbers a.paginate_button.current:hover {
-  background: #00adf6;
+  background: #1B9AAA;
   color: #FFF !important;
-  border-color: #00adf6;
+  border-color: #1B9AAA;
 }
 
 .dataTables_paginate.paging_simple_numbers a.paginate_button.disabled {
@@ -5252,11 +5244,13 @@ ul.sidebar-menu li:hover ul.sub-menu li:hover a {
 }
 
 #sims_table a {
-  color: #009bdd;
+  color: #188694;
+  color: #1B9AAA;
+  font-weight: 700;
 }
 
 #sims_table a:hover {
-  color: #00adf6;
+  color: #1B9AAA;
   text-decoration: underline;
 }
 
