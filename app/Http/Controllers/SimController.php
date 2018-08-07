@@ -30,7 +30,7 @@ class SimController extends Controller
         $month = Carbon::createFromFormat('m', $date_array[0])->format('F');
         $current_site_date = $month . ' ' . $date_array[1];
 
-        
+
         return view('sims.index', compact('sims', 'current_site_date'));
     }
 
@@ -213,16 +213,24 @@ class SimController extends Controller
             'report_type_id' => 'required',
         ]);
 
-        //$request->upload_date = Settings::first()->current_date;
-
-        Sim::create(request([
-            'sim_number', 
-            'value', 
-            'activation_date', 
-            'mobile_number', 
-            'report_type_id',
+        Sim::create([
+            'sim_number' => $request->sim_number,
+            'value' => $request->value,
+            'activation_date' => $request->activation_date,
+            'mobile_number' => $request->mobile_number,
+            'report_type_id' => $request->report_type_id,
             'upload_date' => Settings::first()->current_date
-        ]));
+        ]);
+
+        // Sim::create(request([
+        //     'sim_number', 
+        //     'value', 
+        //     'activation_date', 
+        //     'mobile_number', 
+        //     'report_type_id',
+        //     //'upload_date' => Settings::first()->current_date
+        //     'upload_date' => '6_2018'
+        // ]));
 
         return redirect('/sims');
     }

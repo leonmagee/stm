@@ -12,8 +12,10 @@
 */
 
 //use App\Billing\Stripe;
+use App\Settings;
 use App\Site;
 use App\ReportType;
+use App\Sim;
 
 /**
 * Companies Route / main index???
@@ -41,12 +43,116 @@ Route::get('/', function () {
 	//$user_company_id = 1;
 	//$sites = Site::where('company_id', '=', $user_company_id)->get();
 
-	// graph data
-	$date_array = ['April 2018', 'May 2018', 'June 2018'];
-	$report_types = ReportType::where('spiff',1)->get();
-	$colors_array = ['rgba(255,0,0,1)', 'rgba(0,255,0,1)'];
 
-    return view('index', compact('date_array', 'report_types'));
+        $current_date = Settings::first()->current_date;
+
+        
+
+        $data_array = [
+        	[
+        		'title' => 'H2O Wireless Month',
+        		'counts' => [
+        			'200',
+        			'133',
+        			'144'
+        		]
+        	],
+        	[
+        		'title' => 'H2O Wireless Minute',
+        		'counts' => [
+        			'170',
+        			'153',
+        			'114'
+        		]
+        	],
+        	[
+        		'title' => 'H2O Wireless 2nd Recharge',
+        		'counts' => [
+        			'100',
+        			'133',
+        			'174'
+        		]
+        	],
+        ];
+
+        $data_array = [];
+
+        $array_item = [];
+
+		$date_array = ['4_2018','5_2018','6_2018'];
+
+		$report_types_array = [1,3,4];
+
+		foreach( $report_types_array as $id ) {
+
+			    $report_type = ReportType::find($id);
+
+        		$name = $report_type->name;
+
+        		$carrier = $report_type->carrier->name;
+
+        		$array_item['title'] = $carrier . " " . $name;
+
+        		foreach( $date_array as $date ) {
+
+	        		$sims = Sim::where([
+	        			'upload_date' => $date, 
+	        			'report_type_id' => $id
+	        		])->latest()->get();
+
+		        	$number = count($sims);
+
+		        	$array_item['counts'][] = $number;
+        		}
+
+	        	$data_array[] = $array_item;
+	        	$array_item = [];
+
+		}
+
+		//var_dump($data_array);
+
+
+
+        // foreach( $date_array as $date ) {
+
+        // 	foreach( $report_types_array as $id ) {
+
+        // 		$report_type = ReportType::find($id);
+
+        // 		$name = $report_type->name;
+
+        // 		$carrier = $report_type->carrier->name;
+
+        // 		$sims = Sim::where(['upload_date' => $date, 'report_type_id' => $id])->latest()->get();
+
+	       //  	$number = count($sims);
+
+	       //  	echo "report type: " . $carrier . " " . $name . "<br /> date: " . $date . "<br /> count: " . $number . "<br /><br /><br />";
+
+	       //  	$data_array[] = [
+	       //  		'title' => '',
+	       //  		'',
+	       //  	];
+        // 	}
+
+
+        // }
+
+        //dd('test');
+
+
+
+
+
+
+
+
+	// graph data
+	//$date_array = ['April 2018', 'May 2018', 'June 2018'];
+	//$report_types = ReportType::where('spiff',1)->get();
+
+    return view('index', compact('data_array'));
 })->name('home');
 
 /**

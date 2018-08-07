@@ -22,10 +22,7 @@
 
 @section('page-script')
 <script>
-	var date_array = [];
-	@foreach( $date_array as $date )
-		date_array.push('{{$date}}');
-	@endforeach
+
 	//console.log('array', date_array);
 
 	var report_types_array = [];
@@ -47,19 +44,19 @@
 	'rgba(227, 99, 151, 1)'
 	];
 
-	@foreach($report_types as $key => $report_type)
+	@foreach($data_array as $key => $data)
 		var report_object = {
-				label: '{{$report_type->carrier->name}} {{$report_type->name}}',
-				data: [30,122,80],
-				backgroundColor: fill_color_array[{{$key}}],
-				borderColor: stroke_color_array[{{$key}}],
+			label: "{{$data['title'] }}",
+			data: [{{ $data['counts'][0] }},{{ $data['counts'][1] }},{{ $data['counts'][2] }}],
+			backgroundColor: fill_color_array[{{$key}}],
+			borderColor: stroke_color_array[{{$key}}],
 		};
 		report_types_array.push(report_object);
 	@endforeach
 
 var data = {
-	//labels: ['April 2018', 'May 2018', 'June 2018'],
-	labels: date_array,
+	labels: ['April 2018', 'May 2018', 'June 2018'],
+	//labels: date_array,
 	datasets: report_types_array
 	// [
 	// 	{

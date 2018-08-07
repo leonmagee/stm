@@ -10,8 +10,6 @@
 
 		{{ csrf_field() }}
 
-
-
     <div class="field">
       <div class="file">
         <label class="file-label">
