@@ -46,34 +46,32 @@ Route::get('/', function () {
 
         $current_date = Settings::first()->current_date;
 
-        
-
-        $data_array = [
-        	[
-        		'title' => 'H2O Wireless Month',
-        		'counts' => [
-        			'200',
-        			'133',
-        			'144'
-        		]
-        	],
-        	[
-        		'title' => 'H2O Wireless Minute',
-        		'counts' => [
-        			'170',
-        			'153',
-        			'114'
-        		]
-        	],
-        	[
-        		'title' => 'H2O Wireless 2nd Recharge',
-        		'counts' => [
-        			'100',
-        			'133',
-        			'174'
-        		]
-        	],
-        ];
+        // $data_array = [
+        // 	[
+        // 		'title' => 'H2O Wireless Month',
+        // 		'counts' => [
+        // 			'200',
+        // 			'133',
+        // 			'144'
+        // 		]
+        // 	],
+        // 	[
+        // 		'title' => 'H2O Wireless Minute',
+        // 		'counts' => [
+        // 			'170',
+        // 			'153',
+        // 			'114'
+        // 		]
+        // 	],
+        // 	[
+        // 		'title' => 'H2O Wireless 2nd Recharge',
+        // 		'counts' => [
+        // 			'100',
+        // 			'133',
+        // 			'174'
+        // 		]
+        // 	],
+        // ];
 
         $data_array = [];
 
@@ -81,7 +79,6 @@ Route::get('/', function () {
 
 		$date_array = ['4_2018','5_2018','6_2018'];
 
-		//$report_types_array = [1,3,4];
 		$report_types_array = ReportType::where('spiff',1)->get();
 
 		foreach( $report_types_array as $report_type ) {

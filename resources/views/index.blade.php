@@ -4,7 +4,7 @@
 
 <div class="homepage-wrap">
 
-	<h1 class="title">Activations Per Month</h1>
+	<h1 class="title">SIM Activations Per Month</h1>
 
 	<div class="chart-wrap">
 		
@@ -31,7 +31,7 @@
 	'rgba(6, 229, 170, 0.3)',
 	'rgba(239, 71, 111, 0.3)',
 	'rgba(255, 196, 61, 0.3)',
-	'rgba(227, 99, 151, 0.3)'
+	'rgba(81, 229, 255, 0.3)'
 	];
 
 		var stroke_color_array = [
@@ -39,7 +39,7 @@
 	'rgba(6, 229, 170, 1)',
 	'rgba(239, 71, 111, 1)',
 	'rgba(255, 196, 61, 1)',
-	'rgba(227, 99, 151, 1)'
+	'rgba(81, 229, 255, 1)'
 	];
 
 	@foreach($data_array as $key => $data)
