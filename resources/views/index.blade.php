@@ -23,10 +23,8 @@
 @section('page-script')
 <script>
 
-	//console.log('array', date_array);
 
 	var report_types_array = [];
-
 
 	var fill_color_array = [
 	'rgba(27, 154, 170, 0.3)',
@@ -98,6 +96,6 @@ const chartReport = new Chart(context, {
     options: options
 });
 
-console.log(chartReport.generateLegend());
+//console.log(chartReport.generateLegend());
 </script>
 @endsection
