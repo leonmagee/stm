@@ -12,162 +12,19 @@
 */
 
 //use App\Billing\Stripe;
-use App\Settings;
-use App\Site;
-use App\ReportType;
-use App\Sim;
 
 /**
-* Companies Route / main index???
-* @todo not sure if I should make this dynamic or not... 
-* @todo - this could really just depend on who's logged in - if a Company Admin is logged in, then 
-* they will see data tied to their company, and there will be an admin page listing different sites...
-* so the number 1 landing page will be the login form - this will take a user to an admin page with different sites to navigate - and hopefully I can do away with the different icon ctas... 
-
-
-* so maybe I can manage the current 'site' just with Session details, rather than with different routes - so basically you choose which site you're part of 'Agents' / 'Dealers' / 'Signature Store' - and this is displayed in the header in bold... and you can change this in an admin panel in accordance with 'company'? I might want to have a 'super' admin that only I see, and then Kareem will see an admin page for GS Wireless - so that way when I login I can have what amounts to multisite functionality, but he will just see everything under the umbrella of GS Wireless... 
-**/
-
-
-
-Route::get('/', function () {
-	// get logged in user company ID...
-	// regurn all fo the sites for that logged in users company
-	//$config_tester = config('mail.driver');
-	//dd($config_tester);
-	// session_start();
-	// $session = $_SESSION;
-	//dd($session);
-	// $array = array('one', 'two', 'three');
-	// dd($array);
-	//$user_company_id = 1;
-	//$sites = Site::where('company_id', '=', $user_company_id)->get();
-
-
-        $current_date = Settings::first()->current_date;
-
-        // $data_array = [
-        // 	[
-        // 		'title' => 'H2O Wireless Month',
-        // 		'counts' => [
-        // 			'200',
-        // 			'133',
-        // 			'144'
-        // 		]
-        // 	],
-        // 	[
-        // 		'title' => 'H2O Wireless Minute',
-        // 		'counts' => [
-        // 			'170',
-        // 			'153',
-        // 			'114'
-        // 		]
-        // 	],
-        // 	[
-        // 		'title' => 'H2O Wireless 2nd Recharge',
-        // 		'counts' => [
-        // 			'100',
-        // 			'133',
-        // 			'174'
-        // 		]
-        // 	],
-        // ];
-
-        $data_array = [];
-
-        $array_item = [];
-
-		$date_array = ['4_2018','5_2018','6_2018'];
-
-		$report_types_array = ReportType::where('spiff',1)->get();
-
-		foreach( $report_types_array as $report_type ) {
-
-			    //$report_type = ReportType::find($report_type->id);
-
-        		$name = $report_type->name;
-
-        		$carrier = $report_type->carrier->name;
-
-        		$array_item['title'] = $carrier . " " . $name;
-
-        		foreach( $date_array as $date ) {
-
-	        		$sims = Sim::where([
-	        			'upload_date' => $date, 
-	        			'report_type_id' => $report_type->id
-	        		])->latest()->get();
-
-		        	$number = count($sims);
-
-		        	$array_item['counts'][] = $number;
-        		}
-
-	        	$data_array[] = $array_item;
-	        	$array_item = [];
-
-		}
-
-		//var_dump($data_array);
-
-
-
-        // foreach( $date_array as $date ) {
-
-        // 	foreach( $report_types_array as $id ) {
-
-        // 		$report_type = ReportType::find($id);
-
-        // 		$name = $report_type->name;
-
-        // 		$carrier = $report_type->carrier->name;
-
-        // 		$sims = Sim::where(['upload_date' => $date, 'report_type_id' => $id])->latest()->get();
-
-	       //  	$number = count($sims);
-
-	       //  	echo "report type: " . $carrier . " " . $name . "<br /> date: " . $date . "<br /> count: " . $number . "<br /><br /><br />";
-
-	       //  	$data_array[] = [
-	       //  		'title' => '',
-	       //  		'',
-	       //  	];
-        // 	}
-
-
-        // }
-
-        //dd('test');
-
-
-
-
-
-
-
-
-	// graph data
-	//$date_array = ['April 2018', 'May 2018', 'June 2018'];
-	//$report_types = ReportType::where('spiff',1)->get();
-
-    return view('index', compact('data_array'));
-})->name('home');
-
-/**
-* I might want to disable this for now... I'm not sure how to handle the multisite functionality
-* I can just do this with cookies but that seems like a bad way to do it???
+* Home Route @todo change to report route?
 */
-// Route::get('{site}', function() {
-// 	$array = array(1,2,3);
-// 	return $array;
-// });
+Route::get('/', 'HomeController@index')->name('home');
 
+/**
+* Profile Route
+*/
 Route::get('profile', function() {
 
 	return view('profile');
 });
-
-
 
 /**
 * SIMs Routes
