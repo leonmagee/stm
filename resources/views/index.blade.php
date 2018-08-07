@@ -4,7 +4,7 @@
 
 <div class="homepage-wrap">
 
-	<h1 class="title">Data</h1>
+	<h1 class="title">Activations Per Month</h1>
 
 	<div class="chart-wrap">
 		
@@ -90,8 +90,8 @@ var options = {
 //new Chart(context).Line(data, {});
 
 const chartReport = new Chart(context, {
-    //type: 'bar',
-    type: 'line',
+    type: 'bar',
+    //type: 'line',
     data: data,
     options: options
 });
