@@ -81,11 +81,12 @@ Route::get('/', function () {
 
 		$date_array = ['4_2018','5_2018','6_2018'];
 
-		$report_types_array = [1,3,4];
+		//$report_types_array = [1,3,4];
+		$report_types_array = ReportType::where('spiff',1)->get();
 
-		foreach( $report_types_array as $id ) {
+		foreach( $report_types_array as $report_type ) {
 
-			    $report_type = ReportType::find($id);
+			    //$report_type = ReportType::find($report_type->id);
 
         		$name = $report_type->name;
 
@@ -97,7 +98,7 @@ Route::get('/', function () {
 
 	        		$sims = Sim::where([
 	        			'upload_date' => $date, 
-	        			'report_type_id' => $id
+	        			'report_type_id' => $report_type->id
 	        		])->latest()->get();
 
 		        	$number = count($sims);
