@@ -8,11 +8,18 @@ $screen-sm: '768px';
 // $color-green: #56E39F;
 
 $brand-primary: #1B9AAA;
+//rgba(27, 154, 170, 1)
 $color-green: #06E5AA;
+//rgba(6, 229, 170, 1)
 $color-red: #EF476F;
+//rgba(239, 71, 111, 1)
+$brand-fourth: #FFC43D; // yellow
+//rgba(255, 196, 61, 1)
+$brand-fifth: #E36397; // light purple
+//rgba(227, 99, 151, 1)
 
 
-$brand-danger: #ED3D64;
+$brand-danger: $color-red;
 
 $brand-info: #8eb4cb;
 $brand-success: #2ab27b;

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Sim;
 use App\ReportType;
 use App\Settings;
+use \Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class SimController extends Controller
@@ -22,7 +23,15 @@ class SimController extends Controller
     {
         $current_date = Settings::first()->current_date;
         $sims = Sim::where('upload_date', $current_date)->latest()->get();
-        return view('sims.index', compact('sims'));
+
+        // @todo use a helper function?
+        $settings = Settings::first();
+        $date_array = explode('_', $settings->current_date);
+        $month = Carbon::createFromFormat('m', $date_array[0])->format('F');
+        $current_site_date = $month . ' ' . $date_array[1];
+
+        
+        return view('sims.index', compact('sims', 'current_site_date'));
     }
 
     public function archive($id) {
@@ -30,7 +39,15 @@ class SimController extends Controller
         $report_type = ReportType::find($id);
         $name = $report_type->carrier->name . ' ' . $report_type->name;
         $sims = Sim::where(['report_type_id' => $id, 'upload_date' => $current_date])->get();
-        return view('sims.archive', compact('sims', 'name'));
+
+
+        // @todo use a helper function?
+        $settings = Settings::first();
+        $date_array = explode('_', $settings->current_date);
+        $month = Carbon::createFromFormat('m', $date_array[0])->format('F');
+        $current_site_date = $month . ' ' . $date_array[1];
+
+        return view('sims.archive', compact('sims', 'name', 'current_site_date'));
     }
 
     /**
@@ -129,20 +146,19 @@ class SimController extends Controller
             * exist in the system... so I need to fall back to a secondary check. 
             */
 
-            if ( ! in_array($data['sim_number'],$sim_number_array )) {
+            if ( ! in_array($data['sim'],$sim_number_array )) {
 
                 Sim::create(array(
-                    'sim_number' => $data['sim_number'],
-                    'value' => $data['value'], 
-                    'activation_date' => $data['activation_date'], 
-                    'mobile_number' => $data['mobile_number'], 
+                    'sim_number' => $data['sim'],
+                    'value' => $data['plan'], 
+                    'activation_date' => $data['active_dt'],
+                    'mobile_number' => $data['mdn'], 
                     'report_type_id' => $data['report_type_id'],
                     'upload_date' => $current_date
                 ));
             }
 
-            $sim_number_array[] = $data['sim_number'];
-
+            $sim_number_array[] = $data['sim'];
         }
 
         // foreach( $data_array as $data ) {
@@ -167,6 +183,7 @@ class SimController extends Controller
      */
     public function store(Request $request)
     {
+
         //dd(request()->all());
         //dd(request('sim_number'));
 
@@ -186,6 +203,8 @@ class SimController extends Controller
         //     'carrier' => request('carrier')
         // ]);
 
+        $current_date = Settings::first()->current_date;
+
         $this->validate(request(), [
             'sim_number' => 'required|min:13',
             'value' => 'required',
@@ -194,12 +213,15 @@ class SimController extends Controller
             'report_type_id' => 'required',
         ]);
 
+        //$request->upload_date = Settings::first()->current_date;
+
         Sim::create(request([
             'sim_number', 
             'value', 
             'activation_date', 
             'mobile_number', 
-            'report_type_id'
+            'report_type_id',
+            'upload_date' => Settings::first()->current_date
         ]));
 
         return redirect('/sims');

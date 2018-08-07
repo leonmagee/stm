@@ -7,8 +7,8 @@ The body of your message.
 - two
 - three
 
-@component('mail::button', ['url' => 'https://levon.io'])
-Go to Levon
+@component('mail::button', ['url' => 'https://simtrackmanager.com'])
+Go to Sim Track Manager
 @endcomponent
 
 @component('mail::panel')

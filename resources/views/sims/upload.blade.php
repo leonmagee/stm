@@ -29,11 +29,11 @@
     </div>
 
     <div class="field">
-        <label class="label">User</label>
+        <label class="label">Report Type</label>
         <div class="select">
             <select name="report_type">
                 @foreach($report_types as $report_type)
-                <option value="{{ $report_type->id }}">{{ $report_type->name }}</option>
+                <option value="{{ $report_type->id }}">{{ $report_type->carrier->name }} {{ $report_type->name }}</option>
                 @endforeach
             </select>
         </div>

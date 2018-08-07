@@ -29,7 +29,7 @@
 				    </a>
 				  </p>
 				  <p class="control">
-				    <a class="button user">
+				    <a class="button user" href="/profile">
 				      <span class="icon is-small">
 				        <i class="fas fa-user"></i>
 				      </span>
@@ -42,6 +42,14 @@
 				        <i class="fas fa-times-circle"></i>
 				      </span>
 				      <span class="text">Log Out</span>
+				    </a>
+				  </p>
+				  <p class="control">
+				    <a class="button settings" href="/settings">
+				      <span class="icon is-small">
+				        <i class="fas fa-cog"></i>
+				      </span>
+				      <span class="text">Settings</span>
 				    </a>
 				  </p>
 				  <p class="control">

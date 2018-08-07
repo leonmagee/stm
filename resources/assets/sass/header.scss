@@ -39,7 +39,7 @@
 			&:hover {
 				z-index: 0 !important;
 			}
-			&.logout, &.register, &.date, &.user {
+			&.logout, &.register, &.date, &.user, &.settings {
 				border-left: 1px solid #CCC;	
 			}
 			&.logout {
@@ -48,10 +48,10 @@
 					color: #FFF;
 				}
 			}
-			&.login, &.register {
+			&.login, &.register, &.date, &.type, &.user, &.settings {
 				&:hover {
-					color: #FFF;
-					background-color: $color-green;
+					//color: #FFF;
+					background-color: #EEE;
 				}
 			}
 			&.online {

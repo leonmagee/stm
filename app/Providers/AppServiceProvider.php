@@ -22,20 +22,6 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
 
-        /**
-        * This crashes the artisan when settings don't exists?
-        */
-        $settings = Settings::first();
-        if ( $settings ) {
-            $date_array = explode('_', $settings->current_date);
-            $month = Carbon::createFromFormat('m', $date_array[0])->format('F');
-            $date = $month . ' ' . $date_array[1];
-        } else {
-            $date = '';
-        }
-
-        define('CURRENT_SITE_DATE', $date);
-
         view()->composer('layouts.nav', function($view) {
 
             $view->with('report_types', ReportType::all());

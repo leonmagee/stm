@@ -2,7 +2,7 @@
 
 @section('content')
 
-<h1 class="title">All Sims | {{ CURRENT_SITE_DATE }}</h1>
+<h1 class="title">All Sims | {{ $current_site_date }}</h1>
 
 <table id="sims_table" class="stripe compact">
 	<thead>

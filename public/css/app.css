@@ -5056,7 +5056,8 @@ body.stm-body button.button:hover {
 .header-wrap .header-area a.button.logout,
 .header-wrap .header-area a.button.register,
 .header-wrap .header-area a.button.date,
-.header-wrap .header-area a.button.user {
+.header-wrap .header-area a.button.user,
+.header-wrap .header-area a.button.settings {
   border-left: 1px solid #CCC;
 }
 
@@ -5066,9 +5067,12 @@ body.stm-body button.button:hover {
 }
 
 .header-wrap .header-area a.button.login:hover,
-.header-wrap .header-area a.button.register:hover {
-  color: #FFF;
-  background-color: #06E5AA;
+.header-wrap .header-area a.button.register:hover,
+.header-wrap .header-area a.button.date:hover,
+.header-wrap .header-area a.button.type:hover,
+.header-wrap .header-area a.button.user:hover,
+.header-wrap .header-area a.button.settings:hover {
+  background-color: #EEE;
 }
 
 .header-wrap .header-area a.button.online {
@@ -5265,10 +5269,6 @@ ul.sidebar-menu li:hover ul.sub-menu li:hover a {
 
 #sims_table.dataTable.no-footer {
   border-color: #DDD;
-}
-
-.chart-wrap {
-  max-width: 70%;
 }
 
 .form-wrapper {

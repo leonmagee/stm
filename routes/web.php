@@ -13,6 +13,7 @@
 
 //use App\Billing\Stripe;
 use App\Site;
+use App\ReportType;
 
 /**
 * Companies Route / main index???
@@ -40,7 +41,12 @@ Route::get('/', function () {
 	//$user_company_id = 1;
 	//$sites = Site::where('company_id', '=', $user_company_id)->get();
 
-    return view('index');
+	// graph data
+	$date_array = ['April 2018', 'May 2018', 'June 2018'];
+	$report_types = ReportType::where('spiff',1)->get();
+	$colors_array = ['rgba(255,0,0,1)', 'rgba(0,255,0,1)'];
+
+    return view('index', compact('date_array', 'report_types'));
 })->name('home');
 
 /**
@@ -51,6 +57,11 @@ Route::get('/', function () {
 // 	$array = array(1,2,3);
 // 	return $array;
 // });
+
+Route::get('profile', function() {
+
+	return view('profile');
+});
 
 
 
