@@ -22,6 +22,7 @@ Route::get('/', 'HomeController@index')->name('home');
 * Profile & Users Routes
 */
 Route::get('users', 'UserController@index');
+Route::get('users/{user}', 'UserController@show');
 Route::get('profile', function() {
 
 	return view('profile');

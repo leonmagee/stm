@@ -5287,18 +5287,72 @@ ul.sidebar-menu li:hover ul.sub-menu li:hover a {
   grid-auto-flow: row;
 }
 
-.users-wrap .user-wrap a {
-  background: #F3F3F3;
-  border: 1px solid #E6E6E6;
-  padding: 20px;
+.users-wrap a.user-wrap {
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#eeeeee+0,f3f3f3+100 */
+  background: #eeeeee;
+  /* Old browsers */
+  /* FF3.6-15 */
+  /* Chrome10-25,Safari5.1-6 */
+  background: -webkit-gradient(linear, left top, right top, from(#eeeeee), to(#f3f3f3));
+  background: linear-gradient(to right, #eeeeee 0%, #f3f3f3 100%);
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eeeeee', endColorstr='#f3f3f3',GradientType=1 );
+  /* IE6-9 */
   display: block;
   color: #333;
   font-weight: 700;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
-.users-wrap .user-wrap a:hover {
+.users-wrap a.user-wrap .flex-item {
+  font-size: 12px;
+  white-space: no-wrap;
+}
+
+.users-wrap a.user-wrap .flex-item.icon-wrap {
+  background-color: rgba(0, 0, 0, 0.05);
+  -webkit-box-flex: 0;
+      -ms-flex: 0 1 10%;
+          flex: 0 1 10%;
+  padding: 25px 15px;
+}
+
+.users-wrap a.user-wrap .flex-item.company-wrap {
+  font-size: 15px;
+  -webkit-box-flex: 0;
+      -ms-flex: 0 1 35%;
+          flex: 0 1 35%;
+  padding: 0 20px;
+}
+
+.users-wrap a.user-wrap .flex-item.name-phone-wrap {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 1 55%;
+          flex: 0 1 55%;
+  padding: 0 10px;
+}
+
+.users-wrap a.user-wrap .flex-item.name-phone-wrap .name {
+  font-size: 13px;
+}
+
+.users-wrap a.user-wrap .flex-item.name-phone-wrap .phone {
+  color: #777;
+}
+
+.users-wrap a.user-wrap:hover {
   background: #1B9AAA;
+  border-color: #1B9AAA;
   color: #FFF;
+}
+
+.users-wrap a.user-wrap:hover .flex-item.name-phone-wrap .phone {
+  color: #DDD;
 }
 
 .form-wrapper {

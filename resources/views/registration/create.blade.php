@@ -32,6 +32,41 @@
 		</div>
 
 		<div class="field">
+			<label class="label" for="phone">Phone Number</label>
+			<div class="control">
+				<input class="input" type="text" id="phone" name="phone" required/>
+			</div>
+		</div>
+
+		<div class="field">
+			<label class="label" for="address">Address</label>
+			<div class="control">
+				<input class="input" type="text" id="address" name="address" required/>
+			</div>
+		</div>
+
+		<div class="field">
+			<label class="label" for="city">City</label>
+			<div class="control">
+				<input class="input" type="text" id="city" name="city" required/>
+			</div>
+		</div>
+
+		<div class="field">
+			<label class="label" for="state">State</label>
+			<div class="control">
+				<input class="input" type="text" id="state" name="state" required/>
+			</div>
+		</div>
+
+		<div class="field">
+			<label class="label" for="zip">Zip</label>
+			<div class="control">
+				<input class="input" type="text" id="zip" name="zip" required/>
+			</div>
+		</div>
+
+		<div class="field">
 			<label class="label" for="password">Password</label>
 			<div class="control">
 				<input class="input" type="password" id="password" name="password" required/>
@@ -44,8 +79,6 @@
 				<input class="input" type="password" id="password_2" name="password_confirmation" required/>
 			</div>
 		</div>
-
-		<input type="hidden" name="role" value="user" />
 
         <div class="field">
             <div class="control">

@@ -28,7 +28,11 @@ class RegistrationController extends Controller
 			'name' => 'required',
 			'email' => 'required|email',
 			'company' => 'required',
-			'role' => 'required',
+			'phone' => 'required',
+			'address' => 'required',
+			'city' => 'required',
+			'state' => 'required',
+			'zip' => 'required',
 			'password' => 'required|confirmed'
 		]);
 
@@ -37,7 +41,12 @@ class RegistrationController extends Controller
 			'name' => $request->name,
 			'email' => $request->email,
 			'company' => $request->company,
-			'role' => $request->role,
+			'phone' => $request->phone,
+			'address' => $request->address,
+			'city' => $request->city,
+			'state' => $request->state,
+			'zip' => $request->zip,
+			'role' => 'new_user', // admin only dropdown to choose site // admin can edit also
 			'password' => bcrypt($request->password)
 		]);
 
