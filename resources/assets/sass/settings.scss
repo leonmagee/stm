@@ -6,10 +6,12 @@
 		margin: 10px 30px;
 		background: #FDFDFD;
 		border: 1px solid #E7E7E7;
+		//border: 1px solid #DDD;
+		box-shadow: 1px 1px rgba(0,0,0,0.05);
 		//box-shadow: 1px 1px #555;
 		display: flex;
 		flex-direction: column;
-		border-radius: 15px;
+		border-radius: 10px;
 		overflow: hidden;
 		//min-height: 100%;
 		//height: 100%;
@@ -21,10 +23,13 @@
 
 		h3 {
 			text-align: center;
-			font-weight: 800;
+			font-weight: 700;
 			font-size: 17px;
 			padding: 10px;
-			background: rgba(0,0,0,0.03);
+			color: #111;
+			text-shadow: 1px 1px rgba(255,255,255,0.5);
+			//background: rgba(0,0,0,0.03);
+			@include background_gradient;
 		}
 
 		.form-wrap {

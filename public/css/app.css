@@ -5369,6 +5369,8 @@ ul.sidebar-menu li:hover ul.sub-menu li:hover a {
   margin: 10px 30px;
   background: #FDFDFD;
   border: 1px solid #E7E7E7;
+  -webkit-box-shadow: 1px 1px rgba(0, 0, 0, 0.05);
+          box-shadow: 1px 1px rgba(0, 0, 0, 0.05);
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -5376,7 +5378,7 @@ ul.sidebar-menu li:hover ul.sub-menu li:hover a {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  border-radius: 15px;
+  border-radius: 10px;
   overflow: hidden;
 }
 
@@ -5386,10 +5388,21 @@ ul.sidebar-menu li:hover ul.sub-menu li:hover a {
 
 .form-wrapper .form-wrapper-inner h3 {
   text-align: center;
-  font-weight: 800;
+  font-weight: 700;
   font-size: 17px;
   padding: 10px;
-  background: rgba(0, 0, 0, 0.03);
+  color: #111;
+  text-shadow: 1px 1px rgba(255, 255, 255, 0.5);
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#eeeeee+0,f3f3f3+100 */
+  background: #eeeeee;
+  /* Old browsers */
+  /* FF3.6-15 */
+  /* Chrome10-25,Safari5.1-6 */
+  background: -webkit-gradient(linear, left top, right top, from(#eeeeee), to(#f3f3f3));
+  background: linear-gradient(to right, #eeeeee 0%, #f3f3f3 100%);
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eeeeee', endColorstr='#f3f3f3',GradientType=1 );
+  /* IE6-9 */
 }
 
 .form-wrapper .form-wrapper-inner .form-wrap {
