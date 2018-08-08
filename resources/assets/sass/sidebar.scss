@@ -1,5 +1,5 @@
 .sidebar-wrap {
 
-	background-color: #EEE;
+	@include background_gradient;
 	border-right: 1px solid #DFDFDF;
 }

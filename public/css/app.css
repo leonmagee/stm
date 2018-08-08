@@ -5133,7 +5133,16 @@ body.stm-body button.button:hover {
 }
 
 .sidebar-wrap {
-  background-color: #EEE;
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#eeeeee+0,f3f3f3+100 */
+  background: #eeeeee;
+  /* Old browsers */
+  /* FF3.6-15 */
+  /* Chrome10-25,Safari5.1-6 */
+  background: -webkit-gradient(linear, left top, right top, from(#eeeeee), to(#f3f3f3));
+  background: linear-gradient(to right, #eeeeee 0%, #f3f3f3 100%);
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eeeeee', endColorstr='#f3f3f3',GradientType=1 );
+  /* IE6-9 */
   border-right: 1px solid #DFDFDF;
 }
 
@@ -5269,6 +5278,27 @@ ul.sidebar-menu li:hover ul.sub-menu li:hover a {
 
 #sims_table.dataTable.no-footer {
   border-color: #DDD;
+}
+
+.users-wrap {
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-auto-flow: row;
+}
+
+.users-wrap .user-wrap a {
+  background: #F3F3F3;
+  border: 1px solid #E6E6E6;
+  padding: 20px;
+  display: block;
+  color: #333;
+  font-weight: 700;
+}
+
+.users-wrap .user-wrap a:hover {
+  background: #1B9AAA;
+  color: #FFF;
 }
 
 .form-wrapper {

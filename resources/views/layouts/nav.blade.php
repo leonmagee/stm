@@ -26,6 +26,8 @@
 	
 	<li><a href="/sims/upload">Upload</a></li>
 	
+	<li><a href="/users">Users</a></li>
+	
 	<li><a href="/sim_users">Sim Users</a></li>
 	
 	<li><a href="/carriers">Carriers</a></li>
