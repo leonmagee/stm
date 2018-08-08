@@ -1,3 +1,4 @@
+// users archive
 .users-wrap	{
 	display: grid;
 	grid-gap: 10px;
@@ -54,3 +55,55 @@
 
 	}
 }
+
+// users single
+.single-user-wrap {
+
+	background: #FAFAFA; // use a mixin for this?
+	border: 1px solid #DDD;
+	//margin: 20px 0;
+	display: inline-block;
+	padding: 5px 20px;
+	border-radius: 10px;
+	font-weight: 700;
+	.company {
+		font-size: 3em;
+		font-weight: 800;
+		color: $brand-primary;
+		border-bottom: 3px solid #DDD;
+	}
+	.name {
+		font-size: 2.3em;
+		color: #555;
+	}
+	.role {
+		color: $color-red;
+		font-size: 1.8em;
+	}
+	.phone {
+		color: #888;
+		font-size: 1.7em;
+	}
+	.address-wrap {
+		.address {
+			font-size: 2em;
+		}
+		.city_state_zip {
+			font-size: 1.5em;
+		}
+	}
+}
+
+.button-bar {
+	padding: 20px 0;
+	a {
+		margin-right: 10px;
+	}
+}
+
+
+
+
+
+
+
