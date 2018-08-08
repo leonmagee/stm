@@ -4,7 +4,7 @@
 
 <div class="container">
 
-	<h1 class="title">Register</h1>
+	<h1 class="title">Add New User</h1>
 
 	<form method="POST" action="/register">
 
