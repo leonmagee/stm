@@ -6,6 +6,7 @@
 
         <div>{{ $user->name }}</div>
         <div>{{ $user->company}}</div>
+        <div>{{ $user->role }}</div>
         <div>{{ $user->phone }}</div>
         <div>{{ $user->address }}</div>
         <div>{{ $user->city }}</div>

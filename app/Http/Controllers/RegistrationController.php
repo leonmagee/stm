@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use App\User;
 
+use App\Site;
+
 use App\Mail\NewUser;
 
 class RegistrationController extends Controller
@@ -13,12 +15,14 @@ class RegistrationController extends Controller
 
 	public function __construct() {
 
-		$this->middleware('guest');
+		$this->middleware('auth');
 	}
 
 	public function create() {
 
-		return view('registration.create');
+		$sites = Site::all();
+
+		return view('registration.create', compact('sites'));
 	}
 
 	public function store(Request $request) {
@@ -33,8 +37,11 @@ class RegistrationController extends Controller
 			'city' => 'required',
 			'state' => 'required',
 			'zip' => 'required',
+			'role' => 'required',
 			'password' => 'required|confirmed'
 		]);
+
+		$role_array = ['null','agent','dealer','sigstore'];
 
     	// create and save new user
 		$user = User::create([
@@ -46,15 +53,19 @@ class RegistrationController extends Controller
 			'city' => $request->city,
 			'state' => $request->state,
 			'zip' => $request->zip,
-			'role' => 'new_user', // admin only dropdown to choose site // admin can edit also
+			'role' => $role_array[$request->role],
 			'password' => bcrypt($request->password)
 		]);
 
+		/**
+		* Update this email to include branding and reflect that a user account was created.
+		* Mandate strong password... 
+		*/
 		\Mail::to($user)->send(new NewUser($user));
 
     	// log in new user
-		auth()->login($user);
+		//auth()->login($user);
 
-		return redirect()->home();
+		return redirect('users');
 	}
 }

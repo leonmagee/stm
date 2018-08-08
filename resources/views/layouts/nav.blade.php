@@ -28,6 +28,8 @@
 	
 	<li><a href="/users">Users</a></li>
 	
+	<li><a href="/register">Add User</a></li>
+	
 	<li><a href="/sim_users">Sim Users</a></li>
 	
 	<li><a href="/carriers">Carriers</a></li>

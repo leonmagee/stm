@@ -32,6 +32,17 @@
 		</div>
 
 		<div class="field">
+			<label class="label" for="company">Site</label>
+			<div class="select">
+				<select name="role">
+					@foreach ($sites as $site)
+						<option value="{{ $site->id }}">{{ $site->name }}</option>
+					@endforeach
+				</select>
+			</div>
+		</div>
+
+		<div class="field">
 			<label class="label" for="phone">Phone Number</label>
 			<div class="control">
 				<input class="input" type="text" id="phone" name="phone" required/>

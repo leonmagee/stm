@@ -77,11 +77,11 @@
 				    </a>
 				  </p>
 				  <p class="control">
-				    <a class="button register" href="/register">
+				    <a class="button contact" href="/contact">
 				      <span class="icon is-small">
-				        <i class="fas fa-user-plus"></i>
+				        <i class="fas fa-question-circle"></i>
 				      </span>
-				      <span class="text">Register</span>
+				      <span class="text">Contact</span>
 				    </a>
 				  </p>
 				</div>
