@@ -1,10 +1,12 @@
 @extends('layouts.layout')
 
+@section('title')
+SIM Activations Per Month
+@endsection
+
 @section('content')
 
 <div class="homepage-wrap">
-
-	<h1 class="title">SIM Activations Per Month</h1>
 
 	<div class="chart-wrap">
 		
