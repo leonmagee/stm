@@ -77,7 +77,8 @@ class SimController extends Controller
     public function upload_form()
     {
         $report_types = ReportType::all();
-        $users = User::all();
+        $site_id = Settings::first()->site_id;
+        $users = User::where('role', $site_id)->get();
         return view('sims.upload', compact('report_types', 'users'));
     }
 

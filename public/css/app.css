@@ -16413,6 +16413,80 @@ body.stm-body h1.title {
   margin-bottom: 10px;
 }
 
+.form-wrapper {
+  padding-top: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.form-wrapper .form-wrapper-inner {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  margin: 10px 30px;
+  background: #FDFDFD;
+  border: 1px solid #E7E7E7;
+  -webkit-box-shadow: 1px 1px rgba(0, 0, 0, 0.05);
+          box-shadow: 1px 1px rgba(0, 0, 0, 0.05);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.form-wrapper .form-wrapper-inner h3 {
+  text-align: center;
+  font-weight: 700;
+  font-size: 17px;
+  padding: 10px;
+  color: #111;
+  text-shadow: 1px 1px rgba(255, 255, 255, 0.5);
+  background-color: #f3f3f3;
+}
+
+.form-wrapper .form-wrapper-inner form {
+  height: 100%;
+}
+
+.form-wrapper .form-wrapper-inner form .form-wrap {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  height: 100%;
+  padding: 20px;
+}
+
+.form-wrapper .form-wrapper-inner form .form-wrap .field.update {
+  margin-top: auto;
+}
+
+.form-wrapper .form-wrapper-inner form .form-wrap .field .select {
+  width: 100%;
+}
+
+.form-wrapper .form-wrapper-inner form .form-wrap .field .select select {
+  width: 100%;
+}
+
+.form-wrapper .form-wrapper-inner form .form-wrap .field.submit {
+  margin-top: auto;
+  padding-top: 10px;
+}
+
+.form-wrapper .form-wrapper-inner form .form-wrap .field textarea {
+  resize: none;
+}
+
 .stm-absolute-wrap {
   position: absolute;
   z-index: 10000;
@@ -16926,73 +17000,5 @@ ul.sidebar-menu li:hover ul.sub-menu li:hover a {
 
 .button-bar a {
   margin-right: 10px;
-}
-
-.form-wrapper {
-  padding-top: 20px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.form-wrapper .form-wrapper-inner {
-  -webkit-box-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
-  margin: 10px 30px;
-  background: #FDFDFD;
-  border: 1px solid #E7E7E7;
-  -webkit-box-shadow: 1px 1px rgba(0, 0, 0, 0.05);
-          box-shadow: 1px 1px rgba(0, 0, 0, 0.05);
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  border-radius: 10px;
-  overflow: hidden;
-}
-
-.form-wrapper .form-wrapper-inner form {
-  height: 100%;
-}
-
-.form-wrapper .form-wrapper-inner h3 {
-  text-align: center;
-  font-weight: 700;
-  font-size: 17px;
-  padding: 10px;
-  color: #111;
-  text-shadow: 1px 1px rgba(255, 255, 255, 0.5);
-  background-color: #f3f3f3;
-}
-
-.form-wrapper .form-wrapper-inner .form-wrap {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  height: 100%;
-  padding: 20px;
-}
-
-.form-wrapper .form-wrapper-inner .form-wrap .field.update {
-  margin-top: auto;
-}
-
-.form-wrapper .form-wrapper-inner .form-wrap .field .select {
-  width: 100%;
-}
-
-.form-wrapper .form-wrapper-inner .form-wrap .field .select select {
-  width: 100%;
 }
 
