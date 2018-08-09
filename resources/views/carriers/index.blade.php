@@ -1,8 +1,10 @@
 @extends('layouts.layout')
 
-@section('content')
+@section('title')
+Carriers
+@endsection
 
-    <h1 class='title'>Carriers</h1>
+@section('content')
     
     @foreach( $carriers as $carrier )
 

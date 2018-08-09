@@ -1,10 +1,16 @@
 @extends('layouts.layout')
 
+@section('title')
+Add One Sim
+@endsection
+
 @section('content')
 
-<h1 class="title">Add One Sim</h1>
+<div class="form-wrapper">
 
-<div class="form-wrapper"><!-- consistency with form groups - this is effectd by settings form scss??? -->
+<div class="form-wrapper-inner third">
+
+    <h3>Test</h3>
 
     <form method="POST" action="/sims">
 
@@ -57,6 +63,7 @@
                 </div>
             </div>
 
+        </div> 
         </div> 
     
     </form>

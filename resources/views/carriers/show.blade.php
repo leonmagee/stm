@@ -1,12 +1,14 @@
 @extends('layouts.layout')
 
+@section('title')
+Carrier
+@endsection
+
 @section('content')
 
-    <h1 class='title'>Carriers</h1>
-
-        <div>
-            {{ $carrier->name }}
-        </div>
+    <div>
+        {{ $carrier->name }}
+    </div>
 
 @endsection
 

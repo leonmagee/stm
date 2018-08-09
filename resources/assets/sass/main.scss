@@ -21,7 +21,9 @@ body.stm-body {
 	.middle-content-wrap {
 		flex: 1;
 		//background: #EEE;
-		padding: 20px;
+		.container {
+			padding: 20px;
+		}
 	}	
 
 	button.button {

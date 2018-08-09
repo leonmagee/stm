@@ -204,7 +204,6 @@ class SimController extends Controller
         return redirect('/sim_users');
     }
 
-
     /**
      * Store a newly created resource in storage.
      *

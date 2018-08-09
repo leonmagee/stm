@@ -1,12 +1,20 @@
 @extends('layouts.layout')
 
+@section('title')
+Add New User
+@endsection
+
 @section('content')
 
-<div class="container">
+<div class="form-wrapper">
 
-	<h1 class="title">Add New User</h1>
+	<div class="form-wrapper-inner">
+
+		<h3>New User Registration</h3>
 
 	<form method="POST" action="/register">
+
+		<div class="form-wrap">
 
 		{{ csrf_field() }}
 
@@ -97,14 +105,17 @@
             </div>
         </div>
 
-        <div class="field">
-        	
-        	@include('layouts.errors')
-
-        </div>
+    </div>
 
 	</form>
 
+</div>
+
+<div class="field">
+	
+	@include('layouts.errors')
+
+</div>
 	
 
 </div>

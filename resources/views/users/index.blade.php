@@ -1,8 +1,10 @@
 @extends('layouts.layout')
 
-@section('content')
+@section('title')
+{{ $site_name }} Users
+@endsection
 
-    <h1 class='title'>{{ $site_name }} Users</h1>
+@section('content')
 
     <div class="users-wrap">
 	    

@@ -1,41 +1,22 @@
 @extends('layouts.layout')
 
-@section('content')
+@section('title')
+Upload Sims
+@endsection
 
-<h1 class="title">Upload Sims</h1>
+@section('content')
 
 <div class="form-wrapper">
 
   <div class="form-wrapper-inner">
 
-    <h3>Upload Individual Sims</h3>
+    <h3>Individual Sims Paste</h3>
 
     <form action="/upload_single" method="POST" enctype="multipart/form-data">
 
      <div class="form-wrap">
 
       {{ csrf_field() }}
-
-      <div class="field">
-        <div class="file">
-          <label class="file-label">
-            <input class="file-input" type="file" name="upload-file-single">
-            <span class="file-cta">
-              <span class="file-icon">
-                <i class="fas fa-file-upload"></i>
-              </span>
-              <span class="file-label">
-                Select File
-              </span>
-            </span>
-          </label>
-        </div>
-      </div>
-
-      <div class="field">
-        <label class="label">Paste Sims</label>
-        <textarea class="textarea" name="sims_paste"></textarea>
-      </div>
 
       <div class="field">
         <label class="label">User</label>
@@ -48,6 +29,74 @@
         </div>
       </div>
 
+      <div class="field">
+        <textarea class="textarea" name="sims_paste"></textarea>
+      </div>
+
+      <div class="field submit">
+        <div class="control">
+         <button class="button is-link" type="submit">Upload</button>
+       </div>
+     </div>
+
+   </div>
+
+  <div class="field">
+    
+    @include('layouts.errors')
+
+  </div>
+
+ </form>
+
+</div>
+
+<div class="form-wrapper-inner">
+
+    <h3>Individual Sims File</h3>
+
+    <form action="/upload_single" method="POST" enctype="multipart/form-data">
+
+     <div class="form-wrap">
+
+      {{ csrf_field() }}
+
+      <div class="field">
+        <label class="label">User</label>
+        <div class="select">
+          <select name="user_id">
+            @foreach($users as $user)
+            <option value="{{ $user->id }}">{{ $user->company }} | {{ $user->name }}</option>
+            @endforeach
+          </select>
+        </div>
+      </div>
+
+      <div class="field">
+      <div class="file has-name">
+        <label class="file-label">
+          <input class="file-input" type="file" id="file-single" name="upload-file-single">
+          <span class="file-cta">
+            <span class="file-label">
+              Select File
+            </span>
+          </span>
+          <span class="file-name" id="file-name-single">
+              <i class="fas fa-upload"></i>
+          </span>
+        </label>
+      </div>
+      </div>
+
+      <script>
+        var file = document.getElementById("file-single");
+      file.onchange = function(){
+          if(file.files.length > 0)
+          {
+            document.getElementById('file-name-single').innerHTML = file.files[0].name;
+          }
+      };
+      </script>
 
       <div class="field submit">
         <div class="control">
@@ -70,29 +119,13 @@
 
 <div class="form-wrapper-inner">
 
-  <h3>Upload Monthly Sims</h3>
+  <h3>Monthly Sims File</h3>
 
   <form action="/upload" method="POST" enctype="multipart/form-data">
 
    <div class="form-wrap">
 
     {{ csrf_field() }}
-
-    <div class="field">
-      <div class="file">
-        <label class="file-label">
-          <input class="file-input" type="file" name="upload-file">
-          <span class="file-cta">
-            <span class="file-icon">
-              <i class="fas fa-file-upload"></i>
-            </span>
-            <span class="file-label">
-              Select File
-            </span>
-          </span>
-        </label>
-      </div>
-    </div>
 
     <div class="field">
       <label class="label">Report Type</label>
@@ -104,6 +137,22 @@
         </select>
       </div>
     </div>
+
+    <div class="field">
+      <div class="file has-name">
+        <label class="file-label">
+          <input class="file-input" type="file" id="file-single" name="upload-file">
+          <span class="file-cta">
+            <span class="file-label">
+              Select File
+            </span>
+          </span>
+          <span class="file-name" id="file-name-monthly">
+              <i class="fas fa-upload"></i>
+          </span>
+        </label>
+      </div>
+      </div>
 
     <div class="field submit">
       <div class="control">

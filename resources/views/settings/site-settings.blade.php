@@ -1,10 +1,16 @@
 @extends('layouts.layout')
 
+@section('title')
+Site Settings
+@endsection
+
 @section('content')
 
-<h1 class="title">Site Settings</h1>
-
 <div class="form-wrapper">
+
+    <div class="form-wrapper-inner third">
+
+        <h3>Default Residual Percent</h3>
 
     <form method="POST" action="/default_residual_percent">
 
@@ -13,9 +19,9 @@
         <div class="form-wrap">
 
             <div class="field">
-                <label class="label">Default Residual Percent</label>
+                <label class="label">Enter Percent</label>
                 <div class="control">
-                    <input class="input" type="text" name="sim_number" />
+                    <input class="input" type="number" name="default_percent" />
                 </div>
             </div>
 
@@ -28,6 +34,8 @@
         </div> 
     
     </form>
+
+</div>
 
     @include('layouts.errors')
 

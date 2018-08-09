@@ -1,8 +1,11 @@
 @extends('layouts.layout')
 
+@section('title')
+Report Types
+@endsection
+
 @section('content')
 
-    <h1 class='title'>Report Types</h1>
     @foreach( $report_types as $report_type )
 
         <div>

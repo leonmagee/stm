@@ -1,8 +1,10 @@
 @extends('layouts.layout')
 
-@section('content')
+@section('title')
+Single Report Type
+@endsection
 
-	<h1 class="title">Single Report Type</h1>
+@section('content')
 
     <div>
         {{ $reportType->carrier->name }} {{ $reportType->name }}

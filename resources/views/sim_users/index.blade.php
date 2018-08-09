@@ -1,8 +1,10 @@
 @extends('layouts.layout')
 
-@section('content')
+@section('title')
+Sims For Logged In User
+@endsection
 
-<h1 class="title">Sims For Logged In User</h1>
+@section('content')
 
     @foreach( $sims_user as $sim )
 

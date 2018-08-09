@@ -16409,8 +16409,11 @@ label.panel-block:hover {
 }
 
 body.stm-body h1.title {
-  font-size: 1.9em;
-  margin-bottom: 10px;
+  font-size: 1.4em;
+  padding: 10px 10px 10px 15px;
+  margin: 0;
+  background-color: #1B9AAA;
+  color: #FFF;
 }
 
 .form-wrapper {
@@ -16426,9 +16429,9 @@ body.stm-body h1.title {
           flex: 1;
   margin: 10px 30px;
   background: #FDFDFD;
-  border: 1px solid #E7E7E7;
-  -webkit-box-shadow: 1px 1px rgba(0, 0, 0, 0.05);
-          box-shadow: 1px 1px rgba(0, 0, 0, 0.05);
+  background: #FAFAFA;
+  -webkit-box-shadow: 1px 1px rgba(0, 0, 0, 0.1);
+          box-shadow: 1px 1px rgba(0, 0, 0, 0.1);
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -16440,14 +16443,27 @@ body.stm-body h1.title {
   overflow: hidden;
 }
 
+@media (min-width: 768px) {
+  .form-wrapper .form-wrapper-inner.third {
+    max-width: 33%;
+  }
+}
+
+@media (min-width: 768px) {
+  .form-wrapper .form-wrapper-inner.half {
+    max-width: 50%;
+  }
+}
+
 .form-wrapper .form-wrapper-inner h3 {
   text-align: center;
   font-weight: 700;
   font-size: 17px;
   padding: 10px;
   color: #111;
-  text-shadow: 1px 1px rgba(255, 255, 255, 0.5);
   background-color: #f3f3f3;
+  background-color: #1B9AAA;
+  color: #FFF;
 }
 
 .form-wrapper .form-wrapper-inner form {
@@ -16466,6 +16482,11 @@ body.stm-body h1.title {
   padding: 20px;
 }
 
+.form-wrapper .form-wrapper-inner form .form-wrap .field {
+  padding-top: 2px;
+  padding-bottom: 2px;
+}
+
 .form-wrapper .form-wrapper-inner form .form-wrap .field.update {
   margin-top: auto;
 }
@@ -16480,7 +16501,6 @@ body.stm-body h1.title {
 
 .form-wrapper .form-wrapper-inner form .form-wrap .field.submit {
   margin-top: auto;
-  padding-top: 10px;
 }
 
 .form-wrapper .form-wrapper-inner form .form-wrap .field textarea {
@@ -16578,6 +16598,9 @@ body.stm-body .middle-content-wrap {
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
+}
+
+body.stm-body .middle-content-wrap .container {
   padding: 20px;
 }
 

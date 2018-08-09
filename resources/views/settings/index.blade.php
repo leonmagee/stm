@@ -1,8 +1,10 @@
 @extends('layouts.layout')
 
-@section('content')
+@section('title')
+Settings
+@endsection
 
-<h1 class="title">Settings</h1>
+@section('content')
 
 <div class="form-wrapper">
 

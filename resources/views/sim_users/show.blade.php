@@ -1,8 +1,10 @@
 @extends('layouts.layout')
 
-@section('content')
+@section('title')
+One Sim User
+@endsection
 
-    <h1 class="title">One Sim User</h1>
+@section('content')
 
     {{ $sim->sim_number }} - {{ $sim->user->name }}
 
