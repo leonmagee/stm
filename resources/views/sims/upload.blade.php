@@ -10,7 +10,7 @@
 
     <h3>Upload Individual Sims</h3>
 
-    <form action="/upload" method="POST" enctype="multipart/form-data">
+    <form action="/upload_single" method="POST" enctype="multipart/form-data">
 
      <div class="form-wrap">
 
@@ -19,7 +19,7 @@
       <div class="field">
         <div class="file">
           <label class="file-label">
-            <input class="file-input" type="file" name="upload-file">
+            <input class="file-input" type="file" name="upload-file-single">
             <span class="file-cta">
               <span class="file-icon">
                 <i class="fas fa-file-upload"></i>
@@ -40,7 +40,7 @@
       <div class="field">
         <label class="label">User</label>
         <div class="select">
-          <select name="report_type">
+          <select name="user_id">
             @foreach($users as $user)
             <option value="{{ $user->id }}">{{ $user->company }} | {{ $user->name }}</option>
             @endforeach
@@ -56,6 +56,12 @@
      </div>
 
    </div>
+
+  <div class="field">
+    
+    @include('layouts.errors')
+
+  </div>
 
  </form>
 
@@ -106,6 +112,12 @@
    </div>
 
  </div>
+
+  <div class="field">
+    
+    @include('layouts.errors')
+
+  </div>
 
 </form>
 

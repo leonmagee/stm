@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <h1 class='title'>Users</h1>
+    <h1 class='title'>{{ $site_name }} Users</h1>
 
     <div class="users-wrap">
 	    

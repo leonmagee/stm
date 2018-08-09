@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\User;
 use App\Sim;
+use App\SimUser;
 use App\ReportType;
 use App\Settings;
 use \Carbon\Carbon;
@@ -83,7 +84,7 @@ class SimController extends Controller
     }
 
     /**
-    * Process the upload
+    * Process the upload for monthly sims
     */
     public function upload(Request $request)
     {
@@ -96,9 +97,18 @@ class SimController extends Controller
         
         $file = fopen($filePath, 'r');
 
-        $header = fgetcsv($file);
+        $header = fgetcsv($file); // this gets the first row:
+        // array:4 [
+        //   0 => "sim"
+        //   1 => "plan"
+        //   2 => "active_dt"
+        //   3 => "mdn"
+        // ]
+
         
         $header[] = 'report_type_id';
+
+        //dd($header);
 
         $data_array = [];
 
@@ -109,35 +119,18 @@ class SimController extends Controller
             }
 
             $row[] = $request->report_type; // adding report type id
-            // this should come from a select field when you upload. 
+            
             /**
             * @todo test this with a large file by setting headers, not changing column order
             * @todo how to get feedback when duplicate sims are uploaded
+            * @todo I can also see how this works on the live site when I increase the instance
+            * size or change config settings to allow for more time?
             */
-            // foreach( $row as $key => $value ) {
-            //     echo $value . ' - ';
-            // }
-            //echo "<br />";
+
             $data_array[] = array_combine($header, $row);
         }
+
         //dd($data_array);
-
-
-        // I should try tp use the validation feature here, but it might be hard going through
-        // a loop, and when it fails will it stop the upload entirely? Maybe it should 
-        // validate the data first before attempting the upload?
-        //
-        // $this->validate($data_array, [
-        //     'sim_number' => 'required|min:13',
-        //     'value' => 'required',
-        //     'activation_date' => 'required',
-        //     'mobile_number' => 'required',
-        //     'report_type_id' => 'required',
-        // ]);
-
-        /**
-        * @todo csv header keys should be prefixed with 'stm_' to avoid an conflicts
-        */
 
         $sim_number_array = array();
 
@@ -147,8 +140,13 @@ class SimController extends Controller
             * I can make an array of sim values as I loop through this and then log that some 
             * sims were uploaded twice... but this won't check to see if those sims already 
             * exist in the system... so I need to fall back to a secondary check. 
+            * so maybe I can use Laravels error handler here so that the form still submits
+            * but it also outpus an error that will be referenced by the form. 
+            * maybe I should disable the browser validation for forms so I will see the actual
+            * laravel notifications better..
             */
 
+            // the following just makes sure there are not duplicate sims in the same file
             if ( ! in_array($data['sim'],$sim_number_array )) {
 
                 Sim::create(array(
@@ -164,19 +162,48 @@ class SimController extends Controller
             $sim_number_array[] = $data['sim'];
         }
 
-        // foreach( $data_array as $data ) {
-        //     Sim::create(array(
-        //     'sim_number',
-        //     'value',
-        //     'activation_date',
-        //     'mobile_number',
-        //     'report_type_id',
-        // ));
-        // }
-
-
         return redirect('/sims');
     }
+
+
+    /**
+    * Process the upload for monthly sims
+    */
+    public function upload_single(Request $request)
+    {
+
+        $user_id = $request->user_id;
+
+        $upload = $request->file('upload-file-single');
+        
+        $filePath = $upload->getRealPath();
+        
+        $file = fopen($filePath, 'r');
+
+        $data_array = [];
+
+        while( $row = fgetcsv($file)) {
+
+            if ( ! is_numeric($row[0]) ) {
+                continue;
+            }
+
+            $data_array[] = $row[0];
+        }
+
+        array_unique($data_array);
+
+        foreach( $data_array as $data ) {
+
+            SimUser::create(array(
+                'sim_number' => $data,
+                'user_id' => $user_id 
+            ));
+        }
+
+        return redirect('/sim_users');
+    }
+
 
     /**
      * Store a newly created resource in storage.

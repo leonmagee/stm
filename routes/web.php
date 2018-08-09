@@ -36,6 +36,7 @@ Route::get('sims/upload', 'SimController@upload_form');
 Route::get('sims/create', 'SimController@addSim');
 Route::get('sims/archive/{id}', 'SimController@archive');
 Route::post('upload', 'SimController@upload');
+Route::post('upload_single', 'SimController@upload_single');
 Route::get('sims/{sim}', 'SimController@show');
 Route::post('sims', 'SimController@store');
 
