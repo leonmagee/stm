@@ -10,6 +10,7 @@
 	        <div class="name">{{ $user->name }}</div>
 	        <div class="role">{{ $user->role }}</div>
 	        <div class="phone">{{ $user->phone }}</div>
+	        <div class="credit">Monthly Credit: <span>{{ $credit }}</span></div>
 	        <did class="address-wrap">
 		        <div class="address">{{ $user->address }}</div>
 		        <div class="city_state_zip">

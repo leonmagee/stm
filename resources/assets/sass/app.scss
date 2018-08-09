@@ -10,11 +10,13 @@
 @import '~@fortawesome/fontawesome-free/scss/solid';
 @import '~@fortawesome/fontawesome-free/scss/fontawesome';
 
-@import "~bulma/css/bulma.min.css";
-
-@import "~datatables/media/css/jquery.dataTables.min.css";
+//@import "~bulma/css/bulma.min.css";
 
 @import "variables";
+
+@import "~bulma/bulma.sass";
+
+@import "~datatables/media/css/jquery.dataTables.min.css";
 
 @import "mixins";
 

@@ -84,6 +84,13 @@
 		color: #888;
 		font-size: 1.7em;
 	}
+	.credit {
+		font-size: 1.5em;
+		span {
+			color: $color-red;
+			font-size: 1.1em;
+		}
+	}
 	.address-wrap {
 		.address {
 			font-size: 2em;

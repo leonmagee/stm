@@ -1,4 +1,4 @@
-@extends('layouts.layout-simple')
+@extends('layouts.layout')
 
 @section('content')
 

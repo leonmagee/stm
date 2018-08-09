@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use App\Sim;
 use App\ReportType;
 use App\Settings;
@@ -76,7 +77,8 @@ class SimController extends Controller
     public function upload_form()
     {
         $report_types = ReportType::all();
-        return view('sims.upload', compact('report_types'));
+        $users = User::all();
+        return view('sims.upload', compact('report_types', 'users'));
     }
 
     /**

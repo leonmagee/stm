@@ -47,7 +47,9 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        return view('users.show', compact('user'));
+        $amount = 33;
+        $credit = '$' . number_format($amount, 2);
+        return view('users.show', compact('user', 'credit'));
     }
 
     /**
