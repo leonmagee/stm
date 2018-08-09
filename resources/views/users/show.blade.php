@@ -8,7 +8,7 @@
 
 	        <div class="company">{{ $user->company}}</div>
 	        <div class="name">{{ $user->name }}</div>
-	        <div class="role">{{ $user->role }}</div>
+	        <div class="role">{{ $role }}</div>
 	        <div class="phone">{{ $user->phone }}</div>
 	        <div class="credit">Monthly Credit: <span>{{ $credit }}</span></div>
 	        <did class="address-wrap">

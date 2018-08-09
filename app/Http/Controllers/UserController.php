@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use App\Site;
+use App\Settings;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -14,7 +16,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::all();
+        $site_id = Settings::first()->site_id;
+        $users = User::where('role', $site_id)->get();
         return view('users.index', compact('users'));
     }
 
@@ -49,7 +52,13 @@ class UserController extends Controller
     {
         $amount = 33;
         $credit = '$' . number_format($amount, 2);
-        return view('users.show', compact('user', 'credit'));
+        $role = $user->role;
+        if ( $role == 'admin' ) {
+            $role = 'Admin';
+        } else {
+            $role = Site::find($role)->name;
+        }
+        return view('users.show', compact('user', 'credit', 'role'));
     }
 
     /**

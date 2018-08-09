@@ -14,7 +14,7 @@ use Faker\Generator as Faker;
 */
 
 $factory->define(App\User::class, function (Faker $faker) {
-	$role_array = array('agent','dealer','sigstore');
+	//$role_array = array('agent','dealer','sigstore');
 	$company_array = array('GS Wireless', 'All Mobile', 'ECS Wireless', 'A-Z Mobile', 'Loco Mobile', 'Awesome Cellular');
     return [
         'name' => $faker->name,
@@ -25,7 +25,7 @@ $factory->define(App\User::class, function (Faker $faker) {
         'city' => 'San Diego',
         'state' => 'CA',
         'zip' => '92108',
-        'role' => $role_array[rand(0,2)],
+        'role' => rand(1,3),
         'password' => bcrypt('1111'),
         'remember_token' => str_random(10),
     ];

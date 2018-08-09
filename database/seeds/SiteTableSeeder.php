@@ -14,12 +14,12 @@ class SiteTableSeeder extends Seeder
     {
         DB::table('sites')->insert([
             [
-                'name' => 'Agents',
+                'name' => 'Agent',
                 'default_residual_percent' => 5,
                 'default_spiff_amount' => 10
             ],
             [
-                'name' => 'Dealers',
+                'name' => 'Dealer',
                 'default_residual_percent' => 3,
                 'default_spiff_amount' => 5
             ],
