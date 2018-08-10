@@ -7,7 +7,7 @@ use App\Sim;
 use App\SimUser;
 use App\ReportType;
 use App\Settings;
-use \Carbon\Carbon;
+use App\Helpers;
 use Illuminate\Http\Request;
 
 class SimController extends Controller
@@ -26,11 +26,7 @@ class SimController extends Controller
         $current_date = Settings::first()->current_date;
         $sims = Sim::where('upload_date', $current_date)->latest()->get();
 
-        // @todo use a helper function?
-        $settings = Settings::first();
-        $date_array = explode('_', $settings->current_date);
-        $month = Carbon::createFromFormat('m', $date_array[0])->format('F');
-        $current_site_date = $month . ' ' . $date_array[1];
+        $current_site_date = Helpers::current_date_name();
 
 
         return view('sims.index', compact('sims', 'current_site_date'));
@@ -42,12 +38,7 @@ class SimController extends Controller
         $name = $report_type->carrier->name . ' ' . $report_type->name;
         $sims = Sim::where(['report_type_id' => $id, 'upload_date' => $current_date])->get();
 
-
-        // @todo use a helper function?
-        $settings = Settings::first();
-        $date_array = explode('_', $settings->current_date);
-        $month = Carbon::createFromFormat('m', $date_array[0])->format('F');
-        $current_site_date = $month . ' ' . $date_array[1];
+        $current_site_date = Helpers::current_date_name();
 
         return view('sims.archive', compact('sims', 'name', 'current_site_date'));
     }

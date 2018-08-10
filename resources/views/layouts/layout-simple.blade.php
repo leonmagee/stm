@@ -15,6 +15,9 @@
 	<div class="main-wrap">
 
 		<div class="middle-content-wrap">
+			<h1 class="title">
+				@yield('title')
+			</h1>
 			<div class="container">
 				<div id="content">
 					@yield('content')

@@ -54,8 +54,14 @@ SIM Activations Per Month
 		report_types_array.push(report_object);
 	@endforeach
 
+	var date_name_array = [];
+	@foreach($date_name_array as $date)
+		date_name_array.push('{{ $date }}');
+	@endforeach
+
 var data = {
-	labels: ['April 2018', 'May 2018', 'June 2018'],
+	//labels: ['April 2018', 'May 2018', 'June 2018'],
+	labels: date_name_array, 
 	//labels: date_array,
 	datasets: report_types_array
 	// [

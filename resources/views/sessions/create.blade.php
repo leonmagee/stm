@@ -1,10 +1,12 @@
 @extends('layouts.layout-simple')
 
+@section('title')
+Log In
+@endsection
+
 @section('content')
 
 <div class="container">
-
-	<h1 class="title">Log In</h1>
 
 	<form method="POST" action="/login">
 
