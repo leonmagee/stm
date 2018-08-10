@@ -55,17 +55,8 @@ class HomeController extends Controller
         $array_item = [];
 
         /**
-        * @todo data array - get this to pull automatically based on current date
-        * & with prior 3 - 5 months? Create a array with many possible dates and then 
-        * get the index of the current date. 
+        * @todo where to put this?
         */
-
-
-
-
-        //$date_array = ['4_2018','5_2018','6_2018'];
-        
-
         $date_array = [
             '1_2018',
             '2_2018',
@@ -242,9 +233,6 @@ class HomeController extends Controller
             Helpers::get_date_name($one_month_ago),
             Helpers::current_date_name()
         ];
-
-        //dd($dates_array);
-
 
         $report_types_array = ReportType::where('spiff',1)->get();
 

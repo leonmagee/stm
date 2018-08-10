@@ -14,6 +14,12 @@ require('chart.js');
 
 $('#sims_table').DataTable();
 
+
+$('button.call-loader').click(function() {
+	console.log('callzzz');
+	$('.stm-absolute-wrap#loader-wrap').css({'display':'flex'});
+})
+
 // var data = {
 // 	labels: ['January', 'February', 'March'],
 // 	datasets: [
