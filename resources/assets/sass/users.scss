@@ -59,44 +59,64 @@
 // users single
 .single-user-wrap {
 
-	background: #FAFAFA; // use a mixin for this?
-	border: 1px solid #DDD;
-	//margin: 20px 0;
+	background: #FBFBFB; // use a mixin for this?
+	border: 1px solid #E5E5E5;
 	display: inline-block;
 	padding: 5px 20px;
 	border-radius: 10px;
 	font-weight: 700;
+	white-space: nowrap;
+	color: #555;
+	.flex-wrap {
+		display: flex;
+		align-items: center;
+		i {
+			margin-right: 15px;
+			font-size: 1.2em;
+			color: #AAA;
+			width: 30px;
+			text-align: center;
+		}
+	}
+	.item {
+		padding: 5px 0;
+	}
 	.company {
-		font-size: 3em;
+		font-size: 2.6em;
 		font-weight: 800;
 		color: $brand-primary;
-		border-bottom: 3px solid #DDD;
+		border-bottom: 2px solid #DDD;
+		padding-bottom: 0px;
+		margin-bottom: 7px;
 	}
-	.name {
-		font-size: 2.3em;
-		color: #555;
-	}
-	.role {
-		color: $color-red;
+	.name span {
 		font-size: 1.8em;
+		//color: #555;
 	}
-	.phone {
-		color: #888;
-		font-size: 1.7em;
-	}
-	.credit {
+	.role span {
+		//color: $color-red;
 		font-size: 1.5em;
-		span {
+	}
+	.phone span {
+		//color: #555;
+		font-size: 1.5em;
+	}
+	.credit span {
+		font-size: 1.5em;
+		span.credit-val {
 			color: $color-red;
-			font-size: 1.1em;
+			//font-size: 1.1em;
+			font-size: 1em;
 		}
 	}
 	.address-wrap {
 		.address {
-			font-size: 2em;
+			font-size: 1.5em;
+			//color: #555;
 		}
 		.city_state_zip {
-			font-size: 1.5em;
+			font-size: 1.2em;
+			color: #666;
 		}
 	}
 }

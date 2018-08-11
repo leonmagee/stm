@@ -41,7 +41,7 @@ class RegistrationController extends Controller
 			'password' => 'required|confirmed'
 		]);
 
-		$role_array = ['null','agent','dealer','sigstore'];
+		//$role_array = ['null','agent','dealer','sigstore'];
 
     	// create and save new user
 		$user = User::create([
@@ -53,7 +53,7 @@ class RegistrationController extends Controller
 			'city' => $request->city,
 			'state' => $request->state,
 			'zip' => $request->zip,
-			'role' => $role_array[$request->role],
+			'role' => $request->role,
 			'password' => bcrypt($request->password)
 		]);
 

@@ -29,6 +29,17 @@ class HomeController extends Controller
     public function index()
     {
 
+        // if ( \Auth::user() ) {
+        //     $user = \Auth::user();
+        //     if ( $user->isAdmin()) {
+        //         dd('admin!');
+        //     } else {
+        //         dd('not admin!');
+        //     }
+        // }
+
+        //return response("you didn't say the magic word!", 403);
+
         $current_date = Settings::first()->current_date;
 
         // $data_array = [

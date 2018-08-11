@@ -33,4 +33,12 @@ class User extends Authenticatable
     public function sims() {
         return $this->hasMany(SimUser::class);
     }
+
+    public function isAdmin() {
+        if ( $this->role === 'admin') {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
