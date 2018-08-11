@@ -8,4 +8,9 @@ class SimUser extends Model
 
     	return $this->belongsTo(User::class);
     }
+
+    public function carrier() {
+
+    	return $this->belongsTo(Carrier::class);
+    }
 }

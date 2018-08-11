@@ -15,7 +15,8 @@ class CreateSimUsersTable extends Migration
     {
         Schema::create('sim_users', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id'); // join from users table?
+            $table->integer('user_id');
+            $table->integer('carrier_id');
             $table->string('sim_number', 30)->unique();
             $table->timestamps();
         });
