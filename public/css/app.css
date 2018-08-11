@@ -16507,6 +16507,27 @@ body.stm-body h1.title {
   resize: none;
 }
 
+.form-wrapper .form-wrapper-inner form .form-wrap .field.flex-margin {
+  margin-right: 1%;
+  margin-left: 1%;
+}
+
+.form-wrapper .form-wrapper-inner form .form-wrap .form-wrap-flex {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.form-wrapper .form-wrapper-inner form .form-wrap .form-wrap-flex .field {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 1 31.3%;
+          flex: 0 1 31.3%;
+  margin-right: 1%;
+  margin-left: 1%;
+}
+
 .stm-absolute-wrap {
   position: absolute;
   z-index: 10000;
