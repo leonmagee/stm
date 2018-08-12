@@ -23,6 +23,9 @@ Route::get('/', 'HomeController@index')->name('home');
 */
 Route::get('users', 'UserController@index')->name('users');
 Route::get('users/{user}', 'UserController@show');
+Route::get('edit_user/{user}', 'UserController@edit');
+
+
 Route::get('profile', function() {
 
 	return view('profile');

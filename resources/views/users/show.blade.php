@@ -20,6 +20,11 @@ User
             <span>{{ $role }}</span>
         </div>
 
+        <div class="item email flex-wrap">
+            <i class="far fa-envelope"></i>
+            <span>{{ $user->email }}</span>
+        </div>
+
         <div class="item phone flex-wrap">
             <i class="fas fa-phone"></i>
             <span>{{ $user->phone }}</span>
@@ -43,8 +48,8 @@ User
 	</div>
 
 	<div class="button-bar">
-    	<a href="/edit-user" class="button is-primary">Edit User</a>
-    	<a href="/delete-user" class="button is-danger">Delete User</a>
+    	<a href="/edit_user/{{ $user->id }}" class="button is-primary">Edit User</a>
+    	<a href="/delete_user" class="button is-danger">Delete User</a>
 	</div>
 
 @endsection

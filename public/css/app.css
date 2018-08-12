@@ -16991,7 +16991,7 @@ ul.sidebar-menu li:hover ul.sub-menu li:hover a {
 }
 
 .single-user-wrap {
-  background: #FBFBFB;
+  background-color: #FBFBFB;
   border: 1px solid #E5E5E5;
   display: inline-block;
   padding: 5px 20px;
@@ -17037,6 +17037,10 @@ ul.sidebar-menu li:hover ul.sub-menu li:hover a {
 
 .single-user-wrap .role span {
   font-size: 1.5em;
+}
+
+.single-user-wrap .email span {
+  font-size: 1.3em;
 }
 
 .single-user-wrap .phone span {
@@ -17132,5 +17136,46 @@ ul.sidebar-menu li:hover ul.sub-menu li:hover a {
 
 .report-types-wrap a.report-type-wrap:hover .flex-item .spiff-residual {
   color: #EEE;
+}
+
+.single-report-type-wrap {
+  background-color: #FBFBFB;
+  border: 1px solid #E5E5E5;
+  display: inline-block;
+  padding: 5px 20px;
+  border-radius: 10px;
+  font-weight: 700;
+  white-space: nowrap;
+  color: #555;
+}
+
+.single-report-type-wrap .flex-wrap {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.single-report-type-wrap .flex-wrap i {
+  margin-right: 15px;
+  font-size: 1.2em;
+  color: #AAA;
+  width: 30px;
+  text-align: center;
+}
+
+.single-report-type-wrap .item {
+  padding: 5px 0;
+}
+
+.single-report-type-wrap .name {
+  font-size: 2.1em;
+  font-weight: 800;
+  color: #1B9AAA;
+  border-bottom: 2px solid #DDD;
+  padding-bottom: 0px;
+  margin-bottom: 7px;
 }
 

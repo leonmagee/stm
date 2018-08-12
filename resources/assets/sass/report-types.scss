@@ -48,3 +48,48 @@
 
 	}
 }
+
+
+// report types single
+.single-report-type-wrap {
+
+	background-color: #FBFBFB; // use a mixin for this?
+	border: 1px solid #E5E5E5;
+	display: inline-block;
+	padding: 5px 20px;
+	border-radius: 10px;
+	font-weight: 700;
+	white-space: nowrap;
+	color: #555;
+	.flex-wrap {
+		display: flex;
+		align-items: center;
+		i {
+			margin-right: 15px;
+			font-size: 1.2em;
+			color: #AAA;
+			width: 30px;
+			text-align: center;
+		}
+	}
+	.item {
+		padding: 5px 0;
+	}
+	.name {
+		font-size: 2.1em;
+		font-weight: 800;
+		color: $brand-primary;
+		border-bottom: 2px solid #DDD;
+		padding-bottom: 0px;
+		margin-bottom: 7px;
+	}
+
+
+}
+
+// .button-bar {
+// 	padding: 20px 0;
+// 	a {
+// 		margin-right: 10px;
+// 	}
+// }

@@ -59,7 +59,7 @@
 // users single
 .single-user-wrap {
 
-	background: #FBFBFB; // use a mixin for this?
+	background-color: #FBFBFB; // use a mixin for this?
 	border: 1px solid #E5E5E5;
 	display: inline-block;
 	padding: 5px 20px;
@@ -96,6 +96,9 @@
 	.role span {
 		//color: $color-red;
 		font-size: 1.5em;
+	}
+	.email span {
+		font-size: 1.3em;
 	}
 	.phone span {
 		//color: #555;

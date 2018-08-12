@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\ReportType;
+use App\Site;
 use Illuminate\Http\Request;
 
 class ReportTypeController extends Controller
@@ -56,8 +57,8 @@ class ReportTypeController extends Controller
      */
     public function show(ReportType $reportType)
     {
-        //
-        return view('report_types.show', compact('reportType'));
+        $sites = Site::all();
+        return view('report_types.show', compact('reportType', 'sites'));
     }
 
     /**
