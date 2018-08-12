@@ -6,6 +6,7 @@ use App\User;
 use App\Sim;
 use App\SimUser;
 use App\ReportType;
+use App\Carrier;
 use App\Settings;
 use App\Helpers;
 use Illuminate\Http\Request;
@@ -69,9 +70,10 @@ class SimController extends Controller
     public function upload_form()
     {
         $report_types = ReportType::all();
+        $carriers = Carrier::all();
         $site_id = Settings::first()->site_id;
         $users = User::where('role', $site_id)->get();
-        return view('sims.upload', compact('report_types', 'users'));
+        return view('sims.upload', compact('report_types', 'users', 'carriers'));
     }
 
     /**
@@ -164,6 +166,8 @@ class SimController extends Controller
     {
 
         $user_id = $request->user_id;
+        
+        $carrier_id = $request->carrier_id;
 
         $upload = $request->file('upload-file-single');
         
@@ -188,7 +192,8 @@ class SimController extends Controller
 
             SimUser::create(array(
                 'sim_number' => $data,
-                'user_id' => $user_id 
+                'user_id' => $user_id,
+                'carrier_id' => $carrier_id
             ));
         }
 

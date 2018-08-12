@@ -30,6 +30,17 @@ Upload Sims
       </div>
 
       <div class="field">
+        <label class="label">Carrier</label>
+        <div class="select">
+          <select name="carrier_id">
+            @foreach($carriers as $carrier)
+            <option value="{{ $carrier->id }}">{{ $carrier->name }}</option>
+            @endforeach
+          </select>
+        </div>
+      </div>
+
+      <div class="field">
         <textarea class="textarea" name="sims_paste"></textarea>
       </div>
 
@@ -67,6 +78,17 @@ Upload Sims
           <select name="user_id">
             @foreach($users as $user)
             <option value="{{ $user->id }}">{{ $user->company }} | {{ $user->name }}</option>
+            @endforeach
+          </select>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="label">Carrier</label>
+        <div class="select">
+          <select name="carrier_id">
+            @foreach($carriers as $carrier)
+            <option value="{{ $carrier->id }}">{{ $carrier->name }}</option>
             @endforeach
           </select>
         </div>
