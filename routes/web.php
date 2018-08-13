@@ -23,7 +23,8 @@ Route::get('/', 'HomeController@index')->name('home');
 */
 Route::get('users', 'UserController@index')->name('users');
 Route::get('users/{user}', 'UserController@show');
-Route::get('edit_user/{user}', 'UserController@edit');
+Route::get('edit-user/{user}', 'UserController@edit');
+Route::post('update-user/{id}','UserController@update');
 
 
 Route::get('profile', function() {
@@ -47,7 +48,7 @@ Route::post('sims', 'SimController@store');
 * Settings Routes
 */
 Route::get('settings', 'SettingsController@index');
-Route::get('site_settings', 'SettingsController@index_site');
+Route::get('site-settings', 'SettingsController@index_site');
 Route::post('date', 'SettingsController@update_date');
 Route::post('mode', 'SettingsController@update_mode');
 Route::post('site', 'SettingsController@update_site');
@@ -63,8 +64,8 @@ Route::post('assign-sims', 'SimUserController@store');
 /**
 * Report Types Routes
 */
-Route::get('report_types', 'ReportTypeController@index');
-Route::get('report_types/{report_type}', 'ReportTypeController@show');
+Route::get('report-types', 'ReportTypeController@index');
+Route::get('report-types/{report_type}', 'ReportTypeController@show');
 
 /**
 * Carriers Routes

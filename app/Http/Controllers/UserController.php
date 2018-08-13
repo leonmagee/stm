@@ -87,7 +87,76 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // validate the form
+        $this->validate(request(), [
+            'name' => 'required',
+            'email_address' => 'required|email',
+            'company' => 'required',
+            'phone' => 'required',
+            'address' => 'required',
+            'city' => 'required',
+            'state' => 'required',
+            'zip' => 'required',
+            'role' => 'required',
+        ]);
+
+
+        // update user
+        $user = User::find($id)->update([
+            'name' => $request->name,
+            'email' => $request->email_address,
+            'company' => $request->company,
+            'phone' => $request->phone,
+            'address' => $request->address,
+            'city' => $request->city,
+            'state' => $request->state,
+            'zip' => $request->zip,
+            'role' => $request->role,
+        ]);
+
+        session('message', 'Here is a default message');
+
+        return redirect('users');
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update_password(Request $request, $id)
+    {
+                // validate the form
+        $this->validate(request(), [
+            'name' => 'required',
+            'email_address' => 'required|email',
+            'company' => 'required',
+            'phone' => 'required',
+            'address' => 'required',
+            'city' => 'required',
+            'state' => 'required',
+            'zip' => 'required',
+            'role' => 'required',
+            'password' => 'required|confirmed'
+        ]);
+
+        //$role_array = ['null','agent','dealer','sigstore'];
+
+        // create and save new user
+        $user = User::create([
+            'name' => $request->name,
+            'email' => $request->email_address,
+            'company' => $request->company,
+            'phone' => $request->phone,
+            'address' => $request->address,
+            'city' => $request->city,
+            'state' => $request->state,
+            'zip' => $request->zip,
+            'role' => $request->role,
+            'password' => bcrypt($request->user_password)
+        ]);
     }
 
     /**

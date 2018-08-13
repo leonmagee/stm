@@ -14,7 +14,7 @@ Edit User
 
 		<h3>Edit User</h3>
 
-		<form method="POST" action="/register">
+		<form method="POST" action="/update-user/{{ $user->id }}">
 
 			<div class="form-wrap">
 
@@ -32,7 +32,7 @@ Edit User
 					<div class="field">
 						<label class="label" for="email">Email</label>
 						<div class="control">
-							<input class="input" value="{{ $user->email }}" type="email" id="email" name="user-email" />
+							<input class="input" value="{{ $user->email }}" type="email" id="email" name="email_address" />
 						</div>
 					</div>
 
@@ -48,7 +48,12 @@ Edit User
 						<div class="select">
 							<select name="role">
 								@foreach ($sites as $site)
-								<option value="{{ $site->id }}">{{ $site->name }}</option>
+								<option 
+								@if ($user->role == $site->id)
+								selected="selected"
+								@endif
+								value="{{ $site->id }}">{{ $site->name }}
+								</option>	
 								@endforeach
 							</select>
 						</div>
@@ -89,25 +94,11 @@ Edit User
 						</div>
 					</div>
 
-					<div class="field">
-						<label class="label" for="password">Password</label>
-						<div class="control">
-							<input class="input" type="password" id="password" name="password_start" />
-						</div>
-					</div>
-
-					<div class="field last-item">
-						<label class="label" for="password_2">Password Confirm</label>
-						<div class="control">
-							<input class="input" type="password" id="password_2" name="password_confirmation" />
-						</div>
-					</div>
-
 				</div>
 
 				<div class="field flex-margin">
 					<div class="control">
-						<button class="button is-link" type="submit">Register</button>
+						<button class="button is-link" type="submit">Update</button>
 					</div>
 				</div>
 

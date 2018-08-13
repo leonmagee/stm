@@ -34,7 +34,7 @@ Add New User
 					<div class="field">
 						<label class="label" for="email">Email</label>
 						<div class="control">
-							<input class="input" type="email" id="email" name="user-email" />
+							<input class="input" type="email" id="email" name="email_address" />
 						</div>
 					</div>
 
@@ -94,7 +94,7 @@ Add New User
 					<div class="field">
 						<label class="label" for="password">Password</label>
 						<div class="control">
-							<input class="input" type="password" id="password" name="password_start" />
+							<input class="input" type="password" id="password" name="password" />
 						</div>
 					</div>
 

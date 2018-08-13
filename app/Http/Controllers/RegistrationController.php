@@ -30,7 +30,7 @@ class RegistrationController extends Controller
     	// validate the form
 		$this->validate(request(), [
 			'name' => 'required',
-			'email' => 'required|email',
+			'email_address' => 'required|email',
 			'company' => 'required',
 			'phone' => 'required',
 			'address' => 'required',
@@ -46,7 +46,7 @@ class RegistrationController extends Controller
     	// create and save new user
 		$user = User::create([
 			'name' => $request->name,
-			'email' => $request->email,
+			'email' => $request->email_address,
 			'company' => $request->company,
 			'phone' => $request->phone,
 			'address' => $request->address,
@@ -54,7 +54,7 @@ class RegistrationController extends Controller
 			'state' => $request->state,
 			'zip' => $request->zip,
 			'role' => $request->role,
-			'password' => bcrypt($request->password)
+			'password' => bcrypt($request->user_password)
 		]);
 
 		/**

@@ -20,7 +20,7 @@ Report Types
 	    
 	    @foreach( $report_types as $report_type )
 
-	        <a href="/report_types/{{ $report_type->id }}" class="report-type-wrap">
+	        <a href="/report-types/{{ $report_type->id }}" class="report-type-wrap">
 
 				<div class="flex-item icon-wrap">
 					<i class="fas fa-chart-pie"></i>
