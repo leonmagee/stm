@@ -6,6 +6,10 @@ Add New User
 
 @section('content')
 
+
+@include('layouts.errors')
+
+
 <div class="form-wrapper">
 
 	<div class="form-wrapper-inner">
@@ -23,21 +27,21 @@ Add New User
 					<div class="field">
 						<label class="label" for="name">Name</label>
 						<div class="control">
-							<input class="input" type="text" id="name" name="name" required/>
+							<input class="input" type="text" id="name" name="name" />
 						</div>
 					</div>
 
 					<div class="field">
 						<label class="label" for="email">Email</label>
 						<div class="control">
-							<input class="input" type="email" id="email" name="email" required/>
+							<input class="input" type="email" id="email" name="user-email" />
 						</div>
 					</div>
 
 					<div class="field">
 						<label class="label" for="company">Company</label>
 						<div class="control">
-							<input class="input" type="text" id="company" name="company" required/>
+							<input class="input" type="text" id="company" name="company" />
 						</div>
 					</div>
 
@@ -55,49 +59,49 @@ Add New User
 					<div class="field">
 						<label class="label" for="phone">Phone Number</label>
 						<div class="control">
-							<input class="input" type="text" id="phone" name="phone" required/>
+							<input class="input" type="text" id="phone" name="phone" />
 						</div>
 					</div>
 
 					<div class="field">
 						<label class="label" for="address">Address</label>
 						<div class="control">
-							<input class="input" type="text" id="address" name="address" required/>
+							<input class="input" type="text" id="address" name="address" />
 						</div>
 					</div>
 
 					<div class="field">
 						<label class="label" for="city">City</label>
 						<div class="control">
-							<input class="input" type="text" id="city" name="city" required/>
+							<input class="input" type="text" id="city" name="city" />
 						</div>
 					</div>
 
 					<div class="field">
 						<label class="label" for="state">State</label>
 						<div class="control">
-							<input class="input" type="text" id="state" name="state" required/>
+							<input class="input" type="text" id="state" name="state" />
 						</div>
 					</div>
 
 					<div class="field">
 						<label class="label" for="zip">Zip</label>
 						<div class="control">
-							<input class="input" type="text" id="zip" name="zip" required/>
+							<input class="input" type="text" id="zip" name="zip" />
 						</div>
 					</div>
 
 					<div class="field">
 						<label class="label" for="password">Password</label>
 						<div class="control">
-							<input class="input" type="password" id="password" name="password" required/>
+							<input class="input" type="password" id="password" name="password_start" />
 						</div>
 					</div>
 
 					<div class="field last-item">
 						<label class="label" for="password_2">Password Confirm</label>
 						<div class="control">
-							<input class="input" type="password" id="password_2" name="password_confirmation" required/>
+							<input class="input" type="password" id="password_2" name="password_confirmation" />
 						</div>
 					</div>
 
@@ -115,13 +119,11 @@ Add New User
 
 	</div>
 
-	<div class="field">
 
-		@include('layouts.errors')
-
-	</div>
 	
 
 </div>
+
+
 
 @endsection
