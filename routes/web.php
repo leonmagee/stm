@@ -67,6 +67,7 @@ Route::post('assign-sims', 'SimUserController@store');
 Route::get('report-types', 'ReportTypeController@index');
 Route::get('report-types/{report_type}', 'ReportTypeController@show');
 Route::get('add-report-type', 'ReportTypeController@create');
+Route::post('new-report-type', 'ReportTypeController@store');
 
 /**
 * Carriers Routes

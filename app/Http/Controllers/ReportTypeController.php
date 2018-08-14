@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\ReportType;
 use App\Site;
-use App\Settings;
+use App\Carrier;
 use App\ReportTypeSiteValue;
 use Illuminate\Http\Request;
 
@@ -39,10 +39,9 @@ class ReportTypeController extends Controller
     {
         $sites = Site::all();
 
-        $settings = Settings::first();
-        $current_site_id = $settings->site_id;
+        $carriers = Carrier::all();
 
-        return view('report_types.create', compact('sites', 'current_site_id'));
+        return view('report_types.create', compact('sites', 'carriers'));
     }
 
     /**
@@ -53,7 +52,24 @@ class ReportTypeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // validate the form
+        $this->validate(request(), [
+            'name' => 'required',
+            'carrier' => 'required',
+            'type' => 'required',
+        ]);
+
+        //$role_array = ['null','agent','dealer','sigstore'];
+
+        // create and save new user
+        $report_type = ReportType::create([
+            'name' => $request->name,
+            'carrier_id' => $request->carrier,
+            'spiff' => $request->type,
+        ]);
+
+
+        return redirect('report-types/' . $report_type->id);
     }
 
     /**

@@ -42,18 +42,33 @@ Add New Report Type
 					</div>
 
 					<div class="field">
-						<label class="label" for="company">Site</label>
+						<label class="label" for="carrier">Carrier</label>
 						<div class="select">
-							<select name="role">
-								@foreach ($sites as $site)
-								<option 
-								value="{{ $site->id }}"
-								>{{ $site->name }}</option>
+							<select name="carrier" id="carrier">
+								@foreach($carriers as $carrier)
+								<option value="{{ $carrier->id }}">{{ $carrier->name }}</option>
 								@endforeach
 							</select>
 						</div>
 					</div>
 
+					@foreach ($sites as $site)
+
+						<div class="field">
+							<label class="label" for="spiff_{{ $site->id }}">{{ $site->name }} Spiff</label>
+							<div class="control">
+								<input class="input" type="number" id="spiff_{{ $site->id }}" name="spiff_{{ $site->id }}" />
+							</div>
+						</div>
+
+						<div class="field">
+							<label class="label" for="residual_{{ $site->id }}">{{ $site->name }} Residual</label>
+							<div class="control">
+								<input class="input" type="number" id="residual_{{ $site->id }}" name="residual_{{ $site->id }}" />
+							</div>
+						</div>
+
+					@endforeach
 
 				</div>
 
