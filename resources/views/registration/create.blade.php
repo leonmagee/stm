@@ -46,9 +46,9 @@ Add New User
 					</div>
 
 					<div class="field">
-						<label class="label" for="company">Site</label>
+						<label class="label" for="role">Site</label>
 						<div class="select">
-							<select name="role">
+							<select name="role" id="role">
 								@foreach ($sites as $site)
 								<option 
 								value="{{ $site->id }}"
