@@ -35,5 +35,10 @@ body.stm-body {
 			text-shadow: 1px 1px darken($brand-primary, 5%);
 		}
 	}
+
+	//notifications / alerts
+	.notification {
+		font-weight: 700;
+	}
 }
 

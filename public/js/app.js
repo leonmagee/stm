@@ -32397,6 +32397,10 @@ __webpack_require__(171);
 
 __webpack_require__(172);
 
+$('.notification .delete').click(function () {
+  $(this).parent().fadeOut();
+});
+
 $('#sims_table').DataTable();
 
 $('button.call-loader').click(function () {

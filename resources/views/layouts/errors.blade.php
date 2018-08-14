@@ -1,4 +1,5 @@
 @if(count($errors))
+
 <div class="notification is-danger">
 
   <button class="delete"></button>
@@ -10,4 +11,5 @@
 	@endforeach
 	
 </div>
+
 @endif

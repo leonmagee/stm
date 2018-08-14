@@ -10,7 +10,9 @@ require('datatables');
 
 require('chart.js');
 
-
+$('.notification .delete').click(function() {
+	$(this).parent().fadeOut();
+});
 
 $('#sims_table').DataTable();
 
