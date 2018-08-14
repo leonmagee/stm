@@ -16409,10 +16409,11 @@ label.panel-block:hover {
 }
 
 body.stm-body h1.title {
-  font-size: 1.4em;
-  padding: 10px 10px 10px 15px;
-  margin: 0;
-  background-color: #1B9AAA;
+  font-size: 1.2em;
+  padding: 7px 10px 7px 15px;
+  margin: 0 0 15px 0;
+  background-color: #333;
+  border-bottom: 1px solid #000;
   color: #FFF;
 }
 
@@ -16619,6 +16620,7 @@ body.stm-body .middle-content-wrap {
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
+  background-color: #F1F1F1;
 }
 
 body.stm-body .middle-content-wrap .container {
@@ -16652,6 +16654,7 @@ body.stm-body .notification {
       -ms-flex-pack: justify;
           justify-content: space-between;
   padding: 10px;
+  border-bottom: 1px solid #000;
 }
 
 .header-wrap .logo-wrap {
@@ -16927,16 +16930,7 @@ ul.sidebar-menu li:hover ul.sub-menu li:hover a {
 }
 
 .users-wrap a.user-wrap {
-  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#eeeeee+0,f3f3f3+100 */
-  background: #eeeeee;
-  /* Old browsers */
-  /* FF3.6-15 */
-  /* Chrome10-25,Safari5.1-6 */
-  background: -webkit-gradient(linear, left top, right top, from(#eeeeee), to(#f3f3f3));
-  background: linear-gradient(to right, #eeeeee 0%, #f3f3f3 100%);
-  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eeeeee', endColorstr='#f3f3f3',GradientType=1 );
-  /* IE6-9 */
+  background-color: #FFF;
   display: block;
   color: #333;
   font-weight: 700;
@@ -16954,7 +16948,7 @@ ul.sidebar-menu li:hover ul.sub-menu li:hover a {
 }
 
 .users-wrap a.user-wrap .flex-item.icon-wrap {
-  background-color: rgba(0, 0, 0, 0.05);
+  background-color: rgba(0, 0, 0, 0.03);
   -webkit-box-flex: 0;
       -ms-flex: 0 1 10%;
           flex: 0 1 10%;
@@ -17085,16 +17079,7 @@ ul.sidebar-menu li:hover ul.sub-menu li:hover a {
 }
 
 .report-types-wrap a.report-type-wrap {
-  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#eeeeee+0,f3f3f3+100 */
-  background: #eeeeee;
-  /* Old browsers */
-  /* FF3.6-15 */
-  /* Chrome10-25,Safari5.1-6 */
-  background: -webkit-gradient(linear, left top, right top, from(#eeeeee), to(#f3f3f3));
-  background: linear-gradient(to right, #eeeeee 0%, #f3f3f3 100%);
-  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eeeeee', endColorstr='#f3f3f3',GradientType=1 );
-  /* IE6-9 */
+  background-color: #FFF;
   display: block;
   color: #333;
   font-weight: 700;
@@ -17112,7 +17097,7 @@ ul.sidebar-menu li:hover ul.sub-menu li:hover a {
 }
 
 .report-types-wrap a.report-type-wrap .flex-item.icon-wrap {
-  background-color: rgba(0, 0, 0, 0.05);
+  background-color: rgba(0, 0, 0, 0.03);
   -webkit-box-flex: 0;
       -ms-flex: 0 1 10%;
           flex: 0 1 10%;
