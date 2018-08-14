@@ -12,7 +12,7 @@ Edit User
 
 	<div class="form-wrapper-inner">
 
-		<h3>Edit User</h3>
+		<h3>Change Password</h3>
 
 		<form method="POST" action="/update-user-password/{{ $user->id }}">
 
