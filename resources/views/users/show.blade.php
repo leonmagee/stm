@@ -50,7 +50,17 @@ User
 	<div class="button-bar">
     	<a href="/edit-user/{{ $user->id }}" class="button is-primary">Edit User</a>
         <a href="/change-password/{{ $user->id }}" class="button is-primary">Change Password</a>
-    	<a href="/delete-user/{{ $user->id }}" class="button is-danger">Delete User</a>
+    	<a href="#" class="modal-open button is-danger">Delete User</a>
 	</div>
+
+
+    @section('modal')
+
+    <h3 class="title">Are You Sure?</h3> 
+
+    <a href="/delete-user/{{ $user->id }}" class="button is-danger">Delete User {{ $user->name }} | {{ $user->company }}</a>
+    <a href="#" class="modal-close-button button is-primary">Cancel</a>
+        
+    @endsection
 
 @endsection

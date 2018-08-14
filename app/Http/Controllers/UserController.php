@@ -171,6 +171,8 @@ class UserController extends Controller
     {
         $user->delete();
 
+        session()->flash('message', 'User ' . $user->name . ' | ' . $user->company . ' has been deleted.');
+
         return redirect('users');
     }
 }

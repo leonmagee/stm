@@ -42,6 +42,24 @@
 
 		</div>
 
+	  <div class="modal">
+
+      <div class="modal-background"></div>
+
+      <div class="modal-content">
+        
+        <div class="modal-box">
+
+        	@yield('modal')
+
+        </div>
+
+      </div>
+
+      <button class="modal-close is-large" aria-label="close"></button>
+
+    </div>
+
 		@include('layouts.footer')
 
 		@include('layouts.scripts')
