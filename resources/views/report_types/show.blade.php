@@ -32,9 +32,30 @@ Single Report Type
 	</div>
 
 	<div class="button-bar">
-    	<a href="/edit-report-type/{{ $reportType->id }}" class="button is-primary">Edit Report Type</a>
-    	<a href="/delete-report-type/{{ $reportType->id }}" class="button is-danger">Delete Report Type</a>
+    	<a href="/edit-report-type/{{ $reportType->id }}" id="edit-report-type" class="button is-primary">Edit Report Type</a>
+    	<a href="#" class="modal-open button is-danger">Delete Report Type</a>
 	</div>
+
+    <div class="modal">
+
+      <div class="modal-background"></div>
+
+      <div class="modal-content">
+        
+        <div class="modal-box">
+
+            <h3 class="title">Are You Sure?</h3> 
+
+            <a href="/delete-report-type/{{ $reportType->id }}" id="delete-report-type" class="button is-danger">Delete Report Type {{ $reportType->carrier->name }} {{ $reportType->name }}</a>
+            <a href="#" id="edit-report-type" class="modal-close-button button is-primary">Cancel</a>
+
+        </div>
+
+      </div>
+
+      <button class="modal-close is-large" aria-label="close"></button>
+
+    </div>
 
 @endsection
 

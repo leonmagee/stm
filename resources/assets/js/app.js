@@ -14,8 +14,11 @@ $('.notification .delete').click(function() {
 	$(this).parent().fadeOut();
 });
 
-$('#sims_table').DataTable();
+$('.modal-open, .modal-close, .modal-close-button').click(function() {
+    $('.modal').toggleClass('is-active');
+});
 
+$('#sims_table').DataTable();
 
 $('button.call-loader').click(function() {
 	console.log('callzzz');

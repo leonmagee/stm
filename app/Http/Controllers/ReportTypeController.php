@@ -176,6 +176,14 @@ class ReportTypeController extends Controller
      */
     public function destroy(ReportType $reportType)
     {
-        //
+
+        $reportType->delete();
+
+        session()->flash('message', 'Report Type ' . $reportType->carrier->name . ' ' . $reportType->name . ' has been deleted.');
+
+        return redirect('report-types');
+
+        //$item = Item::findOrFail($id);
+        //$item->delete();
     }
 }

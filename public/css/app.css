@@ -16643,6 +16643,19 @@ body.stm-body .notification {
   font-weight: 700;
 }
 
+.modal-box {
+  background-color: #FFF;
+  text-align: center;
+  padding: 20px 20px 25px;
+  border-radius: 20px;
+}
+
+.modal-box a {
+  margin-left: 5px;
+  margin-right: 5px;
+  font-weight: 700;
+}
+
 .header-wrap {
   background-color: #333;
   background-image: url(/img/connectwork.png);

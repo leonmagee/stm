@@ -25,6 +25,7 @@ Route::get('users', 'UserController@index')->name('users');
 Route::get('users/{user}', 'UserController@show');
 Route::get('edit-user/{user}', 'UserController@edit');
 Route::post('update-user/{id}','UserController@update');
+Route::get('delete-user/{user}', 'UserController@destroy');
 
 
 Route::get('profile', function() {
@@ -68,6 +69,7 @@ Route::get('report-types', 'ReportTypeController@index');
 Route::get('report-types/{report_type}', 'ReportTypeController@show');
 Route::get('add-report-type', 'ReportTypeController@create');
 Route::post('new-report-type', 'ReportTypeController@store');
+Route::get('delete-report-type/{report_type}', 'ReportTypeController@destroy');
 
 /**
 * Carriers Routes

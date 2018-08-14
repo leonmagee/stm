@@ -32401,6 +32401,10 @@ $('.notification .delete').click(function () {
   $(this).parent().fadeOut();
 });
 
+$('.modal-open, .modal-close, .modal-close-button').click(function () {
+  $('.modal').toggleClass('is-active');
+});
+
 $('#sims_table').DataTable();
 
 $('button.call-loader').click(function () {
