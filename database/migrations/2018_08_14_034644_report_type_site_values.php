@@ -15,8 +15,8 @@ class ReportTypeSiteValues extends Migration
     {
         Schema::create('report_type_site_values', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('report_type_id');
             $table->integer('site_id');
+            $table->integer('report_type_id');
             $table->integer('spiff_value');
             $table->integer('residual_percent');
             $table->timestamps();
@@ -30,6 +30,6 @@ class ReportTypeSiteValues extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('settings');
+        Schema::dropIfExists('report_type_site_values');
     }
 }

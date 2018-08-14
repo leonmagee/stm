@@ -17145,6 +17145,7 @@ ul.sidebar-menu li:hover ul.sub-menu li:hover a {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  min-height: 50px;
 }
 
 .single-report-type-wrap .flex-wrap i {
@@ -17153,6 +17154,13 @@ ul.sidebar-menu li:hover ul.sub-menu li:hover a {
   color: #AAA;
   width: 30px;
   text-align: center;
+}
+
+.single-report-type-wrap .flex-wrap .value {
+  color: #1B9AAA;
+  font-size: 1.2em;
+  margin-left: auto;
+  min-width: 130px;
 }
 
 .single-report-type-wrap .item {
@@ -17166,5 +17174,10 @@ ul.sidebar-menu li:hover ul.sub-menu li:hover a {
   border-bottom: 2px solid #DDD;
   padding-bottom: 0px;
   margin-bottom: 7px;
+}
+
+.single-report-type-wrap .spiff-residual {
+  color: #444;
+  font-size: 0.9em;
 }
 

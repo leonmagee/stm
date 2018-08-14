@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\ReportType;
 use App\Site;
+use App\ReportTypeSiteValue;
 use Illuminate\Http\Request;
 
 class ReportTypeController extends Controller
@@ -54,12 +55,73 @@ class ReportTypeController extends Controller
      *
      * @param  \App\ReportType  $reportType
      * @return \Illuminate\Http\Response
+     * @todo I should probably have a different method if this is a spiff or a residual... 
      */
     public function show(ReportType $reportType)
     {
         $sites = Site::all();
-        return view('report_types.show', compact('reportType', 'sites'));
+
+        if ( $reportType->spiff ) {
+
+            return $this->show_spiff($reportType, $sites);
+
+        } else {
+
+            return $this->show_residual($reportType, $sites);
+        }
+
+
     }
+
+    public function show_spiff($reportType, $sites) {
+
+        $site_values_array = array();
+
+        foreach( $sites as $site ) {
+
+            $value = ReportTypeSiteValue::where(
+                [
+                    'site_id' => $site->id,
+                    'report_type_id' => $reportType->id
+                ]
+            )->first();
+
+            if ( $value ) {
+                $spiff_value = '$' . number_format($value->spiff_value, 2);
+            } else {
+                $spiff_value = 'Default';
+            }
+
+            $site_values_array[$site->name] = $spiff_value;
+        }
+
+        return view('report_types.show', compact('reportType', 'site_values_array'));
+    }
+
+    public function show_residual(ReportType $reportType, $sites) {
+        $site_values_array = array();
+
+        foreach( $sites as $site ) {
+
+            $value = ReportTypeSiteValue::where(
+                [
+                    'site_id' => $site->id,
+                    'report_type_id' => $reportType->id
+                ]
+            )->first();
+
+            if ( $value ) {
+                $residual_percent = $value->residual_percent . '%';
+            } else {
+                $residual_percent = 'Default';
+            }
+
+            $site_values_array[$site->name] = $residual_percent;
+        }
+
+        return view('report_types.show', compact('reportType', 'site_values_array'));
+    }
+
 
     /**
      * Show the form for editing the specified resource.

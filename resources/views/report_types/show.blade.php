@@ -10,9 +10,21 @@ Single Report Type
 
         <div class="item name">{{ $reportType->carrier->name }} {{ $reportType->name}}</div>
 
-		@foreach($sites as $site)
+        <div class="item spiff-residual">
+           @if($reportType->spiff)
+            Spiff / Activation
+           @else
+            Residual
+           @endif 
+
+
+        </div>
+
+		@foreach($site_values_array as $name => $value)
         <div class="item role flex-wrap">
-            <i class="fas fa-sitemap"></i> {{ $site->name }}
+            <i class="fas fa-sitemap"></i> 
+            <span class="site-name">{{ $name }}</span>
+            <span class="value">{{ $value }}</span>
         </div>
         @endforeach
 
@@ -20,8 +32,8 @@ Single Report Type
 	</div>
 
 	<div class="button-bar">
-    	<a href="/edit-user" class="button is-primary">Edit Report Type</a>
-    	<a href="/delete-user" class="button is-danger">Delete Report Type</a>
+    	<a href="/edit-report-type/{{ $reportType->id }}" class="button is-primary">Edit Report Type</a>
+    	<a href="/delete-report-type/{{ $reportType->id }}" class="button is-danger">Delete Report Type</a>
 	</div>
 
 @endsection

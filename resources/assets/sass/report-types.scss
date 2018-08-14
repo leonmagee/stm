@@ -65,12 +65,20 @@
 	.flex-wrap {
 		display: flex;
 		align-items: center;
+		min-height: 50px;
 		i {
 			margin-right: 15px;
 			font-size: 1.2em;
 			color: #AAA;
 			width: 30px;
 			text-align: center;
+		}
+
+		.value {
+			color: $brand-primary;
+			font-size: 1.2em;
+			margin-left: auto;
+			min-width: 130px;
 		}
 	}
 	.item {
@@ -83,6 +91,11 @@
 		border-bottom: 2px solid #DDD;
 		padding-bottom: 0px;
 		margin-bottom: 7px;
+	}
+
+	.spiff-residual {
+		color: #444;
+		font-size: 0.9em;
 	}
 
 
