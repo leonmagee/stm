@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Settings;
+
 use App\User;
 
 use App\Site;
@@ -22,7 +24,10 @@ class RegistrationController extends Controller
 
 		$sites = Site::all();
 
-		return view('registration.create', compact('sites'));
+		$settings = Settings::first();
+		$current_site_id = $settings->site_id;
+
+		return view('registration.create', compact('sites', 'current_site_id'));
 	}
 
 	public function store(Request $request) {
@@ -66,6 +71,6 @@ class RegistrationController extends Controller
     	// log in new user
 		//auth()->login($user);
 
-		return redirect('users');
+		return redirect('users/' . $user->id);
 	}
 }

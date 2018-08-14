@@ -50,7 +50,12 @@ Add New User
 						<div class="select">
 							<select name="role">
 								@foreach ($sites as $site)
-								<option value="{{ $site->id }}">{{ $site->name }}</option>
+								<option 
+								value="{{ $site->id }}"
+								@if ($current_site_id == $site->id)
+								selected="selected"
+								@endif
+								>{{ $site->name }}</option>
 								@endforeach
 							</select>
 						</div>
