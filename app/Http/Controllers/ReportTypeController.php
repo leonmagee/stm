@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\ReportType;
 use App\Site;
+use App\Settings;
 use App\ReportTypeSiteValue;
 use Illuminate\Http\Request;
 
@@ -36,7 +37,12 @@ class ReportTypeController extends Controller
      */
     public function create()
     {
-        //
+        $sites = Site::all();
+
+        $settings = Settings::first();
+        $current_site_id = $settings->site_id;
+
+        return view('report_types.create', compact('sites', 'current_site_id'));
     }
 
     /**

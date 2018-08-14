@@ -23,12 +23,14 @@
 			@endforeach
 		</ul>
 	</li>
+
+	<li><a href="/add-report-type">New Report Type</a></li>
 	
 	<li><a href="/sims/upload">Upload</a></li>
 	
 	<li><a href="/users">Users</a></li>
 	
-	<li><a href="/register">Add User</a></li>
+	<li><a href="/register">New User</a></li>
 	
 	<li><a href="/sim-users">Sim Users</a></li>
 	
