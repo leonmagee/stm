@@ -16643,6 +16643,11 @@ body.stm-body .notification {
   font-weight: 700;
 }
 
+body.stm-body .notification.is-success {
+  color: #FFF;
+  text-shadow: 1px 1px #06dba3;
+}
+
 .modal-box {
   background-color: #FFF;
   text-align: center;

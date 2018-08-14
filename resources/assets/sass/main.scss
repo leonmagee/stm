@@ -40,6 +40,10 @@ body.stm-body {
 	//notifications / alerts
 	.notification {
 		font-weight: 700;
+		&.is-success {
+			color: #FFF;
+			text-shadow: 1px 1px darken($color-green, 2%);
+		}
 	}
 }
 
