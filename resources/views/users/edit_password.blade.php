@@ -14,7 +14,7 @@ Edit User
 
 		<h3>Edit User</h3>
 
-		<form method="POST" action="/register">
+		<form method="POST" action="/update-user-password/{{ $user->id }}">
 
 			<div class="form-wrap">
 
@@ -40,7 +40,7 @@ Edit User
 
 				<div class="field flex-margin">
 					<div class="control">
-						<button class="button is-link" type="submit">Register</button>
+						<button class="button is-link" type="submit">Update</button>
 					</div>
 				</div>
 

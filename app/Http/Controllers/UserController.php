@@ -78,6 +78,11 @@ class UserController extends Controller
         return view('users.edit', compact('user', 'sites'));
     }
 
+    public function edit_password(User $user)
+    {
+        return view('users.edit_password', compact('user'));
+    }
+
     /**
      * Update the specified resource in storage.
      *
@@ -100,7 +105,6 @@ class UserController extends Controller
             'role' => 'required',
         ]);
 
-
         // update user
         $user = User::find($id)->update([
             'name' => $request->name,
@@ -113,8 +117,6 @@ class UserController extends Controller
             'zip' => $request->zip,
             'role' => $request->role,
         ]);
-
-        //session('message', 'Here is a default message');
 
         session()->flash('message', 'User ' . $request->name . ' has been updated.');
 
@@ -130,35 +132,19 @@ class UserController extends Controller
      */
     public function update_password(Request $request, $id)
     {
-                // validate the form
+        // validate the form
         $this->validate(request(), [
-            'name' => 'required',
-            'email_address' => 'required|email',
-            'company' => 'required',
-            'phone' => 'required',
-            'address' => 'required',
-            'city' => 'required',
-            'state' => 'required',
-            'zip' => 'required',
-            'role' => 'required',
             'password' => 'required|confirmed'
         ]);
 
-        //$role_array = ['null','agent','dealer','sigstore'];
-
-        // create and save new user
-        $user = User::create([
-            'name' => $request->name,
-            'email' => $request->email_address,
-            'company' => $request->company,
-            'phone' => $request->phone,
-            'address' => $request->address,
-            'city' => $request->city,
-            'state' => $request->state,
-            'zip' => $request->zip,
-            'role' => $request->role,
-            'password' => bcrypt($request->user_password)
+        // update user
+        $user = User::find($id)->update([
+            'password' => bcrypt($request->password)
         ]);
+
+        session()->flash('message', 'Password updated.');
+
+        return redirect('users/' . $id);
     }
 
     /**
