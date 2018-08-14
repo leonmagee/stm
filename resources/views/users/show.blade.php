@@ -49,7 +49,7 @@ User
 
 	<div class="button-bar">
     	<a href="/edit-user/{{ $user->id }}" class="button is-primary">Edit User</a>
-        <a href="/change-password/{{ $user->id }}" class="button is-warning">Change Password</a>
+        <a href="/change-password/{{ $user->id }}" class="button is-primary">Change Password</a>
     	<a href="/delete-user/{{ $user->id }}" class="button is-danger">Delete User</a>
 	</div>
 

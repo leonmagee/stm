@@ -114,9 +114,11 @@ class UserController extends Controller
             'role' => $request->role,
         ]);
 
-        session('message', 'Here is a default message');
+        //session('message', 'Here is a default message');
 
-        return redirect('users');
+        session()->flash('message', 'User ' . $request->name . ' has been updated.');
+
+        return redirect('users/' . $id);
     }
 
     /**
