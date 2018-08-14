@@ -40,7 +40,7 @@ Route::get('sims/upload', 'SimController@upload_form');
 Route::get('sims/create', 'SimController@addSim');
 Route::get('sims/archive/{id}', 'SimController@archive');
 Route::post('upload', 'SimController@upload');
-Route::post('upload_single', 'SimController@upload_single');
+Route::post('upload-single', 'SimController@upload_single');
 Route::get('sims/{sim}', 'SimController@show');
 Route::post('sims', 'SimController@store');
 
@@ -56,8 +56,8 @@ Route::post('site', 'SettingsController@update_site');
 /**
 * SIM Users Routes
 */
-Route::get('sim_users', 'SimUserController@index');
-Route::get('sim_users/{sim}', 'SimUserController@show');
+Route::get('sim-users', 'SimUserController@index');
+Route::get('sim-users/{sim}', 'SimUserController@show');
 Route::get('assign-sims', 'SimUserController@create');
 Route::post('assign-sims', 'SimUserController@store');
 
