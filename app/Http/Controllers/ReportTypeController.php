@@ -236,12 +236,29 @@ class ReportTypeController extends Controller
         $sites = Site::all();
 
         foreach( $sites as $site ) {
+
             $spiff_key = 'spiff_' . $site->id;
-            ReportTypeSiteValue::create([
+
+            $row = ReportTypeSiteValue::where([
                 'site_id' => $site->id,
-                'report_type_id' => $reportType->id,
-                'spiff_value' => $request->{$spiff_key},
-            ]);
+                'report_type_id' => $reportType->id
+            ])->first();
+
+            if ( $row ) {
+
+                $row->spiff_value = $request->{$spiff_key};
+
+                $row->save();
+
+            } else {
+
+                ReportTypeSiteValue::create([
+                    'site_id' => $site->id,
+                    'report_type_id' => $reportType->id,
+                    'spiff_value' => $request->{$spiff_key},
+                ]);
+            }
+
         }
 
         return redirect('report-types/' . $reportType->id);

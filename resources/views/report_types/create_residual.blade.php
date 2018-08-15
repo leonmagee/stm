@@ -22,14 +22,14 @@ Add New Report Type
 
 				<div class="form-wrap-flex">
 
-					<div class="field">
+					<div class="field half">
 						<label class="label" for="name">Name</label>
 						<div class="control">
 							<input class="input" type="text" id="name" name="name" />
 						</div>
 					</div>
 
-					<div class="field">
+					<div class="field half">
 						<label class="label" for="carrier">Carrier</label>
 						<div class="select">
 							<select name="carrier" id="carrier">
