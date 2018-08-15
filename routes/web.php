@@ -74,6 +74,7 @@ Route::get('add-report-type-residual', 'ReportTypeController@create_residual');
 Route::post('new-report-type', 'ReportTypeController@store');
 Route::post('new-report-type-residual', 'ReportTypeController@store_residual');
 Route::get('delete-report-type/{report_type}', 'ReportTypeController@destroy');
+Route::get('edit-report-type/{report_type}', 'ReportTypeController@edit');
 
 /**
 * Carriers Routes

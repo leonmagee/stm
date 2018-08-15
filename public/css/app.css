@@ -17154,6 +17154,7 @@ ul.sidebar-menu li:hover ul.sub-menu li:hover a {
   font-weight: 700;
   white-space: nowrap;
   color: #555;
+  min-width: 42%;
 }
 
 .single-report-type-wrap .flex-wrap {
@@ -17186,7 +17187,7 @@ ul.sidebar-menu li:hover ul.sub-menu li:hover a {
 }
 
 .single-report-type-wrap .name {
-  font-size: 2.1em;
+  font-size: 1.7em;
   font-weight: 800;
   color: #1B9AAA;
   border-bottom: 2px solid #DDD;

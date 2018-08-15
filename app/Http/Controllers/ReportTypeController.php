@@ -202,7 +202,9 @@ class ReportTypeController extends Controller
      */
     public function edit(ReportType $reportType)
     {
-        //
+        $carriers = Carrier::all();
+        $sites = Site::all();
+        return view('report_types.edit', compact('reportType', 'carriers', 'sites'));
     }
 
     /**
