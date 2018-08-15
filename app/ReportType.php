@@ -30,4 +30,9 @@ class ReportType extends Model
 
         return $this->belongsTo(Carrier::class);
     }
+
+    // need to test this
+    public function values() {
+        return $this->hasMany(ReportTypeSiteValue::class);
+    }
 }

@@ -69,8 +69,10 @@ Route::post('assign-sims', 'SimUserController@store');
 */
 Route::get('report-types', 'ReportTypeController@index');
 Route::get('report-types/{report_type}', 'ReportTypeController@show');
-Route::get('add-report-type', 'ReportTypeController@create');
+Route::get('add-report-type-spiff', 'ReportTypeController@create');
+Route::get('add-report-type-residual', 'ReportTypeController@create_residual');
 Route::post('new-report-type', 'ReportTypeController@store');
+Route::post('new-report-type-residual', 'ReportTypeController@store_residual');
 Route::get('delete-report-type/{report_type}', 'ReportTypeController@destroy');
 
 /**
@@ -89,11 +91,6 @@ Route::post('register', 'RegistrationController@store');
 Route::get('login', 'SessionsController@create')->name('login');
 Route::post('login', 'SessionsController@store');
 Route::get('logout', 'SessionsController@destroy');
-
-
-
-
-
 
 
 /**

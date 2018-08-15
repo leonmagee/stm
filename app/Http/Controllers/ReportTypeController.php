@@ -44,6 +44,15 @@ class ReportTypeController extends Controller
         return view('report_types.create', compact('sites', 'carriers'));
     }
 
+    public function create_residual()
+    {
+        $sites = Site::all();
+
+        $carriers = Carrier::all();
+
+        return view('report_types.create_residual', compact('sites', 'carriers'));
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -52,22 +61,54 @@ class ReportTypeController extends Controller
      */
     public function store(Request $request)
     {
-        // validate the form
         $this->validate(request(), [
             'name' => 'required',
             'carrier' => 'required',
-            'type' => 'required',
         ]);
 
-        //$role_array = ['null','agent','dealer','sigstore'];
-
-        // create and save new user
         $report_type = ReportType::create([
             'name' => $request->name,
+            'spiff' => 1,
             'carrier_id' => $request->carrier,
-            'spiff' => $request->type,
         ]);
 
+        $sites = Site::all();
+
+        foreach( $sites as $site ) {
+            $spiff_key = 'spiff_' . $site->id;
+            ReportTypeSiteValue::create([
+                'site_id' => $site->id,
+                'report_type_id' => $report_type->id,
+                'spiff_value' => $request->{$spiff_key},
+            ]);
+        }
+
+        return redirect('report-types/' . $report_type->id);
+    }
+
+    public function store_residual(Request $request)
+    {
+        $this->validate(request(), [
+            'name' => 'required',
+            'carrier' => 'required',
+        ]);
+
+        $report_type = ReportType::create([
+            'name' => $request->name,
+            'spiff' => 0,
+            'carrier_id' => $request->carrier,
+        ]);
+
+        $sites = Site::all();
+
+        foreach( $sites as $site ) {
+            $residual_key = 'residual_' . $site->id;
+            ReportTypeSiteValue::create([
+                'site_id' => $site->id,
+                'report_type_id' => $report_type->id,
+                'residual_percent' => $request->{$residual_key}
+            ]);
+        }
 
         return redirect('report-types/' . $report_type->id);
     }
@@ -109,7 +150,11 @@ class ReportTypeController extends Controller
             )->first();
 
             if ( $value ) {
-                $spiff_value = '$' . number_format($value->spiff_value, 2);
+                if ( $value->spiff_value ) {
+                    $spiff_value = '$' . number_format($value->spiff_value, 2);
+                } else {
+                    $spiff_value = 'Default';
+                }
             } else {
                 $spiff_value = 'Default';
             }
@@ -133,7 +178,11 @@ class ReportTypeController extends Controller
             )->first();
 
             if ( $value ) {
-                $residual_percent = $value->residual_percent . '%';
+                if ( $value->residual_percent ) {
+                    $residual_percent = $value->residual_percent . '%';
+                } else {
+                    $residual_percent = 'Default';
+                }
             } else {
                 $residual_percent = 'Default';
             }

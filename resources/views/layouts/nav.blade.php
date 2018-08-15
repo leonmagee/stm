@@ -24,7 +24,13 @@
 		</ul>
 	</li>
 
-	<li><a href="/add-report-type">New Report Type</a></li>
+	<li>
+		<a href="#">New Report Type</a>
+		<ul class="sub-menu">
+			<li><a href="/add-report-type-spiff">New Spiff</a></li>
+			<li><a href="/add-report-type-residual">New Residual</a></li>
+		</ul>
+	</li>
 	
 	<li><a href="/sims/upload">Upload</a></li>
 	

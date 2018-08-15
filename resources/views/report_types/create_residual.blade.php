@@ -12,9 +12,9 @@ Add New Report Type
 
 	<div class="form-wrapper-inner">
 
-		<h3>New Spiff Report Type</h3>
+		<h3>New Residual Report Type</h3>
 
-		<form method="POST" action="/new-report-type">
+		<form method="POST" action="/new-report-type-residual">
 
 			<div class="form-wrap">
 
@@ -43,9 +43,9 @@ Add New Report Type
 					@foreach ($sites as $site)
 
 						<div class="field">
-							<label class="label" for="spiff_{{ $site->id }}">{{ $site->name }} Spiff</label>
+							<label class="label" for="residual_{{ $site->id }}">{{ $site->name }} Residual</label>
 							<div class="control">
-								<input class="input" type="number" id="spiff_{{ $site->id }}" name="spiff_{{ $site->id }}" />
+								<input class="input" type="number" id="residual_{{ $site->id }}" name="residual_{{ $site->id }}" />
 							</div>
 						</div>
 
