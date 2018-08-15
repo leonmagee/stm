@@ -15,7 +15,7 @@
 				  <p class="control">
 				    <a class="button type" href="/settings">
 				      <span class="icon is-small">
-				        <i class="fas fa-users"></i>
+				        <i class="fas fa-sitemap"></i>
 				      </span>
 				      <span class="text">{{ $site }}</span>
 				    </a>
