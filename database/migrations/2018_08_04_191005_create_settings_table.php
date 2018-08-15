@@ -18,7 +18,7 @@ class CreateSettingsTable extends Migration
             $table->string('company');
             $table->string('current_date');
             $table->string('mode');
-            $table->integer('site_id');
+            //$table->integer('site_id');
             $table->timestamps();
         });
     }

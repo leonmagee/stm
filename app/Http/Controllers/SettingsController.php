@@ -19,6 +19,9 @@ class SettingsController extends Controller
     public function index()
     {
 
+        // $current_site_id = session('current_site_id', 1);
+        // echo 'site id: ' . $current_site_id;
+
         $months = array(
             'January',
             'February',
@@ -37,7 +40,8 @@ class SettingsController extends Controller
         $sites = Site::all();
         $settings = Settings::first();
         $mode = $settings->mode;
-        $current_site = $settings->site_id;
+        //$current_site = $settings->site_id;
+        $current_site = session('current_site_id', 1);
         $date_array = explode('_', $settings->current_date);
         $current_month = $date_array[0];
         $current_year = $date_array[1];
@@ -144,6 +148,19 @@ class SettingsController extends Controller
         $site = $request->site;
         $settings = Settings::first();
         $settings->site_id = $site;
+
+
+
+        //session('current_site_id') = $site;
+
+    // Specifying a default value...
+    //$value = session('key', 'default');
+
+    // Store a piece of data in the session...
+    session(['current_site_id' => $site]);
+
+
+
         $settings->save();
 
         return redirect('/settings');
@@ -153,7 +170,7 @@ class SettingsController extends Controller
     {
         $spiff = $request->default_spiff;
         $settings = Settings::first();
-        $site = Site::find($settings->site_id);
+        $site = Site::find(session('current_site_id', 1));
         $site->default_spiff_amount = $spiff;
         $site->save();
 
@@ -166,7 +183,7 @@ class SettingsController extends Controller
     {
         $residual = $request->default_percent;
         $settings = Settings::first();
-        $site = Site::find($settings->site_id);
+        $site = Site::find(session('current_site_id', 1));
         $site->default_residual_percent = $residual;
         $site->save();
 
