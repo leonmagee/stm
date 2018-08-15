@@ -229,7 +229,6 @@ class ReportTypeController extends Controller
 
         $reportType->update([
             'name' => $request->name,
-            'spiff' => 1,
             'carrier_id' => $request->carrier,
         ]);
 
@@ -260,6 +259,53 @@ class ReportTypeController extends Controller
             }
 
         }
+
+        session()->flash('message', 'Report Type Updated.');
+
+        return redirect('report-types/' . $reportType->id);
+    }
+
+    public function update_residual(Request $request, ReportType $reportType)
+    {
+        $this->validate(request(), [
+            'name' => 'required',
+            'carrier' => 'required',
+        ]);
+
+        $reportType->update([
+            'name' => $request->name,
+            'carrier_id' => $request->carrier,
+        ]);
+
+        $sites = Site::all();
+
+        foreach( $sites as $site ) {
+
+            $residual_key = 'residual_' . $site->id;
+
+            $row = ReportTypeSiteValue::where([
+                'site_id' => $site->id,
+                'report_type_id' => $reportType->id
+            ])->first();
+
+            if ( $row ) {
+
+                $row->residual_percent = $request->{$residual_key};
+
+                $row->save();
+
+            } else {
+
+                ReportTypeSiteValue::create([
+                    'site_id' => $site->id,
+                    'report_type_id' => $reportType->id,
+                    'residual_percent' => $request->{$residual_key},
+                ]);
+            }
+
+        }
+
+        session()->flash('message', 'Report Type Updated.');
 
         return redirect('report-types/' . $reportType->id);
     }
