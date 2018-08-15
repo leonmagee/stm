@@ -12,9 +12,9 @@ Edit Report Type
 
 	<div class="form-wrapper-inner">
 
-		<h3>Edit Spiff Report Type</h3>
+		<h3>Edit Residual Report Type</h3>
 
-		<form method="POST" action="/save-report-type/{{ $reportType->id }}">
+		<form method="POST" action="/save-report-type-residual/{{ $reportType->id }}">
 
 			<div class="form-wrap">
 
@@ -43,11 +43,11 @@ Edit Report Type
 					@foreach ($sites as $site)
 
 						<div class="field">
-							<label class="label" for="spiff_{{ $site->id }}">{{ $site->name }} Spiff</label>
+							<label class="label" for="residual_{{ $site->id }}">{{ $site->name }} Residual</label>
 							<div class="control">
 								<input 
-								value="{{ $site->spiff_value($reportType->id) }}"
-								class="input" type="number" id="spiff_{{ $site->id }}" name="spiff_{{ $site->id }}" />
+								value="{{ $site->residual_percent($reportType->id) }}"
+								class="input" type="number" id="residual_{{ $site->id }}" name="residual_{{ $site->id }}" />
 							</div>
 						</div>
 

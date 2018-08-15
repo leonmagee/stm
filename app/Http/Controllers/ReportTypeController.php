@@ -193,7 +193,6 @@ class ReportTypeController extends Controller
         return view('report_types.show', compact('reportType', 'site_values_array'));
     }
 
-
     /**
      * Show the form for editing the specified resource.
      *
@@ -207,6 +206,13 @@ class ReportTypeController extends Controller
         return view('report_types.edit', compact('reportType', 'carriers', 'sites'));
     }
 
+    public function edit_residual(ReportType $reportType)
+    {
+        $carriers = Carrier::all();
+        $sites = Site::all();
+        return view('report_types.edit_residual', compact('reportType', 'carriers', 'sites'));
+    }
+
     /**
      * Update the specified resource in storage.
      *
@@ -216,7 +222,29 @@ class ReportTypeController extends Controller
      */
     public function update(Request $request, ReportType $reportType)
     {
-        //
+        $this->validate(request(), [
+            'name' => 'required',
+            'carrier' => 'required',
+        ]);
+
+        $reportType->update([
+            'name' => $request->name,
+            'spiff' => 1,
+            'carrier_id' => $request->carrier,
+        ]);
+
+        $sites = Site::all();
+
+        foreach( $sites as $site ) {
+            $spiff_key = 'spiff_' . $site->id;
+            ReportTypeSiteValue::create([
+                'site_id' => $site->id,
+                'report_type_id' => $reportType->id,
+                'spiff_value' => $request->{$spiff_key},
+            ]);
+        }
+
+        return redirect('report-types/' . $reportType->id);
     }
 
     /**

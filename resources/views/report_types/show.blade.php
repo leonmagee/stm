@@ -32,7 +32,11 @@ Single Report Type
 	</div>
 
 	<div class="button-bar">
+        @if($reportType->spiff)
     	<a href="/edit-report-type/{{ $reportType->id }}" id="edit-report-type" class="button is-primary">Edit Report Type</a>
+        @else
+        <a href="/edit-report-type-residual/{{ $reportType->id }}" id="edit-report-type" class="button is-primary">Edit Report Type</a>
+        @endif
     	<a href="#" class="modal-open button is-danger">Delete Report Type</a>
 	</div>
 

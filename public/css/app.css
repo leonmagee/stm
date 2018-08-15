@@ -16529,6 +16529,12 @@ body.stm-body h1.title {
   margin-left: 1%;
 }
 
+.form-wrapper .form-wrapper-inner form .form-wrap .form-wrap-flex .field.half {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 1 48%;
+          flex: 0 1 48%;
+}
+
 .stm-absolute-wrap {
   position: absolute;
   z-index: 10000;
