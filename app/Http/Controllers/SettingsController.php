@@ -152,14 +152,25 @@ class SettingsController extends Controller
     public function update_spiff(Request $request, Settings $settings)
     {
         $spiff = $request->default_spiff;
-        //$residual = $request->default_percent;
         $settings = Settings::first();
         $site = Site::find($settings->site_id);
         $site->default_spiff_amount = $spiff;
-        //$site->default_residual_percent = $residual;
-        $settings->save();
+        $site->save();
 
         session()->flash('message', 'Spiff value updated.');
+
+        return redirect('/site-settings');
+    }
+
+    public function update_residual(Request $request, Settings $settings)
+    {
+        $residual = $request->default_percent;
+        $settings = Settings::first();
+        $site = Site::find($settings->site_id);
+        $site->default_residual_percent = $residual;
+        $site->save();
+
+        session()->flash('message', 'Residual percent updated.');
 
         return redirect('/site-settings');
     }

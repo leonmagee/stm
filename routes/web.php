@@ -29,7 +29,6 @@ Route::post('update-user/{id}','UserController@update');
 Route::post('update-user-password/{id}','UserController@update_password');
 Route::get('delete-user/{user}', 'UserController@destroy');
 
-
 Route::get('profile', function() {
 
 	return view('profile');
@@ -98,7 +97,6 @@ Route::get('login', 'SessionsController@create')->name('login');
 Route::post('login', 'SessionsController@store');
 Route::get('logout', 'SessionsController@destroy');
 
-
 /**
 * Enables User Registration
 * @todo this is done custom in laracast tutorials
@@ -108,9 +106,6 @@ Route::get('logout', 'SessionsController@destroy');
 /**
 * Named Route - naming this route home allows you to reference it other places. 
 **/
-
-
-
 
 // Route::get('/home', 'HomeController@index')->name('home');
 // Route::get('/logmeout', function() {
