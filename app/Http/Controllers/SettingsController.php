@@ -59,8 +59,12 @@ class SettingsController extends Controller
      */
     public function index_site()
     {
-
-        return view('settings.site-settings');
+        $settings = Settings::first();
+        $site_name = $settings->site->name;
+        $site = Site::find($settings->site_id);
+        $spiff = $site->default_spiff_amount;
+        $residual = $site->default_residual_percent;
+        return view('settings.site-settings', compact('site_name', 'spiff', 'residual'));
     }
 
     /**
@@ -115,45 +119,18 @@ class SettingsController extends Controller
      */
     public function update_date(Request $request, Settings $settings)
     {
-        //dd($request->current_month);
-        //dd($request->current_year);
         $new_current_date = $request->current_month . '_' . $request->current_year;
 
         $settings = Settings::first();
         $settings->current_date = $new_current_date;
         $settings->save();
-        //dd($settings->current_date);
-
-
-        // $this->validate(request(), [
-        //     'sim_number' => 'required|min:13',
-        //     'value' => 'required',
-        //     'activation_date' => 'required',
-        //     'mobile_number' => 'required',
-        //     'report_type_id' => 'required',
-        // ]);
-
-        // Sim::(request([
-        //     'sim_number', 
-        //     'value', 
-        //     'activation_date', 
-        //     'mobile_number', 
-        //     'report_type_id'
-        // ]));
 
         return redirect('/settings');
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Settings  $settings
-     * @return \Illuminate\Http\Response
-     */
     public function update_mode(Request $request, Settings $settings)
     {
-        $mode = $request->mode; //@todo validation?
+        $mode = $request->mode;
         $settings = Settings::first();
         $settings->mode = $mode;
         $settings->save();
@@ -162,22 +139,29 @@ class SettingsController extends Controller
         return redirect('/settings');
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Settings  $settings
-     * @return \Illuminate\Http\Response
-     */
     public function update_site(Request $request, Settings $settings)
     {
-        $site = $request->site; //@todo validation?
+        $site = $request->site;
         $settings = Settings::first();
         $settings->site_id = $site;
         $settings->save();
 
-
         return redirect('/settings');
+    }
+
+    public function update_spiff(Request $request, Settings $settings)
+    {
+        $spiff = $request->default_spiff;
+        //$residual = $request->default_percent;
+        $settings = Settings::first();
+        $site = Site::find($settings->site_id);
+        $site->default_spiff_amount = $spiff;
+        //$site->default_residual_percent = $residual;
+        $settings->save();
+
+        session()->flash('message', 'Spiff value updated.');
+
+        return redirect('/site-settings');
     }
 
     /**

@@ -16,8 +16,8 @@ class CreateSitesTable extends Migration
         Schema::create('sites', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->integer('default_residual_percent');
             $table->integer('default_spiff_amount');
+            $table->integer('default_residual_percent');
             $table->timestamps();
         });
     }

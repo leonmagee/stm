@@ -55,6 +55,8 @@ Route::get('site-settings', 'SettingsController@index_site');
 Route::post('date', 'SettingsController@update_date');
 Route::post('mode', 'SettingsController@update_mode');
 Route::post('site', 'SettingsController@update_site');
+Route::post('default_spiff_payment', 'SettingsController@update_spiff');
+Route::post('default_residual_percent', 'SettingsController@update_residual');
 
 /**
 * SIM Users Routes

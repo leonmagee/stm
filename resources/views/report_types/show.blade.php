@@ -16,8 +16,6 @@ Single Report Type
            @else
             Residual
            @endif 
-
-
         </div>
 
 		@foreach($site_values_array as $name => $value)
@@ -27,7 +25,6 @@ Single Report Type
             <span class="value">{{ $value }}</span>
         </div>
         @endforeach
-
 
 	</div>
 
