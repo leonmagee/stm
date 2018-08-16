@@ -45,5 +45,7 @@
 	<li><a href="/settings">Settings</a></li>
 	
 	<li><a href="/site-settings">Site Settings</a></li>
+	
+	<li><a href="/reports">Reports</a></li>
 
 </ul>

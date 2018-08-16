@@ -81,6 +81,11 @@ Route::post('save-report-type/{report_type}', 'ReportTypeController@update');
 Route::post('save-report-type-residual/{report_type}', 'ReportTypeController@update_residual');
 
 /**
+* Reports
+*/
+Route::get('reports', 'ReportsController@index');
+
+/**
 * Carriers Routes
 */
 Route::get('carriers', 'CarrierController@index');

@@ -17206,3 +17206,46 @@ ul.sidebar-menu li:hover ul.sub-menu li:hover a {
   font-size: 0.9em;
 }
 
+.reports-wrap {
+  display: grid;
+  grid-gap: 15px;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-auto-flow: row;
+  font-size: 0.8em;
+}
+
+.reports-wrap .report-wrap {
+  -webkit-box-shadow: 1px 1px rgba(0, 0, 0, 0.05);
+          box-shadow: 1px 1px rgba(0, 0, 0, 0.05);
+  background-color: #FFF;
+  color: #333;
+  padding: 20px;
+}
+
+.reports-wrap .report-wrap .title-line {
+  font-weight: 700;
+  padding: 5px 11px;
+  font-size: 1.2em;
+}
+
+.reports-wrap .report-wrap .title-line i {
+  color: #555;
+  margin-right: 8px;
+}
+
+.reports-wrap .report-wrap .title-line span {
+  font-weight: 400;
+  color: #AAA;
+}
+
+.reports-wrap .report-wrap .title-line span.name,
+.reports-wrap .report-wrap .title-line span.company {
+  font-weight: 700;
+  color: #1B9AAA;
+}
+
+.reports-wrap .report-wrap table.table {
+  font-size: 1em;
+  white-space: nowrap;
+}
+
