@@ -71,8 +71,7 @@ class SimController extends Controller
     {
         $report_types = ReportType::all();
         $carriers = Carrier::all();
-        $site_id = Settings::first()->site_id;
-        $users = User::where('role', $site_id)->get();
+        $users = User::where('role', session('current_site_id', 1))->get();
         return view('sims.upload', compact('report_types', 'users', 'carriers'));
     }
 
@@ -265,10 +264,14 @@ class SimController extends Controller
      *
      * @param  \App\Sim  $sim
      * @return \Illuminate\Http\Response
+     * 
+     * @todo this isn't working now because there is no longer an ID specific for one sim, so I would need to query by the sim number and date? Not sure how this will work for deleting sims... 
      */
-    public function show(Sim $sim)
+    public function show($sim_number)
     {
-        return view('sims.show', compact('sim'));
+        $sim = Sim::where('sim_number', $sim_number)->first();
+        $sim_user = SimUser::where('sim_number', $sim_number)->first();
+        return view('sims.show', compact('sim', 'sim_user'));
     }
 
     /**

@@ -64,8 +64,9 @@ class SettingsController extends Controller
     public function index_site()
     {
         $settings = Settings::first();
-        $site_name = $settings->site->name;
-        $site = Site::find($settings->site_id);
+        $site_name = $settings->get_site_object()->name;
+
+        $site = $settings->get_site_object();
         $spiff = $site->default_spiff_amount;
         $residual = $site->default_residual_percent;
         return view('settings.site-settings', compact('site_name', 'spiff', 'residual'));
@@ -147,21 +148,21 @@ class SettingsController extends Controller
     {
         $site = $request->site;
         $settings = Settings::first();
-        $settings->site_id = $site;
+        //$settings->site_id = $site;
 
 
 
         //session('current_site_id') = $site;
 
-    // Specifying a default value...
-    //$value = session('key', 'default');
+        // Specifying a default value...
+        //$value = session('key', 'default');
 
-    // Store a piece of data in the session...
-    session(['current_site_id' => $site]);
+        // Store a piece of data in the session...
+        session(['current_site_id' => $site]);
 
 
 
-        $settings->save();
+        //$settings->save();
 
         return redirect('/settings');
     }

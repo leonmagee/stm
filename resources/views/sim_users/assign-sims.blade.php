@@ -26,6 +26,17 @@ Assign SIMs
                 </div>
 
                 <div class="field">
+                    <label class="label" for="carrier">Carrier</label>
+                    <div class="select">
+                        <select name="carrier" id="carrier">
+                            @foreach($carriers as $carrier)
+                            <option value="{{ $carrier->id }}">{{ $carrier->name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+
+                <div class="field">
                     <label class="label">User</label>
                     <div class="select">
                         <select name="user_id">

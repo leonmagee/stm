@@ -37,7 +37,8 @@ class AppServiceProvider extends ServiceProvider
             $view->with('current_date', $date)
                 ->with('company', $settings->company)
                 ->with('mode', $settings->mode)
-                ->with('site', $settings->site->name);
+                ->with('site', $settings->get_site_object()->name);
+                //->with('site', $settings->site->name);
         });
     }
 

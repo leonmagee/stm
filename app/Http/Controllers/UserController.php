@@ -20,7 +20,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $site_id = Settings::first()->site_id;
+        $site_id = Settings::first()->get_site_id();
         $site_name = Site::find($site_id)->name;
         $users = User::where('role', $site_id)->get();
         return view('users.index', compact('users', 'site_name'));

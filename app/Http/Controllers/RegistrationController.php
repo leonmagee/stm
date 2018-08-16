@@ -25,7 +25,8 @@ class RegistrationController extends Controller
 		$sites = Site::all();
 
 		$settings = Settings::first();
-		$current_site_id = $settings->site_id;
+		//$current_site_id = $settings->site_id;
+		$current_site_id = $settings->get_site_id();
 
 		return view('registration.create', compact('sites', 'current_site_id'));
 	}

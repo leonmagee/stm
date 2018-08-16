@@ -1,12 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
-
 use App\SimUser;
-
 use App\User;
+use App\Carrier;
 
 class SimUserController extends AuthorizedController
 {
@@ -30,8 +28,9 @@ class SimUserController extends AuthorizedController
     public function create()
     {
         $users = User::all();
+        $carriers = Carrier::all();
         //dd($users);
-        return view('sim_users.assign-sims', compact('users'));
+        return view('sim_users.assign-sims', compact('users', 'carriers'));
     }
 
     /**
@@ -44,12 +43,17 @@ class SimUserController extends AuthorizedController
     {
         $this->validate(request(), [
             'sim_number' => 'required|min:13',
+            'carrier' => 'required',
             'user_id' => 'required', // how to make this have to be a user id?
         ]);
 
-        SimUser::create(request(['sim_number', 'user_id']));
+        SimUser::create([
+            'sim_number' => $request->sim_number,
+            'user_id' => $request->user_id,
+            'carrier_id' => $request->carrier
+        ]);
 
-        return redirect('/sim_users'); //@todo create new route for sims assigned to users
+        return redirect('/sim-users'); //@todo create new route for sims assigned to users
     }
 
     /**
