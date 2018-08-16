@@ -30,23 +30,21 @@
 					</tr>
 				</thead>
 				<tbody>
+					@foreach($report_data_array as $report_data)
 					<tr>
-						<td>H2O Wireless Month</td>
-						<td>57</td>
-						<td>$1,222.00</td>
+						<td>{{ $report_data->name }}</td>
+						<td>{{ $report_data->number }}</td>
+						<td>{{ $report_data->payment }}</td>
 					</tr>
-					<tr>
-						<td>H2O Wireless Residual</td>
-						<td>522</td>
-						<td>$82.00</td>
-					</tr>
-					<tr>
-						<td>H2O Wireless Minute</td>
-						<td>9</td>
-						<td>$15.00</td>
-					</tr>
+					@endforeach
 				</tbody>
-
+				<tfoot>
+					<tr>
+						<th>Totals</th>
+						<th>189</th>
+						<th>$1,999.00</th>
+					</tr>
+				</tfoot>
 			</table>
 
 		</div>

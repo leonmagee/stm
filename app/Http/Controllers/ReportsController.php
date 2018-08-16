@@ -8,6 +8,8 @@ use App\User;
 use App\Settings;
 use App\Site;
 use App\Helpers;
+use App\ReportType;
+use App\ReportData;
 
 class ReportsController extends Controller
 {
@@ -18,6 +20,13 @@ class ReportsController extends Controller
      */
     public function index()
     {
+
+        /**
+        * @todo here's where we get the report data - so this should probably be its own class.
+        * for now, we'll just omit the per user spiff and residual settings and credit or bonus
+        * features. 
+        */
+
         $current_date = Settings::first()->current_date;
         $current_site_date = Helpers::current_date_name();
         //$sims = Sim::where('upload_date', $current_date)->latest()->get();
@@ -25,7 +34,37 @@ class ReportsController extends Controller
         $site_name = Site::find($site_id)->name;
         $users = User::where('role', $site_id)->get();
 
-        return view('reports.index', compact('users', 'site_name', 'current_site_date'));
+        // $report_data_array = array();
+
+        // $report_types = ReportType::all();
+
+        // foreach($report_types as $report_type) {
+        //     $report_data_array[] = array(
+        //         'name' => $report_type->name,
+        //         'number' => '33',
+        //         'payment' => '$1,223.00'
+        //     );
+        // }
+
+
+        $report_data = new ReportData($site_id, $current_date);
+        $report_data_array = $report_data->get_data();
+
+
+
+
+
+
+
+
+
+
+        return view('reports.index', compact(
+            'users', 
+            'site_name', 
+            'current_site_date', 
+            'report_data_array'
+        ));
     }
 
     /**
