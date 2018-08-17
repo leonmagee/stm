@@ -27,6 +27,8 @@ Single Report Type
                 <span class="value">{{ $item['value'] }}</span>
             </div>
 
+
+            @if($reportType->spiff)
             <div class="plan-values-table-wrap">
                 <div class="plan-values">
                     <table class="plan-values-table">
@@ -42,7 +44,15 @@ Single Report Type
                             <tr>
                                 <td>${{ $plan->plan_value }}</td>
                                 <td>${{ $plan->payment_amount }}</td>
-                                <td><a class="red-link"><i class="fas fa-minus-circle"></i></a></td>
+                                <form method="POST" action="/remove-report-plan-value/{{ $reportType->id }}">
+                                    {{ csrf_field() }}
+                                    <input type="hidden" name="report_plan_id" value="{{ $plan->id }}" />
+                                    <td>
+                                        <button class="minus-link" type="submit">
+                                            <i class="fas fa-minus-circle"></i>
+                                        </button>
+                                    </td>
+                                </form>
                             </tr>
                             @endforeach
                             <form method="POST" action="/add-report-plan-value/{{ $reportType->id }}">
@@ -63,6 +73,7 @@ Single Report Type
 
                 </div>
             </div>
+            @endif
         </div>
     @endforeach
     </div>

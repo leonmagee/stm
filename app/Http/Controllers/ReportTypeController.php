@@ -147,6 +147,8 @@ class ReportTypeController extends Controller
 
         foreach( $sites as $site ) {
 
+            $site_values_array = [];
+
             $value = ReportTypeSiteDefault::where(
                 [
                     'site_id' => $site->id,
@@ -163,20 +165,21 @@ class ReportTypeController extends Controller
                 } else {
                     $spiff_value = 'Default';
                 }
+
+                $plan_payments = ReportTypeSiteValue::where(
+                    'report_type_site_defaults_id', $value->id
+                )->orderBy('plan_value')->get();
+
+                $site_values_array[] = [
+                    'id' => $value->id,
+                    'value' => $spiff_value,
+                    'name' => $site->name,
+                    'plans' => $plan_payments
+                ];
+
             } else {
                 $spiff_value = 'Default';
             }
-
-            $plan_payments = ReportTypeSiteValue::where(
-                'report_type_site_defaults_id', $value->id
-            )->orderBy('plan_value')->get();
-
-            $site_values_array[] = [
-                'id' => $value->id,
-                'value' => $spiff_value,
-                'name' => $site->name,
-                'plans' => $plan_payments
-            ];
 
         }
 
@@ -184,7 +187,7 @@ class ReportTypeController extends Controller
     }
 
     public function show_residual(ReportType $reportType, $sites) {
-        $site_values_array = array();
+        $site_values_array = [];
 
         foreach( $sites as $site ) {
 
@@ -201,11 +204,19 @@ class ReportTypeController extends Controller
                 } else {
                     $residual_percent = 'Default';
                 }
+
+                $site_values_array[] = [
+                    'id' => $value->id,
+                    'value' => $residual_percent,
+                    'name' => $site->name,
+                    'plans' => []
+                ];
+
             } else {
                 $residual_percent = 'Default';
             }
 
-            $site_values_array[$site->name] = $residual_percent;
+
         }
 
         return view('report_types.show', compact('reportType', 'site_values_array'));
@@ -213,24 +224,27 @@ class ReportTypeController extends Controller
 
 
     public function add_plan_value(Request $request, ReportType $reportType) {
-        // echo $request->plan_value;
-        // echo "<br />";
-        // echo $request->payment_amount;
-        // echo "<br />";
-        // echo $request->plan_value_id;
-        // dd($reportType->id);
+        
         $current = ReportTypeSiteValue::where([
             'plan_value' => $request->plan_value,
-            'payment_amount' => $request->payment_amount,
             'report_type_site_defaults_id' => $request->plan_value_id])->get();
-        // dd($current);
-        //dd(count($current));
+        
         if ( ! count($current) ) {
             ReportTypeSiteValue::create([
                 'plan_value' => $request->plan_value,
                 'payment_amount' => $request->payment_amount,
-                'report_type_site_defaults_id' => $request->plan_value_id]);
+                'report_type_site_defaults_id' => $request->plan_value_id
+            ]);
         }
+
+        return redirect('report-types/' . $reportType->id);
+    }
+
+    public function remove_plan_value(Request $request, ReportType $reportType) {
+
+        $toDelete = ReportTypeSiteValue::find($request->report_plan_id);
+
+        $toDelete->delete();
 
         return redirect('report-types/' . $reportType->id);
     }

@@ -127,7 +127,7 @@
 			}
 		}
 	}
-	button.add-link {
+	button.add-link, button.minus-link {
 		background-color: transparent;
 		border: none;
 		box-shadow: none;
@@ -135,7 +135,14 @@
 		font-size: 1em;
 		color: $brand-primary;
 		&:hover {
+			cursor: pointer;
 			color: darken($brand-primary, 5%);
+		}
+	}
+	button.minus-link {
+		color: $color-red;
+		&:hover {
+			color: darken($color-red, 5%);
 		}
 	}
 }

@@ -34,13 +34,13 @@ body.stm-body {
 			color: darken( $brand-primary, 5%);
 		}
 
-		&.red-link {
-			color: $color-red;
+		// &.red-link {
+		// 	color: $color-red;
 
-			&:hover {
-				color: darken( $color-red, 5%);
-			}
-		}
+		// 	&:hover {
+		// 		color: darken( $color-red, 5%);
+		// 	}
+		// }
 	}
 
 	button.button {
