@@ -80,6 +80,10 @@ Route::get('edit-report-type-residual/{report_type}', 'ReportTypeController@edit
 Route::post('save-report-type/{report_type}', 'ReportTypeController@update');
 Route::post('save-report-type-residual/{report_type}', 'ReportTypeController@update_residual');
 
+
+Route::post('add-report-plan-value/{report_type}', 'ReportTypeController@add_plan_value');
+Route::post('remove-report-plan-value/{report_type}', 'ReportTypeController@remove_plan_value');
+
 /**
 * Reports
 */

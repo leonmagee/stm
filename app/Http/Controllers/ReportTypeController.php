@@ -154,15 +154,9 @@ class ReportTypeController extends Controller
                 ]
             )->first();
 
-            $plan_payments = ReportTypeSiteValue::where(
-                'report_type_site_defaults_id', $value->id
-            )->get();
-
-            //dd($plan_payments);
-
-            // $test = $value->report_type_site_values();
-            // dd($test);
-
+            /**
+            * @todo In the case of no value, this should list the site default instead?
+            */
             if ( $value ) {
                 if ( $value->spiff_value ) {
                     $spiff_value = '$' . number_format($value->spiff_value, 2);
@@ -173,15 +167,17 @@ class ReportTypeController extends Controller
                 $spiff_value = 'Default';
             }
 
+            $plan_payments = ReportTypeSiteValue::where(
+                'report_type_site_defaults_id', $value->id
+            )->orderBy('plan_value')->get();
+
             $site_values_array[] = [
+                'id' => $value->id,
                 'value' => $spiff_value,
                 'name' => $site->name,
                 'plans' => $plan_payments
             ];
 
-            // $site_values_array['value'] = $spiff_value;
-            // $site_values_array['name'] = $site->name;
-            // $site_values_array['plans'] = $plan_payments;
         }
 
         return view('report_types.show', compact('reportType', 'site_values_array'));
@@ -213,6 +209,30 @@ class ReportTypeController extends Controller
         }
 
         return view('report_types.show', compact('reportType', 'site_values_array'));
+    }
+
+
+    public function add_plan_value(Request $request, ReportType $reportType) {
+        // echo $request->plan_value;
+        // echo "<br />";
+        // echo $request->payment_amount;
+        // echo "<br />";
+        // echo $request->plan_value_id;
+        // dd($reportType->id);
+        $current = ReportTypeSiteValue::where([
+            'plan_value' => $request->plan_value,
+            'payment_amount' => $request->payment_amount,
+            'report_type_site_defaults_id' => $request->plan_value_id])->get();
+        // dd($current);
+        //dd(count($current));
+        if ( ! count($current) ) {
+            ReportTypeSiteValue::create([
+                'plan_value' => $request->plan_value,
+                'payment_amount' => $request->payment_amount,
+                'report_type_site_defaults_id' => $request->plan_value_id]);
+        }
+
+        return redirect('report-types/' . $reportType->id);
     }
 
     /**

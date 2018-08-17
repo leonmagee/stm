@@ -16633,6 +16633,22 @@ body.stm-body .middle-content-wrap .container {
   padding: 20px;
 }
 
+body.stm-body a {
+  color: #1B9AAA;
+}
+
+body.stm-body a:hover {
+  color: #188694;
+}
+
+body.stm-body a.red-link {
+  color: #EF476F;
+}
+
+body.stm-body a.red-link:hover {
+  color: #ed305d;
+}
+
 body.stm-body button.button {
   background-color: #1B9AAA;
   -webkit-transition: 0.3s;
@@ -17204,6 +17220,26 @@ ul.sidebar-menu li:hover ul.sub-menu li:hover a {
 .single-report-type-wrap .spiff-residual {
   color: #444;
   font-size: 0.9em;
+}
+
+.single-report-type-wrap .plan-values-table-wrap {
+  background-color: #FDFDFD;
+  border: 1px solid #EEE;
+  padding: 10px;
+}
+
+.single-report-type-wrap .plan-values-table-wrap table.plan-values-table tr td,
+.single-report-type-wrap .plan-values-table-wrap table.plan-values-table tr th {
+  padding: 2px;
+}
+
+.single-report-type-wrap .plan-values-table-wrap table.plan-values-table tr td {
+  font-weight: 400;
+  font-size: 0.8em;
+}
+
+.single-report-type-wrap .plan-values-table-wrap table.plan-values-table tr th {
+  padding-right: 20px;
 }
 
 .reports-wrap {

@@ -27,6 +27,22 @@ body.stm-body {
 		}
 	}	
 
+	a {
+		color: $brand-primary;
+
+		&:hover {
+			color: darken( $brand-primary, 5%);
+		}
+
+		&.red-link {
+			color: $color-red;
+
+			&:hover {
+				color: darken( $color-red, 5%);
+			}
+		}
+	}
+
 	button.button {
 		background-color: $brand-primary;
 		transition: 0.3s;

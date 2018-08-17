@@ -99,7 +99,26 @@
 		font-size: 0.9em;
 	}
 
+	.plan-values-table-wrap {
+		background-color: #FDFDFD;
+		border: 1px solid #EEE;
+		padding: 10px;
 
+		table.plan-values-table {
+			tr {
+				td, th {
+					padding: 2px;
+				}
+				td {
+					font-weight: 400;
+					font-size: 0.8em;
+				}
+				th {
+					padding-right: 20px;
+				}
+			}
+		}
+	}
 }
 
 // .button-bar {
