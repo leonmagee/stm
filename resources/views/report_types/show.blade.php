@@ -11,57 +11,61 @@ Single Report Type
     <div class="item name">{{ $reportType->carrier->name }} {{ $reportType->name}}</div>
 
     <div class="item spiff-residual">
-     @if($reportType->spiff)
-     Spiff / Activation
-     @else
-     Residual
-     @endif 
- </div>
-
- @foreach($site_values_array as $item)
- <div class="item role flex-wrap">
-    <i class="fas fa-sitemap"></i> 
-    <span class="site-name">{{ $item['name'] }}</span>
-    <span class="value">{{ $item['value'] }}</span>
-</div>
-
-<div class="plan-values-table-wrap">
-    <div class="plan-values">
-        <table class="plan-values-table">
-            <thead>
-                <tr>
-                    <th>Plan Value</th>
-                    <th>Payment Amount</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach($item['plans'] as $plan)
-                <tr>
-                    <td>${{ $plan->plan_value }}</td>
-                    <td>${{ $plan->payment_amount }}</td>
-                    <td><a class="red-link"><i class="fas fa-minus-circle"></i></a></td>
-                </tr>
-                @endforeach
-                <form method="POST" action="/add-report-plan-value/{{ $reportType->id }}">
-                    {{ csrf_field() }}
-                    <tr>
-                        <td><input type="number" name="plan_value" /></td>
-                        <td><input type="number" name="payment_amount" /></td>
-                        <input type="hidden" name="plan_value_id" value={{ $item['id'] }} />
-                        <td>
-                            <button class="add-link" type="submit">
-                                <i class="fas fa-plus-circle"></i>
-                            </button>
-                        </td>
-                    </tr>
-                </form>
-            </tbody>
-        </table>
-
+         @if($reportType->spiff)
+         Spiff / Activation
+         @else
+         Residual
+         @endif 
     </div>
-</div>
-@endforeach
+
+    <div class="site-wrap-flex-outer">
+    @foreach($site_values_array as $item)
+        <div class="site-wrap-flex">
+            <div class="item role flex-wrap">
+                <i class="fas fa-sitemap"></i> 
+                <span class="site-name">{{ $item['name'] }}</span>
+                <span class="value">{{ $item['value'] }}</span>
+            </div>
+
+            <div class="plan-values-table-wrap">
+                <div class="plan-values">
+                    <table class="plan-values-table">
+                        <thead>
+                            <tr>
+                                <th>Plan Value</th>
+                                <th>Payment Amount</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach($item['plans'] as $plan)
+                            <tr>
+                                <td>${{ $plan->plan_value }}</td>
+                                <td>${{ $plan->payment_amount }}</td>
+                                <td><a class="red-link"><i class="fas fa-minus-circle"></i></a></td>
+                            </tr>
+                            @endforeach
+                            <form method="POST" action="/add-report-plan-value/{{ $reportType->id }}">
+                                {{ csrf_field() }}
+                                <tr>
+                                    <td><input type="number" name="plan_value" /></td>
+                                    <td><input type="number" name="payment_amount" /></td>
+                                    <input type="hidden" name="plan_value_id" value={{ $item['id'] }} />
+                                    <td>
+                                        <button class="add-link" type="submit">
+                                            <i class="fas fa-plus-circle"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                            </form>
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+    @endforeach
+    </div>
 </div>
 
 <div class="button-bar">

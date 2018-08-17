@@ -17170,13 +17170,27 @@ ul.sidebar-menu li:hover ul.sub-menu li:hover a {
 .single-report-type-wrap {
   background-color: #FBFBFB;
   border: 1px solid #E5E5E5;
-  display: inline-block;
   padding: 5px 20px;
   border-radius: 10px;
   font-weight: 700;
   white-space: nowrap;
   color: #555;
-  min-width: 42%;
+  padding-bottom: 20px;
+}
+
+.single-report-type-wrap .site-wrap-flex-outer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.single-report-type-wrap .site-wrap-flex-outer .site-wrap-flex {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 1 28;
+          flex: 0 1 28;
 }
 
 .single-report-type-wrap .flex-wrap {
@@ -17240,6 +17254,21 @@ ul.sidebar-menu li:hover ul.sub-menu li:hover a {
 
 .single-report-type-wrap .plan-values-table-wrap table.plan-values-table tr th {
   padding-right: 20px;
+  font-size: 0.9em;
+}
+
+.single-report-type-wrap button.add-link {
+  background-color: transparent;
+  border: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  padding: 0;
+  font-size: 1em;
+  color: #1B9AAA;
+}
+
+.single-report-type-wrap button.add-link:hover {
+  color: #188694;
 }
 
 .reports-wrap {
