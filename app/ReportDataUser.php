@@ -37,11 +37,16 @@ class ReportDataUser {
 				$number_sims = 0;
 			}
 
+			/**
+			* @todo here I need to loop through all of the sims and get the different payment values, or else default back to the main default, but I will in the future add the per user overide to this...
+			*/
+			$payment = new ReportPaymentCalculation($report_type->id);
+
 
 			$report_data_array[] = new ReportDataItem(
 				$report_type->carrier->name . ' ' .$report_type->name, 
 				$number_sims,
-				1333
+				$payment->total_payment
 			);
 
 		}
