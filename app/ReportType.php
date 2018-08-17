@@ -33,6 +33,6 @@ class ReportType extends Model
 
     // need to test this
     public function values() {
-        return $this->hasMany(ReportTypeSiteValue::class);
+        return $this->hasMany(ReportTypeSiteDefault::class);
     }
 }

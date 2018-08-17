@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\ReportType;
 use App\Site;
 use App\Carrier;
+use App\ReportTypeSiteDefault;
 use App\ReportTypeSiteValue;
 use Illuminate\Http\Request;
 
@@ -76,7 +77,7 @@ class ReportTypeController extends Controller
 
         foreach( $sites as $site ) {
             $spiff_key = 'spiff_' . $site->id;
-            ReportTypeSiteValue::create([
+            ReportTypeSiteDefault::create([
                 'site_id' => $site->id,
                 'report_type_id' => $report_type->id,
                 'spiff_value' => $request->{$spiff_key},
@@ -103,7 +104,7 @@ class ReportTypeController extends Controller
 
         foreach( $sites as $site ) {
             $residual_key = 'residual_' . $site->id;
-            ReportTypeSiteValue::create([
+            ReportTypeSiteDefault::create([
                 'site_id' => $site->id,
                 'report_type_id' => $report_type->id,
                 'residual_percent' => $request->{$residual_key}
@@ -140,14 +141,27 @@ class ReportTypeController extends Controller
 
         $site_values_array = array();
 
+        /**
+        * @todo conver part of this to be another class... 
+        */
+
         foreach( $sites as $site ) {
 
-            $value = ReportTypeSiteValue::where(
+            $value = ReportTypeSiteDefault::where(
                 [
                     'site_id' => $site->id,
                     'report_type_id' => $reportType->id
                 ]
             )->first();
+
+            $plan_payments = ReportTypeSiteValue::where(
+                'report_type_site_defaults_id', $value->id
+            )->get();
+
+            //dd($plan_payments);
+
+            // $test = $value->report_type_site_values();
+            // dd($test);
 
             if ( $value ) {
                 if ( $value->spiff_value ) {
@@ -159,7 +173,15 @@ class ReportTypeController extends Controller
                 $spiff_value = 'Default';
             }
 
-            $site_values_array[$site->name] = $spiff_value;
+            $site_values_array[] = [
+                'value' => $spiff_value,
+                'name' => $site->name,
+                'plans' => $plan_payments
+            ];
+
+            // $site_values_array['value'] = $spiff_value;
+            // $site_values_array['name'] = $site->name;
+            // $site_values_array['plans'] = $plan_payments;
         }
 
         return view('report_types.show', compact('reportType', 'site_values_array'));
@@ -170,7 +192,7 @@ class ReportTypeController extends Controller
 
         foreach( $sites as $site ) {
 
-            $value = ReportTypeSiteValue::where(
+            $value = ReportTypeSiteDefault::where(
                 [
                     'site_id' => $site->id,
                     'report_type_id' => $reportType->id
@@ -238,7 +260,7 @@ class ReportTypeController extends Controller
 
             $spiff_key = 'spiff_' . $site->id;
 
-            $row = ReportTypeSiteValue::where([
+            $row = ReportTypeSiteDefault::where([
                 'site_id' => $site->id,
                 'report_type_id' => $reportType->id
             ])->first();
@@ -251,7 +273,7 @@ class ReportTypeController extends Controller
 
             } else {
 
-                ReportTypeSiteValue::create([
+                ReportTypeSiteDefault::create([
                     'site_id' => $site->id,
                     'report_type_id' => $reportType->id,
                     'spiff_value' => $request->{$spiff_key},
@@ -283,7 +305,7 @@ class ReportTypeController extends Controller
 
             $residual_key = 'residual_' . $site->id;
 
-            $row = ReportTypeSiteValue::where([
+            $row = ReportTypeSiteDefault::where([
                 'site_id' => $site->id,
                 'report_type_id' => $reportType->id
             ])->first();
@@ -296,7 +318,7 @@ class ReportTypeController extends Controller
 
             } else {
 
-                ReportTypeSiteValue::create([
+                ReportTypeSiteDefault::create([
                     'site_id' => $site->id,
                     'report_type_id' => $reportType->id,
                     'residual_percent' => $request->{$residual_key},

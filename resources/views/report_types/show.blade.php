@@ -18,11 +18,18 @@ Single Report Type
            @endif 
         </div>
 
-		@foreach($site_values_array as $name => $value)
+		@foreach($site_values_array as $item)
         <div class="item role flex-wrap">
             <i class="fas fa-sitemap"></i> 
-            <span class="site-name">{{ $name }}</span>
-            <span class="value">{{ $value }}</span>
+            <span class="site-name">{{ $item['name'] }}</span>
+            <span class="value">{{ $item['value'] }}</span>
+        </div>
+        <div class="plan-values">
+            @foreach($item['plans'] as $plan)
+                <div>
+                Plan Value: {{ $plan->plan_value }} | Payment Amount: {{ $plan->payment_amount }}
+                </div>
+            @endforeach
         </div>
         @endforeach
 

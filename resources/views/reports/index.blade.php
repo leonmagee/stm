@@ -7,16 +7,15 @@
 @section('content')
 
 <div class="reports-wrap">
-
-	@foreach( $users as $user )
+	@foreach( $report_data_array as $item )
 
 	<div class="report-wrap">
 
 		<div class="title-line">
 			<i class="fas fa-user-tie"></i>
-			<span class="company">{{ $user->company }}</span>
+			<span class="company">{{ $item->user_company }}</span>
 			<span>|</span>
-			<span class="name">{{ $user->name }}</span>
+			<span class="name">{{ $item->user_name }}</span>
 		</div>
 
 		<div class="report-details">
@@ -30,11 +29,11 @@
 					</tr>
 				</thead>
 				<tbody>
-					@foreach($report_data_array as $report_data)
+					@foreach($item->report_data as $report_data_single)
 					<tr>
-						<td>{{ $report_data->name }}</td>
-						<td>{{ $report_data->number }}</td>
-						<td>{{ $report_data->payment }}</td>
+						<td>{{ $report_data_single->name }}</td>
+						<td>{{ $report_data_single->number }}</td>
+						<td>{{ $report_data_single->payment }}</td>
 					</tr>
 					@endforeach
 				</tbody>

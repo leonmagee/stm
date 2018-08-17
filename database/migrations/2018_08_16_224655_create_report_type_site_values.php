@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class ReportTypeSiteValues extends Migration
+class CreateReportTypeSiteValues extends Migration
 {
     /**
      * Run the migrations.
@@ -15,10 +15,9 @@ class ReportTypeSiteValues extends Migration
     {
         Schema::create('report_type_site_values', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('site_id');
-            $table->integer('report_type_id');
-            $table->integer('spiff_value')->nullable();
-            $table->integer('residual_percent')->nullable();
+            $table->integer('plan_value');
+            $table->integer('payment_amount');
+            $table->integer('report_type_site_defaults_id')->nullable();
             $table->timestamps();
         });
     }

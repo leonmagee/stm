@@ -11,7 +11,7 @@ class Site extends Model
 
     public function get_data($report_type_id) {
 
-   		$row = ReportTypeSiteValue::where([
+   		$row = ReportTypeSiteDefault::where([
     		'site_id' => $this->id,
     		'report_type_id' => $report_type_id
     	])->first();

@@ -1,49 +1,36 @@
 <?php
 namespace App;
 
-// $report_data_array = array();
-
-// $report_types = ReportType::all();
-
-// foreach($report_types as $report_type) {
-//     $report_data_array[] = array(
-//         'name' => $report_type->name,
-//         'number' => '33',
-//         'payment' => '$1,223.00'
-//     );
-// }
-
-
-// $report_data = new ReportData($site_id, $current_date);
-// $report_data_object = $report_data->get_data();
-
+/**
+* @todo this needs to start at the user level, and loop through each use so that info can be 
+* passed in to get the specific data for each user. 
+*/
 
 class ReportData {
 
 	private $site_id;
 	private $current_date;
+	public $report_data;
 
 	public function __construct($site_id, $current_date) {
 
 		$this->site_id = $site_id;
 		$this->current_date = $current_date;
+		$this->get_data();
 	}
 
 	public function get_data() {
 
-		$report_types = ReportType::all();
+		$users = User::where('role', $this->site_id)->get();
 
-		foreach($report_types as $report_type) {
+		$report_data_array = array();
 
-            $report_data_array[] = new ReportDataItem(
-            	$report_type->carrier->name . ' ' .$report_type->name, 
-            	33, 
-            	1333
-            );
-            
-        }
+		foreach ( $users as $user ) {
 
-        return $report_data_array;
+			$report_data_array[] = new ReportDataUser($user->name, $user->company, $user->id);
+		}
+
+        $this->report_data = $report_data_array;
 	}
 }
 

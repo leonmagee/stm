@@ -26,41 +26,15 @@ class ReportsController extends Controller
         * for now, we'll just omit the per user spiff and residual settings and credit or bonus
         * features. 
         */
-
         $current_date = Settings::first()->current_date;
         $current_site_date = Helpers::current_date_name();
-        //$sims = Sim::where('upload_date', $current_date)->latest()->get();
         $site_id = Settings::first()->get_site_id();
         $site_name = Site::find($site_id)->name;
-        $users = User::where('role', $site_id)->get();
-
-        // $report_data_array = array();
-
-        // $report_types = ReportType::all();
-
-        // foreach($report_types as $report_type) {
-        //     $report_data_array[] = array(
-        //         'name' => $report_type->name,
-        //         'number' => '33',
-        //         'payment' => '$1,223.00'
-        //     );
-        // }
-
-
         $report_data = new ReportData($site_id, $current_date);
-        $report_data_array = $report_data->get_data();
-
-
-
-
-
-
-
-
-
+        $report_data_array = $report_data->report_data;
+        //dd($report_data_array);
 
         return view('reports.index', compact(
-            'users', 
             'site_name', 
             'current_site_date', 
             'report_data_array'

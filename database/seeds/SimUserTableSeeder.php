@@ -14,6 +14,6 @@ class SimUserTableSeeder extends Seeder
 
     public function run()
     {
-        factory('App\SimUser',10)->create();
+        //factory('App\SimUser',10)->create();
     }
 }
