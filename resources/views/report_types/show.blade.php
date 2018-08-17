@@ -19,6 +19,7 @@ Single Report Type
     </div>
 
     <div class="site-wrap-flex-outer">
+
     @foreach($site_values_array as $item)
         <div class="site-wrap-flex">
             <div class="item role flex-wrap">

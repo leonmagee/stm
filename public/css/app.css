@@ -17208,6 +17208,7 @@ ul.sidebar-menu li:hover ul.sub-menu li:hover a {
   font-size: 1.2em;
   margin-left: auto;
   min-width: 130px;
+  padding: 0 10px;
 }
 
 .single-report-type-wrap .item {

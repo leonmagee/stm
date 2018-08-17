@@ -145,9 +145,9 @@ class ReportTypeController extends Controller
         * @todo conver part of this to be another class... 
         */
 
+        $site_values_array = [];
+        
         foreach( $sites as $site ) {
-
-            $site_values_array = [];
 
             $value = ReportTypeSiteDefault::where(
                 [
@@ -155,6 +155,8 @@ class ReportTypeController extends Controller
                     'report_type_id' => $reportType->id
                 ]
             )->first();
+
+            //dd($value->spiff_value);
 
             /**
             * @todo In the case of no value, this should list the site default instead?
@@ -187,6 +189,7 @@ class ReportTypeController extends Controller
     }
 
     public function show_residual(ReportType $reportType, $sites) {
+        
         $site_values_array = [];
 
         foreach( $sites as $site ) {
