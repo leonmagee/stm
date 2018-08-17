@@ -189,7 +189,7 @@ class ReportTypeController extends Controller
     }
 
     public function show_residual(ReportType $reportType, $sites) {
-        
+
         $site_values_array = [];
 
         foreach( $sites as $site ) {
@@ -227,7 +227,13 @@ class ReportTypeController extends Controller
 
 
     public function add_plan_value(Request $request, ReportType $reportType) {
-        
+       
+
+        $this->validate(request(), [
+            'plan_value' => 'required',
+            'payment_amount' => 'required',
+        ]);
+
         $current = ReportTypeSiteValue::where([
             'plan_value' => $request->plan_value,
             'report_type_site_defaults_id' => $request->plan_value_id])->get();
@@ -239,8 +245,9 @@ class ReportTypeController extends Controller
                 'report_type_site_defaults_id' => $request->plan_value_id
             ]);
         }
-
         return redirect('report-types/' . $reportType->id);
+
+        
     }
 
     public function remove_plan_value(Request $request, ReportType $reportType) {

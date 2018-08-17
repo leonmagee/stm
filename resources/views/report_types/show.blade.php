@@ -6,6 +6,8 @@ Single Report Type
 
 @section('content')
 
+@include('layouts.errors')
+
 <div class="single-report-type-wrap">
 
     <div class="item name">{{ $reportType->carrier->name }} {{ $reportType->name}}</div>
