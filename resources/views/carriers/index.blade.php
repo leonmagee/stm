@@ -5,14 +5,32 @@ Carriers
 @endsection
 
 @section('content')
-    
-    @foreach( $carriers as $carrier )
 
-        <div>
-            <a href="/carriers/{{ $carrier->id }}">{{ $carrier->name }}</a>
-        </div>
+    <div class="report-types-wrap">
+	    
+	    @foreach( $carriers as $carrier )
 
-    @endforeach
+	        <a href="/carriers/{{ $carrier->id }}" class="report-type-wrap">
+
+				<div class="flex-item icon-wrap">
+					<i class="fas fa-chart-pie"></i>
+				</div>
+
+				<div class="flex-item report-type-name">
+
+	            	<div>
+	            		<span>{{ $carrier->name }}</span>
+	            	</div>
+
+				</div>
+	        
+	        </a>
+
+	    @endforeach
+
+    </div>
 
 @endsection
+
+
 

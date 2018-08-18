@@ -25,15 +25,10 @@ class ReportPaymentCalculation {
 				$defaults->id)
 			->get();
 
-		// this will possibly be overridden by user preferences... 
+			// this will possibly be overridden by user preferences... 
 			foreach($report_plan_values as $item) {
 				$values_array[$item->plan_value] = $item->payment_amount;
 			}
-
-		// dd($matching_sims);
-
-		// dd($values_array);
-
 
 			$total_charge = 0;
 
@@ -41,10 +36,8 @@ class ReportPaymentCalculation {
 
 				$new_charge = $values_array[$sim->value];
 
-				$total_charge += $total_charge + $new_charge;
+				$total_charge += $new_charge;
 			}
-
-		//dd($total_charge);
 
 			$this->total_payment = $total_charge;
 

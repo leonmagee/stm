@@ -7,13 +7,16 @@
 			@foreach( $report_types as $report_type )
 				<li><a href="/sims/archive/{{ $report_type->id }}">{{ $report_type->carrier->name }} {{ $report_type->name }}</a></li>
 			@endforeach
+
+			<li><a href="/sims/create">Add Sim</a></li>
+
+			<li><a href="/assign-sims">Assign Sims</a></li>
+			
 		</ul>
 
 	</li>
 
-	<li><a href="/sims/create">Add Sim</a></li>
 
-	<li><a href="/assign-sims">Assign Sims</a></li>
 
 	<li>
 		<a href="/report-types">Report Types</a>
