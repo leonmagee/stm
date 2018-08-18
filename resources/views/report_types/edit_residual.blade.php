@@ -43,7 +43,7 @@ Edit Report Type
 					@foreach ($sites as $site)
 
 						<div class="field">
-							<label class="label" for="residual_{{ $site->id }}">{{ $site->name }} Residual</label>
+							<label class="label" for="residual_{{ $site->id }}">{{ $site->name }} Residual Default</label>
 							<div class="control">
 								<input 
 								value="{{ $site->residual_percent($reportType->id) }}"

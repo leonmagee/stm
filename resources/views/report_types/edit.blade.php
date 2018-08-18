@@ -43,7 +43,7 @@ Edit Report Type
 					@foreach ($sites as $site)
 
 						<div class="field">
-							<label class="label" for="spiff_{{ $site->id }}">{{ $site->name }} Spiff</label>
+							<label class="label" for="spiff_{{ $site->id }}">{{ $site->name }} Spiff Default</label>
 							<div class="control">
 								<input 
 								value="{{ $site->spiff_value($reportType->id) }}"
