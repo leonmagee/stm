@@ -27,7 +27,12 @@ class ReportData {
 
 		foreach ( $users as $user ) {
 
-			$report_data_array[] = new ReportDataUser($user->name, $user->company, $user->id);
+			$report_data_array[] = new ReportDataUser(
+				$user->name, 
+				$user->company, 
+				$user->id,
+				$this->site_id
+			);
 		}
 
         $this->report_data = $report_data_array;

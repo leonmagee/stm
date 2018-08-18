@@ -8,12 +8,14 @@ class ReportDataUser {
 	public $user_company;
 	private $user_id;
 	public $report_data;
+	private $site_id;
 
-	public function __construct($user_name, $user_company, $user_id) {
+	public function __construct($user_name, $user_company, $user_id, $site_id) {
 
 		$this->user_name = $user_name;
 		$this->user_company = $user_company;
 		$this->user_id = $user_id;
+		$this->site_id = $site_id;
 		$this->get_data();
 	}
 
@@ -31,6 +33,8 @@ class ReportDataUser {
 			->where('sims.report_type_id', $report_type->id)
 			->get();
 
+			//dd($matching_sims);
+
 			if ($matching_sims) {
 				$number_sims = count($matching_sims);
 			} else {
@@ -40,7 +44,12 @@ class ReportDataUser {
 			/**
 			* @todo here I need to loop through all of the sims and get the different payment values, or else default back to the main default, but I will in the future add the per user overide to this...
 			*/
-			$payment = new ReportPaymentCalculation($report_type->id);
+			// site id
+			$payment = new ReportPaymentCalculation(
+				$report_type->id, 
+				$this->site_id, 
+				$matching_sims
+			);
 
 
 			$report_data_array[] = new ReportDataItem(
