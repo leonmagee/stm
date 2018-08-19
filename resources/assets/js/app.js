@@ -14,9 +14,17 @@ $('.notification .delete').click(function() {
 	$(this).parent().fadeOut();
 });
 
-$('.modal-open, .modal-close, .modal-close-button').click(function() {
-    $('.modal').toggleClass('is-active');
+$('.modal-open, #layout-modal .modal-close, #layout-modal .modal-close-button').click(function() {
+    $('.modal#layout-modal').toggleClass('is-active');
 });
+
+$('.menu-modal-open, #menu-modal .menu-modal-close').click(function() {
+    $('.modal#menu-modal').toggleClass('is-active');
+});
+
+$('.mobile-menu a.has-menu').click(function() {
+	$(this).parent().find('ul').toggleClass('active');
+})
 
 $('#sims_table').DataTable();
 

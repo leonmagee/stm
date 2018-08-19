@@ -5,6 +5,7 @@
 			{{-- <img src="{{ URL::asset('img/stm_logo_white.png') }}" /> --}}
 			Sim Track Manager
 		</a>
+		<a class="menu-toggle menu-modal-open"><i class="fas fa-bars"></i></a>
 	</div>
 
 	<div class="header-area">

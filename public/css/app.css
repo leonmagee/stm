@@ -16680,6 +16680,18 @@ body.stm-body .notification.is-success {
   font-weight: 700;
 }
 
+#menu-modal .modal-content {
+  margin: 0;
+  max-height: 100%;
+  height: 100%;
+  background-color: #FFF;
+}
+
+#menu-modal .modal-content .modal-box {
+  padding: 0;
+  border-radius: 0;
+}
+
 .header-wrap {
   background-color: #333;
   background-image: url(/img/connectwork.png);
@@ -16705,7 +16717,7 @@ body.stm-body .notification.is-success {
   text-align: center;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 980px) {
   .header-wrap .logo-wrap {
     text-align: left;
   }
@@ -16716,6 +16728,16 @@ body.stm-body .notification.is-success {
   font-weight: 800;
   color: #FFF;
   font-size: 25px;
+}
+
+.header-wrap .logo-wrap a.menu-toggle {
+  margin-left: 10px;
+}
+
+@media (min-width: 980px) {
+  .header-wrap .logo-wrap a.menu-toggle {
+    display: none;
+  }
 }
 
 .header-wrap .header-area {
@@ -16880,6 +16902,13 @@ ul.sidebar-menu {
   padding: 0;
   font-size: 16px;
   width: 200px;
+  display: none;
+}
+
+@media (min-width: 980px) {
+  ul.sidebar-menu {
+    display: block;
+  }
 }
 
 ul.sidebar-menu li {
@@ -16948,6 +16977,79 @@ ul.sidebar-menu li:hover ul.sub-menu li:hover {
 ul.sidebar-menu li:hover ul.sub-menu li:hover a {
   color: #FFF;
   text-shadow: 1px 1px #188694;
+}
+
+ul.mobile-menu {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  font-size: 16px;
+}
+
+ul.mobile-menu li {
+  position: relative;
+  border-bottom: 1px solid #DFDFDF;
+  font-size: 16px;
+}
+
+ul.mobile-menu li a {
+  text-decoration: none;
+  padding: 10px 20px;
+  display: block;
+  color: #222;
+  font-weight: bold;
+}
+
+ul.mobile-menu li ul.sub-menu {
+  display: none;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  background-color: #FAFAFA;
+  font-size: 16px;
+}
+
+ul.mobile-menu li ul.sub-menu li {
+  font-size: 14px;
+}
+
+ul.mobile-menu li ul.sub-menu a {
+  padding: 5px 20px;
+}
+
+ul.mobile-menu li:hover {
+  background-color: #1B9AAA;
+  border-color: #1B9AAA;
+  cursor: pointer;
+}
+
+ul.mobile-menu li:hover a {
+  color: #FFF;
+  text-shadow: 1px 1px #1a96a6;
+}
+
+ul.mobile-menu li ul.sub-menu.active {
+  display: block;
+  font-size: 14px;
+}
+
+ul.mobile-menu li ul.sub-menu.active li a {
+  color: #222;
+  text-shadow: none;
+}
+
+ul.mobile-menu li ul.sub-menu.active li:hover {
+  background-color: #1B9AAA;
+}
+
+ul.mobile-menu li ul.sub-menu.active li:hover a {
+  color: #FFF;
+  text-shadow: 1px 1px #188694;
+}
+
+.close-button-wrap {
+  border-bottom: 1px solid #DFDFDF;
+  padding: 10px 20px;
 }
 
 .footer-wrap {
@@ -17190,6 +17292,10 @@ ul.sidebar-menu li:hover ul.sub-menu li:hover a {
   padding: 25px 15px;
 }
 
+.report-types-wrap a.report-type-wrap .flex-item.icon-wrap .fa-mobile-alt {
+  font-size: 2em;
+}
+
 .report-types-wrap a.report-type-wrap .flex-item.report-type-name {
   font-size: 1.1em;
   -webkit-box-flex: 1;
@@ -17333,11 +17439,11 @@ ul.sidebar-menu li:hover ul.sub-menu li:hover a {
   font-size: 0.8em;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 980px) {
   .reports-wrap {
     display: grid;
     grid-gap: 15px;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     grid-auto-flow: row;
   }
 }
@@ -17351,7 +17457,7 @@ ul.sidebar-menu li:hover ul.sub-menu li:hover a {
   margin-bottom: 20px;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 980px) {
   .reports-wrap .report-wrap {
     margin-bottom: 0;
   }

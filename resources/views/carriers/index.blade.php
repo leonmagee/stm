@@ -13,7 +13,7 @@ Carriers
 	        <a href="/carriers/{{ $carrier->id }}" class="report-type-wrap">
 
 				<div class="flex-item icon-wrap">
-					<i class="fas fa-chart-pie"></i>
+					<i class="fas fa-mobile-alt"></i>
 				</div>
 
 				<div class="flex-item report-type-name">

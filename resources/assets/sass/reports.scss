@@ -6,10 +6,13 @@
 
 // reports archive
 .reports-wrap	{
-	@media(min-width: $screen-sm) {
+	@media(min-width: $screen-md) {
 		display: grid;
 		grid-gap: 15px;
-		grid-template-columns: 1fr 1fr 1fr;
+		//grid-template-columns: 1fr 1fr 1fr;
+		//grid-template-columns: auto auto auto;
+		 //grid-template-columns: repeat(auto-fit, auto);
+		 grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
 		grid-auto-flow: row;
 	}
 
@@ -21,7 +24,7 @@
 		color: #333;
 		padding: 20px;
 		margin-bottom: 20px;
-		@media(min-width: $screen-sm) {
+		@media(min-width: $screen-md) {
 			margin-bottom: 0;	
 		}
 		//display: flex;

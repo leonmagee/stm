@@ -22,7 +22,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
 
-        view()->composer('layouts.nav', function($view) {
+        view()->composer(['layouts.nav', 'layouts.nav-mobile'], function($view) {
 
             $view->with('report_types', ReportType::all());
         });

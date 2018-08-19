@@ -1,4 +1,5 @@
-// report types archive
+// report types archive - also used for carriers
+// @todo I need to extract the base of this to use for different locations
 .report-types-wrap	{
 	display: grid;
 	grid-gap: 10px;
@@ -22,6 +23,10 @@
 				background-color: rgba(0,0,0,0.03);
 				flex: 0 1 10%;
 				padding: 25px 15px;
+
+				.fa-mobile-alt {
+					font-size: 2em;
+				}
 			}
 
 			&.report-type-name {

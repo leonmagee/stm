@@ -14,7 +14,7 @@
 		padding: 20px 10px;
 		margin-left: 15px;
 		text-align: center;
-		@media(min-width: $screen-sm) {
+		@media(min-width: $screen-md) {
 			text-align: left;
 		}
 		// img {
@@ -27,6 +27,13 @@
 			color: #FFF;
 			font-size: 25px;
 			//text-shadow: 1px 1px darken($brand-primary, 15%);
+		}
+
+		a.menu-toggle {
+			margin-left: 10px;
+			@media(min-width: $screen-md) {
+				display: none;					
+			}			
 		}
 	}
 
