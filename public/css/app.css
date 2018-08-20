@@ -16598,10 +16598,6 @@ body.stm-body h1.title {
   padding: 25px 15px;
 }
 
-.stm-grid-wrap a.single-grid-item .flex-item.icon-wrap .fa-mobile-alt {
-  font-size: 2em;
-}
-
 .stm-grid-wrap a.single-grid-item:hover {
   background: #1B9AAA;
   border-color: #1B9AAA;
@@ -17300,10 +17296,6 @@ ul.mobile-menu li ul.sub-menu.active li:hover a {
   margin-right: 10px;
 }
 
-.report-types-wrap a.report-type-wrap .flex-item.icon-wrap .fa-mobile-alt {
-  font-size: 2em;
-}
-
 .report-types-wrap a.report-type-wrap .flex-item.report-type-name {
   font-size: 1.1em;
   -webkit-box-flex: 1;
@@ -17436,6 +17428,18 @@ ul.mobile-menu li ul.sub-menu.active li:hover a {
 
 .single-report-type-wrap button.minus-link:hover {
   color: #ed305d;
+}
+
+.carriers-wrap a.carrier-wrap .flex-item.carrier-name {
+  font-size: 1.1em;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 auto;
+          flex: 1 1 auto;
+  padding: 0 20px;
+}
+
+.carriers-wrap a.carrier-wrap .flex-item.icon-wrap .fa-mobile-alt {
+  font-size: 2em;
 }
 
 .reports-wrap {

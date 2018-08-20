@@ -1,15 +1,9 @@
+// extends grid.scss
 .report-types-wrap	{
 
 	a.report-type-wrap {
 
 		.flex-item {
-
-			&.icon-wrap {
-
-				.fa-mobile-alt { // carriers only?
-					font-size: 2em;
-				}
-			}
 
 			&.report-type-name {
 				font-size: 1.1em;	
