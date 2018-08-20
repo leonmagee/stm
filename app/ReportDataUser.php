@@ -9,6 +9,8 @@ class ReportDataUser {
 	private $user_id;
 	public $report_data;
 	private $site_id;
+	public $total_count;
+	public $total_payment;
 
 	public function __construct($user_name, $user_company, $user_id, $site_id) {
 
@@ -22,6 +24,9 @@ class ReportDataUser {
 	public function get_data() {
 
 		$report_types = ReportType::all();
+
+		$total_count = 0;
+		$total_payment = 0;
 
 		foreach($report_types as $report_type) {
 
@@ -58,7 +63,13 @@ class ReportDataUser {
 				$payment->total_payment
 			);
 
+			$total_count += $number_sims;
+			$total_payment += $payment->total_payment;
+
 		}
+
+		$this->total_count = $total_count;
+		$this->total_payment = $total_payment;
 
 		$this->report_data = $report_data_array;
 

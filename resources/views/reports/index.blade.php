@@ -40,8 +40,8 @@
 				<tfoot>
 					<tr>
 						<th>Totals</th>
-						<th>189</th>
-						<th>$1,999.00</th>
+						<th>{{ $item->total_count }}</th>
+						<th>${{ number_format($item->total_payment, 2) }}</th>
 					</tr>
 				</tfoot>
 			</table>

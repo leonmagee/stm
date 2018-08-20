@@ -33,8 +33,24 @@ class ReportPaymentCalculation {
 			$total_charge = 0;
 
 			foreach($matching_sims as $sim) {
+				// maybe here get user sims value?
 
-				$new_charge = $values_array[$sim->value];
+				if ( isset($values_array[$sim->value]) ) {
+					$new_charge = $values_array[$sim->value];
+				} else {
+					// get report type default
+					if ( $defaults->spiff_value ) {
+						$new_charge = $defaults->spiff_value;
+					} else {
+						// get site default
+						$site_default = Site::find($site_id)->first();
+						if ( $site_default->default_spiff_amount ) {
+							$new_charge = $site_default->default_spiff_amount;
+						} else {
+							$new_charge = 0;
+						}
+					}
+				}
 
 				$total_charge += $new_charge;
 			}
