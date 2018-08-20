@@ -11,9 +11,10 @@ body.stm-body {
 	@include current_font;
 
 	.main-wrap {
-		@media(min-width: $screen-sm) {
-			display: flex;
-		}
+		// @media(min-width: $screen-sm) {
+		// 	display: flex;
+		// }
+		display: flex;
 		flex: 1 1 100%;
 
 		.middle-content-wrap {

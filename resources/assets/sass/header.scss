@@ -1,8 +1,7 @@
 .header-wrap {
 
-	//@include background_gradient;
 	@include background_pattern;
-	@media(min-width: $screen-sm) {
+	@media(min-width: $screen-md) {
 		display: flex;
 		justify-content: space-between;
 	}
@@ -10,23 +9,18 @@
 	border-bottom: 1px solid #000;
 
 	.logo-wrap {
-		//padding: 21px 10px 15px;
 		padding: 20px 10px;
 		margin-left: 15px;
 		text-align: center;
 		@media(min-width: $screen-md) {
 			text-align: left;
 		}
-		// img {
-		// 	max-width: 180px;
-		// }
 
 		a {
 			text-transform: uppercase;
 			font-weight: 800;
 			color: #FFF;
 			font-size: 25px;
-			//text-shadow: 1px 1px darken($brand-primary, 15%);
 		}
 
 		a.menu-toggle {
@@ -48,7 +42,7 @@
 		.large-menu {
 			display: none;
 		}
-		@media(min-width: $screen-sm) {
+		@media(min-width: $screen-md) {
 		
 			.large-menu {
 				display: block;
@@ -70,6 +64,11 @@
 			}
 			&.logout, &.contact, &.date, &.user, &.settings {
 				border-left: 1px solid #CCC;	
+			}
+			@media(max-width: 979px) {
+				&.logout {
+					border-left: none;
+				}	
 			}
 			&.logout {
 				&:hover {

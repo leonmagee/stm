@@ -2,4 +2,9 @@
 
 	@include background_gradient;
 	border-right: 1px solid #DFDFDF;
+	display: none;
+	
+	@media(min-width: $screen-md) {
+		display: block;
+	}
 }

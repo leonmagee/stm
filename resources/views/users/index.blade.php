@@ -6,11 +6,11 @@
 
 @section('content')
 
-    <div class="users-wrap">
+    <div class="stm-grid-wrap users-wrap">
 	    
 	    @foreach( $users as $user )
 
-	        <a href="/users/{{ $user->id }}" class="user-wrap">
+	        <a href="/users/{{ $user->id }}" class="single-grid-item user-wrap">
 
 				<div class="flex-item icon-wrap">
 					<i class="fas fa-user"></i>

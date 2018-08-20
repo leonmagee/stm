@@ -16,11 +16,11 @@ Report Types
 
     @endforeach --}}
 
-    <div class="report-types-wrap">
+    <div class="stm-grid-wrap report-types-wrap">
 	    
 	    @foreach( $report_types as $report_type )
 
-	        <a href="/report-types/{{ $report_type->id }}" class="report-type-wrap">
+	        <a href="/report-types/{{ $report_type->id }}" class="single-grid-item report-type-wrap">
 
 				<div class="flex-item icon-wrap">
 					<i class="fas fa-chart-pie"></i>
