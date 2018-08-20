@@ -1,8 +1,9 @@
 .form-wrapper { // Settings | Uploads
-	padding-top: 20px;
-	display: flex;
+	@media(min-width: $screen-md) {
+		display: flex;
+		padding-top: 20px;
+	}
 	.form-wrapper-inner {
-		flex: 1;
 		margin: 10px 30px;
 		background: #FDFDFD;
 		background: #FAFAFA;
@@ -12,15 +13,19 @@
 		flex-direction: column;
 		border-radius: 10px;
 		overflow: hidden;
+		margin-bottom: 30px;
+		@media(min-width: $screen-md) {
+			flex: 1;
+		}
 
 		&.third {
-			@media(min-width: $screen-sm) {
+			@media(min-width: $screen-md) {
 				max-width: 33%;
 			}
 		}
 		
 		&.half {
-			@media(min-width: $screen-sm) {
+			@media(min-width: $screen-md) {
 				max-width: 50%;
 			}
 		}
@@ -66,23 +71,32 @@
 						resize: none;
 					}
 					&.flex-margin {
-						margin-right: 1%;
-						margin-left: 1%;
+						padding-top: 15px;
+						@media(min-width: $screen-md) {
+							padding-top: 0;
+							margin-right: 1%;
+							margin-left: 1%;
+						}
 					}
 				}
 
 				.form-wrap-flex {
-					display: flex;
-					flex-wrap: wrap;
-					//justify-content: space-between;
+					@media(min-width: $screen-md) {
+						display: flex;
+						flex-wrap: wrap;
+						
+					}
 					.field {
-						flex: 0 1 31.3%;
-						margin-right: 1%;
-						margin-left: 1%;
+						@media(min-width: $screen-md) {
+							flex: 0 1 31.3%;
+							margin-right: 1%;
+							margin-left: 1%;
 
-						&.half {
-							flex: 0 1 48%;
+							&.half {
+								flex: 0 1 48%;
 
+							}
+							
 						}
 					}
 				}
