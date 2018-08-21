@@ -10,10 +10,19 @@ require('datatables');
 
 require('chart.js');
 
+
+
+/**
+* Fade out notification on click
+*/
 $('.notification .delete').click(function() {
 	$(this).parent().fadeOut();
 });
 
+
+/**
+* Modals
+*/
 $('.modal-open, #layout-modal .modal-close, #layout-modal .modal-close-button').click(function() {
     $('.modal#layout-modal').toggleClass('is-active');
 });
@@ -22,16 +31,51 @@ $('.menu-modal-open, #menu-modal .menu-modal-close').click(function() {
     $('.modal#menu-modal').toggleClass('is-active');
 });
 
+
+/**
+* Toggle mobile menu
+*/
 $('.mobile-menu a.has-menu').click(function() {
 	$(this).parent().find('ul').toggleClass('active');
-})
+});
 
+
+/**
+* Activate data tables
+*/
 $('#sims_table').DataTable();
 
+
+/**
+* Show spinner
+*/
 $('button.call-loader').click(function() {
-	console.log('callzzz');
 	$('.stm-absolute-wrap#loader-wrap').css({'display':'flex'});
-})
+});
+
+
+/**
+* Add file name to inputs
+*/
+$('.upload-file-js').on('change', function() {
+	if ( this.files.length > 0 ) {
+		$(this).parent().find('.file-name').html(this.files[0].name);
+	}
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // var data = {
 // 	labels: ['January', 'February', 'March'],

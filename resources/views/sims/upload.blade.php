@@ -97,7 +97,7 @@ Upload Sims
       <div class="field">
       <div class="file has-name">
         <label class="file-label">
-          <input class="file-input" type="file" id="file-single" name="upload-file-single">
+          <input class="file-input upload-file-js" type="file" id="file-single" name="upload-file-single">
           <span class="file-cta">
             <span class="file-label">
               Select File
@@ -109,16 +109,6 @@ Upload Sims
         </label>
       </div>
       </div>
-
-      <script>
-        var file = document.getElementById("file-single");
-      file.onchange = function(){
-          if(file.files.length > 0)
-          {
-            document.getElementById('file-name-single').innerHTML = file.files[0].name;
-          }
-      };
-      </script>
 
       <div class="field submit">
         <div class="control">
@@ -163,7 +153,7 @@ Upload Sims
     <div class="field">
       <div class="file has-name">
         <label class="file-label">
-          <input class="file-input" type="file" id="file-single" name="upload-file">
+          <input class="file-input upload-file-js" type="file" id="file-monthly" name="upload-file">
           <span class="file-cta">
             <span class="file-label">
               Select File
