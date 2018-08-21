@@ -258,7 +258,7 @@ class SimController extends Controller
         $current_date = Settings::first()->current_date;
 
         $this->validate(request(), [
-            'sim_number' => 'required|min:13',
+            'sim_number' => 'required|min:9',
             'value' => 'required',
             'activation_date' => 'required',
             'mobile_number' => 'required',
