@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\User;
 use App\Sim;
+use App\SimResidual;
 use App\SimUser;
 use App\ReportType;
 use App\Carrier;
@@ -139,6 +140,7 @@ class SimController extends Controller
             */
 
             // the following just makes sure there are not duplicate sims in the same file
+
             if ( ! in_array($data['sim'],$sim_number_array )) {
 
                 Sim::create(array(

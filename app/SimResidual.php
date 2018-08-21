@@ -2,7 +2,7 @@
 
 namespace App;
 
-class Sim extends SimMaster
+class SimResidual extends SimMaster
 {
 
     // public function isActive() {
