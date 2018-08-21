@@ -37,8 +37,17 @@ class SimController extends Controller
     public function archive($id) {
         $current_date = Settings::first()->current_date;
         $report_type = ReportType::find($id);
+        $spiff_or_resid = $report_type->spiff;
+
+
         $name = $report_type->carrier->name . ' ' . $report_type->name;
-        $sims = Sim::where(['report_type_id' => $id, 'upload_date' => $current_date])->get();
+
+
+        if ( $spiff_or_resid ) {
+            $sims = Sim::where(['report_type_id' => $id, 'upload_date' => $current_date])->get();
+        } else {
+            $sims = SimResidual::where(['report_type_id' => $id, 'upload_date' => $current_date])->get();
+        }
 
         $current_site_date = Helpers::current_date_name();
 
@@ -81,6 +90,8 @@ class SimController extends Controller
     */
     public function upload(Request $request)
     {
+
+        $spiff_or_resid = ReportType::find($request->report_type)->spiff;
 
         $current_date = Settings::first()->current_date;
 
@@ -143,14 +154,29 @@ class SimController extends Controller
 
             if ( ! in_array($data['sim'],$sim_number_array )) {
 
-                Sim::create(array(
-                    'sim_number' => $data['sim'],
-                    'value' => $data['plan'], 
-                    'activation_date' => $data['active_dt'],
-                    'mobile_number' => $data['mdn'], 
-                    'report_type_id' => $data['report_type_id'],
-                    'upload_date' => $current_date
-                ));
+                if ( $spiff_or_resid ) {
+                    
+                    Sim::create(array(
+                        'sim_number' => $data['sim'],
+                        'value' => $data['plan'], 
+                        'activation_date' => $data['active_dt'],
+                        'mobile_number' => $data['mdn'], 
+                        'report_type_id' => $data['report_type_id'],
+                        'upload_date' => $current_date
+                    ));
+
+                } else {
+
+                    SimResidual::create(array(
+                        'sim_number' => $data['sim'],
+                        'value' => $data['plan'], 
+                        'activation_date' => $data['active_dt'],
+                        'mobile_number' => $data['mdn'], 
+                        'report_type_id' => $data['report_type_id'],
+                        'upload_date' => $current_date
+                    ));
+                }
+
             }
 
             $sim_number_array[] = $data['sim'];

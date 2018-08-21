@@ -17223,6 +17223,7 @@ ul.mobile-menu li ul.sub-menu.active li:hover a {
   font-weight: 700;
   white-space: nowrap;
   color: #555;
+  min-width: 40%;
 }
 
 @media (min-width: 980px) {

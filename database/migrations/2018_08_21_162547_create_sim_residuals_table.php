@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateSimsResidualTable extends Migration
+class CreateSimResidualsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,7 +14,7 @@ class CreateSimsResidualTable extends Migration
 
     public function up()
     {
-        Schema::create('sims_residual', function (Blueprint $table) {
+        Schema::create('sim_residuals', function (Blueprint $table) {
             $table->string('sim_number', 30);
             $table->integer('value');
             $table->string('activation_date', 15);
@@ -33,6 +33,6 @@ class CreateSimsResidualTable extends Migration
      */
     public function down()
     {
-        Scheme::dropIfExists('sims_residual');
+        Schema::dropIfExists('sim_residuals');
     }
 }
