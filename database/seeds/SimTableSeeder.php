@@ -26,48 +26,51 @@ class SimTableSeeder extends Seeder
         // 'upload_date' => '6_2018',
         
 
-        DB::table('sims')->insert([
-            [
-                'sim_number' => 1111111111111111,
-                'value' => 30,
-                'activation_date' => '12/17/2017',
-                'mobile_number' => 6196189375,
-                'report_type_id' => 1,
-                'upload_date' => '6_2018',
-            ],
-            [
-                'sim_number' => 1111111111111112,
-                'value' => 30,
-                'activation_date' => '12/14/2017',
-                'mobile_number' => 6196189375,
-                'report_type_id' => 1,
-                'upload_date' => '6_2018',
-            ],
-            [
-                'sim_number' => 1111111111111113,
-                'value' => 40,
-                'activation_date' => '12/17/2017',
-                'mobile_number' => 6196189375,
-                'report_type_id' => 1,
-                'upload_date' => '6_2018',
-            ],
-            [
-                'sim_number' => 1111111111111114,
-                'value' => 40,
-                'activation_date' => '12/14/2017',
-                'mobile_number' => 6196189375,
-                'report_type_id' => 1,
-                'upload_date' => '6_2018',
-            ],
-            [
-                'sim_number' => 1111111111111115,
-                'value' => 50,
-                'activation_date' => '12/17/2017',
-                'mobile_number' => 6196189375,
-                'report_type_id' => 1,
-                'upload_date' => '6_2018',
-            ],          
-        ]);
+        /**
+        * @todo add some residual sims here?
+        */
+        // DB::table('sims')->insert([
+        //     [
+        //         'sim_number' => 1111111111111111,
+        //         'value' => 30,
+        //         'activation_date' => '12/17/2017',
+        //         'mobile_number' => 6196189375,
+        //         'report_type_id' => 1,
+        //         'upload_date' => '6_2018',
+        //     ],
+        //     [
+        //         'sim_number' => 1111111111111112,
+        //         'value' => 30,
+        //         'activation_date' => '12/14/2017',
+        //         'mobile_number' => 6196189375,
+        //         'report_type_id' => 1,
+        //         'upload_date' => '6_2018',
+        //     ],
+        //     [
+        //         'sim_number' => 1111111111111113,
+        //         'value' => 40,
+        //         'activation_date' => '12/17/2017',
+        //         'mobile_number' => 6196189375,
+        //         'report_type_id' => 1,
+        //         'upload_date' => '6_2018',
+        //     ],
+        //     [
+        //         'sim_number' => 1111111111111114,
+        //         'value' => 40,
+        //         'activation_date' => '12/14/2017',
+        //         'mobile_number' => 6196189375,
+        //         'report_type_id' => 1,
+        //         'upload_date' => '6_2018',
+        //     ],
+        //     [
+        //         'sim_number' => 1111111111111115,
+        //         'value' => 50,
+        //         'activation_date' => '12/17/2017',
+        //         'mobile_number' => 6196189375,
+        //         'report_type_id' => 1,
+        //         'upload_date' => '6_2018',
+        //     ],          
+        // ]);
 
 
 

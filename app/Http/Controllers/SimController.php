@@ -16,6 +16,7 @@ class SimController extends Controller
 {
     public function __construct() {
         $this->middleware('auth');
+        ini_set('max_execution_time', '300');
     }
 
     /**
@@ -88,7 +89,7 @@ class SimController extends Controller
     /**
     * Process the upload for monthly sims
     */
-    public function upload(Request $request)
+    public function upload_old(Request $request)
     {
 
         $spiff_or_resid = ReportType::find($request->report_type)->spiff;
@@ -129,6 +130,7 @@ class SimController extends Controller
             * @todo how to get feedback when duplicate sims are uploaded
             * @todo I can also see how this works on the live site when I increase the instance
             * size or change config settings to allow for more time?
+            * @todo this times out with the residual file even without the extra data?
             */
 
             $data_array[] = array_combine($header, $row);
@@ -183,6 +185,80 @@ class SimController extends Controller
         }
 
         return redirect('/sims');
+    }
+
+     /**
+    * Process the upload for monthly sims
+    */
+    public function upload(Request $request)
+    {
+
+        $spiff_or_resid = ReportType::find($request->report_type)->spiff;
+
+        $current_date = Settings::first()->current_date;
+
+        $upload = $request->file('upload-file');
+        
+        $filePath = $upload->getRealPath();
+        
+        $file = fopen($filePath, 'r');
+
+        $data_array = [];
+
+        $report_type_id = $request->report_type;
+
+        $sim_number_array = array();
+
+        if ( $spiff_or_resid ) {
+
+            while( $row = fgetcsv($file)) {
+
+                if ( $row[0] == '' || ! is_numeric($row[0])) {
+                    continue;
+                }
+
+                if ( ! in_array($row[0],$sim_number_array )) {
+                        
+                    Sim::create(array(
+                        'sim_number' => $row[0],
+                        'value' => $row[1], 
+                        'activation_date' => $row[2],
+                        'mobile_number' => $row[3], 
+                        'report_type_id' => $report_type_id,
+                        'upload_date' => $current_date
+                    ));
+
+                    $sim_number_array[] = $row[0];
+                }
+            }
+
+        } else {
+
+            while( $row = fgetcsv($file)) {
+
+                if ( $row[0] == '' || ! is_numeric($row[0])) {
+                    continue;
+                }
+
+                if ( ! in_array($row[0],$sim_number_array )) {
+                    
+                    SimResidual::create(array(
+                        'sim_number' => $row[0],
+                        'value' => $row[1], 
+                        'activation_date' => $row[2],
+                        'mobile_number' => $row[3], 
+                        'report_type_id' => $report_type_id,
+                        'upload_date' => $current_date
+                    ));
+
+                    $sim_number_array[] = $row[0];
+                }
+            }
+        }
+
+        session()->flash('message', 'Sims successfully uploaded.');
+
+        return redirect('/sims/upload');
     }
 
 

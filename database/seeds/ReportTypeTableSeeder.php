@@ -47,9 +47,30 @@ class ReportTypeTableSeeder extends Seeder
                 'updated_at' => $current_time
             ],
             [
+                'name' => 'Minute 2nd Recharge',
+                'carrier_id' => 1,
+                'spiff' => 1,
+                'created_at' => $current_time,
+                'updated_at' => $current_time
+            ],
+            [
                 'name' => '3rd Recharge',
                 'carrier_id' => 1,
                 'spiff' => 1,
+                'created_at' => $current_time,
+                'updated_at' => $current_time
+            ],
+            [
+                'name' => 'Easy Go Month',
+                'carrier_id' => 1,
+                'spiff' => 1,
+                'created_at' => $current_time,
+                'updated_at' => $current_time
+            ],
+            [
+                'name' => 'Easy Go Residual',
+                'carrier_id' => 1,
+                'spiff' => 0,
                 'created_at' => $current_time,
                 'updated_at' => $current_time
             ],
@@ -67,6 +88,7 @@ class ReportTypeTableSeeder extends Seeder
                 'created_at' => $current_time,
                 'updated_at' => $current_time
             ],
+
         ]);
     }
 }
