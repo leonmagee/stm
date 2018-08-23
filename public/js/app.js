@@ -32425,7 +32425,21 @@ $('.mobile-menu a.has-menu').click(function () {
 /**
 * Activate data tables
 */
-$('#sims_table').DataTable();
+//$('#sims_table').DataTable();
+
+// $('#sims_table').DataTable({
+//     "processing": true,
+//     "serverSide": true,
+//     "ajax": "{{ route('api.sims.index') }}",
+//     "columns": [
+//         { "data": "sim_number" },
+//         { "data": "value" },
+//         { "data": "activation_date" },
+//         { "data": "mobile_number" },
+//         { "data": "report_type_id" }
+//     ]
+// });
+
 
 /**
 * Show spinner

@@ -17,16 +17,28 @@ All Sims | {{ $current_site_date }}
 		</tr>
 	</thead>
 	<tbody>
-		@foreach( $sims as $sim )
-		<tr>
-			<td><a href="/sims/{{ $sim->id }}">{{ $sim->sim_number }}</a></td>
-			<td>{{ $sim->value }}</td>
-			<td>{{ $sim->activation_date }}</td>
-			<td>{{ $sim->mobile_number }}</td>
-			<td>{{ $sim->report_type->carrier->name }} {{ $sim->report_type->name }}</td>
-		</tr>
-		@endforeach
 	</tbody>
 </table>
+
+@endsection
+
+@section('page-script')
+
+<script>
+
+$('#sims_table').DataTable({
+    "processing": true,
+    "serverSide": true,
+    "ajax": "{{ route('api.sims.index') }}",
+    "columns": [
+        { "data": "sim_number" },
+        { "data": "value" },
+        { "data": "activation_date" },
+        { "data": "mobile_number" },
+        { "data": "report_type_id" }
+    ]
+});
+
+</script>
 
 @endsection

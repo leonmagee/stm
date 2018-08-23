@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use App\SimMaster;
 use App\Sim;
 use App\SimResidual;
 use App\SimUser;
@@ -14,6 +15,9 @@ use Illuminate\Http\Request;
 
 class SimController extends Controller
 {
+    private $duplicate_sims;
+    private $number_sims_uploaded;
+
     public function __construct() {
         $this->middleware('auth');
         ini_set('max_execution_time', '300');
@@ -26,13 +30,16 @@ class SimController extends Controller
      */
     public function index(Request $request)
     {
+        /**
+        * @todo current_site_data should comd from a provider???
+        */
         $current_date = Settings::first()->current_date;
-        $sims = Sim::where('upload_date', $current_date)->latest()->get();
+        //$sims = Sim::where('upload_date', $current_date)->latest()->get();
 
         $current_site_date = Helpers::current_date_name();
 
-
-        return view('sims.index', compact('sims', 'current_site_date'));
+        //return view('sims.index', compact('sims', 'current_site_date'));
+        return view('sims.index', compact('current_site_date'));
     }
 
     public function archive($id) {
@@ -89,106 +96,283 @@ class SimController extends Controller
     /**
     * Process the upload for monthly sims
     */
-    public function upload_old(Request $request)
-    {
+    // public function upload_old(Request $request)
+    // {
 
-        $spiff_or_resid = ReportType::find($request->report_type)->spiff;
+    //     $spiff_or_resid = ReportType::find($request->report_type)->spiff;
 
-        $current_date = Settings::first()->current_date;
+    //     $current_date = Settings::first()->current_date;
 
-        $upload = $request->file('upload-file');
+    //     $upload = $request->file('upload-file');
         
-        $filePath = $upload->getRealPath();
+    //     $filePath = $upload->getRealPath();
         
-        $file = fopen($filePath, 'r');
+    //     $file = fopen($filePath, 'r');
 
-        $header = fgetcsv($file); // this gets the first row:
-        // array:4 [
-        //   0 => "sim"
-        //   1 => "plan"
-        //   2 => "active_dt"
-        //   3 => "mdn"
-        // ]
+    //     $header = fgetcsv($file); // this gets the first row:
+    //     // array:4 [
+    //     //   0 => "sim"
+    //     //   1 => "plan"
+    //     //   2 => "active_dt"
+    //     //   3 => "mdn"
+    //     // ]
 
         
-        $header[] = 'report_type_id';
+    //     $header[] = 'report_type_id';
 
-        //dd($header);
+    //     //dd($header);
 
-        $data_array = [];
+    //     $data_array = [];
 
-        while( $row = fgetcsv($file)) {
+    //     /**
+    //     * this part actually happens really fast... so I could probably do a bult insert?
+    //     * not sure what part is the really time consuming step?
+    //     */
+    //     while( $row = fgetcsv($file)) {
 
-            if ( $row[0] == '') {
-                continue;
-            }
+    //         if ( $row[0] == '') {
+    //             continue;
+    //         }
 
-            $row[] = $request->report_type; // adding report type id
+    //         /**
+    //         * @todo this will always be the same so it's not necessary here. 
+    //         */
+    //         $row[] = $request->report_type; // adding report type id
             
-            /**
-            * @todo test this with a large file by setting headers, not changing column order
-            * @todo how to get feedback when duplicate sims are uploaded
-            * @todo I can also see how this works on the live site when I increase the instance
-            * size or change config settings to allow for more time?
-            * @todo this times out with the residual file even without the extra data?
-            */
+    //         /**
+    //         * @todo test this with a large file by setting headers, not changing column order
+    //         * @todo how to get feedback when duplicate sims are uploaded
+    //         * @todo I can also see how this works on the live site when I increase the instance
+    //         * size or change config settings to allow for more time?
+    //         * @todo this times out with the residual file even without the extra data?
+    //         */
 
-            $data_array[] = array_combine($header, $row);
-        }
+    //         $data_array[] = array_combine($header, $row);
+    //     }
 
-        //dd($data_array);
+    //     //dd($data_array);
+    //     // maybe make sure this array is uniqe for sim number?
+    //     // I could remove duplicates while creating array?
 
-        $sim_number_array = array();
+    //     // DB::table('users')->insert([
+    //     //     ['email' => 'taylor@example.com', 'votes' => 0],
+    //     //     ['email' => 'dayle@example.com', 'votes' => 0]
+    //     // ]);
 
-        foreach( $data_array as $data ) {
-            /**
-            * @todo how to handle Duplicate entry 
-            * I can make an array of sim values as I loop through this and then log that some 
-            * sims were uploaded twice... but this won't check to see if those sims already 
-            * exist in the system... so I need to fall back to a secondary check. 
-            * so maybe I can use Laravels error handler here so that the form still submits
-            * but it also outpus an error that will be referenced by the form. 
-            * maybe I should disable the browser validation for forms so I will see the actual
-            * laravel notifications better..
-            */
+    //     \DB::table('sims')->insert($data_array);
 
-            // the following just makes sure there are not duplicate sims in the same file
 
-            if ( ! in_array($data['sim'],$sim_number_array )) {
 
-                if ( $spiff_or_resid ) {
+    //     $sim_number_array = array();
+
+    //     foreach( $data_array as $data ) {
+    //         /**
+    //         * @todo how to handle Duplicate entry 
+    //         * I can make an array of sim values as I loop through this and then log that some 
+    //         * sims were uploaded twice... but this won't check to see if those sims already 
+    //         * exist in the system... so I need to fall back to a secondary check. 
+    //         * so maybe I can use Laravels error handler here so that the form still submits
+    //         * but it also outpus an error that will be referenced by the form. 
+    //         * maybe I should disable the browser validation for forms so I will see the actual
+    //         * laravel notifications better..
+    //         */
+
+    //         // the following just makes sure there are not duplicate sims in the same file
+
+    //         if ( ! in_array($data['sim'],$sim_number_array )) {
+
+    //             if ( $spiff_or_resid ) {
                     
-                    Sim::create(array(
-                        'sim_number' => $data['sim'],
-                        'value' => $data['plan'], 
-                        'activation_date' => $data['active_dt'],
-                        'mobile_number' => $data['mdn'], 
-                        'report_type_id' => $data['report_type_id'],
-                        'upload_date' => $current_date
-                    ));
+    //                 Sim::create(array(
+    //                     'sim_number' => $data['sim'],
+    //                     'value' => $data['plan'], 
+    //                     'activation_date' => $data['active_dt'],
+    //                     'mobile_number' => $data['mdn'], 
+    //                     'report_type_id' => $data['report_type_id'],
+    //                     'upload_date' => $current_date
+    //                 ));
 
-                } else {
+    //             } else {
 
-                    SimResidual::create(array(
-                        'sim_number' => $data['sim'],
-                        'value' => $data['plan'], 
-                        'activation_date' => $data['active_dt'],
-                        'mobile_number' => $data['mdn'], 
-                        'report_type_id' => $data['report_type_id'],
-                        'upload_date' => $current_date
-                    ));
-                }
+    //                 SimResidual::create(array(
+    //                     'sim_number' => $data['sim'],
+    //                     'value' => $data['plan'], 
+    //                     'activation_date' => $data['active_dt'],
+    //                     'mobile_number' => $data['mdn'], 
+    //                     'report_type_id' => $data['report_type_id'],
+    //                     'upload_date' => $current_date
+    //                 ));
+    //             }
 
-            }
+    //         }
 
-            $sim_number_array[] = $data['sim'];
-        }
+    //         $sim_number_array[] = $data['sim'];
+    //     }
 
-        return redirect('/sims');
-    }
+    //     return redirect('/sims');
+    // }
 
      /**
     * Process the upload for monthly sims
+    */
+    // public function upload_newish(Request $request)
+    // {
+
+    //     $spiff_or_resid = ReportType::find($request->report_type)->spiff;
+
+    //     $current_date = Settings::first()->current_date;
+
+    //     $upload = $request->file('upload-file');
+        
+    //     $filePath = $upload->getRealPath();
+        
+    //     $file = fopen($filePath, 'r');
+
+    //     $header = fgetcsv($file); // this gets the first row: // just remove this somehow?
+    //     // array:4 [
+    //     //   0 => "sim"
+    //     //   1 => "plan"
+    //     //   2 => "active_dt"
+    //     //   3 => "mdn"
+    //     // ]
+
+        
+    //     //$header[] = 'report_type_id';
+
+    //     $header = [
+    //         'sim_number',
+    //         'value',
+    //         'activation_date',
+    //         'mobile_number',
+    //         'report_type_id',
+    //         'upload_date'
+    //     ];
+
+    //     // 'sim_number' => $data['sim'],
+    //     // 'value' => $data['plan'], 
+    //     // 'activation_date' => $data['active_dt'],
+    //     // 'mobile_number' => $data['mdn'], 
+    //     // 'report_type_id' => $data['report_type_id'],
+    //     // 'upload_date' => $current_date
+
+    //     //dd($header);
+
+    //     $data_array = [];
+
+    //     /**
+    //     * this part actually happens really fast... so I could probably do a bult insert?
+    //     * not sure what part is the really time consuming step?
+    //     */
+
+    //     $sim_number_array = [];
+
+    //     while( $row = fgetcsv($file)) {
+
+    //         if ( $row[0] == '') {
+    //             continue;
+    //         }
+
+    //         if ( ! in_array($row[0],$sim_number_array )) {
+
+    //             /**
+    //             * @todo this will always be the same so it's not necessary here. 
+    //             */
+    //             $row[] = $request->report_type; // adding report type id
+    //             $row[] = $current_date;
+                
+    //             /**
+    //             * @todo test this with a large file by setting headers, not changing column order
+    //             * @todo how to get feedback when duplicate sims are uploaded
+    //             * @todo I can also see how this works on the live site when I increase the instance
+    //             * size or change config settings to allow for more time?
+    //             * @todo this times out with the residual file even without the extra data?
+    //             */
+
+    //             $data_array[] = array_combine($header, $row);
+    //             $sim_number_array[] = $row[0];
+    //         }
+    //     }
+
+    //     //dd($data_array);
+    //     // maybe make sure this array is uniqe for sim number?
+    //     // I could remove duplicates while creating array?
+
+    //     // DB::table('users')->insert([
+    //     //     ['email' => 'taylor@example.com', 'votes' => 0],
+    //     //     ['email' => 'dayle@example.com', 'votes' => 0]
+    //     // ]);
+
+
+
+    //     if ( $spiff_or_resid ) {
+
+    //         \DB::table('sims')->insert($data_array);
+
+    //     } else {
+           
+    //         \DB::table('sim_residuals')->insert($data_array);
+
+    //     }
+
+
+
+    //     // $sim_number_array = array();
+
+    //     // foreach( $data_array as $data ) {
+    //     //     /**
+    //     //     * @todo how to handle Duplicate entry 
+    //     //     * I can make an array of sim values as I loop through this and then log that some 
+    //     //     * sims were uploaded twice... but this won't check to see if those sims already 
+    //     //     * exist in the system... so I need to fall back to a secondary check. 
+    //     //     * so maybe I can use Laravels error handler here so that the form still submits
+    //     //     * but it also outpus an error that will be referenced by the form. 
+    //     //     * maybe I should disable the browser validation for forms so I will see the actual
+    //     //     * laravel notifications better..
+    //     //     */
+
+    //     //     // the following just makes sure there are not duplicate sims in the same file
+
+    //     //     if ( ! in_array($data['sim'],$sim_number_array )) {
+
+    //     //         if ( $spiff_or_resid ) {
+                    
+    //     //             Sim::create(array(
+    //     //                 'sim_number' => $data['sim'],
+    //     //                 'value' => $data['plan'], 
+    //     //                 'activation_date' => $data['active_dt'],
+    //     //                 'mobile_number' => $data['mdn'], 
+    //     //                 'report_type_id' => $data['report_type_id'],
+    //     //                 'upload_date' => $current_date
+    //     //             ));
+
+    //     //         } else {
+
+    //     //             SimResidual::create(array(
+    //     //                 'sim_number' => $data['sim'],
+    //     //                 'value' => $data['plan'], 
+    //     //                 'activation_date' => $data['active_dt'],
+    //     //                 'mobile_number' => $data['mdn'], 
+    //     //                 'report_type_id' => $data['report_type_id'],
+    //     //                 'upload_date' => $current_date
+    //     //             ));
+    //     //         }
+
+    //     //     }
+
+    //     //     $sim_number_array[] = $data['sim'];
+    //     // }
+
+    //     return redirect('/sims');
+    // }
+
+
+     /**
+    * Process the upload for monthly sims
+    *
+    * @todo I might still want to do this based on the header column names...
+    * but I should get the timeout issue wit the residual worked out first. After that is done
+    * and I have something that acutually works I can try getting it to work with the column 
+    * titles instead of just the row position.
     */
     public function upload(Request $request)
     {
@@ -207,58 +391,71 @@ class SimController extends Controller
 
         $report_type_id = $request->report_type;
 
-        $sim_number_array = array();
-
         if ( $spiff_or_resid ) {
 
-            while( $row = fgetcsv($file)) {
-
-                if ( $row[0] == '' || ! is_numeric($row[0])) {
-                    continue;
-                }
-
-                if ( ! in_array($row[0],$sim_number_array )) {
-                        
-                    Sim::create(array(
-                        'sim_number' => $row[0],
-                        'value' => $row[1], 
-                        'activation_date' => $row[2],
-                        'mobile_number' => $row[3], 
-                        'report_type_id' => $report_type_id,
-                        'upload_date' => $current_date
-                    ));
-
-                    $sim_number_array[] = $row[0];
-                }
-            }
+            $sims = new Sim();
 
         } else {
 
-            while( $row = fgetcsv($file)) {
+            $sims = new SimResidual();
+        }
+            
+        $this->handle_upload($sims, $file, $report_type_id, $current_date);
 
-                if ( $row[0] == '' || ! is_numeric($row[0])) {
-                    continue;
+        if ($num = $this->number_sims_uploaded) {
+            session()->flash('message', $num . ' Sims successfully uploaded.');
+        }
+        
+        if (count($this->duplicate_sims)) {
+            session()->flash('duplicates', $this->duplicate_sims);
+        }
+
+        return redirect('/sims/upload');
+    }
+
+
+    public function handle_upload(SimMaster $sims, $file, $report_type_id, $current_date) {
+
+        $sim_number_array = [];
+        $duplicate_sims = [];
+        $count = 0;
+
+        while( $row = fgetcsv($file)) {
+
+            if ( $row[0] == '' || ! is_numeric($row[0])) {
+                continue;
+            }
+
+            if ( ! in_array($row[0],$sim_number_array )) {
+             
+                try {
+
+                $sims->create(array(
+                    'sim_number' => $row[0],
+                    'value' => $row[1], 
+                    'activation_date' => $row[2],
+                    'mobile_number' => $row[3], 
+                    'report_type_id' => $report_type_id,
+                    'upload_date' => $current_date
+                ));
+
+                $count++;
+
+                } catch(\Illuminate\Database\QueryException $e) {
+                    $errorCode = $e->errorInfo[1];
+                    if($errorCode == '1062'){
+                        $duplicate_sims[] = $row[0];
+                        continue;
+                    }
                 }
 
-                if ( ! in_array($row[0],$sim_number_array )) {
-                    
-                    SimResidual::create(array(
-                        'sim_number' => $row[0],
-                        'value' => $row[1], 
-                        'activation_date' => $row[2],
-                        'mobile_number' => $row[3], 
-                        'report_type_id' => $report_type_id,
-                        'upload_date' => $current_date
-                    ));
-
-                    $sim_number_array[] = $row[0];
-                }
+                $sim_number_array[] = $row[0];
             }
         }
 
-        session()->flash('message', 'Sims successfully uploaded.');
-
-        return redirect('/sims/upload');
+        //$this->sim_number_array = $sim_number_array;
+        $this->number_sims_uploaded = $count;
+        $this->duplicate_sims = $duplicate_sims;
     }
 
 

@@ -1,7 +1,7 @@
 <ul class="sidebar-menu">
 
 	<li>
-		<a href="/sims">Sims</a>
+		<a href="/sims">Monthly Sims</a>
 
 		<ul class="sub-menu">
 			@foreach( $report_types as $report_type )
@@ -12,11 +12,20 @@
 
 			<li><a href="/assign-sims">Assign Sims</a></li>
 			
+			<li><a href="/delete-sims">Delete Sims</a></li>
+			
 		</ul>
 
 	</li>
 
 
+	<li><a href="/sims/upload">Upload</a></li>
+	
+	<li><a href="/users">Users</a></li>
+	
+	<li><a href="/register">New User</a></li>
+	
+	<li><a href="/sim-users">Sim Users</a></li>
 
 	<li>
 		<a href="/report-types">Report Types</a>
@@ -34,14 +43,6 @@
 			<li><a href="/add-report-type-residual">New Residual</a></li>
 		</ul>
 	</li>
-	
-	<li><a href="/sims/upload">Upload</a></li>
-	
-	<li><a href="/users">Users</a></li>
-	
-	<li><a href="/register">New User</a></li>
-	
-	<li><a href="/sim-users">Sim Users</a></li>
 	
 	<li><a href="/carriers">Carriers</a></li>
 	

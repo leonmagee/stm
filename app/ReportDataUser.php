@@ -30,13 +30,26 @@ class ReportDataUser {
 
 		foreach($report_types as $report_type) {
 
-			$matching_sims = DB::table('sims')
-			->select('sims.value', 'sims.report_type_id')
-			//->select('sims.value', 'sims.report_type_id')
-			->join('sim_users', 'sim_users.sim_number', '=', 'sims.sim_number')
-			->where('sim_users.user_id', $this->user_id)
-			->where('sims.report_type_id', $report_type->id)
-			->get();
+			if ($report_type->spiff ){
+
+				$matching_sims = DB::table('sims')
+				->select('sims.value', 'sims.report_type_id')
+				//->select('sims.value', 'sims.report_type_id')
+				->join('sim_users', 'sim_users.sim_number', '=', 'sims.sim_number')
+				->where('sim_users.user_id', $this->user_id)
+				->where('sims.report_type_id', $report_type->id)
+				->get();
+
+			} else {
+
+				$matching_sims = DB::table('sim_residuals')
+				->select('sim_residuals.value', 'sim_residuals.report_type_id')
+				//->select('sims.value', 'sims.report_type_id')
+				->join('sim_users', 'sim_users.sim_number', '=', 'sim_residuals.sim_number')
+				->where('sim_users.user_id', $this->user_id)
+				->where('sim_residuals.report_type_id', $report_type->id)
+				->get();
+			}
 
 			//dd($matching_sims);
 
@@ -53,7 +66,8 @@ class ReportDataUser {
 			$payment = new ReportPaymentCalculation(
 				$report_type->id, 
 				$this->site_id, 
-				$matching_sims
+				$matching_sims,
+				$report_type->spiff
 			);
 
 
