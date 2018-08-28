@@ -14,7 +14,9 @@ class APIController extends Controller
     public function getSims()
     {
     	/**
-    	* @todo Not sure if this works 100% correct with pagination... 
+        * @todo very slow change this so the query uses the same type as sim_user.
+        * this works for now but it will prob break when there are a large number of residual sims.. 
+        * also, this isn't selecting per date... 
     	*/
     	$query_array = [];
 
@@ -56,7 +58,8 @@ class APIController extends Controller
         	];
         }
 
-        return datatables($query_array)->toJson();
+        //return datatables($query_array)->toJson();
+        return datatables($query_array)->make(true);
     }
 
     public function getSimsArchive($id)
@@ -85,7 +88,8 @@ class APIController extends Controller
 
         }
 
-        return datatables($query)->toJson();
+        //return datatables($query)->toJson();
+        return datatables($query)->make(true);
     }
 
     public function archiveQuery(SimMaster $sims, $id) {
@@ -116,9 +120,23 @@ class APIController extends Controller
         // }
 
 
+        /**
+        * Maybe try doing this with a select raw?
+        * I could also try to include the user name with company
+        * it creates a problem now because 'name' is the same key for both users and carriers
+        */
+        return datatables(SimUser::query()
+            ->join('carriers', 'carriers.id', '=', 'sim_users.carrier_id')
+            ->join('users', 'users.id', '=', 'sim_users.user_id')
+            ->select(
+                'sim_users.sim_number', 
+                'carriers.name',
+                'users.company'
+                //'sim_users.user_id',
+                //'sim_users.carrier_id'
+            ))->make(true);
 
-        return datatables(SimUser::query())->make(true);
-
+//->join('contacts', 'users.id', '=', 'contacts.user_id')
 
 
         //return datatables($query_array)->toJson();

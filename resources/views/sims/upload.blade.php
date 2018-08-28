@@ -12,7 +12,7 @@ Upload Sims
 
     <h3>Individual Sims Paste</h3>
 
-    <form action="/upload-single" method="POST" enctype="multipart/form-data">
+    <form action="/upload-single-paste" method="POST" enctype="multipart/form-data">
 
      <div class="form-wrap">
 

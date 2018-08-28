@@ -38,8 +38,8 @@ $('#sims_table').DataTable({ // .DataTable vs .dataTable???
     "ajax": "{{ route('api.sim_users.index') }}",
     "columns": [
         { "data": "sim_number" },
-        { "data": "carrier_id" },
-        { "data": "user_id" },
+        { "data": "name" },
+        { "data": "company" },
     ]
 });
 

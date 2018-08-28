@@ -43,6 +43,7 @@ Route::get('sims/create', 'SimController@addSim');
 Route::get('sims/archive/{id}', 'SimController@archive');
 Route::post('upload', 'SimController@upload');
 Route::post('upload-single', 'SimController@upload_single');
+Route::post('upload-single-paste', 'SimController@upload_single_paste');
 Route::get('sims/{sim_number}', 'SimController@show');
 Route::post('sims', 'SimController@store');
 Route::get('delete-sims', 'SimController@delete');
