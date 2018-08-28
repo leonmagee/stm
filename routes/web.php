@@ -45,7 +45,10 @@ Route::post('upload', 'SimController@upload');
 Route::post('upload-single', 'SimController@upload_single');
 Route::get('sims/{sim_number}', 'SimController@show');
 Route::post('sims', 'SimController@store');
-// sims api
+Route::get('delete-sims', 'SimController@delete');
+
+
+// API Routes
 Route::get('/api/v1/sims', 'APIController@getSims')->name('api.sims.index');
 Route::get('/api/v1/sims_archive/{id}', 'APIController@getSimsArchive')
 ->name('api.sims.archive');

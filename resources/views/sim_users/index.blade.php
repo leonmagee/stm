@@ -32,14 +32,14 @@ Sims For Logged In User or all for admin
 
 <script>
 
-$('#sims_table').DataTable({
+$('#sims_table').DataTable({ // .DataTable vs .dataTable???
     "processing": true,
     "serverSide": true,
     "ajax": "{{ route('api.sim_users.index') }}",
     "columns": [
         { "data": "sim_number" },
-        { "data": "carrier" },
-        { "data": "user" },
+        { "data": "carrier_id" },
+        { "data": "user_id" },
     ]
 });
 

@@ -15,9 +15,10 @@ class SimUserController extends AuthorizedController
      */
     public function index()
     {
-        $sims_user = SimUser::where('user_id', auth()->id())->get();
-        $sims = SimUser::latest()->get();
-        return view('sim_users.index', compact('sims', 'sims_user'));
+        // $sims_user = SimUser::where('user_id', auth()->id())->get();
+        // $sims = SimUser::latest()->get();
+        //return view('sim_users.index', compact('sims', 'sims_user'));
+        return view('sim_users.index');
     }
 
     /**

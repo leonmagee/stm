@@ -15,13 +15,14 @@ use Faker\Generator as Faker;
 
 $factory->define(App\SimUser::class, function (Faker $faker) {
     return [
-        'sim_number' => rand(98729237491111111, 98729237499999999),
+        'sim_number' => rand(18729237491111111, 98729237499999999),
         'carrier_id' => rand(1,2),
-        'user_id' => function() {
-        	/**
-            * This creates a user
-        	*/
-        	return factory(App\User::class)->create()->id;
-        }
+        'user_id' => 3
+        // 'user_id' => function() {
+        // 	*
+        //     * This creates a user
+        	
+        // 	return factory(App\User::class)->create()->id;
+        // }
     ];
 });

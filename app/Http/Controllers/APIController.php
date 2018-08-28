@@ -100,22 +100,37 @@ class APIController extends Controller
 
     public function getSimUsers()
     {
-        $query_array = [];
+        // $query_array = [];
 
-        $sim_user_query = SimUser::all();
+        // $sim_user_query = SimUser::all();
 
-        $query_array = [];
+        // $query_array = [];
 
-        foreach( $sim_user_query as $item ) {
-            
-            $query_array[] = [
-                'sim_number' => $item->sim_number,
-                'carrier' => $item->carrier->name,
-                'user' => $item->user->name
-            ];
-        }
+        // foreach( $sim_user_query as $item ) {
 
-        return datatables($query_array)->toJson();
+        //     $query_array[] = [
+        //         'sim_number' => $item->sim_number,
+        //         'carrier_id' => $item->carrier->name,
+        //         'user_id' => $item->user->name
+        //     ];
+        // }
+
+
+
+        return datatables(SimUser::query())->make(true);
+
+
+
+        //return datatables($query_array)->toJson();
+        //return datatables(SimUser::all())->toJson();
+        //return datatables()->of(SimUser::all())->toJson();
+        
+        //return datatables($query_array->make(true);
+
+        //return Datatables::of(SimUser::all())->make(true);
+        //return Datatables::eloquent(SimUser::all())->make(true);
+
+        //return Datatables::of(SimUser::all())->make(true);
     }
 }
 

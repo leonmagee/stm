@@ -671,6 +671,14 @@ class SimController extends Controller
     }
 
     /**
+    * Show the form for deleting sims
+    */
+    public function delete()
+    {
+        return view('sims.delete');
+    }
+
+    /**
      * Remove the specified resource from storage.
      *
      * @param  \App\Sim  $sim
