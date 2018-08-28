@@ -176,14 +176,6 @@ class SimController extends Controller
     */
     public function upload_single(Request $request)
     {
-
-        $duplicate_sims = [];
-        $count = 0;
-
-        $user_id = $request->user_id;
-        
-        $carrier_id = $request->carrier_id;
-
         $upload = $request->file('upload-file-single');
         
         $filePath = $upload->getRealPath();
@@ -201,42 +193,7 @@ class SimController extends Controller
             $data_array[] = $row[0];
         }
 
-        array_unique($data_array);
-
-        foreach( $data_array as $data ) {
-
-            try {
-
-                SimUser::create(array(
-                    'sim_number' => $data,
-                    'user_id' => $user_id,
-                    'carrier_id' => $carrier_id
-                ));
-
-                $count++;
-
-            } catch(\Illuminate\Database\QueryException $e) {
-                $errorCode = $e->errorInfo[1];
-                if($errorCode == '1062'){
-                    $duplicate_sims[] = $data;
-                    continue;
-                }
-            }
-
-        }
-
-        $this->number_sims_uploaded = $count;
-        $this->duplicate_sims = $duplicate_sims;
-
-        if ($num = $this->number_sims_uploaded) {
-            session()->flash('message', $num . ' Sims successfully uploaded.');
-        }
-        
-        if (count($this->duplicate_sims)) {
-            session()->flash('duplicates', $this->duplicate_sims);
-        }
-
-        return redirect('/sim-users');
+        return $this->complete_single_upload($data_array, $request);
     }
 
 
@@ -247,29 +204,40 @@ class SimController extends Controller
     public function upload_single_paste(Request $request)
     {
 
+        /** get data **/
+
+        $data = $request->sims_paste;
+
+        $exploded = explode("\r\n", $data);
+
+        $data_array = [];
+
+        foreach( $exploded as $item ) {
+
+            // strip out anything obviously not a sim number?
+            // create a function to use anywhere to test_sim()
+            // and then apply that to make sure it's not 'sim' or 
+            // something else that is being uploaded..
+            // also, I need to test this with different browsers
+            // I can always look at the older code I used.. 
+
+            $data_array[] = $item;
+        }
+
+        return $this->complete_single_upload($data_array, $request);
+    }
+
+
+    public function complete_single_upload($data_array, Request $request) {
+
+        array_unique($data_array);
+
         $duplicate_sims = [];
         $count = 0;
 
         $user_id = $request->user_id;
         
         $carrier_id = $request->carrier_id;
-
-        $data = $request->sims_paste;
-        dd($data);
-
-
-        $data_array = [];
-
-        // while( $row = fgetcsv($file)) {
-
-        //     if ( ! is_numeric($row[0]) ) {
-        //         continue;
-        //     }
-
-        //     $data_array[] = $row[0];
-        // }
-
-        array_unique($data_array);
 
         foreach( $data_array as $data ) {
 
@@ -305,6 +273,7 @@ class SimController extends Controller
         }
 
         return redirect('/sim-users');
+
     }
 
 
