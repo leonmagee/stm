@@ -32424,6 +32424,7 @@ $('.mobile-menu a.has-menu').click(function () {
 
 /**
 * Activate data tables
+* Now handled by ajax
 */
 //$('#sims_table').DataTable();
 

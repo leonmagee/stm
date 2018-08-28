@@ -32,6 +32,7 @@ class SimController extends Controller
     {
         /**
         * @todo current_site_data should comd from a provider???
+        * @todo change archive also
         */
         $current_date = Settings::first()->current_date;
         //$sims = Sim::where('upload_date', $current_date)->latest()->get();
@@ -42,24 +43,95 @@ class SimController extends Controller
         return view('sims.index', compact('current_site_date'));
     }
 
+    // public function archiveQuery(SimMaster $sims, $id) {
+
+    //     return $sims->where('report_type_id', $id)->select(
+    //         'sim_number', 
+    //         'value', 
+    //         'activation_date', 
+    //         'mobile_number'
+    //     );
+    // }
+
     public function archive($id) {
+
+        // $report_type = ReportType::find($id);
+        
+        // if ($report_type->spiff) {
+
+        //     $query = $this->archiveQuery(new Sim(), $id);
+
+        // } else {
+
+        //     $query = $this->archiveQuery(new SimResidual(), $id);
+
+        // }
+
+        // dd($query);
+
+        // return datatables($query)->toJson();
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        // $query = Sim::select(
+        //     'sim_number', 
+        //     'value', 
+        //     'activation_date', 
+        //     'mobile_number', 
+        //     'report_type_id'
+        // )->get()->toArray();
+
+        // $query2 = SimResidual::select(
+        //     'sim_number', 
+        //     'value', 
+        //     'activation_date', 
+        //     'mobile_number', 
+        //     'report_type_id'
+        // )->get()->toArray();
+
+        // $query_combined = array_merge($query, $query2);
+
+        // dd($query_combined);
+
+
+
+
+
+
+
+
         $current_date = Settings::first()->current_date;
+
         $report_type = ReportType::find($id);
         $spiff_or_resid = $report_type->spiff;
-
 
         $name = $report_type->carrier->name . ' ' . $report_type->name;
 
 
-        if ( $spiff_or_resid ) {
-            $sims = Sim::where(['report_type_id' => $id, 'upload_date' => $current_date])->get();
-        } else {
-            $sims = SimResidual::where(['report_type_id' => $id, 'upload_date' => $current_date])->get();
-        }
+        // if ( $spiff_or_resid ) {
+        //     $sims = Sim::where(['report_type_id' => $id, 'upload_date' => $current_date])->get();
+        // } else {
+        //     $sims = SimResidual::where(['report_type_id' => $id, 'upload_date' => $current_date])->get();
+        // }
 
         $current_site_date = Helpers::current_date_name();
 
-        return view('sims.archive', compact('sims', 'name', 'current_site_date'));
+        return view('sims.archive', compact('id', 'name', 'current_site_date'));
     }
 
     /**

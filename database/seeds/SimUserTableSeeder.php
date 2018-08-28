@@ -41,6 +41,6 @@ class SimUserTableSeeder extends Seeder
     	// 	],          
     	// ]);
 
-        //factory('App\SimUser',10)->create();
+        factory('App\SimUser',100)->create();
     }
 }

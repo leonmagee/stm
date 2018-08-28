@@ -35,7 +35,7 @@ $('#sims_table').DataTable({
         { "data": "value" },
         { "data": "activation_date" },
         { "data": "mobile_number" },
-        { "data": "report_type_id" }
+        { "data": "report_type" }
     ]
 });
 

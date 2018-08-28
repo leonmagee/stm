@@ -16,15 +16,34 @@ Sims For Logged In User or all for admin
         </tr>
     </thead>
     <tbody>
-        @foreach( $sims as $sim )
+{{--         @foreach( $sims as $sim )
         <tr>
             <td><a href="/sims/{{ $sim->sim_number }}">{{ $sim->sim_number }}</a></td>
             <td>{{ $sim->carrier->name }}</td>
             <td><a href="/users/{{ $sim->user->id }}">{{ $sim->user->name }}</a></td>
         </tr>
-        @endforeach
+        @endforeach --}}
     </tbody>
 </table>
+
+@endsection
+
+@section('page-script')
+
+<script>
+
+$('#sims_table').DataTable({
+    "processing": true,
+    "serverSide": true,
+    "ajax": "{{ route('api.sim_users.index') }}",
+    "columns": [
+        { "data": "sim_number" },
+        { "data": "carrier" },
+        { "data": "user" },
+    ]
+});
+
+</script>
 
 @endsection
 

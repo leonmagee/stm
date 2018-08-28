@@ -47,6 +47,9 @@ Route::get('sims/{sim_number}', 'SimController@show');
 Route::post('sims', 'SimController@store');
 // sims api
 Route::get('/api/v1/sims', 'APIController@getSims')->name('api.sims.index');
+Route::get('/api/v1/sims_archive/{id}', 'APIController@getSimsArchive')
+->name('api.sims.archive');
+Route::get('/api/v1/sim_users', 'APIController@getSimUsers')->name('api.sim_users.index');
 
 /**
 * Settings Routes

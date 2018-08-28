@@ -14,21 +14,31 @@
 				<th>Value</th>
 				<th>Activation Date</th>
 				<th>Mobile Number</th>
-				<th>Report Type</th>
 			</tr>
 		</thead>
 
 		<tbody>
-			@foreach( $sims as $sim )
-			<tr>
-				<td><a href="/sims/{{ $sim->id }}">{{ $sim->sim_number }}</a></td>
-				<td>{{ $sim->value }}</td>
-				<td>{{ $sim->activation_date }}</td>
-				<td>{{ $sim->mobile_number }}</td>
-				<td>{{ $sim->report_type->carrier->name }} {{ $sim->report_type->name }}</td>
-			</tr>
-			@endforeach
 		</tbody>
 	</table>
+
+@endsection
+
+@section('page-script')
+
+<script>
+
+$('#sims_table').DataTable({
+    "processing": true,
+    "serverSide": true,
+    "ajax": "{!! route('api.sims.archive', ['id' => $id]) !!}",
+    "columns": [
+        { "data": "sim_number" },
+        { "data": "value" },
+        { "data": "activation_date" },
+        { "data": "mobile_number" },
+    ]
+});
+
+</script>
 
 @endsection

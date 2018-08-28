@@ -1,9 +1,12 @@
 <ul class="sidebar-menu">
 
 	<li>
-		<a href="/sims">Monthly Sims</a>
+		<a>Monthly Sims</a>
 
 		<ul class="sub-menu">
+			
+			<li><a href="/sims">All Sims</a></li>
+
 			@foreach( $report_types as $report_type )
 				<li><a href="/sims/archive/{{ $report_type->id }}">{{ $report_type->carrier->name }} {{ $report_type->name }}</a></li>
 			@endforeach
