@@ -133,13 +133,13 @@ class SimController extends Controller
 
         while( $row = fgetcsv($file)) {
 
-            if ( $row[0] == '' || ! is_numeric($row[0])) {
-                continue;
-            }
+            // if ( $row[0] == '' || ! is_numeric($row[0])) {
+            //     continue;
+            // }
 
-            if ( ! in_array($row[0],$sim_number_array )) {
+            if ( ( ! in_array($row[0],$sim_number_array ) ) && (Helpers::verify_sim($row[0]))) {
              
-                try {
+                try { // use verify_sim here as well? test with bad data... 
 
                 $sims->create(array(
                     'sim_number' => $row[0],
@@ -241,22 +241,26 @@ class SimController extends Controller
 
         foreach( $data_array as $data ) {
 
-            try {
+            if ( Helpers::verify_sim($data) ) {
 
-                SimUser::create(array(
-                    'sim_number' => $data,
-                    'user_id' => $user_id,
-                    'carrier_id' => $carrier_id
-                ));
+                try {
 
-                $count++;
+                    SimUser::create(array(
+                        'sim_number' => $data,
+                        'user_id' => $user_id,
+                        'carrier_id' => $carrier_id
+                    ));
 
-            } catch(\Illuminate\Database\QueryException $e) {
-                $errorCode = $e->errorInfo[1];
-                if($errorCode == '1062'){
-                    $duplicate_sims[] = $data;
-                    continue;
+                    $count++;
+
+                } catch(\Illuminate\Database\QueryException $e) {
+                    $errorCode = $e->errorInfo[1];
+                    if($errorCode == '1062'){
+                        $duplicate_sims[] = $data;
+                        continue;
+                    }
                 }
+
             }
 
         }

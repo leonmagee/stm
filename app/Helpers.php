@@ -21,4 +21,12 @@ class Helpers {
 		return Self::get_date_name($settings->current_date);
 	}
 
+	public static function verify_sim($sim) {
+		if (strlen($sim) > 7) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
 }
