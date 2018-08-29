@@ -109,7 +109,13 @@
 .button-bar {
 	padding: 20px 0;
 	a {
-		margin-right: 10px;
+		margin: 10px auto;
+		display: block;
+
+		@media(min-width: $screen-sm) {
+			margin: 0 10px 0 0;
+			display: inline-block;
+		}
 	}
 }
 

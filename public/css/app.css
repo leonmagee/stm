@@ -17301,7 +17301,15 @@ ul.mobile-menu li ul.sub-menu.active li:hover a {
 }
 
 .button-bar a {
-  margin-right: 10px;
+  margin: 10px auto;
+  display: block;
+}
+
+@media (min-width: 768px) {
+  .button-bar a {
+    margin: 0 10px 0 0;
+    display: inline-block;
+  }
 }
 
 .report-types-wrap a.report-type-wrap .flex-item.report-type-name {
@@ -17524,12 +17532,30 @@ ul.mobile-menu li ul.sub-menu.active li:hover a {
   margin: 0 10px;
 }
 
-.sims-list ul li span.primary {
-  font-weight: 800;
-  color: #1B9AAA;
+.sims-list ul li sep {
+  color: #BBB;
+  font-weight: 400;
 }
 
-.sims-list ul li sep {
+.sim-wrap {
+  background-color: #FFF;
+  border: 1px solid #E9E9E9;
+  padding: 15px;
+  font-weight: 700;
+  color: #777;
+  font-size: 1.1em;
+}
+
+.sim-wrap .details {
+  padding: 15px 0;
+}
+
+.sim-wrap h3 {
+  color: #1B9AAA;
+  font-weight: 700;
+}
+
+.sim-wrap sep {
   color: #BBB;
   font-weight: 400;
 }

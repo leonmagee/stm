@@ -1,11 +1,23 @@
 @extends('layouts.layout')
 
 @section('title')
-One Sim User
+Sim Number
 @endsection
 
 @section('content')
 
-    {{ $sim->sim_number }} - {{ $sim->user->name }}
+	<div class="sim-wrap">
+		
+    	<h3>{{ $sim->sim_number }}</h3>
+
+    	<div class="details">
+    		{{ $sim->user->name }} <sep>/</sep> {{ $sim->carrier->name }}
+    	</div>
+
+    	<a class="button is-danger">Delete SIM</a>
+
+
+	</div>
+
 
 @endsection

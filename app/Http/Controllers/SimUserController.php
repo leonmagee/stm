@@ -148,6 +148,7 @@ class SimUserController extends AuthorizedController
            $sim_result = SimUser::where('id', $sim)->first();
 
            $list_array[] = [
+                'id' => $sim,
                 'sim_number' => $sim_result->sim_number,
                 'carrier' => $sim_result->carrier->name,
                 'user' => $sim_result->user->company . ' ' . $sim_result->user->name

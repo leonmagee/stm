@@ -13,7 +13,7 @@ Sim Results
 
     <li>
         <div class="section-1">
-            <span class="primary">{{ $item['sim_number'] }}</span>
+            <span class="primary"><a href="/user-sims/{{ $item['id'] }}">{{ $item['sim_number'] }}</a></span>
             <sep>/</sep>
             <span>{{ $item['carrier'] }}</span>
             <sep>/</sep>
