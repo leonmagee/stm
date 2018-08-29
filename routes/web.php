@@ -46,8 +46,6 @@ Route::post('upload-single', 'SimController@upload_single');
 Route::post('upload-single-paste', 'SimController@upload_single_paste');
 Route::get('sims/{sim_number}', 'SimController@show');
 Route::post('sims', 'SimController@store');
-Route::get('delete-sims', 'SimController@delete');
-
 
 // API Routes
 Route::get('/api/v1/sims', 'APIController@getSims')->name('api.sims.index');
@@ -69,10 +67,12 @@ Route::post('default_residual_percent', 'SettingsController@update_residual');
 /**
 * SIM Users Routes
 */
-Route::get('sim-users', 'SimUserController@index');
-Route::get('sim-users/{sim}', 'SimUserController@show');
+Route::get('user-sims', 'SimUserController@index');
+Route::get('user-sims/{sim}', 'SimUserController@show');
 Route::get('assign-sims', 'SimUserController@create');
 Route::post('assign-sims', 'SimUserController@store');
+Route::get('delete-sims', 'SimUserController@delete');
+Route::post('delete_sims', 'SimUserController@destroy');
 
 /**
 * Report Types Routes

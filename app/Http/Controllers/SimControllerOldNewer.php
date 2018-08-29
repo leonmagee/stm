@@ -13,7 +13,7 @@ use App\Settings;
 use App\Helpers;
 use Illuminate\Http\Request;
 
-class SimController extends Controller
+class SimControllerOlder extends Controller
 {
     private $duplicate_sims;
     private $number_sims_uploaded;

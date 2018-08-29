@@ -13,10 +13,6 @@
 
 			<li><a href="/sims/create">Add Sim</a></li>
 
-			<li><a href="/assign-sims">Assign Sims</a></li>
-			
-			<li><a href="/delete-sims">Delete Sims</a></li>
-			
 		</ul>
 
 	</li>
@@ -28,7 +24,20 @@
 	
 	<li><a href="/register">New User</a></li>
 	
-	<li><a href="/sim-users">Sim Users</a></li>
+	<li>
+		<a>User Sims</a>
+
+		<ul class="sub-menu">
+
+			<li><a href="/user-sims">All Sims</a></li>
+
+			<li><a href="/assign-sims">Assign Sims</a></li>
+			
+			<li><a href="/delete-sims">Delete Sims</a></li>
+
+		</ul>
+
+	</li>
 
 	<li>
 		<a href="/report-types">Report Types</a>

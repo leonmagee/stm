@@ -6,15 +6,13 @@ Delete Sims
 
 @section('content')
 
-
-
 <div class="form-wrapper">
 
   <div class="form-wrapper-inner">
 
     <h3>Enter Sims to Delete</h3>
 
-    <form action="/upload-single" method="POST" enctype="multipart/form-data">
+    <form action="/delete_sims" method="POST" enctype="multipart/form-data">
 
      <div class="form-wrap">
 

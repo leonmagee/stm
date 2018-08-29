@@ -272,10 +272,9 @@ class SimController extends Controller
             session()->flash('duplicates', $this->duplicate_sims);
         }
 
-        return redirect('/sim-users');
+        return redirect('/user-sims');
 
     }
-
 
     /**
      * Store a newly created resource in storage.
@@ -373,14 +372,6 @@ class SimController extends Controller
     public function update(Request $request, Sim $sim)
     {
         //
-    }
-
-    /**
-    * Show the form for deleting sims
-    */
-    public function delete()
-    {
-        return view('sims.delete');
     }
 
     /**

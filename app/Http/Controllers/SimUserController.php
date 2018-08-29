@@ -92,13 +92,39 @@ class SimUserController extends AuthorizedController
     }
 
     /**
+    * Show the form for deleting sims
+    */
+    public function delete()
+    {
+        return view('sim_users.delete');
+    }
+
+    /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        //
+        $data = $request->sims_paste;
+
+        $exploded = explode("\r\n", $data);
+
+        $data_array = [];
+
+        foreach( $exploded as $item ) {
+
+            SimUser::where('sim_number', $item)->delete();
+
+            $data_array[] = $item;
+        }
+
+        if (count($data_array)) {
+            session()->flash('removed', $data_array);
+        }
+
+        return redirect('/user-sims');
     }
+
 }
