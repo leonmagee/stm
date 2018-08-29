@@ -100,6 +100,64 @@ class SimUserController extends AuthorizedController
     }
 
     /**
+    * Show the form for finding sims
+    */
+    public function find_sims(Request $request)
+    {
+
+        // query for sims that have been listed - cross refernce with monthly sims?
+        // so query 3 tables?
+        // give option to delete?
+
+        $data = $request->sims_paste;
+
+        $exploded = explode("\r\n", $data);
+
+        $data_array = [];
+
+        foreach( $exploded as $item ) {
+
+            $sim = SimUser::where('sim_number', $item)->first();
+
+            if ( $sim ) {
+                $data_array[] = $sim->id;
+            } else {
+                // maybe look in monthly sims?
+            }
+
+        }
+
+        $sim_query = implode('-', $data_array);
+
+        // if (count($data_array)) {
+        //     session()->flash('found', $data_array);
+        // }
+
+        return redirect('/list-sims/' . $sim_query);
+    }
+
+    public function show_list($sims)
+    {
+
+        $sims_array = explode('-', $sims);
+
+        $list_array = [];
+
+        foreach( $sims_array as $sim ) {
+
+           $sim_result = SimUser::where('id', $sim)->first();
+
+           $list_array[] = [
+                'sim_number' => $sim_result->sim_number,
+                'carrier' => $sim_result->carrier->name,
+                'user' => $sim_result->user->company . ' ' . $sim_result->user->name
+           ];
+        }
+
+        return view('sim_users.list', compact('list_array'));
+    }
+
+    /**
     * Show the form for deleting sims
     */
     public function delete()

@@ -1,0 +1,34 @@
+.sims-list {
+
+	ul {
+		li {
+			background-color: #FFF;
+			border: 1px solid #E9E9E9;
+			margin: 15px;
+			padding: 15px;
+			display: flex;
+			justify-content: space-between;
+			font-weight: 700;
+			color: #777;
+			font-size: 1.1em;
+
+			span {
+				margin: 0 10px;
+
+				&.primary {
+					font-weight: 800;
+					color: $brand-primary;
+				}
+			}
+
+			sep {
+				color: #BBB;
+				font-weight: 400;
+			}
+
+			.section-1 {
+
+			}
+		}
+	}
+}

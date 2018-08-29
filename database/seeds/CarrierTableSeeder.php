@@ -17,17 +17,17 @@ class CarrierTableSeeder extends Seeder
 
         DB::table('carriers')->insert([
             [
-                'name' => 'H2O Wireless',
+                'name' => 'H2O',
                 'created_at' => $current_time,
                 'updated_at' => $current_time
             ],
             [
-                'name' => 'Lyca Mobile',
+                'name' => 'Lyca',
                 'created_at' => $current_time,
                 'updated_at' => $current_time
             ],
             [
-                'name' => 'Boost Mobile',
+                'name' => 'Boost',
                 'created_at' => $current_time,
                 'updated_at' => $current_time
             ]

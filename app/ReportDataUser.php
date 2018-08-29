@@ -28,6 +28,9 @@ class ReportDataUser {
 		$total_count = 0;
 		$total_payment = 0;
 
+		// get current date?
+		$current_date = Helpers::current_date();
+
 		foreach($report_types as $report_type) {
 
 			if ($report_type->spiff ){
@@ -38,6 +41,7 @@ class ReportDataUser {
 				->join('sim_users', 'sim_users.sim_number', '=', 'sims.sim_number')
 				->where('sim_users.user_id', $this->user_id)
 				->where('sims.report_type_id', $report_type->id)
+				->where('sims.upload_date', $current_date)
 				->get();
 
 			} else {
@@ -48,6 +52,7 @@ class ReportDataUser {
 				->join('sim_users', 'sim_users.sim_number', '=', 'sim_residuals.sim_number')
 				->where('sim_users.user_id', $this->user_id)
 				->where('sim_residuals.report_type_id', $report_type->id)
+				->where('sim_residuals.upload_date', $current_date)
 				->get();
 			}
 

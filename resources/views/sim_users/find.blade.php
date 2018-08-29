@@ -12,7 +12,7 @@ Find Sims
 
     <h3>Enter Sims Numbers to Search</h3>
 
-    <form action="/delete_sims" method="POST" enctype="multipart/form-data">
+    <form action="/find_sims" method="POST" enctype="multipart/form-data">
 
      <div class="form-wrap">
 
