@@ -71,6 +71,7 @@ Route::get('user-sims', 'SimUserController@index');
 Route::get('user-sims/{sim}', 'SimUserController@show');
 Route::get('assign-sims', 'SimUserController@create');
 Route::post('assign-sims', 'SimUserController@store');
+Route::get('find-sims', 'SimUserController@find');
 Route::get('delete-sims', 'SimUserController@delete');
 Route::post('delete_sims', 'SimUserController@destroy');
 

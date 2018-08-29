@@ -92,6 +92,14 @@ class SimUserController extends AuthorizedController
     }
 
     /**
+    * Show the form for finding sims
+    */
+    public function find()
+    {
+        return view('sim_users.find');
+    }
+
+    /**
     * Show the form for deleting sims
     */
     public function delete()

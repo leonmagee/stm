@@ -33,6 +33,8 @@
 
 			<li><a href="/assign-sims">Assign Sims</a></li>
 			
+			<li><a href="/find-sims">Look Up Sims</a></li>
+			
 			<li><a href="/delete-sims">Delete Sims</a></li>
 
 		</ul>

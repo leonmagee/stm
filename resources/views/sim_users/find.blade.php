@@ -1,7 +1,7 @@
 @extends('layouts.layout')
 
 @section('title')
-Delete Sims
+Find Sims
 @endsection
 
 @section('content')
@@ -10,7 +10,7 @@ Delete Sims
 
   <div class="form-wrapper-inner third">
 
-    <h3>Enter Sims to Delete</h3>
+    <h3>Enter Sims Numbers to Search</h3>
 
     <form action="/delete_sims" method="POST" enctype="multipart/form-data">
 
@@ -24,7 +24,7 @@ Delete Sims
 
       <div class="field submit">
         <div class="control">
-         <button class="button is-link call-loader" type="submit">Delete Sims</button>
+         <button class="button is-link call-loader" type="submit">Find Sims</button>
        </div>
      </div>
 
