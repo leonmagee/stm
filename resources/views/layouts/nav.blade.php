@@ -42,8 +42,9 @@
 	</li>
 
 	<li>
-		<a href="/report-types">Report Types</a>
+		<a>Report Types</a>
 		<ul class="sub-menu">
+			<li><a href="/report-types">All Report Types</a></li>
 			@foreach( $report_types as $report_type )
 				<li><a href="/report-types/{{ $report_type->id }}">{{ $report_type->carrier->name }} {{ $report_type->name }}</a></li>
 			@endforeach

@@ -8,7 +8,7 @@ Settings
 
 <div class="form-wrapper">
 
-    <div class="form-wrapper-inner">
+    <div class="form-wrapper-inner third">
 
         <h3>Date Settings</h3>
 
@@ -61,7 +61,7 @@ Settings
 
     </div>
 
-    <div class="form-wrapper-inner">
+    <div class="form-wrapper-inner third">
 
         <h3>Mode Settings</h3>
 
@@ -101,7 +101,7 @@ Settings
 
     </div>
 
-    <div class="form-wrapper-inner">
+    <div class="form-wrapper-inner third">
 
         <h3>Site Settings</h3>
 

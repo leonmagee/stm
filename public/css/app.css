@@ -16409,8 +16409,15 @@ label.panel-block:hover {
 }
 
 body.stm-body h1.title {
+  text-align: center;
   font-size: 1.4em;
   margin: 0 0 20px 0;
+}
+
+@media (min-width: 768px) {
+  body.stm-body h1.title {
+    text-align: left;
+  }
 }
 
 @media (min-width: 980px) {
@@ -16418,6 +16425,9 @@ body.stm-body h1.title {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
   }
 }
 
@@ -16444,17 +16454,13 @@ body.stm-body h1.title {
         -ms-flex: 1;
             flex: 1;
   }
-}
 
-@media (min-width: 980px) {
   .form-wrapper .form-wrapper-inner.third {
-    max-width: 33%;
+    max-width: 31%;
   }
-}
 
-@media (min-width: 980px) {
   .form-wrapper .form-wrapper-inner.half {
-    max-width: 50%;
+    max-width: 48%;
   }
 }
 

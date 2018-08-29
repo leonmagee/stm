@@ -8,7 +8,7 @@ Upload Sims
 
 <div class="form-wrapper">
 
-  <div class="form-wrapper-inner">
+  <div class="form-wrapper-inner third">
 
     <h3>Individual Sims Paste</h3>
 
@@ -62,7 +62,7 @@ Upload Sims
 
 </div>
 
-<div class="form-wrapper-inner">
+<div class="form-wrapper-inner third">
 
     <h3>Individual Sims File</h3>
 
@@ -129,7 +129,7 @@ Upload Sims
 </div>
 
 
-<div class="form-wrapper-inner">
+<div class="form-wrapper-inner third">
 
   <h3>Monthly Sims File</h3>
 

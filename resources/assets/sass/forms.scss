@@ -1,6 +1,7 @@
 .form-wrapper { // Settings | Uploads
 	@media(min-width: $screen-md) {
 		display: flex;
+		justify-content: space-between;
 		//padding-top: 20px;
 	}
 	.form-wrapper-inner {
@@ -15,18 +16,14 @@
 		overflow: hidden;
 		margin-bottom: 30px;
 		@media(min-width: $screen-md) {
+			
 			flex: 1;
-		}
-
-		&.third {
-			@media(min-width: $screen-md) {
-				max-width: 33%;
+			&.third {
+				max-width: 31%;
 			}
-		}
-		
-		&.half {
-			@media(min-width: $screen-md) {
-				max-width: 50%;
+			
+			&.half {
+				max-width: 48%;
 			}
 		}
 
