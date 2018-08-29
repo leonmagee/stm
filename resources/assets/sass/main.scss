@@ -20,8 +20,12 @@ body.stm-body {
 		.middle-content-wrap {
 			flex: 1;
 			background-color: #F1F1F1;
+			padding: 20px;
+			@media(min-width: $screen-sm) {
+				padding: 20px 35px;
+			}
 			.container {
-				padding: 20px;
+				//padding: 20px;
 			}
 		}	
 	}

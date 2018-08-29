@@ -28,17 +28,15 @@
 				@yield('title')
 			</h1>
 
-			<div class="container">
 
-				<div id="content">
+			<div id="content">
 
-					@include('layouts.alert')
+				@include('layouts.alert')
 
-					@yield('content')
-
-				</div>
+				@yield('content')
 
 			</div>
+
 
 		</div>
 
