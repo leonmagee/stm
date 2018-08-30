@@ -1,6 +1,11 @@
 <ul class="sidebar-menu">
 
 	<li>
+
+		<div class="icon-wrap">
+			<i class="flaticon-memory-card"></i>
+		</div>
+
 		<a>Monthly Sims</a>
 
 		<ul class="sub-menu">
@@ -17,12 +22,42 @@
 
 	</li>
 
+	<li>
+
+		<a>Report Types</a>
+
+		<ul class="sub-menu">
+
+			<li><a href="/report-types">All Report Types</a></li>
+
+			@foreach( $report_types as $report_type )
+				<li><a href="/report-types/{{ $report_type->id }}">{{ $report_type->carrier->name }} {{ $report_type->name }}</a></li>
+			@endforeach
+
+			<li><a href="/add-report-type-spiff">Add New Spiff</a></li>
+						
+			<li><a href="/add-report-type-residual">Add New Residual</a></li>
+
+		</ul>
+
+	</li>
+
 
 	<li><a href="/sims/upload">Upload</a></li>
 	
-	<li><a href="/users">Users</a></li>
+	<li>
+		<a>Users</a>
 	
-	<li><a href="/register">New User</a></li>
+		<ul class="sub-menu">
+
+			<li><a href="/users">All Users</a></li>
+		
+			<li><a href="/register">Add New User</a></li>
+
+		</ul>
+
+	</li>
+	
 	
 	<li>
 		<a>User Sims</a>
@@ -40,30 +75,21 @@
 		</ul>
 
 	</li>
-
+	
 	<li>
-		<a>Report Types</a>
-		<ul class="sub-menu">
-			<li><a href="/report-types">All Report Types</a></li>
-			@foreach( $report_types as $report_type )
-				<li><a href="/report-types/{{ $report_type->id }}">{{ $report_type->carrier->name }} {{ $report_type->name }}</a></li>
-			@endforeach
-		</ul>
-	</li>
+		<a>Settings</a>
 
-	<li>
-		<a href="#">New Report Type</a>
 		<ul class="sub-menu">
-			<li><a href="/add-report-type-spiff">New Spiff</a></li>
-			<li><a href="/add-report-type-residual">New Residual</a></li>
+
+			<li><a href="/settings">Default Settings</a></li>
+	
+			<li><a href="/site-settings">Site Settings</a></li>
+
+			<li><a href="/carriers">Carriers</a></li>
+
 		</ul>
+
 	</li>
-	
-	<li><a href="/carriers">Carriers</a></li>
-	
-	<li><a href="/settings">Settings</a></li>
-	
-	<li><a href="/site-settings">Site Settings</a></li>
 	
 	<li><a href="/reports">Reports</a></li>
 

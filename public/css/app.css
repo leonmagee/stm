@@ -16989,14 +16989,46 @@ ul.sidebar-menu li {
   position: relative;
   border-bottom: 1px solid #DFDFDF;
   font-size: 16px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+ul.sidebar-menu li .icon-wrap {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 1 20%;
+          flex: 0 1 20%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background: rgba(0, 0, 0, 0.08);
+}
+
+ul.sidebar-menu li .icon-wrap i {
+  font-weight: normal;
+  margin: 0;
+  margin-right: 5px;
+  color: #333;
+}
+
+ul.sidebar-menu li .icon-wrap i:before {
+  margin: 0;
 }
 
 ul.sidebar-menu li a {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 1 80%;
+          flex: 0 1 80%;
   text-decoration: none;
-  padding: 10px 20px;
-  display: block;
+  padding: 10px 5px 10px 15px;
   color: #222;
-  font-weight: bold;
+  font-weight: 700;
 }
 
 ul.sidebar-menu li ul.sub-menu {
