@@ -105,8 +105,6 @@
 		<ul class="sub-menu">
 
 			<li><a href="/user-sims">All Sims</a></li>
-
-			<li><a href="/assign-sims">Assign Sims</a></li>
 			
 			<li><a href="/find-sims">Look Up Sims</a></li>
 			
