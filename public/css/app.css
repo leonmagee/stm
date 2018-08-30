@@ -16987,7 +16987,6 @@ ul.sidebar-menu {
 
 ul.sidebar-menu li {
   position: relative;
-  border-bottom: 1px solid #DFDFDF;
   font-size: 16px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -17008,6 +17007,7 @@ ul.sidebar-menu li .icon-wrap {
       -ms-flex-align: center;
           align-items: center;
   background: rgba(0, 0, 0, 0.08);
+  border-bottom: 1px solid #CCC;
 }
 
 ul.sidebar-menu li .icon-wrap i {
@@ -17018,10 +17018,12 @@ ul.sidebar-menu li .icon-wrap i {
 }
 
 ul.sidebar-menu li .icon-wrap i:before {
+  font-size: 1.3em;
   margin: 0;
 }
 
 ul.sidebar-menu li a {
+  border-bottom: 1px solid #DFDFDF;
   -webkit-box-flex: 0;
       -ms-flex: 0 1 80%;
           flex: 0 1 80%;

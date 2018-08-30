@@ -6,7 +6,8 @@ ul.sidebar-menu {
 	width: 200px;
 	li {
 		position: relative;
-		border-bottom: 1px solid #DFDFDF;
+		//border-bottom: 1px solid #DFDFDF;
+		//border-bottom: 1px solid #CCC;
 		font-size: 16px;
 		display: flex;
 
@@ -17,18 +18,21 @@ ul.sidebar-menu {
 			justify-content: center;
 			align-items: center;
 			background: rgba(0,0,0,0.08);
+			border-bottom: 1px solid #CCC;
 			i {
 				font-weight: normal;
 				margin: 0;
 				margin-right: 5px;
 				color: #333;
 				&:before {
+					font-size: 1.3em;
 					margin: 0;
 				}
 			}
 		}
 
 		a {
+			border-bottom: 1px solid #DFDFDF;
 			flex: 0 1 80%;
 			text-decoration: none;
 			//padding: 10px 20px;
