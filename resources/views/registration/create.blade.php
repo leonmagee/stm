@@ -1,9 +1,5 @@
 @extends('layouts.layout')
 
-@section('title')
-Add New User
-@endsection
-
 @section('content')
 
 
