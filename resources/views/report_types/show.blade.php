@@ -13,73 +13,88 @@ Single Report Type
     <div class="item name">{{ $reportType->carrier->name }} {{ $reportType->name}}</div>
 
     <div class="item spiff-residual">
-         @if($reportType->spiff)
-         Spiff / Activation
-         @else
-         Residual
-         @endif 
-    </div>
+       @if($reportType->spiff)
+       Spiff / Activation
+       @else
+       Residual
+       @endif 
+   </div>
 
-    <div class="site-wrap-flex-outer">
+   <div class="site-wrap-flex-outer">
 
     @foreach($site_values_array as $item)
-        <div class="site-wrap-flex">
-            <div class="item role flex-wrap">
-                <i class="fas fa-sitemap"></i> 
-                <span class="site-name">{{ $item['name'] }}</span>
-                <span class="value">{{ $item['value'] }}</span>
-            </div>
+    <div class="site-wrap-flex">
+        <div class="item role flex-wrap">
+            <i class="fas fa-sitemap"></i> 
+            <span class="site-name">{{ $item['name'] }}</span>
+            <span class="value">{{ $item['value'] }}</span>
+        </div>
 
 
-            @if($reportType->spiff)
-            <div class="plan-values-table-wrap">
-                <div class="plan-values">
-                    <table class="plan-values-table">
-                        <thead>
-                            <tr>
-                                <th>Plan Value</th>
-                                <th>Payment</th>
-                                <th></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach($item['plans'] as $plan)
-                            <tr>
-                                <td>${{ $plan->plan_value }}</td>
-                                <td>${{ $plan->payment_amount }}</td>
-                                <form method="POST" action="/remove-report-plan-value/{{ $reportType->id }}">
-                                    {{ csrf_field() }}
-                                    <input type="hidden" name="report_plan_id" value="{{ $plan->id }}" />
-                                    <td>
-                                        <button class="minus-link" type="submit">
-                                            <i class="fas fa-minus-circle"></i>
-                                        </button>
-                                    </td>
-                                </form>
-                            </tr>
-                            @endforeach
-                            <form method="POST" action="/add-report-plan-value/{{ $reportType->id }}">
-                                {{ csrf_field() }}
-                                <tr>
-                                    <td><input type="number" name="plan_value" /></td>
-                                    <td><input type="number" name="payment_amount" /></td>
-                                    <input type="hidden" name="plan_value_id" value={{ $item['id'] }} />
-                                    <td>
-                                        <button class="add-link" type="submit">
-                                            <i class="fas fa-plus-circle"></i>
-                                        </button>
-                                    </td>
-                                </tr>
-                            </form>
-                        </tbody>
-                    </table>
+        @if($reportType->spiff)
+        <div class="plan-values-table-wrap">
+            <div class="plan-values">
+
+                <div class="plan-values-table flex-table">
+                    <div class="header-row">
+                     <div class="header-item">
+                         Plan Value
+                     </div> 
+                     <div class="header-item">
+                         Payment Value
+                     </div>
+                     <div class="header-item last"></div>
+                 </div>
+
+                 @foreach($item['plans'] as $plan)
+
+                 <div class="body-row">
+
+                    <div class="body-item">${{ $plan->plan_value }}</div>
+
+                    <div class="body-item">${{ $plan->payment_amount }}</div>
+
+                    <div class="body-item last">
+
+                        <form method="POST" action="/remove-report-plan-value/{{ $reportType->id }}">
+                            {{ csrf_field() }}
+                            <input type="hidden" name="report_plan_id" value="{{ $plan->id }}" />
+                            <button class="minus-link" type="submit">
+                                <i class="fas fa-minus-circle"></i>
+                            </button>
+                        </form>
+                    </div>
 
                 </div>
+
+                @endforeach
+
+                <form method="POST" action="/add-report-plan-value/{{ $reportType->id }}">
+
+                    <div class="body-row">
+
+                        {{ csrf_field() }}
+                        <div class="body-item"><input type="number" name="plan_value" /></div>
+                        <div class="body-item"><input type="number" name="payment_amount" /></div>
+                        <input type="hidden" name="plan_value_id" value={{ $item['id'] }} />
+                        <div class="body-item last">
+                            <button class="add-link" type="submit">
+                                <i class="fas fa-plus-circle"></i>
+                            </button>
+                        </div>
+
+                    </div>
+
+                </form>
+
             </div>
-            @endif
+            
         </div>
-    @endforeach
     </div>
+    @endif
+</div>
+@endforeach
+</div>
 </div>
 
 <div class="button-bar">

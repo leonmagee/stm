@@ -17455,23 +17455,37 @@ ul.mobile-menu li ul.sub-menu.active li:hover a {
   padding: 10px;
 }
 
-.single-report-type-wrap .plan-values-table-wrap table.plan-values-table tr td,
-.single-report-type-wrap .plan-values-table-wrap table.plan-values-table tr th {
-  padding: 2px;
+.single-report-type-wrap .plan-values-table-wrap .plan-values-table.flex-table .header-row,
+.single-report-type-wrap .plan-values-table-wrap .plan-values-table.flex-table .body-row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 
-.single-report-type-wrap .plan-values-table-wrap table.plan-values-table tr td {
+.single-report-type-wrap .plan-values-table-wrap .plan-values-table.flex-table .header-row .header-item,
+.single-report-type-wrap .plan-values-table-wrap .plan-values-table.flex-table .header-row .body-item,
+.single-report-type-wrap .plan-values-table-wrap .plan-values-table.flex-table .body-row .header-item,
+.single-report-type-wrap .plan-values-table-wrap .plan-values-table.flex-table .body-row .body-item {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 1 43%;
+          flex: 0 1 43%;
+}
+
+.single-report-type-wrap .plan-values-table-wrap .plan-values-table.flex-table .header-row .header-item.last,
+.single-report-type-wrap .plan-values-table-wrap .plan-values-table.flex-table .header-row .body-item.last,
+.single-report-type-wrap .plan-values-table-wrap .plan-values-table.flex-table .body-row .header-item.last,
+.single-report-type-wrap .plan-values-table-wrap .plan-values-table.flex-table .body-row .body-item.last {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 1 14%;
+          flex: 0 1 14%;
+}
+
+.single-report-type-wrap .plan-values-table-wrap .plan-values-table.flex-table .body-row .body-item {
   font-weight: 400;
   font-size: 0.8em;
-}
-
-.single-report-type-wrap .plan-values-table-wrap table.plan-values-table tr th {
-  padding-right: 20px;
-  font-size: 0.9em;
-}
-
-.single-report-type-wrap .plan-values-table-wrap table.plan-values-table tr td input {
-  max-width: 90%;
 }
 
 .single-report-type-wrap button.add-link,
