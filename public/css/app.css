@@ -17488,6 +17488,10 @@ ul.mobile-menu li ul.sub-menu.active li:hover a {
   font-size: 0.8em;
 }
 
+.single-report-type-wrap .plan-values-table-wrap .plan-values-table.flex-table .body-row .body-item input {
+  max-width: 80%;
+}
+
 .single-report-type-wrap button.add-link,
 .single-report-type-wrap button.minus-link {
   background-color: transparent;

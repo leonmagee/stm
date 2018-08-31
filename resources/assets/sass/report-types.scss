@@ -129,6 +129,10 @@
 				.body-item {
 					font-weight: 400;
 					font-size: 0.8em;
+
+					input {
+						max-width: 80%;
+					}
 				}
 			}
 		}
