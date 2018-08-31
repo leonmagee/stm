@@ -48,6 +48,8 @@ Single Report Type
 
                  @foreach($item['plans'] as $plan)
 
+                        <form method="POST" action="/remove-report-plan-value/{{ $reportType->id }}">
+
                  <div class="body-row">
 
                     <div class="body-item">${{ $plan->plan_value }}</div>
@@ -56,26 +58,27 @@ Single Report Type
 
                     <div class="body-item last">
 
-                        <form method="POST" action="/remove-report-plan-value/{{ $reportType->id }}">
                             {{ csrf_field() }}
                             <input type="hidden" name="report_plan_id" value="{{ $plan->id }}" />
                             <button class="minus-link" type="submit">
                                 <i class="fas fa-minus-circle"></i>
                             </button>
-                        </form>
                     </div>
 
                 </div>
+
+                                        </form>
+
 
                 @endforeach
 
                 <form method="POST" action="/add-report-plan-value/{{ $reportType->id }}">
 
-                    <div class="body-row">
+                    <div class="body-row has-inputs">
 
                         {{ csrf_field() }}
-                        <div class="body-item"><input type="number" name="plan_value" /></div>
-                        <div class="body-item"><input type="number" name="payment_amount" /></div>
+                        <div class="body-item input-wrap"><input type="number" name="plan_value" /></div>
+                        <div class="body-item input-wrap"><input type="number" name="payment_amount" /></div>
                         <input type="hidden" name="plan_value_id" value={{ $item['id'] }} />
                         <div class="body-item last">
                             <button class="add-link" type="submit">
@@ -88,7 +91,7 @@ Single Report Type
                 </form>
 
             </div>
-            
+
         </div>
     </div>
     @endif

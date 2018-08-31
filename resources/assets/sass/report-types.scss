@@ -114,6 +114,7 @@
 
 				display: flex;
 				justify-content: space-between;
+				padding: 3px 0;
 
 				.header-item, .body-item {
 					flex: 0 1 43%;
@@ -122,17 +123,31 @@
 						flex: 0 1 14%;
 					}
 				}
+				&.has-inputs {
+					padding-top: 7px;
+				}
 			}
 
 			.body-row {
+
+				border-top: 1px solid #F3F3F3;
+				margin-top: 2px;
+
+
 
 				.body-item {
 					font-weight: 400;
 					font-size: 0.8em;
 
-					input {
-						max-width: 80%;
+					&.input-wrap {
+
+						input {
+							width: 75px;
+							margin-right: 10px;
+						}
+
 					}
+
 				}
 			}
 		}

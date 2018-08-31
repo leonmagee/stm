@@ -17463,6 +17463,7 @@ ul.mobile-menu li ul.sub-menu.active li:hover a {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  padding: 3px 0;
 }
 
 .single-report-type-wrap .plan-values-table-wrap .plan-values-table.flex-table .header-row .header-item,
@@ -17483,13 +17484,24 @@ ul.mobile-menu li ul.sub-menu.active li:hover a {
           flex: 0 1 14%;
 }
 
+.single-report-type-wrap .plan-values-table-wrap .plan-values-table.flex-table .header-row.has-inputs,
+.single-report-type-wrap .plan-values-table-wrap .plan-values-table.flex-table .body-row.has-inputs {
+  padding-top: 7px;
+}
+
+.single-report-type-wrap .plan-values-table-wrap .plan-values-table.flex-table .body-row {
+  border-top: 1px solid #F3F3F3;
+  margin-top: 2px;
+}
+
 .single-report-type-wrap .plan-values-table-wrap .plan-values-table.flex-table .body-row .body-item {
   font-weight: 400;
   font-size: 0.8em;
 }
 
-.single-report-type-wrap .plan-values-table-wrap .plan-values-table.flex-table .body-row .body-item input {
-  max-width: 80%;
+.single-report-type-wrap .plan-values-table-wrap .plan-values-table.flex-table .body-row .body-item.input-wrap input {
+  width: 75px;
+  margin-right: 10px;
 }
 
 .single-report-type-wrap button.add-link,
