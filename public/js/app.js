@@ -32419,7 +32419,7 @@ $('.menu-modal-open, #menu-modal .menu-modal-close').click(function () {
 * Toggle mobile menu
 */
 $('.mobile-menu a.has-menu').click(function () {
-  $(this).parent().find('ul').toggleClass('active');
+  $(this).parent().toggleClass('active').find('ul').toggleClass('active');
 });
 
 /**

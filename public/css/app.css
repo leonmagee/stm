@@ -17107,6 +17107,10 @@ ul.mobile-menu li {
   padding: 0;
 }
 
+ul.mobile-menu li.active {
+  border-bottom: none;
+}
+
 ul.mobile-menu li a {
   text-decoration: none;
   padding: 10px 20px;
@@ -17139,12 +17143,17 @@ ul.mobile-menu li ul.sub-menu li {
   font-size: 14px;
 }
 
+ul.mobile-menu li ul.sub-menu li:first-child {
+  border-top: 1px solid #DFDFDF;
+}
+
 ul.mobile-menu li ul.sub-menu li a {
   padding: 5px 20px;
 }
 
 ul.mobile-menu li ul.sub-menu li:hover {
-  background-color: #188694 !important;
+  background-color: #198e9d !important;
+  border-color: #198e9d;
 }
 
 ul.mobile-menu li ul.sub-menu.active {

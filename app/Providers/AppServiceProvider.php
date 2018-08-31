@@ -161,7 +161,7 @@ class AppServiceProvider extends ServiceProvider
                 ],
             ];
 
-            $view->with('report_types', $report_types)->with('menu', $menu_array);
+            $view->with('menu', $menu_array);
         });
 
         view()->composer('layouts.header', function($view) {
