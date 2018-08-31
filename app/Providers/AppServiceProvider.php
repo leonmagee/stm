@@ -24,7 +24,9 @@ class AppServiceProvider extends ServiceProvider
 
         view()->composer(['layouts.nav', 'layouts.nav-mobile'], function($view) {
 
-            $view->with('report_types', ReportType::all());
+            $report_types = ReportType::query()->get();
+
+            $view->with('report_types', $report_types);
         });
 
         view()->composer('layouts.header', function($view) {

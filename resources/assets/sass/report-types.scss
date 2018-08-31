@@ -104,6 +104,10 @@
 		border: 1px solid #EEE;
 		padding: 10px;
 
+		input {
+			//width: 50px;
+		}
+
 		table.plan-values-table {
 			tr {
 				td, th {
@@ -117,6 +121,12 @@
 					padding-right: 20px;
 					font-size: 0.9em;
 				}
+				td {
+					input {
+						max-width: 90%;
+						//margin-right: 5px;
+					}
+				}	
 			}
 		}
 	}

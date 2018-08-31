@@ -52,6 +52,7 @@ Route::get('/api/v1/sims', 'APIController@getSims')->name('api.sims.index');
 Route::get('/api/v1/sims_archive/{id}', 'APIController@getSimsArchive')
 ->name('api.sims.archive');
 Route::get('/api/v1/sim_users', 'APIController@getSimUsers')->name('api.sim_users.index');
+Route::get('/api/v1/sim_user/{id}', 'APIController@getSimUser')->name('api.sim_users.index_user');
 
 /**
 * Settings Routes
@@ -69,6 +70,7 @@ Route::post('default_residual_percent', 'SettingsController@update_residual');
 */
 Route::get('user-sims', 'SimUserController@index');
 Route::get('user-sims/{sim}', 'SimUserController@show');
+Route::get('user-sims/user/{user}', 'SimUserController@index_user');
 Route::get('assign-sims', 'SimUserController@create');
 Route::post('assign-sims', 'SimUserController@store');
 Route::get('find-sims', 'SimUserController@find');

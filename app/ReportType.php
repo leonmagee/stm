@@ -7,6 +7,9 @@ namespace App;
 
 class ReportType extends Model
 {
+
+    // eager loading - Prevents carrier method getting called too many times.
+    protected $with = ['carrier'];
     //
     // public static function spiff() {
     // 	return static::where('spiff',1)->get();

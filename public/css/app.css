@@ -16429,6 +16429,12 @@ body.stm-body h1.title {
         -ms-flex-pack: justify;
             justify-content: space-between;
   }
+
+  .form-wrapper.center {
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
 }
 
 .form-wrapper .form-wrapper-inner {
@@ -17462,6 +17468,10 @@ ul.mobile-menu li ul.sub-menu.active li:hover a {
 .single-report-type-wrap .plan-values-table-wrap table.plan-values-table tr th {
   padding-right: 20px;
   font-size: 0.9em;
+}
+
+.single-report-type-wrap .plan-values-table-wrap table.plan-values-table tr td input {
+  max-width: 90%;
 }
 
 .single-report-type-wrap button.add-link,

@@ -39,6 +39,9 @@ class SettingsController extends Controller
         $years = array(2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025);
         $sites = Site::all();
         $settings = Settings::first();
+
+        //\Debugbar::info($settings);
+
         $mode = $settings->mode;
         //$current_site = $settings->site_id;
         $current_site = session('current_site_id', 1);

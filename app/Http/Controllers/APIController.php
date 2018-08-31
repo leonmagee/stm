@@ -150,5 +150,21 @@ class APIController extends Controller
 
         //return Datatables::of(SimUser::all())->make(true);
     }
+
+
+    public function getSimUser($id)
+    {
+        return datatables(SimUser::query()
+            ->join('carriers', 'carriers.id', '=', 'sim_users.carrier_id')
+            ->join('users', 'users.id', '=', 'sim_users.user_id')
+            ->where('users.id', $id)
+            ->select(
+                'sim_users.sim_number', 
+                'carriers.name',
+                'users.company'
+                //'sim_users.user_id',
+                //'sim_users.carrier_id'
+            ))->make(true);
+    }
 }
 

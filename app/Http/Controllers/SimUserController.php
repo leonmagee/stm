@@ -22,6 +22,16 @@ class SimUserController extends AuthorizedController
     }
 
     /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index_user(User $user)
+    {
+        return view('sim_users.index_user', compact('user'));
+    }
+
+    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response

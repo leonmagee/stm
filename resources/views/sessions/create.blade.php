@@ -4,9 +4,9 @@
 
 <div class="container">
 
-	<div class="form-wrapper">
+	<div class="form-wrapper center">
 
-		<div class="form-wrapper-inner">
+		<div class="form-wrapper-inner third">
 
 			<h3>Log In</h3>
 

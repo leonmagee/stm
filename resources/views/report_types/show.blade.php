@@ -38,7 +38,7 @@ Single Report Type
                         <thead>
                             <tr>
                                 <th>Plan Value</th>
-                                <th>Payment Amount</th>
+                                <th>Payment</th>
                                 <th></th>
                             </tr>
                         </thead>
