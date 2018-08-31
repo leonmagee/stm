@@ -7,36 +7,45 @@ ul.mobile-menu {
 		position: relative;
 		border-bottom: 1px solid #DFDFDF;
 		font-size: 16px;
+		padding: 0;
 		a {
 			text-decoration: none;
 			padding: 10px 20px;
 			display: block;
 			color: #222;
 			font-weight: bold;
-		}
-		ul.sub-menu {
-			display: none;
-			list-style-type: none;
 			margin: 0;
-			padding: 0;
-			background-color: #FAFAFA;
-			font-size: 16px;
-			li {
-				font-size: 14px;
-			}
-			a {
-				padding: 5px 20px;
-			}
 		}
 		&:hover {
 			background-color: $brand-primary;
-			border-color: $brand-primary;
+			//border-color: $brand-primary;
 			cursor: pointer;
 			a {
 				color: #FFF;
 				text-shadow: 1px 1px darken($brand-primary, 1%);
 			}
 		}
+		ul.sub-menu {
+			display: none;
+			list-style-type: none;
+			margin: 0;
+			padding: 0;
+			background-color: #F5F5F5;
+			font-size: 16px;
+			li {
+				font-size: 14px;
+				
+				a {
+					padding: 5px 20px;
+				}
+
+				&:hover {
+					background-color: darken($brand-primary, 5%) !important;
+				}
+			}
+
+		}
+
 		ul.sub-menu.active {
 				display: block;
 				font-size: 14px;

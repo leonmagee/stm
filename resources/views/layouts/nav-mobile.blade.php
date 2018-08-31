@@ -12,62 +12,35 @@
 
 				</div>
 
-				<ul class="mobile-menu">
+					<ul class="mobile-menu">
 
-					<li>
-						<a class="has-menu">Sims</a>
+					@foreach($menu as $item)
 
-						<ul class="sub-menu">
+						<li>
 
-							<li><a href="/sims">All Sims</a></li>
+							@if($item['link'])
 
-							@foreach( $report_types as $report_type )
-							<li><a href="/sims/archive/{{ $report_type->id }}">{{ $report_type->carrier->name }} {{ $report_type->name }}</a></li>
-							@endforeach
+								<a href="{{ $item['link'] }}">{{ $item['name'] }}</a>
 
-							<li><a href="/sims/create">Add Sim</a></li>
+							@else
 
-							<li><a href="/assign-sims">Assign Sims</a></li>
+							<a class="has-menu">{{ $item['name'] }}</a>
 
-						</ul>
+							<ul class="sub-menu">
 
-					</li>
+								@foreach( $item['sub'] as $sub)
 
+									<li><a href="{{ $sub['link'] }}">{{ $sub['name'] }}</a></li>
 
+								@endforeach
+								
+							</ul>
 
-					<li>
-						<a class="has-menu">Report Types</a>
-						<ul class="sub-menu">
-							<li><a href="/report-types">All Report Types</a></li>
-							@foreach( $report_types as $report_type )
-							<li><a href="/report-types/{{ $report_type->id }}">{{ $report_type->carrier->name }} {{ $report_type->name }}</a></li>
-							@endforeach
-						</ul>
-					</li>
+							@endif
 
-					<li>
-						<a href="#">New Report Type</a>
-						<ul class="sub-menu">
-							<li><a href="/add-report-type-spiff">New Spiff</a></li>
-							<li><a href="/add-report-type-residual">New Residual</a></li>
-						</ul>
-					</li>
+						</li>
 
-					<li><a href="/sims/upload">Upload</a></li>
-
-					<li><a href="/users">Users</a></li>
-
-					<li><a href="/register">New User</a></li>
-
-					<li><a href="/sim-users">Sim Users</a></li>
-
-					<li><a href="/carriers">Carriers</a></li>
-
-					<li><a href="/settings">Settings</a></li>
-
-					<li><a href="/site-settings">Site Settings</a></li>
-
-					<li><a href="/reports">Reports</a></li>
+					@endforeach
 
 				</ul>
 

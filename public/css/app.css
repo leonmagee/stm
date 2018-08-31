@@ -17104,6 +17104,7 @@ ul.mobile-menu li {
   position: relative;
   border-bottom: 1px solid #DFDFDF;
   font-size: 16px;
+  padding: 0;
 }
 
 ul.mobile-menu li a {
@@ -17112,6 +17113,17 @@ ul.mobile-menu li a {
   display: block;
   color: #222;
   font-weight: bold;
+  margin: 0;
+}
+
+ul.mobile-menu li:hover {
+  background-color: #1B9AAA;
+  cursor: pointer;
+}
+
+ul.mobile-menu li:hover a {
+  color: #FFF;
+  text-shadow: 1px 1px #1a96a6;
 }
 
 ul.mobile-menu li ul.sub-menu {
@@ -17119,7 +17131,7 @@ ul.mobile-menu li ul.sub-menu {
   list-style-type: none;
   margin: 0;
   padding: 0;
-  background-color: #FAFAFA;
+  background-color: #F5F5F5;
   font-size: 16px;
 }
 
@@ -17127,19 +17139,12 @@ ul.mobile-menu li ul.sub-menu li {
   font-size: 14px;
 }
 
-ul.mobile-menu li ul.sub-menu a {
+ul.mobile-menu li ul.sub-menu li a {
   padding: 5px 20px;
 }
 
-ul.mobile-menu li:hover {
-  background-color: #1B9AAA;
-  border-color: #1B9AAA;
-  cursor: pointer;
-}
-
-ul.mobile-menu li:hover a {
-  color: #FFF;
-  text-shadow: 1px 1px #1a96a6;
+ul.mobile-menu li ul.sub-menu li:hover {
+  background-color: #188694 !important;
 }
 
 ul.mobile-menu li ul.sub-menu.active {
