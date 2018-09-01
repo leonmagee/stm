@@ -24,6 +24,8 @@ Route::get('/', 'HomeController@index')->name('home');
 Route::get('users', 'UserController@index')->name('users');
 Route::get('users/{user}', 'UserController@show');
 Route::get('edit-user/{user}', 'UserController@edit');
+Route::get('bonus-credit/{user}', 'UserCreditBonusController@edit');
+Route::post('bonus-credit/{user}', 'UserCreditBonusController@update');
 Route::get('change-password/{user}', 'UserController@edit_password');
 Route::post('update-user/{id}','UserController@update');
 Route::post('update-user-password/{id}','UserController@update_password');

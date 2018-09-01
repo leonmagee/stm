@@ -58,6 +58,9 @@
 			color: #AAA;
 			width: 30px;
 			text-align: center;
+			&.fa-user-plus, &.fa-user-minus {
+				padding-left: 6px;
+			}
 		}
 	}
 	.item {
@@ -86,8 +89,8 @@
 		//color: #555;
 		font-size: 1.5em;
 	}
-	.credit span {
-		font-size: 1.5em;
+	.credit-bonus span {
+		font-size: 1.1em;
 		span.credit-val {
 			color: $color-red;
 			//font-size: 1.1em;
@@ -107,7 +110,7 @@
 }
 
 .button-bar {
-	padding: 20px 0;
+	padding: 25px 0 0;
 	a {
 		margin: 10px auto;
 		display: block;

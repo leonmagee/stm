@@ -1,9 +1,5 @@
 @extends('layouts.layout')
 
-@section('title')
-User
-@endsection
-
 @section('content')
 
 	<div class="single-user-wrap">
@@ -30,8 +26,13 @@ User
             <span>{{ $user->phone }}</span>
         </div>
 
-        <div class="item credit flex-wrap">
-            <i class="far fa-credit-card"></i>
+        <div class="item credit-bonus flex-wrap">
+            <i class="fas fa-user-plus"></i>
+            <span>Monthly Bonus: <span class="credit-val">{{ $credit }}</span></span>
+        </div>
+
+        <div class="item credit-bonus flex-wrap">
+            <i class="fas fa-user-minus"></i>
             <span>Monthly Credit: <span class="credit-val">{{ $credit }}</span></span>
         </div>
 
@@ -51,8 +52,12 @@ User
     	<a href="/edit-user/{{ $user->id }}" class="button is-primary">Edit User</a>
         <a href="/change-password/{{ $user->id }}" class="button is-primary">Change Password</a>
         <a href="/user-sims/user/{{ $user->id }}" class="button is-primary">View Sims</a>
-    	<a href="#" class="modal-open button is-danger">Delete User</a>
 	</div>
+
+    <div class="button-bar">
+        <a href="/bonus-credit/{{ $user->id }}" class="button is-primary">Bonus / Credit</a>
+        <a href="#" class="modal-open button is-danger">Delete User</a>
+    </div>
 
 
     @section('modal')

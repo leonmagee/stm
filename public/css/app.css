@@ -17312,6 +17312,11 @@ ul.mobile-menu li ul.sub-menu.active li:hover a {
   text-align: center;
 }
 
+.single-user-wrap .flex-wrap i.fa-user-plus,
+.single-user-wrap .flex-wrap i.fa-user-minus {
+  padding-left: 6px;
+}
+
 .single-user-wrap .item {
   padding: 5px 0;
 }
@@ -17341,11 +17346,11 @@ ul.mobile-menu li ul.sub-menu.active li:hover a {
   font-size: 1.5em;
 }
 
-.single-user-wrap .credit span {
-  font-size: 1.5em;
+.single-user-wrap .credit-bonus span {
+  font-size: 1.1em;
 }
 
-.single-user-wrap .credit span span.credit-val {
+.single-user-wrap .credit-bonus span span.credit-val {
   color: #EF476F;
   font-size: 1em;
 }
@@ -17360,7 +17365,7 @@ ul.mobile-menu li ul.sub-menu.active li:hover a {
 }
 
 .button-bar {
-  padding: 20px 0;
+  padding: 25px 0 0;
 }
 
 .button-bar a {
