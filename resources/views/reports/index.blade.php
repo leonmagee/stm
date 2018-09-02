@@ -36,6 +36,21 @@
 						<td>{{ $report_data_single->payment }}</td>
 					</tr>
 					@endforeach
+					<tr>
+						<td>Monthly Bonus</td>
+						<td>+</td>
+						<td class="bonus bold">${{ number_format($item->bonus, 2) }}</td>
+					</tr>
+					<tr>
+						<td>Oustanding Balance</td>
+						<td>-</td>
+						<td class="credit bold">${{ number_format($item->credit, 2) }}</td>
+					</tr>
+					<tr>
+						<td>Total Assigned Sims</td>
+						<td></td>
+						<td>?</td>
+					</tr>
 				</tbody>
 				<tfoot>
 					<tr>

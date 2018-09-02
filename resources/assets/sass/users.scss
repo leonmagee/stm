@@ -98,7 +98,7 @@
 			margin-left: 5px;
 		}
 		span.bonus-val {
-			color: darken($color-green, 5%);
+			color: $color-green-text;
 		}
 		span.credit-val {
 			color: $color-red;
@@ -117,15 +117,22 @@
 	}
 }
 
-.button-bar {
-	padding: 25px 0 0;
-	a {
-		margin: 10px auto;
-		display: block;
+.button-bar-wrap {
 
-		@media(min-width: $screen-sm) {
-			margin: 0 10px 0 0;
-			display: inline-block;
+	padding: 10px 5px 0;
+
+	.button-bar {
+		padding: 0 15px 0;
+		@media(min-width: $screen-md) {
+			padding: 10px 0 0;
+			display: flex;
+			justify-content: space-between;
+			width: 40%;
+		}
+		a {
+			margin: 10px auto;
+			display: block;
+			flex: 0 1 30%;
 		}
 	}
 }

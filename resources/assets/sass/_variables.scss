@@ -11,8 +11,9 @@ $screen-lg: '1200px';
 
 $brand-primary: #1B9AAA;
 //rgba(27, 154, 170, 1)
-$color-green: #06E5AA;
-$color-green: darken($color-green, 2%);
+$color-green-base: #06E5AA;
+$color-green: darken($color-green-base, 2%);
+$color-green-text: darken($color-green, 5%);
 //rgba(6, 229, 170, 1)
 $color-red: #EF476F;
 //rgba(239, 71, 111, 1)

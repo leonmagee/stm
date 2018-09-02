@@ -17,8 +17,8 @@ class CreateUserCreditBonusesTable extends Migration
             $table->increments('id');
             $table->integer('user_id');
             $table->string('date');
-            $table->integer('bonus');
-            $table->integer('credit');
+            $table->integer('bonus')->nullable();
+            $table->integer('credit')->nullable();
             $table->timestamps();
         });
     }

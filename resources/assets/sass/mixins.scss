@@ -5,11 +5,19 @@
 // 	background-size: 500px 500px;
 // }
 
+// @mixin background_pattern {
+// 	background-color: #333;
+// 	background-image: url(/img/connectwork.png);
+// 	//background-size: 600px 600px;
+// 	background-size: 300px 300px;
+// }
+
 @mixin background_pattern {
 	background-color: #333;
-	background-image: url(/img/connectwork.png);
+	background-image: url(/img/black_thread.png);
 	//background-size: 600px 600px;
-	background-size: 300px 300px;
+	//background-size: 98px 56px;
+	background-size: 49px 28px;
 }
 
 @mixin current_font {

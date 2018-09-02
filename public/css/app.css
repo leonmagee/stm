@@ -16768,8 +16768,8 @@ body.stm-body .notification.is-success {
 
 .header-wrap {
   background-color: #333;
-  background-image: url(/img/connectwork.png);
-  background-size: 300px 300px;
+  background-image: url(/img/black_thread.png);
+  background-size: 49px 28px;
   padding: 10px;
   border-bottom: 1px solid #000;
 }
@@ -17182,8 +17182,8 @@ ul.mobile-menu li ul.sub-menu.active li:hover a {
 
 .footer-wrap {
   background-color: #333;
-  background-image: url(/img/connectwork.png);
-  background-size: 300px 300px;
+  background-image: url(/img/black_thread.png);
+  background-size: 49px 28px;
   font-weight: bold;
   font-size: 12px;
   padding: 15px;
@@ -17361,20 +17361,33 @@ ul.mobile-menu li ul.sub-menu.active li:hover a {
   color: #666;
 }
 
-.button-bar {
-  padding: 25px 0 0;
+.button-bar-wrap {
+  padding: 10px 5px 0;
 }
 
-.button-bar a {
+.button-bar-wrap .button-bar {
+  padding: 0 15px 0;
+}
+
+@media (min-width: 980px) {
+  .button-bar-wrap .button-bar {
+    padding: 10px 0 0;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    width: 40%;
+  }
+}
+
+.button-bar-wrap .button-bar a {
   margin: 10px auto;
   display: block;
-}
-
-@media (min-width: 768px) {
-  .button-bar a {
-    margin: 0 10px 0 0;
-    display: inline-block;
-  }
+  -webkit-box-flex: 0;
+      -ms-flex: 0 1 30%;
+          flex: 0 1 30%;
 }
 
 .report-types-wrap a.report-type-wrap .flex-item.report-type-name {
@@ -17609,6 +17622,18 @@ ul.mobile-menu li ul.sub-menu.active li:hover a {
 .reports-wrap .report-wrap table.table {
   font-size: 1em;
   white-space: nowrap;
+}
+
+.reports-wrap .report-wrap table.table td.bold {
+  font-weight: 700;
+}
+
+.reports-wrap .report-wrap table.table td.bonus {
+  color: #05c290;
+}
+
+.reports-wrap .report-wrap table.table td.credit {
+  color: #EF476F;
 }
 
 .sims-list ul li {

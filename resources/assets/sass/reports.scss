@@ -47,6 +47,18 @@
 			font-size: 1em;
 			//font-size: 0.9em;
 			white-space: nowrap;
+
+			td.bold {
+				font-weight: 700;
+			}
+			
+			td.bonus {
+				color: $color-green-text;
+			}
+
+			td.credit {
+				color: $color-red;
+			}
 		}
 
 		.flex-item {

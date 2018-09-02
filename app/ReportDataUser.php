@@ -9,6 +9,8 @@ class ReportDataUser {
 	private $user_id;
 	public $report_data;
 	private $site_id;
+	public $bonus;
+	public $credit;
 	public $total_count;
 	public $total_payment;
 
@@ -87,7 +89,35 @@ class ReportDataUser {
 
 		}
 
+		/**
+		* @todo subtract monthly credit and add monthly bonus
+		*/
+        $bonus_credit = UserCreditBonus::where([
+            'user_id' => $this->user_id,
+            'date' => $current_date
+        ])->first();
+
+        if ( isset($bonus_credit->bonus) ) {
+            $this->bonus = $bonus_credit->bonus;
+        } else {
+            $this->bonus = 0;
+        }
+        if ( isset($bonus_credit->credit) ) {
+            $this->credit = $bonus_credit->credit;
+        } else {
+            $this->credit = 0;
+        }
+
+
+
+
+
 		$this->total_count = $total_count;
+
+		$total_payment = $total_payment + $this->bonus;
+
+		$total_payment = $total_payment - $this->credit;
+
 		$this->total_payment = $total_payment;
 
 		$this->report_data = $report_data_array;
