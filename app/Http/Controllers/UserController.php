@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\User;
 use App\Site;
 use App\Settings;
+use App\UserCreditBonus;
+use App\Helpers;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -55,15 +57,31 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        $amount = 33;
-        $credit = '$' . number_format($amount, 2);
+        $bonus_credit = UserCreditBonus::where([
+            'user_id' => $user->id,
+            'date' => Helpers::current_date()
+        ])->first();
+
+        if ( isset($bonus_credit->bonus) ) {
+            $bonus = '$' . number_format($bonus_credit->bonus, 2);
+        } else {
+            $bonus = false;
+        }
+        if ( isset($bonus_credit->credit) ) {
+            $credit = '$' . number_format($bonus_credit->credit, 2);
+        } else {
+            $credit = false;
+        }
+
+
         $role = $user->role;
+
         if ( $role == 'admin' ) {
             $role = 'Admin';
         } else {
             $role = Site::find($role)->name;
         }
-        return view('users.show', compact('user', 'credit', 'role'));
+        return view('users.show', compact('user', 'role', 'bonus', 'credit'));
     }
 
     /**

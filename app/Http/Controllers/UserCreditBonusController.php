@@ -59,8 +59,30 @@ class UserCreditBonusController extends Controller
      */
     public function edit(User $user)
     {
+
         $date = Helpers::current_date_name();
-        return view('users.bonus-credit', compact('user', 'date'));
+
+        $date_string = Helpers::current_date();
+
+        $bonus_credit = UserCreditBonus::where([
+            'user_id' => $user->id,
+            'date' => $date_string
+        ])->first();
+
+        if ( isset($bonus_credit->bonus) ) {
+            $bonus = $bonus_credit->bonus;
+        } else {
+            $bonus = false;
+        }
+        if ( isset($bonus_credit->credit) ) {
+            $credit = $bonus_credit->credit;
+        } else {
+            $credit = false;
+        }
+
+
+
+        return view('users.bonus-credit', compact('user', 'date', 'bonus', 'credit'));
     }
 
     /**
@@ -72,27 +94,28 @@ class UserCreditBonusController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        // $bonus = $request->bonus;
-        // $credit = $request->credit;
-        // get current date
-        // create method?
-        // update method?
-        // insert where? look it up first
-        //var_dump($bonus);
-        //var_dump($credit);
-        //dd('working');
+        $date = Helpers::current_date();
 
-        /**
-        * @todo first, query to find record, if it doesn't exist update it?
-        * There should be a primary key of user id plus date?
-        */
-
-        $credit_bonus = UserCreditBonus::create([
+        $current = UserCreditBonus::where([
             'user_id' => $user->id,
-            'date' => Helpers::current_date(),
-            'bonus' => $request->bonus,
-            'credit' => $request->credit,
-        ]);
+            'date' => $date
+        ])->first();
+
+        if ( $current ) {
+
+            $current->bonus = $request->bonus;
+            $current->credit = $request->credit;
+            $current->save();
+
+        } else {
+
+            $credit_bonus = UserCreditBonus::create([
+                'user_id' => $user->id,
+                'date' => $date,
+                'bonus' => $request->bonus,
+                'credit' => $request->credit,
+            ]);
+        }
 
         return redirect('users/' . $user->id);
     }

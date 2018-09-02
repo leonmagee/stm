@@ -26,18 +26,22 @@
             <span>{{ $user->phone }}</span>
         </div>
 
+        @if($bonus)
         <div class="item credit-bonus flex-wrap">
             <i class="fas fa-user-plus"></i>
-            <span>Monthly Bonus: <span class="credit-val">{{ $credit }}</span></span>
+            <span>Monthly Bonus: <span class="bonus-val">{{ $bonus }}</span></span>
         </div>
+        @endif
 
+        @if($credit)
         <div class="item credit-bonus flex-wrap">
             <i class="fas fa-user-minus"></i>
             <span>Monthly Credit: <span class="credit-val">{{ $credit }}</span></span>
         </div>
+        @endif
 
         <did class="item address-wrap flex-wrap">
-            <i class="fas fa-map-marked-alt"></i>
+            <i class="fas fa-map-marker-alt"></i>
             <div class="address-wrap-inner">
     	        <div class="address">{{ $user->address }}</div>
     	        <div class="city_state_zip">

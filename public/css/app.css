@@ -17314,16 +17314,20 @@ ul.mobile-menu li ul.sub-menu.active li:hover a {
 
 .single-user-wrap .flex-wrap i.fa-user-plus,
 .single-user-wrap .flex-wrap i.fa-user-minus {
-  padding-left: 6px;
+  padding-left: 5px;
 }
 
 .single-user-wrap .item {
   padding: 5px 0;
 }
 
+.single-user-wrap .item span {
+  font-size: 1.2em;
+}
+
 .single-user-wrap .company {
-  font-size: 2.6em;
-  font-weight: 800;
+  font-size: 2.4em;
+  font-weight: 700;
   color: #1B9AAA;
   border-bottom: 2px solid #DDD;
   padding-bottom: 0px;
@@ -17334,33 +17338,26 @@ ul.mobile-menu li ul.sub-menu.active li:hover a {
   font-size: 1.8em;
 }
 
-.single-user-wrap .role span {
-  font-size: 1.5em;
+.single-user-wrap .credit-bonus span span.bonus-val,
+.single-user-wrap .credit-bonus span span.credit-val {
+  font-size: 1em;
+  margin-left: 5px;
 }
 
-.single-user-wrap .email span {
-  font-size: 1.3em;
-}
-
-.single-user-wrap .phone span {
-  font-size: 1.5em;
-}
-
-.single-user-wrap .credit-bonus span {
-  font-size: 1.1em;
+.single-user-wrap .credit-bonus span span.bonus-val {
+  color: #05c290;
 }
 
 .single-user-wrap .credit-bonus span span.credit-val {
   color: #EF476F;
-  font-size: 1em;
 }
 
-.single-user-wrap .address-wrap .address {
-  font-size: 1.5em;
+.single-user-wrap .address-wrap {
+  font-size: 1.2em;
 }
 
 .single-user-wrap .address-wrap .city_state_zip {
-  font-size: 1.2em;
+  font-size: 0.8em;
   color: #666;
 }
 

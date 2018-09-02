@@ -59,16 +59,19 @@
 			width: 30px;
 			text-align: center;
 			&.fa-user-plus, &.fa-user-minus {
-				padding-left: 6px;
+				padding-left: 5px;
 			}
 		}
 	}
 	.item {
 		padding: 5px 0;
+		span {
+			font-size: 1.2em;
+		}
 	}
 	.company {
-		font-size: 2.6em;
-		font-weight: 800;
+		font-size: 2.4em;
+		font-weight: 700;
 		color: $brand-primary;
 		border-bottom: 2px solid #DDD;
 		padding-bottom: 0px;
@@ -80,30 +83,35 @@
 	}
 	.role span {
 		//color: $color-red;
-		font-size: 1.5em;
+		//font-size: 1.5em;
 	}
 	.email span {
-		font-size: 1.3em;
+		//font-size: 1.3em;
 	}
 	.phone span {
 		//color: #555;
-		font-size: 1.5em;
+		//font-size: 1.5em;
 	}
 	.credit-bonus span {
-		font-size: 1.1em;
+		span.bonus-val, span.credit-val {
+			font-size: 1em;
+			margin-left: 5px;
+		}
+		span.bonus-val {
+			color: darken($color-green, 5%);
+		}
 		span.credit-val {
 			color: $color-red;
-			//font-size: 1.1em;
-			font-size: 1em;
 		}
 	}
 	.address-wrap {
+		font-size: 1.2em;
 		.address {
-			font-size: 1.5em;
+			//font-size: 1.5em;
 			//color: #555;
 		}
 		.city_state_zip {
-			font-size: 1.2em;
+			font-size: 0.8em;
 			color: #666;
 		}
 	}
