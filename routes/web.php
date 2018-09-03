@@ -30,6 +30,8 @@ Route::get('change-password/{user}', 'UserController@edit_password');
 Route::post('update-user/{id}','UserController@update');
 Route::post('update-user-password/{id}','UserController@update_password');
 Route::get('delete-user/{user}', 'UserController@destroy');
+Route::get('user-plan-values/{user}', 'UserPlanValuesController@show');
+Route::post('user-plan-values/{id}', 'UserPlanValuesController@store');
 
 Route::get('profile', function() {
 

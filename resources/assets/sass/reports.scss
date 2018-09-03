@@ -13,10 +13,11 @@
 	font-size: 0.8em;
 	.report-wrap {
 
-		box-shadow: 1px 1px rgba(0,0,0,0.05);
-		background-color: #FFF;
-		color: #333;
-		padding: 15px;
+		// box-shadow: 1px 1px rgba(0,0,0,0.05);
+		// background-color: #FFF;
+		// color: #333;
+		// padding: 15px;
+		@include normal_background;
 		margin-bottom: 20px;
 		@media(min-width: $screen-md) {
 			margin-bottom: 0;	

@@ -1,0 +1,61 @@
+.user-plan-section {
+
+	background-color: #FFF;
+	@include normal_background;
+	max-width: 75%;
+
+	h4 {
+		font-weight: 700;
+		font-size: 1.4em;
+		margin-bottom: 15px;
+	}
+
+	.add-user-data-form {
+
+		padding: 10px;
+		background: #FAFAFA;
+		border: 1px solid #EEE;
+		display: flex;
+		justify-content: space-between;
+
+		.field {
+			flex: 0 1 21%;
+
+			&.report_type {
+				flex: 0 1 29%;
+			}
+
+			&.update {
+				flex: 0 1 20%;
+				display: flex;
+				//justify-content: center;
+				align-items: flex-end;
+				padding-bottom: 0.8em;
+			}
+		}
+		
+	}
+
+	.user-plan-item {
+		display: flex;
+		padding: 10px;
+		background: #FAFAFA;
+		border: 1px solid #EEE;
+		margin: 10px 0;
+
+		.data {
+			flex: 0 1 22%;
+			margin: 0 2%;
+			label {
+				font-size: 1em;
+			}
+			div {
+				font-size: 1em;
+				font-weight: 700;
+			}
+		}
+
+
+	}
+
+}
