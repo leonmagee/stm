@@ -3,6 +3,7 @@
 	background-color: #FFF;
 	@include normal_background;
 	max-width: 75%;
+	margin-bottom: 20px;
 
 	h4 {
 		font-weight: 700;
@@ -10,23 +11,52 @@
 		margin-bottom: 15px;
 	}
 
-	.add-user-data-form {
-
-		padding: 10px;
-		background: #FAFAFA;
-		border: 1px solid #EEE;
+	.flex-section {
 		display: flex;
 		justify-content: space-between;
+		padding: 10px 17px;
+		background: #FAFAFA;
+		border: 1px solid #EEE;
 
-		.field {
+		>div {
 			flex: 0 1 21%;
 
+			&.one {
+				flex: 0 1 38%;
+			}
+
+			&.four {
+				flex: 0 1 12%;
+				input {
+					width: 100%;
+				}
+			}
+		}
+	}
+
+	.add-user-data-form {
+
+		// padding: 10px;
+		// background: #FAFAFA;
+		// border: 1px solid #EEE;
+		// display: flex;
+		// justify-content: space-between;
+
+		.field {
+			//flex: 0 1 21%;
+
 			&.report_type {
-				flex: 0 1 29%;
+				//flex: 0 1 29%;
+				.select {
+					width: 100%;
+					select {
+						width: 100%;
+					}
+				}
 			}
 
 			&.update {
-				flex: 0 1 20%;
+				//flex: 0 1 20%;
 				display: flex;
 				//justify-content: center;
 				align-items: flex-end;
@@ -37,15 +67,15 @@
 	}
 
 	.user-plan-item {
-		display: flex;
-		padding: 10px;
-		background: #FAFAFA;
-		border: 1px solid #EEE;
+		//display: flex;
+		// padding: 10px;
+		// background: #FAFAFA;
+		// border: 1px solid #EEE;
 		margin: 10px 0;
 
 		.data {
-			flex: 0 1 22%;
-			margin: 0 2%;
+			//flex: 0 1 22%;
+			//margin: 0 2%;
 			label {
 				font-size: 1em;
 			}

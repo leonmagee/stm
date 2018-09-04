@@ -7,6 +7,9 @@ use App\Site;
 use App\Settings;
 use App\UserCreditBonus;
 use App\Helpers;
+use App\ReportType;
+use App\UserPlanValues;
+use App\UserResidualPercent;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -99,6 +102,23 @@ class UserController extends Controller
     public function edit_password(User $user)
     {
         return view('users.edit_password', compact('user'));
+    }
+
+    /**
+    * User Plan Values and Residual Percent overrides
+    */
+    public function user_plan_residual(User $user) {
+        $report_types_spiff = ReportType::where('spiff', 1)->get();
+        $report_types_residual = ReportType::where('spiff', 0)->get();
+        $user_plan_items = UserPlanValues::where('user_id', $user->id)->get();
+        $user_residual_items = UserResidualPercent::where('user_id', $user->id)->get();
+        return view('users.user-plan-values', compact(
+            'user', 
+            'report_types_spiff', 
+            'report_types_residual',
+            'user_plan_items',
+            'user_residual_items'
+        ));
     }
 
     /**

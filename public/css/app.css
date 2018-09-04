@@ -17692,6 +17692,7 @@ ul.mobile-menu li ul.sub-menu.active li:hover a {
   color: #333;
   padding: 15px;
   max-width: 75%;
+  margin-bottom: 20px;
 }
 
 .user-plan-section h4 {
@@ -17700,34 +17701,49 @@ ul.mobile-menu li ul.sub-menu.active li:hover a {
   margin-bottom: 15px;
 }
 
-.user-plan-section .add-user-data-form {
-  padding: 10px;
-  background: #FAFAFA;
-  border: 1px solid #EEE;
+.user-plan-section .flex-section {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  padding: 10px 17px;
+  background: #FAFAFA;
+  border: 1px solid #EEE;
 }
 
-.user-plan-section .add-user-data-form .field {
+.user-plan-section .flex-section > div {
   -webkit-box-flex: 0;
       -ms-flex: 0 1 21%;
           flex: 0 1 21%;
 }
 
-.user-plan-section .add-user-data-form .field.report_type {
+.user-plan-section .flex-section > div.one {
   -webkit-box-flex: 0;
-      -ms-flex: 0 1 29%;
-          flex: 0 1 29%;
+      -ms-flex: 0 1 38%;
+          flex: 0 1 38%;
+}
+
+.user-plan-section .flex-section > div.four {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 1 12%;
+          flex: 0 1 12%;
+}
+
+.user-plan-section .flex-section > div.four input {
+  width: 100%;
+}
+
+.user-plan-section .add-user-data-form .field.report_type .select {
+  width: 100%;
+}
+
+.user-plan-section .add-user-data-form .field.report_type .select select {
+  width: 100%;
 }
 
 .user-plan-section .add-user-data-form .field.update {
-  -webkit-box-flex: 0;
-      -ms-flex: 0 1 20%;
-          flex: 0 1 20%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -17738,20 +17754,7 @@ ul.mobile-menu li ul.sub-menu.active li:hover a {
 }
 
 .user-plan-section .user-plan-item {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  padding: 10px;
-  background: #FAFAFA;
-  border: 1px solid #EEE;
   margin: 10px 0;
-}
-
-.user-plan-section .user-plan-item .data {
-  -webkit-box-flex: 0;
-      -ms-flex: 0 1 22%;
-          flex: 0 1 22%;
-  margin: 0 2%;
 }
 
 .user-plan-section .user-plan-item .data label {

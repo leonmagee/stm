@@ -2,9 +2,9 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
-
 class UserResidualPercent extends Model
 {
-    //
+    public function report_type() {
+    	return $this->belongsTo(ReportType::class);
+    }
 }

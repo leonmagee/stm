@@ -7,24 +7,10 @@ use Illuminate\Http\Request;
 
 class UserResidualPercentController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+    public function __construct() {
+
+        $this->middleware('auth');
     }
 
     /**
@@ -33,20 +19,15 @@ class UserResidualPercentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $id)
     {
-        //
-    }
+        UserResidualPercent::create([
+            'user_id' => $id,
+            'report_type_id' => $request->report_type,
+            'residual_percent' => $request->percent
+        ]);
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\UserResidualPercent  $userResidualPercent
-     * @return \Illuminate\Http\Response
-     */
-    public function show(UserResidualPercent $userResidualPercent)
-    {
-        //
+        return redirect('user-plan-values/' . $id);
     }
 
     /**

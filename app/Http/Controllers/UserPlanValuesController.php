@@ -3,8 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\UserPlanValues;
-use App\User;
-use App\ReportType;
 use Illuminate\Http\Request;
 
 class UserPlanValuesController extends Controller
@@ -13,26 +11,6 @@ class UserPlanValuesController extends Controller
     public function __construct() {
 
         $this->middleware('auth');
-    }
-
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
     }
 
     /**
@@ -56,25 +34,6 @@ class UserPlanValuesController extends Controller
         ]);
 
         return redirect('user-plan-values/' . $id);
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\UserPlanValues  $userPlanValues
-     * @return \Illuminate\Http\Response
-     */
-    public function show(User $user)
-    {
-        $report_types_spiff = ReportType::where('spiff', 1)->get();
-        $report_types_residual = ReportType::where('spiff', 0)->get();
-        $user_plan_items = UserPlanValues::where('user_id', $user->id)->get();
-        return view('users.user-plan-values', compact(
-            'user', 
-            'report_types_spiff', 
-            'report_types_residual',
-            'user_plan_items'
-        ));
     }
 
     /**
