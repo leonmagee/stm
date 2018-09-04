@@ -74,6 +74,8 @@ class UserResidualPercentController extends Controller
      */
     public function destroy(UserResidualPercent $userResidualPercent)
     {
-        //
+        $userResidualPercent->delete();
+
+        return redirect('user-plan-values/' . $userResidualPercent->user_id);
     }
 }

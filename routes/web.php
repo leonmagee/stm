@@ -34,6 +34,7 @@ Route::get('user-plan-values/{user}', 'UserController@user_plan_residual');
 Route::post('user-plan-values/{id}', 'UserPlanValuesController@store');
 Route::post('user-residual-percent/{id}', 'UserResidualPercentController@store');
 Route::post('delete-user-plan-value/{userPlanValues}', 'UserPlanValuesController@destroy');
+Route::post('delete-user-residual-percent/{userResidualPercent}', 'UserResidualPercentController@destroy');
 
 
 Route::get('profile', function() {

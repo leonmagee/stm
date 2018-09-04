@@ -110,8 +110,11 @@ class UserController extends Controller
     public function user_plan_residual(User $user) {
         $report_types_spiff = ReportType::where('spiff', 1)->get();
         $report_types_residual = ReportType::where('spiff', 0)->get();
-        $user_plan_items = UserPlanValues::where('user_id', $user->id)->get();
-        $user_residual_items = UserResidualPercent::where('user_id', $user->id)->get();
+        $user_plan_items = UserPlanValues::where('user_id', $user->id)
+        ->orderBy('report_type_id')->orderBy('plan_value')->get();
+        $user_residual_items = UserResidualPercent::where('user_id', $user->id)
+        ->orderBy('report_type_id')->get();
+
         return view('users.user-plan-values', compact(
             'user', 
             'report_types_spiff', 
