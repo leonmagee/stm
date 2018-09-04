@@ -81,6 +81,8 @@ class UserPlanValuesController extends Controller
      */
     public function destroy(UserPlanValues $userPlanValues)
     {
-        //
+        $userPlanValues->delete();
+
+        return redirect('user-plan-values/' . $userPlanValues->user_id);
     }
 }

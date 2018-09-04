@@ -71,7 +71,10 @@
             </div>
 
             <div class="data four">
-                <input class="button is-danger" type="submit" value="Delete" />
+                <form method="POST" action="/delete-user-plan-value/{{ $item->id }}">
+                    {{ csrf_field() }}
+                    <input class="button is-danger" type="submit" value="Delete" />
+                </form>
             </div>
 
         </div>
