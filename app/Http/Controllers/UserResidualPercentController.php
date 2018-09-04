@@ -21,11 +21,24 @@ class UserResidualPercentController extends Controller
      */
     public function store(Request $request, $id)
     {
-        UserResidualPercent::create([
+
+        $current = UserResidualPercent::where([
             'user_id' => $id,
-            'report_type_id' => $request->report_type,
-            'residual_percent' => $request->percent
-        ]);
+            'report_type_id' => $request->report_type_residual
+        ])->first();
+
+        if ( $current ) {
+
+            $current->residual_percent = $request->percent;
+            $current->save();
+
+        } else {
+            UserResidualPercent::create([
+                'user_id' => $id,
+                'report_type_id' => $request->report_type_residual,
+                'residual_percent' => $request->percent
+            ]);
+        }
 
         return redirect('user-plan-values/' . $id);
     }

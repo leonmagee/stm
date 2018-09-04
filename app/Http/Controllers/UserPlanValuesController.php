@@ -26,12 +26,26 @@ class UserPlanValuesController extends Controller
         // primary keys? 
         // hot to just update?
 
-        UserPlanValues::create([
+        $current = UserPlanValues::where([
             'user_id' => $id,
             'report_type_id' => $request->report_type,
             'plan_value' => $request->plan,
-            'payment_amount' => $request->payment,
-        ]);
+        ])->first();
+
+        if ( $current ) {
+
+            $current->payment_amount = $request->payment;
+            $current->save();
+
+        } else {
+
+            UserPlanValues::create([
+                'user_id' => $id,
+                'report_type_id' => $request->report_type,
+                'plan_value' => $request->plan,
+                'payment_amount' => $request->payment,
+            ]);
+        }
 
         return redirect('user-plan-values/' . $id);
     }

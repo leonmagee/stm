@@ -2,7 +2,17 @@
 
 	background-color: #FFF;
 	@include normal_background;
-	max-width: 75%;
+	font-size: 0.8em;
+	label.label {
+		font-size: 0.8em;
+	}
+	@media(min-width: $screen-md) {
+		max-width: 75%;
+		font-size: 1em;
+		label.label {
+			font-size: 1em;
+		}
+	}
 	margin-bottom: 20px;
 
 	h4 {

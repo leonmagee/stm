@@ -109,3 +109,11 @@
 		}
 	}
 }
+
+// update bulma select
+.select:after {
+	border-color: $brand-primary !important;
+}
+input:focus, select:focus, textarea:focus {
+	border-color: $brand-primary !important
+}

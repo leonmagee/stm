@@ -16560,6 +16560,16 @@ body.stm-body h1.title {
   }
 }
 
+.select:after {
+  border-color: #1B9AAA !important;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: #1B9AAA !important;
+}
+
 @media (min-width: 980px) {
   .stm-grid-wrap {
     display: grid;
@@ -17691,8 +17701,23 @@ ul.mobile-menu li ul.sub-menu.active li:hover a {
   background-color: #FFF;
   color: #333;
   padding: 15px;
-  max-width: 75%;
+  font-size: 0.8em;
   margin-bottom: 20px;
+}
+
+.user-plan-section label.label {
+  font-size: 0.8em;
+}
+
+@media (min-width: 980px) {
+  .user-plan-section {
+    max-width: 75%;
+    font-size: 1em;
+  }
+
+  .user-plan-section label.label {
+    font-size: 1em;
+  }
 }
 
 .user-plan-section h4 {

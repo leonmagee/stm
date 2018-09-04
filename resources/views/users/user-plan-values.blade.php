@@ -39,7 +39,7 @@
         </div>
 
         <div class="field three">
-            <label class="label" for="report_type">Payment Amount</label>
+            <label class="label" for="payment">Payment Amount</label>
            <input type="number" class="input" name="payment" id="payment" placeholder="$0.00"> 
         </div>
 
@@ -93,9 +93,9 @@
         {{ csrf_field() }}
 
         <div class="field one report_type">
-            <label class="label" for="report_type">Report Type</label>
+            <label class="label" for="report_type_residual">Report Type</label>
             <div class="select">
-                <select name="report_type" id="report_type">
+                <select name="report_type_residual" id="report_type_residual">
                     @foreach ($report_types_residual as $report_type)
                     <option 
                     value="{{ $report_type->id }}">{{ $report_type->carrier->name }} {{ $report_type->name }}
