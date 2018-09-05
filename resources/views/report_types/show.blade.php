@@ -27,7 +27,7 @@ Single Report Type
         <div class="item role flex-wrap">
             <i class="fas fa-sitemap"></i> 
             <span class="site-name">{{ $item['name'] }}</span>
-            <span class="value">{{ $item['value'] }}</span>
+            <span class="value">{!! $item['value'] !!}</span>
         </div>
 
 
@@ -100,13 +100,15 @@ Single Report Type
 </div>
 </div>
 
-<div class="button-bar">
-    @if($reportType->spiff)
-    <a href="/edit-report-type/{{ $reportType->id }}" id="edit-report-type" class="button is-primary">Edit Report Type</a>
-    @else
-    <a href="/edit-report-type-residual/{{ $reportType->id }}" id="edit-report-type" class="button is-primary">Edit Report Type</a>
-    @endif
-    <a href="#" class="modal-open button is-danger">Delete Report Type</a>
+<div class="button-bar-wrap">
+    <div class="button-bar">
+        @if($reportType->spiff)
+        <a href="/edit-report-type/{{ $reportType->id }}" id="edit-report-type" class="button is-primary">Edit Report Type</a>
+        @else
+        <a href="/edit-report-type-residual/{{ $reportType->id }}" id="edit-report-type" class="button is-primary">Edit Report Type</a>
+        @endif
+        <a href="#" class="modal-open button is-danger">Delete Report Type</a>
+    </div>
 </div>
 
 @section('modal')

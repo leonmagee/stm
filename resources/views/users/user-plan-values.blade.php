@@ -8,9 +8,6 @@
 
 @include('layouts.errors')
 
-<!-- add value overrides for spiffs -->
-
-
 <div class="user-plan-section">
 
     <h4>Spiff Value Overrides</h4>
@@ -20,8 +17,11 @@
         {{ csrf_field() }}
 
         <div class="field one report_type">
+
             <label class="label" for="report_type">Report Type</label>
+
             <div class="select">
+
                 <select name="report_type" id="report_type">
                     @foreach ($report_types_spiff as $report_type)
                     <option 
@@ -31,6 +31,7 @@
                 </select>
 
             </div>
+            
         </div>
 
         <div class="field two">
@@ -153,18 +154,4 @@
 
 </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 @endsection
-

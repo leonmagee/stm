@@ -58,5 +58,27 @@ body.stm-body {
 			text-shadow: 1px 1px darken($color-green, 2%);
 		}
 	}
+
+	.button-bar-wrap {
+
+		padding: 10px 5px 0;
+
+		.button-bar {
+			
+			padding: 0 15px 0;
+
+			@media(min-width: $screen-md) {
+				padding: 10px 0 0;
+				display: flex;
+				justify-content: space-between;
+				width: 40%;
+			}
+			a {
+				margin: 10px auto;
+				display: block;
+				flex: 0 1 30%;
+			}
+		}
+	}
 }
 

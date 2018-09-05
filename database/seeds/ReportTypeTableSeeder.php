@@ -40,7 +40,21 @@ class ReportTypeTableSeeder extends Seeder
                 'updated_at' => $current_time
             ],
             [
+                'name' => 'Instant',
+                'carrier_id' => 1,
+                'spiff' => 1,
+                'created_at' => $current_time,
+                'updated_at' => $current_time
+            ],
+            [
                 'name' => '2nd Recharge',
+                'carrier_id' => 1,
+                'spiff' => 1,
+                'created_at' => $current_time,
+                'updated_at' => $current_time
+            ],
+            [
+                'name' => 'Instant 2nd Recharge',
                 'carrier_id' => 1,
                 'spiff' => 1,
                 'created_at' => $current_time,
@@ -75,6 +89,27 @@ class ReportTypeTableSeeder extends Seeder
                 'updated_at' => $current_time
             ],
             [
+                'name' => 'Easy Go Instant',
+                'carrier_id' => 1,
+                'spiff' => 1,
+                'created_at' => $current_time,
+                'updated_at' => $current_time
+            ],
+            [
+                'name' => 'Easy Go 2nd Recharge',
+                'carrier_id' => 1,
+                'spiff' => 1,
+                'created_at' => $current_time,
+                'updated_at' => $current_time
+            ],
+            [
+                'name' => 'Easy Go 3rd Recharge',
+                'carrier_id' => 1,
+                'spiff' => 1,
+                'created_at' => $current_time,
+                'updated_at' => $current_time
+            ],
+            [
                 'name' => 'Month',
                 'carrier_id' => 2,
                 'spiff' => 1,
@@ -85,6 +120,27 @@ class ReportTypeTableSeeder extends Seeder
                 'name' => 'Residual',
                 'carrier_id' => 2,
                 'spiff' => 0,
+                'created_at' => $current_time,
+                'updated_at' => $current_time
+            ],
+            [
+                'name' => 'Instant',
+                'carrier_id' => 2,
+                'spiff' => 1,
+                'created_at' => $current_time,
+                'updated_at' => $current_time
+            ],
+            [
+                'name' => '2nd Recharge',
+                'carrier_id' => 2,
+                'spiff' => 1,
+                'created_at' => $current_time,
+                'updated_at' => $current_time
+            ],
+            [
+                'name' => '3rd Recharge',
+                'carrier_id' => 2,
+                'spiff' => 1,
                 'created_at' => $current_time,
                 'updated_at' => $current_time
             ],

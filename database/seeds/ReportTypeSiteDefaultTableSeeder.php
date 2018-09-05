@@ -16,58 +16,112 @@ class ReportTypeSiteDefaultTableSeeder extends Seeder
         DB::table('report_type_site_defaults')->insert([
             [
                 'site_id' => 1,
-                'report_type_id' => 1,
-                'spiff_value' => 10,
-                'residual_percent' => 0,
-            ],
-            [
-                'site_id' => 2,
-                'report_type_id' => 1,
-                'spiff_value' => 5,
-                'residual_percent' => 0,
-            ],
-            [
-                'site_id' => 3,
-                'report_type_id' => 1,
-                'spiff_value' => 8,
-                'residual_percent' => 0,
+                'report_type_id' => 1, // h2o month
+                'spiff_value' => null,
+                'residual_percent' => null,
             ],
             [
                 'site_id' => 1,
-                'report_type_id' => 2,
-                'spiff_value' => 0,
-                'residual_percent' => 3,
-            ],
-            [
-                'site_id' => 2,
-                'report_type_id' => 2,
-                'spiff_value' => 0,
-                'residual_percent' => 5,
-            ],
-            [
-                'site_id' => 3,
-                'report_type_id' => 2,
-                'spiff_value' => 0,
-                'residual_percent' => 3,
+                'report_type_id' => 2, // h2o residual
+                'spiff_value' => null,
+                'residual_percent' => null,
             ],
             [
                 'site_id' => 1,
-                'report_type_id' => 3,
-                'spiff_value' => 20,
-                'residual_percent' => 0,
+                'report_type_id' => 3, // h2o minute
+                'spiff_value' => null,
+                'residual_percent' => null,
             ],
             [
-                'site_id' => 2,
-                'report_type_id' => 3,
-                'spiff_value' => 15,
-                'residual_percent' => 0,
+                'site_id' => 1,
+                'report_type_id' => 4, // h2o instant
+                'spiff_value' => null,
+                'residual_percent' => null,
             ],
             [
-                'site_id' => 3,
-                'report_type_id' => 3,
-                'spiff_value' => 18,
-                'residual_percent' => 0,
+                'site_id' => 1,
+                'report_type_id' => 5, // h2o 2nd recharge
+                'spiff_value' => null,
+                'residual_percent' => null,
             ],
+            [
+                'site_id' => 1,
+                'report_type_id' => 6, // h2o instant 2nd recharge
+                'spiff_value' => null,
+                'residual_percent' => null,
+            ],
+            [
+                'site_id' => 1,
+                'report_type_id' => 7, // h2o minute 2nd recharge
+                'spiff_value' => null,
+                'residual_percent' => null,
+            ],
+            [
+                'site_id' => 1,
+                'report_type_id' => 8, // h2o 3rd recharge
+                'spiff_value' => null,
+                'residual_percent' => null,
+            ],
+            [
+                'site_id' => 1,
+                'report_type_id' => 9, // h2o easy go month
+                'spiff_value' => null,
+                'residual_percent' => null,
+            ],  
+            [
+                'site_id' => 1,
+                'report_type_id' => 10, // h2o easy go residual
+                'spiff_value' => null,
+                'residual_percent' => 2,
+            ],
+            [
+                'site_id' => 1,
+                'report_type_id' => 11, // h2o easy go instant
+                'spiff_value' => null,
+                'residual_percent' => null,
+            ],
+            [
+                'site_id' => 1,
+                'report_type_id' => 12, // h2o easy go 2nd recharge
+                'spiff_value' => null,
+                'residual_percent' => null,
+            ],
+            [
+                'site_id' => 1,
+                'report_type_id' => 13, // h2o easy go 3rd recharge
+                'spiff_value' => null,
+                'residual_percent' => null,
+            ],  
+            [
+                'site_id' => 1,
+                'report_type_id' => 14, // lyca month
+                'spiff_value' => null,
+                'residual_percent' => null,
+            ],
+            [
+                'site_id' => 1,
+                'report_type_id' => 15, // lyca residual
+                'spiff_value' => null,
+                'residual_percent' => null,
+            ],
+            [
+                'site_id' => 1,
+                'report_type_id' => 16, // lyca instant
+                'spiff_value' => null,
+                'residual_percent' => null,
+            ],
+            [
+                'site_id' => 1,
+                'report_type_id' => 17, // lyca 2nd rechage
+                'spiff_value' => null,
+                'residual_percent' => null,
+            ],  
+            [
+                'site_id' => 1,
+                'report_type_id' => 18, // lyca 3rd recharge
+                'spiff_value' => null,
+                'residual_percent' => null,
+            ],                                            
         ]);
     }
 }

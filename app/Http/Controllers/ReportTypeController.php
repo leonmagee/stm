@@ -160,12 +160,16 @@ class ReportTypeController extends Controller
 
             /**
             * @todo In the case of no value, this should list the site default instead?
+            * @todo here we should get the current site defalt and display it with like ($0 (default))
             */
+
+            $default_spiff_string = '$' . $site->default_spiff_amount . ' <span>(Site Default)</span>';
+
             if ( $value ) {
-                if ( $value->spiff_value ) {
-                    $spiff_value = '$' . number_format($value->spiff_value, 2);
+                if ( $value->spiff_value !== null ) {
+                    $spiff_value = '$' . $value->spiff_value;
                 } else {
-                    $spiff_value = 'Default';
+                    $spiff_value = $default_spiff_string;
                 }
 
                 $plan_payments = ReportTypeSiteValue::where(
@@ -180,7 +184,7 @@ class ReportTypeController extends Controller
                 ];
 
             } else {
-                $spiff_value = 'Default';
+                $spiff_value = $default_spiff_string;
             }
 
         }

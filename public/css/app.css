@@ -16750,6 +16750,35 @@ body.stm-body .notification.is-success {
   text-shadow: 1px 1px #05d19b;
 }
 
+body.stm-body .button-bar-wrap {
+  padding: 10px 5px 0;
+}
+
+body.stm-body .button-bar-wrap .button-bar {
+  padding: 0 15px 0;
+}
+
+@media (min-width: 980px) {
+  body.stm-body .button-bar-wrap .button-bar {
+    padding: 10px 0 0;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    width: 40%;
+  }
+}
+
+body.stm-body .button-bar-wrap .button-bar a {
+  margin: 10px auto;
+  display: block;
+  -webkit-box-flex: 0;
+      -ms-flex: 0 1 30%;
+          flex: 0 1 30%;
+}
+
 .modal-box {
   background-color: #FFF;
   text-align: center;
@@ -17059,16 +17088,18 @@ ul.sidebar-menu li ul.sub-menu {
   z-index: 1000;
   top: 10px;
   left: 180px;
-  width: 250px;
   font-size: 16px;
 }
 
 ul.sidebar-menu li ul.sub-menu li {
-  font-size: 14px;
+  font-size: 12px;
 }
 
-ul.sidebar-menu li ul.sub-menu a {
+ul.sidebar-menu li ul.sub-menu li a {
   padding: 5px 20px;
+  white-space: nowrap;
+  display: block;
+  min-width: 100%;
 }
 
 ul.sidebar-menu li:hover {
@@ -17371,35 +17402,6 @@ ul.mobile-menu li ul.sub-menu.active li:hover a {
   color: #666;
 }
 
-.button-bar-wrap {
-  padding: 10px 5px 0;
-}
-
-.button-bar-wrap .button-bar {
-  padding: 0 15px 0;
-}
-
-@media (min-width: 980px) {
-  .button-bar-wrap .button-bar {
-    padding: 10px 0 0;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-pack: justify;
-        -ms-flex-pack: justify;
-            justify-content: space-between;
-    width: 40%;
-  }
-}
-
-.button-bar-wrap .button-bar a {
-  margin: 10px auto;
-  display: block;
-  -webkit-box-flex: 0;
-      -ms-flex: 0 1 30%;
-          flex: 0 1 30%;
-}
-
 .report-types-wrap a.report-type-wrap .flex-item.report-type-name {
   font-size: 1.1em;
   -webkit-box-flex: 1;
@@ -17468,6 +17470,11 @@ ul.mobile-menu li ul.sub-menu.active li:hover a {
   margin-left: auto;
   min-width: 130px;
   padding: 0 10px;
+}
+
+.single-report-type-wrap .flex-wrap .value span {
+  font-size: 0.8em;
+  color: #777;
 }
 
 .single-report-type-wrap .item {
@@ -17605,6 +17612,10 @@ ul.mobile-menu li ul.sub-menu.active li:hover a {
   .reports-wrap .report-wrap {
     margin-bottom: 0;
   }
+}
+
+.reports-wrap .report-wrap .report-details table {
+  width: 100%;
 }
 
 .reports-wrap .report-wrap .title-line {

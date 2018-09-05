@@ -22,6 +22,12 @@
 		@media(min-width: $screen-md) {
 			margin-bottom: 0;	
 		}
+
+		.report-details {
+			table {
+				width: 100%;
+			}
+		}
 		//display: flex;
 		//align-items: center;
 		//min-height: 300px;
