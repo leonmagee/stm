@@ -27,13 +27,14 @@ class SimController extends Controller
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
+     * @todo not using this for now - not really necessary
      */
-    public function index(Request $request)
-    {
-        $current_site_date = Helpers::current_date_name();
+    // public function index(Request $request)
+    // {
+    //     $current_site_date = Helpers::current_date_name();
 
-        return view('sims.index', compact('current_site_date'));
-    }
+    //     return view('sims.index', compact('current_site_date'));
+    // }
 
     public function archive($id) {
 

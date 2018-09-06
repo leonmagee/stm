@@ -45,7 +45,7 @@ Route::get('profile', function() {
 /**
 * SIMs Routes
 */
-Route::get('sims', 'SimController@index');
+//Route::get('sims', 'SimController@index'); // @todo return a 404 if you go to this route?
 Route::get('sims/upload', 'SimController@upload_form');
 Route::get('sims/create', 'SimController@addSim');
 Route::get('sims/archive/{id}', 'SimController@archive');

@@ -74,7 +74,8 @@ class ReportDataUser {
 				$report_type->id, 
 				$this->site_id, 
 				$matching_sims,
-				$report_type->spiff
+				$report_type->spiff,
+				$this->user_id
 			);
 
 

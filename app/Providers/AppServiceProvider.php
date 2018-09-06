@@ -28,10 +28,10 @@ class AppServiceProvider extends ServiceProvider
             $report_types = ReportType::query()->get();
 
             $monthly_sims_sub = [
-                [
-                    'name' => 'All Sims',
-                    'link' => '/sims'
-                ]
+                // [
+                //     'name' => 'All Sims',
+                //     'link' => '/sims'
+                // ]
             ];
             foreach($report_types as $report_type) {
                 

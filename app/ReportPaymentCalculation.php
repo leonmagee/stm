@@ -38,11 +38,38 @@ class ReportPaymentCalculation {
 
 				$total_charge = 0;
 
+				// maybe get one array for sim user overrides?
+
+				//dd($report_type_id);
+				// h2o month = $640
+
+
+				$user_override = UserPlanValues::where([
+					'user_id' => $user_id,
+					'report_type_id' => $report_type_id,
+					//'plan_value' => $request->plan,
+				])->get();
+
+				$override_array = [];
+				foreach( $user_override as $override ) {
+					$override_array[$override->plan_value] = $override->payment_amount;
+				}
+
+				//dd($override_array);
+
 				foreach($matching_sims as $sim) {
 				// maybe here get user sims value?
 
-					if ( isset($values_array[$sim->value]) ) {
+					//dd($sim->value);
+
+					if ( isset($override_array[$sim->value]) ) {
+
+						$new_charge = $override_array[$sim->value];
+
+					} elseif ( isset($values_array[$sim->value]) ) {
+
 						$new_charge = $values_array[$sim->value];
+						
 					} else {
 					// get report type default
 						if ( $defaults->spiff_value ) {

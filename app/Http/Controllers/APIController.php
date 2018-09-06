@@ -6,76 +6,66 @@ use App\Sim;
 use App\SimResidual;
 use App\SimUser;
 use App\ReportType;
+use App\Helpers;
 
 use Illuminate\Support\Facades\DB;
 
 class APIController extends Controller
 {
-    public function getSims()
-    {
-    	/**
-        * @todo very slow change this so the query uses the same type as sim_user.
-        * this works for now but it will prob break when there are a large number of residual sims.. 
-        * also, this isn't selecting per date... 
-    	*/
-    	$query_array = [];
+    // public function getSims()
+    // {
+    //     dd('not being used');
+    // 	/**
+    //     * @todo very slow change this so the query uses the same type as sim_user.
+    //     * this works for now but it will prob break when there are a large number of residual sims.. 
+    //     * also, this isn't selecting per date... 
+    // 	*/
+    // 	$query_array = [];
 
-        $spiff_query = Sim::select(
-        	'sim_number', 
-        	'value', 
-        	'activation_date', 
-        	'mobile_number', 
-        	'report_type_id'
-        )->get();
+    //     $spiff_query = Sim::select(
+    //     	'sim_number', 
+    //     	'value', 
+    //     	'activation_date', 
+    //     	'mobile_number', 
+    //     	'report_type_id'
+    //     )->get();
 
-        $residual_query = SimResidual::select(
-        	'sim_number', 
-        	'value', 
-        	'activation_date', 
-        	'mobile_number', 
-        	'report_type_id'
-        )->get();
+    //     $residual_query = SimResidual::select(
+    //     	'sim_number', 
+    //     	'value', 
+    //     	'activation_date', 
+    //     	'mobile_number', 
+    //     	'report_type_id'
+    //     )->get();
 
-        $query_array = [];
+    //     $query_array = [];
 
-        foreach( $spiff_query as $item ) {
-        	$query_array[] = [
-	        	'sim_number' => $item->sim_number,
-	        	'value' => $item->value,
-	        	'activation_date' => $item->activation_date,
-	        	'mobile_number' => $item->mobile_number,
-	        	'report_type' => $item->report_type->carrier->name . ' ' . $item->report_type->name
-        	];
-        }
+    //     foreach( $spiff_query as $item ) {
+    //     	$query_array[] = [
+	   //      	'sim_number' => $item->sim_number,
+	   //      	'value' => $item->value,
+	   //      	'activation_date' => $item->activation_date,
+	   //      	'mobile_number' => $item->mobile_number,
+	   //      	'report_type' => $item->report_type->carrier->name . ' ' . $item->report_type->name
+    //     	];
+    //     }
 
-        foreach( $residual_query as $item ) {
-        	$query_array[] = [
-	        	'sim_number' => $item->sim_number,
-	        	'value' => $item->value,
-	        	'activation_date' => $item->activation_date,
-	        	'mobile_number' => $item->mobile_number,
-	        	'report_type' => $item->report_type->carrier->name . ' ' . $item->report_type->name
-        	];
-        }
+    //     foreach( $residual_query as $item ) {
+    //     	$query_array[] = [
+	   //      	'sim_number' => $item->sim_number,
+	   //      	'value' => $item->value,
+	   //      	'activation_date' => $item->activation_date,
+	   //      	'mobile_number' => $item->mobile_number,
+	   //      	'report_type' => $item->report_type->carrier->name . ' ' . $item->report_type->name
+    //     	];
+    //     }
 
-        //return datatables($query_array)->toJson();
-        return datatables($query_array)->make(true);
-    }
+    //     //return datatables($query_array)->toJson();
+    //     return datatables($query_array)->make(true);
+    // }
 
     public function getSimsArchive($id)
     {
-
-   //  	    $testing_array[] = [
-	  //       	'sim_number' => '234234234',
-	  //       	'value' => '33',
-	  //       	'activation_date' => '23423',
-	  //       	'mobile_number' => '6196189375'
-   //      	];
-
-			// return datatables($testing_array)->toJson();
-
-
-
     	$report_type = ReportType::find($id);
         
         if ($report_type->spiff) {
@@ -88,13 +78,17 @@ class APIController extends Controller
 
         }
 
-        //return datatables($query)->toJson();
         return datatables($query)->make(true);
     }
 
     public function archiveQuery(SimMaster $sims, $id) {
 
-	    return $sims->where('report_type_id', $id)->select(
+	    return $sims->where(
+            [
+                'report_type_id' => $id,
+                'upload_date' => Helpers::current_date(),
+            ]
+        )->select(
 	    	'sim_number', 
 	    	'value', 
 	    	'activation_date', 

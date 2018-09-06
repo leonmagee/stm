@@ -63,12 +63,12 @@
 
             <div class="data two">
                 <label>Plan Value</label>
-                <div>{{ $item->plan_value }}</div>
+                <div>${{ $item->plan_value }}</div>
             </div>
 
             <div class="data three">
                 <label>Payment Amount</label>
-                <div>{{ $item->payment_amount }}</div>
+                <div>${{ $item->payment_amount }}</div>
             </div>
 
             <div class="data four">
