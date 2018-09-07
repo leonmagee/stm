@@ -15,8 +15,8 @@ use App\Mail\NewUser;
 class RegistrationController extends Controller
 {
 
-	public function __construct() {
-
+	public function __construct()
+	{
 		$this->middleware('auth');
 	}
 

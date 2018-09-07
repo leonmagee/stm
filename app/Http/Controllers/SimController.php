@@ -18,7 +18,8 @@ class SimController extends Controller
     private $duplicate_sims;
     private $number_sims_uploaded;
 
-    public function __construct() {
+    public function __construct() 
+    {
         $this->middleware('auth');
         ini_set('max_execution_time', '300');
     }

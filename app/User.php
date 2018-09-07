@@ -41,4 +41,19 @@ class User extends Authenticatable
             return false;
         }
     }
+
+    /**
+    * @todo create a different role for Juan and Jessica?
+    * Not sure what will be different? Just have the ability to upload sims?
+    * Prob need a different homepage view.. 
+    */
+    public function isManager() {
+        if ( $this->role === 'manager') {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+
 }

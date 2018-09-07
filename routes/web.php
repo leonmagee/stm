@@ -23,6 +23,7 @@ Route::get('/', 'HomeController@index')->name('home');
 */
 Route::get('users', 'UserController@index')->name('users');
 Route::get('users/{user}', 'UserController@show');
+Route::get('profile', 'UserController@profile');
 Route::get('edit-user/{user}', 'UserController@edit');
 Route::get('bonus-credit/{user}', 'UserCreditBonusController@edit');
 Route::post('bonus-credit/{user}', 'UserCreditBonusController@update');
@@ -35,12 +36,6 @@ Route::post('user-plan-values/{id}', 'UserPlanValuesController@store');
 Route::post('user-residual-percent/{id}', 'UserResidualPercentController@store');
 Route::post('delete-user-plan-value/{userPlanValues}', 'UserPlanValuesController@destroy');
 Route::post('delete-user-residual-percent/{userResidualPercent}', 'UserResidualPercentController@destroy');
-
-
-Route::get('profile', function() {
-
-	return view('profile');
-});
 
 /**
 * SIMs Routes

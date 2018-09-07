@@ -14,8 +14,8 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
-    public function __construct() {
-
+    public function __construct()
+    {
         $this->middleware('auth');
     }
     /**
@@ -60,6 +60,50 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
+        $bonus_credit = UserCreditBonus::where([
+            'user_id' => $user->id,
+            'date' => Helpers::current_date()
+        ])->first();
+
+        if ( isset($bonus_credit->bonus) ) {
+            $bonus = '$' . number_format($bonus_credit->bonus, 2);
+        } else {
+            $bonus = false;
+        }
+        if ( isset($bonus_credit->credit) ) {
+            $credit = '$' . number_format($bonus_credit->credit, 2);
+        } else {
+            $credit = false;
+        }
+
+
+        $role = $user->role;
+
+        if ( $role == 'admin' ) {
+            $role = 'Admin';
+        } else {
+            $role = Site::find($role)->name;
+        }
+        return view('users.show', compact('user', 'role', 'bonus', 'credit'));
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function profile(Request $request)
+    {
+        //$request->user()->authorizeRoles(['employee', 'manager']);
+        //dd($request->user());
+        $user = \Auth::user();
+        // if ( $user->isAdmin() ) {
+        //     echo 'you are admin!';
+        // } else {
+        //     echo 'not admin...';
+        // }
+
         $bonus_credit = UserCreditBonus::where([
             'user_id' => $user->id,
             'date' => Helpers::current_date()

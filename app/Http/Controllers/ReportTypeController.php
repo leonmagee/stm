@@ -7,6 +7,7 @@ use App\Site;
 use App\Carrier;
 use App\ReportTypeSiteDefault;
 use App\ReportTypeSiteValue;
+//use App\Helpers;
 use Illuminate\Http\Request;
 
 class ReportTypeController extends Controller
@@ -15,7 +16,8 @@ class ReportTypeController extends Controller
     /**
     * Only Logged In Users can see this
     **/
-    public function __construct() {
+    public function __construct()
+    {  
         $this->middleware('auth');
     }
 
@@ -123,6 +125,14 @@ class ReportTypeController extends Controller
      */
     public function show(ReportType $reportType)
     {
+
+        $user = \Auth::user();
+        if ( ! $user->isAdmin() ) {
+            return redirect('/');
+        }
+
+        //return Helpers::admin_lock();
+
         $sites = Site::all();
 
         if ( $reportType->spiff ) {

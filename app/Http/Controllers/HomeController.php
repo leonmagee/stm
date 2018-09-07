@@ -7,6 +7,8 @@ use App\Helpers;
 use App\Settings;
 use App\Site;
 use App\ReportType;
+use App\User;
+use App\UserCreditBonus;
 use App\Sim;
 
 class HomeController extends Controller
@@ -28,6 +30,53 @@ class HomeController extends Controller
      */
     public function index()
     {
+
+        /**
+        * Create separate methods for getting reports
+        * or outputting user homepage?
+        */
+
+        $user = \Auth::user();
+
+        if ($user->isAdmin())
+        {
+            return $this->outputCharts(); 
+        } else {
+            return $this->outputProfile($user);
+        }
+
+    }
+
+    public function outputProfile(User $user) {
+        //dd('profile');
+        $bonus_credit = UserCreditBonus::where([
+            'user_id' => $user->id,
+            'date' => Helpers::current_date()
+        ])->first();
+
+        if ( isset($bonus_credit->bonus) ) {
+            $bonus = '$' . number_format($bonus_credit->bonus, 2);
+        } else {
+            $bonus = false;
+        }
+        if ( isset($bonus_credit->credit) ) {
+            $credit = '$' . number_format($bonus_credit->credit, 2);
+        } else {
+            $credit = false;
+        }
+
+
+        $role = $user->role;
+
+        if ( $role == 'admin' ) {
+            $role = 'Admin';
+        } else {
+            $role = Site::find($role)->name;
+        }
+        return view('users.show', compact('user', 'role', 'bonus', 'credit'));
+    }
+
+    public function outputCharts() {
 
         // if ( \Auth::user() ) {
         //     $user = \Auth::user();
