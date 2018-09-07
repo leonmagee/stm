@@ -21,7 +21,16 @@ class ReportData {
 
 	public function get_data() {
 
-		$users = User::where('role', $this->site_id)->get();
+		$current_user = \Auth::user();
+
+		if ($current_user->isAdmin())
+		{
+			$users = User::where('role', $this->site_id)->get();
+		} 
+		else 
+		{
+			$users = User::where('id', $current_user->id)->get();
+		}
 
 		$report_data_array = array();
 

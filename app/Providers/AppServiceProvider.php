@@ -34,17 +34,17 @@ class AppServiceProvider extends ServiceProvider
                 // ]
             ];
             foreach($report_types as $report_type) {
-                
+
                 $monthly_sims_sub[] = [
                     'name' => $report_type->carrier->name . ' ' . $report_type->name,
                     'link' => '/sims/archive/' . $report_type->id
                 ];
 
             }
-            $monthly_sims_sub[] = [
-                'name' => 'Add Sim',
-                'link' => '/sims/create'
-            ];
+            // $monthly_sims_sub[] = [
+            //     'name' => 'Add Sim',
+            //     'link' => '/sims/create'
+            // ];
 
 
 
@@ -55,7 +55,7 @@ class AppServiceProvider extends ServiceProvider
                 ]
             ];
             foreach($report_types as $report_type) {
-                
+
                 $report_types_sub[] = [
                     'name' => $report_type->carrier->name . ' ' . $report_type->name,
                     'link' => '/report-types/' . $report_type->id
@@ -114,70 +114,99 @@ class AppServiceProvider extends ServiceProvider
                 ]
             ];
 
+            $user = \Auth::user();
 
-            // complete menu
-            $menu_array = [
-                [
-                    'name' => 'Monthly Sims',
-                    'link' => false,
-                    'sub' => $monthly_sims_sub,
-                    'icon' => 'flaticon-sim-card',
-                ],
-                [
-                    'name' => 'Report Types',
-                    'link' => false,
-                    'sub' => $report_types_sub,
-                    'icon' => 'flaticon-report',
-                ],
-                [
-                    'name' => 'Upload Sims',
-                    'link' => '/sims/upload',
-                    'sub' => false,
-                    'icon' => 'flaticon-upload',
-                ],
-                [
-                    'name' => 'Users',
-                    'link' => false,
-                    'sub' => $users_sub,
-                    'icon' => 'flaticon-group',
-                ],
-                [
-                    'name' => 'User Sims',
-                    'link' => false,
-                    'sub' => $user_sims_sub,
-                    'icon' => 'flaticon-report-1',
-                ],
-                [
-                    'name' => 'Settings',
-                    'link' => false,
-                    'sub' => $settings_sub,
-                    'icon' => 'flaticon-gear',
-                ],
-                [
-                    'name' => 'Reports',
-                    'link' => '/reports',
-                    'sub' => false,
-                    'icon' => 'flaticon-growth',
-                ],
-            ];
+            if ( $user->isAdmin() ) {
+
+                // complete menu
+                $menu_array = [
+                    [
+                        'name' => 'Monthly Sims',
+                        'link' => false,
+                        'sub' => $monthly_sims_sub,
+                        'icon' => 'flaticon-sim-card',
+                    ],
+                    [
+                        'name' => 'Report Types',
+                        'link' => false,
+                        'sub' => $report_types_sub,
+                        'icon' => 'flaticon-report',
+                    ],
+                    [
+                        'name' => 'Upload Sims',
+                        'link' => '/sims/upload',
+                        'sub' => false,
+                        'icon' => 'flaticon-upload',
+                    ],
+                    [
+                        'name' => 'Users',
+                        'link' => false,
+                        'sub' => $users_sub,
+                        'icon' => 'flaticon-group',
+                    ],
+                    [
+                        'name' => 'User Sims',
+                        'link' => false,
+                        'sub' => $user_sims_sub,
+                        'icon' => 'flaticon-report-1',
+                    ],
+                    [
+                        'name' => 'Settings',
+                        'link' => false,
+                        'sub' => $settings_sub,
+                        'icon' => 'flaticon-gear',
+                    ],
+                    [
+                        'name' => 'Reports',
+                        'link' => '/reports',
+                        'sub' => false,
+                        'icon' => 'flaticon-growth',
+                    ],
+                ];
+
+            } else {
+
+                // user menu
+                $menu_array = [
+                    [
+                        'name' => 'Monthly Sims',
+                        'link' => false,
+                        'sub' => $monthly_sims_sub,
+                        'icon' => 'flaticon-sim-card',
+                    ],
+                    [
+                        'name' => 'Your Sims',
+                        'link' => false,
+                        'sub' => $user_sims_sub,
+                        'icon' => 'flaticon-report-1',
+                    ],
+                    [
+                        'name' => 'Reports',
+                        'link' => '/reports',
+                        'sub' => false,
+                        'icon' => 'flaticon-growth',
+                    ],
+                ];
+
+            }
 
             $view->with('menu', $menu_array);
         });
 
-        view()->composer('layouts.header', function($view) {
+view()->composer('layouts.header', function($view) {
 
-            $settings = Settings::first();
-            $date_array = explode('_', $settings->current_date);
-            $month = Carbon::createFromFormat('m', $date_array[0])->format('F');
-            $date = $month . ' ' . $date_array[1];
+    $settings = Settings::first();
+    $date_array = explode('_', $settings->current_date);
+    $month = Carbon::createFromFormat('m', $date_array[0])->format('F');
+    $date = $month . ' ' . $date_array[1];
 
-            $view->with('current_date', $date)
-                ->with('company', $settings->company)
-                ->with('mode', $settings->mode)
-                ->with('site', $settings->get_site_object()->name);
+    $view->with('current_date', $date)
+    ->with('company', $settings->company)
+    ->with('mode', $settings->mode)
+    ->with('site', $settings->get_site_object()->name);
                 //->with('site', $settings->site->name);
-        });
-    }
+});
+}
 
     /**
      * Register any application services.

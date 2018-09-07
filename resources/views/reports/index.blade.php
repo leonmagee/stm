@@ -61,6 +61,11 @@
 				</tfoot>
 			</table>
 
+			<form method="POST" action="/get-csv-report/{{ $item->user_id }}">
+				{{ csrf_field() }}
+				<input type="submit" href="#" class="button is-primary" value="CSV Report" />
+			</form>
+
 		</div>
 
 

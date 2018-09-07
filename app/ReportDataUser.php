@@ -6,7 +6,7 @@ class ReportDataUser {
 
 	public $user_name;
 	public $user_company;
-	private $user_id;
+	public $user_id;
 	public $report_data;
 	private $site_id;
 	public $bonus;

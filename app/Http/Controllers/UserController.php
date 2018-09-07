@@ -95,14 +95,7 @@ class UserController extends Controller
      */
     public function profile(Request $request)
     {
-        //$request->user()->authorizeRoles(['employee', 'manager']);
-        //dd($request->user());
         $user = \Auth::user();
-        // if ( $user->isAdmin() ) {
-        //     echo 'you are admin!';
-        // } else {
-        //     echo 'not admin...';
-        // }
 
         $bonus_credit = UserCreditBonus::where([
             'user_id' => $user->id,

@@ -47,6 +47,11 @@ class ReportsController extends Controller
         ));
     }
 
+    public function download_csv(Request $request, $id) 
+    {
+        dd('your id is ' . $id);
+    }
+
     /**
      * Show the form for creating a new resource.
      *
