@@ -36,11 +36,14 @@ class ReportData {
 
 		foreach ( $users as $user ) {
 
+			$sims_count = SimUser::where('user_id', $user->id)->count();
+
 			$report_data_array[] = new ReportDataUser(
 				$user->name, 
 				$user->company, 
 				$user->id,
-				$this->site_id
+				$this->site_id,
+				$sims_count
 			);
 		}
 

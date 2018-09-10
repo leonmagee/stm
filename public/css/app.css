@@ -17750,6 +17750,7 @@ ul.mobile-menu li ul.sub-menu.active li:hover a {
 .reports-wrap .report-wrap table.table {
   font-size: 1em;
   white-space: nowrap;
+  margin-bottom: 10px;
 }
 
 .reports-wrap .report-wrap table.table td.bold {

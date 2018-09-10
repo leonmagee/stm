@@ -13,13 +13,15 @@ class ReportDataUser {
 	public $credit;
 	public $total_count;
 	public $total_payment;
+	public $count;
 
-	public function __construct($user_name, $user_company, $user_id, $site_id) {
+	public function __construct($user_name, $user_company, $user_id, $site_id, $count) {
 
 		$this->user_name = $user_name;
 		$this->user_company = $user_company;
 		$this->user_id = $user_id;
 		$this->site_id = $site_id;
+		$this->count = $count;
 		$this->get_data();
 	}
 
