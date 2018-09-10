@@ -5,7 +5,7 @@
 		<li>
 
 			<div class="icon-wrap">
-				<i class="{{ $item['icon'] }}"></i>
+				<i class="fi {{ $item['icon'] }}"></i>
 			</div>
 
 			@if($item['link'])
