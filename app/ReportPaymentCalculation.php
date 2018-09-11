@@ -12,18 +12,12 @@ class ReportPaymentCalculation {
 
 		$values_array = [];
 
-		// we need to go back to the basic default if this doesn't exit...
 		$defaults = ReportTypeSiteDefault::where([
 			'site_id' => $site_id,
 			'report_type_id' => $report_type_id
 		])->first();
 
-		if ( ! $defaults ) {
-			// ? get site default?
-		}
-
-		if ( $defaults ) { // this shoud change since we still need to pay based on site default?
-
+		if ( $defaults ) {
 
 			if ( $is_spiff ) {
 
@@ -33,16 +27,11 @@ class ReportPaymentCalculation {
 				->get();
 
 				foreach($report_plan_values as $item) {
+
 					$values_array[$item->plan_value] = $item->payment_amount;
 				}
 
 				$total_charge = 0;
-
-				// maybe get one array for sim user overrides?
-
-				//dd($report_type_id);
-				// h2o month = $640
-
 
 				$user_override = UserPlanValues::where([
 					'user_id' => $user_id,
@@ -51,38 +40,39 @@ class ReportPaymentCalculation {
 				])->get();
 
 				$override_array = [];
+
 				foreach( $user_override as $override ) {
 					$override_array[$override->plan_value] = $override->payment_amount;
 				}
 
-				//dd($override_array);
 
 				foreach($matching_sims as $sim) {
-				// maybe here get user sims value?
 
-					//dd($sim->value);
-
-					if ( isset($override_array[$sim->value]) ) {
+					if ( isset($override_array[$sim->value]) ) { // 1. user plan override
 
 						$new_charge = $override_array[$sim->value];
 
-					} elseif ( isset($values_array[$sim->value]) ) {
+					} elseif ( isset($values_array[$sim->value]) ) { // 2. report type plan specific
 
 						$new_charge = $values_array[$sim->value];
 						
+					} elseif ($defaults->spiff_value !== null) {
+
+						$new_charge = $defaults->spiff_value;
+
 					} else {
-					// get report type default
-						if ( $defaults->spiff_value ) {
-							$new_charge = $defaults->spiff_value;
+
+						$site_default = Site::find($site_id)->first();
+
+						if ( $site_default->default_spiff_amount ) {
+
+							$new_charge = $site_default->default_spiff_amount;
+
 						} else {
-						// get site default
-							$site_default = Site::find($site_id)->first();
-							if ( $site_default->default_spiff_amount ) {
-								$new_charge = $site_default->default_spiff_amount;
-							} else {
-								$new_charge = 0;
-							}
+
+							$new_charge = 0;
 						}
+						
 					}
 
 					$total_charge += $new_charge;

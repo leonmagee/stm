@@ -165,6 +165,8 @@ class ReportUserCSV {
 		// insert sims data
 		$sims_array = $csv_data->create_array($user, $current_date);
 
+		dd($sims_array);
+
 		foreach ($sims_array as $sims_row) {
 			$csv->insertOne($sims_row);
 		}
