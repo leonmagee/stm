@@ -10,6 +10,7 @@ use App\Site;
 use App\Helpers;
 use App\ReportType;
 use App\ReportData;
+use App\ReportUserCSV;
 
 class ReportsController extends Controller
 {
@@ -49,7 +50,8 @@ class ReportsController extends Controller
 
     public function download_csv(Request $request, $id) 
     {
-        dd('your id is ' . $id);
+        $user = User::find($id);
+        ReportUserCSV::process_csv_download($user);
     }
 
     /**

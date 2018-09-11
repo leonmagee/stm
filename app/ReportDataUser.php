@@ -15,13 +15,13 @@ class ReportDataUser {
 	public $total_payment;
 	public $count;
 
-	public function __construct($user_name, $user_company, $user_id, $site_id, $count) {
+	public function __construct($user_name, $user_company, $user_id, $site_id = null) {
 
 		$this->user_name = $user_name;
 		$this->user_company = $user_company;
 		$this->user_id = $user_id;
 		$this->site_id = $site_id;
-		$this->count = $count;
+		$this->count = SimUser::where('user_id', $user_id)->count();
 		$this->get_data();
 	}
 
