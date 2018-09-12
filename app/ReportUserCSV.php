@@ -112,8 +112,6 @@ class ReportUserCSV {
 			}
 		}
 
-		dd($master_array);
-
 		return $master_array;
 	}
 
@@ -209,12 +207,15 @@ class ReportUserCSV {
 		// get data
 		$report_types = ReportType::all();
 
+
 		// current date
 		$current_date = Helpers::current_date();
 		$date_name = Helpers::current_date_name();
 
+
 		// create csv file in memory
 		$csv = Writer::createFromFileObject(new SplTempFileObject());
+
 
 		// insert header
 		$csv->insertOne([$user->name]);
@@ -232,7 +233,7 @@ class ReportUserCSV {
 			$user->role
 		);
 
-		//dd($report_data_user->report_data);
+
 
 		$csv->insertOne(['Wireless Carrier', 'Number of Sims', 'Payment Amount']);
 
@@ -250,16 +251,6 @@ class ReportUserCSV {
 		$csv->insertOne([]);
 		$csv->insertOne([]);
 
-		//dd($report_data_user->report_data);
-
-
-
-
-
-
-
-
-
 
 		// new ReportUserCSV object
 		$csv_data = new static();
@@ -267,7 +258,7 @@ class ReportUserCSV {
 		// insert sims data
 		$sims_array = $csv_data->create_array($user, $current_date);
 
-		dd($sims_array);
+		//dd($sims_array);
 
 		foreach ($sims_array as $sims_row) {
 			$csv->insertOne($sims_row);
