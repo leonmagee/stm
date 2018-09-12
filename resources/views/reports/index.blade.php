@@ -38,12 +38,12 @@
 					@endforeach
 					<tr>
 						<td>Monthly Bonus</td>
-						<td>+</td>
+						<td class="plus_minus">+</td>
 						<td class="bonus bold">${{ number_format($item->bonus, 2) }}</td>
 					</tr>
 					<tr>
 						<td>Oustanding Balance</td>
-						<td>-</td>
+						<td class="plus_minus minus">-</td>
 						<td class="credit bold">${{ number_format($item->credit, 2) }}</td>
 					</tr>
 					<tr>

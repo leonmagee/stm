@@ -17753,7 +17753,8 @@ ul.mobile-menu li ul.sub-menu.active li:hover a {
   margin-bottom: 10px;
 }
 
-.reports-wrap .report-wrap table.table td.bold {
+.reports-wrap .report-wrap table.table td.bold,
+.reports-wrap .report-wrap table.table td.plus_minus {
   font-weight: 700;
 }
 

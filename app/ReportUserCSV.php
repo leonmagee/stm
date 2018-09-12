@@ -20,6 +20,8 @@ class ReportUserCSV {
 
 		$master_array = array();
 
+		$site_id = Settings::first()->get_site_id();
+
 		$report_types_array = ReportType::all();
 
 		foreach ( $report_types_array as $report_type ) {
@@ -68,13 +70,25 @@ class ReportUserCSV {
 				 *  Get Array of Sims Values
 				 */
 
-				$payment_amount = '333';
+				//$payment_amount = '333';
 
-				$counter = 0;
+				//$counter = 0;
 
 				foreach ( $report_sims as $report ) {
 
 					//$payment_amount = "$" . number_format( $payments_value_array[ $counter ], 2 );
+
+					//dd($report);
+
+					$payment_amount = $this->calc_payment(
+						$report_type->id, //
+						$site_id, 
+						$report->value, //
+						$spiff_or_res, //
+						$user->id //
+					);
+
+					//dd($payment_amount);
 
 					if ($spiff_or_res) {
 						$sp_res = 'Spiff';
@@ -91,14 +105,102 @@ class ReportUserCSV {
 						"'$payment_amount'"
 					);
 
-					$counter ++;
+					//$counter ++;
 				}
 
-				$master_array[] = array( '' );
+				$master_array[] = []; // empty lines - prob a way to do this with csv league
 			}
 		}
 
+		dd($master_array);
+
 		return $master_array;
+	}
+
+	private function calc_payment($report_type_id, $site_id, $value, $is_spiff, $user_id) {
+
+		$values_array = [];
+
+		$defaults = ReportTypeSiteDefault::where([
+			'site_id' => $site_id,
+			'report_type_id' => $report_type_id
+		])->first();
+
+		//dd($defaults);
+
+		if ( $defaults ) {
+
+			if ( $is_spiff ) {
+
+
+				$report_plan_values = ReportTypeSiteValue::where(
+					'report_type_site_defaults_id', 
+					$defaults->id)
+				->get();
+
+
+				foreach($report_plan_values as $item) {
+
+					$values_array[$item->plan_value] = $item->payment_amount;
+				}
+
+
+				$total_charge = 0;
+
+				$user_override = UserPlanValues::where([
+					'user_id' => $user_id,
+					'report_type_id' => $report_type_id,
+					//'plan_value' => $request->plan,
+				])->get();
+
+				$override_array = [];
+
+				foreach( $user_override as $override ) {
+					$override_array[$override->plan_value] = $override->payment_amount;
+				}
+
+				if ( isset($override_array[$value]) ) { // 1. user plan override
+
+					$new_charge = $override_array[$value];
+
+				} elseif ( isset($values_array[$value]) ) { // 2. report type plan specific
+
+					$new_charge = $values_array[$value];
+					
+				} elseif ($defaults->spiff_value !== null) {
+
+					$new_charge = $defaults->spiff_value;
+
+				} else {
+
+					$site_default = Site::find($site_id)->first();
+
+					if ( $site_default->default_spiff_amount ) {
+
+						$new_charge = $site_default->default_spiff_amount;
+
+					} else {
+
+						$new_charge = 0;
+					}
+					
+				}
+
+			} else {
+
+				$percent = $defaults->residual_percent;
+
+				$new_charge = ( $value * ( $percent / 100));
+			}
+
+		} 
+
+		else {
+
+			$new_charge = 0;
+		}
+
+		return $new_charge;
 	}
 
 

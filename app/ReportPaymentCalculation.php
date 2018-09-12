@@ -17,6 +17,9 @@ class ReportPaymentCalculation {
 			'report_type_id' => $report_type_id
 		])->first();
 
+		/**
+		* @todo will this ever be false?
+		*/
 		if ( $defaults ) {
 
 			if ( $is_spiff ) {
@@ -79,6 +82,11 @@ class ReportPaymentCalculation {
 				}
 
 			} else {
+
+				/**
+				* @todo test this - are defaults working correctly?
+				* what happens when no default is set?
+				*/
 
 				$percent = $defaults->residual_percent;
 

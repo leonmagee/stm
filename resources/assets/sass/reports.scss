@@ -56,7 +56,11 @@
 			white-space: nowrap;
 			margin-bottom: 10px;
 
-			td.bold {
+			td {
+				//text-align: center;
+			}
+
+			td.bold, td.plus_minus {
 				font-weight: 700;
 			}
 			
