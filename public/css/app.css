@@ -17574,7 +17574,7 @@ ul.mobile-menu li ul.sub-menu.active li:hover a {
 .single-report-type-wrap .flex-wrap .value {
   color: #1B9AAA;
   font-size: 1.2em;
-  margin-left: auto;
+  margin-left: 10px;
   min-width: 130px;
   padding: 0 10px;
 }

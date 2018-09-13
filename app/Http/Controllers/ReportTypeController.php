@@ -215,11 +215,13 @@ class ReportTypeController extends Controller
                 ]
             )->first();
 
+            $default_residual_string = $site->default_residual_percent . '% <span>(Site Default)</span>';
+
             if ( $value ) {
                 if ( $value->residual_percent ) {
                     $residual_percent = $value->residual_percent . '%';
                 } else {
-                    $residual_percent = 'Default';
+                    $residual_percent = $default_residual_string;
                 }
 
                 $site_values_array[] = [
@@ -230,7 +232,7 @@ class ReportTypeController extends Controller
                 ];
 
             } else {
-                $residual_percent = 'Default';
+                $residual_percent = $default_residual_string;
             }
 
 
