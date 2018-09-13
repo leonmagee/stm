@@ -40,6 +40,7 @@ class ReportUserCSV {
 				->get();
 
 			} else {
+
 				$report_sims = DB::table('sim_residuals')
 				->select('sim_residuals.sim_number', 'sim_residuals.value', 'sim_residuals.mobile_number', 'sim_residuals.activation_date','sim_residuals.report_type_id')
 				->join('sim_users', 'sim_users.sim_number', '=', 'sim_residuals.sim_number')
@@ -65,11 +66,11 @@ class ReportUserCSV {
 				foreach ( $report_sims as $report ) {
 
 					$payment_amount = $this->calc_payment(
-						$report_type->id, //
+						$report_type->id,
 						$site_id, 
-						$report->value, //
-						$spiff_or_res, //
-						$user->id //
+						$report->value,
+						$spiff_or_res,
+						$user->id
 					);
 
 					if ($spiff_or_res) {
@@ -134,33 +135,6 @@ class ReportUserCSV {
 					$override_array[$override->plan_value] = $override->payment_amount;
 				}
 
-				// if ( isset($override_array[$value]) ) { // 1. user plan override
-
-				// 	$new_charge = $override_array[$value];
-
-				// } elseif ( isset($values_array[$value]) ) { // 2. report type plan specific
-
-				// 	$new_charge = $values_array[$value];
-					
-				// } elseif ($defaults->spiff_value !== null) {
-
-				// 	$new_charge = $defaults->spiff_value;
-
-				// } else {
-
-				// 	$site_default = Site::find($site_id)->first();
-
-				// 	if ( $site_default->default_spiff_amount ) {
-
-				// 		$new_charge = $site_default->default_spiff_amount;
-
-				// 	} else {
-
-				// 		$new_charge = 0;
-				// 	}
-					
-				// }
-
 				$new_charge = ReportPaymentCalculation::calc_spiff_payments(
 					$override_array, 
 					$value, 
@@ -171,7 +145,12 @@ class ReportUserCSV {
 
 			} else {
 
-				$percent = $defaults->residual_percent;
+				$percent = ReportPaymentCalculation::calc_residual_percent(
+					$user_id,
+					$report_type_id,
+					$defaults,
+					$site_id
+				);
 
 				$new_charge = ( $value * ( $percent / 100));
 			}
@@ -214,6 +193,8 @@ class ReportUserCSV {
 			$user->role
 		);
 
+		//dd($report_data_user);
+
 		$csv->insertOne(['Wireless Carrier', 'Number of Sims', 'Payment Amount']);
 
 		foreach($report_data_user->report_data as $item) {
@@ -226,6 +207,32 @@ class ReportUserCSV {
 
 			$csv->insertOne($data_row);
 		}
+
+		$csv->insertOne([
+			'Monthly Bonus',
+			'',
+			'$' . number_format($report_data_user->bonus, 2)		
+		]);
+		
+		$csv->insertOne([
+			'Outstanding Balance',
+			'',
+			'$' . number_format($report_data_user->credit, 2)		
+		]);
+		
+		$csv->insertOne([
+			'TOTAL',
+			$report_data_user->total_count,
+			'$' . number_format($report_data_user->total_payment, 2)
+		]);
+
+		$csv->insertOne([]);
+
+		$csv->insertOne([
+			'Total Assigned Sims',
+			$report_data_user->count,
+			''
+		]);
 
 		$csv->insertOne([]);
 		$csv->insertOne([]);

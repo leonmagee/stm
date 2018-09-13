@@ -59,37 +59,14 @@ class ReportPaymentCalculation {
 
 			} else {
 
-				$user_override = UserResidualPercent::where([
-					'user_id' => $user_id,
-					'report_type_id' => $report_type_id,
-				])->first();
-
-				// if ( isset($user_override->residual_percent) ) {
-
-				// 	$percent = $user_override->residual_percent;
-
-				// } elseif (isset($defaults->residual_percent)) {
-
-				// 	$percent = $defaults->residual_percent;
-
-				// } elseif ($site_default = Site::find($site_id)->first()) {
-
-				// 	$percent = $site_default->default_residual_percent;
-
-				// } else {
-
-				// 	$percent = 0;
-				// }
-
-				// if ( isset($user_override->residual_percent) ) {
-				// 	$override_percent = $user_override->residual_percent;
-				// } else {
-				// 	$override_percent = false;
-				// }
-
+				// $user_override = UserResidualPercent::where([
+				// 	'user_id' => $user_id,
+				// 	'report_type_id' => $report_type_id,
+				// ])->first();
 
 				$percent = self::calc_residual_percent(
-					$user_override,
+					$user_id,
+					$report_type_id,
 					$defaults,
 					$site_id
 				);
@@ -142,7 +119,12 @@ class ReportPaymentCalculation {
 		return $new_charge;
 	}
 
-	public static function calc_residual_percent($user_override, $defaults, $site_id) {
+	public static function calc_residual_percent($user_id, $report_type_id, $defaults, $site_id) {
+
+		$user_override = UserResidualPercent::where([
+			'user_id' => $user_id,
+			'report_type_id' => $report_type_id,
+		])->first();
 
 		if ( isset($user_override->residual_percent) ) {
 
