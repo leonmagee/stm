@@ -39,7 +39,6 @@ class ReportPaymentCalculation {
 				$user_override = UserPlanValues::where([
 					'user_id' => $user_id,
 					'report_type_id' => $report_type_id,
-					//'plan_value' => $request->plan,
 				])->get();
 
 				$override_array = [];
@@ -85,10 +84,39 @@ class ReportPaymentCalculation {
 
 				/**
 				* @todo test this - are defaults working correctly?
-				* what happens when no default is set?
+				* wddkhat happens when no default is set?
+				* @todo copy this functionality over to the csv creation - test both with some basic data
 				*/
 
-				$percent = $defaults->residual_percent;
+				$user_override = UserResidualPercent::where([
+					'user_id' => $user_id,
+					'report_type_id' => $report_type_id,
+					//'plan_value' => $request->plan,
+				])->first();
+
+				//dd($user_override->residual_percent);
+
+				if ( isset($user_override->residual_percent) ) {
+
+					$percent = $user_override->residual_percent;
+
+				} elseif (isset($defaults->residual_percent)) {
+
+					$percent = $defaults->residual_percent;
+
+				} elseif ($site_default = Site::find($site_id)->first()) {
+
+					$percent = $site_default->default_residual_percent;
+
+				} else {
+
+					$percent = 0;
+				}
+
+				// if ( ! $percent = $defaults->residual_percent ) {
+				// 	$site_default = Site::find($site_id)->first();
+				// 	$percent = $site_default->default_residual_percent;
+				// }
 
 				$total_charge = 0;
 
