@@ -13,9 +13,6 @@ use SplTempFileObject;
  */
 class ReportUserCSV {
 
-	// function __construct( $user ) {
-	// }
-
 	private function create_array($user, $date) {
 
 		$master_array = array();
@@ -65,20 +62,7 @@ class ReportUserCSV {
 					"Amount"
 				);
 
-
-				/**
-				 *  Get Array of Sims Values
-				 */
-
-				//$payment_amount = '333';
-
-				//$counter = 0;
-
 				foreach ( $report_sims as $report ) {
-
-					//$payment_amount = "$" . number_format( $payments_value_array[ $counter ], 2 );
-
-					//dd($report);
 
 					$payment_amount = $this->calc_payment(
 						$report_type->id, //
@@ -87,8 +71,6 @@ class ReportUserCSV {
 						$spiff_or_res, //
 						$user->id //
 					);
-
-					//dd($payment_amount);
 
 					if ($spiff_or_res) {
 						$sp_res = 'Spiff';
@@ -106,6 +88,7 @@ class ReportUserCSV {
 					);
 
 					//$counter ++;
+					// prob need to add up here?
 				}
 
 				$master_array[] = []; // empty lines - prob a way to do this with csv league
@@ -124,31 +107,25 @@ class ReportUserCSV {
 			'report_type_id' => $report_type_id
 		])->first();
 
-		//dd($defaults);
-
 		if ( $defaults ) {
 
 			if ( $is_spiff ) {
-
 
 				$report_plan_values = ReportTypeSiteValue::where(
 					'report_type_site_defaults_id', 
 					$defaults->id)
 				->get();
 
-
 				foreach($report_plan_values as $item) {
 
 					$values_array[$item->plan_value] = $item->payment_amount;
 				}
-
 
 				$total_charge = 0;
 
 				$user_override = UserPlanValues::where([
 					'user_id' => $user_id,
 					'report_type_id' => $report_type_id,
-					//'plan_value' => $request->plan,
 				])->get();
 
 				$override_array = [];
@@ -157,32 +134,40 @@ class ReportUserCSV {
 					$override_array[$override->plan_value] = $override->payment_amount;
 				}
 
-				if ( isset($override_array[$value]) ) { // 1. user plan override
+				// if ( isset($override_array[$value]) ) { // 1. user plan override
 
-					$new_charge = $override_array[$value];
+				// 	$new_charge = $override_array[$value];
 
-				} elseif ( isset($values_array[$value]) ) { // 2. report type plan specific
+				// } elseif ( isset($values_array[$value]) ) { // 2. report type plan specific
 
-					$new_charge = $values_array[$value];
+				// 	$new_charge = $values_array[$value];
 					
-				} elseif ($defaults->spiff_value !== null) {
+				// } elseif ($defaults->spiff_value !== null) {
 
-					$new_charge = $defaults->spiff_value;
+				// 	$new_charge = $defaults->spiff_value;
 
-				} else {
+				// } else {
 
-					$site_default = Site::find($site_id)->first();
+				// 	$site_default = Site::find($site_id)->first();
 
-					if ( $site_default->default_spiff_amount ) {
+				// 	if ( $site_default->default_spiff_amount ) {
 
-						$new_charge = $site_default->default_spiff_amount;
+				// 		$new_charge = $site_default->default_spiff_amount;
 
-					} else {
+				// 	} else {
 
-						$new_charge = 0;
-					}
+				// 		$new_charge = 0;
+				// 	}
 					
-				}
+				// }
+
+				$new_charge = ReportPaymentCalculation::calc_spiff_payments(
+					$override_array, 
+					$value, 
+					$values_array, 
+					$defaults->spiff_value,
+					$site_id
+				);
 
 			} else {
 
@@ -207,15 +192,12 @@ class ReportUserCSV {
 		// get data
 		$report_types = ReportType::all();
 
-
 		// current date
 		$current_date = Helpers::current_date();
 		$date_name = Helpers::current_date_name();
 
-
 		// create csv file in memory
 		$csv = Writer::createFromFileObject(new SplTempFileObject());
-
 
 		// insert header
 		$csv->insertOne([$user->name]);
@@ -224,7 +206,6 @@ class ReportUserCSV {
 		$csv->insertOne([]);
 		$csv->insertOne([]);
 
-
 		// get payment overview data
 		$report_data_user = new ReportDataUser(
 			$user->name, 
@@ -232,8 +213,6 @@ class ReportUserCSV {
 			$user->id,
 			$user->role
 		);
-
-
 
 		$csv->insertOne(['Wireless Carrier', 'Number of Sims', 'Payment Amount']);
 
@@ -257,8 +236,6 @@ class ReportUserCSV {
 
 		// insert sims data
 		$sims_array = $csv_data->create_array($user, $current_date);
-
-		//dd($sims_array);
 
 		foreach ($sims_array as $sims_row) {
 			$csv->insertOne($sims_row);

@@ -1,11 +1,6 @@
 <?php
 namespace App;
 
-/**
-* @todo this needs to start at the user level, and loop through each use so that info can be 
-* passed in to get the specific data for each user. 
-*/
-
 class ReportData {
 
 	private $site_id;

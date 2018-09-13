@@ -33,14 +33,5 @@ class Helpers {
 			return false;
 		}
 	}
-
-	// public static function admin_lock() {
-
-	// 	$user = \Auth::user();
-
- //        if ( ! $user->isAdmin() ) {
- //            return redirect('/');
- //        }
-	// }
-
+	
 }

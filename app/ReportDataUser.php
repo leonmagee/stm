@@ -28,11 +28,7 @@ class ReportDataUser {
 	public function get_data() {
 
 		$report_types = ReportType::all();
-
-		$total_count = 0;
-		$total_payment = 0;
-
-		// get current date?
+		$total_count = $total_payment = 0;
 		$current_date = Helpers::current_date();
 
 		foreach($report_types as $report_type) {
@@ -41,7 +37,6 @@ class ReportDataUser {
 
 				$matching_sims = DB::table('sims')
 				->select('sims.value', 'sims.report_type_id')
-				//->select('sims.value', 'sims.report_type_id')
 				->join('sim_users', 'sim_users.sim_number', '=', 'sims.sim_number')
 				->where('sim_users.user_id', $this->user_id)
 				->where('sims.report_type_id', $report_type->id)
@@ -52,7 +47,6 @@ class ReportDataUser {
 
 				$matching_sims = DB::table('sim_residuals')
 				->select('sim_residuals.value', 'sim_residuals.report_type_id')
-				//->select('sims.value', 'sims.report_type_id')
 				->join('sim_users', 'sim_users.sim_number', '=', 'sim_residuals.sim_number')
 				->where('sim_users.user_id', $this->user_id)
 				->where('sim_residuals.report_type_id', $report_type->id)
@@ -60,18 +54,12 @@ class ReportDataUser {
 				->get();
 			}
 
-			//dd($matching_sims);
-
 			if ($matching_sims) {
 				$number_sims = count($matching_sims);
 			} else {
 				$number_sims = 0;
 			}
 
-			/**
-			* @todo here I need to loop through all of the sims and get the different payment values, or else default back to the main default, but I will in the future add the per user overide to this...
-			*/
-			// site id
 			$payment = new ReportPaymentCalculation(
 				$report_type->id, 
 				$this->site_id, 
@@ -79,7 +67,6 @@ class ReportDataUser {
 				$report_type->spiff,
 				$this->user_id
 			);
-
 
 			$report_data_array[] = new ReportDataItem(
 				$report_type->carrier->name . ' ' .$report_type->name, 
@@ -92,9 +79,6 @@ class ReportDataUser {
 
 		}
 
-		/**
-		* @todo subtract monthly credit and add monthly bonus
-		*/
         $bonus_credit = UserCreditBonus::where([
             'user_id' => $this->user_id,
             'date' => $current_date
@@ -110,10 +94,6 @@ class ReportDataUser {
         } else {
             $this->credit = 0;
         }
-
-
-
-
 
 		$this->total_count = $total_count;
 

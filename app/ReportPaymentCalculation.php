@@ -17,9 +17,6 @@ class ReportPaymentCalculation {
 			'report_type_id' => $report_type_id
 		])->first();
 
-		/**
-		* @todo will this ever be false?
-		*/
 		if ( $defaults ) {
 
 			if ( $is_spiff ) {
@@ -47,76 +44,55 @@ class ReportPaymentCalculation {
 					$override_array[$override->plan_value] = $override->payment_amount;
 				}
 
-
 				foreach($matching_sims as $sim) {
 
-					if ( isset($override_array[$sim->value]) ) { // 1. user plan override
-
-						$new_charge = $override_array[$sim->value];
-
-					} elseif ( isset($values_array[$sim->value]) ) { // 2. report type plan specific
-
-						$new_charge = $values_array[$sim->value];
-						
-					} elseif ($defaults->spiff_value !== null) {
-
-						$new_charge = $defaults->spiff_value;
-
-					} else {
-
-						$site_default = Site::find($site_id)->first();
-
-						if ( $site_default->default_spiff_amount ) {
-
-							$new_charge = $site_default->default_spiff_amount;
-
-						} else {
-
-							$new_charge = 0;
-						}
-						
-					}
+					$new_charge = self::calc_spiff_payments(
+						$override_array, 
+						$sim->value, 
+						$values_array, 
+						$defaults->spiff_value,
+						$site_id
+					);
 
 					$total_charge += $new_charge;
 				}
 
 			} else {
 
-				/**
-				* @todo test this - are defaults working correctly?
-				* wddkhat happens when no default is set?
-				* @todo copy this functionality over to the csv creation - test both with some basic data
-				*/
-
 				$user_override = UserResidualPercent::where([
 					'user_id' => $user_id,
 					'report_type_id' => $report_type_id,
-					//'plan_value' => $request->plan,
 				])->first();
 
-				//dd($user_override->residual_percent);
+				// if ( isset($user_override->residual_percent) ) {
 
-				if ( isset($user_override->residual_percent) ) {
+				// 	$percent = $user_override->residual_percent;
 
-					$percent = $user_override->residual_percent;
+				// } elseif (isset($defaults->residual_percent)) {
 
-				} elseif (isset($defaults->residual_percent)) {
+				// 	$percent = $defaults->residual_percent;
 
-					$percent = $defaults->residual_percent;
+				// } elseif ($site_default = Site::find($site_id)->first()) {
 
-				} elseif ($site_default = Site::find($site_id)->first()) {
-
-					$percent = $site_default->default_residual_percent;
-
-				} else {
-
-					$percent = 0;
-				}
-
-				// if ( ! $percent = $defaults->residual_percent ) {
-				// 	$site_default = Site::find($site_id)->first();
 				// 	$percent = $site_default->default_residual_percent;
+
+				// } else {
+
+				// 	$percent = 0;
 				// }
+
+				// if ( isset($user_override->residual_percent) ) {
+				// 	$override_percent = $user_override->residual_percent;
+				// } else {
+				// 	$override_percent = false;
+				// }
+
+
+				$percent = self::calc_residual_percent(
+					$user_override,
+					$defaults,
+					$site_id
+				);
 
 				$total_charge = 0;
 
@@ -133,4 +109,61 @@ class ReportPaymentCalculation {
 			$this->total_payment = 0;
 		}
 	}
+
+	public static function calc_spiff_payments($override_array, $sim_val, $values_array, $default_spiff, $site_id ) {
+
+		if ( isset($override_array[$sim_val]) ) { // 1. user plan override
+
+			$new_charge = $override_array[$sim_val];
+
+		} elseif ( isset($values_array[$sim_val]) ) { // 2. report type plan specific
+
+			$new_charge = $values_array[$sim_val];
+			
+		} elseif ($default_spiff !== null) {
+
+			$new_charge = $default_spiff;
+
+		} else {
+
+			$site_default = Site::find($site_id)->first();
+
+			if ( $site_default->default_spiff_amount ) {
+
+				$new_charge = $site_default->default_spiff_amount;
+
+			} else {
+
+				$new_charge = 0;
+			}
+			
+		}
+
+		return $new_charge;
+	}
+
+	public static function calc_residual_percent($user_override, $defaults, $site_id) {
+
+		if ( isset($user_override->residual_percent) ) {
+
+			$percent = $user_override->residual_percent;
+
+		} elseif (isset($defaults->residual_percent)) {
+
+			$percent = $defaults->residual_percent;
+
+		} elseif ($site_default = Site::find($site_id)->first()) {
+
+			$percent = $site_default->default_residual_percent;
+
+		} else {
+
+			$percent = 0;
+		}
+
+		return $percent;
+	}
+
+
 }
+
