@@ -46,8 +46,6 @@ class AppServiceProvider extends ServiceProvider
             //     'link' => '/sims/create'
             // ];
 
-
-
             $report_types_sub = [
                 [
                     'name' => 'All Report Types',
@@ -95,6 +93,17 @@ class AppServiceProvider extends ServiceProvider
                 [
                     'name' => 'Delete Sims',
                     'link' => '/delete-sims'
+                ]
+            ];
+
+            $user_sims_sub_non_admin = [
+                [
+                    'name' => 'All Sims',
+                    'link' => '/user-sims'
+                ],
+                [
+                    'name' => 'Look Up Sims',
+                    'link' => '/find-sims'
                 ]
             ];
 
@@ -177,7 +186,7 @@ class AppServiceProvider extends ServiceProvider
                     [
                         'name' => 'Your Sims',
                         'link' => false,
-                        'sub' => $user_sims_sub,
+                        'sub' => $user_sims_sub_non_admin,
                         'icon' => 'flaticon-report-1',
                     ],
                     [

@@ -49,19 +49,40 @@ class RegistrationController extends Controller
 
 		//$role_array = ['null','agent','dealer','sigstore'];
 
-    	// create and save new user
-		$user = User::create([
-			'name' => $request->name,
-			'email' => $request->email_address,
-			'company' => $request->company,
-			'phone' => $request->phone,
-			'address' => $request->address,
-			'city' => $request->city,
-			'state' => $request->state,
-			'zip' => $request->zip,
-			'role' => $request->role,
-			'password' => bcrypt($request->user_password)
-		]);
+        try { // use verify_sim here as well? test with bad data... 
+
+	    	// create and save new user
+			$user = User::create([
+				'name' => $request->name,
+				'email' => $request->email_address,
+				'company' => $request->company,
+				'phone' => $request->phone,
+				'address' => $request->address,
+				'city' => $request->city,
+				'state' => $request->state,
+				'zip' => $request->zip,
+				'role' => $request->role,
+				'password' => bcrypt($request->user_password)
+			]);
+
+        //$count++;
+
+        } catch(\Illuminate\Database\QueryException $e) {
+        	
+            $errorCode = $e->errorInfo[1];
+            
+            if($errorCode == '1062'){
+            	// I really need to do this all with ajax, and flash the message...
+
+            	session()->flash('danger', 'This email address is already being used.');
+
+            	return redirect('register');
+            }
+        }
+
+
+
+
 
 		/**
 		* Update this email to include branding and reflect that a user account was created.

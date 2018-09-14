@@ -10,6 +10,18 @@
 
 @endif
 
+@if($flash = session('danger'))
+
+<div class="notification is-danger">
+
+ 	<button class="delete"></button>
+
+	{{ $flash }}
+
+</div>
+
+@endif
+
 @if($duplicates = session('duplicates'))
 
 <div class="notification is-danger">
