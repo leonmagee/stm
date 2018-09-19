@@ -89,6 +89,9 @@ class SimController extends Controller
     */
     public function upload(Request $request)
     {
+        /**
+        * @todo try using League CSV for this?
+        */
 
         $spiff_or_resid = ReportType::find($request->report_type)->spiff;
 

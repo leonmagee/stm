@@ -12,7 +12,7 @@
 
 		<h3>New User Registration</h3>
 
-		<form method="POST" action="/register">
+		<form method="POST" action="/register" id="stm_reg_form">
 
 			<div class="form-wrap">
 
@@ -126,5 +126,77 @@
 </div>
 
 
+
+@endsection
+
+
+@section('page-script')
+
+<script>
+
+	$('#stm_reg_form').submit( function(e) {
+
+		$('.stm-absolute-wrap#loader-wrap').css({'display':'flex'});
+
+		e.preventDefault();
+
+		//console.log('form submit prevented');
+
+		var reg_name = $('.form-wrap-flex #name').val();
+		var reg_email = $('.form-wrap-flex #email').val();
+		var reg_company = $('.form-wrap-flex #company').val();
+		var reg_role = $('.form-wrap-flex #role').val();
+		var reg_phone = $('.form-wrap-flex #phone').val();
+		var reg_address = $('.form-wrap-flex #address').val();
+		var reg_city = $('.form-wrap-flex #city').val();
+		var reg_state = $('.form-wrap-flex #state').val();
+		var reg_zip = $('.form-wrap-flex #zip').val();
+		var reg_password = $('.form-wrap-flex #password').val();
+		var reg_password2 = $('.form-wrap-flex #password_2').val();
+
+		console.log('name ', reg_name);
+		console.log('email ', reg_email);
+		console.log('company ', reg_company );
+		console.log('role ', reg_role);
+		console.log('phone ', reg_phone);
+		console.log('address ', reg_address);
+		console.log('city ', reg_city);
+		console.log('state ', reg_state);
+		console.log('zip ', reg_zip);
+		console.log('password ', reg_password);
+		console.log('password_confirmation ', reg_password2);
+
+    	var token = document.head.querySelector('meta[name="csrf-token"]');
+		window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
+
+		axios({
+			method: 'post',
+			url: '/register',
+			data: {
+				name: reg_name,
+				email_address: reg_email,
+				company: reg_company,
+				role: reg_role,
+				phone: reg_phone,
+				address: reg_address,
+				city: reg_city,
+				state: reg_state,
+				zip: reg_zip,
+				password: reg_password,
+				password_confirmation: reg_password2
+			}
+		}).then(response => {
+			console.log('test worked?');
+			console.log(response);
+			$('.stm-absolute-wrap#loader-wrap').hide();
+		}).catch(error => {
+			console.log('this is an error?');
+			console.log(error.response);
+			$('.stm-absolute-wrap#loader-wrap').hide();
+		});
+
+	});
+
+</script>
 
 @endsection

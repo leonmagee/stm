@@ -10,6 +10,7 @@ require('datatables');
 
 require('chart.js');
 
+require('axios');
 
 /**
 * Fade out notification on click
@@ -61,6 +62,7 @@ $('.mobile-menu a.has-menu').click(function() {
 
 /**
 * Show spinner
+* This is linked to buttons that show the spinner prior to refreshing the page.
 */
 $('button.call-loader').click(function() {
 	$('.stm-absolute-wrap#loader-wrap').css({'display':'flex'});

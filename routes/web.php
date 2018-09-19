@@ -118,6 +118,7 @@ Route::get('carriers/{carrier}', 'CarrierController@show');
 //Route::get('register', 'AuthController@register');
 Route::get('register', 'RegistrationController@create');
 Route::post('register', 'RegistrationController@store');
+
 //Route::get('login', 'AuthController@login');
 Route::get('login', 'SessionsController@create')->name('login');
 Route::post('login', 'SessionsController@store');
