@@ -11,6 +11,8 @@
 |
 */
 
+dd(phpinfo());
+
 //use App\Billing\Stripe;
 
 /**

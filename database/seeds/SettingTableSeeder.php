@@ -16,7 +16,7 @@ class SettingTableSeeder extends Seeder
             [
                 'company' => 'GS Wireless',
                 'mode' => 'online',
-                'current_date' => '6_2018',
+                'current_date' => '8_2018',
                 //'site_id' => 1,
             ]
         ]);
