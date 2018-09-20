@@ -11,7 +11,7 @@
 |
 */
 
-dd(phpinfo());
+//dd(phpinfo());
 
 //use App\Billing\Stripe;
 
