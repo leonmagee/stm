@@ -6,12 +6,13 @@
 		.flex-item {
 
 			&.company-wrap {
-				font-size: 15px;	
-				flex: 0 1 35%;
+				//font-size: 15px;	
+				font-size: 0.9em;
+				flex: 0 1 45%;
 				padding: 0 20px;
 			}
 			&.name-phone-wrap {
-				flex: 0 1 55%;
+				flex: 0 1 45%;
 				padding: 0 10px;
 				.name {
 					font-size: 13px;

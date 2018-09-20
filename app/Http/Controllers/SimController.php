@@ -11,6 +11,7 @@ use App\ReportType;
 use App\Carrier;
 use App\Settings;
 use App\Helpers;
+use League\Csv\Reader;
 use Illuminate\Http\Request;
 
 class SimController extends Controller
@@ -198,7 +199,7 @@ class SimController extends Controller
             $data_array[] = $row[0];
         }
 
-        return $this->complete_single_upload($data_array, $request);
+        return $this->complete_single_upload($data_array, $request, $filePath);
     }
 
 
@@ -233,7 +234,43 @@ class SimController extends Controller
     }
 
 
-    public function complete_single_upload($data_array, Request $request) {
+    public function complete_single_upload($data_array, Request $request, $filePath = false) {
+
+
+
+        /**
+        * @todo try using league csv method to import csv data... 
+        * I'm not sure how this will work with catching the duplicate sims and returning an error?
+        * but I should try doing this to see if it's faster
+        * and 
+        */
+
+
+        //We are going to insert some data into the users table
+        // $sth = $dbh->prepare(
+        //     "INSERT INTO sim_users (user_id, carrier_id, sim_number) VALUES (:user_id, :carrier_id, :sim_number)"
+        // );
+
+        // $csv = Reader::createFromPath($filePath, 'r');
+
+        // $csv->setOffset(1); //because we don't want to insert the header
+
+        // $nbInsert = $csv->each(function ($row) use (&$sth) {
+        //     //Do not forget to validate your data before inserting it in your database
+        //     $sth->bindValue(':user_id', $row[0], PDO::PARAM_STR);
+        //     $sth->bindValue(':carrier_id', $row[1], PDO::PARAM_STR);
+        //     $sth->bindValue(':sim_number', $row[2], PDO::PARAM_STR);
+
+        //     return $sth->execute(); //if the function return false then the iteration will stop
+        // });
+
+
+
+
+
+
+
+
 
         array_unique($data_array);
 
@@ -244,9 +281,13 @@ class SimController extends Controller
         
         $carrier_id = $request->carrier_id;
 
-        foreach( $data_array as $data ) {
+        //dd($data_array);
 
-            if ( Helpers::verify_sim($data) ) {
+        foreach( $data_array as $data ) {
+            // this checks the sim length for each iteration - this might take a lot of time?
+            // am I able to upload all of tim pham's sims at once?
+
+            //if ( Helpers::verify_sim($data) ) {
 
                 try {
 
@@ -266,7 +307,7 @@ class SimController extends Controller
                     }
                 }
 
-            }
+            //}
 
         }
 
@@ -274,7 +315,7 @@ class SimController extends Controller
         $this->duplicate_sims = $duplicate_sims;
 
         if ($num = $this->number_sims_uploaded) {
-            session()->flash('message', $num . ' Sims successfully uploaded.');
+            session()->flash('message', $num . ' sims successfully uploaded.');
         }
         
         if (count($this->duplicate_sims)) {
