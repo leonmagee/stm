@@ -18,7 +18,7 @@ class CreateReportTypeSiteDefaults extends Migration
             $table->integer('site_id');
             $table->integer('report_type_id');
             $table->integer('spiff_value')->nullable();
-            $table->integer('residual_percent')->nullable();
+            $table->float('residual_percent')->nullable();
             $table->timestamps();
         });
     }

@@ -47,7 +47,7 @@ Edit Report Type
 							<div class="control">
 								<input 
 								value="{{ $site->residual_percent($reportType->id) }}"
-								class="input" type="number" id="residual_{{ $site->id }}" name="residual_{{ $site->id }}" />
+								class="input" type="number" step="0.01" id="residual_{{ $site->id }}" name="residual_{{ $site->id }}" />
 							</div>
 						</div>
 

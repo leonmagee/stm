@@ -50,7 +50,7 @@
                 <div class="field">
                     <label class="label">Enter Percent</label>
                     <div class="control">
-                        <input value="{{ $residual }}" class="input" type="number" name="default_percent" />
+                        <input value="{{ $residual }}" class="input" type="number" step="0.01" name="default_percent" />
                     </div>
                 </div>
 

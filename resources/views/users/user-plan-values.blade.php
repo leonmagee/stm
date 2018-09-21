@@ -112,7 +112,7 @@
 
         <div class="field two">
             <label class="label" for="percent">Payment Percent</label>
-           <input type="number" class="input" name="percent" id="percent" placeholder="0%"> 
+           <input type="number" step="0.01" class="input" name="percent" id="percent" placeholder="0%"> 
         </div>
 
         <div class="field four update">

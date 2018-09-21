@@ -17,7 +17,7 @@ class CreateSitesTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->integer('default_spiff_amount')->nullable();
-            $table->integer('default_residual_percent')->nullable();
+            $table->float('default_residual_percent')->nullable();
             $table->timestamps();
         });
     }

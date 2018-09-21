@@ -17,7 +17,7 @@ class CreateUserResidualPercentsTable extends Migration
             $table->increments('id');
             $table->integer('user_id');
             $table->integer('report_type_id');
-            $table->integer('residual_percent');
+            $table->float('residual_percent');
             $table->timestamps();
         });
     }
