@@ -176,10 +176,10 @@ class UserController extends Controller
             'email_address' => 'required|email',
             'company' => 'required',
             'phone' => 'required',
-            'address' => 'required',
-            'city' => 'required',
-            'state' => 'required',
-            'zip' => 'required',
+            // 'address' => 'required',
+            // 'city' => 'required',
+            // 'state' => 'required',
+            // 'zip' => 'required',
             'role' => 'required',
         ]);
 
