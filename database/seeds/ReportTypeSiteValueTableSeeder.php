@@ -189,7 +189,7 @@ class ReportTypeSiteValueTableSeeder extends Seeder
                 'report_type_site_defaults_id' => 6,
             ],
             [
-                'plan_value' => 9,
+                'plan_value' => 99,
                 'payment_amount' => 5,
                 'report_type_site_defaults_id' => 7,
             ],

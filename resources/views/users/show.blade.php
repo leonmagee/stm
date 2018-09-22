@@ -39,7 +39,8 @@
             <span>Monthly Credit: <span class="credit-val">{{ $credit }}</span></span>
         </div>
         @endif
-
+    
+        @if($user->address)
         <did class="item address-wrap flex-wrap">
             <i class="fas fa-map-marker-alt"></i>
             <div class="address-wrap-inner">
@@ -49,6 +50,7 @@
     	        </div>
             </div>
         </did>
+        @endif
 
 	</div>
 
