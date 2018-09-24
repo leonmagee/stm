@@ -30,7 +30,7 @@
 					<div class="field">
 						<label class="label" for="email">Email</label>
 						<div class="control">
-							<input class="input" type="email" id="email" name="email_address" />
+							<input class="input" type="email" id="email" name="email" />
 						</div>
 					</div>
 
@@ -120,15 +120,9 @@
 
 	</div>
 
-
-	
-
 </div>
 
-
-
 @endsection
-
 
 @section('page-script')
 
@@ -138,9 +132,11 @@
 
 		$('.stm-absolute-wrap#loader-wrap').css({'display':'flex'});
 
-		e.preventDefault();
+		$('.notification.is-danger').hide();
 
-		//console.log('form submit prevented');
+		$('.notification.is-success').hide();
+
+		e.preventDefault();
 
 		var reg_name = $('.form-wrap-flex #name').val();
 		var reg_email = $('.form-wrap-flex #email').val();
@@ -154,18 +150,6 @@
 		var reg_password = $('.form-wrap-flex #password').val();
 		var reg_password2 = $('.form-wrap-flex #password_2').val();
 
-		console.log('name ', reg_name);
-		console.log('email ', reg_email);
-		console.log('company ', reg_company );
-		console.log('role ', reg_role);
-		console.log('phone ', reg_phone);
-		console.log('address ', reg_address);
-		console.log('city ', reg_city);
-		console.log('state ', reg_state);
-		console.log('zip ', reg_zip);
-		console.log('password ', reg_password);
-		console.log('password_confirmation ', reg_password2);
-
     	var token = document.head.querySelector('meta[name="csrf-token"]');
 		window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
 
@@ -174,7 +158,7 @@
 			url: '/register',
 			data: {
 				name: reg_name,
-				email_address: reg_email,
+				email: reg_email,
 				company: reg_company,
 				role: reg_role,
 				phone: reg_phone,
@@ -186,13 +170,52 @@
 				password_confirmation: reg_password2
 			}
 		}).then(response => {
-			console.log('test worked?');
+
 			console.log(response);
+			
 			$('.stm-absolute-wrap#loader-wrap').hide();
+
+			var notification =
+			'<div class="notification is-success">' +
+			'<button class="delete"></button>' +
+			'A new user account has been created!' +
+			'</div>';
+
+			$('.stm-body div#content').prepend(notification);
+
+			$('.notification .delete').click(function() {
+				$(this).parent().fadeOut();
+			});
+
 		}).catch(error => {
-			console.log('this is an error?');
-			console.log(error.response);
+			
 			$('.stm-absolute-wrap#loader-wrap').hide();
+
+			let error_messages = '';
+
+			let errors_obj = error.response.data.errors;
+
+			for (var property in errors_obj) {
+			    if (errors_obj.hasOwnProperty(property)) {
+			        console.log(errors_obj[property]);
+			         errors_obj[property].map(item => {
+			          error_messages += '<div>' + item + '</div>';
+			        });
+			    }
+			}
+
+			var notification =
+			'<div class="notification is-danger">' +
+			'<button class="delete"></button>' +
+			error_messages +
+			'</div>';
+
+			$('.stm-body div#content').prepend(notification);
+
+			$('.notification .delete').click(function() {
+				$(this).parent().fadeOut();
+			});
+
 		});
 
 	});

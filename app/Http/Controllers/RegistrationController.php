@@ -25,10 +25,22 @@ class RegistrationController extends Controller
 		$sites = Site::all();
 
 		$settings = Settings::first();
-		//$current_site_id = $settings->site_id;
+		
 		$current_site_id = $settings->get_site_id();
 
 		return view('registration.create', compact('sites', 'current_site_id'));
+	}
+
+	/**
+	 * Get the error messages for the defined validation rules.
+	 *
+	 * @return array
+	 */
+	public function messages()
+	{
+	    return [
+	        'email.required' => 'xxxxx',
+	    ];
 	}
 
 	public function store(Request $request) {
@@ -36,7 +48,7 @@ class RegistrationController extends Controller
     	// validate the form
 		$this->validate(request(), [
 			'name' => 'required',
-			'email_address' => 'required|email',
+			'email' => 'required|email|unique:users',
 			'company' => 'required',
 			'phone' => 'required',
 			'address' => 'required',
@@ -47,42 +59,19 @@ class RegistrationController extends Controller
 			'password' => 'required|confirmed'
 		]);
 
-		//$role_array = ['null','agent','dealer','sigstore'];
-
-        try { // use verify_sim here as well? test with bad data... 
-
-	    	// create and save new user
-			$user = User::create([
-				'name' => $request->name,
-				'email' => $request->email_address,
-				'company' => $request->company,
-				'phone' => $request->phone,
-				'address' => $request->address,
-				'city' => $request->city,
-				'state' => $request->state,
-				'zip' => $request->zip,
-				'role' => $request->role,
-				'password' => bcrypt($request->user_password)
-			]);
-
-        //$count++;
-
-        } catch(\Illuminate\Database\QueryException $e) {
-        	
-            $errorCode = $e->errorInfo[1];
-            
-            if($errorCode == '1062'){
-            	// I really need to do this all with ajax, and flash the message...
-
-            	session()->flash('danger', 'This email address is already being used.');
-
-            	return redirect('register');
-            }
-        }
-
-
-
-
+    	// create and save new user
+		$user = User::create([
+			'name' => $request->name,
+			'email' => $request->email,
+			'company' => $request->company,
+			'phone' => $request->phone,
+			'address' => $request->address,
+			'city' => $request->city,
+			'state' => $request->state,
+			'zip' => $request->zip,
+			'role' => $request->role,
+			'password' => bcrypt($request->user_password)
+		]);
 
 		/**
 		* Update this email to include branding and reflect that a user account was created.
@@ -92,7 +81,9 @@ class RegistrationController extends Controller
 
     	// log in new user
 		//auth()->login($user);
+		return $user->id;
 
-		return redirect('users/' . $user->id);
+		// this doesn't happen as ajax is being used?
+		//return redirect('users/' . $user->id);
 	}
 }

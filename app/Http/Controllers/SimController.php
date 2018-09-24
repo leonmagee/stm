@@ -11,7 +11,7 @@ use App\ReportType;
 use App\Carrier;
 use App\Settings;
 use App\Helpers;
-use League\Csv\Reader;
+//use League\Csv\Reader;
 use Illuminate\Http\Request;
 
 class SimController extends Controller
