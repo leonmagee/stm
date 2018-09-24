@@ -1,9 +1,5 @@
 @extends('layouts.layout')
 
-@section('title')
-Edit User
-@endsection
-
 @section('content')
 
 @include('layouts.errors')
@@ -32,7 +28,7 @@ Edit User
 					<div class="field">
 						<label class="label" for="email">Email</label>
 						<div class="control">
-							<input class="input" value="{{ $user->email }}" type="email" id="email" name="email_address" />
+							<input class="input" value="{{ $user->email }}" type="email" id="email" name="email" />
 						</div>
 					</div>
 

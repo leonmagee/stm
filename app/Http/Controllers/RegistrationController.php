@@ -54,10 +54,10 @@ class RegistrationController extends Controller
 			'email' => 'required|email|unique:users',
 			'company' => 'required',
 			'phone' => 'required',
-			//'address' => 'required',
-			//'city' => 'required',
-			//'state' => 'required',
-			//'zip' => 'required',
+			'address' => 'required',
+			'city' => 'required',
+			'state' => 'required',
+			'zip' => 'required',
 			'role' => 'required',
 			'password' => 'required|confirmed'
 		]);

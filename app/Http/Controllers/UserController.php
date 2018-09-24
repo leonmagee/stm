@@ -173,20 +173,20 @@ class UserController extends Controller
         // validate the form
         $this->validate(request(), [
             'name' => 'required',
-            'email_address' => 'required|email',
+            'email' => 'required|unique:users,email,' . $id,
             'company' => 'required',
             'phone' => 'required',
-            // 'address' => 'required',
-            // 'city' => 'required',
-            // 'state' => 'required',
-            // 'zip' => 'required',
+            'address' => 'required',
+            'city' => 'required',
+            'state' => 'required',
+            'zip' => 'required',
             'role' => 'required',
         ]);
 
         // update user
         $user = User::find($id)->update([
             'name' => $request->name,
-            'email' => $request->email_address,
+            'email' => $request->email,
             'company' => $request->company,
             'phone' => $request->phone,
             'address' => $request->address,

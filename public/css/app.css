@@ -17706,6 +17706,12 @@ ul.mobile-menu li ul.sub-menu.active li:hover a {
   }
 }
 
+@media (min-width: 1500px) {
+  .reports-wrap {
+    grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
+  }
+}
+
 .reports-wrap .report-wrap {
   -webkit-box-shadow: 1px 1px rgba(0, 0, 0, 0.05);
           box-shadow: 1px 1px rgba(0, 0, 0, 0.05);
