@@ -36,7 +36,7 @@
         @if($credit)
         <div class="item credit-bonus flex-wrap">
             <i class="fas fa-user-minus"></i>
-            <span>Monthly Credit: <span class="credit-val">{{ $credit }}</span></span>
+            <span>Outstanding Balance: <span class="credit-val">{{ $credit }}</span></span>
         </div>
         @endif
     

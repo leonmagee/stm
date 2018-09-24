@@ -21,14 +21,14 @@
 				{{ csrf_field() }}
 
 					<div class="field">
-						<label class="label" for="bonus">Current Bonus</label>
+						<label class="label" for="bonus">Monthly Bonus</label>
 						<div class="control">
 							<input class="input" value="{{ $bonus }}" type="number" id="bonus" name="bonus" placeholder="$0.00" />
 						</div>
 					</div>
 
 					<div class="field">
-						<label class="label" for="credit">Current Credit</label>
+						<label class="label" for="credit">Outstanding Balance</label>
 						<div class="control">
 							<input class="input" value="{{ $credit }}" type="number" id="credit" name="credit" placeholder="$0.00" />
 						</div>

@@ -59,15 +59,6 @@ class AppServiceProvider extends ServiceProvider
                     'link' => '/report-types/' . $report_type->id
                 ];
             }
-            $report_types_sub[] = [
-                'name' => 'Add New Spiff',
-                'link' => '/add-report-type-spiff'
-            ];
-            $report_types_sub[] = [
-                'name' => 'Add New Residual',
-                'link' => '/add-report-type-residual'
-            ];
-
 
             $users_sub = [
                 [
@@ -120,6 +111,14 @@ class AppServiceProvider extends ServiceProvider
                 [
                     'name' => 'Carriers',
                     'link' => '/carriers'
+                ],
+                [
+                    'name' => 'Add New Spiff',
+                    'link' => '/add-report-type-spiff'
+                ],
+                [
+                    'name' => 'Add New Residual',
+                    'link' => '/add-report-type-residual'
                 ]
             ];
 
