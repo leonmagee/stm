@@ -79,8 +79,9 @@ class RegistrationController extends Controller
 		/**
 		* Update this email to include branding and reflect that a user account was created.
 		* Mandate strong password... 
+		* @todo this will currently not work on the server - prob because of mail driver in .env?
 		*/
-		//\Mail::to($user)->send(new NewUser($user));
+		\Mail::to($user)->send(new NewUser($user));
 
     	// log in new user
 		//auth()->login($user);
