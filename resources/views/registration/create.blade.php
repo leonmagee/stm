@@ -171,7 +171,7 @@
 			}
 		}).then(response => {
 
-			//console.log(response.data);
+			console.log(response);
 			
 			$('.stm-absolute-wrap#loader-wrap').hide();
 
@@ -190,6 +190,8 @@
 		}).catch(error => {
 			
 			$('.stm-absolute-wrap#loader-wrap').hide();
+
+			console.log(error);
 
 			let error_messages = '';
 
