@@ -171,14 +171,14 @@
 			}
 		}).then(response => {
 
-			console.log(response);
+			//console.log(response.data);
 			
 			$('.stm-absolute-wrap#loader-wrap').hide();
 
 			var notification =
 			'<div class="notification is-success">' +
 			'<button class="delete"></button>' +
-			'A new user account has been created!' +
+			'A new user account has been created! <a href="/users/' + response.data + '">View User</a>' +
 			'</div>';
 
 			$('.stm-body div#content').prepend(notification);
