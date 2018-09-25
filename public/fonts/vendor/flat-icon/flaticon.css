@@ -1,6 +1,6 @@
 	/*
   	Flaticon icon font: Flaticon
-  	Creation date: 30/08/2018 19:43
+  	Creation date: 25/09/2018 17:30
   	*/
 
 @font-face {
@@ -47,3 +47,15 @@ margin-left: 20px;
 .flaticon-upload-arrow:before { content: "\f10f"; }
 .flaticon-upload:before { content: "\f110"; }
 .flaticon-file-upload:before { content: "\f111"; }
+.flaticon-mail:before { content: "\f112"; }
+.flaticon-mail-1:before { content: "\f113"; }
+.flaticon-mail-2:before { content: "\f114"; }
+.flaticon-mail-3:before { content: "\f115"; }
+.flaticon-history-clock-button:before { content: "\f116"; }
+.flaticon-history-symbol-of-antique-building:before { content: "\f117"; }
+.flaticon-antique-building:before { content: "\f118"; }
+.flaticon-history:before { content: "\f119"; }
+.flaticon-electric-plug:before { content: "\f11a"; }
+.flaticon-progress-indicator:before { content: "\f11b"; }
+.flaticon-battery-status:before { content: "\f11c"; }
+.flaticon-charging-battery:before { content: "\f11d"; }

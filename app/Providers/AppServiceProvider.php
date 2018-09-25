@@ -170,9 +170,31 @@ class AppServiceProvider extends ServiceProvider
                         'sub' => false,
                         'icon' => 'flaticon-growth',
                     ],
+                    [
+                        'name' => 'Archives',
+                        'link' => '/archives',
+                        'sub' => false,
+                        'icon' => 'flaticon-history-clock-button',
+                    ],
+                    [
+                        'name' => 'Recharge Data',
+                        'link' => '/recharge-data',
+                        'sub' => false,
+                        'icon' => 'flaticon-electric-plug',
+                    ],
+                    [
+                        'name' => 'Email Blast',
+                        'link' => '/emails',
+                        'sub' => false,
+                        'icon' => 'flaticon-mail',
+                    ],
                 ];
 
             } else {
+
+                /**
+                * @todo create a menu for 'Managers'
+                */
 
                 // user menu
                 $menu_array = [

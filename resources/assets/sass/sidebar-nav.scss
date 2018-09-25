@@ -13,7 +13,7 @@ ul.sidebar-menu {
 
 		.icon-wrap {
 
-			flex: 0 1 20%;
+			flex: 0 1 22%;
 			display: flex;
 			justify-content: center;
 			align-items: center;
@@ -25,7 +25,7 @@ ul.sidebar-menu {
 				margin-right: 5px;
 				color: #333;
 				&:before {
-					font-size: 1.3em;
+					font-size: 1.4em;
 					margin: 0;
 				}
 			}
@@ -33,7 +33,7 @@ ul.sidebar-menu {
 
 		a {
 			border-bottom: 1px solid #DFDFDF;
-			flex: 0 1 80%;
+			flex: 0 1 78%;
 			text-decoration: none;
 			//padding: 10px 20px;
 			padding: 10px 5px 10px 15px;

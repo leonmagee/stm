@@ -4893,13 +4893,13 @@ readers do not read off random characters that represent icons */
 
 /*
     Flaticon icon font: Flaticon
-    Creation date: 30/08/2018 19:43
+    Creation date: 25/09/2018 17:30
     */
 
 @font-face {
   font-family: "Flaticon";
-  src: url(/fonts/Flaticon.eot?474180042998cfc45722319ecf9e0f6a);
-  src: url(/fonts/Flaticon.eot?474180042998cfc45722319ecf9e0f6a) format("embedded-opentype"), url(/fonts/Flaticon.woff?518c1fe603759b0914322f7b32561ea8) format("woff"), url(/fonts/Flaticon.ttf?7ceaa477b2cb9221de919c5ebea21387) format("truetype"), url(/fonts/Flaticon.svg?1de7174fa2b25b691a47faf7ebc66859) format("svg");
+  src: url(/fonts/Flaticon.eot?61efc6bba77dff8dc066c56be5c82755);
+  src: url(/fonts/Flaticon.eot?61efc6bba77dff8dc066c56be5c82755) format("embedded-opentype"), url(/fonts/Flaticon.woff?842256d235bd079180994a5a0f35909a) format("woff"), url(/fonts/Flaticon.ttf?536759d64269e1ba0fb0f6b0ff8881e2) format("truetype"), url(/fonts/Flaticon.svg?228bb6ed50372deea121864dfb968065) format("svg");
   font-weight: normal;
   font-style: normal;
 }
@@ -4907,7 +4907,7 @@ readers do not read off random characters that represent icons */
 @media screen and (-webkit-min-device-pixel-ratio: 0) {
 @font-face {
     font-family: "Flaticon";
-    src: url(/fonts/Flaticon.svg?1de7174fa2b25b691a47faf7ebc66859) format("svg");
+    src: url(/fonts/Flaticon.svg?228bb6ed50372deea121864dfb968065) format("svg");
 }
 }
 
@@ -4996,6 +4996,54 @@ readers do not read off random characters that represent icons */
 
 .flaticon-file-upload:before {
   content: "\F111";
+}
+
+.flaticon-mail:before {
+  content: "\F112";
+}
+
+.flaticon-mail-1:before {
+  content: "\F113";
+}
+
+.flaticon-mail-2:before {
+  content: "\F114";
+}
+
+.flaticon-mail-3:before {
+  content: "\F115";
+}
+
+.flaticon-history-clock-button:before {
+  content: "\F116";
+}
+
+.flaticon-history-symbol-of-antique-building:before {
+  content: "\F117";
+}
+
+.flaticon-antique-building:before {
+  content: "\F118";
+}
+
+.flaticon-history:before {
+  content: "\F119";
+}
+
+.flaticon-electric-plug:before {
+  content: "\F11A";
+}
+
+.flaticon-progress-indicator:before {
+  content: "\F11B";
+}
+
+.flaticon-battery-status:before {
+  content: "\F11C";
+}
+
+.flaticon-charging-battery:before {
+  content: "\F11D";
 }
 
 /*! bulma.io v0.7.1 | MIT License | github.com/jgthms/bulma */
@@ -17147,8 +17195,8 @@ ul.sidebar-menu li {
 
 ul.sidebar-menu li .icon-wrap {
   -webkit-box-flex: 0;
-      -ms-flex: 0 1 20%;
-          flex: 0 1 20%;
+      -ms-flex: 0 1 22%;
+          flex: 0 1 22%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -17170,15 +17218,15 @@ ul.sidebar-menu li .icon-wrap i {
 }
 
 ul.sidebar-menu li .icon-wrap i:before {
-  font-size: 1.3em;
+  font-size: 1.4em;
   margin: 0;
 }
 
 ul.sidebar-menu li a {
   border-bottom: 1px solid #DFDFDF;
   -webkit-box-flex: 0;
-      -ms-flex: 0 1 80%;
-          flex: 0 1 80%;
+      -ms-flex: 0 1 78%;
+          flex: 0 1 78%;
   text-decoration: none;
   padding: 10px 5px 10px 15px;
   color: #222;
