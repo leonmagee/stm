@@ -71,7 +71,6 @@ class AppServiceProvider extends ServiceProvider
                 ]
             ];
 
-
             $user_sims_sub = [
                 [
                     'name' => 'All Sims',
@@ -97,7 +96,6 @@ class AppServiceProvider extends ServiceProvider
                     'link' => '/find-sims'
                 ]
             ];
-
 
             $settings_sub = [
                 [
@@ -184,7 +182,7 @@ class AppServiceProvider extends ServiceProvider
                     ],
                     [
                         'name' => 'Email Blast',
-                        'link' => '/emails',
+                        'link' => '/email-blast',
                         'sub' => false,
                         'icon' => 'flaticon-mail',
                     ],

@@ -16713,6 +16713,16 @@ body.stm-body h1.title {
         -ms-flex: 0 1 48%;
             flex: 0 1 48%;
   }
+
+  .form-wrapper .form-wrapper-inner form .form-wrap .form-wrap-flex .field.full {
+    -webkit-box-flex: 1;
+        -ms-flex: 1 1 100%;
+            flex: 1 1 100%;
+  }
+
+  .form-wrapper .form-wrapper-inner form .form-wrap .form-wrap-flex .field.padding-bottom {
+    padding-bottom: 20px;
+  }
 }
 
 .select:after {

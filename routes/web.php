@@ -127,6 +127,12 @@ Route::post('login', 'SessionsController@store');
 Route::get('logout', 'SessionsController@destroy');
 
 /**
+* Email Routes
+*/
+Route::get('email-blast', 'EmailBlastController@index');
+Route::post('email-blast', 'EmailBlastController@email');
+
+/**
 * Enables User Registration
 * @todo this is done custom in laracast tutorials
 */

@@ -108,8 +108,8 @@ img {
 }
 
 .header a {
-    color: #bbbfc3;
-    color: red;
+/*  color: #bbbfc3; */
+    color: #222;
     font-size: 19px;
     font-weight: bold;
     text-decoration: none;
@@ -220,11 +220,16 @@ img {
 }
 
 .button-blue {
-    background-color: #3097D1;
+/*    background-color: #3097D1;
     border-top: 10px solid #3097D1;
     border-right: 18px solid #3097D1;
     border-bottom: 10px solid #3097D1;
-    border-left: 18px solid #3097D1;
+    border-left: 18px solid #3097D1;*/
+    background-color: #1B9AAA;
+    border-top: 10px solid #1B9AAA;
+    border-right: 18px solid #1B9AAA;
+    border-bottom: 10px solid #1B9AAA;
+    border-left: 18px solid #1B9AAA;
 }
 
 .button-green {
