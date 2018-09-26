@@ -65,7 +65,6 @@ class HomeController extends Controller
             $credit = false;
         }
 
-
         $role = $user->role;
 
         if ( $role == 'admin' ) {

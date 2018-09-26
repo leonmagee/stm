@@ -16776,7 +16776,7 @@ textarea:focus {
   }
 }
 
-.stm-grid-wrap a.single-grid-item {
+.stm-grid-wrap .single-grid-item {
   background-color: #FFF;
   display: block;
   color: #333;
@@ -16793,17 +16793,17 @@ textarea:focus {
 }
 
 @media (min-width: 980px) {
-  .stm-grid-wrap a.single-grid-item {
+  .stm-grid-wrap .single-grid-item {
     margin-bottom: 0;
   }
 }
 
-.stm-grid-wrap a.single-grid-item .flex-item {
+.stm-grid-wrap .single-grid-item .flex-item {
   font-size: 12px;
   white-space: no-wrap;
 }
 
-.stm-grid-wrap a.single-grid-item .flex-item.icon-wrap {
+.stm-grid-wrap .single-grid-item .flex-item.icon-wrap {
   background-color: rgba(0, 0, 0, 0.03);
   -webkit-box-flex: 0;
       -ms-flex: 0 1 10%;
@@ -17871,6 +17871,30 @@ ul.mobile-menu li ul.sub-menu.active li:hover a {
 
 .reports-wrap .report-wrap table.table td.credit {
   color: #EF476F;
+}
+
+.report-totals-final-count {
+  font-weight: 700;
+  font-size: 1.4em;
+  -webkit-box-shadow: 1px 1px rgba(0, 0, 0, 0.05);
+          box-shadow: 1px 1px rgba(0, 0, 0, 0.05);
+  background-color: #FFF;
+  color: #333;
+  padding: 15px;
+  margin-bottom: 20px;
+}
+
+.report-totals-final-count span {
+  color: #1B9AAA;
+}
+
+.report-totals-wrap .report-totals-item {
+  padding: 10px;
+  font-size: 0.9em !important;
+}
+
+.report-totals-wrap .report-totals-item span {
+  color: #1B9AAA;
 }
 
 .sims-list ul li {

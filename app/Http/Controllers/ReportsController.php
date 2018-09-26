@@ -11,6 +11,7 @@ use App\Helpers;
 use App\ReportType;
 use App\ReportData;
 use App\ReportUserCSV;
+use \DB;
 
 class ReportsController extends Controller
 {
@@ -57,12 +58,46 @@ class ReportsController extends Controller
         $current_site_date = Helpers::current_date_name();
         $site_id = Settings::first()->get_site_id();
         $site_name = Site::find($site_id)->name;
-        $report_totals_array = ['one', 'two'];
+        $report_types = ReportType::all();
+        $current_date = Helpers::current_date();
+        $report_type_totals_array = [];
+        $total_count_final = 0;
+
+        foreach($report_types as $report_type) {
+
+            if ($report_type->spiff ){
+
+                $matching_sims_count = DB::table('sims')
+                ->select('sims.value', 'sims.report_type_id')
+                ->join('sim_users', 'sim_users.sim_number', '=', 'sims.sim_number')
+                ->where('sims.report_type_id', $report_type->id)
+                ->where('sims.upload_date', $current_date)
+                ->count();
+
+            } else {
+
+                $matching_sims_count = DB::table('sim_residuals')
+                ->select('sim_residuals.value', 'sim_residuals.report_type_id')
+                ->join('sim_users', 'sim_users.sim_number', '=', 'sim_residuals.sim_number')
+                ->where('sim_residuals.report_type_id', $report_type->id)
+                ->where('sim_residuals.upload_date', $current_date)
+                ->count();
+            }
+
+            $name = $report_type->carrier->name . ' ' . $report_type->name;
+
+            $report_type_totals_array[$name] = $matching_sims_count;
+            $total_count_final += $matching_sims_count;
+
+        }
+
+        //dd($report_type_totals_array);
 
         return view('reports.totals', compact(
             'site_name', 
             'current_site_date', 
-            'report_totals_array'
+            'report_type_totals_array',
+            'total_count_final'
         ));
     }
 

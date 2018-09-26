@@ -1,4 +1,4 @@
-// reports archive
+// user report
 .reports-data-header {
 	padding: 20px;
 	@include normal_background;
@@ -83,4 +83,27 @@
 			//white-space: no-wrap;
 		}
 	}
+}
+
+// report totals
+.report-totals-final-count {
+	font-weight: 700;
+	font-size: 1.4em;
+	@include normal_background;
+	margin-bottom: 20px;
+	span {
+		color: $brand-primary;
+	}
+}
+
+.report-totals-wrap { // within grid
+	.report-totals-item {
+		padding: 10px;
+		font-size: 0.9em !important;
+		span {
+			color: $brand-primary;
+			//margin-left: 5px;
+		}
+	}
+
 }

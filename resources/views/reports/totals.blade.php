@@ -1,18 +1,29 @@
 @extends('layouts.layout')
 
-@section('title')
-{{ $site_name }} Reports Totals for {{ $current_site_date }}
-@endsection
-
 @section('content')
 
-<div class="reports-wrap">
+	<div class="report-totals-final-count">
+		{{ $current_site_date }} Total Activations: <span>{{ $total_count_final }}</span>
+	</div>
 
-	report totals go here?
+    <div class="stm-grid-wrap report-totals-wrap">
+	    
+	    @foreach( $report_type_totals_array as $report_type => $total )
 
+	        <div class="single-grid-item">
 
+				<div class="flex-item report-totals-item">
 
-</div>
+	            	<div>
+	            		{{ $report_type }}: <span>{{ $total }}</span>
+	            	</div>
 
+				</div>
+	        
+	        </div>
+
+	    @endforeach
+
+    </div>
 
 @endsection
