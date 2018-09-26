@@ -16905,6 +16905,7 @@ body.stm-body .main-wrap {
 }
 
 body.stm-body .main-wrap .middle-content-wrap {
+  position: relative;
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
@@ -17782,6 +17783,12 @@ ul.mobile-menu li ul.sub-menu.active li:hover a {
 
 .carriers-wrap a.carrier-wrap .flex-item.icon-wrap .fa-mobile-alt {
   font-size: 2em;
+}
+
+.chart-toggle {
+  position: absolute;
+  top: 10px;
+  right: 30px;
 }
 
 .reports-data-header {

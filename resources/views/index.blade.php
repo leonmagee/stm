@@ -6,16 +6,14 @@ SIM Activations Per Month
 
 @section('content')
 
+<div class="chart-toggle">
+	<a class="button is-primary" id="toggle">Toggle Chart</a>
+</div>
+
 <div class="homepage-wrap">
 
 	<div class="chart-wrap">
-		
-		<canvas id="graph">
-
-		</canvas>
-
-		<div class="legend"></div>
-
+		<canvas id="graph"></canvas>
 	</div>
 
 </div>
@@ -32,7 +30,22 @@ SIM Activations Per Month
 	'rgba(6, 229, 170, 0.3)',
 	'rgba(239, 71, 111, 0.3)',
 	'rgba(255, 196, 61, 0.3)',
-	'rgba(81, 229, 255, 0.3)'
+	'rgba(81, 229, 255, 0.3)',
+	'rgba(27, 154, 170, 0.3)',
+	'rgba(6, 229, 170, 0.3)',
+	'rgba(239, 71, 111, 0.3)',
+	'rgba(255, 196, 61, 0.3)',
+	'rgba(81, 229, 255, 0.3)',
+	'rgba(27, 154, 170, 0.3)',
+	'rgba(6, 229, 170, 0.3)',
+	'rgba(239, 71, 111, 0.3)',
+	'rgba(255, 196, 61, 0.3)',
+	'rgba(81, 229, 255, 0.3)',
+	'rgba(27, 154, 170, 0.3)',
+	'rgba(6, 229, 170, 0.3)',
+	'rgba(239, 71, 111, 0.3)',
+	'rgba(255, 196, 61, 0.3)',
+	'rgba(81, 229, 255, 0.3)',
 	];
 
 	var stroke_color_array = [
@@ -40,7 +53,22 @@ SIM Activations Per Month
 	'rgba(6, 229, 170, 1)',
 	'rgba(239, 71, 111, 1)',
 	'rgba(255, 196, 61, 1)',
-	'rgba(81, 229, 255, 1)'
+	'rgba(81, 229, 255, 1)',
+	'rgba(27, 154, 170, 1)',
+	'rgba(6, 229, 170, 1)',
+	'rgba(239, 71, 111, 1)',
+	'rgba(255, 196, 61, 1)',
+	'rgba(81, 229, 255, 1)',
+	'rgba(27, 154, 170, 1)',
+	'rgba(6, 229, 170, 1)',
+	'rgba(239, 71, 111, 1)',
+	'rgba(255, 196, 61, 1)',
+	'rgba(81, 229, 255, 1)',
+	'rgba(27, 154, 170, 1)',
+	'rgba(6, 229, 170, 1)',
+	'rgba(239, 71, 111, 1)',
+	'rgba(255, 196, 61, 1)',
+	'rgba(81, 229, 255, 1)',
 	];
 
 	@foreach($data_array as $key => $data)
@@ -92,16 +120,50 @@ var context = document.querySelector('#graph').getContext('2d');
 var options = {
 	//showLines: false,
 	//borderColor: 'red',
+	legend: {
+		display: true,
+		position: 'right',
+	}
 };
 
 //new Chart(context).Line(data, {});
 
-const chartReport = new Chart(context, {
-    type: 'bar',
-    //type: 'line',
-    data: data,
-    options: options
+var chartType = 'bar';
+
+function init() {
+	chartReport = new Chart(context, {
+	    type: chartType,
+	    //type: 'line',
+	    data: data,
+	    options: options
+	});
+}
+
+
+init();
+
+// function init() {
+//   // Chart declaration:
+//   myBarChart = new Chart(ctx, {
+//     type: chartType,
+//     data: data,
+//     options: options
+//   });
+// }
+
+function toggleChart() {
+  //destroy chart:
+  chartReport.destroy();
+  //change chart type: 
+  this.chartType = (this.chartType == 'bar') ? 'line' : 'bar';
+  //restart chart:
+  init();
+}
+
+$('.chart-toggle #toggle').click(function() {
+	toggleChart();
 });
+
 
 //console.log(chartReport.generateLegend());
 </script>
