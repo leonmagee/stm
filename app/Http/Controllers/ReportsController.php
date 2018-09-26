@@ -80,9 +80,18 @@ class ReportsController extends Controller
                 $total_count_final += $matching_sims_count;
 
             } 
-        }
 
-        //dd($report_type_totals_array);
+            // else { // residual query
+
+            //     $matching_sims_count = DB::table('sim_residuals')
+            //     ->select('sim_residuals.value', 'sim_residuals.report_type_id')
+            //     ->join('sim_users', 'sim_users.sim_number', '=', 'sim_residuals.sim_number')
+            //     ->where('sim_residuals.report_type_id', $report_type->id)
+            //     ->where('sim_residuals.upload_date', $current_date)
+            //     ->count();
+            // }
+
+        }
 
         return view('reports.totals', compact(
             'site_name', 
