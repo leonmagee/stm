@@ -4893,13 +4893,13 @@ readers do not read off random characters that represent icons */
 
 /*
     Flaticon icon font: Flaticon
-    Creation date: 25/09/2018 17:30
+    Creation date: 26/09/2018 05:25
     */
 
 @font-face {
   font-family: "Flaticon";
-  src: url(/fonts/Flaticon.eot?61efc6bba77dff8dc066c56be5c82755);
-  src: url(/fonts/Flaticon.eot?61efc6bba77dff8dc066c56be5c82755) format("embedded-opentype"), url(/fonts/Flaticon.woff?842256d235bd079180994a5a0f35909a) format("woff"), url(/fonts/Flaticon.ttf?536759d64269e1ba0fb0f6b0ff8881e2) format("truetype"), url(/fonts/Flaticon.svg?228bb6ed50372deea121864dfb968065) format("svg");
+  src: url(/fonts/Flaticon.eot?3910d25f5d157f88e0d17439305f4014);
+  src: url(/fonts/Flaticon.eot?3910d25f5d157f88e0d17439305f4014) format("embedded-opentype"), url(/fonts/Flaticon.woff?37e5444b463e7ca3282c2092e42e5713) format("woff"), url(/fonts/Flaticon.ttf?2f89d10e013174981c71710b2e5afb98) format("truetype"), url(/fonts/Flaticon.svg?508226fec0fee2ddab788acc19c10067) format("svg");
   font-weight: normal;
   font-style: normal;
 }
@@ -4907,7 +4907,7 @@ readers do not read off random characters that represent icons */
 @media screen and (-webkit-min-device-pixel-ratio: 0) {
 @font-face {
     font-family: "Flaticon";
-    src: url(/fonts/Flaticon.svg?228bb6ed50372deea121864dfb968065) format("svg");
+    src: url(/fonts/Flaticon.svg?508226fec0fee2ddab788acc19c10067) format("svg");
 }
 }
 
@@ -5044,6 +5044,38 @@ readers do not read off random characters that represent icons */
 
 .flaticon-charging-battery:before {
   content: "\F11D";
+}
+
+.flaticon-analytics:before {
+  content: "\F11E";
+}
+
+.flaticon-analytics-1:before {
+  content: "\F11F";
+}
+
+.flaticon-analytics-2:before {
+  content: "\F120";
+}
+
+.flaticon-graph:before {
+  content: "\F121";
+}
+
+.flaticon-graphic:before {
+  content: "\F122";
+}
+
+.flaticon-bar-chart:before {
+  content: "\F123";
+}
+
+.flaticon-graphic-1:before {
+  content: "\F124";
+}
+
+.flaticon-graphic-2:before {
+  content: "\F125";
 }
 
 /*! bulma.io v0.7.1 | MIT License | github.com/jgthms/bulma */
@@ -17750,6 +17782,17 @@ ul.mobile-menu li ul.sub-menu.active li:hover a {
 
 .carriers-wrap a.carrier-wrap .flex-item.icon-wrap .fa-mobile-alt {
   font-size: 2em;
+}
+
+.reports-data-header {
+  padding: 20px;
+  -webkit-box-shadow: 1px 1px rgba(0, 0, 0, 0.05);
+          box-shadow: 1px 1px rgba(0, 0, 0, 0.05);
+  background-color: #FFF;
+  color: #333;
+  padding: 15px;
+  margin-bottom: 20px;
+  font-weight: 700;
 }
 
 .reports-wrap {

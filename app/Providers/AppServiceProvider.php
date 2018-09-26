@@ -163,10 +163,16 @@ class AppServiceProvider extends ServiceProvider
                         'icon' => 'flaticon-gear',
                     ],
                     [
-                        'name' => 'Reports',
-                        'link' => '/reports',
+                        'name' => 'Report Totals',
+                        'link' => '/report-totals',
                         'sub' => false,
                         'icon' => 'flaticon-growth',
+                    ],
+                    [
+                        'name' => 'User Reports',
+                        'link' => '/reports',
+                        'sub' => false,
+                        'icon' => 'flaticon-bar-chart',
                     ],
                     [
                         'name' => 'Archives',

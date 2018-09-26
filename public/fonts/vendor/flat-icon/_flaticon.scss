@@ -1,6 +1,6 @@
     /*
     Flaticon icon font: Flaticon
-    Creation date: 25/09/2018 17:30
+    Creation date: 26/09/2018 05:25
     */
 
     @font-face {
@@ -66,6 +66,14 @@
 .flaticon-progress-indicator:before { content: "\f11b"; }
 .flaticon-battery-status:before { content: "\f11c"; }
 .flaticon-charging-battery:before { content: "\f11d"; }
+.flaticon-analytics:before { content: "\f11e"; }
+.flaticon-analytics-1:before { content: "\f11f"; }
+.flaticon-analytics-2:before { content: "\f120"; }
+.flaticon-graph:before { content: "\f121"; }
+.flaticon-graphic:before { content: "\f122"; }
+.flaticon-bar-chart:before { content: "\f123"; }
+.flaticon-graphic-1:before { content: "\f124"; }
+.flaticon-graphic-2:before { content: "\f125"; }
     
     $font-Flaticon-memory-card: "\f100";
     $font-Flaticon-sim-card: "\f101";
@@ -97,3 +105,11 @@
     $font-Flaticon-progress-indicator: "\f11b";
     $font-Flaticon-battery-status: "\f11c";
     $font-Flaticon-charging-battery: "\f11d";
+    $font-Flaticon-analytics: "\f11e";
+    $font-Flaticon-analytics-1: "\f11f";
+    $font-Flaticon-analytics-2: "\f120";
+    $font-Flaticon-graph: "\f121";
+    $font-Flaticon-graphic: "\f122";
+    $font-Flaticon-bar-chart: "\f123";
+    $font-Flaticon-graphic-1: "\f124";
+    $font-Flaticon-graphic-2: "\f125";

@@ -1,4 +1,10 @@
 // reports archive
+.reports-data-header {
+	padding: 20px;
+	@include normal_background;
+	margin-bottom: 20px;
+	font-weight: 700;
+}
 .reports-wrap	{
 	@media(min-width: $screen-md) {
 		display: grid;

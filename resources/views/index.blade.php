@@ -25,7 +25,6 @@ SIM Activations Per Month
 @section('page-script')
 <script>
 
-
 	var report_types_array = [];
 
 	var fill_color_array = [
@@ -36,7 +35,7 @@ SIM Activations Per Month
 	'rgba(81, 229, 255, 0.3)'
 	];
 
-		var stroke_color_array = [
+	var stroke_color_array = [
 	'rgba(27, 154, 170, 1)',
 	'rgba(6, 229, 170, 1)',
 	'rgba(239, 71, 111, 1)',

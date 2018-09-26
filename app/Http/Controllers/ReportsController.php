@@ -48,6 +48,24 @@ class ReportsController extends Controller
         ));
     }
 
+    /**
+    * Report Totals Page
+    */
+    public function totals()
+    {
+        $current_date = Settings::first()->current_date;
+        $current_site_date = Helpers::current_date_name();
+        $site_id = Settings::first()->get_site_id();
+        $site_name = Site::find($site_id)->name;
+        $report_totals_array = ['one', 'two'];
+
+        return view('reports.totals', compact(
+            'site_name', 
+            'current_site_date', 
+            'report_totals_array'
+        ));
+    }
+
     public function download_csv(Request $request, $id) 
     {
         $user = User::find($id);

@@ -8,12 +8,12 @@ class ReportDataUser {
 	public $user_company;
 	public $user_id;
 	public $report_data;
-	private $site_id;
 	public $bonus;
 	public $credit;
 	public $total_count;
 	public $total_payment;
 	public $count;
+	private $site_id;
 
 	public function __construct($user_name, $user_company, $user_id, $site_id = null) {
 
