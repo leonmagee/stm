@@ -3,7 +3,7 @@
 @section('content')
 
 	<div class="report-totals-final-count">
-		{{ $current_site_date }} Total Activations: <span>{{ $total_count_final }}</span>
+		{{ $current_site_date }} Total Activations: <span>{{ number_format($total_count_final) }}</span>
 	</div>
 
     <div class="stm-grid-wrap report-totals-wrap">
@@ -15,7 +15,7 @@
 				<div class="flex-item report-totals-item">
 
 	            	<div>
-	            		{{ $report_type }}: <span>{{ $total }}</span>
+	            		{{ $report_type }}: <span>{{ number_format($total) }}</span>
 	            	</div>
 
 				</div>
