@@ -74,21 +74,12 @@ class ReportsController extends Controller
                 ->where('sims.upload_date', $current_date)
                 ->count();
 
-            } else {
+                $name = $report_type->carrier->name . ' ' . $report_type->name;
 
-                $matching_sims_count = DB::table('sim_residuals')
-                ->select('sim_residuals.value', 'sim_residuals.report_type_id')
-                ->join('sim_users', 'sim_users.sim_number', '=', 'sim_residuals.sim_number')
-                ->where('sim_residuals.report_type_id', $report_type->id)
-                ->where('sim_residuals.upload_date', $current_date)
-                ->count();
-            }
+                $report_type_totals_array[$name] = $matching_sims_count;
+                $total_count_final += $matching_sims_count;
 
-            $name = $report_type->carrier->name . ' ' . $report_type->name;
-
-            $report_type_totals_array[$name] = $matching_sims_count;
-            $total_count_final += $matching_sims_count;
-
+            } 
         }
 
         //dd($report_type_totals_array);
