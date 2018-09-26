@@ -107,6 +107,7 @@ Route::post('remove-report-plan-value/{report_type}', 'ReportTypeController@remo
 */
 Route::get('reports', 'ReportsController@index');
 Route::get('report-totals', 'ReportsController@totals');
+Route::get('recharge-data', 'ReportsController@recharge');
 Route::post('get-csv-report/{id}', 'ReportsController@download_csv');
 
 /**

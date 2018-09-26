@@ -101,6 +101,55 @@ class ReportsController extends Controller
         ));
     }
 
+    public function recharge()
+    {
+        $current_date = Settings::first()->current_date;
+        $current_site_date = Helpers::current_date_name();
+        $site_id = Settings::first()->get_site_id();
+        $site_name = Site::find($site_id)->name;
+        $users = User::where('role', $site_id)->get();
+        $recharge_data_array = [];
+
+        $config_array = [
+            'current' => 1, // H2O Month
+            'recharge' => 5, // H2O 2nd Recharge
+        ];
+
+        $report_type_current = ReportType::find($config_array['current']);
+        $report_type_recharge = ReportType::find($config_array['recharge']);
+
+
+        foreach($users as $user)
+        {
+            $recharge_data_array[] = [
+                'name' => $user->name,
+                'company' => $user->company
+            ];
+
+            var_dump($current_date);
+
+
+
+            // var_dump($user->name);
+            // echo "<br /><br />";
+
+
+
+
+
+
+
+        }
+
+
+
+        return view('reports.recharge', compact(
+            'site_name', 
+            'current_site_date', 
+            'recharge_data_array'
+        ));
+    }
+
     public function download_csv(Request $request, $id) 
     {
         $user = User::find($id);
