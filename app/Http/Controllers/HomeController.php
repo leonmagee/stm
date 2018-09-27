@@ -77,17 +77,6 @@ class HomeController extends Controller
 
     public function outputCharts() {
 
-        // if ( \Auth::user() ) {
-        //     $user = \Auth::user();
-        //     if ( $user->isAdmin()) {
-        //         dd('admin!');
-        //     } else {
-        //         dd('not admin!');
-        //     }
-        // }
-
-        //return response("you didn't say the magic word!", 403);
-
         $current_date = Settings::first()->current_date;
 
         // $data_array = [
@@ -97,14 +86,6 @@ class HomeController extends Controller
         //          '200',
         //          '133',
         //          '144'
-        //      ]
-        //  ],
-        //  [
-        //      'title' => 'H2O Wireless Minute',
-        //      'counts' => [
-        //          '170',
-        //          '153',
-        //          '114'
         //      ]
         //  ],
         // ];
@@ -119,17 +100,20 @@ class HomeController extends Controller
 
         $one_month_ago = $date_array[$array_index - 1];
         $two_month_ago = $date_array[$array_index - 2];
+        $three_month_ago = $date_array[$array_index - 3];
 
         $date_array_final = [
-            $two_month_ago,
+            $current_date,
             $one_month_ago, 
-            $current_date
+            $two_month_ago,
+            $three_month_ago
         ];
 
         $date_name_array = [
-            Helpers::get_date_name($two_month_ago),
+            Helpers::current_date_name(),
             Helpers::get_date_name($one_month_ago),
-            Helpers::current_date_name()
+            Helpers::get_date_name($two_month_ago),
+            Helpers::get_date_name($three_month_ago)
         ];
 
         $report_types_array = ReportType::where('spiff',1)->get();

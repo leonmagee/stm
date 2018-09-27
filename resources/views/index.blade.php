@@ -74,7 +74,12 @@ SIM Activations Per Month
 	@foreach($data_array as $key => $data)
 		var report_object = {
 			label: "{{$data['title'] }}",
-			data: [{{ $data['counts'][0] }},{{ $data['counts'][1] }},{{ $data['counts'][2] }}],
+			data: [
+				{{ $data['counts'][0] }},
+				{{ $data['counts'][1] }},
+				{{ $data['counts'][2] }},
+				{{ $data['counts'][2] }}
+			],
 			backgroundColor: fill_color_array[{{$key}}],
 			borderColor: stroke_color_array[{{$key}}],
 		};

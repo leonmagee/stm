@@ -16904,6 +16904,10 @@ body.stm-body .main-wrap {
           flex: 1 1 100%;
 }
 
+body.stm-body .main-wrap #content {
+  height: 100%;
+}
+
 body.stm-body .main-wrap .middle-content-wrap {
   position: relative;
   -webkit-box-flex: 1;
@@ -17842,6 +17846,18 @@ ul.mobile-menu li ul.sub-menu.active li:hover a {
 
 .carriers-wrap a.carrier-wrap .flex-item.icon-wrap .fa-mobile-alt {
   font-size: 2em;
+}
+
+.homepage-wrap {
+  height: 100%;
+}
+
+.chart-wrap {
+  height: 100%;
+}
+
+.chart-wrap canvas#graph {
+  max-height: 85%;
 }
 
 .chart-toggle {
