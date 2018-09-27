@@ -35,7 +35,7 @@ class ArchiveController extends Controller
         //$report_data_object = new ReportData($site_id, $current_date);
         $archive_data = Archive::where('date', $current_date)->get();
 
-        dd($archive_data);
+        //dd($archive_data);
 
         $report_data_array = [];
         foreach($archive_data as $data)
@@ -47,7 +47,7 @@ class ArchiveController extends Controller
                 $report_data_array[] = unserialize($data->archive_data);
             }
         }
-        //dd($report_data_array);
+        dd($report_data_array);
 
 
         //dd($report_data_array);
