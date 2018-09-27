@@ -6,6 +6,7 @@ use App\Archive;
 use App\Settings;
 use App\Helpers;
 use App\Site;
+use App\User;
 use Illuminate\Http\Request;
 
 class ArchiveController extends Controller
@@ -23,12 +24,17 @@ class ArchiveController extends Controller
         $site_id = Settings::first()->get_site_id();
         $site_name = Site::find($site_id)->name;
         //$report_data_object = new ReportData($site_id, $current_date);
-        $archive_data = Archive::all();
+        $archive_data = Archive::where('date', $current_date)->get();
 
         $report_data_array = [];
         foreach($archive_data as $data)
         {
-            $report_data_array[] = unserialize($data->archive_data);
+            // only output for current site
+            $user = User::find($data->user_id);
+            if ($user->role === $site_id)
+            {
+                $report_data_array[] = unserialize($data->archive_data);
+            }
         }
         //dd($report_data_array);
 
