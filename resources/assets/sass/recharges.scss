@@ -1,0 +1,47 @@
+.recharge-details {
+
+
+
+	.recharge-item {
+		display: flex;
+		font-weight: 700;
+		margin: 5px 0 20px;
+
+		.item {
+			flex: 1 0 41%;
+			padding: 5px;
+
+			.count {
+				font-size: 1.3em;
+			}
+
+			label {
+				white-space: nowrap;
+				font-size: 0.8em;
+			}
+
+			&.percent {
+				flex: 1 0 18%;
+				font-size: 1.1em;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				border-radius: 5px;
+				color: #FFF;
+				text-shadow: 1px 1px rgba(0,0,0,0.2);
+				&.best {
+					background-color: $color-green;
+				}
+				&.good {
+					background-color: $brand-fifth;
+				}
+				&.ok {
+					background-color: $color-yellow;
+				}
+				&.bad {
+					background-color: $color-red;
+				}
+			}
+		}
+	}
+}

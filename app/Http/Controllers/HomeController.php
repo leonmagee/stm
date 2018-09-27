@@ -113,12 +113,7 @@ class HomeController extends Controller
 
         $array_item = [];
 
-        /**
-        * @todo where to put this?
-        */
         $date_array = Helpers::date_array();
-        
-
 
         $array_index = array_search($current_date, $date_array);
 

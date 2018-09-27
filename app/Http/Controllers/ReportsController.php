@@ -110,7 +110,7 @@ class ReportsController extends Controller
         $users = User::where('role', $site_id)->get();
         $recharge_data_array = [];
 
-        $config_array = [
+        $config_array = [ // this can be changed for different report types
             'current' => 1, // H2O Month
             'recharge' => 5, // H2O 2nd Recharge
         ];
@@ -118,30 +118,106 @@ class ReportsController extends Controller
         $report_type_current = ReportType::find($config_array['current']);
         $report_type_recharge = ReportType::find($config_array['recharge']);
 
+        $date_array = Helpers::date_array();
+
+        $array_index = array_search($current_date, $date_array);
+
+        $one_month_ago = $date_array[$array_index - 1];
+        $two_months_ago = $date_array[$array_index - 2];
+        $three_months_ago = $date_array[$array_index - 3];
+
+        $recarge_search_array = [
+            [
+                [
+                    'rt_id' => $report_type_current->id,
+                    'date' => $one_month_ago,
+                ],
+                [
+                    'rt_id' => $report_type_recharge->id,
+                    'date' => $current_date,
+                ],
+            ],
+            [
+                [
+                    'rt_id' => $report_type_current->id,
+                    'date' => $two_months_ago,
+                ],
+                [
+                    'rt_id' => $report_type_recharge->id,
+                    'date' => $one_month_ago,
+                ],
+            ],
+            [
+                [
+                    'rt_id' => $report_type_current->id,
+                    'date' => $three_months_ago,
+                ],
+                [
+                    'rt_id' => $report_type_recharge->id,
+                    'date' => $two_months_ago,
+                ],
+            ]
+        ];
 
         foreach($users as $user)
         {
+
+            $data = [];
+
+            foreach($recarge_search_array as $item) {
+
+                $matching_sims_count_activation = DB::table('sims')
+                ->select('sims.value')
+                ->join('sim_users', 'sim_users.sim_number', '=', 'sims.sim_number')
+                ->where('sims.report_type_id', $item[0]['rt_id'])
+                ->where('sim_users.user_id', $user->id)
+                ->where('sims.upload_date', $item[0]['date'])
+                ->count();
+
+                $matching_sims_count_recharge = DB::table('sims')
+                ->select('sims.value')
+                ->join('sim_users', 'sim_users.sim_number', '=', 'sims.sim_number')
+                ->where('sims.report_type_id', $item[1]['rt_id'])
+                ->where('sim_users.user_id', $user->id)
+                ->where('sims.upload_date', $item[1]['date'])
+                ->count();
+
+                if ($matching_sims_count_activation && $matching_sims_count_recharge)
+                {
+                    $recharge_percent = number_format( ( ( $matching_sims_count_recharge / $matching_sims_count_activation ) * 100), 2);
+                } else {
+                    $recharge_percent = '0.00';
+                }
+
+                if ( $recharge_percent >= 70 ) {
+                    $percent_class = 'best';
+                } elseif ( $recharge_percent >= 60 ) {
+                    $percent_class = 'good';
+                } elseif ( $recharge_percent >= 50 ) {
+                    $percent_class = 'ok';
+                } else {
+                    $percent_class = 'bad';
+                }
+
+                $data[] = [
+                    'act_name' => Helpers::get_date_name($item[0]['date']) . ' Activations',
+                    'act_count' => $matching_sims_count_activation,
+                    'rec_name' => Helpers::get_date_name($item[1]['date']) . ' Recharges',
+                    'rec_count' => $matching_sims_count_recharge,
+                    'percent' => $recharge_percent,
+                    'class' => $percent_class
+                ];
+            }
+
             $recharge_data_array[] = [
                 'name' => $user->name,
-                'company' => $user->company
+                'company' => $user->company,
+                'data' => $data
             ];
-
-            var_dump($current_date);
-
-
-
-            // var_dump($user->name);
-            // echo "<br /><br />";
-
-
-
-
-
-
 
         }
 
-
+        //dd($recharge_data_array);
 
         return view('reports.recharge', compact(
             'site_name', 
