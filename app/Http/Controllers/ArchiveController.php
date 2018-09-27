@@ -11,6 +11,12 @@ use Illuminate\Http\Request;
 
 class ArchiveController extends Controller
 {
+
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -28,6 +34,8 @@ class ArchiveController extends Controller
         $site_name = Site::find($site_id)->name;
         //$report_data_object = new ReportData($site_id, $current_date);
         $archive_data = Archive::where('date', $current_date)->get();
+
+        dd($archive_data);
 
         $report_data_array = [];
         foreach($archive_data as $data)

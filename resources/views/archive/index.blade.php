@@ -9,7 +9,7 @@ Archive {{ $site_name }} Reports for {{ $current_site_date }}
 <div class="save-archive-button-wrap">
 	<form method="POST" action="save-archive">
 		{{ csrf_field() }}
-		<button type="submit" class="button is-primary call-loader">Save Archive</button>
+		<button type="submit" class="button is-primary call-loader">Save Current Archive</button>
 	</form>
 </div>
 
