@@ -4893,13 +4893,13 @@ readers do not read off random characters that represent icons */
 
 /*
     Flaticon icon font: Flaticon
-    Creation date: 26/09/2018 05:25
+    Creation date: 27/09/2018 18:36
     */
 
 @font-face {
   font-family: "Flaticon";
-  src: url(/fonts/Flaticon.eot?3910d25f5d157f88e0d17439305f4014);
-  src: url(/fonts/Flaticon.eot?3910d25f5d157f88e0d17439305f4014) format("embedded-opentype"), url(/fonts/Flaticon.woff?37e5444b463e7ca3282c2092e42e5713) format("woff"), url(/fonts/Flaticon.ttf?2f89d10e013174981c71710b2e5afb98) format("truetype"), url(/fonts/Flaticon.svg?508226fec0fee2ddab788acc19c10067) format("svg");
+  src: url(/fonts/Flaticon.eot?bf22eee07f1930b88cb9ea34596c7d6c);
+  src: url(/fonts/Flaticon.eot?bf22eee07f1930b88cb9ea34596c7d6c) format("embedded-opentype"), url(/fonts/Flaticon.woff?3976d5a4f41547703fab2d7ac9780375) format("woff"), url(/fonts/Flaticon.ttf?0eae30935316ae54ed537d0e36f6e46a) format("truetype"), url(/fonts/Flaticon.svg?d1649d2e3b6272f1b8ee7cd016fd9ffe) format("svg");
   font-weight: normal;
   font-style: normal;
 }
@@ -4907,7 +4907,7 @@ readers do not read off random characters that represent icons */
 @media screen and (-webkit-min-device-pixel-ratio: 0) {
 @font-face {
     font-family: "Flaticon";
-    src: url(/fonts/Flaticon.svg?508226fec0fee2ddab788acc19c10067) format("svg");
+    src: url(/fonts/Flaticon.svg?d1649d2e3b6272f1b8ee7cd016fd9ffe) format("svg");
 }
 }
 
@@ -5076,6 +5076,50 @@ readers do not read off random characters that represent icons */
 
 .flaticon-graphic-2:before {
   content: "\F125";
+}
+
+.flaticon-home:before {
+  content: "\F126";
+}
+
+.flaticon-home-1:before {
+  content: "\F127";
+}
+
+.flaticon-roof:before {
+  content: "\F128";
+}
+
+.flaticon-bar-graph-on-a-rectangle:before {
+  content: "\F129";
+}
+
+.flaticon-locked-padlock:before {
+  content: "\F12A";
+}
+
+.flaticon-padlock:before {
+  content: "\F12B";
+}
+
+.flaticon-shield:before {
+  content: "\F12C";
+}
+
+.flaticon-unlock:before {
+  content: "\F12D";
+}
+
+.flaticon-security-on:before {
+  content: "\F12E";
+}
+
+.flaticon-key:before {
+  content: "\F12F";
+}
+
+.flaticon-locked-padlock-1:before {
+  content: "\F130";
 }
 
 /*! bulma.io v0.7.1 | MIT License | github.com/jgthms/bulma */

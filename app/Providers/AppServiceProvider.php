@@ -192,6 +192,12 @@ class AppServiceProvider extends ServiceProvider
                         'sub' => false,
                         'icon' => 'flaticon-mail',
                     ],
+                    [
+                        'name' => 'Homepage',
+                        'link' => '/',
+                        'sub' => false,
+                        'icon' => 'flaticon-home',
+                    ],
                 ];
 
             } else {
@@ -219,6 +225,12 @@ class AppServiceProvider extends ServiceProvider
                         'link' => '/reports',
                         'sub' => false,
                         'icon' => 'flaticon-growth',
+                    ],
+                    [
+                        'name' => 'Homepage',
+                        'link' => '/',
+                        'sub' => false,
+                        'icon' => 'flaticon-home',
                     ],
                 ];
 
