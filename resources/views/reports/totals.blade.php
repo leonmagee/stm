@@ -12,11 +12,13 @@
 
 	        <div class="single-grid-item">
 
+	        	<div class="flex-item icon-wrap">
+					<i class="fas fa-chart-pie"></i>
+				</div>
+
 				<div class="flex-item report-totals-item">
 
-	            	<div>
-	            		{{ $report_type }}: <span>{{ number_format($total) }}</span>
-	            	</div>
+	            	{{ $report_type }}: <span>{{ number_format($total) }}</span>
 
 				</div>
 	        

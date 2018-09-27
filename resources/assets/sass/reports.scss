@@ -98,11 +98,14 @@
 
 .report-totals-wrap { // within grid
 	.report-totals-item {
-		padding: 10px;
-		font-size: 0.9em !important;
+		padding: 10px 15px;
+		font-size: 1em !important;
+		display: flex;
+		align-items: center;
 		span {
 			color: $brand-primary;
-			//margin-left: 5px;
+			font-size: 1.2em;
+			margin-left: 9px;
 		}
 	}
 
