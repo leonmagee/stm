@@ -18,6 +18,9 @@ class ArchiveController extends Controller
      */
     public function index()
     {
+        /**
+        * how to change date? Query string? redirect?
+        */
 
         $current_date = Settings::first()->current_date;
         $current_site_date = Helpers::current_date_name();
