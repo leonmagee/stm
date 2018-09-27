@@ -9,7 +9,7 @@
 <div class="save-archive-button-wrap">
 	<form method="POST" action="save-archive">
 		{{ csrf_field() }}
-		<button type="submit" class="button is-primary">Save Archive</button>
+		<button type="submit" class="button is-primary call-loader">Save Archive</button>
 	</form>
 </div>
 

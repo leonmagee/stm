@@ -249,16 +249,28 @@ class ReportsController extends Controller
 
             //Archive::create('')
 
-            Archive::create([
+            $current = Archive::where([
                 'user_id' => $report_data->user_id,
-                'date' => $current_date, 
-                'archive_data' => $save_data
-            ]);
+                'date' => $current_date
+            ])->first();
+
+            if ( $current ) {
+
+                $current->archive_data = $save_data;
+                $current->save();
+
+            } else {
+                Archive::create([
+                    'user_id' => $report_data->user_id,
+                    'date' => $current_date, 
+                    'archive_data' => $save_data
+                ]);
+            }
         }
 
-        $save_data = serialize($report_data_array);
-        $retrieve_data = unserialize($save_data);
-        dd($retrieve_data);
+        session()->flash('message', 'Archives have been saved');
+
+        return redirect('/reports');
     }
 
     /**

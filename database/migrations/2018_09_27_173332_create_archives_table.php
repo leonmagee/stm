@@ -14,11 +14,11 @@ class CreateArchivesTable extends Migration
     public function up()
     {
         Schema::create('archives', function (Blueprint $table) {
-            //$table->increments('id');
+            $table->increments('id');
             $table->integer('user_id');
             $table->string('date');
             $table->longtext('archive_data');
-            $table->primary(['user_id', 'date']);
+            //$table->primary(['user_id', 'date']);
             $table->timestamps();
         });
     }
