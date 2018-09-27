@@ -126,19 +126,26 @@ class HomeController extends Controller
 
             $array_item['title'] = $carrier . " " . $name;
 
+            $temp_count = 0;
+
             foreach( $date_array_final as $date ) {
 
                 $sims = Sim::where([
-                    'upload_date' => $date, 
+                    'upload_date' => $date,
                     'report_type_id' => $report_type->id
                 ])->latest()->get();
 
                 $number = count($sims);
 
                 $array_item['counts'][] = $number;
+
+                $temp_count += $number;
             }
 
-            $data_array[] = $array_item;
+            if ( $temp_count > 0 ) { // exclude report types with no data
+                $data_array[] = $array_item;
+            }
+
             $array_item = [];
         }
 

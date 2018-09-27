@@ -125,6 +125,13 @@ var context = document.querySelector('#graph').getContext('2d');
 var options = {
 	//showLines: false,
 	//borderColor: 'red',
+	scales: {
+        yAxes: [{
+            ticks: {
+                beginAtZero:true
+            }
+        }]
+    },
 	legend: {
 		display: true,
 		position: 'right',
@@ -161,6 +168,7 @@ function init() {
 	    type: chartType,
 	    //type: 'line',
 	    data: data,
+	    //scaleStartValue : 0,
 	    options: options
 	});
 }
