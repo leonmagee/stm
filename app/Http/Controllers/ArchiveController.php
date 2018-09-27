@@ -38,10 +38,13 @@ class ArchiveController extends Controller
         //dd($archive_data);
 
         $report_data_array = [];
+        var_dump($site_id);
+        //var_dump($)
         foreach($archive_data as $data)
         {
             // only output for current site
             $user = User::find($data->user_id);
+            dd($user);
             if ($user->role === $site_id)
             {
                 $report_data_array[] = unserialize($data->archive_data);
