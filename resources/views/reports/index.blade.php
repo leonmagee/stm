@@ -6,6 +6,13 @@
 
 @section('content')
 
+<div class="save-archive-button-wrap">
+	<form method="POST" action="save-archive">
+		{{ csrf_field() }}
+		<button type="submit" class="button is-primary">Save Archive</button>
+	</form>
+</div>
+
 <div class="reports-wrap">
 	@foreach( $report_data_array as $item )
 

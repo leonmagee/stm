@@ -11,6 +11,7 @@ use App\Helpers;
 use App\ReportType;
 use App\ReportData;
 use App\ReportUserCSV;
+use App\Archive;
 use \DB;
 
 class ReportsController extends Controller
@@ -230,6 +231,34 @@ class ReportsController extends Controller
     {
         $user = User::find($id);
         ReportUserCSV::process_csv_download($user);
+    }
+
+    public function save_archive()
+    {
+        $current_date = Settings::first()->current_date;
+        $current_site_date = Helpers::current_date_name();
+        $site_id = Settings::first()->get_site_id();
+        $site_name = Site::find($site_id)->name;
+        $report_data_object = new ReportData($site_id, $current_date);
+        $report_data_array = $report_data_object->report_data;
+
+        foreach($report_data_array as $report_data) {
+
+            $save_data = serialize($report_data);
+            //dd($report_data->user_id);
+
+            //Archive::create('')
+
+            Archive::create([
+                'user_id' => $report_data->user_id,
+                'date' => $current_date, 
+                'archive_data' => $save_data
+            ]);
+        }
+
+        $save_data = serialize($report_data_array);
+        $retrieve_data = unserialize($save_data);
+        dd($retrieve_data);
     }
 
     /**
