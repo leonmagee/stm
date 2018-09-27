@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Archive;
+use App\Settings;
+use App\Helpers;
+use App\Site;
 use Illuminate\Http\Request;
 
 class ArchiveController extends Controller
@@ -14,12 +17,30 @@ class ArchiveController extends Controller
      */
     public function index()
     {
-        
-        $data = 'a:22:{i:0;a:3:{s:12:"report-title";s:18:"H2O Wireless Month";s:11:"number-sims";i:86;s:7:"payment";s:8:"1,140.00";}i:1;a:3:{s:12:"report-title";s:21:"H2O Wireless Residual";s:11:"number-sims";i:1729;s:7:"payment";s:6:"788.63";}i:2;a:3:{s:12:"report-title";s:19:"H2O Wireless Minute";s:11:"number-sims";i:16;s:7:"payment";s:5:"80.00";}i:3;a:3:{s:12:"report-title";s:19:"H2O Wireless Family";s:11:"number-sims";i:0;s:7:"payment";s:4:"0.00";}i:4;a:3:{s:12:"report-title";s:21:"H2O Bolt LTE Residual";s:11:"number-sims";i:0;s:7:"payment";s:4:"0.00";}i:5;a:3:{s:12:"report-title";s:18:"H2O Bolt LTE Month";s:11:"number-sims";i:0;s:7:"payment";s:4:"0.00";}i:6;a:3:{s:12:"report-title";s:19:"H2O easyGO Residual";s:11:"number-sims";i:61;s:7:"payment";s:5:"18.07";}i:7;a:3:{s:12:"report-title";s:16:"H2O easyGO Month";s:11:"number-sims";i:1;s:7:"payment";s:5:"10.00";}i:8;a:3:{s:12:"report-title";s:22:"H2O Month 2nd Recharge";s:11:"number-sims";i:7;s:7:"payment";s:5:"65.00";}i:9;a:3:{s:12:"report-title";s:23:"H2O easyGO 2nd Recharge";s:11:"number-sims";i:0;s:7:"payment";s:4:"0.00";}i:10;a:3:{s:12:"report-title";s:23:"H2O Minute 2nd Recharge";s:11:"number-sims";i:3;s:7:"payment";s:5:"15.00";}i:11;a:3:{s:12:"report-title";s:21:"H2O Bolt 2nd Recharge";s:11:"number-sims";i:0;s:7:"payment";s:4:"0.00";}i:12;a:3:{s:12:"report-title";s:24:"H2O Instant 2nd Recharge";s:11:"number-sims";i:0;s:7:"payment";s:4:"0.00";}i:13;a:3:{s:12:"report-title";s:29:"H2O Instant Spiff and Bundles";s:11:"number-sims";i:0;s:7:"payment";s:4:"0.00";}i:14;a:3:{s:12:"report-title";s:26:"easyGO Instant and Bundles";s:11:"number-sims";i:0;s:7:"payment";s:4:"0.00";}i:15;a:3:{s:12:"report-title";s:17:"Lyca Mobile Spiff";s:11:"number-sims";i:0;s:7:"payment";s:4:"0.00";}i:16;a:3:{s:12:"report-title";s:24:"Lyca Mobile 2nd Recharge";s:11:"number-sims";i:0;s:7:"payment";s:4:"0.00";}i:17;a:3:{s:12:"report-title";s:20:"Lyca Mobile Residual";s:11:"number-sims";i:0;s:7:"payment";s:4:"0.00";}i:18;a:3:{s:12:"report-title";s:24:"Lyca Mobile 3rd Recharge";s:11:"number-sims";i:0;s:7:"payment";s:4:"0.00";}i:19;a:3:{s:12:"report-title";s:36:"Lyca Mobile Instant Spiff and Bundle";s:11:"number-sims";i:0;s:7:"payment";s:4:"0.00";}i:20;a:3:{s:12:"report-title";s:25:"H2O Wireless 3rd Recharge";s:11:"number-sims";i:8;s:7:"payment";s:5:"40.00";}i:21;a:3:{s:12:"report-title";s:20:"H2O Wireless Port-In";s:11:"number-sims";i:0;s:7:"payment";s:4:"0.00";}}';
 
-        $data_new = unserialize($data);
+        $current_date = Settings::first()->current_date;
+        $current_site_date = Helpers::current_date_name();
+        $site_id = Settings::first()->get_site_id();
+        $site_name = Site::find($site_id)->name;
+        //$report_data_object = new ReportData($site_id, $current_date);
+        $archive_data = Archive::all();
 
-        dd($data_new);
+        $report_data_array = [];
+        foreach($archive_data as $data)
+        {
+            $report_data_array[] = unserialize($data->archive_data);
+        }
+        //dd($report_data_array);
+
+
+        //dd($report_data_array);
+
+        return view('archive.index', compact(
+            'site_name', 
+            'current_site_date', 
+            'report_data_array'
+        ));
+        //return view('archive.index');
     }
 
     /**
