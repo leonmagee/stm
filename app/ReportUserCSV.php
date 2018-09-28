@@ -256,4 +256,103 @@ class ReportUserCSV {
 		die();
 	}
 
+	public static function process_csv_download_archive( $user, $current_date ) {
+
+		// get data
+		//$report_types = ReportType::all();
+
+		// current date
+		//$current_date = Helpers::current_date();
+		$date_name = Helpers::current_date_name();
+
+		// create csv file in memory
+		$csv = Writer::createFromFileObject(new SplTempFileObject());
+
+		// insert header
+		$csv->insertOne([$user->name]);
+		$csv->insertOne([$user->company]);
+		$csv->insertOne(["'$date_name'"]);
+		$csv->insertOne([]);
+		$csv->insertOne([]);
+
+		// get payment overview data
+		// $report_data_user = new ReportDataUser(
+		// 	$user->name, 
+		// 	$user->company, 
+		// 	$user->id,
+		// 	$user->role
+		// );
+
+		$archive_user_user = Archive::where([
+			'user_id' => $user->id,
+			'date' => $current_date
+		])->first();
+
+		//dd(unserialize($report_data_user->archive_data));
+
+		$report_data_user = unserialize($archive_user_user->archive_data);
+
+		$csv->insertOne(['Wireless Carrier', 'Number of Sims', 'Payment Amount']);
+
+		foreach($report_data_user->report_data as $item) {
+
+			$data_row = [
+				$item->name,
+				$item->number,
+				$item->payment
+			];
+
+			$csv->insertOne($data_row);
+		}
+
+		$csv->insertOne([
+			'Monthly Bonus',
+			'',
+			'$' . number_format($report_data_user->bonus, 2)		
+		]);
+		
+		$csv->insertOne([
+			'Outstanding Balance',
+			'',
+			'$' . number_format($report_data_user->credit, 2)		
+		]);
+		
+		$csv->insertOne([
+			'TOTAL',
+			$report_data_user->total_count,
+			'$' . number_format($report_data_user->total_payment, 2)
+		]);
+
+		$csv->insertOne([]);
+
+		$csv->insertOne([
+			'Total Assigned Sims',
+			$report_data_user->count,
+			''
+		]);
+
+
+
+		$csv->insertOne([]);
+		$csv->insertOne([]);
+
+
+		// new ReportUserCSV object
+		//$csv_data = new static();
+
+		// insert sims data
+		//$sims_array = $csv_data->create_array($user, $current_date);
+
+		// foreach ($sims_array as $sims_row) {
+		// 	$csv->insertOne($sims_row);
+		// }
+
+		// output
+		$name = strtolower(str_replace(' ', '-', $user->name));
+		$filename = "stm-report-archive-" . $current_date . "-" . $name . ".csv";
+		$csv->output($filename);
+
+		die();
+	}
+
 }

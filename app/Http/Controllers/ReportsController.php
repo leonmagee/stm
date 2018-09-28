@@ -236,8 +236,7 @@ class ReportsController extends Controller
     public function download_csv_archive(Request $request, $id) 
     {
         $user = User::find($id);
-        dd($user);
-        ReportUserCSV::process_csv_download($user);
+        ReportUserCSV::process_csv_download_archive($user, $request->archive_date);
     }
 
     public function save_archive()

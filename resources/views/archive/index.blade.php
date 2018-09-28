@@ -82,6 +82,7 @@
 
 			<form method="POST" action="/get-csv-report-archive/{{ $item->user_id }}">
 				{{ csrf_field() }}
+				<input type="hidden" name="archive_date" value="{{ $current_date }}" />
 				<input type="submit" href="#" class="button is-primary" value="CSV Report" />
 			</form>
 
