@@ -7,6 +7,7 @@ use App\Settings;
 use App\Helpers;
 use App\Site;
 use App\User;
+use \DB;
 use Illuminate\Http\Request;
 
 class ArchiveController extends Controller
@@ -50,15 +51,26 @@ class ArchiveController extends Controller
                 $report_data_array[] = unserialize($data->archive_data);
             }
         }
-        //dd($report_data_array);
 
+        // get date array for dropdown select
 
-        //dd($report_data_array);
+        $archive_dates = DB::table('archives')
+            ->select('date')
+            ->groupBy('date')
+            ->orderBy('date', 'DESC')
+            ->get();
+
+        $date_select_array = [];
+        foreach($archive_dates as $date)
+        {
+            $date_select_array[$date->date] = Helpers::get_date_name($date->date);
+        }
 
         return view('archive.index', compact(
             'site_name', 
             'current_site_date', 
-            'report_data_array'
+            'report_data_array',
+            'date_select_array'
         ));
         //return view('archive.index');
     }

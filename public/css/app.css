@@ -18037,6 +18037,20 @@ ul.mobile-menu li ul.sub-menu.active li:hover a {
   right: 30px;
 }
 
+.save-archive-button-wrap.archives {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.save-archive-button-wrap.archives .hidden-submit {
+  display: none;
+}
+
+.save-archive-button-wrap.archives .select-field-wrap {
+  margin: 0 30px;
+}
+
 .sims-list ul li {
   background-color: #FFF;
   border: 1px solid #E9E9E9;

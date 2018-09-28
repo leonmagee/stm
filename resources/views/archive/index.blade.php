@@ -6,7 +6,20 @@ Archive {{ $site_name }} Reports for {{ $current_site_date }}
 
 @section('content')
 
-<div class="save-archive-button-wrap">
+<div class="save-archive-button-wrap archives">
+	<form method="POST" action="change-archive-date">
+		{{ csrf_field() }}
+		<div class="field select-field-wrap">
+			<div class="select">
+				<select name="archive-date">
+					@foreach($date_select_array as $date => $date_name)
+					<option value="{{ $date }}">{{ $date_name }}</option>
+					@endforeach
+				</select>
+			</div>
+		</div>
+		<button type="submit" class="hidden-submit">Hidden</button>
+	</form>
 	<form method="POST" action="save-archive">
 		{{ csrf_field() }}
 		<button type="submit" class="button is-primary call-loader">Save Current Archive</button>
