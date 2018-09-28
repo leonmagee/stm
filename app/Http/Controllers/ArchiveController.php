@@ -23,29 +23,26 @@ class ArchiveController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        /**
-        * how to change date? Query string? redirect?
-        */
 
-        $current_date = Settings::first()->current_date;
+        if ($request->date) {
+            $current_date = $request->date;
+        } else {
+            $current_date = Settings::first()->current_date;
+        }
+        
         $current_site_date = Helpers::current_date_name();
         $site_id = Settings::first()->get_site_id();
         $site_name = Site::find($site_id)->name;
-        //$report_data_object = new ReportData($site_id, $current_date);
         $archive_data = Archive::where('date', $current_date)->get();
 
-        //dd($archive_data);
 
         $report_data_array = [];
-        //var_dump($site_id);
-        //var_dump($)
+        
         foreach($archive_data as $data)
         {
-            // only output for current site
             $user = User::find($data->user_id);
-            //dd($user);
             if (intval($user->role) === intval($site_id))
             {
                 $report_data_array[] = unserialize($data->archive_data);
@@ -53,7 +50,6 @@ class ArchiveController extends Controller
         }
 
         // get date array for dropdown select
-
         $archive_dates = DB::table('archives')
             ->select('date')
             ->groupBy('date')
@@ -61,6 +57,7 @@ class ArchiveController extends Controller
             ->get();
 
         $date_select_array = [];
+
         foreach($archive_dates as $date)
         {
             $date_select_array[$date->date] = Helpers::get_date_name($date->date);
@@ -68,11 +65,15 @@ class ArchiveController extends Controller
 
         return view('archive.index', compact(
             'site_name', 
-            'current_site_date', 
+            'current_date', 
             'report_data_array',
             'date_select_array'
         ));
-        //return view('archive.index');
+    }
+
+    public function change_archive_date(Request $request) {
+
+        return redirect('archives?date=' . $request->archive_date);
     }
 
     /**

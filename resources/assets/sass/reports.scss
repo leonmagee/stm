@@ -1,4 +1,4 @@
-// user report
+// user report and archives
 .reports-data-header {
 	padding: 20px;
 	@include normal_background;
@@ -115,14 +115,19 @@
 	position: absolute;
 	top: 15px;
 	right: 30px;
-	&.archives {
-		display: flex;
-		
-		.hidden-submit {
-			display: none;
-		}
-		.select-field-wrap {
-			margin: 0 30px;
-		}
+}
+
+// archive header
+
+.title-form-wrap {
+	display: flex;
+	align-items: center;
+	padding-bottom: 25px;
+	h1 {
+		margin-bottom: 0 !important;
+		padding-bottom: 3px;
+	}
+	.select-field-wrap {
+		margin: 0 15px;
 	}
 }

@@ -1,29 +1,28 @@
 @extends('layouts.layout')
 
-@section('title')
-Archive {{ $site_name }} Reports for {{ $current_site_date }}
-@endsection
-
 @section('content')
 
-<div class="save-archive-button-wrap archives">
-	<form method="POST" action="change-archive-date">
+<div class="title-form-wrap">
+
+	<h1 class="title">Archive {{ $site_name }} Reports</h1>
+
+	<form id="change-archive-date-form" method="POST" action="change-archive-date">
 		{{ csrf_field() }}
 		<div class="field select-field-wrap">
 			<div class="select">
-				<select name="archive-date">
+				<select id="archive-date-select" name="archive_date">
 					@foreach($date_select_array as $date => $date_name)
-					<option value="{{ $date }}">{{ $date_name }}</option>
+					<option 
+					@if($current_date === $date)
+					selected="selected"
+					@endif
+					value="{{ $date }}">{{ $date_name }}</option>
 					@endforeach
 				</select>
 			</div>
 		</div>
-		<button type="submit" class="hidden-submit">Hidden</button>
 	</form>
-	<form method="POST" action="save-archive">
-		{{ csrf_field() }}
-		<button type="submit" class="button is-primary call-loader">Save Current Archive</button>
-	</form>
+
 </div>
 
 <div class="reports-wrap">
@@ -81,7 +80,7 @@ Archive {{ $site_name }} Reports for {{ $current_site_date }}
 				</tfoot>
 			</table>
 
-			<form method="POST" action="/get-csv-report/{{ $item->user_id }}">
+			<form method="POST" action="/get-csv-report-archive/{{ $item->user_id }}">
 				{{ csrf_field() }}
 				<input type="submit" href="#" class="button is-primary" value="CSV Report" />
 			</form>
@@ -96,5 +95,22 @@ Archive {{ $site_name }} Reports for {{ $current_site_date }}
 </div>
 
 
+@endsection
+
+@section('page-script')
+<script>
+console.log('page script working?');
+
+$('#archive-date-select').change(function() {
+
+	// call loader
+	$('.stm-absolute-wrap#loader-wrap').css({'display':'flex'});
+	$('#change-archive-date-form').submit();
+
+	//let item_value = $(this).val();
+	//console.log('change happened?' + item_value);
+});
+
+</script>
 @endsection
 

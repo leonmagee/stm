@@ -233,6 +233,13 @@ class ReportsController extends Controller
         ReportUserCSV::process_csv_download($user);
     }
 
+    public function download_csv_archive(Request $request, $id) 
+    {
+        $user = User::find($id);
+        dd($user);
+        ReportUserCSV::process_csv_download($user);
+    }
+
     public function save_archive()
     {
         $current_date = Settings::first()->current_date;
@@ -270,7 +277,7 @@ class ReportsController extends Controller
 
         session()->flash('message', 'Archives have been saved');
 
-        return redirect('/reports');
+        return redirect('/archives');
     }
 
     /**

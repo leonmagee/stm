@@ -109,12 +109,14 @@ Route::get('reports', 'ReportsController@index');
 Route::get('report-totals', 'ReportsController@totals');
 Route::get('recharge-data', 'ReportsController@recharge');
 Route::post('get-csv-report/{id}', 'ReportsController@download_csv');
+Route::post('get-csv-report-archive/{id}', 'ReportsController@download_csv_archive');
 Route::post('save-archive', 'ReportsController@save_archive');
 
 /**
 * Archives
 */
 Route::get('archives', 'ArchiveController@index');
+Route::post('change-archive-date', 'ArchiveController@change_archive_date');
 
 /**
 * Carriers Routes

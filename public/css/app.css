@@ -18037,18 +18037,23 @@ ul.mobile-menu li ul.sub-menu.active li:hover a {
   right: 30px;
 }
 
-.save-archive-button-wrap.archives {
+.title-form-wrap {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding-bottom: 25px;
 }
 
-.save-archive-button-wrap.archives .hidden-submit {
-  display: none;
+.title-form-wrap h1 {
+  margin-bottom: 0 !important;
+  padding-bottom: 3px;
 }
 
-.save-archive-button-wrap.archives .select-field-wrap {
-  margin: 0 30px;
+.title-form-wrap .select-field-wrap {
+  margin: 0 15px;
 }
 
 .sims-list ul li {
