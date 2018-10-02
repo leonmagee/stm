@@ -6,19 +6,19 @@
 			border: 1px solid #E9E9E9;
 			margin: 15px;
 			padding: 15px;
-			display: flex;
+			//display: flex;
 			justify-content: space-between;
-			font-weight: 700;
-			color: #777;
-			font-size: 1.1em;
+
 
 			span {
 				margin: 0 10px;
+				font-weight: 700;
+				color: #777;
+				font-size: 1.1em;
 
-				// &.primary {
-				// 	font-weight: 800;
-				// 	//color: $brand-primary;
-				// }
+				&.user {
+					color: $color-red;
+				}
 			}
 
 			sep {
@@ -26,7 +26,10 @@
 				font-weight: 400;
 			}
 
-			.section-1 {
+			.sim-details {
+				border: 1px solid #EEE;
+				padding: 10px;
+				margin: 20px 10px;
 
 			}
 		}

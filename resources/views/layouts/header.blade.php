@@ -117,7 +117,7 @@
 
 			</div>
 
-			@else
+{{-- 			@else
 			<div class="field has-addons">
 				<p class="control">
 					<a class="button login" href="/login">
@@ -135,7 +135,7 @@
 						<span class="text">Contact</span>
 					</a>
 				</p>
-			</div>
+			</div> --}}
 			@endif
 		</div>
 	</div>
