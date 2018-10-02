@@ -1,7 +1,7 @@
 @extends('layouts.layout')
 
 @section('title')
-Sim Results
+Sim Search Results
 @endsection
 
 @section('content')

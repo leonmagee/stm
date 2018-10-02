@@ -18059,7 +18059,7 @@ ul.mobile-menu li ul.sub-menu.active li:hover a {
 .sims-list ul li {
   background-color: #FFF;
   border: 1px solid #E9E9E9;
-  margin: 15px;
+  margin: 15px 0;
   padding: 15px 15px 0;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
