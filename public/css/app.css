@@ -18060,32 +18060,44 @@ ul.mobile-menu li ul.sub-menu.active li:hover a {
   background-color: #FFF;
   border: 1px solid #E9E9E9;
   margin: 15px;
-  padding: 15px;
+  padding: 15px 15px 0;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
 }
 
-.sims-list ul li span {
-  margin: 0 10px;
-  font-weight: 700;
-  color: #777;
-  font-size: 1.1em;
-}
-
-.sims-list ul li span.user {
-  color: #EF476F;
-}
-
-.sims-list ul li sep {
-  color: #BBB;
-  font-weight: 400;
-}
-
-.sims-list ul li .sim-details {
+.sims-list ul li .detail-wrap {
   border: 1px solid #EEE;
-  padding: 10px;
-  margin: 20px 10px;
+  margin: 10px 10px 25px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.sims-list ul li .detail-wrap .detail-header {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 0 100%;
+          flex: 1 0 100%;
+  background-color: #1B9AAA;
+  color: #FFF;
+  padding: 5px 10px;
+}
+
+.sims-list ul li .detail-wrap .detail-item {
+  padding: 10px 15px;
+  font-weight: 700;
+  color: #222;
+}
+
+.sims-list ul li .detail-wrap .detail-item label {
+  color: #666;
+  font-size: 0.9em;
+}
+
+.sims-list ul li .detail-wrap .detail-item div {
+  padding-top: 3px;
 }
 
 .sim-wrap {

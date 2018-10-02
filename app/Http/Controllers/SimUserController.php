@@ -125,35 +125,15 @@ class SimUserController extends AuthorizedController
     {
         $data = $request->sims_paste;
 
-
         $exploded = explode("\r\n", $data);
 
-        //$data_array = [];
-
-        // I can hash this list maybe - not sure if it matters
         $sim_list = implode('-', $exploded);
 
         return redirect('/list-sims/' . $sim_list);
 
-
-        //dd($sim_query);
-
-
-        foreach( $exploded as $item ) {
-
-            //$sim = SimUser::where('sim_number', $item)->first();
-
-            if ($sim)
-            {
-                $data_array[] = $sim->id;
-            } else {
-                // maybe look in monthly sims?
-            }
-        }
-
         // foreach( $exploded as $item ) {
 
-        //     $sim = SimUser::where('sim_number', $item)->first();
+        //     //$sim = SimUser::where('sim_number', $item)->first();
 
         //     if ($sim)
         //     {
@@ -163,22 +143,15 @@ class SimUserController extends AuthorizedController
         //     }
         // }
 
+        // if (count($data_array))
+        // {
+        //     $sim_query = implode('-', $data_array);
+        //     return redirect('/list-sims/' . $sim_query);
 
-        if (count($data_array))
-        {
-            $sim_query = implode('-', $data_array);
-            return redirect('/list-sims/' . $sim_query);
-
-        } else {
-            session()->flash('danger', 'No Sims were found.');
-            return redirect('/find-sims');
-        }
-
-        /**
-        * So the problem is that you will need the actual sim number (not the id which will differ depending on what type of sim number it is, when you get to the results page? - so what I could do is pass in the actual sim number as a list to the results page and then loop through and have a sim bio box which lists monthly, residual, and sim users sims in an organized fashion. Should I also have sims controlls for this - like the ability to delete sims? Probably not, but this could be an item to add in the future.)
-
-        * so I could redirect first, and then the controller for the list page will take the array of sims and search based on that?
-        */
+        // } else {
+        //     session()->flash('danger', 'No Sims were found.');
+        //     return redirect('/find-sims');
+        // }
     }
 
     /**
@@ -195,71 +168,76 @@ class SimUserController extends AuthorizedController
         // $current_date = Helpers::current_date();
         // dd($current_date);
 
-
-        //dd($sims);
-
         $sims_array = explode('-', $sims);
-
-
-        //dd($sims_array);
-
-        /**
-        * @todo maybe getting the 'first' of the residual or spiff is good enough, assuming that will get the most recent residual record? For the spiff activations, it will probably only find one, but that should be good enough...
-        */
 
         $list_array = [];
 
         foreach( $sims_array as $sim ) {
 
-           $sim_user_result = SimUser::where('sim_number', $sim)->first();
-           
-           $sim_spiff_result = Sim::where(['sim_number' => $sim])->first();
+            $sim_user_result = SimUser::where('sim_number', $sim)->first();
 
-           $sim_value = false;
-           $sim_phone = false;
-           $sim_report_type;
-
-           if ($sim_spiff_result) {
-
-            $sim_spiff = true;
-            $sim_value = $sim_spiff_result->value;
-            $spiff_report_type = $sim_spiff_result->report_type->name;
-            //dd($spiff_report_type);
-
-           } else {
-
-            $sim_spiff = false;
-           
-           }
-           
-           $sim_residual_result = SimResidual::where(['sim_number' => $sim])->first();
-
-            if ($sim_residual_result) {
-
-            $sim_residual = true;
-           
-           } else {
-
-            $sim_residual = false;
-           
-           }
-
-           if ($sim_user_result)
-           {
-               $list_array[] = [
+            $user_data = [];
+            if ($sim_user_result)
+            {
+                $user_data = [
                     'id' => $sim_user_result->id,
                     'sim_number' => $sim,
                     'carrier' => $sim_user_result->carrier->name,
-                    'user' => $sim_user_result->user->company . ' > ' . $sim_user_result->user->name,
-                    'spiff' => $sim_spiff,
-                    'residual' => $sim_residual,
-                    'value' => $sim_value
-               ];
-           }
-        }
+                    'company' => $sim_user_result->user->company,
+                    'user' => $sim_user_result->user->name,
+                ];
+            }
+            else
+            {
+                $user_data = false;    
+            }
 
-        return view('sim_users.list', compact('list_array'));
+            $sim_spiff_result = Sim::where(['sim_number' => $sim])->orderBy('upload_date', 'DESC')->first();
+
+            $sim_residual_result = SimResidual::where(['sim_number' => $sim])->orderBy('upload_date', 'DESC')->first();
+
+            $monthly_data = [];
+
+            if ($sim_spiff_result)
+            {
+                $monthly_data = [
+                    'sim_number' => $sim,
+                    'value' => $sim_spiff_result->value,
+                    'date' => $sim_spiff_result->activation_date,
+                    'mobile' => $sim_spiff_result->mobile_number,
+                    'report_type' => $sim_spiff_result->report_type->carrier->name . ' ' . $sim_spiff_result->report_type->name,
+                    'upload_date' => Helpers::get_date_name($sim_spiff_result->upload_date)
+
+                ];
+
+            }
+            elseif ($sim_residual_result)
+            {
+                $monthly_data = [
+                    'sim_number' => $sim,
+                    'value' => $sim_residual_result->value,
+                    'date' => $sim_residual_result->activation_date,
+                    'mobile' => $sim_residual_result->mobile_number,
+                    'report_type' => $sim_residual_result->report_type->carrier->name . ' ' . $sim_residual_result->report_type->name,
+                    'upload_date' => Helpers::get_date_name($sim_residual_result->upload_date)
+
+                ];
+            }
+            else
+            {
+                $monthly_data = false;
+            }
+
+           
+           $list_array[] = [
+            'user_data' => $user_data,
+            'monthly_data' => $monthly_data
+        ];
+
     }
+
+    return view('sim_users.list', compact('list_array'));
+}
 
     /**
     * Show the form for deleting sims
