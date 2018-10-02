@@ -82,6 +82,7 @@ Route::get('find-sims', 'SimUserController@find');
 Route::post('find_sims', 'SimUserController@find_sims');
 Route::post('find_sims_phone', 'SimUserController@find_sims_phone');
 Route::get('list-sims/{sims}', 'SimUserController@show_list');
+Route::get('list-sims-phone/{sims}', 'SimUserController@show_list_phone');
 Route::get('delete-sims', 'SimUserController@delete');
 Route::post('delete_sims', 'SimUserController@destroy');
 

@@ -45,7 +45,7 @@ Find Sims
       {{ csrf_field() }}
 
       <div class="field">
-        <textarea class="textarea" name="sims_paste"></textarea>
+        <textarea class="textarea" name="phones_paste"></textarea>
       </div>
 
       <div class="field submit">

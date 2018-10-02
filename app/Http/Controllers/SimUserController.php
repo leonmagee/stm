@@ -159,18 +159,22 @@ class SimUserController extends AuthorizedController
     */
     public function find_sims_phone(Request $request)
     {
-        dd($request);
+        $data = $request->phones_paste;
+
+        $exploded = explode("\r\n", $data);
+
+        $phone_list = implode('-', $exploded);
+
+        return redirect('/list-sims-phone/' . $phone_list);
     }
 
     public function show_list($sims)
     {
-
-        // $current_date = Helpers::current_date();
-        // dd($current_date);
-
         $sims_array = explode('-', $sims);
 
         $list_array = [];
+
+        $sims_found = false;
 
         foreach( $sims_array as $sim ) {
 
@@ -198,46 +202,163 @@ class SimUserController extends AuthorizedController
 
             $monthly_data = [];
 
-            if ($sim_spiff_result)
+            if ($sim_user_result || $sim_spiff_result || $sim_residual_result) 
             {
-                $monthly_data = [
-                    'sim_number' => $sim,
-                    'value' => $sim_spiff_result->value,
-                    'date' => $sim_spiff_result->activation_date,
-                    'mobile' => $sim_spiff_result->mobile_number,
-                    'report_type' => $sim_spiff_result->report_type->carrier->name . ' ' . $sim_spiff_result->report_type->name,
-                    'upload_date' => Helpers::get_date_name($sim_spiff_result->upload_date)
+                $sims_found = true;
 
+
+                if ($sim_spiff_result)
+                {
+                    $monthly_data = [
+                        'sim_number' => $sim,
+                        'value' => $sim_spiff_result->value,
+                        'date' => $sim_spiff_result->activation_date,
+                        'mobile' => $sim_spiff_result->mobile_number,
+                        'report_type' => $sim_spiff_result->report_type->carrier->name . ' ' . $sim_spiff_result->report_type->name,
+                        'upload_date' => Helpers::get_date_name($sim_spiff_result->upload_date)
+
+                    ];
+
+                }
+                elseif ($sim_residual_result)
+                {
+                    $monthly_data = [
+                        'sim_number' => $sim,
+                        'value' => $sim_residual_result->value,
+                        'date' => $sim_residual_result->activation_date,
+                        'mobile' => $sim_residual_result->mobile_number,
+                        'report_type' => $sim_residual_result->report_type->carrier->name . ' ' . $sim_residual_result->report_type->name,
+                        'upload_date' => Helpers::get_date_name($sim_residual_result->upload_date)
+                    ];
+                }
+                else
+                {
+                    $monthly_data = false;
+                }
+
+
+                $list_array[] = [
+                    'user_data' => $user_data,
+                    'monthly_data' => $monthly_data
                 ];
 
             }
-            elseif ($sim_residual_result)
-            {
-                $monthly_data = [
-                    'sim_number' => $sim,
-                    'value' => $sim_residual_result->value,
-                    'date' => $sim_residual_result->activation_date,
-                    'mobile' => $sim_residual_result->mobile_number,
-                    'report_type' => $sim_residual_result->report_type->carrier->name . ' ' . $sim_residual_result->report_type->name,
-                    'upload_date' => Helpers::get_date_name($sim_residual_result->upload_date)
+        }
 
-                ];
-            }
-            else
-            {
-                $monthly_data = false;
-            }
+        if (! $sims_found)
+        {
+            session()->flash('danger', 'No Sims were found.');
+            return redirect('find-sims');
+        }
 
-           
-           $list_array[] = [
-            'user_data' => $user_data,
-            'monthly_data' => $monthly_data
-        ];
 
+        return view('sim_users.list', compact('list_array'));
     }
 
-    return view('sim_users.list', compact('list_array'));
-}
+    public function show_list_phone($sims)
+    {
+        $phones_array = explode('-', $sims);
+
+        $list_array = [];
+
+        $sims_found = false;
+
+        foreach( $phones_array as $phone ) {
+
+            $sim = false;
+
+            $sim_spiff_result = Sim::where(['mobile_number' => $phone])->orderBy('upload_date', 'DESC')->first();
+
+            $sim_residual_result = SimResidual::where(['mobile_number' => $phone])->orderBy('upload_date', 'DESC')->first();
+
+
+            if ($sim_spiff_result)
+            {
+                $sim = $sim_spiff_result->sim_number;
+            }
+            elseif($sim_residual_result)
+            {
+                $sim = $sim_residual_result->sim_number;
+            }
+
+            if($sim)
+            {
+                $sim_user_result = SimUser::where('sim_number', $sim)->first();
+
+                $user_data = [];
+                if ($sim_user_result)
+                {
+                    $user_data = [
+                        'id' => $sim_user_result->id,
+                        'sim_number' => $sim,
+                        'carrier' => $sim_user_result->carrier->name,
+                        'company' => $sim_user_result->user->company,
+                        'user' => $sim_user_result->user->name,
+                    ];
+                }
+                else
+                {
+                    $user_data = false;    
+                }
+            } else {
+                $user_data = false;
+                $sim_user_result = false;
+            }
+
+            $monthly_data = [];
+
+            if ($sim_user_result || $sim_spiff_result || $sim_residual_result) 
+            {
+                $sims_found = true;
+
+                if ($sim_spiff_result)
+                {
+                    $monthly_data = [
+                        'sim_number' => $sim,
+                        'value' => $sim_spiff_result->value,
+                        'date' => $sim_spiff_result->activation_date,
+                        'mobile' => $sim_spiff_result->mobile_number,
+                        'report_type' => $sim_spiff_result->report_type->carrier->name . ' ' . $sim_spiff_result->report_type->name,
+                        'upload_date' => Helpers::get_date_name($sim_spiff_result->upload_date)
+
+                    ];
+
+                }
+                elseif ($sim_residual_result)
+                {
+                    $monthly_data = [
+                        'sim_number' => $sim,
+                        'value' => $sim_residual_result->value,
+                        'date' => $sim_residual_result->activation_date,
+                        'mobile' => $sim_residual_result->mobile_number,
+                        'report_type' => $sim_residual_result->report_type->carrier->name . ' ' . $sim_residual_result->report_type->name,
+                        'upload_date' => Helpers::get_date_name($sim_residual_result->upload_date)
+
+                    ];
+                }
+                else
+                {
+                    $monthly_data = false;
+                }
+
+                $list_array[] = [
+                    'user_data' => $user_data,
+                    'monthly_data' => $monthly_data
+                ];
+            }
+
+
+
+        }
+
+        if (! $sims_found)
+        {
+            session()->flash('danger', 'No Sims were found.');
+            return redirect('find-sims');
+        }
+
+        return view('sim_users.list', compact('list_array'));
+    }
 
     /**
     * Show the form for deleting sims
