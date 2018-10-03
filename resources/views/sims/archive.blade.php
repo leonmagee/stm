@@ -27,6 +27,8 @@
 
 <script>
 
+	console.log('archive');
+
 $('#sims_table').DataTable({
     "processing": true,
     "serverSide": true,

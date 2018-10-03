@@ -29,6 +29,7 @@ All Sims | {{ $current_site_date }}
 $('#sims_table').DataTable({
     "processing": true,
     "serverSide": true,
+    "responsive": true,
     "ajax": "{{ route('api.sims.index') }}",
     "columns": [
         { "data": "sim_number" },

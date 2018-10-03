@@ -10,6 +10,21 @@ body.stm-body {
 	min-height: 100%;
 	@include current_font;
 
+	//mobile settings
+	.chart-wrap-outer {
+		display: none;
+
+	}
+
+	@media(min-width: $screen-md) {
+		.chart-wrap-outer {
+			display: block;
+		}
+		.mobile-only {
+			display: none;
+		}
+	}
+
 	.main-wrap {
 		// @media(min-width: $screen-sm) {
 		// 	display: flex;

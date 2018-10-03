@@ -114,6 +114,13 @@
 	}
 }
 
+.header-buttons-outer-wrap {
+	width: 90%;
+	@media(min-width: $screen-md) {
+		width: auto;
+	}
+}
+
 .header-sub-wrap {
 	background-color: red;
 	min-height: 35px;

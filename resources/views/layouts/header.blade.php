@@ -5,11 +5,13 @@
 			{{-- <img src="{{ URL::asset('img/stm_logo_white.png') }}" /> --}}
 			Sim Track Manager
 		</a>
+		@if (Auth::check())
 		<a class="menu-toggle menu-modal-open"><i class="fas fa-bars"></i></a>
+		@endif
 	</div>
 
 	<div class="header-area">
-		<div class="login-text">
+		<div class="header-buttons-outer-wrap">
 			@if (Auth::check())
 
 			<div class="large-menu">

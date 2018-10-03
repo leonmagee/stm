@@ -1,21 +1,27 @@
 @extends('layouts.layout')
 
-@section('title')
-SIM Activations Per Month
-@endsection
-
 @section('content')
 
-<div class="chart-toggle">
-	<a class="button is-primary" id="toggle">Toggle Chart</a>
-</div>
+<div class="chart-wrap-outer">
 
-<div class="homepage-wrap">
+	<h1 class="title">SIM Activations Per Month</h1>
 
-	<div class="chart-wrap">
-		<canvas id="graph"></canvas>
+	<div class="chart-toggle">
+		<a class="button is-primary" id="toggle">Toggle Chart</a>
 	</div>
 
+	<div class="homepage-wrap">
+
+		<div class="chart-wrap">
+			<canvas id="graph"></canvas>
+		</div>
+
+	</div>
+
+</div>
+
+<div class="mobile-only">
+	<h1 class="title">Welcome to Sim Track Manager!</h1>
 </div>
 
 @endsection
@@ -72,26 +78,26 @@ SIM Activations Per Month
 	];
 
 	@foreach($data_array as $key => $data)
-		var report_object = {
-			label: "{{$data['title'] }}",
-			data: [
-				{{ $data['counts'][0] }},
-				{{ $data['counts'][1] }},
-				{{ $data['counts'][2] }},
-				{{ $data['counts'][2] }}
-			],
-			backgroundColor: fill_color_array[{{$key}}],
-			borderColor: stroke_color_array[{{$key}}],
-		};
-		report_types_array.push(report_object);
+	var report_object = {
+		label: "{{$data['title'] }}",
+		data: [
+		{{ $data['counts'][0] }},
+		{{ $data['counts'][1] }},
+		{{ $data['counts'][2] }},
+		{{ $data['counts'][2] }}
+		],
+		backgroundColor: fill_color_array[{{$key}}],
+		borderColor: stroke_color_array[{{$key}}],
+	};
+	report_types_array.push(report_object);
 	@endforeach
 
 	var date_name_array = [];
 	@foreach($date_name_array as $date)
-		date_name_array.push('{{ $date }}');
+	date_name_array.push('{{ $date }}');
 	@endforeach
 
-var data = {
+	var data = {
 	//labels: ['April 2018', 'May 2018', 'June 2018'],
 	labels: date_name_array, 
 	//labels: date_array,
@@ -126,36 +132,36 @@ var options = {
 	//showLines: false,
 	//borderColor: 'red',
 	scales: {
-        yAxes: [{
-            ticks: {
-                beginAtZero:true
-            }
-        }]
-    },
+		yAxes: [{
+			ticks: {
+				beginAtZero:true
+			}
+		}]
+	},
 	legend: {
 		display: true,
 		position: 'right',
 		onClick: function(e, legendItem) {
-			  var index = legendItem.datasetIndex;
-			  var ci = this.chart;
-			  var alreadyHidden = (ci.getDatasetMeta(index).hidden === null) ? false : ci.getDatasetMeta(index).hidden;
+			var index = legendItem.datasetIndex;
+			var ci = this.chart;
+			var alreadyHidden = (ci.getDatasetMeta(index).hidden === null) ? false : ci.getDatasetMeta(index).hidden;
 
-			  ci.data.datasets.forEach(function(e, i) {
-			    var meta = ci.getDatasetMeta(i);
+			ci.data.datasets.forEach(function(e, i) {
+				var meta = ci.getDatasetMeta(i);
 
-			    if (i !== index) {
-			      if (!alreadyHidden) {
-			        meta.hidden = meta.hidden === null ? !meta.hidden : null;
-			      } else if (meta.hidden === null) {
-			        meta.hidden = true;
-			      }
-			    } else if (i === index) {
-			      meta.hidden = null;
-			    }
-			  });
+				if (i !== index) {
+					if (!alreadyHidden) {
+						meta.hidden = meta.hidden === null ? !meta.hidden : null;
+					} else if (meta.hidden === null) {
+						meta.hidden = true;
+					}
+				} else if (i === index) {
+					meta.hidden = null;
+				}
+			});
 
-			  ci.update();
-			}
+			ci.update();
+		}
 	}
 };
 
@@ -165,7 +171,7 @@ var chartType = 'bar';
 
 function init() {
 	chartReport = new Chart(context, {
-	    type: chartType,
+		type: chartType,
 	    //type: 'line',
 	    data: data,
 	    //scaleStartValue : 0,
