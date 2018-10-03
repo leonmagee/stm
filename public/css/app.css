@@ -17508,6 +17508,16 @@ ul.mobile-menu li ul.sub-menu.active li:hover a {
   border-radius: 5px;
 }
 
+.dataTables_paginate.paging_simple_numbers {
+  font-size: 10px;
+}
+
+@media (min-width: 768px) {
+  .dataTables_paginate.paging_simple_numbers {
+    font-size: 1em;
+  }
+}
+
 .dataTables_paginate.paging_simple_numbers a.paginate_button {
   font-weight: bold;
   padding: 2px 10px !important;
@@ -17537,7 +17547,8 @@ ul.mobile-menu li ul.sub-menu.active li:hover a {
 }
 
 #sims_table {
-  font-size: 10px;
+  font-size: 8px;
+  width: 100% !important;
 }
 
 @media (min-width: 768px) {
