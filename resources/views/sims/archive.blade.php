@@ -27,11 +27,12 @@
 
 <script>
 
-	console.log('archive');
+	console.log('archive 3');
 
 $('#sims_table').DataTable({
     "processing": true,
     "serverSide": true,
+    responsive: true,
     "ajax": "{!! route('api.sims.archive', ['id' => $id]) !!}",
     "columns": [
         { "data": "sim_number" },

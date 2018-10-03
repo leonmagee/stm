@@ -6,7 +6,10 @@
 
 require('./bootstrap');
 
-require('datatables');
+require('datatables.net');
+
+//require('datatables.net-responsive');
+//require('datatables-responsive');
 
 require('chart.js');
 

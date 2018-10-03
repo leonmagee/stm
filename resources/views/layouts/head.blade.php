@@ -5,4 +5,6 @@
 	<meta name="csrf-token" content="{{ csrf_token() }}">
 	<title>Sim Track Manager</title>
 	<link rel="stylesheet" href="/css/app.css">
+	<link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+	<link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css">
 </head>

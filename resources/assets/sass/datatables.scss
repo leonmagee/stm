@@ -33,6 +33,10 @@
 }
 
 #sims_table {
+	font-size: 10px;
+	@media(min-width: $screen-sm) {
+		font-size: 1em;
+	}
 	a {
 		color: darken($brand-primary, 5%);
 		color: $brand-primary;
