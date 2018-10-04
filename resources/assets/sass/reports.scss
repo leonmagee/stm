@@ -112,9 +112,13 @@
 }
 
 .save-archive-button-wrap {
-	position: absolute;
-	top: 15px;
-	right: 30px;
+	padding-bottom: 15px;
+	@media(min-width: $screen-sm) {
+		position: absolute;
+		top: 15px;
+		right: 30px;
+		padding-bottom: 0;
+	}
 }
 
 // archive header
