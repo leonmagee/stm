@@ -125,33 +125,16 @@ class SimUserController extends AuthorizedController
     {
         $data = $request->sims_paste;
 
+        if (! $data) {
+            session()->flash('danger', 'No Sims were found.');
+            return redirect('find-sims');
+        }
+
         $exploded = explode("\r\n", $data);
 
         $sim_list = implode('-', $exploded);
 
         return redirect('/list-sims/' . $sim_list);
-
-        // foreach( $exploded as $item ) {
-
-        //     //$sim = SimUser::where('sim_number', $item)->first();
-
-        //     if ($sim)
-        //     {
-        //         $data_array[] = $sim->id;
-        //     } else {
-        //         // maybe look in monthly sims?
-        //     }
-        // }
-
-        // if (count($data_array))
-        // {
-        //     $sim_query = implode('-', $data_array);
-        //     return redirect('/list-sims/' . $sim_query);
-
-        // } else {
-        //     session()->flash('danger', 'No Sims were found.');
-        //     return redirect('/find-sims');
-        // }
     }
 
     /**
@@ -160,6 +143,11 @@ class SimUserController extends AuthorizedController
     public function find_sims_phone(Request $request)
     {
         $data = $request->phones_paste;
+
+        if (! $data) {
+            session()->flash('danger', 'No Sims were found.');
+            return redirect('find-sims');
+        }
 
         $exploded = explode("\r\n", $data);
 
