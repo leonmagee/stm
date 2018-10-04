@@ -14,7 +14,15 @@
 
 			@else
 
-			<a>{{ $item['name'] }}</a>
+				@if($item['default'])
+				
+					<a href="{{ $item['default'] }}">{{ $item['name'] }}</a>
+
+				@else
+
+					<a>{{ $item['name'] }}</a>
+
+				@endif
 
 			<ul class="sub-menu">
 
