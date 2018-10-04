@@ -21,7 +21,7 @@ Sim Search Results
 
             <div class="detail-item">
                 <label>Sim Number</label>
-                <div><a href="/user-sims/{{ $item['user_data']['id'] }}">{{ $item['user_data']['sim_number'] }}</a></div>
+                <div>{{ $item['user_data']['sim_number'] }}</div>
             </div>
 
             <div class="detail-item">
