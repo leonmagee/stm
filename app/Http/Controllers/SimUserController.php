@@ -364,24 +364,46 @@ class SimUserController extends AuthorizedController
      */
     public function destroy(Request $request)
     {
+
+        if (! $request->sims_paste)
+        {
+            session()->flash('danger', 'Please enter sims to remove.');
+            return redirect('/delete-sims');
+        }
+
         $data = $request->sims_paste;
 
         $exploded = explode("\r\n", $data);
 
-        $data_array = [];
+        $removed_array = [];
+        $not_removed_array = [];
 
         foreach( $exploded as $item ) {
 
-            SimUser::where('sim_number', $item)->delete();
+            if (SimUser::where('sim_number', $item)->delete())
+            {
 
-            $data_array[] = $item;
+                $removed_array[] = $item;
+
+            } 
+            else
+            {
+
+                $not_removed_array[] = $item;
+
+            }
+
         }
 
-        if (count($data_array)) {
-            session()->flash('removed', $data_array);
+        if (count($removed_array)) {
+            session()->flash('removed', $removed_array);
         }
 
-        return redirect('/user-sims');
+        if (count($not_removed_array)) {
+            session()->flash('not_removed', $not_removed_array);
+        }
+
+        return redirect('/delete-sims');
     }
 
 }

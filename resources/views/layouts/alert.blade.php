@@ -61,3 +61,23 @@
 </div>
 
 @endif
+
+@if($removed_sims = session('not_removed'))
+
+<div class="notification is-danger">
+
+ 	<button class="delete"></button>
+
+ 	<span>The following sims were not found:</span>
+ 	
+	<ul>
+		@foreach($removed_sims as $sim)
+			
+			<li>{{ $sim }}</li>
+
+		@endforeach
+	</ul>
+
+</div>
+
+@endif
