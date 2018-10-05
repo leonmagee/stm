@@ -15,15 +15,7 @@ Sims For Logged In User or all for admin
             <th>User</th>
         </tr>
     </thead>
-    <tbody>
-{{--         @foreach( $sims as $sim )
-        <tr>
-            <td><a href="/sims/{{ $sim->sim_number }}">{{ $sim->sim_number }}</a></td>
-            <td>{{ $sim->carrier->name }}</td>
-            <td><a href="/users/{{ $sim->user->id }}">{{ $sim->user->name }}</a></td>
-        </tr>
-        @endforeach --}}
-    </tbody>
+    <tbody></tbody>
 </table>
 
 @endsection

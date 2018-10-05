@@ -103,6 +103,7 @@ class APIController extends Controller
 
     public function getSimUsers()
     {
+
         // $query_array = [];
 
         // $sim_user_query = SimUser::all();
