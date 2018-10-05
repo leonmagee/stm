@@ -24,6 +24,24 @@ class SimUserController extends AuthorizedController
      */
     public function index()
     {
+
+
+// $results = \DB::select( \DB::raw(
+//     "SELECT sim_users.sim_number, carriers.name, users.company 
+//     FROM sim_users, carriers, users WHERE sim_users.user_id = :user_id AND sim_users.carrier_id = carriers.id AND sim_users.user_id = users.id"), array(
+//    'user_id' => 12,
+//  ));
+
+// dd($results);
+
+// $results = \DB::select( DB::raw("SELECT `sim_number` FROM 'sim_users' WHERE 'user_id' = :somevariable"), array(
+//    'somevariable' => $someVariable,
+//  ));
+
+
+
+
+
         // $sims_user = SimUser::where('user_id', auth()->id())->get();
         // $sims = SimUser::latest()->get();
         //return view('sim_users.index', compact('sims', 'sims_user'));

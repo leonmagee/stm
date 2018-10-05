@@ -236,42 +236,6 @@ class SimController extends Controller
 
     public function complete_single_upload($data_array, Request $request, $filePath = false) {
 
-
-
-        /**
-        * @todo try using league csv method to import csv data... 
-        * I'm not sure how this will work with catching the duplicate sims and returning an error?
-        * but I should try doing this to see if it's faster
-        * and 
-        */
-
-
-        //We are going to insert some data into the users table
-        // $sth = $dbh->prepare(
-        //     "INSERT INTO sim_users (user_id, carrier_id, sim_number) VALUES (:user_id, :carrier_id, :sim_number)"
-        // );
-
-        // $csv = Reader::createFromPath($filePath, 'r');
-
-        // $csv->setOffset(1); //because we don't want to insert the header
-
-        // $nbInsert = $csv->each(function ($row) use (&$sth) {
-        //     //Do not forget to validate your data before inserting it in your database
-        //     $sth->bindValue(':user_id', $row[0], PDO::PARAM_STR);
-        //     $sth->bindValue(':carrier_id', $row[1], PDO::PARAM_STR);
-        //     $sth->bindValue(':sim_number', $row[2], PDO::PARAM_STR);
-
-        //     return $sth->execute(); //if the function return false then the iteration will stop
-        // });
-
-
-
-
-
-
-
-
-
         array_unique($data_array);
 
         $duplicate_sims = [];
@@ -281,33 +245,25 @@ class SimController extends Controller
         
         $carrier_id = $request->carrier_id;
 
-        //dd($data_array);
-
         foreach( $data_array as $data ) {
-            // this checks the sim length for each iteration - this might take a lot of time?
-            // am I able to upload all of tim pham's sims at once?
 
-            //if ( Helpers::verify_sim($data) ) {
+            try {
 
-                try {
+                SimUser::create(array(
+                    'sim_number' => $data,
+                    'user_id' => $user_id,
+                    'carrier_id' => $carrier_id
+                ));
 
-                    SimUser::create(array(
-                        'sim_number' => $data,
-                        'user_id' => $user_id,
-                        'carrier_id' => $carrier_id
-                    ));
+                $count++;
 
-                    $count++;
-
-                } catch(\Illuminate\Database\QueryException $e) {
-                    $errorCode = $e->errorInfo[1];
-                    if($errorCode == '1062'){
-                        $duplicate_sims[] = $data;
-                        continue;
-                    }
+            } catch(\Illuminate\Database\QueryException $e) {
+                $errorCode = $e->errorInfo[1];
+                if($errorCode == '1062'){
+                    $duplicate_sims[] = $data;
+                    continue;
                 }
-
-            //}
+            }
 
         }
 
@@ -322,7 +278,7 @@ class SimController extends Controller
             session()->flash('duplicates', $this->duplicate_sims);
         }
 
-        return redirect('/user-sims');
+        return redirect('/user-sims/user/' . $user_id);
 
     }
 
