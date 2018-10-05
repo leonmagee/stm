@@ -94,7 +94,7 @@
 
 				<div class="field flex-margin">
 					<div class="control">
-						<button class="button is-link" type="submit">Update</button>
+						<button class="button is-primary" type="submit">Update</button>
 					</div>
 				</div>
 

@@ -46,7 +46,7 @@ Upload Sims
 
       <div class="field submit">
         <div class="control">
-         <button class="button is-link call-loader" type="submit">Upload</button>
+         <button class="button is-primary call-loader" type="submit">Upload</button>
        </div>
      </div>
 
@@ -112,7 +112,7 @@ Upload Sims
 
       <div class="field submit">
         <div class="control">
-         <button class="button is-link call-loader" type="submit">Upload</button>
+         <button class="button is-primary call-loader" type="submit">Upload</button>
        </div>
      </div>
 
@@ -168,7 +168,7 @@ Upload Sims
 
     <div class="field submit">
       <div class="control">
-       <button class="button is-link call-loader" type="submit">Upload</button>
+       <button class="button is-primary call-loader" type="submit">Upload</button>
      </div>
    </div>
 

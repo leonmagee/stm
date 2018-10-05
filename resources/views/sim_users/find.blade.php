@@ -24,7 +24,7 @@ Find Sims
 
       <div class="field submit">
         <div class="control">
-         <button class="button is-link call-loader" type="submit">Find Sims</button>
+         <button class="button is-primary call-loader" type="submit">Find Sims</button>
        </div>
      </div>
 
@@ -50,7 +50,7 @@ Find Sims
 
       <div class="field submit">
         <div class="control">
-         <button class="button is-link call-loader" type="submit">Find Sims</button>
+         <button class="button is-primary call-loader" type="submit">Find Sims</button>
        </div>
      </div>
 

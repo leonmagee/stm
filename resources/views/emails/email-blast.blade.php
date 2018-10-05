@@ -4,7 +4,7 @@
 
 {{ $message }}
 
-@component('mail::button', ['url' => 'https://simtrackmanager.com'])
+@component('mail::button', ['url' => 'https://simmax.com'])
 Login to Sim Track Manager
 @endcomponent
 

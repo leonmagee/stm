@@ -7,7 +7,7 @@ The body of your message.
 - two
 - three
 
-@component('mail::button', ['url' => 'https://simtrackmanager.com'])
+@component('mail::button', ['url' => 'https://simmax.com'])
 Go to Sim Track Manager
 @endcomponent
 

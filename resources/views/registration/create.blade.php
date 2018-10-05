@@ -110,7 +110,7 @@
 
 				<div class="field flex-margin">
 					<div class="control">
-						<button class="button is-link" type="submit">Register</button>
+						<button class="button is-primary" type="submit">Register</button>
 					</div>
 				</div>
 

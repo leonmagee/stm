@@ -27,7 +27,7 @@
 
                 <div class="field">
                     <div class="control">
-                        <button class="button is-link" type="submit" value="Publish">Update</button>
+                        <button class="button is-primary" type="submit" value="Publish">Update</button>
                     </div>
                 </div>
 
@@ -56,7 +56,7 @@
 
                 <div class="field">
                     <div class="control">
-                        <button class="button is-link" type="submit" value="Publish">Update</button>
+                        <button class="button is-primary" type="submit" value="Publish">Update</button>
                     </div>
                 </div>
 

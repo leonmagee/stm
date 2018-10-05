@@ -32,7 +32,7 @@
 
 					<div class="field">
 						<div class="control">
-							<button class="button is-link" type="submit">Log In</button>
+							<button class="button is-primary" type="submit">Log In</button>
 						</div>
 					</div>
 
