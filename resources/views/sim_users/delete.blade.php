@@ -24,7 +24,7 @@ Delete Sims
 
       <div class="field submit">
         <div class="control">
-         <a href="#" class="modal-open button is-danger">Delete Sims</a>
+         <a href="#" class="modal-open button is-primary">Delete Sims</a>
         <button class="button is-hidden" type="submit">Delete Sims</button>
        </div>
      </div>
