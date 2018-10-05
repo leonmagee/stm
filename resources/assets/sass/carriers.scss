@@ -1,7 +1,7 @@
 // extends grid.scss
 .carriers-wrap	{
 
-	a.carrier-wrap {
+	.carrier-wrap {
 
 		.flex-item {
 
@@ -9,6 +9,7 @@
 				font-size: 1.1em;	
 				flex: 1 1 auto;
 				padding: 0 20px;
+				padding: 10px 15px;
 			}
 
 			&.icon-wrap {

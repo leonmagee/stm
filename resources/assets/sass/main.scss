@@ -60,14 +60,15 @@ body.stm-body {
 		}
 	}
 
-	button.button {
-		background-color: $brand-primary;
-		transition: 0.3s;
-		text-shadow: 1px 1px darken($brand-primary, 2%);
-		&:hover {
-			background-color: darken($brand-primary, 3%);
-			text-shadow: 1px 1px darken($brand-primary, 5%);
-		}
+	button.button, a.button {
+		font-weight: 700;
+		//background-color: $brand-primary;
+		//transition: 0.3s;
+		// text-shadow: 1px 1px darken($brand-primary, 2%);
+		// &:hover {
+		// 	background-color: darken($brand-primary, 3%);
+		// 	text-shadow: 1px 1px darken($brand-primary, 5%);
+		// }
 	}
 
 	//notifications / alerts

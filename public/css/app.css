@@ -16988,16 +16988,9 @@ body.stm-body a:hover {
   color: #188694;
 }
 
-body.stm-body button.button {
-  background-color: #1B9AAA;
-  -webkit-transition: 0.3s;
-  transition: 0.3s;
-  text-shadow: 1px 1px #1a92a1;
-}
-
-body.stm-body button.button:hover {
-  background-color: #198e9d;
-  text-shadow: 1px 1px #188694;
+body.stm-body button.button,
+body.stm-body a.button {
+  font-weight: 700;
 }
 
 body.stm-body .notification {
@@ -17045,11 +17038,11 @@ body.stm-body .button-bar-wrap .button-bar a {
   border-radius: 20px;
 }
 
-.modal-box a {
+.modal-box a,
+.modal-box button {
   margin-left: 5px;
   margin-right: 5px;
   margin-bottom: 20px;
-  font-weight: 700;
 }
 
 #menu-modal .modal-content {
@@ -17924,15 +17917,16 @@ ul.mobile-menu li ul.sub-menu.active li:hover a {
   background-color: #EF476F;
 }
 
-.carriers-wrap a.carrier-wrap .flex-item.carrier-name {
+.carriers-wrap .carrier-wrap .flex-item.carrier-name {
   font-size: 1.1em;
   -webkit-box-flex: 1;
       -ms-flex: 1 1 auto;
           flex: 1 1 auto;
   padding: 0 20px;
+  padding: 10px 15px;
 }
 
-.carriers-wrap a.carrier-wrap .flex-item.icon-wrap .fa-mobile-alt {
+.carriers-wrap .carrier-wrap .flex-item.icon-wrap .fa-mobile-alt {
   font-size: 2em;
 }
 

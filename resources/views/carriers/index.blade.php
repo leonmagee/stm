@@ -11,7 +11,7 @@ Carriers
 	    @foreach( $carriers as $carrier )
 
 	        {{-- <a href="/carriers/{{ $carrier->id }}" class="single-grid-item carrier-wrap"> --}}
-	        <a href="#" class="single-grid-item carrier-wrap">
+	        <div class="single-grid-item carrier-wrap">
 
 				<div class="flex-item icon-wrap">
 					<i class="fas fa-mobile-alt"></i>
@@ -25,7 +25,7 @@ Carriers
 
 				</div>
 	        
-	        </a>
+	        </div>
 
 	    @endforeach
 

@@ -24,7 +24,7 @@ Delete Sims
 
       <div class="field submit">
         <div class="control">
-         <button class="button is-link call-loader" type="submit">Delete Sims</button>
+         <a href="#" class="modal-open button is-danger">Delete Sims</a>
        </div>
      </div>
 
@@ -35,6 +35,16 @@ Delete Sims
     @include('layouts.errors')
 
   </div>
+
+  @section('modal')
+
+  <h3 class="title">Are You Sure?</h3> 
+
+  <button class="button is-danger call-loader" type="submit">Delete Sims</button>
+
+  <a href="#" class="modal-close-button button is-primary">Cancel</a>
+
+  @endsection
 
  </form>
 
