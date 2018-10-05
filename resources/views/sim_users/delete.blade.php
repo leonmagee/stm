@@ -12,7 +12,7 @@ Delete Sims
 
     <h3>Enter Sims to Delete</h3>
 
-    <form action="/delete_sims" method="POST" enctype="multipart/form-data">
+    <form action="/delete_sims" id="delete_sims_form" method="POST" enctype="multipart/form-data">
 
      <div class="form-wrap">
 
@@ -25,26 +25,27 @@ Delete Sims
       <div class="field submit">
         <div class="control">
          <a href="#" class="modal-open button is-danger">Delete Sims</a>
+        <button class="button is-hidden" type="submit">Delete Sims</button>
        </div>
      </div>
 
    </div>
 
-  <div class="field">
-    
-    @include('layouts.errors')
-
-  </div>
-
   @section('modal')
 
   <h3 class="title">Are You Sure?</h3> 
 
-  <button class="button is-danger call-loader" type="submit">Delete Sims</button>
+  <button id="modal_delete_sims" class="button is-danger call-loader" type="submit">Delete Sims</button>
 
   <a href="#" class="modal-close-button button is-primary">Cancel</a>
 
   @endsection
+
+    <div class="field">
+    
+    @include('layouts.errors')
+
+  </div>
 
  </form>
 

@@ -32426,6 +32426,11 @@ $('.menu-modal-open, #menu-modal .menu-modal-close').click(function () {
   $('.modal#menu-modal').toggleClass('is-active');
 });
 
+$('#modal_delete_sims').click(function () {
+  console.log('click worked new');
+  $('#delete_sims_form').submit();
+});
+
 /**
 * Toggle mobile menu
 */
