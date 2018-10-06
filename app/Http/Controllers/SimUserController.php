@@ -26,6 +26,19 @@ class SimUserController extends AuthorizedController
     public function index()
     {
 
+            // $sim_users_query = \DB::table('sim_users')
+            // ->join('users', 'sim_users.user_id', '=', 'users.id')
+            // ->join('carriers', 'sim_users.carrier_id', '=', 'carriers.id')
+            // ->select(['sim_users.sim_number', 'users.company as company', 'users.name as user_name', 'carriers.name as carrier_name']);
+
+
+        // $sim_user_query = collect(\DB::select(
+        //             "SELECT sim_users.sim_number, carriers.name, users.company 
+        //             FROM sim_users, carriers, users WHERE sim_users.carrier_id = carriers.id AND sim_users.user_id = users.id"));
+
+
+        //dd($sim_users_query);
+
 
         // $sim_users_query = \DB::table('sim_users')->join('users', 'sim_users.user_id', '=', 'users.id')
         //     ->select(['sim_users.sim_number', 'users.company', 'users.name']);

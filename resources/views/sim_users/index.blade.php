@@ -12,6 +12,7 @@ All Sims assigned to Users
         <tr>
             <th>Sim Number</th>
             <th>Carrier</th>
+            <th>Company</th>
             <th>User</th>
         </tr>
     </thead>
@@ -30,8 +31,9 @@ $('#sims_table').DataTable({
     "ajax": "{{ route('api.sim_users.index') }}",
     "columns": [
         { data: "sim_number", name: "sim_users.sim_number" },
-        { data: "name", name: "carriers.name" },
+        { data: "carrier_name", name: "carriers.name" },
         { data: "company", name: "users.company" },
+        { data: "user_name", name: "users.name" }
     ]
 });
 
