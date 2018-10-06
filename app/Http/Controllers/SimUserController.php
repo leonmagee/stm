@@ -8,6 +8,7 @@ use App\SimResidual;
 use App\User;
 use App\Carrier;
 use App\Helpers;
+//use Yajra\Datatables\Datatables;
 
 class SimUserController extends AuthorizedController
 {
@@ -24,6 +25,23 @@ class SimUserController extends AuthorizedController
      */
     public function index()
     {
+
+
+        // $sim_users_query = \DB::table('sim_users')->join('users', 'sim_users.user_id', '=', 'users.id')
+        //     ->select(['sim_users.sim_number', 'users.company', 'users.name']);
+
+        //     //dd($sim_users_query);
+
+        //     $query = Datatables::of($sim_users_query)->make(true);
+
+        //     dd($query);
+
+        // $query = Datatables::of($sim_users_query)
+        //     ->editColumn('title', '{!! str_limit($title, 60) !!}')
+        //     ->editColumn('name', function ($model) {
+        //         return \HTML::mailto($model->email, $model->name);
+        //     })
+        //     ->make(true);
 
 
 // $results = \DB::select( \DB::raw(

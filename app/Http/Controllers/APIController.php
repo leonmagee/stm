@@ -7,6 +7,7 @@ use App\SimResidual;
 use App\SimUser;
 use App\ReportType;
 use App\Helpers;
+use Yajra\Datatables\Datatables;
 
 use Illuminate\Support\Facades\DB;
 
@@ -52,32 +53,26 @@ class APIController extends Controller
 
     public function getSimUsers()
     {
+            $sim_users_query = \DB::table('sim_users')
+            ->join('users', 'sim_users.user_id', '=', 'users.id')
+            ->join('carriers', 'sim_users.carrier_id', '=', 'carriers.id')
+            ->select(['sim_users.sim_number', 'users.company', 'users.name', 'carriers.name']);
 
-        /**
-        * Maybe try doing this with a select raw?
-        * I could also try to include the user name with company
-        * it creates a problem now because 'name' is the same key for both users and carriers
-        */
-        //return datatables(SimUser::all())->make(true);
-
-        return datatables(
-            \DB::select( \DB::raw(
-                "SELECT sim_users.sim_number, carriers.name, users.company 
-                FROM sim_users, carriers, users WHERE sim_users.user_id = :user_id AND sim_users.carrier_id = carriers.id AND sim_users.user_id = users.id"), array(
-               'user_id' => 12,
-             ))
-        )->make(true);
+            return Datatables::of($sim_users_query)->make(true);
 
 
-
-        // return datatables(SimUser::query()
-        //     ->select(
-        //         'sim_users.sim_number', 
-        //         'sim_users.user_id',
-        //         'sim_users.carrier_id'
-        //     ))->make(true);
+            // return datatables(
+            //     \DB::select(
+            //         "SELECT sim_users.sim_number, carriers.name, users.company 
+            //         FROM sim_users, carriers, users WHERE sim_users.carrier_id = carriers.id AND sim_users.user_id = users.id")
+            // )->make(true);
 
 
+             //    \DB::select( \DB::raw(
+             //    "SELECT sim_users.sim_number, carriers.name, users.company 
+             //    FROM sim_users, carriers, users WHERE sim_users.user_id = :user_id AND sim_users.carrier_id = carriers.id AND sim_users.user_id = users.id"), array(
+             //   'user_id' => 12,
+             // ))
 
         // return datatables(SimUser::query()
         //     ->join('carriers', 'carriers.id', '=', 'sim_users.carrier_id')
