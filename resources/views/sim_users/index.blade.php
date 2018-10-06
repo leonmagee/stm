@@ -13,7 +13,7 @@ All Sims assigned to Users
             <th>Sim Number</th>
             <th>Carrier</th>
             <th>Company</th>
-            <th>User</th>
+            <th>Name</th>
         </tr>
     </thead>
     <tbody></tbody>

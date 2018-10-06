@@ -11,7 +11,8 @@ Sims For {{ $user->company }} - {{ $user->name }}
         <tr>
             <th>Sim Number</th>
             <th>Carrier</th>
-            <th>User</th>
+            <th>Company</th>
+            <th>Name</th>
         </tr>
     </thead>
     <tbody>
@@ -24,14 +25,15 @@ Sims For {{ $user->company }} - {{ $user->name }}
 
 <script>
 
-$('#sims_table').DataTable({ // .DataTable vs .dataTable???
+$('#sims_table').DataTable({
     "processing": true,
     "serverSide": true,
     "ajax": "{!! route('api.sim_users.index_user', ['id' => $user->id]) !!}",
     "columns": [
-        { "data": "sim_number" },
-        { "data": "name" },
-        { "data": "company" },
+        { data: "sim_number", name: "sim_users.sim_number" },
+        { data: "carrier_name", name: "carriers.name" },
+        { data: "company", name: "users.company" },
+        { data: "user_name", name: "users.name" }
     ]
 });
 
