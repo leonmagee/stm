@@ -72,7 +72,7 @@ class HomeController extends Controller
         } else {
             $role = Site::find($role)->name;
         }
-        return view('users.show', compact('user', 'role', 'bonus', 'credit'));
+        return view('users.show_not_admin', compact('user', 'role', 'bonus', 'credit'));
     }
 
     public function outputCharts() {

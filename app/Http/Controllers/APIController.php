@@ -30,7 +30,6 @@ class APIController extends Controller
         } else {
 
         	$query = $this->archiveQuery(new SimResidual(), $id);
-
         }
 
         return datatables($query)->make(true);
@@ -63,7 +62,6 @@ class APIController extends Controller
 
     public function getSimUser($id)
     {
-
         $sim_users_query = \DB::table('sim_users')
             ->join('users', 'sim_users.user_id', '=', 'users.id')
             ->join('carriers', 'sim_users.carrier_id', '=', 'carriers.id')
@@ -71,17 +69,6 @@ class APIController extends Controller
             ->select(['sim_users.sim_number', 'carriers.name as carrier_name', 'users.company as company', 'users.name as user_name']);
 
         return Datatables::of($sim_users_query)->make(true);
-
-
-        // return datatables(SimUser::query()
-        //     ->join('carriers', 'carriers.id', '=', 'sim_users.carrier_id')
-        //     ->join('users', 'users.id', '=', 'sim_users.user_id')
-        //     ->where('users.id', $id)
-        //     ->select(
-        //         'sim_users.sim_number', 
-        //         'carriers.name',
-        //         'users.company'
-        //     ))->make(true);
     }
 }
 

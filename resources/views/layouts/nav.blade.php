@@ -8,13 +8,13 @@
 				<i class="fi {{ $item['icon'] }}"></i>
 			</div>
 
-			@if($item['link'])
+			@if(isset($item['link']))
 
 				<a href="{{ $item['link'] }}">{{ $item['name'] }}</a>
 
 			@else
 
-				@if($item['default'])
+				@if(isset($item['default']))
 				
 					<a href="{{ $item['default'] }}">{{ $item['name'] }}</a>
 

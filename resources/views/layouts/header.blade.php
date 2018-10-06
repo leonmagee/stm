@@ -91,10 +91,6 @@
 					</p>
 				</div>
 				<div class="field has-addons">
-
-
-
-
 					<p class="control">
 						<a class="button logout" href="/logout">
 							<span class="icon is-small">
