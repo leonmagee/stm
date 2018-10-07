@@ -225,24 +225,28 @@ class AppServiceProvider extends ServiceProvider
                         'link' => false,
                         'sub' => $monthly_sims_sub,
                         'icon' => 'flaticon-sim-card',
+                        'default' => false,
                     ],
                     [
                         'name' => 'Your Sims',
                         'link' => false,
                         'sub' => $user_sims_sub_non_admin,
                         'icon' => 'flaticon-report-1',
+                        'default' => '/user-sims',
                     ],
                     [
-                        'name' => 'Reports',
+                        'name' => 'Your Report',
                         'link' => '/reports',
                         'sub' => false,
                         'icon' => 'flaticon-growth',
+                        'default' => false,
                     ],
                     [
                         'name' => 'Homepage',
                         'link' => '/',
                         'sub' => false,
                         'icon' => 'flaticon-home',
+                        'default' => false,
                     ],
                 ];
 
