@@ -26,57 +26,17 @@ class SimUserController extends AuthorizedController
     public function index()
     {
 
-            // $sim_users_query = \DB::table('sim_users')
-            // ->join('users', 'sim_users.user_id', '=', 'users.id')
-            // ->join('carriers', 'sim_users.carrier_id', '=', 'carriers.id')
-            // ->select(['sim_users.sim_number', 'users.company as company', 'users.name as user_name', 'carriers.name as carrier_name']);
+        $user = \Auth::user();
 
+        if ($user->isAdmin())
+        {
+            $user_title = 'Users';
+        } else {
 
-        // $sim_user_query = collect(\DB::select(
-        //             "SELECT sim_users.sim_number, carriers.name, users.company 
-        //             FROM sim_users, carriers, users WHERE sim_users.carrier_id = carriers.id AND sim_users.user_id = users.id"));
+            $user_title = $user->company . ' - ' . $user->name;
+        }
 
-
-        //dd($sim_users_query);
-
-
-        // $sim_users_query = \DB::table('sim_users')->join('users', 'sim_users.user_id', '=', 'users.id')
-        //     ->select(['sim_users.sim_number', 'users.company', 'users.name']);
-
-        //     //dd($sim_users_query);
-
-        //     $query = Datatables::of($sim_users_query)->make(true);
-
-        //     dd($query);
-
-        // $query = Datatables::of($sim_users_query)
-        //     ->editColumn('title', '{!! str_limit($title, 60) !!}')
-        //     ->editColumn('name', function ($model) {
-        //         return \HTML::mailto($model->email, $model->name);
-        //     })
-        //     ->make(true);
-
-
-// $results = \DB::select( \DB::raw(
-//     "SELECT sim_users.sim_number, carriers.name, users.company 
-//     FROM sim_users, carriers, users WHERE sim_users.user_id = :user_id AND sim_users.carrier_id = carriers.id AND sim_users.user_id = users.id"), array(
-//    'user_id' => 12,
-//  ));
-
-// dd($results);
-
-// $results = \DB::select( DB::raw("SELECT `sim_number` FROM 'sim_users' WHERE 'user_id' = :somevariable"), array(
-//    'somevariable' => $someVariable,
-//  ));
-
-
-
-
-
-        // $sims_user = SimUser::where('user_id', auth()->id())->get();
-        // $sims = SimUser::latest()->get();
-        //return view('sim_users.index', compact('sims', 'sims_user'));
-        return view('sim_users.index');
+        return view('sim_users.index', compact('user_title'));
     }
 
     /**

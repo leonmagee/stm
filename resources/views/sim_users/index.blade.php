@@ -1,7 +1,7 @@
 @extends('layouts.layout')
 
 @section('title')
-All Sims assigned to Users
+All Sims assigned to {{ $user_title }}
 @endsection
 
 @section('content')

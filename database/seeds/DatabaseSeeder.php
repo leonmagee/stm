@@ -23,6 +23,7 @@ class DatabaseSeeder extends Seeder
         $this->call(SettingTableSeeder::class);
         $this->call(ReportTypeSiteDefaultTableSeeder::class);
         $this->call(ReportTypeSiteValueTableSeeder::class);
+        $this->call(RolesTableSeeder::class);
 
 
         //DB::table('users')->truncate();

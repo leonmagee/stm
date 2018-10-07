@@ -34,6 +34,10 @@ class User extends Authenticatable
         return $this->hasMany(SimUser::class);
     }
 
+    /**
+    * @todo can probably remove this, or maybe just modify it?
+    * instead of checking the role value, it will check the user_role pivot table?
+    */
     public function isAdmin() {
         if ( $this->role === 'admin') {
             return true;
@@ -47,12 +51,17 @@ class User extends Authenticatable
     * Not sure what will be different? Just have the ability to upload sims?
     * Prob need a different homepage view.. 
     */
-    public function isManager() {
-        if ( $this->role === 'manager') {
-            return true;
-        } else {
-            return false;
-        }
+    // public function isManager() {
+    //     if ( $this->role === 'manager') {
+    //         return true;
+    //     } else {
+    //         return false;
+    //     }
+    // }
+
+    public function roles()
+    {
+      return $this->belongsToMany(Role::class);
     }
 
 

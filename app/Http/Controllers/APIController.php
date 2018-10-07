@@ -52,12 +52,24 @@ class APIController extends Controller
 
     public function getSimUsers()
     {
+
+        $user = \Auth::user();
+
+        if ($user->isAdmin())
+        {
             $sim_users_query = \DB::table('sim_users')
             ->join('users', 'sim_users.user_id', '=', 'users.id')
             ->join('carriers', 'sim_users.carrier_id', '=', 'carriers.id')
             ->select(['sim_users.sim_number', 'carriers.name as carrier_name', 'users.company as company', 'users.name as user_name']);
+        } else {
+            $sim_users_query = \DB::table('sim_users')
+            ->join('users', 'sim_users.user_id', '=', 'users.id')
+            ->join('carriers', 'sim_users.carrier_id', '=', 'carriers.id')
+            ->where('users.id', $user->id)
+            ->select(['sim_users.sim_number', 'carriers.name as carrier_name', 'users.company as company', 'users.name as user_name']);
+        }
 
-            return Datatables::of($sim_users_query)->make(true);
+        return Datatables::of($sim_users_query)->make(true);
     }
 
     public function getSimUser($id)
