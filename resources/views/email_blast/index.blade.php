@@ -21,7 +21,7 @@
 					<div class="field full padding-bottom">
 						<label class="label" for="name">Email Message</label>
 						<div class="control">
-							<textarea class="textarea" name="message">Sim Track Manager is now unlocked. Please log in to view your monthly commission report.</textarea>
+							<textarea class="textarea" name="message">Sim Track Manager is now unlocked. Please log in to view your monthly activation commission report.</textarea>
 						</div>
 					</div>
 
