@@ -25,9 +25,12 @@ class UserController extends Controller
      */
     public function index()
     {
-        $site_id = Settings::first()->get_site_id();
+        $settings = Settings::first();
+        $site_id = $settings->get_site_id();
+        $role_id = $settings->get_role_id();
         $site_name = Site::find($site_id)->name;
-        $users = User::where('role', $site_id)->get();
+        //dd($role_id);
+        $users = User::where('role_id', $role_id)->get();
         return view('users.index', compact('users', 'site_name'));
     }
 
@@ -77,12 +80,15 @@ class UserController extends Controller
         }
 
 
-        $role = $user->role;
+        $role = $user->role->id;
 
-        if ( $role == 'admin' ) {
+        //dd($user->role->name);
+
+        if ( $role === 1 ) {
             $role = 'Admin';
         } else {
-            $role = Site::find($role)->name;
+            //$role = Site::find($role)->name;
+            $role = $user->role->name;
         }
         return view('users.show', compact('user', 'role', 'bonus', 'credit'));
     }

@@ -41,7 +41,6 @@ class ReportsController extends Controller
         $site_name = Site::find($site_id)->name;
         $report_data_object = new ReportData($site_id, $current_date);
         $report_data_array = $report_data_object->report_data;
-        //dd($report_data_array);
 
         return view('reports.index', compact(
             'site_name', 
@@ -108,7 +107,9 @@ class ReportsController extends Controller
         $current_site_date = Helpers::current_date_name();
         $site_id = Settings::first()->get_site_id();
         $site_name = Site::find($site_id)->name;
-        $users = User::where('role', $site_id)->get();
+
+        $role_id = Helpers::current_role_id();
+        $users = User::where('role_id', $role_id)->get();
         $recharge_data_array = [];
 
         $config_array = [ // this can be changed for different report types

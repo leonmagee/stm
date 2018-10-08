@@ -23,7 +23,7 @@ class CreateUsersTable extends Migration
             $table->text('city')->nullable();
             $table->text('state')->nullable();
             $table->text('zip')->nullable();
-            $table->text('role');
+            $table->integer('role_id');
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();

@@ -65,12 +65,15 @@ class HomeController extends Controller
             $credit = false;
         }
 
-        $role = $user->role;
+        // $role = $user->role();
 
-        if ( $role == 'admin' ) {
+        // dd($user->role->id);
+
+        if ( $user->role->id === 1 ) {
             $role = 'Admin';
         } else {
-            $role = Site::find($role)->name;
+            //$role = Site::find($role)->name;
+            $role = $user->role->name;
         }
         return view('users.show_not_admin', compact('user', 'role', 'bonus', 'credit'));
     }

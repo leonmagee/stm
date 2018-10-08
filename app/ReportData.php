@@ -4,12 +4,14 @@ namespace App;
 class ReportData {
 
 	private $site_id;
+	private $role_id;
 	private $current_date;
 	public $report_data;
 
 	public function __construct($site_id, $current_date) {
 
 		$this->site_id = $site_id;
+		$this->role_id = Helpers::get_role_id($this->site_id);
 		$this->current_date = $current_date;
 		$this->get_data();
 	}
@@ -20,7 +22,7 @@ class ReportData {
 
 		if ($current_user->isAdmin())
 		{
-			$users = User::where('role', $this->site_id)->get();
+			$users = User::where('role_id', $this->role_id)->get();
 		} 
 		else 
 		{

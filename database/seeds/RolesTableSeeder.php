@@ -20,9 +20,6 @@ class RolesTableSeeder extends Seeder
                 'name' => 'Manager',
             ],
             [
-                'name' => 'Associate',
-            ],
-            [
                 'name' => 'Agent',
             ],
             [

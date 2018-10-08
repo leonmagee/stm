@@ -9,9 +9,6 @@ class DatabaseSeeder extends Seeder
      *
      * @return void
      */
-
-    //protected $toTruncate = ['users', 'sims', 'report_types'];
-
     public function run()
     {
         $this->call(CarrierTableSeeder::class);
@@ -24,16 +21,5 @@ class DatabaseSeeder extends Seeder
         $this->call(ReportTypeSiteDefaultTableSeeder::class);
         $this->call(ReportTypeSiteValueTableSeeder::class);
         $this->call(RolesTableSeeder::class);
-
-
-        //DB::table('users')->truncate();
-        // foreach( $this->toTruncate as $table ) {
-        //     DB::table($table)->truncate();
-        // }
-        // factory('App\Sim',30)->create();
-        // factory('App\SimUser',10)->create();
-        // factory('App\User', 10)->create();
-        //factory('App\ReportType')->create(); // needs to be created
-        //factory('App\ReportType')->make(); // does not persist
     }
 }

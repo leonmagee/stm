@@ -185,12 +185,16 @@ class ReportUserCSV {
 		$csv->insertOne([]);
 		$csv->insertOne([]);
 
+		//$site = Site::where('role_id', $user->role_id)->first();
+		$site_id = Helpers::get_site_id($user->role_id);
+
 		// get payment overview data
 		$report_data_user = new ReportDataUser(
 			$user->name, 
 			$user->company, 
 			$user->id,
-			$user->role
+			//$user->role_id
+			$site_id
 		);
 
 		//dd($report_data_user);

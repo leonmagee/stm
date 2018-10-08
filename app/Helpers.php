@@ -34,6 +34,22 @@ class Helpers {
 		}
 	}
 
+      public static function current_role_id() {
+            $current_site_id = session('current_site_id', 1);
+            $current_site = Site::find($current_site_id);
+            return $current_site->role_id;
+      }
+
+      public static function get_role_id($site_id) {
+            $current_site = Site::find($site_id);
+            return $current_site->role_id;
+      }
+
+      public static function get_site_id($role_id) {
+            $site = Site::where('role_id', $role_id)->first();
+            return $site->id;
+      }
+
 	public static function date_array() {
 		return [
             '1_2018',

@@ -3,13 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
 use App\Settings;
-
 use App\User;
-
 use App\Site;
-
+use App\Role;
 use App\Mail\NewUser;
 
 class RegistrationController extends Controller
@@ -45,6 +42,24 @@ class RegistrationController extends Controller
 
 	public function store(Request $request) {
 
+
+		// protected function create(array $data)
+		//   {
+		//     $user = User::create([
+		//       'name'     => $data['name'],
+		//       'email'    => $data['email'],
+		//       'password' => bcrypt($data['password']),
+		//     ]);
+		//     $user
+		//        ->roles()
+		//        ->attach(Role::where('name', 'employee')->first());
+		//     return $user;
+		// }
+
+
+
+
+
     	/**
     	* validate the form
     	* @todo should address info be required?
@@ -75,6 +90,11 @@ class RegistrationController extends Controller
 			'role' => $request->role,
 			'password' => bcrypt($request->user_password)
 		]);
+
+		/**
+		* @todo I need to make an entry here in user roles...
+		*/
+
 
 		/**
 		* Update this email to include branding and reflect that a user account was created.

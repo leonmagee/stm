@@ -47,7 +47,7 @@
 							<select name="role" id="role">
 								@foreach ($sites as $site)
 								<option 
-								value="{{ $site->id }}"
+								value="{{ $site->role_id }}"
 								@if ($current_site_id == $site->id)
 								selected="selected"
 								@endif
