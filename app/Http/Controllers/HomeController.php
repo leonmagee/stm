@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Helpers;
+use App\Carrier;
 use App\Settings;
 use App\Site;
 use App\ReportType;
@@ -41,7 +42,13 @@ class HomeController extends Controller
         if ($user->isAdmin())
         {
             return $this->outputCharts(); 
-        } else {
+        }
+        elseif ($user->isManager())
+        {
+            return $this->outputUpload();
+        }
+        else 
+        {
             return $this->outputProfile($user);
         }
 
@@ -76,6 +83,18 @@ class HomeController extends Controller
             $role = $user->role->name;
         }
         return view('users.show_not_admin', compact('user', 'role', 'bonus', 'credit'));
+    }
+
+    public function outputUpload() {
+
+        $report_types = ReportType::all();
+
+        $carriers = Carrier::all();
+
+        $role_id = Helpers::current_role_id();
+
+        $users = User::where('role_id', $role_id)->get();
+        return view('sims.upload', compact('report_types', 'users', 'carriers'));
     }
 
     public function outputCharts() {
