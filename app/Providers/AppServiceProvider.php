@@ -122,7 +122,7 @@ class AppServiceProvider extends ServiceProvider
 
             $user = \Auth::user();
 
-            if ( $user->isAdmin() ) {
+            if ($user->isAdmin()) {
 
                 // complete menu
                 $menu_array = [
@@ -208,6 +208,46 @@ class AppServiceProvider extends ServiceProvider
                         'link' => '/',
                         'sub' => false,
                         'icon' => 'flaticon-home',
+                        'default' => false,
+                    ],
+                ];
+
+            } elseif($user->isManager()){
+
+                $menu_array = [
+                    [
+                        'name' => 'Monthly Sims',
+                        'link' => false,
+                        'sub' => $monthly_sims_sub,
+                        'icon' => 'flaticon-sim-card',
+                        'default' => false,
+                    ],
+                    [
+                        'name' => 'Upload Sims',
+                        'link' => '/sims/upload',
+                        'sub' => false,
+                        'icon' => 'flaticon-upload',
+                        'default' => false,
+                    ],
+                    [
+                        'name' => 'Users',
+                        'link' => false,
+                        'sub' => $users_sub,
+                        'icon' => 'flaticon-group',
+                        'default' => '/users',
+                    ],
+                    [
+                        'name' => 'User Sims',
+                        'link' => false,
+                        'sub' => $user_sims_sub_non_admin,
+                        'icon' => 'flaticon-report-1',
+                        'default' => '/user-sims',
+                    ],
+                    [
+                        'name' => 'Settings',
+                        'link' => '/settings',
+                        'sub' => false,
+                        'icon' => 'flaticon-gear',
                         'default' => false,
                     ],
                 ];

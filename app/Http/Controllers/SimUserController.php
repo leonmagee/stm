@@ -28,7 +28,7 @@ class SimUserController extends AuthorizedController
 
         $user = \Auth::user();
 
-        if ($user->isAdmin())
+        if ($user->isAdmin() || $user->isManager())
         {
             $user_title = 'Users';
         } else {
@@ -175,7 +175,20 @@ class SimUserController extends AuthorizedController
 
         foreach( $sims_array as $sim ) {
 
-            $sim_user_result = SimUser::where('sim_number', $sim)->first();
+            if (Helpers::is_normal_user())
+            {
+                $user = \Auth::user();
+                //dd($user);
+                $sim_user_result = SimUser::where([
+                    'sim_number' => $sim,
+                    'user_id' => $user->id
+                ])->first();
+
+            }
+            else
+            {
+                $sim_user_result = SimUser::where('sim_number', $sim)->first();
+            }
 
             $user_data = [];
             if ($sim_user_result)
@@ -280,7 +293,19 @@ class SimUserController extends AuthorizedController
 
             if($sim)
             {
-                $sim_user_result = SimUser::where('sim_number', $sim)->first();
+
+                if (Helpers::is_normal_user())
+                {
+                    $user = \Auth::user();
+                    $sim_user_result = SimUser::where([
+                        'sim_number' => $sim,
+                        'user_id' => $user->id
+                    ])->first();
+                }
+                else
+                {
+                    $sim_user_result = SimUser::where('sim_number', $sim)->first();
+                }
 
                 $user_data = [];
                 if ($sim_user_result)

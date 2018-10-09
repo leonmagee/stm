@@ -55,7 +55,7 @@ class APIController extends Controller
 
         $user = \Auth::user();
 
-        if ($user->isAdmin())
+        if ($user->isAdmin() || $user->isManager())
         {
             $sim_users_query = \DB::table('sim_users')
             ->join('users', 'sim_users.user_id', '=', 'users.id')
