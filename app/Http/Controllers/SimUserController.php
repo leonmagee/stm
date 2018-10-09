@@ -25,14 +25,14 @@ class SimUserController extends AuthorizedController
      */
     public function index()
     {
-
         $user = \Auth::user();
 
         if ($user->isAdmin() || $user->isManager())
         {
             $user_title = 'Users';
-        } else {
-
+        } 
+        else 
+        {
             $user_title = $user->company . ' - ' . $user->name;
         }
 

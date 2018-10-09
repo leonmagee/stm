@@ -56,14 +56,11 @@ class RegistrationController extends Controller
 		//     return $user;
 		// }
 
-
-
-
-
     	/**
     	* validate the form
     	* @todo should address info be required?
     	*/
+
 		$this->validate(request(), [
 			'name' => 'required',
 			'email' => 'required|email|unique:users',
@@ -73,7 +70,7 @@ class RegistrationController extends Controller
 			'city' => 'required',
 			'state' => 'required',
 			'zip' => 'required',
-			'role' => 'required',
+			'role_id' => 'required|gt:2',
 			'password' => 'required|confirmed'
 		]);
 
@@ -87,7 +84,7 @@ class RegistrationController extends Controller
 			'city' => $request->city,
 			'state' => $request->state,
 			'zip' => $request->zip,
-			'role' => $request->role,
+			'role_id' => $request->role_id,
 			'password' => bcrypt($request->user_password)
 		]);
 

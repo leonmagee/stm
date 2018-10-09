@@ -42,9 +42,9 @@
 					</div>
 
 					<div class="field">
-						<label class="label" for="role">Site</label>
+						<label class="label" for="role_id">Site</label>
 						<div class="select">
-							<select name="role" id="role">
+							<select name="role_id" id="role_id">
 								@foreach ($sites as $site)
 								<option 
 								value="{{ $site->role_id }}"
@@ -141,7 +141,7 @@
 		var reg_name = $('.form-wrap-flex #name').val();
 		var reg_email = $('.form-wrap-flex #email').val();
 		var reg_company = $('.form-wrap-flex #company').val();
-		var reg_role = $('.form-wrap-flex #role').val();
+		var reg_role_id = $('.form-wrap-flex #role_id').val();
 		var reg_phone = $('.form-wrap-flex #phone').val();
 		var reg_address = $('.form-wrap-flex #address').val();
 		var reg_city = $('.form-wrap-flex #city').val();
@@ -160,7 +160,7 @@
 				name: reg_name,
 				email: reg_email,
 				company: reg_company,
-				role: reg_role,
+				role_id: reg_role_id,
 				phone: reg_phone,
 				address: reg_address,
 				city: reg_city,

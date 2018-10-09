@@ -120,7 +120,6 @@ class UserController extends Controller
             $credit = false;
         }
 
-
         $role = $user->role->id;
 
         if ( $role === 1 ) {
