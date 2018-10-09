@@ -79,6 +79,7 @@ class UserController extends Controller
             $credit = false;
         }
 
+        $is_admin = Helpers::current_user_admin();
 
         $role = $user->role->id;
 
@@ -90,7 +91,7 @@ class UserController extends Controller
             //$role = Site::find($role)->name;
             $role = $user->role->name;
         }
-        return view('users.show', compact('user', 'role', 'bonus', 'credit'));
+        return view('users.show', compact('user', 'role', 'bonus', 'credit', 'is_admin'));
     }
 
     /**

@@ -61,11 +61,13 @@
             <a href="/user-sims/user/{{ $user->id }}" class="button is-primary">View Sims</a>
     	</div>
 
+        @if($is_admin)
         <div class="button-bar">
             <a href="/bonus-credit/{{ $user->id }}" class="button is-primary">Bonus / Credit</a>
             <a href="/user-plan-values/{{ $user->id }}" class="button is-primary">Payment Override</a>
             <a href="#" class="modal-open button is-danger">Delete User</a>
         </div>
+        @endif
     </div>
 
 
