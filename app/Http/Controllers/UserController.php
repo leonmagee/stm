@@ -120,14 +120,15 @@ class UserController extends Controller
         }
 
 
-        $role = $user->role;
+        $role = $user->role->id;
 
-        if ( $role == 'admin' ) {
+        if ( $role === 1 ) {
             $role = 'Admin';
         } else {
-            $role = Site::find($role)->name;
+            //$role = Site::find($role)->name;
+            $role = $user->role->name;
         }
-        return view('users.show', compact('user', 'role', 'bonus', 'credit'));
+        return view('users.show_not_admin', compact('user', 'role', 'bonus', 'credit'));
     }
 
     /**

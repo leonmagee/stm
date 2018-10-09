@@ -17178,9 +17178,23 @@ body.stm-body .button-bar-wrap .button-bar a {
   background-color: #EEE;
 }
 
+.header-wrap .header-area a.button.login:hover.not-link,
+.header-wrap .header-area a.button.register:hover.not-link,
+.header-wrap .header-area a.button.date:hover.not-link,
+.header-wrap .header-area a.button.type:hover.not-link,
+.header-wrap .header-area a.button.user:hover.not-link,
+.header-wrap .header-area a.button.settings:hover.not-link {
+  background-color: #FFF;
+  cursor: default;
+}
+
 .header-wrap .header-area a.button.online {
   color: #FFF;
   background-color: #06dba3;
+}
+
+.header-wrap .header-area a.button.online:hover.not-link {
+  cursor: default;
 }
 
 .header-wrap .header-area a.button.locked {
@@ -17570,9 +17584,7 @@ ul.mobile-menu li ul.sub-menu.active li:hover a {
 }
 
 #sims_table_processing {
-  color: #1B9AAA;
-  font-weight: 700;
-  font-size: 1.5em;
+  display: none !important;
 }
 
 .users-wrap a.user-wrap .flex-item.company-wrap {

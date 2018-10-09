@@ -80,11 +80,21 @@
 				&:hover {
 					//color: #FFF;
 					background-color: #EEE;
+
+					&.not-link {
+						background-color: #FFF;
+						cursor: default;
+					}
 				}
 			}
 			&.online {
 				color: #FFF;
 				background-color: $color-green;
+				&:hover {
+					&.not-link {
+						cursor: default;
+					}
+				}
 			}
 			&.locked {
 				color: #FFF;
