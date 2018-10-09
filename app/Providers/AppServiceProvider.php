@@ -283,7 +283,7 @@ class AppServiceProvider extends ServiceProvider
                     ],
                     [
                         'name' => 'Your Profile',
-                        'link' => '/',
+                        'link' => '/profile',
                         'sub' => false,
                         'icon' => 'flaticon-user',
                         'default' => false,

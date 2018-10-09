@@ -39,6 +39,7 @@
 						</div>
 					</div>
 
+					@if($is_admin)
 					<div class="field">
 						<label class="label" for="role">Site</label>
 						<div class="select">
@@ -54,6 +55,7 @@
 							</select>
 						</div>
 					</div>
+					@endif
 
 					<div class="field">
 						<label class="label" for="phone">Phone Number</label>

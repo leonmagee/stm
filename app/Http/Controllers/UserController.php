@@ -139,8 +139,9 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
+        $is_admin = Helpers::current_user_admin();
         $sites = Site::all();
-        return view('users.edit', compact('user', 'sites'));
+        return view('users.edit', compact('user', 'sites', 'is_admin'));
     }
 
     public function edit_password(User $user)
@@ -178,30 +179,59 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         // validate the form
-        $this->validate(request(), [
-            'name' => 'required',
-            'email' => 'required|unique:users,email,' . $id,
-            'company' => 'required',
-            'phone' => 'required',
-            'address' => 'required',
-            'city' => 'required',
-            'state' => 'required',
-            'zip' => 'required',
-            'role_id' => 'required|gt:2', //prevent front end hack to create admin
-        ]);
+        if(Helpers::current_user_admin())
+        {
+            $this->validate(request(), [
+                'name' => 'required',
+                'email' => 'required|unique:users,email,' . $id,
+                'company' => 'required',
+                'phone' => 'required',
+                'address' => 'required',
+                'city' => 'required',
+                'state' => 'required',
+                'zip' => 'required',
+                'role_id' => 'required|gt:2', //prevent front end hack to create admin
+            ]);
 
-        // update user
-        $user = User::find($id)->update([
-            'name' => $request->name,
-            'email' => $request->email,
-            'company' => $request->company,
-            'phone' => $request->phone,
-            'address' => $request->address,
-            'city' => $request->city,
-            'state' => $request->state,
-            'zip' => $request->zip,
-            'role_id' => $request->role_id,
-        ]);
+            // update user
+            $user = User::find($id)->update([
+                'name' => $request->name,
+                'email' => $request->email,
+                'company' => $request->company,
+                'phone' => $request->phone,
+                'address' => $request->address,
+                'city' => $request->city,
+                'state' => $request->state,
+                'zip' => $request->zip,
+                'role_id' => $request->role_id,
+            ]);
+        }
+        else
+        {
+            $this->validate(request(), [
+                'name' => 'required',
+                'email' => 'required|unique:users,email,' . $id,
+                'company' => 'required',
+                'phone' => 'required',
+                'address' => 'required',
+                'city' => 'required',
+                'state' => 'required',
+                'zip' => 'required',
+            ]);
+
+            // update user
+            $user = User::find($id)->update([
+                'name' => $request->name,
+                'email' => $request->email,
+                'company' => $request->company,
+                'phone' => $request->phone,
+                'address' => $request->address,
+                'city' => $request->city,
+                'state' => $request->state,
+                'zip' => $request->zip,
+            ]);
+        }
+
 
         session()->flash('message', 'User ' . $request->name . ' has been updated.');
 
