@@ -49,7 +49,8 @@ class HomeController extends Controller
         }
         else 
         {
-            return $this->outputProfile($user);
+            return $this->outputCharts(); 
+            //return $this->outputProfile($user);
         }
 
     }

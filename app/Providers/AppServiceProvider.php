@@ -288,6 +288,13 @@ class AppServiceProvider extends ServiceProvider
                         'icon' => 'flaticon-user',
                         'default' => false,
                     ],
+                    [
+                        'name' => 'Homepage',
+                        'link' => '/',
+                        'sub' => false,
+                        'icon' => 'flaticon-home',
+                        'default' => false,
+                    ],
                 ];
 
             }
