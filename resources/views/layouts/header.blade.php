@@ -14,7 +14,7 @@
 		<div class="header-buttons-outer-wrap">
 			@if (Auth::check())
 
-			@if($user->isAdmin())
+			@if($logged_in_user->isAdmin())
 
 			<div class="large-menu">
 				<div class="field has-addons">

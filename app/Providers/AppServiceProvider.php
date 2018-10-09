@@ -261,8 +261,10 @@ view()->composer('layouts.header', function($view) {
     $date_array = explode('_', $settings->current_date);
     $month = Carbon::createFromFormat('m', $date_array[0])->format('F');
     $date = $month . ' ' . $date_array[1];
+    $logged_in_user = \Auth::user();
 
     $view->with('current_date', $date)
+    ->with('logged_in_user', $logged_in_user)
     ->with('company', $settings->company)
     ->with('mode', $settings->mode)
     ->with('site', $settings->get_site_object()->name);

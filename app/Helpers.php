@@ -34,6 +34,28 @@ class Helpers {
 		}
 	}
 
+      public static function current_user_admin() {
+            if($user = \Auth::user())
+            {
+                  if ($user->role_id === 1)
+                  {
+                        return true;
+                  }
+            }
+            return false;
+      }
+
+      public static function current_user_manager() {
+            if($user = \Auth::user())
+            {
+                  if ($user->role_id === 2)
+                  {
+                        return true;
+                  }
+            }
+            return false;
+      }
+
       public static function current_role_id() {
             $current_site_id = session('current_site_id', 1);
             $current_site = Site::find($current_site_id);

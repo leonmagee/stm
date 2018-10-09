@@ -41,11 +41,13 @@ class ReportsController extends Controller
         $site_name = Site::find($site_id)->name;
         $report_data_object = new ReportData($site_id, $current_date);
         $report_data_array = $report_data_object->report_data;
+        $is_admin = Helpers::current_user_admin();
 
         return view('reports.index', compact(
             'site_name', 
             'current_site_date', 
-            'report_data_array'
+            'report_data_array',
+            'is_admin'
         ));
     }
 

@@ -42,13 +42,13 @@
 					<div class="field">
 						<label class="label" for="role">Site</label>
 						<div class="select">
-							<select name="role" id="role">
+							<select name="role_id" id="role_id">
 								@foreach ($sites as $site)
 								<option 
-								@if ($user->role == $site->id)
+								@if ($user->role->id == $site->role_id)
 								selected="selected"
 								@endif
-								value="{{ $site->id }}">{{ $site->name }}
+								value="{{ $site->role_id }}">{{ $site->name }}
 								</option>	
 								@endforeach
 							</select>

@@ -187,7 +187,7 @@ class UserController extends Controller
             'city' => 'required',
             'state' => 'required',
             'zip' => 'required',
-            'role' => 'required',
+            'role_id' => 'required|gt:2', //prevent front end hack to create admin
         ]);
 
         // update user
@@ -200,7 +200,7 @@ class UserController extends Controller
             'city' => $request->city,
             'state' => $request->state,
             'zip' => $request->zip,
-            'role' => $request->role,
+            'role_id' => $request->role_id,
         ]);
 
         session()->flash('message', 'User ' . $request->name . ' has been updated.');
