@@ -18306,15 +18306,20 @@ table.dataTable thead .sorting_desc_disabled:after {
 }
 
 .user-plan-section .flex-section {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
   padding: 10px 17px;
   background: #FAFAFA;
   border: 1px solid #EEE;
+}
+
+@media (min-width: 768px) {
+  .user-plan-section .flex-section {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
 }
 
 .user-plan-section .flex-section > div {

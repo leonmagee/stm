@@ -22,7 +22,9 @@
 	}
 
 	.flex-section {
-		display: flex;
+		@media(min-width: $screen-sm) {
+			display: flex;
+		}
 		justify-content: space-between;
 		padding: 10px 17px;
 		background: #FAFAFA;
