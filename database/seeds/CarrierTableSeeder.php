@@ -25,11 +25,6 @@ class CarrierTableSeeder extends Seeder
                 'name' => 'Lyca',
                 'created_at' => $current_time,
                 'updated_at' => $current_time
-            ],
-            [
-                'name' => 'Boost',
-                'created_at' => $current_time,
-                'updated_at' => $current_time
             ]
         ]);
     }

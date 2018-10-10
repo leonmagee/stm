@@ -17095,6 +17095,10 @@ body.stm-body .button-bar-wrap .button-bar a {
   font-size: 25px;
 }
 
+.header-wrap .logo-wrap a:hover {
+  color: #FFF;
+}
+
 .header-wrap .logo-wrap a.menu-toggle {
   margin-left: 10px;
 }
