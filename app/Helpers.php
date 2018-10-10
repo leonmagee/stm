@@ -34,6 +34,16 @@ class Helpers {
 		}
 	}
 
+      public static function is_site_locked() {
+
+            $settings = Settings::first();
+            if ($settings->mode === 'locked')
+            {
+                  return true;
+            }
+            return false;
+      }
+
       public static function current_user_admin() {
             if($user = \Auth::user())
             {

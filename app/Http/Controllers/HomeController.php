@@ -49,10 +49,22 @@ class HomeController extends Controller
         }
         else 
         {
-            return $this->outputCharts(); 
+            if(Helpers::is_site_locked())
+            {
+                return $this->outputLockedPage(); 
+            }
+            else
+            {
+                return $this->outputCharts(); 
+            }
             //return $this->outputProfile($user);
         }
 
+    }
+
+    public function outputLockedPage() {
+
+        return view('locked');
     }
 
     public function outputProfile(User $user) {
