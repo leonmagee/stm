@@ -71,7 +71,7 @@ class RegistrationController extends Controller
 			'state' => 'required',
 			'zip' => 'required',
 			'role_id' => 'required|gt:2',
-			'password' => 'required|confirmed'
+			'password' => 'required|confirmed|min:8'
 		]);
 
     	// create and save new user
