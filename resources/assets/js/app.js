@@ -8,9 +8,6 @@ require('./bootstrap');
 
 require('datatables.net');
 
-//require('datatables.net-responsive');
-//require('datatables-responsive');
-
 require('chart.js');
 
 require('axios');
@@ -21,7 +18,6 @@ require('axios');
 $('.notification .delete').click(function() {
 	$(this).parent().fadeOut();
 });
-
 
 /**
 * Modals

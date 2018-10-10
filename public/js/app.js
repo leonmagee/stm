@@ -32401,9 +32401,6 @@ __webpack_require__(149);
 
 __webpack_require__(171);
 
-//require('datatables.net-responsive');
-//require('datatables-responsive');
-
 __webpack_require__(172);
 
 __webpack_require__(14);
