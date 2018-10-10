@@ -249,7 +249,7 @@ class UserController extends Controller
     {
         // validate the form
         $this->validate(request(), [
-            'password' => 'required|confirmed'
+            'password' => 'required|confirmed|min:8'
         ]);
 
         // update user
