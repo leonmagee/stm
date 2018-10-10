@@ -250,6 +250,13 @@ class AppServiceProvider extends ServiceProvider
                         'icon' => 'flaticon-gear',
                         'default' => false,
                     ],
+                    [
+                        'name' => 'Homepage',
+                        'link' => '/',
+                        'sub' => false,
+                        'icon' => 'flaticon-home',
+                        'default' => false,
+                    ],
                 ];
 
             } else {

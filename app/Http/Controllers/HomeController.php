@@ -45,7 +45,8 @@ class HomeController extends Controller
         }
         elseif ($user->isManager())
         {
-            return $this->outputUpload();
+            return $this->outputCharts();
+            //return $this->outputUpload();
         }
         else 
         {
