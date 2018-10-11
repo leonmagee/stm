@@ -3,12 +3,16 @@
 	height: 100%;
 }
 
+.chart-wrap-outer {
+	height: 100%;
+}
+
 .chart-wrap {
 	//max-width: 70%;
 	height: 100%;
 		
 	canvas#graph {
-		max-height: 85%;
+		max-height: 83%;
 	}
 
 }

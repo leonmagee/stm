@@ -148,11 +148,18 @@ class AppServiceProvider extends ServiceProvider
                         'default' => false,
                     ],
                     [
-                        'name' => 'Users',
-                        'link' => false,
-                        'sub' => $users_sub,
+                        'name' => 'All Users',
+                        'link' => '/users',
+                        'sub' => false,
                         'icon' => 'flaticon-group',
-                        'default' => '/users',
+                        'default' => false,
+                    ],
+                    [
+                        'name' => 'Add New User',
+                        'link' => '/register',
+                        'sub' => false,
+                        'icon' => 'flaticon-add-a-contact-on-phone-interface-symbol-of-a-user-with-a-plus-sign',
+                        'default' => false,
                     ],
                     [
                         'name' => 'User Sims',
@@ -172,7 +179,7 @@ class AppServiceProvider extends ServiceProvider
                         'name' => 'Delete Sims',
                         'link' => '/delete-sims',
                         'sub' => false,
-                        'icon' => 'flaticon-report-1',
+                        'icon' => 'flaticon-delete',
                         'default' => false,
                     ],
                     [
