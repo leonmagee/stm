@@ -156,10 +156,24 @@ class AppServiceProvider extends ServiceProvider
                     ],
                     [
                         'name' => 'User Sims',
-                        'link' => false,
-                        'sub' => $user_sims_sub,
+                        'link' => '/user-sims',
+                        'sub' => false,
                         'icon' => 'flaticon-report-1',
-                        'default' => '/user-sims',
+                        'default' => false,
+                    ],
+                    [
+                        'name' => 'Look Up Sims',
+                        'link' => '/find-sims',
+                        'sub' => false,
+                        'icon' => 'flaticon-zoom-1',
+                        'default' => false,
+                    ],
+                    [
+                        'name' => 'Delete Sims',
+                        'link' => '/delete-sims',
+                        'sub' => false,
+                        'icon' => 'flaticon-report-1',
+                        'default' => false,
                     ],
                     [
                         'name' => 'Settings',

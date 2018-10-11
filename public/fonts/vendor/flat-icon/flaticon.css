@@ -1,6 +1,6 @@
 	/*
   	Flaticon icon font: Flaticon
-  	Creation date: 27/09/2018 18:36
+  	Creation date: 11/10/2018 02:02
   	*/
 
 @font-face {
@@ -78,3 +78,16 @@ margin-left: 20px;
 .flaticon-security-on:before { content: "\f12e"; }
 .flaticon-key:before { content: "\f12f"; }
 .flaticon-locked-padlock-1:before { content: "\f130"; }
+.flaticon-wifi:before { content: "\f131"; }
+.flaticon-search:before { content: "\f132"; }
+.flaticon-magnifying-glass:before { content: "\f133"; }
+.flaticon-zoom:before { content: "\f134"; }
+.flaticon-zoom-1:before { content: "\f135"; }
+.flaticon-graph-1:before { content: "\f136"; }
+.flaticon-add-a-contact-on-phone-interface-symbol-of-a-user-with-a-plus-sign:before { content: "\f137"; }
+.flaticon-user-4:before { content: "\f138"; }
+.flaticon-add-profile:before { content: "\f139"; }
+.flaticon-remove-button:before { content: "\f13a"; }
+.flaticon-delete:before { content: "\f13b"; }
+.flaticon-cancel-button:before { content: "\f13c"; }
+.flaticon-delete-photo:before { content: "\f13d"; }

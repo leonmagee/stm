@@ -4892,13 +4892,13 @@ readers do not read off random characters that represent icons */
 
 /*
     Flaticon icon font: Flaticon
-    Creation date: 27/09/2018 18:36
+    Creation date: 11/10/2018 02:02
     */
 
 @font-face {
   font-family: "Flaticon";
-  src: url(/fonts/Flaticon.eot?bf22eee07f1930b88cb9ea34596c7d6c);
-  src: url(/fonts/Flaticon.eot?bf22eee07f1930b88cb9ea34596c7d6c) format("embedded-opentype"), url(/fonts/Flaticon.woff?3976d5a4f41547703fab2d7ac9780375) format("woff"), url(/fonts/Flaticon.ttf?0eae30935316ae54ed537d0e36f6e46a) format("truetype"), url(/fonts/Flaticon.svg?d1649d2e3b6272f1b8ee7cd016fd9ffe) format("svg");
+  src: url(/fonts/Flaticon.eot?b14602567152f27cc671782f3793c8ae);
+  src: url(/fonts/Flaticon.eot?b14602567152f27cc671782f3793c8ae) format("embedded-opentype"), url(/fonts/Flaticon.woff?065a590315d0644d84e3a040dcf5381a) format("woff"), url(/fonts/Flaticon.ttf?b762c76743f573cebce01b93b029620d) format("truetype"), url(/fonts/Flaticon.svg?645f339f5e3f12f368dff7bb788ce6f7) format("svg");
   font-weight: normal;
   font-style: normal;
 }
@@ -4906,7 +4906,7 @@ readers do not read off random characters that represent icons */
 @media screen and (-webkit-min-device-pixel-ratio: 0) {
 @font-face {
     font-family: "Flaticon";
-    src: url(/fonts/Flaticon.svg?d1649d2e3b6272f1b8ee7cd016fd9ffe) format("svg");
+    src: url(/fonts/Flaticon.svg?645f339f5e3f12f368dff7bb788ce6f7) format("svg");
 }
 }
 
@@ -5119,6 +5119,58 @@ readers do not read off random characters that represent icons */
 
 .flaticon-locked-padlock-1:before {
   content: "\F130";
+}
+
+.flaticon-wifi:before {
+  content: "\F131";
+}
+
+.flaticon-search:before {
+  content: "\F132";
+}
+
+.flaticon-magnifying-glass:before {
+  content: "\F133";
+}
+
+.flaticon-zoom:before {
+  content: "\F134";
+}
+
+.flaticon-zoom-1:before {
+  content: "\F135";
+}
+
+.flaticon-graph-1:before {
+  content: "\F136";
+}
+
+.flaticon-add-a-contact-on-phone-interface-symbol-of-a-user-with-a-plus-sign:before {
+  content: "\F137";
+}
+
+.flaticon-user-4:before {
+  content: "\F138";
+}
+
+.flaticon-add-profile:before {
+  content: "\F139";
+}
+
+.flaticon-remove-button:before {
+  content: "\F13A";
+}
+
+.flaticon-delete:before {
+  content: "\F13B";
+}
+
+.flaticon-cancel-button:before {
+  content: "\F13C";
+}
+
+.flaticon-delete-photo:before {
+  content: "\F13D";
 }
 
 /*! bulma.io v0.7.1 | MIT License | github.com/jgthms/bulma */
