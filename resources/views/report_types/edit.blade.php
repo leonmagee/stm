@@ -34,7 +34,11 @@ Edit Report Type
 						<div class="select">
 							<select name="carrier" id="carrier">
 								@foreach($carriers as $carrier)
-								<option value="{{ $carrier->id }}">{{ $carrier->name }}</option>
+								<option 
+								@if($carrier->id === $reportType->carrier_id)
+								selected="selected" 
+								@endif
+								value="{{ $carrier->id }}">{{ $carrier->name }}</option>
 								@endforeach
 							</select>
 						</div>
