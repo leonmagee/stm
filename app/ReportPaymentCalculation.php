@@ -17,6 +17,8 @@ class ReportPaymentCalculation {
 			'report_type_id' => $report_type_id
 		])->first();
 
+		//dd($defaults);
+
 		if ( $defaults ) {
 
 			if ( $is_spiff ) {
@@ -103,7 +105,8 @@ class ReportPaymentCalculation {
 
 		} else {
 
-			$site_default = Site::find($site_id)->first();
+			$site_default = Site::find($site_id);
+			//$site_default = Site::find($site_id)->first();
 
 			if ( $site_default->default_spiff_amount ) {
 
@@ -134,7 +137,7 @@ class ReportPaymentCalculation {
 
 			$percent = $defaults->residual_percent;
 
-		} elseif ($site_default = Site::find($site_id)->first()) {
+		} elseif ($site_default = Site::find($site_id)) {
 
 			$percent = $site_default->default_residual_percent;
 
