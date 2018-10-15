@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Settings;
 use App\Site;
+use App\Helpers;
 use Illuminate\Http\Request;
 
 class SettingsController extends Controller
@@ -24,41 +25,56 @@ class SettingsController extends Controller
         // $current_site_id = session('current_site_id', 1);
         // echo 'site id: ' . $current_site_id;
 
-        $months = array(
-            'January',
-            'February',
-            'March',
-            'April',
-            'May',
-            'June',
-            'July ',
-            'August',
-            'September',
-            'October',
-            'November',
-            'December',
-        );
-        $years = array(2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025);
-        $sites = Site::all();
-        $settings = Settings::first();
+        if (Helpers::current_user_admin())
+        {
+            $months = array(
+                'January',
+                'February',
+                'March',
+                'April',
+                'May',
+                'June',
+                'July ',
+                'August',
+                'September',
+                'October',
+                'November',
+                'December',
+            );
+            $years = array(2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025);
+            $sites = Site::all();
+            $settings = Settings::first();
 
-        //\Debugbar::info($settings);
+            //\Debugbar::info($settings);
 
-        $mode = $settings->mode;
-        //$current_site = $settings->site_id;
-        $current_site = session('current_site_id', 1);
-        $date_array = explode('_', $settings->current_date);
-        $current_month = $date_array[0];
-        $current_year = $date_array[1];
-        return view('settings.index', compact(
-            'months',
-            'years',
-            'sites',
-            'mode',
-            'current_site',
-            'current_month',
-            'current_year')
-        );
+            $mode = $settings->mode;
+            //$current_site = $settings->site_id;
+            $current_site = session('current_site_id', 1);
+            $date_array = explode('_', $settings->current_date);
+            $current_month = $date_array[0];
+            $current_year = $date_array[1];
+            
+            return view('settings.index', compact(
+                'months',
+                'years',
+                'sites',
+                'mode',
+                'current_site',
+                'current_month',
+                'current_year')
+            );
+
+        } else {
+            $sites = Site::all();
+            $current_site = session('current_site_id', 1);
+
+            return view('settings.index-manager', compact(
+                'sites',
+                'current_site'
+                )
+            );
+        }
+
     }
 
     /**
