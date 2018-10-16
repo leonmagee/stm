@@ -104,31 +104,32 @@ class UserController extends Controller
     {
         $user = \Auth::user();
 
-        $bonus_credit = UserCreditBonus::where([
+        $role = $user->role->name;
+
+        if ($user->role->id > 2)
+        {
+            $bonus_credit = UserCreditBonus::where([
             'user_id' => $user->id,
             'date' => Helpers::current_date()
-        ])->first();
+            ])->first();
 
-        if ( isset($bonus_credit->bonus) ) {
-            $bonus = '$' . number_format($bonus_credit->bonus, 2);
-        } else {
-            $bonus = false;
-        }
-        if ( isset($bonus_credit->credit) ) {
-            $credit = '$' . number_format($bonus_credit->credit, 2);
-        } else {
-            $credit = false;
-        }
+            if ( isset($bonus_credit->bonus) ) {
+                $bonus = '$' . number_format($bonus_credit->bonus, 2);
+            } else {
+                $bonus = false;
+            }
+            if ( isset($bonus_credit->credit) ) {
+                $credit = '$' . number_format($bonus_credit->credit, 2);
+            } else {
+                $credit = false;
+            }
 
-        $role = $user->role->id;
-
-        if ( $role === 1 ) {
-            $role = 'Admin';
-        } else {
-            //$role = Site::find($role)->name;
-            $role = $user->role->name;
+            return view('users.profile-user', compact('user', 'role', 'bonus', 'credit'));
         }
-        return view('users.show_not_admin', compact('user', 'role', 'bonus', 'credit'));
+        else
+        {
+            return view('users.profile-admin-manager', compact('user', 'role'));
+        }
     }
 
     /**
@@ -142,6 +143,11 @@ class UserController extends Controller
         $is_admin = Helpers::current_user_admin();
         $sites = Site::all();
         return view('users.edit', compact('user', 'sites', 'is_admin'));
+    }
+
+    public function edit_profile(User $user)
+    {
+        return view('users.edit_profile', compact('user'));
     }
 
     public function edit_password(User $user)
@@ -178,7 +184,10 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // validate the form
+        /**
+        * @todo test this - refactor - big conidtional isn't necessary anymore... 
+        */
+        //validate the form
         if(Helpers::current_user_admin())
         {
             $this->validate(request(), [
@@ -237,6 +246,40 @@ class UserController extends Controller
 
         return redirect('users/' . $id);
     }
+
+    public function update_admin_manager(Request $request, $id)
+    {
+
+            $this->validate(request(), [
+                'name' => 'required',
+                'email' => 'required|unique:users,email,' . $id,
+                'company' => 'required',
+                'phone' => 'required',
+                'address' => 'required',
+                'city' => 'required',
+                'state' => 'required',
+                'zip' => 'required',
+            ]);
+
+            // update user
+            $user = User::find($id)->update([
+                'name' => $request->name,
+                'email' => $request->email,
+                'company' => $request->company,
+                'phone' => $request->phone,
+                'address' => $request->address,
+                'city' => $request->city,
+                'state' => $request->state,
+                'zip' => $request->zip,
+            ]);
+
+
+        session()->flash('message', 'Your profile has been updated.');
+
+        return redirect('/profile');
+    }
+
+    
 
     /**
      * Update the specified resource in storage.

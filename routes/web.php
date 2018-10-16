@@ -32,10 +32,12 @@ Route::get('users', 'UserController@index')->name('users');
 Route::get('users/{user}', 'UserController@show');
 Route::get('profile', 'UserController@profile');
 Route::get('edit-user/{user}', 'UserController@edit');
+Route::get('edit-profile/{user}', 'UserController@edit_profile');
 Route::get('bonus-credit/{user}', 'UserCreditBonusController@edit');
 Route::post('bonus-credit/{user}', 'UserCreditBonusController@update');
 Route::get('change-password/{user}', 'UserController@edit_password');
 Route::post('update-user/{id}','UserController@update');
+Route::post('update-admin-manager/{id}','UserController@update_admin_manager');
 Route::post('update-user-password/{id}','UserController@update_password');
 Route::get('delete-user/{user}', 'UserController@destroy');
 Route::get('user-plan-values/{user}', 'UserController@user_plan_residual');
@@ -152,26 +154,26 @@ Route::post('email-blast', 'EmailBlastController@email');
 /**
 * Test Routes
 */
-Route::get('test-email', function() {
-	return view('mail-sent-test');
-});
+// Route::get('test-email', function() {
+// 	return view('mail-sent-test');
+// });
 
-Route::post('send_test_email', function() {
+// Route::post('send_test_email', function() {
 
-	$user_leon = User::find(1);
-	$user_kareem = User::find(2);
+// 	$user_leon = User::find(1);
+// 	$user_kareem = User::find(2);
 
-	$message = 'Here is a test email just to show you how the email formating is going to look for the new STM. Let me know what you think.';
+// 	$message = 'Here is a test email just to show you how the email formating is going to look for the new STM. Let me know what you think.';
 
-	$mail_success = \Mail::to($user_leon)->send(new EmailBlast($user_leon, $message));
-	//$mail_success2 = \Mail::to($user_kareem)->send(new EmailBlast($user_kareem, $message));
+// 	$mail_success = \Mail::to($user_leon)->send(new EmailBlast($user_leon, $message));
+// 	//$mail_success2 = \Mail::to($user_kareem)->send(new EmailBlast($user_kareem, $message));
 
-	session()->flash('message', 'Emails have been sent?');
+// 	session()->flash('message', 'Emails have been sent?');
 
-	return redirect('/email-blast');
+// 	return redirect('/email-blast');
 
 
-});
+// });
 
 /**
 * Enables User Registration

@@ -20,7 +20,7 @@ class ReportData {
 
 		$current_user = \Auth::user();
 
-		if ($current_user->isAdmin())
+		if ($current_user->isAdmin() || $current_user->isManager())
 		{
 			$users = User::where('role_id', $this->role_id)->get();
 		} 
