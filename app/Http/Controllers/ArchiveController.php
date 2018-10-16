@@ -42,13 +42,15 @@ class ArchiveController extends Controller
         
         foreach($archive_data as $data)
         {
-            $user = User::find($data->user_id);
 
-            $user_site_id = Helpers::get_site_id($user->role_id);
-
-            if (intval($user_site_id) === intval($site_id))
+            if($user = User::find($data->user_id))
             {
-                $report_data_array[] = unserialize($data->archive_data);
+                $user_site_id = Helpers::get_site_id($user->role_id);
+
+                if (intval($user_site_id) === intval($site_id))
+                {
+                    $report_data_array[] = unserialize($data->archive_data);
+                }
             }
         }
 
