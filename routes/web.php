@@ -14,15 +14,10 @@
 //dd(phpinfo());
 
 // just for testing
-use App\User;
-use App\Mail\EmailBlast;
+// use App\User;
+// use App\Mail\EmailBlast;
 
 
-//use App\Billing\Stripe;
-
-/**
-* Home Route @todo change to report route?
-*/
 Route::get('/', 'HomeController@index')->name('home');
 
 /**
@@ -115,6 +110,7 @@ Route::post('remove-report-plan-value/{report_type}', 'ReportTypeController@remo
 * Reports
 */
 Route::get('reports', 'ReportsController@index');
+Route::get('reports/{user}', 'ReportsController@show');
 Route::get('report-totals', 'ReportsController@totals');
 Route::get('recharge-data', 'ReportsController@recharge');
 Route::post('get-csv-report/{id}', 'ReportsController@download_csv');

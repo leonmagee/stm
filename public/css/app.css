@@ -17071,16 +17071,16 @@ body.stm-body .button-bar-wrap .button-bar {
     -webkit-box-pack: justify;
         -ms-flex-pack: justify;
             justify-content: space-between;
-    width: 40%;
+    width: 50%;
   }
 }
 
 body.stm-body .button-bar-wrap .button-bar a {
-  margin: 10px auto;
+  margin: 5px;
   display: block;
   -webkit-box-flex: 0;
-      -ms-flex: 0 1 30%;
-          flex: 0 1 30%;
+      -ms-flex: 0 1 100%;
+          flex: 0 1 100%;
 }
 
 .modal-box {
@@ -17768,7 +17768,7 @@ table.dataTable thead .sorting_desc_disabled:after {
   font-weight: 700;
   white-space: nowrap;
   color: #555;
-  min-width: 40%;
+  min-width: 50%;
 }
 
 @media (min-width: 980px) {

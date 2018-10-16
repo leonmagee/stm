@@ -309,9 +309,28 @@ class ReportsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(User $user)
     {
-        //
+
+        /**
+        * @todo here's where we get the report data - so this should probably be its own class.
+        * for now, we'll just omit the per user spiff and residual settings and credit or bonus
+        * features. 
+        */
+        $current_date = Settings::first()->current_date;
+        $current_site_date = Helpers::current_date_name();
+        $site_id = Settings::first()->get_site_id();
+        $site_name = Site::find($site_id)->name;
+        $report_data_object = new ReportData($site_id, $current_date, $user->id);
+        $report_data_array = $report_data_object->report_data;
+        $is_admin = Helpers::current_user_admin();
+
+        return view('reports.index', compact(
+            'site_name', 
+            'current_site_date', 
+            'report_data_array',
+            'is_admin'
+        ));
     }
 
     /**

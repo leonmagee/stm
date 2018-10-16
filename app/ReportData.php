@@ -8,11 +8,12 @@ class ReportData {
 	private $current_date;
 	public $report_data;
 
-	public function __construct($site_id, $current_date) {
+	public function __construct($site_id, $current_date, $user_id = null) {
 
 		$this->site_id = $site_id;
 		$this->role_id = Helpers::get_role_id($this->site_id);
 		$this->current_date = $current_date;
+		$this->user_id = $user_id;
 		$this->get_data();
 	}
 
@@ -20,7 +21,11 @@ class ReportData {
 
 		$current_user = \Auth::user();
 
-		if ($current_user->isAdmin() || $current_user->isManager())
+		if($user_id = $this->user_id)
+		{
+			$users = User::where('id', $user_id)->get();
+		}
+		elseif ($current_user->isAdmin() || $current_user->isManager())
 		{
 			$users = User::where('role_id', $this->role_id)->get();
 		} 
