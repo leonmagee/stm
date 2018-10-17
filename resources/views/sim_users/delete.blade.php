@@ -8,7 +8,7 @@ Delete Sims
 
 <div class="form-wrapper">
 
-  <div class="form-wrapper-inner third">
+  <div class="form-wrapper-inner half">
 
     <h3>Enter Sims to Delete</h3>
 
