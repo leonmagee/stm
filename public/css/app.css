@@ -17152,8 +17152,7 @@ body.stm-body .button-bar-wrap .button-bar a {
 @media (min-width: 980px) {
   .header-wrap .logo-wrap {
     display: block;
-    padding: 0;
-    margin-left: 50px;
+    padding: 10px 15px;
   }
 }
 
