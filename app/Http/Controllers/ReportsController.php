@@ -56,10 +56,13 @@ class ReportsController extends Controller
     */
     public function totals()
     {
+
         $current_date = Settings::first()->current_date;
         $current_site_date = Helpers::current_date_name();
         $site_id = Settings::first()->get_site_id();
-        $site_name = Site::find($site_id)->name;
+        $site = Site::find($site_id);
+        $site_name = $site->name;
+        $role_id = $site->role_id;
         $report_types = ReportType::all();
         $current_date = Helpers::current_date();
         $report_type_totals_array = [];
@@ -72,8 +75,12 @@ class ReportsController extends Controller
                 $matching_sims_count = DB::table('sims')
                 ->select('sims.value', 'sims.report_type_id')
                 ->join('sim_users', 'sim_users.sim_number', '=', 'sims.sim_number')
+                ->join('users', 'users.id', '=', 'sim_users.user_id')
                 ->where('sims.report_type_id', $report_type->id)
                 ->where('sims.upload_date', $current_date)
+                ->where('users.role_id', $role_id)
+                //->where('sim_users.user_id', 7)
+                //->where('users.role_id', $role_id)
                 ->count();
 
                 $name = $report_type->carrier->name . ' ' . $report_type->name;
