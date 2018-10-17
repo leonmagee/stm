@@ -9,12 +9,33 @@
 	border-bottom: 1px solid #000;
 
 	.logo-wrap {
-		padding: 20px 10px;
-		margin-left: 15px;
-		text-align: center;
-		@media(min-width: $screen-md) {
-			text-align: left;
+		//padding: 10px;
+		//margin-left: 50px;
+		//text-align: center;
+		display: flex;
+		align-items: center;
+		justify-content: space-around;
+		padding: 20px;
+
+		@media(min-width: $screen-sm) {
+			justify-content: space-between;
+			padding: 20px 70px;
 		}
+
+		@media(min-width: $screen-md) {
+			display: block;
+			padding: 0;	
+			margin-left: 50px;			
+		}	
+
+
+		img {
+			max-width: 200px;
+			display: block;
+		}
+		// @media(min-width: $screen-md) {
+		// 	text-align: left;
+		// }
 
 		a {
 			text-transform: uppercase;

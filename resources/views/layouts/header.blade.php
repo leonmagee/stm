@@ -2,8 +2,7 @@
 	
 	<div class="logo-wrap">
 		<a href="/">
-			{{-- <img src="{{ URL::asset('img/stm_logo_white.png') }}" /> --}}
-			Sim Track Manager
+			<img src="{{ URL::asset('img/stm_logo_white.png') }}" />
 		</a>
 		@if (Auth::check())
 		<a class="menu-toggle menu-modal-open"><i class="fas fa-bars"></i></a>

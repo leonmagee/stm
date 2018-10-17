@@ -17129,15 +17129,37 @@ body.stm-body .button-bar-wrap .button-bar a {
 }
 
 .header-wrap .logo-wrap {
-  padding: 20px 10px;
-  margin-left: 15px;
-  text-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  padding: 20px;
+}
+
+@media (min-width: 768px) {
+  .header-wrap .logo-wrap {
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    padding: 20px 70px;
+  }
 }
 
 @media (min-width: 980px) {
   .header-wrap .logo-wrap {
-    text-align: left;
+    display: block;
+    padding: 0;
+    margin-left: 50px;
   }
+}
+
+.header-wrap .logo-wrap img {
+  max-width: 200px;
+  display: block;
 }
 
 .header-wrap .logo-wrap a {
