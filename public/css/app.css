@@ -17246,6 +17246,15 @@ body.stm-body .button-bar-wrap .button-bar a {
   color: #FFF;
 }
 
+.header-wrap .header-area a.button.login.add-radius,
+.header-wrap .header-area a.button.register.add-radius,
+.header-wrap .header-area a.button.date.add-radius,
+.header-wrap .header-area a.button.type.add-radius,
+.header-wrap .header-area a.button.user.add-radius,
+.header-wrap .header-area a.button.settings.add-radius {
+  border-radius: 4px !important;
+}
+
 .header-wrap .header-area a.button.login:hover,
 .header-wrap .header-area a.button.register:hover,
 .header-wrap .header-area a.button.date:hover,
@@ -17277,6 +17286,10 @@ body.stm-body .button-bar-wrap .button-bar a {
 .header-wrap .header-area a.button.locked {
   color: #FFF;
   background-color: #EF476F;
+}
+
+.header-wrap .header-area a.button.locked:hover.not-link {
+  cursor: default;
 }
 
 .header-wrap .header-area a.button span.text {

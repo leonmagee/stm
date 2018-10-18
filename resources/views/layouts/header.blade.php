@@ -75,15 +75,7 @@
 			<div class="mobile-menu">
 				<div class="field has-addons">
 					<p class="control">
-						<a class="button type" href="/settings">
-							<span class="icon is-small">
-								<i class="fas fa-sitemap"></i>
-							</span>
-							<span class="text">{{ $site }}</span>
-						</a>
-					</p>
-					<p class="control">
-						<a class="button date" href="/settings">
+						<a class="button date add-radius" href="/settings">
 							<span class="icon is-small">
 								<i class="fas fa-calendar"></i>
 							</span>
@@ -120,14 +112,6 @@
 			
 			<div class="large-menu">
 				<div class="field has-addons">
-					<p class="control">
-						<a class="button type not-link">
-							<span class="icon is-small">
-								<i class="fas fa-sitemap"></i>
-							</span>
-							<span class="text">{{ $site }}</span>
-						</a>
-					</p>
 					<p class="control">
 						<a class="button date not-link">
 							<span class="icon is-small">
@@ -170,15 +154,7 @@
 			<div class="mobile-menu">
 				<div class="field has-addons">
 					<p class="control">
-						<a class="button type not-link">
-							<span class="icon is-small">
-								<i class="fas fa-sitemap"></i>
-							</span>
-							<span class="text">{{ $site }}</span>
-						</a>
-					</p>
-					<p class="control">
-						<a class="button date not-link">
+						<a class="button date not-link add-radius">
 							<span class="icon is-small">
 								<i class="fas fa-calendar"></i>
 							</span>

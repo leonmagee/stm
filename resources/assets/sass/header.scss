@@ -100,6 +100,9 @@
 				}
 			}
 			&.login, &.register, &.date, &.type, &.user, &.settings {
+				&.add-radius {
+					border-radius: 4px !important;
+				}
 				&:hover {
 					//color: #FFF;
 					background-color: #EEE;
@@ -122,6 +125,11 @@
 			&.locked {
 				color: #FFF;
 				background-color: $color-red;
+				&:hover {
+					&.not-link {
+						cursor: default;
+					}
+				}
 			}
 			span.text {
 				font-weight: 700;
