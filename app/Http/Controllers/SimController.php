@@ -75,21 +75,22 @@ class SimController extends Controller
     */
     public function upload_form()
     {
-        /**
-        * @todo refactor this to have one helper function
-        */
         $report_types = ReportType::all();
 
         $carriers = Carrier::all();
 
-        // $current_site_id = session('current_site_id', 1);
-        // $current_site = Site::find($current_site_id);
-        // $role_id = $current_site->role_id; // @todo helper function for this?
-
         $role_id = Helpers::current_role_id();
 
         $users = User::where('role_id', $role_id)->get();
-        return view('sims.upload', compact('report_types', 'users', 'carriers'));
+
+        if(Helpers::current_user_admin())
+        {
+            return view('sims.upload', compact('report_types', 'users', 'carriers'));
+        }
+        else
+        {
+            return view('sims.upload-manager', compact('report_types', 'users', 'carriers'));
+        }
     }
 
     /**
