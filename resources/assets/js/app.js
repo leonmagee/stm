@@ -72,6 +72,19 @@ $('button.call-loader').click(function() {
 });
 
 
+// loader for datatables processing
+
+$('#sims_table')
+    .on( 'processing.dt', function ( e, settings, processing ) {
+    	if(processing === true)
+    	{
+			$('.stm-absolute-wrap#loader-wrap').css({'display':'flex'});
+    	}
+    	else {
+    		$('.stm-absolute-wrap#loader-wrap').css({'display':'none'});
+    	}
+} );
+
 /**
 * Add file name to inputs
 */

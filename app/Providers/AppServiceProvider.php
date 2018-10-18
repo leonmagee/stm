@@ -370,6 +370,13 @@ class AppServiceProvider extends ServiceProvider
                         'default' => false,
                     ],
                     [
+                        'name' => 'Recharge Data',
+                        'link' => '/recharge-data',
+                        'sub' => false,
+                        'icon' => 'flaticon-electric-plug',
+                        'default' => false,
+                    ],
+                    [
                         'name' => 'Your Profile',
                         'link' => '/profile',
                         'sub' => false,

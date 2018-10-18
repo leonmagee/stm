@@ -118,7 +118,16 @@ class ReportsController extends Controller
         $site_name = Site::find($site_id)->name;
 
         $role_id = Helpers::current_role_id();
-        $users = User::where('role_id', $role_id)->get();
+        if (Helpers::is_normal_user())
+        {
+            $logged_in_user = \Auth::user();
+            $users = User::where('id', $logged_in_user->id)->get();
+        }
+        else
+        {
+            $users = User::where('role_id', $role_id)->get();
+        }
+
         $recharge_data_array = [];
 
         $config_array = [ // this can be changed for different report types
