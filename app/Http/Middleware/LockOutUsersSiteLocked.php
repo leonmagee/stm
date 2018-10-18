@@ -20,7 +20,7 @@ class LockOutUsersSiteLocked
 
         if(Helpers::is_normal_user() && Helpers::is_site_locked())
         {
-            if($request->path() != '/')
+            if(($request->path() != '/')  && ($request->path() != 'logout'))
             {
                 return redirect()->home();
             }
