@@ -77,6 +77,16 @@ class Helpers {
             return false;
       }
 
+      public static function restrict_page() {
+            if($user = \Auth::user())
+            {
+                  if ($user->role_id > 2)
+                  {
+                        return redirect('/');
+                  }
+            }
+      }
+
       public static function current_role_id() {
             $current_site_id = session('current_site_id', 1);
             $current_site = Site::find($current_site_id);

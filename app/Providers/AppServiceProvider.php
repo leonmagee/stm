@@ -6,9 +6,13 @@ use Illuminate\Support\ServiceProvider;
 
 //use App\Billing\Stripe;
 
+use App\Helpers;
+
 use App\Settings;
 
 use App\ReportType;
+
+//use App\UserLockedRedirect;
 
 use \Carbon\Carbon;
 
@@ -411,6 +415,12 @@ view()->composer('layouts.header', function($view) {
     public function register()
     {
         //use this method to register things into the servie container
+
+        //$lock_test = new UserLockedRedirect();
+
+        // $this->app->singleton(UserLockedRedirect::class, function() {
+        //     return new UserLockedRedirect();
+        // });
 
         // $this->app->singleton(Stripe::class, function() {
         //     return new Stripe(config('services.stripe.secret'));

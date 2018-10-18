@@ -20,7 +20,7 @@ class SimController extends Controller
     private $duplicate_sims;
     private $number_sims_uploaded;
 
-    public function __construct() 
+    public function __construct()
     {
         $this->middleware('auth');
         ini_set('max_execution_time', '300');
@@ -65,10 +65,10 @@ class SimController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        dd('the method create is called');
-    }
+    // public function create()
+    // {
+    //     dd('the method create is called');
+    // }
 
     /**
     * Show the upload form
