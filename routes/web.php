@@ -14,8 +14,8 @@
 //dd(phpinfo());
 
 // just for testing
-use App\User;
-use App\Mail\EmailBlast;
+// use App\User;
+// use App\Mail\EmailBlast;
 
 
 Route::get('/', 'HomeController@index')->name('home');
@@ -156,26 +156,26 @@ Route::post('email-blast', 'EmailBlastController@email');
 /**
 * Test Routes
 */
-Route::get('test-email', function() {
-	return view('mail-sent-test');
-});
+// Route::get('test-email', function() {
+// 	return view('mail-sent-test');
+// });
 
-Route::post('send_test_email', function() {
+// Route::post('send_test_email', function() {
 
-	$user_leon = User::find(1);
-	//$user_kareem = User::find(2);
+// 	$user_leon = User::find(1);
+// 	//$user_kareem = User::find(2);
 
-	$message = 'Here is a test email just to show you how the email formating is going to look for the new STM. Let me know what you think. xxx';
+// 	$message = 'Here is a test email just to show you how the email formating is going to look for the new STM. Let me know what you think. xxx';
 
-	$mail_success = \Mail::to($user_leon)->send(new EmailBlast($user_leon, $message));
-	//$mail_success2 = \Mail::to($user_kareem)->send(new EmailBlast($user_kareem, $message));
+// 	$mail_success = \Mail::to($user_leon)->send(new EmailBlast($user_leon, $message));
+// 	//$mail_success2 = \Mail::to($user_kareem)->send(new EmailBlast($user_kareem, $message));
 
-	session()->flash('message', 'Emails have been sent?');
+// 	session()->flash('message', 'Emails have been sent?');
 
-	return redirect('/email-blast');
+// 	return redirect('/email-blast');
 
 
-});
+// });
 
 /**
 * Enables User Registration
