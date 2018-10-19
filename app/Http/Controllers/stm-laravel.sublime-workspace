@@ -23,41 +23,6 @@
 	},
 	"buffers":
 	[
-		{
-			"file": "/Users/leonmagee/Documents/Sites/Laravel/stm/resources/views/sims/archive.blade.php",
-			"settings":
-			{
-				"buffer_size": 774,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "/Users/leonmagee/Documents/Sites/Laravel/stm/resources/views/sim_users/index.blade.php",
-			"settings":
-			{
-				"buffer_size": 675,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "SimController.php",
-			"settings":
-			{
-				"buffer_size": 10725,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "APIControllerOld.php",
-			"settings":
-			{
-				"buffer_size": 4793,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		}
 	],
 	"build_system": "",
 	"build_system_choices":
@@ -204,24 +169,20 @@
 		"/Users/leonmagee/Documents/Sites/Laravel/stm/app",
 		"/Users/leonmagee/Documents/Sites/Laravel/stm/app/Http",
 		"/Users/leonmagee/Documents/Sites/Laravel/stm/app/Http/Controllers",
-		"/Users/leonmagee/Documents/Sites/Laravel/stm/app/Mail",
+		"/Users/leonmagee/Documents/Sites/Laravel/stm/app/Http/Middleware",
 		"/Users/leonmagee/Documents/Sites/Laravel/stm/app/Providers",
-		"/Users/leonmagee/Documents/Sites/Laravel/stm/database",
-		"/Users/leonmagee/Documents/Sites/Laravel/stm/database/migrations",
 		"/Users/leonmagee/Documents/Sites/Laravel/stm/resources",
 		"/Users/leonmagee/Documents/Sites/Laravel/stm/resources/assets",
 		"/Users/leonmagee/Documents/Sites/Laravel/stm/resources/assets/js",
 		"/Users/leonmagee/Documents/Sites/Laravel/stm/resources/assets/sass",
 		"/Users/leonmagee/Documents/Sites/Laravel/stm/resources/views",
 		"/Users/leonmagee/Documents/Sites/Laravel/stm/resources/views/archive",
-		"/Users/leonmagee/Documents/Sites/Laravel/stm/resources/views/carriers",
 		"/Users/leonmagee/Documents/Sites/Laravel/stm/resources/views/email_blast",
 		"/Users/leonmagee/Documents/Sites/Laravel/stm/resources/views/emails",
 		"/Users/leonmagee/Documents/Sites/Laravel/stm/resources/views/layouts",
 		"/Users/leonmagee/Documents/Sites/Laravel/stm/resources/views/registration",
 		"/Users/leonmagee/Documents/Sites/Laravel/stm/resources/views/report_types",
 		"/Users/leonmagee/Documents/Sites/Laravel/stm/resources/views/reports",
-		"/Users/leonmagee/Documents/Sites/Laravel/stm/resources/views/sessions",
 		"/Users/leonmagee/Documents/Sites/Laravel/stm/resources/views/settings",
 		"/Users/leonmagee/Documents/Sites/Laravel/stm/resources/views/sim_users",
 		"/Users/leonmagee/Documents/Sites/Laravel/stm/resources/views/sims",
@@ -230,134 +191,134 @@
 	],
 	"file_history":
 	[
+		"/Users/leonmagee/Documents/Sites/Laravel/stm/app/Providers/AppServiceProvider.php",
+		"/Users/leonmagee/Documents/Sites/Laravel/stm/app/Http/Controllers/ReportsController.php",
+		"/Users/leonmagee/Documents/Sites/Laravel/stm/app/Helpers.php",
+		"/Users/leonmagee/Documents/Sites/Laravel/stm/resources/views/sims/archive.blade.php",
 		"/Users/leonmagee/Documents/Sites/Laravel/stm/resources/assets/js/app.js",
+		"/Users/leonmagee/Documents/Sites/Laravel/stm/resources/assets/sass/datatables.scss",
+		"/Users/leonmagee/Documents/Sites/Laravel/stm/app/Http/Controllers/SimUserController.php",
+		"/Users/leonmagee/Documents/Sites/Laravel/stm/app/Http/Middleware/LockOutUsers.php",
+		"/Users/leonmagee/Documents/Sites/Laravel/stm/app/Http/Kernel.php",
+		"/Users/leonmagee/Documents/Sites/Laravel/stm/routes/web.php",
+		"/Users/leonmagee/Documents/Sites/Laravel/stm/resources/views/sim_users/assign-sims.blade.php",
+		"/Users/leonmagee/Documents/Sites/Laravel/stm/app/Http/Controllers/RolesController.php",
+		"/Users/leonmagee/Documents/Sites/Laravel/stm/app/Http/Controllers/APIController.php",
+		"/Users/leonmagee/Documents/Sites/Laravel/stm/app/Http/Middleware/LockOutUsersSiteLocked.php",
+		"/Users/leonmagee/Documents/Sites/Laravel/stm/app/Http/Controllers/SessionsController.php",
+		"/Users/leonmagee/Documents/Sites/Laravel/stm/app/Http/Controllers/EmailBlastController.php",
+		"/Users/leonmagee/Documents/Sites/Laravel/stm/resources/views/layouts/header.blade.php",
+		"/Users/leonmagee/Documents/Sites/Laravel/stm/resources/views/sims/upload-manager.blade.php",
+		"/Users/leonmagee/Documents/Sites/Laravel/stm/resources/assets/sass/header.scss",
+		"/Users/leonmagee/Documents/Sites/Laravel/stm/app/Http/Controllers/SimController.php",
+		"/Users/leonmagee/Documents/Sites/Laravel/stm/.env",
+		"/Users/leonmagee/Documents/Sites/Laravel/stm/routes/channels.php",
+		"/Users/leonmagee/Documents/Sites/Laravel/stm/app/Http/Controllers/HomeController.php",
+		"/Users/leonmagee/Documents/Sites/Laravel/stm/app/Http/Controllers/Auth/LoginController.php",
+		"/Users/leonmagee/Documents/Sites/Laravel/stm/app/Http/Controllers/Auth/RegisterController.php",
+		"/Users/leonmagee/Documents/Sites/Laravel/stm/config/app.php",
+		"/Users/leonmagee/Documents/Sites/Laravel/stm/app/UserLockedRedirect.php",
+		"/Users/leonmagee/Documents/Sites/Laravel/stm/app/Http/Middleware/CustomAuthRedirect.php",
+		"/Users/leonmagee/Documents/Sites/Laravel/stm/app/ReportType.php",
+		"/Users/leonmagee/Documents/Sites/Laravel/stm/app/ReportDataItem.php",
+		"/Users/leonmagee/Documents/Sites/Laravel/stm/resources/views/reports/totals.blade.php",
+		"/Users/leonmagee/Documents/Sites/Laravel/stm/app/Settings.php",
+		"/Users/leonmagee/Documents/Sites/Laravel/stm/app/Http/Controllers/SettingsController.php",
+		"/Users/leonmagee/Documents/Sites/Laravel/stm/resources/assets/sass/main.scss",
+		"/Users/leonmagee/Documents/Sites/Laravel/stm/resources/assets/sass/users.scss",
 		"/Users/leonmagee/Documents/Sites/Laravel/stm/resources/views/sim_users/delete.blade.php",
-		"/Users/leonmagee/Documents/Sites/Laravel/stm/resources/views/email_blast/index.blade.php",
+		"/Users/leonmagee/Documents/Sites/Laravel/stm/resources/views/users/show.blade.php",
+		"/Users/leonmagee/Documents/Sites/Laravel/stm/app/ReportData.php",
+		"/Users/leonmagee/Documents/Sites/Laravel/stm/database/seeds/UserTableSeeder.php",
+		"/Users/leonmagee/Documents/Sites/Laravel/stm/app/Http/Controllers/ArchiveController.php",
+		"/Users/leonmagee/Documents/Sites/Laravel/stm/app/User.php",
+		"/Users/leonmagee/Documents/Sites/Laravel/stm/app/Http/Controllers/UserController.php",
+		"/Users/leonmagee/Documents/Sites/Laravel/stm/resources/views/users/edit_profile.blade.php",
+		"/Users/leonmagee/Documents/Sites/Laravel/stm/resources/views/settings/index-manager.blade.php",
+		"/Users/leonmagee/Documents/Sites/Laravel/stm/resources/views/users/profile-admin-manager.blade.php",
+		"/Users/leonmagee/Documents/Sites/Laravel/stm/resources/views/users/profile-user.blade.php",
+		"/Users/leonmagee/Documents/Sites/Laravel/stm/resources/views/layouts/nav.blade.php",
+		"/Users/leonmagee/Documents/Sites/Laravel/stm/resources/views/sims/upload.blade.php",
+		"/Users/leonmagee/Documents/Sites/Laravel/stm/resources/views/emails/new-user.blade.php",
+		"/Users/leonmagee/Documents/Sites/Laravel/stm/resources/views/report_types/edit_residual.blade.php",
+		"/Users/leonmagee/Documents/Sites/Laravel/stm/resources/views/report_types/edit.blade.php",
+		"/Users/leonmagee/Documents/Sites/Laravel/stm/resources/views/mail-sent-test.blade.php",
+		"/Users/leonmagee/Documents/Sites/Laravel/stm/app/Http/Controllers/RegistrationController.php",
+		"/Users/leonmagee/Documents/Sites/Laravel/stm/resources/assets/sass/sidebar.scss",
+		"/Users/leonmagee/Documents/Sites/Laravel/stm/resources/assets/sass/sidebar-nav.scss",
+		"/Users/leonmagee/Documents/Sites/Laravel/stm/resources/assets/sass/charts.scss",
+		"/Users/leonmagee/Documents/Sites/Laravel/stm/app/ReportPaymentCalculation.php",
+		"/Users/leonmagee/Documents/Sites/Laravel/stm/resources/views/index.blade.php",
+		"/Users/leonmagee/Documents/Sites/Laravel/stm/app/Mail/EmailBlast.php",
+		"/Users/leonmagee/Documents/Sites/Laravel/stm/resources/views/emails/email-blast.blade.php",
+		"/Users/leonmagee/Documents/Sites/Laravel/stm/resources/views/sims/index.blade.php",
+		"/Users/leonmagee/Documents/Sites/Laravel/stm/package.json",
+		"/Users/leonmagee/Documents/Sites/Laravel/stm/resources/views/sim_users/index.blade.php",
+		"/Users/leonmagee/Documents/Sites/Laravel/stm/resources/assets/sass/user-plan-values.scss",
+		"/Users/leonmagee/Documents/Sites/Laravel/stm/composer.json",
 		"/Users/leonmagee/Documents/Sites/Laravel/stm/resources/views/users/edit.blade.php",
+		"/Users/leonmagee/Documents/Sites/Laravel/stm/resources/assets/sass/app.scss",
+		"/Users/leonmagee/Documents/Sites/Laravel/stm/database/seeds/CarrierTableSeeder.php",
+		"/Users/leonmagee/Documents/Sites/Laravel/stm/resources/assets/sass/locked.scss",
+		"/Users/leonmagee/Documents/Sites/Laravel/stm/resources/views/locked.blade.php",
+		"/Users/leonmagee/Documents/Sites/Laravel/stm/resources/views/layouts/layout-simple.blade.php",
+		"/Users/leonmagee/Documents/Sites/Laravel/stm/resources/views/registration/create.blade.php",
+		"/Users/leonmagee/Documents/Sites/Laravel/stm/resources/views/sim_users/show.blade.php",
+		"/Users/leonmagee/Documents/Sites/Laravel/stm/config/auth.php",
+		"/Users/leonmagee/Documents/Sites/Laravel/stm/resources/views/reports/index.blade.php",
+		"/Users/leonmagee/Documents/Sites/Laravel/stm/app/ReportUserCSV.php",
+		"/Users/leonmagee/Documents/Sites/Laravel/stm/database/seeds/RolesTableSeeder.php",
+		"/Users/leonmagee/Documents/Sites/Laravel/stm/database/seeds/DatabaseSeeder.php",
+		"/Users/leonmagee/Documents/Sites/Laravel/stm/resources/views/email_blast/index.blade.php",
+		"/Users/leonmagee/Documents/Sites/Laravel/stm/resources/views/layouts/layout.blade.php",
+		"/Users/leonmagee/Documents/Sites/Laravel/stm/resources/assets/sass/loader.scss",
+		"/Users/leonmagee/Documents/Sites/Laravel/stm/app/ReportDataUser.php",
+		"/Users/leonmagee/Documents/Sites/Laravel/stm/database/seeds/SiteTableSeeder.php",
+		"/Users/leonmagee/Documents/Sites/Laravel/stm/database/migrations/2014_10_12_000000_create_users_table.php",
+		"/Users/leonmagee/Documents/Sites/Laravel/stm/database/migrations/2018_01_09_215029_create_sim_users_table.php",
+		"/Users/leonmagee/Documents/Sites/Laravel/stm/database/migrations/2018_10_07_184335_create_roles_table.php",
+		"/Users/leonmagee/Documents/Sites/Laravel/stm/database/seeds/RoleUserTableSeeder.php",
+		"/Users/leonmagee/Documents/Sites/Laravel/stm/app/Site.php",
+		"/Users/leonmagee/Documents/Sites/Laravel/stm/app/SimMaster.php",
+		"/Users/leonmagee/Documents/Sites/Laravel/stm/app/Sim.php",
+		"/Users/leonmagee/Documents/Sites/Laravel/stm/app/Role.php",
+		"/Users/leonmagee/Documents/Sites/Laravel/stm/database/migrations/2018_10_07_190041_create_role_user_table.php",
+		"/Users/leonmagee/Documents/Sites/Laravel/stm/database/migrations/2018_05_17_030342_create_sites_table.php",
+		"/Users/leonmagee/Documents/Sites/Laravel/stm/resources/views/users/show_not_admin.blade.php",
+		"/Users/leonmagee/Documents/Sites/Laravel/stm/resources/views/sim_users/index_user.blade.php",
+		"/Users/leonmagee/Documents/Sites/Laravel/stm/vendor/yajra/laravel-datatables-oracle/src/DataTables.php",
+		"/Users/leonmagee/Documents/Sites/Laravel/stm/app/Http/Controllers/APIControllerOld.php",
 		"/Users/leonmagee/Documents/Sites/Laravel/stm/resources/views/users/edit_password.blade.php",
 		"/Users/leonmagee/Documents/Sites/Laravel/stm/resources/views/users/bonus-credit.blade.php",
 		"/Users/leonmagee/Documents/Sites/Laravel/stm/resources/assets/sass/modal.scss",
 		"/Users/leonmagee/Documents/Sites/Laravel/stm/resources/assets/sass/typography.scss",
 		"/Users/leonmagee/Documents/Sites/Laravel/stm/resources/views/report_types/show.blade.php",
-		"/Users/leonmagee/Documents/Sites/Laravel/stm/resources/views/emails/new-user.blade.php",
-		"/Users/leonmagee/Documents/Sites/Laravel/stm/resources/assets/sass/main.scss",
-		"/Users/leonmagee/Documents/Sites/Laravel/stm/resources/views/report_types/edit.blade.php",
-		"/Users/leonmagee/Documents/Sites/Laravel/stm/resources/views/sims/upload.blade.php",
-		"/Users/leonmagee/Documents/Sites/Laravel/stm/resources/views/registration/create.blade.php",
 		"/Users/leonmagee/Documents/Sites/Laravel/stm/resources/views/sim_users/find.blade.php",
 		"/Users/leonmagee/Documents/Sites/Laravel/stm/resources/views/settings/index.blade.php",
 		"/Users/leonmagee/Documents/Sites/Laravel/stm/resources/views/settings/site-settings.blade.php",
 		"/Users/leonmagee/Documents/Sites/Laravel/stm/resources/views/report_types/create.blade.php",
 		"/Users/leonmagee/Documents/Sites/Laravel/stm/resources/views/report_types/create_residual.blade.php",
 		"/Users/leonmagee/Documents/Sites/Laravel/stm/resources/views/sessions/create.blade.php",
-		"/Users/leonmagee/Documents/Sites/Laravel/stm/resources/views/emails/email-blast.blade.php",
 		"/Users/leonmagee/Documents/Sites/Laravel/stm/resources/views/emails/welcome.blade.php",
-		"/Users/leonmagee/Documents/Sites/Laravel/stm/app/Http/Controllers/SimUserController.php",
 		"/Users/leonmagee/Documents/Sites/Laravel/stm/resources/views/carriers/index.blade.php",
 		"/Users/leonmagee/Documents/Sites/Laravel/stm/resources/views/layouts/alert.blade.php",
 		"/Users/leonmagee/Documents/Sites/Laravel/stm/resources/assets/sass/reports.scss",
-		"/Users/leonmagee/Documents/Sites/Laravel/stm/resources/views/reports/totals.blade.php",
-		"/Users/leonmagee/Documents/Sites/Laravel/stm/resources/assets/sass/app.scss",
 		"/Users/leonmagee/Documents/Sites/Laravel/stm/resources/assets/sass/carriers.scss",
-		"/Users/leonmagee/Documents/Sites/Laravel/stm/resources/views/layouts/nav.blade.php",
-		"/Users/leonmagee/Documents/Sites/Laravel/stm/app/Providers/AppServiceProvider.php",
 		"/Users/leonmagee/Documents/Sites/Laravel/stm/resources/views/layouts/nav-mobile.blade.php",
 		"/Users/leonmagee/Documents/Sites/Laravel/stm/resources/views/layouts/sidebar.blade.php",
-		"/Users/leonmagee/Documents/Sites/Laravel/stm/resources/views/layouts/header.blade.php",
 		"/Users/leonmagee/Documents/Sites/Laravel/stm/resources/views/layouts/head.blade.php",
 		"/Users/leonmagee/Documents/Sites/Laravel/stm/resources/views/sim_users/list.blade.php",
-		"/Users/leonmagee/Documents/Sites/Laravel/stm/.env",
-		"/Users/leonmagee/Documents/Sites/Laravel/stm/resources/assets/sass/header.scss",
-		"/Users/leonmagee/Documents/Sites/Laravel/stm/resources/views/sims/archive.blade.php",
-		"/Users/leonmagee/Documents/Sites/Laravel/stm/resources/assets/sass/datatables.scss",
 		"/Users/leonmagee/Documents/Sites/Laravel/stm/resources/assets/sass/_variables.scss",
 		"/Users/leonmagee/Documents/Sites/Laravel/stm/resources/assets/sass/bulma-variables.sass",
 		"/Users/leonmagee/Documents/Sites/Laravel/stm/node_modules/bulma/bulma.sass",
 		"/Users/leonmagee/Documents/Sites/Laravel/stm/node_modules/bulma/sass/utilities/_all.sass",
 		"/Users/leonmagee/Documents/Sites/Laravel/stm/node_modules/bulma/sass/utilities/initial-variables.sass",
-		"/Users/leonmagee/Documents/Sites/Laravel/stm/package.json",
 		"/Users/leonmagee/Documents/Sites/Laravel/stm/resources/assets/js/bootstrap.js",
 		"/Users/leonmagee/Documents/Sites/Laravel/stm/resources/views/layouts/scripts.blade.php",
 		"/Users/leonmagee/Documents/Sites/Laravel/stm/node_modules/datatables.net-responsive/package.json",
 		"/Users/leonmagee/Documents/Sites/Laravel/stm/public/js/app.js",
-		"/Users/leonmagee/Documents/Sites/Laravel/stm/resources/views/sims/index.blade.php",
-		"/Users/leonmagee/Documents/Sites/Laravel/stm/resources/views/sim_users/index.blade.php",
-		"/Users/leonmagee/Documents/Sites/Laravel/stm/resources/views/index.blade.php",
 		"/Users/leonmagee/Documents/Sites/Laravel/stm/resources/assets/sass/sims-list.scss",
-		"/Users/leonmagee/Documents/Sites/Laravel/stm/app/Helpers.php",
-		"/Users/leonmagee/Documents/Sites/Laravel/stm/routes/web.php",
-		"/Users/leonmagee/Documents/Sites/Laravel/stm/resources/assets/sass/charts.scss",
-		"/Users/leonmagee/Documents/Sites/Laravel/stm/app/ReportType.php",
-		"/Users/leonmagee/Documents/Sites/Laravel/stm/app/SimMaster.php",
-		"/Users/leonmagee/Documents/Sites/Laravel/stm/app/SimResidual.php",
-		"/Users/leonmagee/Documents/Sites/Laravel/stm/app/Sim.php",
-		"/Users/leonmagee/Documents/Sites/Laravel/stm/app/ReportDataUser.php",
-		"/Users/leonmagee/Documents/Sites/Laravel/stm/app/SimUser.php",
-		"/Users/leonmagee/Documents/Sites/Laravel/stm/resources/views/archive/index.blade.php",
-		"/Users/leonmagee/Documents/Sites/Laravel/stm/app/Http/Controllers/ArchiveController.php",
-		"/Users/leonmagee/Documents/Sites/Laravel/stm/app/ReportUserCSV.php",
-		"/Users/leonmagee/Documents/Sites/Laravel/stm/app/Http/Controllers/ReportsController.php",
-		"/Users/leonmagee/Documents/Sites/Laravel/stm/resources/views/layouts/layout.blade.php",
-		"/Users/leonmagee/Documents/Sites/Laravel/stm/resources/views/reports/index.blade.php",
-		"/Users/leonmagee/Documents/Sites/Laravel/stm/database/migrations/2018_09_27_173332_create_archives_table.php",
-		"/Users/leonmagee/Documents/Sites/Laravel/stm/app/Http/Controllers/SimController.php",
-		"/Users/leonmagee/Documents/Sites/Laravel/stm/app/ReportData.php",
-		"/Users/leonmagee/Documents/Sites/Laravel/stm/resources/assets/sass/recharges.scss",
-		"/Users/leonmagee/Documents/Sites/Laravel/stm/app/Archive.php",
-		"/Users/leonmagee/Documents/Sites/Laravel/stm/app/Http/Controllers/HomeController.php",
-		"/Users/leonmagee/Documents/Sites/Laravel/stm/resources/views/reports/recharge.blade.php",
-		"/Users/leonmagee/Documents/Sites/Laravel/stm/resources/views/report_types/index.blade.php",
-		"/Users/leonmagee/Documents/Sites/Laravel/stm/resources/assets/sass/grid.scss",
-		"/Users/leonmagee/Documents/Sites/Laravel/stm/resources/assets/sass/mixins.scss",
-		"/Users/leonmagee/Documents/Sites/Laravel/stm/app/ReportDataItem.php",
-		"/Users/leonmagee/Documents/Sites/Laravel/stm/app/Http/Controllers/EmailBlastController.php",
-		"/Users/leonmagee/Documents/Sites/Laravel/stm/app/Mail/EmailBlast.php",
-		"/Users/leonmagee/Documents/Sites/Laravel/stm/resources/views/vendor/mail/html/themes/stm.css",
-		"/Users/leonmagee/Documents/Sites/Laravel/stm/config/app.php",
-		"/Users/leonmagee/Documents/Sites/Laravel/stm/resources/views/layouts/app.blade.php",
-		"/Users/leonmagee/Documents/Sites/Laravel/stm/routes/api.php",
-		"/Users/leonmagee/Documents/Sites/Laravel/stm/vendor/psy/psysh/.php_cs",
-		"/Users/leonmagee/Documents/Sites/Laravel/stm/public/mix-manifest.json",
-		"/Users/leonmagee/Documents/Sites/Laravel/stm/app/Http/Controllers/UserController.php",
-		"/Users/leonmagee/Documents/Sites/Laravel/stm/app/Http/Controllers/RegistrationController.php",
-		"/Users/leonmagee/Documents/Sites/Laravel/stm/resources/assets/sass/forms.scss",
-		"/Users/leonmagee/Documents/Sites/Laravel/stm/resources/assets/sass/sidebar-nav.scss",
-		"/Users/leonmagee/Documents/Sites/Laravel/stm/resources/views/users/show.blade.php",
-		"/Users/leonmagee/Documents/Sites/Laravel/stm/resources/lang/en/validation.php",
-		"/Users/leonmagee/Documents/Websites/www.stm.dev/wp-content/themes/sim-track-manager/lib/uploader_csv.php",
-		"/Users/leonmagee/Documents/Websites/www.stm.dev/wp-content/themes/sim-track-manager/lib/uploader_sims_only_paste.php",
-		"/Users/leonmagee/Documents/Websites/www.stm.dev/wp-content/themes/sim-track-manager/lib/uploader.php",
-		"/Users/leonmagee/Documents/Websites/www.stm.dev/wp-content/themes/sim-track-manager/lib/file_upload.php",
-		"/Users/leonmagee/Documents/Sites/Laravel/stm/database/seeds/UserTableSeeder.php",
-		"/Users/leonmagee/Documents/Sites/Laravel/stm/database/seeds/SettingTableSeeder.php",
-		"/Users/leonmagee/Documents/Sites/Laravel/stm/storage/logs/laravel.log",
-		"/Users/leonmagee/Documents/Sites/Laravel/stm/bootstrap/app.php",
-		"/Users/leonmagee/Documents/Sites/Laravel/stm/resources/assets/sass/loader.scss",
-		"/Users/leonmagee/Documents/Sites/Laravel/stm/resources/views/sims/archive-old.blade.php",
-		"/Users/leonmagee/Documents/Sites/Laravel/stm/resources/views/layouts/footer.blade.php",
-		"/Users/leonmagee/Documents/Sites/Laravel/stm/resources/views/sims/add-sim.blade.php",
-		"/Users/leonmagee/Documents/Sites/Laravel/stm/app/Settings.php",
-		"/Users/leonmagee/Documents/Sites/Laravel/stm/app/ReportPaymentCalculation.php",
-		"/Users/leonmagee/Documents/Sites/Laravel/stm/app/Http/Controllers/ReportTypeController.php",
-		"/Users/leonmagee/Documents/Sites/Laravel/stm/app/Site.php",
-		"/Users/leonmagee/Documents/Sites/Laravel/stm/resources/assets/sass/report-types.scss",
-		"/Users/leonmagee/Documents/Sites/Laravel/stm/app/ReportTypeSiteDefault.php",
-		"/Users/leonmagee/Documents/Sites/Laravel/stm/vendor/league/csv/src/Writer.php",
-		"/Users/leonmagee/Documents/Sites/Laravel/stm/public/css/app.css",
-		"/Users/leonmagee/Documents/Sites/Laravel/stm/webpack.mix.js",
-		"/Users/leonmagee/Documents/Sites/Laravel/stm/public/fonts/Flaticon.eot",
-		"/Users/leonmagee/Documents/Sites/Laravel/stm/resources/views/layouts/layout-simple.blade.php",
-		"/Users/leonmagee/Documents/Sites/Laravel/stm/app/User.php",
-		"/Users/leonmagee/Documents/Sites/Laravel/stm/app/Http/Middleware/RedirectIfAuthenticated.php",
-		"/Users/leonmagee/Documents/Sites/Laravel/stm/resources/views/profile.blade.php",
-		"/Users/leonmagee/Documents/Sites/Laravel/stm/app/Http/Controllers/CarrierController.php",
-		"/Users/leonmagee/Documents/Sites/Laravel/stm/app/Http/Controllers/APIController.php",
-		"/Users/leonmagee/Documents/Sites/Laravel/stm/app/Http/Controllers/AuthorizedController.php",
-		"/Users/leonmagee/Documents/Sites/Laravel/stm/app/Http/Controllers/SettingsController.php",
-		"/Users/leonmagee/Documents/Sites/Laravel/stm/app/Http/Controllers/SiteController.php",
-		"/Users/leonmagee/Documents/Sites/Laravel/stm/app/Http/Controllers/UserCreditBonusController.php",
-		"/Users/leonmagee/Documents/Sites/Laravel/stm/app/Http/Controllers/UserPlanValuesController.php",
-		"/Users/leonmagee/Documents/Sites/Laravel/stm/app/Http/Controllers/UserResidualPercentController.php"
+		"/Users/leonmagee/Documents/Sites/Laravel/stm/app/SimResidual.php"
 	],
 	"find":
 	{
@@ -368,6 +329,11 @@
 		"height": 158.0,
 		"where_history":
 		[
+			"/Users/leonmagee/Documents/Sites/Laravel/stm/resources/assets/sass",
+			"/Users/leonmagee/Documents/Sites/Laravel/stm/resources/views",
+			"/Users/leonmagee/Documents/Sites/Laravel/stm",
+			"/Users/leonmagee/Documents/Sites/Laravel/stm/resources/assets/sass",
+			"/Users/leonmagee/Documents/Sites/Laravel/stm/resources/views",
 			"/Users/leonmagee/Documents/Sites/Laravel/stm/resources/assets/sass",
 			"/Users/leonmagee/Documents/Sites/Laravel/stm",
 			"/Users/leonmagee/Documents/Sites/Laravel/stm/resources/assets/sass",
@@ -382,6 +348,43 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"datatable",
+			"find-sims",
+			"find",
+			"upload",
+			"not-link",
+			"logout",
+			"delete",
+			"delete-sims",
+			"find",
+			"custom",
+			"button-bar",
+			"report",
+			"47",
+			"jessica",
+			"loader",
+			"profile",
+			"message",
+			"simmax",
+			"$site_id",
+			"link",
+			"is-link",
+			"user_sims_sub",
+			"password",
+			"update",
+			"user-plan-section",
+			"Settings",
+			"delete",
+			"role",
+			"user",
+			"profile",
+			"loader",
+			"spinner",
+			"div",
+			"data",
+			"recharge",
+			"role",
+			"site_id",
 			"upload",
 			"button",
 			"is-primary",
@@ -427,152 +430,8 @@
 	"groups":
 	[
 		{
-			"selected": 3,
 			"sheets":
 			[
-				{
-					"buffer": 0,
-					"file": "/Users/leonmagee/Documents/Sites/Laravel/stm/resources/views/sims/archive.blade.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 774,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Laravel Blade Highlighter/blade.sublime-syntax",
-							"vim":
-							{
-								"xpos": 0
-							}
-						},
-						"translation.x": 0.0,
-						"translation.y": 208.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "/Users/leonmagee/Documents/Sites/Laravel/stm/resources/views/sim_users/index.blade.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 675,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								72,
-								72
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Laravel Blade Highlighter/blade.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true,
-							"vim":
-							{
-								":sels:":
-								[
-									[
-										320,
-										320
-									]
-								],
-								":visual_mode:": "visual",
-								"xpos": 26,
-								"xposa": null
-							}
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "SimController.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 10725,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								7439,
-								7439
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true,
-							"vim":
-							{
-								"xpos": 0
-							}
-						},
-						"translation.x": 0.0,
-						"translation.y": 4964.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "APIControllerOld.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 4793,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								4792,
-								227
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true,
-							"vim":
-							{
-								"xpos": 0
-							}
-						},
-						"translation.x": 0.0,
-						"translation.y": 266.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				}
 			]
 		}
 	],
@@ -626,19 +485,43 @@
 		[
 			[
 				"",
-				"resources/assets/js/app.js"
-			],
-			[
-				"web.php",
-				"routes/web.php"
+				"app/Http/Controllers/ReportsController.php"
 			],
 			[
 				"helper",
 				"app/Helpers.php"
 			],
 			[
+				"web.php",
+				"routes/web.php"
+			],
+			[
+				"helpers",
+				"app/Helpers.php"
+			],
+			[
+				"help",
+				"app/Helpers.php"
+			],
+			[
+				"main.scss",
+				"resources/assets/sass/main.scss"
+			],
+			[
 				"web.ph",
 				"routes/web.php"
+			],
+			[
+				"helpers.p",
+				"app/Helpers.php"
+			],
+			[
+				"usercont",
+				"app/Http/Controllers/UserController.php"
+			],
+			[
+				"report",
+				"app/Http/Controllers/ReportsController.php"
 			],
 			[
 				"reports.sc",
@@ -921,10 +804,6 @@
 				"wp-content/themes/gs-accessories/footer.php"
 			],
 			[
-				"main.scss",
-				"wp-content/themes/gs-accessories/assets/scss/main.scss"
-			],
-			[
 				"fu",
 				"wp-includes/functions.php"
 			],
@@ -959,10 +838,6 @@
 			[
 				"web",
 				"routes/web.php"
-			],
-			[
-				"report",
-				"app/ReportType.php"
 			],
 			[
 				"rweb",
@@ -1024,27 +899,22 @@
 		{
 			":command:":
 			[
-				"a",
-				"<:history:>",
-				"<Esc>"
+				"d",
+				"d"
 			],
 			":history:":
 			[
-				[
-					"insert",
-					{
-						"characters": "/user/"
-					}
-				]
 			],
-			"alternate_view": 375
+			"alternate_view": 178,
+			"last_command_line": "47",
+			"last_search_pattern": null
 		}
 	},
 	"show_minimap": true,
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 511.0,
+	"side_bar_width": 365.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{

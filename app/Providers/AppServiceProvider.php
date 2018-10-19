@@ -405,11 +405,20 @@ view()->composer('layouts.header', function($view) {
     $date = $month . ' ' . $date_array[1];
     $logged_in_user = \Auth::user();
 
+    if (! Helpers::current_user_admin())
+    {
+        $site = $logged_in_user->role->name;
+    }
+    else
+    {
+        $site = $settings->get_site_object()->name;
+    }
+
     $view->with('current_date', $date)
     ->with('logged_in_user', $logged_in_user)
     ->with('company', $settings->company)
     ->with('mode', $settings->mode)
-    ->with('site', $settings->get_site_object()->name);
+    ->with('site', $site);
                 //->with('site', $settings->site->name);
 });
 }

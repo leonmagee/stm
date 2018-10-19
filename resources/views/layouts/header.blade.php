@@ -113,6 +113,14 @@
 			<div class="large-menu">
 				<div class="field has-addons">
 					<p class="control">
+						<a class="button type" href="/settings">
+							<span class="icon is-small">
+								<i class="fas fa-sitemap"></i>
+							</span>
+							<span class="text">{{ $site }}</span>
+						</a>
+					</p>
+					<p class="control">
 						<a class="button date not-link">
 							<span class="icon is-small">
 								<i class="fas fa-calendar"></i>
