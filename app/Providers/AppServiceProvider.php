@@ -405,7 +405,7 @@ view()->composer('layouts.header', function($view) {
     $date = $month . ' ' . $date_array[1];
     $logged_in_user = \Auth::user();
 
-    if (! Helpers::current_user_admin())
+    if (Helpers::is_normal_user())
     {
         $site = $logged_in_user->role->name;
     }
