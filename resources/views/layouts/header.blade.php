@@ -129,7 +129,7 @@
 						</a>
 					</p>
 					<p class="control">
-						<a class="button user not-link">
+						<a href="/profile" class="button user">
 							<span class="icon is-small">
 								<i class="fas fa-user"></i>
 							</span>
