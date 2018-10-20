@@ -108,12 +108,99 @@
 
 			</div>
 
-			@else
+			@elseif($logged_in_user->isManager())
 			
 			<div class="large-menu">
 				<div class="field has-addons">
 					<p class="control">
 						<a class="button type" href="/settings">
+							<span class="icon is-small">
+								<i class="fas fa-sitemap"></i>
+							</span>
+							<span class="text">{{ $site }}</span>
+						</a>
+					</p>
+					<p class="control">
+						<a class="button date not-link">
+							<span class="icon is-small">
+								<i class="fas fa-calendar"></i>
+							</span>
+							<span class="text">{{ $current_date }}</span>
+						</a>
+					</p>
+					<p class="control">
+						<a href="/profile" class="button user">
+							<span class="icon is-small">
+								<i class="fas fa-user"></i>
+							</span>
+							<span class="text">{{ Auth::user()->name }}</span>
+						</a>
+					</p>
+					<p class="control">
+						<a class="button logout" href="/logout">
+							<span class="icon is-small">
+								<i class="fas fa-times-circle"></i>
+							</span>
+							<span class="text">Log Out</span>
+						</a>
+					</p>
+					<p class="control">
+						<a class="button mode not-link {{ $mode }}">
+							<span class="icon is-small">
+								@if($mode == 'online')
+								<i class="fas fa-signal"></i>
+								@else
+								<i class="fas fa-lock"></i>
+								@endif
+							</span>
+							<span class="text">{{ $mode }}</span>
+						</a>
+					</p>
+				</div>
+			</div>
+
+			<div class="mobile-menu">
+				<div class="field has-addons">
+					<p class="control">
+						<a class="button date not-link add-radius">
+							<span class="icon is-small">
+								<i class="fas fa-calendar"></i>
+							</span>
+							<span class="text">{{ $current_date }}</span>
+						</a>
+					</p>
+				</div>
+				<div class="field has-addons">
+					<p class="control">
+						<a class="button logout" href="/logout">
+							<span class="icon is-small">
+								<i class="fas fa-times-circle"></i>
+							</span>
+							<span class="text">Log Out</span>
+						</a>
+					</p>
+					<p class="control">
+						<a class="button mode not-link {{ $mode }}">
+							<span class="icon is-small">
+								@if($mode == 'online')
+								<i class="fas fa-signal"></i>
+								@else
+								<i class="fas fa-lock"></i>
+								@endif
+							</span>
+							<span class="text">{{ $mode }}</span>
+						</a>
+					</p>
+				</div>
+
+			</div>
+
+			@else
+			
+			<div class="large-menu">
+				<div class="field has-addons">
+					<p class="control">
+						<a class="button type not-link">
 							<span class="icon is-small">
 								<i class="fas fa-sitemap"></i>
 							</span>
