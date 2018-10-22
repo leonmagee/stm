@@ -21,7 +21,7 @@
                 <div class="field">
                     <label class="label">Enter Amount</label>
                     <div class="control">
-                        <input value="{{ $spiff }}" class="input" type="number" name="default_spiff" />
+                        <input value="{{ $spiff }}" class="input" type="number" step="0.01" name="default_spiff" />
                     </div>
                 </div>
 

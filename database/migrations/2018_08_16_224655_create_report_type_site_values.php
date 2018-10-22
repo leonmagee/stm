@@ -16,7 +16,7 @@ class CreateReportTypeSiteValues extends Migration
         Schema::create('report_type_site_values', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('plan_value');
-            $table->integer('payment_amount');
+            $table->float('payment_amount');
             $table->integer('report_type_site_defaults_id')->nullable();
             $table->timestamps();
         });

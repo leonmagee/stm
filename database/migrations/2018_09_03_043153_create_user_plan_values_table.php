@@ -18,7 +18,7 @@ class CreateUserPlanValuesTable extends Migration
             $table->integer('user_id');
             $table->integer('report_type_id');
             $table->integer('plan_value');
-            $table->integer('payment_amount');
+            $table->float('payment_amount');
             $table->timestamps();
         });
     }

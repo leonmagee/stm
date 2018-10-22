@@ -54,7 +54,7 @@ Single Report Type
 
                     <div class="body-item">${{ $plan->plan_value }}</div>
 
-                    <div class="body-item">${{ $plan->payment_amount }}</div>
+                    <div class="body-item">${{ number_format($plan->payment_amount, 2) }}</div>
 
                     <div class="body-item last">
 
@@ -78,7 +78,7 @@ Single Report Type
 
                         {{ csrf_field() }}
                         <div class="body-item input-wrap"><input type="number" name="plan_value" /></div>
-                        <div class="body-item input-wrap"><input type="number" name="payment_amount" /></div>
+                        <div class="body-item input-wrap"><input type="number" step="0.01" name="payment_amount" /></div>
                         <input type="hidden" name="plan_value_id" value={{ $item['id'] }} />
                         <div class="body-item last">
                             <button class="add-link" type="submit">

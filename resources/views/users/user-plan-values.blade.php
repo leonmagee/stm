@@ -41,7 +41,7 @@
 
         <div class="field three">
             <label class="label" for="payment">Payment Amount</label>
-           <input type="number" class="input" name="payment" id="payment" placeholder="$0.00"> 
+           <input type="number" step="0.01" class="input" name="payment" id="payment" placeholder="$0.00"> 
         </div>
 
         <div class="field four update">
@@ -68,7 +68,7 @@
 
             <div class="data three">
                 <label>Payment Amount</label>
-                <div>${{ $item->payment_amount }}</div>
+                <div>${{ number_format($item->payment_amount, 2) }}</div>
             </div>
 
             <div class="data four">

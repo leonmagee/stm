@@ -51,7 +51,7 @@ Edit Report Type
 							<div class="control">
 								<input 
 								value="{{ $site->spiff_value($reportType->id) }}"
-								class="input" type="number" id="spiff_{{ $site->id }}" name="spiff_{{ $site->id }}" />
+								class="input" type="number" step="0.01" id="spiff_{{ $site->id }}" name="spiff_{{ $site->id }}" />
 							</div>
 						</div>
 
