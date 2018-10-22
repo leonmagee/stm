@@ -2,51 +2,49 @@
 
 @section('content')
 
-<div class="container">
+<div class="form-wrapper center">
 
-	<div class="form-wrapper center">
+	<div class="form-wrapper-inner third">
 
-		<div class="form-wrapper-inner third">
+		<h3>Log In</h3>
 
-			<h3>Log In</h3>
+		<form method="POST" action="/login">
 
-			<form method="POST" action="/login">
+			<div class="form-wrap">
 
-				<div class="form-wrap">
+				{{ csrf_field() }}
 
-					{{ csrf_field() }}
-
-					<div class="field">
-						<label class="label" for="email">Email</label>
-						<div class="control">
-							<input class="input" type="email" id="email" name="email" />
-						</div>
+				<div class="field">
+					<label class="label" for="email">Email</label>
+					<div class="control">
+						<input class="input" type="email" id="email" name="email" />
 					</div>
+				</div>
 
-					<div class="field">
-						<label class="label" for="password">Password</label>
-						<div class="control">
-							<input class="input" type="password" id="password" name="password" />
-						</div>
+				<div class="field">
+					<label class="label" for="password">Password</label>
+					<div class="control">
+						<input class="input" type="password" id="password" name="password" />
 					</div>
+				</div>
 
-					<div class="field">
-						<div class="control">
-							<button class="button is-primary" type="submit">Log In</button>
-						</div>
+				<div class="field">
+					<div class="control">
+						<button class="button is-primary" type="submit">Log In</button>
 					</div>
+				</div>
 
-					<div class="field">
+				<a href="/password/reset">Reset Password</a>
 
-						@include('layouts.errors')
+				<div class="field">
 
-					</div>
+					@include('layouts.errors')
 
 				</div>
 
-			</form>
+			</div>
 
-		</div>
+		</form>
 
 	</div>
 
