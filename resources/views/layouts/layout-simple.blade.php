@@ -14,11 +14,15 @@
 			<h1 class="title">
 				@yield('title')
 			</h1>
-			<div class="container">
-				<div id="content">
-					@yield('content')
-				</div>
+
+			<div id="content">
+
+				@include('layouts.alert')
+
+				@yield('content')
+
 			</div>
+
 		</div>
 
 	</div>
