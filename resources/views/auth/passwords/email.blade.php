@@ -29,10 +29,13 @@
                         <button class="button is-primary" type="submit">Submit</button>
                     </div>
                 </div>
+        
+                <a href="/">Log In</a>
 
             </div>
 
         </form>
+
 
     </div>
 
