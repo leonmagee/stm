@@ -24,6 +24,7 @@ class EmailBlast extends Mailable
     {
         $this->user = $user;
         $this->message = $message;
+        $this->subject('Commission Report Ready');
     }
 
     /**
