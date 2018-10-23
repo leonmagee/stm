@@ -17384,7 +17384,7 @@ ul.sidebar-menu {
   margin: 0;
   padding: 0;
   font-size: 16px;
-  width: 240px;
+  width: 210px;
   /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#eeeeee+0,f3f3f3+100 */
   background: #eeeeee;
   /* Old browsers */
@@ -17454,7 +17454,7 @@ ul.sidebar-menu li ul.sub-menu {
   position: absolute;
   z-index: 1000;
   top: 10px;
-  left: 220px;
+  left: 190px;
   font-size: 16px;
 }
 

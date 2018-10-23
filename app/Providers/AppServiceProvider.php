@@ -222,8 +222,8 @@ class AppServiceProvider extends ServiceProvider
                         'default' => false,
                     ],
                     [
-                        'name' => 'Commission Ready',
-                        'link' => '/commission-ready',
+                        'name' => 'Email Blast',
+                        'link' => '/email-blast',
                         'sub' => false,
                         'icon' => 'flaticon-mail',
                         'default' => false,

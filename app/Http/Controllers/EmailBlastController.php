@@ -37,10 +37,7 @@ class EmailBlastController extends Controller
 
         session()->flash('message', 'Email Blast has been sent!');
 
-        //return redirect('email-blast');
-        return redirect('commission-ready');
-
-
+        return redirect('email-blast');
     }
 
 }

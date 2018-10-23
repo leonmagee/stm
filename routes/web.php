@@ -185,10 +185,9 @@ Route::post('password/reset', 'Auth\ResetPasswordController@reset')->name('passw
 /**
 * Email Routes
 */
-
 Route::group(['middleware' => 'App\Http\Middleware\LockOutUsers'], function()
 {
-	Route::get('commission-ready', 'EmailBlastController@index');
+	Route::get('email-blast', 'EmailBlastController@index');
 	Route::post('email-blast', 'EmailBlastController@email');
 });
 
