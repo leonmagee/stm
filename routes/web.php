@@ -190,7 +190,6 @@ Route::group(['middleware' => 'App\Http\Middleware\LockOutUsers'], function()
 {
 	Route::get('commission-ready', 'EmailBlastController@index');
 	Route::post('email-blast', 'EmailBlastController@email');
-
 });
 
 /**

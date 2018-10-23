@@ -3,7 +3,7 @@ ul.sidebar-menu {
 	margin: 0;
 	padding: 0;
 	font-size: 16px;
-	width: 200px;
+	width: 240px;
 	@include background_gradient;
 	li {
 		position: relative;
@@ -53,7 +53,7 @@ ul.sidebar-menu {
 			z-index: 1000;
 			top: 10px;
 			//top: 0;
-			left: 180px;
+			left: 220px;
 			//width: 250px;
 			font-size: 16px;
 			li {
