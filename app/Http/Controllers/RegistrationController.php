@@ -21,11 +21,35 @@ class RegistrationController extends Controller
 
 		$sites = Site::all();
 
+		$sites_array = [
+			[
+				'name' => 'Admin',
+				'role' => 1,
+				'site' => null
+			],
+			[
+				'name' => 'Manager',
+				'role' => 2,
+				'site' => null
+			],
+		];
+
+
+		foreach($sites as $site) {
+			$sites_array[] = [
+				'name' => $site->name,
+				'role' => $site->role_id,
+				'site' => $site->id
+			];
+		}
+
+		//dd($sites_array);
+
 		$settings = Settings::first();
 		
 		$current_site_id = $settings->get_site_id();
 
-		return view('registration.create', compact('sites', 'current_site_id'));
+		return view('registration.create', compact('sites_array', 'current_site_id'));
 	}
 
 	/**
@@ -70,7 +94,8 @@ class RegistrationController extends Controller
 			'city' => 'required',
 			'state' => 'required',
 			'zip' => 'required',
-			'role_id' => 'required|gt:2',
+			//'role_id' => 'required|gt:2',
+			'role_id' => 'required',
 			'password' => 'required|confirmed|min:8'
 		]);
 

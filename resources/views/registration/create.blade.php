@@ -45,13 +45,13 @@
 						<label class="label" for="role_id">Site</label>
 						<div class="select">
 							<select name="role_id" id="role_id">
-								@foreach ($sites as $site)
+								@foreach ($sites_array as $site)
 								<option 
-								value="{{ $site->role_id }}"
-								@if ($current_site_id == $site->id)
+								value="{{ $site['role'] }}"
+								@if ($current_site_id == $site['site'])
 								selected="selected"
 								@endif
-								>{{ $site->name }}</option>
+								>{{ $site['name'] }}</option>
 								@endforeach
 							</select>
 						</div>
