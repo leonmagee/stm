@@ -25,21 +25,22 @@ Route::get('/', 'HomeController@index')->name('home');
 Route::get('users', 'UserController@index')->name('users');
 Route::get('users/{user}', 'UserController@show');
 Route::get('profile', 'UserController@profile');
-Route::get('edit-profile/{user}', 'UserController@edit_profile');
-//Route::get('change-password/{user}', 'UserController@edit_password');
+Route::get('edit-profile', 'UserController@edit_profile');
+Route::get('change-profile-password', 'UserController@edit_profile_password');
 Route::post('update-user/{id}','UserController@update');
-Route::post('update-user-password/{id}','UserController@update_password');
+Route::post('update-user-profile-password','UserController@update_profile_password');
 
 Route::group(['middleware' => 'App\Http\Middleware\LockOutUsersManagers'], function() {
 	Route::get('edit-user/{user}', 'UserController@edit');
 	Route::get('change-password/{user}', 'UserController@edit_password');
+	Route::post('update-user-password/{id}','UserController@update_password');
 });
 
 Route::group(['middleware' => 'App\Http\Middleware\LockOutUsers'], function()
 {
 	Route::get('bonus-credit/{user}', 'UserCreditBonusController@edit');
 	Route::post('bonus-credit/{user}', 'UserCreditBonusController@update');
-	Route::post('update-admin-manager/{id}','UserController@update_admin_manager');
+	Route::post('update-admin-manager','UserController@update_admin_manager');
 	Route::get('delete-user/{user}', 'UserController@destroy');
 	Route::get('user-plan-values/{user}', 'UserController@user_plan_residual');
 	Route::post('user-plan-values/{id}', 'UserPlanValuesController@store');

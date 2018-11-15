@@ -42,8 +42,8 @@
 
     <div class="button-bar-wrap">
     	<div class="button-bar">
-        	<a href="/edit-profile/{{ $user->id }}" class="button is-primary">Edit Profile</a>
-            <a href="/change-password/{{ $user->id }}" class="button is-primary">Change Password</a>
+        	<a href="/edit-profile" class="button is-primary">Edit Profile</a>
+            <a href="/change-profile-password" class="button is-primary">Change Password</a>
     	</div>
     </div>
 

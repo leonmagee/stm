@@ -10,7 +10,7 @@
 
 		<h3>Edit Profile</h3>
 
-		<form method="POST" action="/update-admin-manager/{{ $user->id }}">
+		<form method="POST" action="/update-admin-manager">
 
 			<div class="form-wrap">
 

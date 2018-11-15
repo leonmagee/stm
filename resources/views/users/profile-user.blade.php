@@ -57,7 +57,7 @@
     <div class="button-bar-wrap">
     	<div class="button-bar">
         	<a href="/edit-user/{{ $user->id }}" class="button is-primary">Edit Info</a>
-            <a href="/change-password/{{ $user->id }}" class="button is-primary">Change Password</a>
+            <a href="/change-profile-password" class="button is-primary">Change Password</a>
             <a href="/user-sims/user/{{ $user->id }}" class="button is-primary">View Sims</a>
     	</div>
     </div>

@@ -145,14 +145,24 @@ class UserController extends Controller
         return view('users.edit', compact('user', 'sites', 'is_admin'));
     }
 
-    public function edit_profile(User $user)
+    public function edit_profile()
     {
-        return view('users.edit_profile', compact('user'));
+        if($user = \Auth::user()) {
+            return view('users.edit_profile', compact('user'));
+
+        } else {
+            return redirect('/');
+        }
     }
 
     public function edit_password(User $user)
     {
         return view('users.edit_password', compact('user'));
+    }
+
+    public function edit_profile_password()
+    {
+        return view('users.edit_profile_password');
     }
 
     /**
@@ -247,8 +257,12 @@ class UserController extends Controller
         return redirect('users/' . $id);
     }
 
-    public function update_admin_manager(Request $request, $id)
+    public function update_admin_manager(Request $request)
     {
+
+        if($user = \Auth::user()) {
+
+            $id = $user->id;
 
             $this->validate(request(), [
                 'name' => 'required',
@@ -274,9 +288,14 @@ class UserController extends Controller
             ]);
 
 
-        session()->flash('message', 'Your profile has been updated.');
+            session()->flash('message', 'Your profile has been updated.');
 
-        return redirect('/profile');
+            return redirect('/profile');
+
+        } else {
+
+            return redirect('/');
+        }
     }
 
     
@@ -303,6 +322,39 @@ class UserController extends Controller
         session()->flash('message', 'Password updated.');
 
         return redirect('users/' . $id);
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update_profile_password(Request $request)
+    {
+        if($user = \Auth::user())
+        {
+
+            $id = $user->id;
+            // validate the form
+            $this->validate(request(), [
+                'password' => 'required|confirmed|min:8'
+            ]);
+
+            // update user
+            $user = User::find($id)->update([
+                'password' => bcrypt($request->password)
+            ]);
+
+            session()->flash('message', 'Password updated.');
+
+            return redirect('profile');
+
+        } else {
+
+            return redirect('/');
+        }
     }
 
     /**
