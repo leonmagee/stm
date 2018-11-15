@@ -29,6 +29,10 @@ Route::get('edit-profile', 'UserController@edit_profile');
 Route::get('change-profile-password', 'UserController@edit_profile_password');
 Route::post('update-user/{id}','UserController@update');
 Route::post('update-user-profile-password','UserController@update_profile_password');
+/**
+* @todo change the name of this, it can update any profile
+*/
+Route::post('update-admin-manager','UserController@update_admin_manager'); 
 
 Route::group(['middleware' => 'App\Http\Middleware\LockOutUsersManagers'], function() {
 	Route::get('edit-user/{user}', 'UserController@edit');
@@ -40,7 +44,6 @@ Route::group(['middleware' => 'App\Http\Middleware\LockOutUsers'], function()
 {
 	Route::get('bonus-credit/{user}', 'UserCreditBonusController@edit');
 	Route::post('bonus-credit/{user}', 'UserCreditBonusController@update');
-	Route::post('update-admin-manager','UserController@update_admin_manager');
 	Route::get('delete-user/{user}', 'UserController@destroy');
 	Route::get('user-plan-values/{user}', 'UserController@user_plan_residual');
 	Route::post('user-plan-values/{id}', 'UserPlanValuesController@store');
@@ -94,7 +97,6 @@ Route::group(['middleware' => 'App\Http\Middleware\LockOutUsers'], function()
 */
 Route::get('user-sims', 'SimUserController@index');
 Route::get('user-sims/{sim}', 'SimUserController@show');
-Route::get('user-sims/user/{user}', 'SimUserController@index_user');
 //Route::get('assign-sims', 'SimUserController@create');
 //Route::post('assign-sims', 'SimUserController@store');
 Route::get('find-sims', 'SimUserController@find');
@@ -105,6 +107,7 @@ Route::get('list-sims-phone/{sims}', 'SimUserController@show_list_phone');
 
 Route::group(['middleware' => 'App\Http\Middleware\LockOutUsers'], function()
 {
+	Route::get('user-sims/user/{user}', 'SimUserController@index_user');
     Route::get('delete-sims', 'SimUserController@delete');
 	Route::post('delete_sims', 'SimUserController@destroy');
 });
