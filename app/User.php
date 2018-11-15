@@ -27,6 +27,14 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    // public function setPasswordAttribute($password)
+    // {
+    //     if ( $password !== null & $password !== "" )
+    //     {
+    //         $this->attributes['password'] = bcrypt($password);
+    //     }
+    // }
+
     /**
     * Query like this: $user->sims->find(2)->sim_number // this will return one sim with the id 2
     **/

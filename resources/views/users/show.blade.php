@@ -56,8 +56,10 @@
 
     <div class="button-bar-wrap">
     	<div class="button-bar">
+            @if($is_admin)
         	<a href="/edit-user/{{ $user->id }}" class="button is-primary">Edit Info</a>
             <a href="/change-password/{{ $user->id }}" class="button is-primary">Change Password</a>
+            @endif
             <a href="/user-sims/user/{{ $user->id }}" class="button is-primary">View Sims</a>
             <a href="/reports/{{ $user->id }}" class="button is-primary">Report</a>
     	</div>

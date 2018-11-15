@@ -25,12 +25,15 @@ Route::get('/', 'HomeController@index')->name('home');
 Route::get('users', 'UserController@index')->name('users');
 Route::get('users/{user}', 'UserController@show');
 Route::get('profile', 'UserController@profile');
-Route::get('edit-user/{user}', 'UserController@edit');
 Route::get('edit-profile/{user}', 'UserController@edit_profile');
-Route::get('change-password/{user}', 'UserController@edit_password');
+//Route::get('change-password/{user}', 'UserController@edit_password');
 Route::post('update-user/{id}','UserController@update');
 Route::post('update-user-password/{id}','UserController@update_password');
 
+Route::group(['middleware' => 'App\Http\Middleware\LockOutUsersManagers'], function() {
+	Route::get('edit-user/{user}', 'UserController@edit');
+	Route::get('change-password/{user}', 'UserController@edit_password');
+});
 
 Route::group(['middleware' => 'App\Http\Middleware\LockOutUsers'], function()
 {
@@ -163,7 +166,7 @@ Route::get('carriers/{carrier}', 'CarrierController@show');
 */
 //Route::get('register', 'AuthController@register');
 
-Route::group(['middleware' => 'App\Http\Middleware\LockOutUsers'], function()
+Route::group(['middleware' => 'App\Http\Middleware\LockOutUsersManagers'], function()
 {
 	Route::get('register', 'RegistrationController@create');
 	Route::post('register', 'RegistrationController@store');

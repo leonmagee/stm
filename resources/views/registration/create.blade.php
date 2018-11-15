@@ -150,8 +150,13 @@
 		var reg_password = $('.form-wrap-flex #password').val();
 		var reg_password2 = $('.form-wrap-flex #password_2').val();
 
+		console.log(reg_password);
+		console.log(reg_password2);
+
     	var token = document.head.querySelector('meta[name="csrf-token"]');
 		window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
+
+		//return false;
 
 		axios({
 			method: 'post',

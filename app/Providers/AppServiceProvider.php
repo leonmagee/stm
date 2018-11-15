@@ -254,13 +254,13 @@ class AppServiceProvider extends ServiceProvider
                         'icon' => 'flaticon-upload',
                         'default' => false,
                     ],
-                    // [
-                    //     'name' => 'All Users',
-                    //     'link' => '/users',
-                    //     'sub' => false,
-                    //     'icon' => 'flaticon-group',
-                    //     'default' => false,
-                    // ],
+                    [
+                        'name' => 'All Users',
+                        'link' => '/users',
+                        'sub' => false,
+                        'icon' => 'flaticon-group',
+                        'default' => false,
+                    ],
                     // [
                     //     'name' => 'Add New User',
                     //     'link' => '/register',
