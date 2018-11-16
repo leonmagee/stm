@@ -95,20 +95,6 @@ class RegistrationController extends Controller
 
 	public function store(Request $request) {
 
-
-		// protected function create(array $data)
-		//   {
-		//     $user = User::create([
-		//       'name'     => $data['name'],
-		//       'email'    => $data['email'],
-		//       'password' => bcrypt($data['password']),
-		//     ]);
-		//     $user
-		//        ->roles()
-		//        ->attach(Role::where('name', 'employee')->first());
-		//     return $user;
-		// }
-
     	/**
     	* validate the form
     	* @todo should address info be required?
@@ -128,6 +114,7 @@ class RegistrationController extends Controller
 			'password' => 'required|confirmed|min:8'
 		]);
 
+
     	// create and save new user
 		$user = User::create([
 			'name' => $request->name,
@@ -139,8 +126,8 @@ class RegistrationController extends Controller
 			'state' => $request->state,
 			'zip' => $request->zip,
 			'role_id' => $request->role_id,
+			'password' => bcrypt($request->password)
 			//'password' => Hash::make($request->user_password)
-			'password' => bcrypt($request->user_password)
 			//'password' => $request->user_password
 		]);
 
