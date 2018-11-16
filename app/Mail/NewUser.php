@@ -24,6 +24,7 @@ class NewUser extends Mailable
     {
         $this->user = $user;
         $this->password = $password;
+        $this->subject('Welcome to Sim Track Manager');
     }
 
     /**

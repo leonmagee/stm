@@ -4,7 +4,7 @@
 
 You are now signed up to Sim Track Manager!
 
-Here is your login info:
+## Your Login Info
 
 Username / Email: {{ $user->email }}
 
