@@ -1,5 +1,4 @@
 @component('mail::message')
-# Introduction
 
 # Hello {{ $user->name }}!
 
@@ -9,7 +8,7 @@ Here is your login info:
 
 Username / Email: {{ $user->email }}
 
-Password: {{ $user->password }}
+Password: {{ $password }}
 
 @component('mail::button', ['url' => 'https://stmmax.com'])
 Go to Sim Track Manager

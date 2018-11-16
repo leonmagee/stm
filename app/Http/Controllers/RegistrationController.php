@@ -141,7 +141,7 @@ class RegistrationController extends Controller
 		* Mandate strong password... 
 		* @todo this will currently not work on the server - prob because of mail driver in .env?
 		*/
-		\Mail::to($user)->send(new NewUser($user));
+		\Mail::to($user)->send(new NewUser($user, $request->password));
 
     	// log in new user
 		//auth()->login($user);
