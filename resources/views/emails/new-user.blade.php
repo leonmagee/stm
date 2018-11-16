@@ -1,20 +1,11 @@
 @component('mail::message')
 # Introduction
 
-The body of your message.
-
-- one
-- two
-- three
+You are now signed up to Sim Track Manager!
 
 @component('mail::button', ['url' => 'https://stmmax.com'])
 Go to Sim Track Manager
 @endcomponent
 
-@component('mail::panel')
-Panel area new?
-@endcomponent
-
-Thanks,<br>
 {{ config('app.name') }}
 @endcomponent
