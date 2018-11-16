@@ -1,6 +1,6 @@
 @component('mail::message')
 
-# Hello {{ $user->name }}!
+# Hello {{ $user->name }}
 
 You are now signed up to Sim Track Manager!
 
