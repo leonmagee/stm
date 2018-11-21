@@ -130,13 +130,21 @@ class ReportsController extends Controller
 
         $recharge_data_array = [];
 
+        /**
+        * I need to chagne this so it combines multiple report types, so I can 
+        * use both regular and instant... 
+        */
         $config_array = [ // this can be changed for different report types
             'current' => 1, // H2O Month
+            'current_instant' => 4, // H2O Instant
             'recharge' => 5, // H2O 2nd Recharge
+            'recharge_instant' => 6 // H2O 2nd Rechage Instant
         ];
 
         $report_type_current = ReportType::find($config_array['current']);
+        $report_type_current_instant = ReportType::find($config_array['current_instant']);
         $report_type_recharge = ReportType::find($config_array['recharge']);
+        $report_type_recharge_instant = ReportType::find($config_array['recharge']);
 
         $date_array = Helpers::date_array();
 
@@ -150,30 +158,36 @@ class ReportsController extends Controller
             [
                 [
                     'rt_id' => $report_type_current->id,
+                    'rt_i_id' => $report_type_current_instant->id,
                     'date' => $one_month_ago,
                 ],
                 [
                     'rt_id' => $report_type_recharge->id,
+                    'rt_i_id' => $report_type_recharge_instant->id,
                     'date' => $current_date,
                 ],
             ],
             [
                 [
                     'rt_id' => $report_type_current->id,
+                    'rt_i_id' => $report_type_current_instant->id,
                     'date' => $two_months_ago,
                 ],
                 [
                     'rt_id' => $report_type_recharge->id,
+                    'rt_i_id' => $report_type_recharge_instant->id,
                     'date' => $one_month_ago,
                 ],
             ],
             [
                 [
                     'rt_id' => $report_type_current->id,
+                    'rt_i_id' => $report_type_current_instant->id,
                     'date' => $three_months_ago,
                 ],
                 [
                     'rt_id' => $report_type_recharge->id,
+                    'rt_i_id' => $report_type_recharge_instant->id,
                     'date' => $two_months_ago,
                 ],
             ]
@@ -189,7 +203,9 @@ class ReportsController extends Controller
                 $matching_sims_count_activation = DB::table('sims')
                 ->select('sims.value')
                 ->join('sim_users', 'sim_users.sim_number', '=', 'sims.sim_number')
-                ->where('sims.report_type_id', $item[0]['rt_id'])
+                ->whereIn('sims.report_type_id', [$item[0]['rt_id'],$item[0]['rt_i_id']])
+                // ->where('sims.report_type_id', $item[0]['rt_id'])
+                // ->orWhere('sims.report_type_id', $item[0]['rt_i_id'])
                 ->where('sim_users.user_id', $user->id)
                 ->where('sims.upload_date', $item[0]['date'])
                 ->count();
@@ -197,7 +213,9 @@ class ReportsController extends Controller
                 $matching_sims_count_recharge = DB::table('sims')
                 ->select('sims.value')
                 ->join('sim_users', 'sim_users.sim_number', '=', 'sims.sim_number')
-                ->where('sims.report_type_id', $item[1]['rt_id'])
+                ->whereIn('sims.report_type_id', [$item[1]['rt_id'], $item[1]['rt_i_id']])
+                // ->where('sims.report_type_id', $item[1]['rt_id'])
+                // ->orWhere('sims.report_type_id', $item[1]['rt_i_id'])
                 ->where('sim_users.user_id', $user->id)
                 ->where('sims.upload_date', $item[1]['date'])
                 ->count();
