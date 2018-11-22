@@ -19,6 +19,8 @@ class ReportData {
 
 	public function get_data() {
 
+		//dd('ReportData->get_data() check 1'); // fast
+
 		$current_user = \Auth::user();
 
 		if($user_id = $this->user_id)

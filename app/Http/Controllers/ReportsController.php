@@ -35,12 +35,20 @@ class ReportsController extends Controller
         * for now, we'll just omit the per user spiff and residual settings and credit or bonus
         * features. 
         */
+
         $current_date = Settings::first()->current_date;
         $current_site_date = Helpers::current_date_name();
         $site_id = Settings::first()->get_site_id();
         $site_name = Site::find($site_id)->name;
+
+        // lets find out what take so long...
+        //dd('check 1');
+
         $report_data_object = new ReportData($site_id, $current_date);
+
+        //dd('check 2'); // this takes a while
         $report_data_array = $report_data_object->report_data;
+        dd('check 3'); // I think about as long as check 2...
         $is_admin = Helpers::current_user_admin();
 
         return view('reports.index', compact(
@@ -144,7 +152,7 @@ class ReportsController extends Controller
         $report_type_current = ReportType::find($config_array['current']);
         $report_type_current_instant = ReportType::find($config_array['current_instant']);
         $report_type_recharge = ReportType::find($config_array['recharge']);
-        $report_type_recharge_instant = ReportType::find($config_array['recharge']);
+        $report_type_recharge_instant = ReportType::find($config_array['recharge_instant']);
 
         $date_array = Helpers::date_array();
 
