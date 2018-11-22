@@ -7,6 +7,7 @@ class ReportData {
 	private $role_id;
 	private $current_date;
 	public $report_data;
+	public $total_payment_all_users;
 
 	public function __construct($site_id, $current_date, $user_id = null) {
 
@@ -14,12 +15,11 @@ class ReportData {
 		$this->role_id = Helpers::get_role_id($this->site_id);
 		$this->current_date = $current_date;
 		$this->user_id = $user_id;
+
 		$this->get_data();
 	}
 
 	public function get_data() {
-
-		//dd('ReportData->get_data() check 1'); // fast
 
 		$current_user = \Auth::user();
 
@@ -38,15 +38,27 @@ class ReportData {
 
 		$report_data_array = array();
 
+		$total_payment_all_users = 0;
+
 		foreach ( $users as $user ) {
 
-			$report_data_array[] = new ReportDataUser(
+			$report_data_user = new ReportDataUser(
 				$user->name, 
 				$user->company, 
 				$user->id,
 				$this->site_id
 			);
+
+			$report_data_array[] = $report_data_user;
+
+			$total_payment_all_users += $report_data_user->total_payment;
+
+			//dd($report_data_user->total_payment);
 		}
+
+		//dd($total_payment_all_users);
+
+		$this->total_payment_all_users = $total_payment_all_users;
 
         $this->report_data = $report_data_array;
 	}

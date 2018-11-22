@@ -6,5 +6,8 @@ body.stm-body {
 		@media(min-width: $screen-sm) {
 			text-align: left;
 		}
+		span {
+			color: $color-red;
+		}
 	}
 }

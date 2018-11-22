@@ -41,20 +41,17 @@ class ReportsController extends Controller
         $site_id = Settings::first()->get_site_id();
         $site_name = Site::find($site_id)->name;
 
-        // lets find out what take so long...
-        //dd('check 1');
-
         $report_data_object = new ReportData($site_id, $current_date);
+        $total_payment_all_users = $report_data_object->total_payment_all_users;
 
-        //dd('check 2'); // this takes a while
         $report_data_array = $report_data_object->report_data;
-        //dd('check 3'); // I think about as long as check 2...
         $is_admin = Helpers::current_user_admin();
 
         return view('reports.index', compact(
             'site_name', 
             'current_site_date', 
             'report_data_array',
+            'total_payment_all_users',
             'is_admin'
         ));
     }

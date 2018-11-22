@@ -16702,6 +16702,10 @@ body.stm-body h1.title {
   }
 }
 
+body.stm-body h1.title span {
+  color: #EF476F;
+}
+
 @media (min-width: 980px) {
   .form-wrapper {
     display: -webkit-box;

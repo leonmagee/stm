@@ -22,6 +22,7 @@ class ReportDataUser {
 		$this->user_id = $user_id;
 		$this->site_id = $site_id;
 		$this->count = SimUser::where('user_id', $user_id)->count();
+		//dd('ReportData->get_data() continues...');
 		$this->get_data();
 	}
 
@@ -31,9 +32,11 @@ class ReportDataUser {
 		$total_count = $total_payment = 0;
 		$current_date = Helpers::current_date();
 
+		//dd('ReportData->get_data() continues...');
+
 		foreach($report_types as $report_type) {
 
-			if ($report_type->spiff ){
+			if ($report_type->spiff) {
 
 				$matching_sims = DB::table('sims')
 				->select('sims.value', 'sims.report_type_id')
@@ -52,7 +55,7 @@ class ReportDataUser {
 				->where('sim_residuals.report_type_id', $report_type->id)
 				->where('sim_residuals.upload_date', $current_date)
 				->get();
-			}
+			}	
 
 			if ($matching_sims) {
 				$number_sims = count($matching_sims);
@@ -76,7 +79,6 @@ class ReportDataUser {
 
 			$total_count += $number_sims;
 			$total_payment += $payment->total_payment;
-
 		}
 
         $bonus_credit = UserCreditBonus::where([
@@ -104,6 +106,8 @@ class ReportDataUser {
 		$this->total_payment = $total_payment;
 
 		$this->report_data = $report_data_array;
+
+		//dd('ReportData->get_data() continues end of one?');
 
 	}
 }

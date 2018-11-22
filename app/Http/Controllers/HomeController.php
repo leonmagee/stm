@@ -169,7 +169,12 @@ class HomeController extends Controller
                 $sims = Sim::where([
                     'upload_date' => $date,
                     'report_type_id' => $report_type->id
-                ])->latest()->get();
+                ])->get();
+
+                // $sims = Sim::where([
+                //     'upload_date' => $date,
+                //     'report_type_id' => $report_type->id
+                // ])->latest()->get();
 
                 $number = count($sims);
 

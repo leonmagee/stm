@@ -1,7 +1,7 @@
 @extends('layouts.layout')
 
 @section('title')
-{{ $site_name }} Reports for {{ $current_site_date }}
+{{ $site_name }} Reports for {{ $current_site_date }} / Total Payment: <span>${{ number_format($total_payment_all_users, 2) }}</span>
 @endsection
 
 @section('content')
