@@ -48,7 +48,7 @@ class ReportsController extends Controller
 
         //dd('check 2'); // this takes a while
         $report_data_array = $report_data_object->report_data;
-        dd('check 3'); // I think about as long as check 2...
+        //dd('check 3'); // I think about as long as check 2...
         $is_admin = Helpers::current_user_admin();
 
         return view('reports.index', compact(
