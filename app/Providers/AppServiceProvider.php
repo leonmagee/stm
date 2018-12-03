@@ -124,6 +124,17 @@ class AppServiceProvider extends ServiceProvider
                 ]
             ];
 
+            $recharge_data = [
+                [
+                    'name' => '2nd Recharge Data',
+                    'link' => '/recharge-data'
+                ],
+                [
+                    'name' => '3rd Recharge Data',
+                    'link' => '/3rd-recharge-data'
+                ]
+            ];
+
             $user = \Auth::user();
 
             if ($user->isAdmin()) {
@@ -216,10 +227,10 @@ class AppServiceProvider extends ServiceProvider
                     ],
                     [
                         'name' => 'Recharge Data',
-                        'link' => '/recharge-data',
-                        'sub' => false,
+                        'link' => false,
+                        'sub' => $recharge_data,
                         'icon' => 'flaticon-electric-plug',
-                        'default' => false,
+                        'default' => '/recharge-data',
                     ],
                     [
                         'name' => 'Email Blast',
@@ -319,10 +330,10 @@ class AppServiceProvider extends ServiceProvider
                     ],
                     [
                         'name' => 'Recharge Data',
-                        'link' => '/recharge-data',
-                        'sub' => false,
+                        'link' => false,
+                        'sub' => $recharge_data,
                         'icon' => 'flaticon-electric-plug',
-                        'default' => false,
+                        'default' => '/recharge-data',
                     ],
                     [
                         'name' => 'Homepage',
@@ -371,10 +382,10 @@ class AppServiceProvider extends ServiceProvider
                     ],
                     [
                         'name' => 'Recharge Data',
-                        'link' => '/recharge-data',
-                        'sub' => false,
+                        'link' => false,
+                        'sub' => $recharge_data,
                         'icon' => 'flaticon-electric-plug',
-                        'default' => false,
+                        'default' => '/recharge-data',
                     ],
                     [
                         'name' => 'Your Profile',
