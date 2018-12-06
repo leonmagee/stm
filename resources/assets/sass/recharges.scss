@@ -16,6 +16,9 @@
 			label {
 				white-space: nowrap;
 				font-size: 0.7em;
+				span {
+					color: $color-red;
+				}
 			}
 
 			&.percent {

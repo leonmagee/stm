@@ -260,10 +260,13 @@ class ReportsController extends Controller
 
         }
 
+        $recharge = '2nd';
+
         return view('reports.recharge', compact(
             'site_name', 
             'current_site_date', 
-            'recharge_data_array'
+            'recharge_data_array',
+            'recharge'
         ));
     }
 
@@ -394,10 +397,13 @@ class ReportsController extends Controller
                     $percent_class = 'bad';
                 }
 
+                $second_recharge_name = Helpers::get_date_name($item[0]['date']) . ' <span>2nd</span> Recharge';
+                $third_recahrge_name = Helpers::get_date_name($item[1]['date']) . ' <span>3rd</span> Recharge';
+
                 $data[] = [
-                    'act_name' => Helpers::get_date_name($item[0]['date']) . ' 2nd Recharge',
+                    'act_name' => $second_recharge_name,
                     'act_count' => $matching_sims_count_activation,
-                    'rec_name' => Helpers::get_date_name($item[1]['date']) . ' 3rd Recharge',
+                    'rec_name' => $third_recahrge_name,
                     'rec_count' => $matching_sims_count_recharge,
                     'percent' => $recharge_percent,
                     'class' => $percent_class
@@ -412,10 +418,13 @@ class ReportsController extends Controller
 
         }
 
+        $recharge = '3rd';
+
         return view('reports.recharge', compact(
             'site_name', 
             'current_site_date', 
-            'recharge_data_array'
+            'recharge_data_array',
+            'recharge'
         ));
     }
 

@@ -124,16 +124,16 @@ class AppServiceProvider extends ServiceProvider
                 ]
             ];
 
-            $recharge_data = [
-                [
-                    'name' => '2nd Recharge Data',
-                    'link' => '/recharge-data'
-                ],
-                [
-                    'name' => '3rd Recharge Data',
-                    'link' => '/3rd-recharge-data'
-                ]
-            ];
+            // $recharge_data = [
+            //     [
+            //         'name' => '2nd Recharge Data',
+            //         'link' => '/recharge-data'
+            //     ],
+            //     [
+            //         'name' => '3rd Recharge Data',
+            //         'link' => '/3rd-recharge-data'
+            //     ]
+            // ];
 
             $user = \Auth::user();
 
@@ -226,11 +226,18 @@ class AppServiceProvider extends ServiceProvider
                         'default' => false,
                     ],
                     [
-                        'name' => 'Recharge Data',
-                        'link' => false,
-                        'sub' => $recharge_data,
+                        'name' => '2nd Recharge',
+                        'link' => '/recharge-data',
+                        'sub' => false,
                         'icon' => 'flaticon-electric-plug',
-                        'default' => '/recharge-data',
+                        'default' => false,
+                    ],
+                    [
+                        'name' => '3rd Recharge',
+                        'link' => '/3rd-recharge-data',
+                        'sub' => false,
+                        'icon' => 'flaticon-charging-battery',
+                        'default' => false,
                     ],
                     [
                         'name' => 'Email Blast',
@@ -329,11 +336,18 @@ class AppServiceProvider extends ServiceProvider
                         'default' => false,
                     ],
                     [
-                        'name' => 'Recharge Data',
-                        'link' => false,
-                        'sub' => $recharge_data,
+                        'name' => '2nd Recharge',
+                        'link' => '/recharge-data',
+                        'sub' => false,
                         'icon' => 'flaticon-electric-plug',
-                        'default' => '/recharge-data',
+                        'default' => false,
+                    ],
+                    [
+                        'name' => '3rd Recharge',
+                        'link' => '/3rd-recharge-data',
+                        'sub' => false,
+                        'icon' => 'flaticon-charging-battery',
+                        'default' => false,
                     ],
                     [
                         'name' => 'Homepage',
@@ -381,11 +395,18 @@ class AppServiceProvider extends ServiceProvider
                         'default' => false,
                     ],
                     [
-                        'name' => 'Recharge Data',
-                        'link' => false,
-                        'sub' => $recharge_data,
+                        'name' => '2nd Recharge',
+                        'link' => '/recharge-data',
+                        'sub' => false,
                         'icon' => 'flaticon-electric-plug',
-                        'default' => '/recharge-data',
+                        'default' => false,
+                    ],
+                    [
+                        'name' => '3rd Recharge',
+                        'link' => '/3rd-recharge-data',
+                        'sub' => false,
+                        'icon' => 'flaticon-charging-battery',
+                        'default' => false,
                     ],
                     [
                         'name' => 'Your Profile',

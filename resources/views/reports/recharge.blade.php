@@ -1,12 +1,13 @@
 @extends('layouts.layout')
 
 @section('title')
-{{ $site_name }} Recharge Data for {{ $current_site_date }}
+{{ $site_name }} {{ $recharge }} Recharge Data for {{ $current_site_date }}
 @endsection
 
 @section('content')
 
 <div class="reports-wrap">
+
 	@foreach( $recharge_data_array as $item )
 
 	<div class="report-wrap">
@@ -24,11 +25,11 @@
 
 				<div class="recharge-item">
 					<div class="item">
-						<label>{{ $data['act_name'] }}</label>
+						<label>{!! $data['act_name'] !!}</label>
 						<div class="count">{{ $data['act_count'] }}</div>
 					</div>
 					<div class="item">
-						<label>{{ $data['rec_name'] }}</label>	
+						<label>{!! $data['rec_name'] !!}</label>	
 						<div class="count">{{ $data['rec_count'] }}</div>
 					</div>
 					<div class="item percent {{ $data['class'] }}">
