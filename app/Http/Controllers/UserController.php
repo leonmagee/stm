@@ -35,6 +35,18 @@ class UserController extends Controller
     }
 
     /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function admin_managers()
+    {
+        $site_name = 'Admin & Manager';
+        $users = User::where('role_id','<', 3)->get();
+        return view('users.index', compact('users', 'site_name'));
+    }
+
+    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
@@ -209,7 +221,8 @@ class UserController extends Controller
                 'city' => 'required',
                 'state' => 'required',
                 'zip' => 'required',
-                'role_id' => 'required|gt:2', //prevent front end hack to create admin
+                'role_id' => 'required',
+                //'role_id' => 'required|gt:2', //prevent front end hack to create admin
             ]);
 
             // update user

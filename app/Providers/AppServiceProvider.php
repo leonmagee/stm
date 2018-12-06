@@ -170,6 +170,13 @@ class AppServiceProvider extends ServiceProvider
                         'default' => false,
                     ],
                     [
+                        'name' => 'Admin Users',
+                        'link' => '/admins-managers',
+                        'sub' => false,
+                        'icon' => 'flaticon-user-3',
+                        'default' => false,
+                    ],
+                    [
                         'name' => 'Add New User',
                         'link' => '/register',
                         'sub' => false,

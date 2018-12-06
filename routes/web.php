@@ -22,7 +22,6 @@ Route::get('/', 'HomeController@index')->name('home');
 /**
 * Profile & Users Routes
 */
-Route::get('users', 'UserController@index')->name('users');
 Route::get('users/{user}', 'UserController@show');
 Route::get('profile', 'UserController@profile');
 Route::get('edit-profile', 'UserController@edit_profile');
@@ -35,6 +34,7 @@ Route::post('update-user-profile-password','UserController@update_profile_passwo
 Route::post('update-admin-manager','UserController@update_admin_manager'); 
 
 Route::group(['middleware' => 'App\Http\Middleware\LockOutUsersManagers'], function() {
+	Route::get('admins-managers', 'UserController@admin_managers');
 	Route::get('edit-user/{user}', 'UserController@edit');
 	Route::get('change-password/{user}', 'UserController@edit_password');
 	Route::post('update-user-password/{id}','UserController@update_password');
@@ -42,6 +42,7 @@ Route::group(['middleware' => 'App\Http\Middleware\LockOutUsersManagers'], funct
 
 Route::group(['middleware' => 'App\Http\Middleware\LockOutUsers'], function()
 {
+	Route::get('users', 'UserController@index')->name('users');
 	Route::get('bonus-credit/{user}', 'UserCreditBonusController@edit');
 	Route::post('bonus-credit/{user}', 'UserCreditBonusController@update');
 	Route::get('delete-user/{user}', 'UserController@destroy');

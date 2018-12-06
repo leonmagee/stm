@@ -44,6 +44,16 @@
 						<label class="label" for="role">Site</label>
 						<div class="select">
 							<select name="role_id" id="role_id">
+								<option value="1"
+								@if ($user->role->id == 1)
+								selected="selected"
+								@endif
+								>Admin</option>
+								<option value="2"
+								@if ($user->role->id == 2)
+								selected="selected"
+								@endif
+								>Manager</option>
 								@foreach ($sites as $site)
 								<option 
 								@if ($user->role->id == $site->role_id)
