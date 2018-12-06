@@ -243,9 +243,9 @@ class ReportsController extends Controller
                 }
 
                 $data[] = [
-                    'act_name' => Helpers::get_date_name($item[0]['date']) . ' Activations',
+                    'act_name' => Helpers::get_date_name($item[0]['date']) . ' Activation',
                     'act_count' => $matching_sims_count_activation,
-                    'rec_name' => Helpers::get_date_name($item[1]['date']) . ' Recharges',
+                    'rec_name' => Helpers::get_date_name($item[1]['date']) . '<span> 2nd</span> Recharge',
                     'rec_count' => $matching_sims_count_recharge,
                     'percent' => $recharge_percent,
                     'class' => $percent_class
