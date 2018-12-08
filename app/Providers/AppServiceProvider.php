@@ -286,13 +286,95 @@ class AppServiceProvider extends ServiceProvider
                         'icon' => 'flaticon-group',
                         'default' => false,
                     ],
-                    // [
-                    //     'name' => 'Add New User',
-                    //     'link' => '/register',
-                    //     'sub' => false,
-                    //     'icon' => 'flaticon-add-a-contact-on-phone-interface-symbol-of-a-user-with-a-plus-sign',
-                    //     'default' => false,
-                    // ],
+                    [
+                        'name' => 'User Sims',
+                        'link' => '/user-sims',
+                        'sub' => false,
+                        'icon' => 'flaticon-report-1',
+                        'default' => false,
+                    ],
+                    [
+                        'name' => 'Look Up Sims',
+                        'link' => '/find-sims',
+                        'sub' => false,
+                        'icon' => 'flaticon-zoom-1',
+                        'default' => false,
+                    ],
+                    [
+                        'name' => 'Settings',
+                        'link' => '/settings',
+                        'sub' => false,
+                        'icon' => 'flaticon-gear',
+                        'default' => false,
+                    ],
+                    [
+                        'name' => 'Your Profile',
+                        'link' => '/profile',
+                        'sub' => false,
+                        'icon' => 'flaticon-user',
+                        'default' => false,
+                    ],
+                    [
+                        'name' => 'Report Totals',
+                        'link' => '/report-totals',
+                        'sub' => false,
+                        'icon' => 'flaticon-growth',
+                        'default' => false,
+                    ],
+                    [
+                        'name' => 'User Reports',
+                        'link' => '/reports',
+                        'sub' => false,
+                        'icon' => 'flaticon-bar-chart',
+                        'default' => false,
+                    ],
+                    [
+                        'name' => 'Archives',
+                        'link' => '/archives',
+                        'sub' => false,
+                        'icon' => 'flaticon-history-clock-button',
+                        'default' => false,
+                    ],
+                    [
+                        'name' => '2nd Recharge',
+                        'link' => '/recharge-data',
+                        'sub' => false,
+                        'icon' => 'flaticon-electric-plug',
+                        'default' => false,
+                    ],
+                    [
+                        'name' => '3rd Recharge',
+                        'link' => '/3rd-recharge-data',
+                        'sub' => false,
+                        'icon' => 'flaticon-charging-battery',
+                        'default' => false,
+                    ],
+                    [
+                        'name' => 'Homepage',
+                        'link' => '/',
+                        'sub' => false,
+                        'icon' => 'flaticon-home',
+                        'default' => false,
+                    ],
+                ];
+
+            } elseif($user->isEmployee()){
+
+                $menu_array = [
+                    [
+                        'name' => 'Monthly Sims',
+                        'link' => false,
+                        'sub' => $monthly_sims_sub,
+                        'icon' => 'flaticon-sim-card',
+                        'default' => false,
+                    ],
+                    [
+                        'name' => 'All Users',
+                        'link' => '/users',
+                        'sub' => false,
+                        'icon' => 'flaticon-group',
+                        'default' => false,
+                    ],
                     [
                         'name' => 'User Sims',
                         'link' => '/user-sims',

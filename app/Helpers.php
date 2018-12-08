@@ -66,10 +66,21 @@ class Helpers {
             return false;
       }
 
+      public static function current_user_employee() {
+            if($user = \Auth::user())
+            {
+                  if ($user->role_id === 6)
+                  {
+                        return true;
+                  }
+            }
+            return false;
+      }
+
       public static function is_normal_user() {
             if($user = \Auth::user())
             {
-                  if ($user->role_id > 2)
+                  if (($user->role_id === 3) || ($user->role_id === 4) || ($user->role_id === 5))
                   {
                         return true;
                   }
@@ -80,7 +91,7 @@ class Helpers {
       public static function restrict_page() {
             if($user = \Auth::user())
             {
-                  if ($user->role_id > 2)
+                  if (($user->role_id === 3) || ($user->role_id === 4) || ($user->role_id === 5))
                   {
                         return redirect('/');
                   }

@@ -24,30 +24,6 @@ class RegistrationController extends Controller
 
 	public function create() {
 
-
-		// hash: $2y$10$6GVb0gNVVDJJxjH/2Jfn/evnZEYkUu6EcF7bwKakku.9oCTPhrTrW
-		// salt: base64:w5l9fkCGJzgczyUctdGg+c/Bz05iCMnSt79eeW5kOgo=
-
-		//$password = 'aaa';
-
-		//$password = 'Trustno34!';
-
-
-		//$bcrypt = bcrypt($password);
-
-		//dd($bcrypt);
-
-		// $password = '11111111';
-		// //$hash = '$2y$10$1rx5jvTKOsJoaozOTQm.muVixLWHvb6ly9O7pRKUcnyvpWyXYU2J2'; // works = Trustno34!
-		// //$hash = '$2y$10$6GVb0gNVVDJJxjH/2Jfn/evnZEYkUu6EcF7bwKakku.9oCTPhrTrW'; // 11111111
-		// $hash = '$2y$10$MnWMLTft3lVA7zaLhEBj1edk31KHmcL7TJirFi1CbNs.VTGYcijaS'; // 11111111
-
-		// //$hash = "$2y$10$4G2JgBlF5qzdcsTom7E24uIDuL2GDNkS1hT9eTNEw9G03dV9tNXQe"; // newly computed
-
-		// $verification = password_verify($password, $hash);
-
-		// dd($verification);
-
 		$sites = Site::all();
 
 		$sites_array = [
@@ -59,6 +35,11 @@ class RegistrationController extends Controller
 			[
 				'name' => 'Manager',
 				'role' => 2,
+				'site' => null
+			],
+			[
+				'name' => 'Employee',
+				'role' => 6,
 				'site' => null
 			],
 		];

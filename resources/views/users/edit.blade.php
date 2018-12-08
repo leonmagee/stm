@@ -54,6 +54,11 @@
 								selected="selected"
 								@endif
 								>Manager</option>
+								<option value="6"
+								@if ($user->role->id == 6)
+								selected="selected"
+								@endif
+								>Employee</option>
 								@foreach ($sites as $site)
 								<option 
 								@if ($user->role->id == $site->role_id)

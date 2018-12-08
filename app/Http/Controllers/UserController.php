@@ -42,7 +42,8 @@ class UserController extends Controller
     public function admin_managers()
     {
         $site_name = 'Admin & Manager';
-        $users = User::where('role_id','<', 3)->get();
+        $managers_array = [1,2,6];
+        $users = User::whereIn('role_id', $managers_array)->get();
         return view('users.index', compact('users', 'site_name'));
     }
 

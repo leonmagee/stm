@@ -56,7 +56,10 @@ Route::group(['middleware' => 'App\Http\Middleware\LockOutUsers'], function()
 /**
 * SIMs Routes
 */
-Route::get('sims/upload', 'SimController@upload_form');
+Route::group(['middleware' => 'App\Http\Middleware\LockOutUsersEmployees'], function()
+{
+	Route::get('sims/upload', 'SimController@upload_form');
+});
 //Route::get('sims/create', 'SimController@addSim');
 Route::get('sims/archive/{id}', 'SimController@archive');
 
