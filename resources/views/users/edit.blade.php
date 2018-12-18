@@ -44,6 +44,7 @@
 						<label class="label" for="role">Site</label>
 						<div class="select">
 							<select name="role_id" id="role_id">
+								@if($user->isAdminManagerEmployee())
 								<option value="1"
 								@if ($user->role->id == 1)
 								selected="selected"
@@ -59,6 +60,7 @@
 								selected="selected"
 								@endif
 								>Employee</option>
+								@else
 								@foreach ($sites as $site)
 								<option 
 								@if ($user->role->id == $site->role_id)
@@ -67,6 +69,7 @@
 								value="{{ $site->role_id }}">{{ $site->name }}
 								</option>	
 								@endforeach
+								@endif
 							</select>
 						</div>
 					</div>

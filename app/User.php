@@ -47,7 +47,7 @@ class User extends Authenticatable
     * instead of checking the role value, it will check the user_role pivot table?
     */
     public function isAdmin() {
-        if ( $this->role->id === 1) {
+        if ($this->role->id === 1) {
             return true;
         } else {
             return false;
@@ -55,7 +55,7 @@ class User extends Authenticatable
     }
 
     public function isManager() {
-        if ( $this->role->id === 2) {
+        if ($this->role->id === 2) {
             return true;
         } else {
             return false;
@@ -63,7 +63,15 @@ class User extends Authenticatable
     }
 
     public function isEmployee() {
-        if ( $this->role->id === 6) {
+        if ($this->role->id === 6) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function isAdminManagerEmployee() {
+        if (($this->role->id === 1) || ($this->role->id === 2) || ($this->role->id === 6)) {
             return true;
         } else {
             return false;
