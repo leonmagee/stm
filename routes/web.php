@@ -31,7 +31,7 @@ Route::post('update-user-profile-password','UserController@update_profile_passwo
 /**
 * @todo change the name of this, it can update any profile
 */
-Route::post('update-admin-manager','UserController@update_admin_manager'); 
+Route::post('update-admin-manager','UserController@update_admin_manager');
 
 Route::group(['middleware' => 'App\Http\Middleware\LockOutUsersManagers'], function() {
 	Route::get('admins-managers', 'UserController@admin_managers');
@@ -43,6 +43,10 @@ Route::group(['middleware' => 'App\Http\Middleware\LockOutUsersManagers'], funct
 Route::group(['middleware' => 'App\Http\Middleware\LockOutUsers'], function()
 {
 	Route::get('users', 'UserController@index')->name('users');
+});
+
+Route::group(['middleware' => 'App\Http\Middleware\LockOutUsersManagers'], function()
+{
 	Route::get('bonus-credit/{user}', 'UserCreditBonusController@edit');
 	Route::post('bonus-credit/{user}', 'UserCreditBonusController@update');
 	Route::get('delete-user/{user}', 'UserController@destroy');
@@ -234,7 +238,7 @@ Route::group(['middleware' => 'App\Http\Middleware\LockOutUsers'], function()
 //Auth::routes();
 
 /**
-* Named Route - naming this route home allows you to reference it other places. 
+* Named Route - naming this route home allows you to reference it other places.
 **/
 
 // Route::get('/home', 'HomeController@index')->name('home');
