@@ -273,13 +273,6 @@ class AppServiceProvider extends ServiceProvider
                         'default' => false,
                     ],
                     [
-                        'name' => 'Upload Sims',
-                        'link' => '/sims/upload',
-                        'sub' => false,
-                        'icon' => 'flaticon-upload',
-                        'default' => false,
-                    ],
-                    [
                         'name' => 'All Users',
                         'link' => '/users',
                         'sub' => false,
