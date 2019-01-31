@@ -56,13 +56,15 @@ Route::group(['middleware' => 'App\Http\Middleware\LockOutUsersManagers'], funct
 	Route::post('delete-user-plan-value/{userPlanValues}', 'UserPlanValuesController@destroy');
 	Route::post('delete-user-residual-percent/{userResidualPercent}', 'UserResidualPercentController@destroy');
 });
-
 /**
 * SIMs Routes
 */
-Route::group(['middleware' => 'App\Http\Middleware\LockOutUsersEmployees'], function()
+Route::group(['middleware' => 'App\Http\Middleware\LockOutUsersManagersAgent'], function()
 {
 	Route::get('sims/upload', 'SimController@upload_form');
+	Route::post('upload', 'SimController@upload');
+	Route::post('upload-single', 'SimController@upload_single');
+	Route::post('upload-single-paste', 'SimController@upload_single_paste');
 });
 //Route::get('sims/create', 'SimController@addSim');
 Route::get('sims/archive/{id}', 'SimController@archive');
@@ -71,11 +73,7 @@ Route::get('sims/archive/{id}', 'SimController@archive');
 
 Route::group(['middleware' => 'App\Http\Middleware\LockOutUsers'], function()
 {
-	Route::post('upload', 'SimController@upload');
-	Route::post('upload-single', 'SimController@upload_single');
-	Route::post('upload-single-paste', 'SimController@upload_single_paste');
 	Route::post('sims', 'SimController@store');
-
 });
 
 // API Routes
