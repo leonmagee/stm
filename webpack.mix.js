@@ -14,7 +14,7 @@ const mix = require('laravel-mix');
 mix.js('resources/assets/js/app.js', 'public/js')
     .sass('resources/assets/sass/app.scss', 'public/css')
     .disableNotifications()
-    .browserSync('https://stm.dev');
+    .browserSync('https://stm.test');
 
 // mix.js('resources/assets/js/app.js', 'public/js')
 // .sass('resources/assets/sass/app.scss', 'public/css').version().disableNotifications();
