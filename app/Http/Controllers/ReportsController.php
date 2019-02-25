@@ -28,7 +28,6 @@ class ReportsController extends Controller
      */
     public function index()
     {
-
         /**
          * @todo here's where we get the report data - so this should probably be its own class.
          * for now, we'll just omit the per user spiff and residual settings and credit or bonus
@@ -60,14 +59,13 @@ class ReportsController extends Controller
      */
     public function totals()
     {
-
         $current_date = Settings::first()->current_date;
         $current_site_date = Helpers::current_date_name();
         $site_id = Settings::first()->get_site_id();
         $site = Site::find($site_id);
         $site_name = $site->name;
         $role_id = $site->role_id;
-        $report_types = ReportType::all();
+        $report_types = ReportType::query()->orderBy('order_index')->get();
         $current_date = Helpers::current_date();
         $report_type_totals_array = [];
         $total_count_final = 0;

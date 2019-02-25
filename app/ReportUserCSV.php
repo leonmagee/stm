@@ -19,10 +19,10 @@ class ReportUserCSV {
 
 		$site_id = Settings::first()->get_site_id();
 
-		$report_types_array = ReportType::all();
+		$report_types_array = ReportType::query()->orderBy('order_index')->get();
 
 		foreach ( $report_types_array as $report_type ) {
-			
+
 			$title = $report_type->carrier->name . ' ' . $report_type->name;
 
 			$spiff_or_res = $report_type->spiff;
@@ -67,7 +67,7 @@ class ReportUserCSV {
 
 					$payment_amount = $this->calc_payment(
 						$report_type->id,
-						$site_id, 
+						$site_id,
 						$report->value,
 						$spiff_or_res,
 						$user->id
@@ -113,7 +113,7 @@ class ReportUserCSV {
 			if ( $is_spiff ) {
 
 				$report_plan_values = ReportTypeSiteValue::where(
-					'report_type_site_defaults_id', 
+					'report_type_site_defaults_id',
 					$defaults->id)
 				->get();
 
@@ -136,9 +136,9 @@ class ReportUserCSV {
 				}
 
 				$new_charge = ReportPaymentCalculation::calc_spiff_payments(
-					$override_array, 
-					$value, 
-					$values_array, 
+					$override_array,
+					$value,
+					$values_array,
 					$defaults->spiff_value,
 					$site_id
 				);
@@ -155,7 +155,7 @@ class ReportUserCSV {
 				$new_charge = ( $value * ( $percent / 100));
 			}
 
-		} 
+		}
 
 		else {
 
@@ -169,7 +169,7 @@ class ReportUserCSV {
 	public static function process_csv_download( $user ) {
 
 		// get data
-		$report_types = ReportType::all();
+		$report_types = ReportType::query()->orderBy('order_index')->get();
 
 		// current date
 		$current_date = Helpers::current_date();
@@ -190,8 +190,8 @@ class ReportUserCSV {
 
 		// get payment overview data
 		$report_data_user = new ReportDataUser(
-			$user->name, 
-			$user->company, 
+			$user->name,
+			$user->company,
 			$user->id,
 			//$user->role_id
 			$site_id
@@ -215,15 +215,15 @@ class ReportUserCSV {
 		$csv->insertOne([
 			'Monthly Bonus',
 			'',
-			'$' . number_format($report_data_user->bonus, 2)		
+			'$' . number_format($report_data_user->bonus, 2)
 		]);
-		
+
 		$csv->insertOne([
 			'Outstanding Balance',
 			'',
-			'$' . number_format($report_data_user->credit, 2)		
+			'$' . number_format($report_data_user->credit, 2)
 		]);
-		
+
 		$csv->insertOne([
 			'TOTAL',
 			$report_data_user->total_count,
@@ -262,9 +262,6 @@ class ReportUserCSV {
 
 	public static function process_csv_download_archive( $user, $current_date ) {
 
-		// get data
-		//$report_types = ReportType::all();
-
 		// current date
 		//$current_date = Helpers::current_date();
 		$date_name = Helpers::current_date_name();
@@ -281,8 +278,8 @@ class ReportUserCSV {
 
 		// get payment overview data
 		// $report_data_user = new ReportDataUser(
-		// 	$user->name, 
-		// 	$user->company, 
+		// 	$user->name,
+		// 	$user->company,
 		// 	$user->id,
 		// 	$user->role
 		// );
@@ -312,15 +309,15 @@ class ReportUserCSV {
 		$csv->insertOne([
 			'Monthly Bonus',
 			'',
-			'$' . number_format($report_data_user->bonus, 2)		
+			'$' . number_format($report_data_user->bonus, 2)
 		]);
-		
+
 		$csv->insertOne([
 			'Outstanding Balance',
 			'',
-			'$' . number_format($report_data_user->credit, 2)		
+			'$' . number_format($report_data_user->credit, 2)
 		]);
-		
+
 		$csv->insertOne([
 			'TOTAL',
 			$report_data_user->total_count,

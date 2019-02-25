@@ -41,22 +41,22 @@ class HomeController extends Controller
 
         if ($user->isAdmin())
         {
-            return $this->outputCharts(); 
+            return $this->outputCharts();
         }
         elseif ($user->isManager())
         {
             return $this->outputCharts();
             //return $this->outputUpload();
         }
-        else 
+        else
         {
             if(Helpers::is_site_locked())
             {
-                return $this->outputLockedPage(); 
+                return $this->outputLockedPage();
             }
             else
             {
-                return $this->outputCharts(); 
+                return $this->outputCharts();
             }
             //return $this->outputProfile($user);
         }
@@ -101,7 +101,7 @@ class HomeController extends Controller
 
     public function outputUpload() {
 
-        $report_types = ReportType::all();
+        $report_types = ReportType::query()->orderBy('order_index')->get();
 
         $carriers = Carrier::all();
 
@@ -140,7 +140,7 @@ class HomeController extends Controller
 
         $date_array_final = [
             $current_date,
-            $one_month_ago, 
+            $one_month_ago,
             $two_month_ago,
             $three_month_ago
         ];

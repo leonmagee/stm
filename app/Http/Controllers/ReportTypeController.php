@@ -17,7 +17,7 @@ class ReportTypeController extends Controller
     * Only Logged In Users can see this
     **/
     public function __construct()
-    {  
+    {
         $this->middleware('auth');
     }
 
@@ -28,7 +28,7 @@ class ReportTypeController extends Controller
      */
     public function index()
     {
-        $report_types = ReportType::all();
+        $report_types = ReportType::query()->orderBy('order_index')->get();
 
         return view('report_types.index', compact('report_types'));
     }
@@ -121,7 +121,7 @@ class ReportTypeController extends Controller
      *
      * @param  \App\ReportType  $reportType
      * @return \Illuminate\Http\Response
-     * @todo I should probably have a different method if this is a spiff or a residual... 
+     * @todo I should probably have a different method if this is a spiff or a residual...
      */
     public function show(ReportType $reportType)
     {
@@ -152,11 +152,11 @@ class ReportTypeController extends Controller
         $site_values_array = array();
 
         /**
-        * @todo conver part of this to be another class... 
+        * @todo conver part of this to be another class...
         */
 
         $site_values_array = [];
-        
+
         foreach( $sites as $site ) {
 
             $value = ReportTypeSiteDefault::where(
@@ -243,7 +243,7 @@ class ReportTypeController extends Controller
 
 
     public function add_plan_value(Request $request, ReportType $reportType) {
-       
+
 
         $this->validate(request(), [
             'plan_value' => 'required',
@@ -253,7 +253,7 @@ class ReportTypeController extends Controller
         $current = ReportTypeSiteValue::where([
             'plan_value' => $request->plan_value,
             'report_type_site_defaults_id' => $request->plan_value_id])->get();
-        
+
         if ( ! count($current) ) {
             ReportTypeSiteValue::create([
                 'plan_value' => $request->plan_value,
@@ -263,7 +263,7 @@ class ReportTypeController extends Controller
         }
         return redirect('report-types/' . $reportType->id);
 
-        
+
     }
 
     public function remove_plan_value(Request $request, ReportType $reportType) {

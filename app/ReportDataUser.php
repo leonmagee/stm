@@ -28,7 +28,7 @@ class ReportDataUser {
 
 	public function get_data() {
 
-		$report_types = ReportType::all();
+		$report_types = ReportType::query()->orderBy('order_index')->get();
 		$total_count = $total_payment = 0;
 		$current_date = Helpers::current_date();
 
@@ -55,7 +55,7 @@ class ReportDataUser {
 				->where('sim_residuals.report_type_id', $report_type->id)
 				->where('sim_residuals.upload_date', $current_date)
 				->get();
-			}	
+			}
 
 			if ($matching_sims) {
 				$number_sims = count($matching_sims);
@@ -64,15 +64,15 @@ class ReportDataUser {
 			}
 
 			$payment = new ReportPaymentCalculation(
-				$report_type->id, 
-				$this->site_id, 
+				$report_type->id,
+				$this->site_id,
 				$matching_sims,
 				$report_type->spiff,
 				$this->user_id
 			);
 
 			$report_data_array[] = new ReportDataItem(
-				$report_type->carrier->name . ' ' .$report_type->name, 
+				$report_type->carrier->name . ' ' .$report_type->name,
 				$number_sims,
 				$payment->total_payment
 			);

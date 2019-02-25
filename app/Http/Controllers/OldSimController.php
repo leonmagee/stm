@@ -64,7 +64,7 @@ class OldSimController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function addSim() {
-        $report_types = ReportType::all();
+        $report_types = ReportType::query()->orderBy('order_index')->get();
         return view('sims.add-sim', compact('report_types'));
     }
 
@@ -107,7 +107,7 @@ class OldSimController extends Controller
         /**
         * Get header row - this will remove the first row (like array_shift).
         * So if I'm not validating I need to ensure that the first row actually has
-        * specific headers... 
+        * specific headers...
         */
         $header = fgetcsv($file);
         //dd($file, $header);
@@ -132,7 +132,7 @@ class OldSimController extends Controller
             }
 
             $row[] = 2; // adding report type id
-            // this should come from a select field when you upload. 
+            // this should come from a select field when you upload.
             /**
             * @todo test this with a large file by setting headers, not changing column order
             * @todo how to get feedback when duplicate sims are uploaded
@@ -147,7 +147,7 @@ class OldSimController extends Controller
 
 
         // I should try tp use the validation feature here, but it might be hard going through
-        // a loop, and when it fails will it stop the upload entirely? Maybe it should 
+        // a loop, and when it fails will it stop the upload entirely? Maybe it should
         // validate the data first before attempting the upload?
         //
         // $this->validate($data_array, [
@@ -166,19 +166,19 @@ class OldSimController extends Controller
 
         foreach( $data_array as $data ) {
             /**
-            * @todo how to handle Duplicate entry 
-            * I can make an array of sim values as I loop through this and then log that some 
-            * sims were uploaded twice... but this won't check to see if those sims already 
-            * exist in the system... so I need to fall back to a secondary check. 
+            * @todo how to handle Duplicate entry
+            * I can make an array of sim values as I loop through this and then log that some
+            * sims were uploaded twice... but this won't check to see if those sims already
+            * exist in the system... so I need to fall back to a secondary check.
             */
 
             if ( ! in_array($data['sim_number'],$sim_number_array )) {
 
                 Sim::create(array(
                     'sim_number' => $data['sim_number'],
-                    'value' => $data['value'], 
-                    'activation_date' => $data['activation_date'], 
-                    'mobile_number' => $data['mobile_number'], 
+                    'value' => $data['value'],
+                    'activation_date' => $data['activation_date'],
+                    'mobile_number' => $data['mobile_number'],
                     'report_type_id' => $data['report_type_id']
                 ));
             }
@@ -237,10 +237,10 @@ class OldSimController extends Controller
         ]);
 
         Sim::create(request([
-            'sim_number', 
-            'value', 
-            'activation_date', 
-            'mobile_number', 
+            'sim_number',
+            'value',
+            'activation_date',
+            'mobile_number',
             'report_type_id'
         ]));
 

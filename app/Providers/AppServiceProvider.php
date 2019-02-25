@@ -29,7 +29,7 @@ class AppServiceProvider extends ServiceProvider
         view()->composer(['layouts.nav', 'layouts.nav-mobile'], function($view) {
 
 
-            $report_types = ReportType::query()->get();
+            $report_types = ReportType::query()->orderBy('order_index')->get();
 
             $monthly_sims_sub = [
                 // [

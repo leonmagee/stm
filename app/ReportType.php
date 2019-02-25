@@ -38,4 +38,8 @@ class ReportType extends Model
     public function values() {
         return $this->hasMany(ReportTypeSiteDefault::class);
     }
+
+    // public static function query() {
+    //     return false;
+    // }
 }

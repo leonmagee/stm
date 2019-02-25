@@ -46,9 +46,9 @@ class SimControllerOlder extends Controller
     // public function archiveQuery(SimMaster $sims, $id) {
 
     //     return $sims->where('report_type_id', $id)->select(
-    //         'sim_number', 
-    //         'value', 
-    //         'activation_date', 
+    //         'sim_number',
+    //         'value',
+    //         'activation_date',
     //         'mobile_number'
     //     );
     // }
@@ -56,7 +56,7 @@ class SimControllerOlder extends Controller
     public function archive($id) {
 
         // $report_type = ReportType::find($id);
-        
+
         // if ($report_type->spiff) {
 
         //     $query = $this->archiveQuery(new Sim(), $id);
@@ -70,7 +70,7 @@ class SimControllerOlder extends Controller
         // dd($query);
 
         // return datatables($query)->toJson();
-    
+
 
 
 
@@ -89,18 +89,18 @@ class SimControllerOlder extends Controller
 
 
         // $query = Sim::select(
-        //     'sim_number', 
-        //     'value', 
-        //     'activation_date', 
-        //     'mobile_number', 
+        //     'sim_number',
+        //     'value',
+        //     'activation_date',
+        //     'mobile_number',
         //     'report_type_id'
         // )->get()->toArray();
 
         // $query2 = SimResidual::select(
-        //     'sim_number', 
-        //     'value', 
-        //     'activation_date', 
-        //     'mobile_number', 
+        //     'sim_number',
+        //     'value',
+        //     'activation_date',
+        //     'mobile_number',
         //     'report_type_id'
         // )->get()->toArray();
 
@@ -140,7 +140,7 @@ class SimControllerOlder extends Controller
      * @return \Illuminate\Http\Response
      */
     public function addSim() {
-        $report_types = ReportType::all();
+        $report_types = ReportType::query()->orderBy('order_index')->get();
         return view('sims.add-sim', compact('report_types'));
     }
 
@@ -159,7 +159,7 @@ class SimControllerOlder extends Controller
     */
     public function upload_form()
     {
-        $report_types = ReportType::all();
+        $report_types = ReportType::query()->orderBy('order_index')->get();
         $carriers = Carrier::all();
         $users = User::where('role', session('current_site_id', 1))->get();
         return view('sims.upload', compact('report_types', 'users', 'carriers'));
@@ -176,9 +176,9 @@ class SimControllerOlder extends Controller
     //     $current_date = Settings::first()->current_date;
 
     //     $upload = $request->file('upload-file');
-        
+
     //     $filePath = $upload->getRealPath();
-        
+
     //     $file = fopen($filePath, 'r');
 
     //     $header = fgetcsv($file); // this gets the first row:
@@ -189,7 +189,7 @@ class SimControllerOlder extends Controller
     //     //   3 => "mdn"
     //     // ]
 
-        
+
     //     $header[] = 'report_type_id';
 
     //     //dd($header);
@@ -207,10 +207,10 @@ class SimControllerOlder extends Controller
     //         }
 
     //         /**
-    //         * @todo this will always be the same so it's not necessary here. 
+    //         * @todo this will always be the same so it's not necessary here.
     //         */
     //         $row[] = $request->report_type; // adding report type id
-            
+
     //         /**
     //         * @todo test this with a large file by setting headers, not changing column order
     //         * @todo how to get feedback when duplicate sims are uploaded
@@ -239,12 +239,12 @@ class SimControllerOlder extends Controller
 
     //     foreach( $data_array as $data ) {
     //         /**
-    //         * @todo how to handle Duplicate entry 
-    //         * I can make an array of sim values as I loop through this and then log that some 
-    //         * sims were uploaded twice... but this won't check to see if those sims already 
-    //         * exist in the system... so I need to fall back to a secondary check. 
+    //         * @todo how to handle Duplicate entry
+    //         * I can make an array of sim values as I loop through this and then log that some
+    //         * sims were uploaded twice... but this won't check to see if those sims already
+    //         * exist in the system... so I need to fall back to a secondary check.
     //         * so maybe I can use Laravels error handler here so that the form still submits
-    //         * but it also outpus an error that will be referenced by the form. 
+    //         * but it also outpus an error that will be referenced by the form.
     //         * maybe I should disable the browser validation for forms so I will see the actual
     //         * laravel notifications better..
     //         */
@@ -254,12 +254,12 @@ class SimControllerOlder extends Controller
     //         if ( ! in_array($data['sim'],$sim_number_array )) {
 
     //             if ( $spiff_or_resid ) {
-                    
+
     //                 Sim::create(array(
     //                     'sim_number' => $data['sim'],
-    //                     'value' => $data['plan'], 
+    //                     'value' => $data['plan'],
     //                     'activation_date' => $data['active_dt'],
-    //                     'mobile_number' => $data['mdn'], 
+    //                     'mobile_number' => $data['mdn'],
     //                     'report_type_id' => $data['report_type_id'],
     //                     'upload_date' => $current_date
     //                 ));
@@ -268,9 +268,9 @@ class SimControllerOlder extends Controller
 
     //                 SimResidual::create(array(
     //                     'sim_number' => $data['sim'],
-    //                     'value' => $data['plan'], 
+    //                     'value' => $data['plan'],
     //                     'activation_date' => $data['active_dt'],
-    //                     'mobile_number' => $data['mdn'], 
+    //                     'mobile_number' => $data['mdn'],
     //                     'report_type_id' => $data['report_type_id'],
     //                     'upload_date' => $current_date
     //                 ));
@@ -295,9 +295,9 @@ class SimControllerOlder extends Controller
     //     $current_date = Settings::first()->current_date;
 
     //     $upload = $request->file('upload-file');
-        
+
     //     $filePath = $upload->getRealPath();
-        
+
     //     $file = fopen($filePath, 'r');
 
     //     $header = fgetcsv($file); // this gets the first row: // just remove this somehow?
@@ -308,7 +308,7 @@ class SimControllerOlder extends Controller
     //     //   3 => "mdn"
     //     // ]
 
-        
+
     //     //$header[] = 'report_type_id';
 
     //     $header = [
@@ -321,9 +321,9 @@ class SimControllerOlder extends Controller
     //     ];
 
     //     // 'sim_number' => $data['sim'],
-    //     // 'value' => $data['plan'], 
+    //     // 'value' => $data['plan'],
     //     // 'activation_date' => $data['active_dt'],
-    //     // 'mobile_number' => $data['mdn'], 
+    //     // 'mobile_number' => $data['mdn'],
     //     // 'report_type_id' => $data['report_type_id'],
     //     // 'upload_date' => $current_date
 
@@ -347,11 +347,11 @@ class SimControllerOlder extends Controller
     //         if ( ! in_array($row[0],$sim_number_array )) {
 
     //             /**
-    //             * @todo this will always be the same so it's not necessary here. 
+    //             * @todo this will always be the same so it's not necessary here.
     //             */
     //             $row[] = $request->report_type; // adding report type id
     //             $row[] = $current_date;
-                
+
     //             /**
     //             * @todo test this with a large file by setting headers, not changing column order
     //             * @todo how to get feedback when duplicate sims are uploaded
@@ -381,7 +381,7 @@ class SimControllerOlder extends Controller
     //         \DB::table('sims')->insert($data_array);
 
     //     } else {
-           
+
     //         \DB::table('sim_residuals')->insert($data_array);
 
     //     }
@@ -392,12 +392,12 @@ class SimControllerOlder extends Controller
 
     //     // foreach( $data_array as $data ) {
     //     //     /**
-    //     //     * @todo how to handle Duplicate entry 
-    //     //     * I can make an array of sim values as I loop through this and then log that some 
-    //     //     * sims were uploaded twice... but this won't check to see if those sims already 
-    //     //     * exist in the system... so I need to fall back to a secondary check. 
+    //     //     * @todo how to handle Duplicate entry
+    //     //     * I can make an array of sim values as I loop through this and then log that some
+    //     //     * sims were uploaded twice... but this won't check to see if those sims already
+    //     //     * exist in the system... so I need to fall back to a secondary check.
     //     //     * so maybe I can use Laravels error handler here so that the form still submits
-    //     //     * but it also outpus an error that will be referenced by the form. 
+    //     //     * but it also outpus an error that will be referenced by the form.
     //     //     * maybe I should disable the browser validation for forms so I will see the actual
     //     //     * laravel notifications better..
     //     //     */
@@ -407,12 +407,12 @@ class SimControllerOlder extends Controller
     //     //     if ( ! in_array($data['sim'],$sim_number_array )) {
 
     //     //         if ( $spiff_or_resid ) {
-                    
+
     //     //             Sim::create(array(
     //     //                 'sim_number' => $data['sim'],
-    //     //                 'value' => $data['plan'], 
+    //     //                 'value' => $data['plan'],
     //     //                 'activation_date' => $data['active_dt'],
-    //     //                 'mobile_number' => $data['mdn'], 
+    //     //                 'mobile_number' => $data['mdn'],
     //     //                 'report_type_id' => $data['report_type_id'],
     //     //                 'upload_date' => $current_date
     //     //             ));
@@ -421,9 +421,9 @@ class SimControllerOlder extends Controller
 
     //     //             SimResidual::create(array(
     //     //                 'sim_number' => $data['sim'],
-    //     //                 'value' => $data['plan'], 
+    //     //                 'value' => $data['plan'],
     //     //                 'activation_date' => $data['active_dt'],
-    //     //                 'mobile_number' => $data['mdn'], 
+    //     //                 'mobile_number' => $data['mdn'],
     //     //                 'report_type_id' => $data['report_type_id'],
     //     //                 'upload_date' => $current_date
     //     //             ));
@@ -443,7 +443,7 @@ class SimControllerOlder extends Controller
     *
     * @todo I might still want to do this based on the header column names...
     * but I should get the timeout issue wit the residual worked out first. After that is done
-    * and I have something that acutually works I can try getting it to work with the column 
+    * and I have something that acutually works I can try getting it to work with the column
     * titles instead of just the row position.
     */
     public function upload(Request $request)
@@ -454,9 +454,9 @@ class SimControllerOlder extends Controller
         $current_date = Settings::first()->current_date;
 
         $upload = $request->file('upload-file');
-        
+
         $filePath = $upload->getRealPath();
-        
+
         $file = fopen($filePath, 'r');
 
         $data_array = [];
@@ -471,13 +471,13 @@ class SimControllerOlder extends Controller
 
             $sims = new SimResidual();
         }
-            
+
         $this->handle_upload($sims, $file, $report_type_id, $current_date);
 
         if ($num = $this->number_sims_uploaded) {
             session()->flash('message', $num . ' Sims successfully uploaded.');
         }
-        
+
         if (count($this->duplicate_sims)) {
             session()->flash('duplicates', $this->duplicate_sims);
         }
@@ -499,14 +499,14 @@ class SimControllerOlder extends Controller
             }
 
             if ( ! in_array($row[0],$sim_number_array )) {
-             
+
                 try {
 
                 $sims->create(array(
                     'sim_number' => $row[0],
-                    'value' => $row[1], 
+                    'value' => $row[1],
                     'activation_date' => $row[2],
-                    'mobile_number' => $row[3], 
+                    'mobile_number' => $row[3],
                     'report_type_id' => $report_type_id,
                     'upload_date' => $current_date
                 ));
@@ -538,13 +538,13 @@ class SimControllerOlder extends Controller
     {
 
         $user_id = $request->user_id;
-        
+
         $carrier_id = $request->carrier_id;
 
         $upload = $request->file('upload-file-single');
-        
+
         $filePath = $upload->getRealPath();
-        
+
         $file = fopen($filePath, 'r');
 
         $data_array = [];
@@ -620,10 +620,10 @@ class SimControllerOlder extends Controller
         ]);
 
         // Sim::create(request([
-        //     'sim_number', 
-        //     'value', 
-        //     'activation_date', 
-        //     'mobile_number', 
+        //     'sim_number',
+        //     'value',
+        //     'activation_date',
+        //     'mobile_number',
         //     'report_type_id',
         //     //'upload_date' => Settings::first()->current_date
         //     'upload_date' => '6_2018'
@@ -637,8 +637,8 @@ class SimControllerOlder extends Controller
      *
      * @param  \App\Sim  $sim
      * @return \Illuminate\Http\Response
-     * 
-     * @todo this isn't working now because there is no longer an ID specific for one sim, so I would need to query by the sim number and date? Not sure how this will work for deleting sims... 
+     *
+     * @todo this isn't working now because there is no longer an ID specific for one sim, so I would need to query by the sim number and date? Not sure how this will work for deleting sims...
      */
     public function show($sim_number)
     {

@@ -56,7 +56,7 @@ class SimController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function addSim() {
-        $report_types = ReportType::all();
+        $report_types = ReportType::query()->orderBy('order_index')->get();
         return view('sims.add-sim', compact('report_types'));
     }
 
@@ -75,7 +75,7 @@ class SimController extends Controller
     */
     public function upload_form()
     {
-        $report_types = ReportType::all();
+        $report_types = ReportType::query()->orderBy('order_index')->get();
 
         $carriers = Carrier::all();
 
@@ -98,7 +98,7 @@ class SimController extends Controller
     *
     * @todo I might still want to do this based on the header column names...
     * but I should get the timeout issue wit the residual worked out first. After that is done
-    * and I have something that acutually works I can try getting it to work with the column 
+    * and I have something that acutually works I can try getting it to work with the column
     * titles instead of just the row position.
     */
     public function upload(Request $request)
@@ -112,9 +112,9 @@ class SimController extends Controller
         $current_date = Settings::first()->current_date;
 
         $upload = $request->file('upload-file');
-        
+
         $filePath = $upload->getRealPath();
-        
+
         $file = fopen($filePath, 'r');
 
         $data_array = [];
@@ -129,13 +129,13 @@ class SimController extends Controller
 
             $sims = new SimResidual();
         }
-            
+
         $this->handle_upload($sims, $file, $report_type_id, $current_date);
 
         if ($num = $this->number_sims_uploaded) {
             session()->flash('message', $num . ' Sims successfully uploaded.');
         }
-        
+
         if (count($this->duplicate_sims)) {
             session()->flash('duplicates', $this->duplicate_sims);
         }
@@ -157,14 +157,14 @@ class SimController extends Controller
             // }
 
             if ( ( ! in_array($row[0],$sim_number_array ) ) && (Helpers::verify_sim($row[0]))) {
-             
-                try { // use verify_sim here as well? test with bad data... 
+
+                try { // use verify_sim here as well? test with bad data...
 
                 $sims->create(array(
                     'sim_number' => $row[0],
-                    'value' => $row[1], 
+                    'value' => $row[1],
                     'activation_date' => $row[2],
-                    'mobile_number' => $row[3], 
+                    'mobile_number' => $row[3],
                     'report_type_id' => $report_type_id,
                     'upload_date' => $current_date
                 ));
@@ -196,9 +196,9 @@ class SimController extends Controller
     public function upload_single(Request $request)
     {
         $upload = $request->file('upload-file-single');
-        
+
         $filePath = $upload->getRealPath();
-        
+
         $file = fopen($filePath, 'r');
 
         $data_array = [];
@@ -235,10 +235,10 @@ class SimController extends Controller
 
             // strip out anything obviously not a sim number?
             // create a function to use anywhere to test_sim()
-            // and then apply that to make sure it's not 'sim' or 
+            // and then apply that to make sure it's not 'sim' or
             // something else that is being uploaded..
             // also, I need to test this with different browsers
-            // I can always look at the older code I used.. 
+            // I can always look at the older code I used..
 
             $data_array[] = $item;
         }
@@ -255,7 +255,7 @@ class SimController extends Controller
         $count = 0;
 
         $user_id = $request->user_id;
-        
+
         $carrier_id = $request->carrier_id;
 
         foreach( $data_array as $data ) {
@@ -286,7 +286,7 @@ class SimController extends Controller
         if ($num = $this->number_sims_uploaded) {
             session()->flash('message', $num . ' sims successfully uploaded.');
         }
-        
+
         if (count($this->duplicate_sims)) {
             session()->flash('duplicates', $this->duplicate_sims);
         }
@@ -343,10 +343,10 @@ class SimController extends Controller
         ]);
 
         // Sim::create(request([
-        //     'sim_number', 
-        //     'value', 
-        //     'activation_date', 
-        //     'mobile_number', 
+        //     'sim_number',
+        //     'value',
+        //     'activation_date',
+        //     'mobile_number',
         //     'report_type_id',
         //     //'upload_date' => Settings::first()->current_date
         //     'upload_date' => '6_2018'
@@ -360,8 +360,8 @@ class SimController extends Controller
      *
      * @param  \App\Sim  $sim
      * @return \Illuminate\Http\Response
-     * 
-     * @todo this isn't working now because there is no longer an ID specific for one sim, so I would need to query by the sim number and date? Not sure how this will work for deleting sims... 
+     *
+     * @todo this isn't working now because there is no longer an ID specific for one sim, so I would need to query by the sim number and date? Not sure how this will work for deleting sims...
      */
     public function show($sim_number)
     {
