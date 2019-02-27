@@ -135,9 +135,10 @@ class ReportsController extends Controller
          * @todo I need to add instant and second recharge HDN do this data
          */
         $config_array = [ // this can be changed for different report types
-            'current' => 1, // H2O Month
-            'current_instant' => 4, // H2O Instant
-            'current_bundles' => 23, // H2O Instant
+            'current' => 1, // Month
+            'current_instant' => 4, // Emida / GS Posa
+            'current_bundles' => 23, // Bundles
+            'current_hdn' => 28, // Instant HDN
             // 'current_instant_hdn' => 19, // this isn't necessary
             'recharge' => 5, // H2O 2nd Recharge
             'recharge_instant' => 6, // H2O 2nd Rechage Instant
@@ -148,6 +149,7 @@ class ReportsController extends Controller
         $report_type_current = ReportType::find($config_array['current']);
         $report_type_current_instant = ReportType::find($config_array['current_instant']);
         $report_type_current_bundles = ReportType::find($config_array['current_bundles']);
+        $report_type_current_hdn = ReportType::find($config_array['current_hdn']);
         $report_type_recharge = ReportType::find($config_array['recharge']);
         $report_type_recharge_instant = ReportType::find($config_array['recharge_instant']);
         $report_type_recharge_hdn = ReportType::find($config_array['recharge_instant_hdn']);
@@ -167,6 +169,7 @@ class ReportsController extends Controller
                     'rt_id' => $report_type_current->id,
                     'rt_i_id' => $report_type_current_instant->id,
                     'rt_bnd_id' => $report_type_current_bundles->id,
+                    'rt_hdn_id' => $report_type_current_hdn->id,
                     'date' => $one_month_ago,
                 ],
                 [
@@ -182,6 +185,7 @@ class ReportsController extends Controller
                     'rt_id' => $report_type_current->id,
                     'rt_i_id' => $report_type_current_instant->id,
                     'rt_bnd_id' => $report_type_current_bundles->id,
+                    'rt_hdn_id' => $report_type_current_hdn->id,
                     'date' => $two_months_ago,
                 ],
                 [
@@ -197,6 +201,7 @@ class ReportsController extends Controller
                     'rt_id' => $report_type_current->id,
                     'rt_i_id' => $report_type_current_instant->id,
                     'rt_bnd_id' => $report_type_current_bundles->id,
+                    'rt_hdn_id' => $report_type_current_hdn->id,
                     'date' => $three_months_ago,
                 ],
                 [
@@ -218,7 +223,7 @@ class ReportsController extends Controller
                 $matching_sims_count_activation = DB::table('sims')
                     ->select('sims.value')
                     ->join('sim_users', 'sim_users.sim_number', '=', 'sims.sim_number')
-                    ->whereIn('sims.report_type_id', [$item[0]['rt_id'], $item[0]['rt_i_id'], $item[0]['rt_bnd_id']])
+                    ->whereIn('sims.report_type_id', [$item[0]['rt_id'], $item[0]['rt_i_id'], $item[0]['rt_bnd_id'], $item[0]['rt_hdn_id']])
                 // ->where('sims.report_type_id', $item[0]['rt_id'])
                 // ->orWhere('sims.report_type_id', $item[0]['rt_i_id'])
                     ->where('sim_users.user_id', $user->id)
@@ -306,6 +311,7 @@ class ReportsController extends Controller
             'current_bundles' => 24, // H2O 2nd Rechage Bundles
             'current_hdn' => 19, // H2O 2nd Recharge HDN
             'recharge' => 8, // H2O 3rd Recharge
+            'recharge_emida' => 33, // H2O 2nd Recharge HDN
             'recharge_hdn' => 20, // H2O 2nd Recharge HDN
             //'recharge_instant' => 6 // H2O 2nd Rechage Instant
         ];
@@ -315,6 +321,7 @@ class ReportsController extends Controller
         $report_type_current_bundles = ReportType::find($config_array['current_bundles']);
         $report_type_current_hdn = ReportType::find($config_array['current_hdn']);
         $report_type_recharge = ReportType::find($config_array['recharge']);
+        $report_type_recharge_emida = ReportType::find($config_array['recharge_emida']);
         $report_type_recharge_hdn = ReportType::find($config_array['recharge_hdn']);
         //$report_type_recharge_instant = ReportType::find($config_array['recharge_instant']);
 
@@ -337,8 +344,8 @@ class ReportsController extends Controller
                 ],
                 [
                     'rt_id' => $report_type_recharge->id,
+                    'rt_emd_id' => $report_type_recharge_emida->id,
                     'rt_hdn_id' => $report_type_recharge_hdn->id,
-                    //'rt_i_id' => $report_type_recharge_instant->id,
                     'date' => $current_date,
                 ],
             ],
@@ -352,8 +359,8 @@ class ReportsController extends Controller
                 ],
                 [
                     'rt_id' => $report_type_recharge->id,
+                    'rt_emd_id' => $report_type_recharge_emida->id,
                     'rt_hdn_id' => $report_type_recharge_hdn->id,
-                    //'rt_i_id' => $report_type_recharge_instant->id,
                     'date' => $one_month_ago,
                 ],
             ],
@@ -367,8 +374,8 @@ class ReportsController extends Controller
                 ],
                 [
                     'rt_id' => $report_type_recharge->id,
+                    'rt_emd_id' => $report_type_recharge_emida->id,
                     'rt_hdn_id' => $report_type_recharge_hdn->id,
-                    //'rt_i_id' => $report_type_recharge_instant->id,
                     'date' => $two_months_ago,
                 ],
             ],
@@ -393,7 +400,7 @@ class ReportsController extends Controller
                 $matching_sims_count_recharge = DB::table('sims')
                     ->select('sims.value')
                     ->join('sim_users', 'sim_users.sim_number', '=', 'sims.sim_number')
-                    ->whereIn('sims.report_type_id', [$item[1]['rt_id'], $item[1]['rt_hdn_id']])
+                    ->whereIn('sims.report_type_id', [$item[1]['rt_id'], $item[1]['rt_hdn_id'], $item[1]['rt_emd_id']])
                 // ->where('sims.report_type_id', $item[1]['rt_id'])
                 // ->orWhere('sims.report_type_id', $item[1]['rt_i_id'])
                     ->where('sim_users.user_id', $user->id)
