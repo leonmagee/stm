@@ -152,7 +152,7 @@ class HomeController extends Controller
             Helpers::get_date_name($three_month_ago)
         ];
 
-        $report_types_array = ReportType::where('spiff',1)->get();
+        $report_types_array = ReportType::where('spiff',1)->orderBy('order_index')->get();
 
         foreach( $report_types_array as $report_type ) {
 
