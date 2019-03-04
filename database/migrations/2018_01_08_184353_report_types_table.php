@@ -18,6 +18,7 @@ class ReportTypesTable extends Migration
             $table->text('name');
             $table->integer('carrier_id');
             $table->integer('spiff')->default(1);
+            $table->integer('order_index')->default(1);
             $table->timestamps();
         });
     }
