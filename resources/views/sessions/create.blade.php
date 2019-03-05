@@ -2,7 +2,11 @@
 
 @section('content')
 
-<div class="form-wrapper center">
+<div class="form-wrapper">
+
+	<div class="form-wrapper-inner banner-image-wrap">
+		<img src="{{ $banner_1 }}" />
+	</div>
 
 	<div class="form-wrapper-inner third">
 
@@ -46,6 +50,10 @@
 
 		</form>
 
+	</div>
+
+	<div class="form-wrapper-inner banner-image-wrap">
+		<img src="{{ $banner_2 }}" />
 	</div>
 
 </div>

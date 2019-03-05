@@ -16714,6 +16714,7 @@ body.stm-body h1.title span {
     -webkit-box-pack: justify;
         -ms-flex-pack: justify;
             justify-content: space-between;
+    grid-gap: 50px;
   }
 
   .form-wrapper.center {
@@ -17085,6 +17086,10 @@ body.stm-body .button-bar-wrap .button-bar a {
   -webkit-box-flex: 0;
       -ms-flex: 0 1 100%;
           flex: 0 1 100%;
+}
+
+body.stm-body .banner-image-wrap {
+  margin: 0 3%;
 }
 
 .modal-box {

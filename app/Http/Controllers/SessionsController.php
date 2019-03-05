@@ -13,7 +13,9 @@ class SessionsController extends Controller
 
     public function create() 
     {
-    	return view('sessions.create');
+        $banner_1 = "https://res.cloudinary.com/dabvi4jmx/image/upload/v1551818964/stm/port-in-spiff-20.jpg";
+        $banner_2 = "https://res.cloudinary.com/dabvi4jmx/image/upload/v1551818965/stm/port-in-spiff-40.jpg";
+    	return view('sessions.create', compact('banner_1', 'banner_2'));
     }
 
     public function store()
