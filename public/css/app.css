@@ -16739,6 +16739,10 @@ body.stm-body h1.title span {
   border-radius: 10px;
   overflow: hidden;
   margin-bottom: 30px;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  height: 100%;
 }
 
 @media (min-width: 980px) {
@@ -16750,6 +16754,9 @@ body.stm-body h1.title span {
 
   .form-wrapper .form-wrapper-inner.third {
     max-width: 31%;
+    -webkit-box-ordinal-group: 2;
+        -ms-flex-order: 1;
+            order: 1;
   }
 
   .form-wrapper .form-wrapper-inner.half {
@@ -17089,7 +17096,25 @@ body.stm-body .button-bar-wrap .button-bar a {
 }
 
 body.stm-body .banner-image-wrap {
-  margin: 0 3%;
+  margin: 40px 0;
+}
+
+@media (min-width: 980px) {
+  body.stm-body .banner-image-wrap {
+    margin: 0 3%;
+  }
+
+  body.stm-body .banner-image-wrap.image-1 {
+    -webkit-box-ordinal-group: 1;
+        -ms-flex-order: 0;
+            order: 0;
+  }
+
+  body.stm-body .banner-image-wrap.image-2 {
+    -webkit-box-ordinal-group: 3;
+        -ms-flex-order: 2;
+            order: 2;
+  }
 }
 
 .modal-box {

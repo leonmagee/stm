@@ -20,11 +20,14 @@
 		border-radius: 10px;
 		overflow: hidden;
 		margin-bottom: 30px;
+		flex: 1;
+		height: 100%;
 		@media(min-width: $screen-md) {
 
 			flex: 1;
 			&.third {
 				max-width: 31%;
+				order: 1;
 			}
 			
 			&.half {

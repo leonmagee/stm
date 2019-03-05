@@ -4,10 +4,6 @@
 
 <div class="form-wrapper">
 
-	<div class="form-wrapper-inner banner-image-wrap">
-		<img src="{{ $banner_1 }}" />
-	</div>
-
 	<div class="form-wrapper-inner third">
 
 		<h3>Log In</h3>
@@ -52,7 +48,11 @@
 
 	</div>
 
-	<div class="form-wrapper-inner banner-image-wrap">
+	<div class="form-wrapper-inner image-1 banner-image-wrap">
+		<img src="{{ $banner_1 }}" />
+	</div>
+
+	<div class="form-wrapper-inner image-2 banner-image-wrap">
 		<img src="{{ $banner_2 }}" />
 	</div>
 

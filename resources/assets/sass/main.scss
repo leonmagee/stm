@@ -103,7 +103,16 @@ body.stm-body {
 	}
 
 	.banner-image-wrap {
-		margin: 0 3%;
+		margin: 40px 0;
+		@media(min-width: $screen-md) {
+			margin: 0 3%;
+			&.image-1 {
+				order: 0;
+			}
+			&.image-2 {
+				order: 2;
+			}
+		}
 	}
 }
 
