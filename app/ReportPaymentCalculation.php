@@ -7,15 +7,26 @@ class ReportPaymentCalculation {
 	private $report_type_id;
 	private $site_id;
 	private $report_type_site_defaults_id;
+	private $defaults_array;
 
-	public function __construct($report_type_id, $site_id, $matching_sims, $is_spiff, $user_id = null) {
+	public function __construct($report_type_id, $site_id, $matching_sims, $is_spiff, $user_id = null, $defaults_array = null) {
 
 		$values_array = [];
-
-		$defaults = ReportTypeSiteDefault::where([
-			'site_id' => $site_id,
-			'report_type_id' => $report_type_id
-		])->first();
+		
+		// this one can be passed in from the parent
+		// @todo move this up 1 level? I can then test the total number of queries and
+		// It should get reduced a bit..
+		// maybe I should just query all of the report type site defaults in one query 
+		// to start and then pass that in at the start, and then use that rather than this.. 
+		
+		//var_dump($site_id, 'site id');
+		//var_dump($report_type_id, 'report type id');
+		//dd($defaults_array);
+		// $defaults = ReportTypeSiteDefault::where([
+		// 	'site_id' => $site_id,
+		// 	'report_type_id' => $report_type_id
+		// ])->first();
+		$defaults = $defaults_array[$report_type_id - 1];
 
 		//dd($defaults);
 
@@ -23,9 +34,12 @@ class ReportPaymentCalculation {
 
 			if ( $is_spiff ) {
 
+				// all of this query can be done before entering the loop
 				$report_plan_values = ReportTypeSiteValue::where(
 					'report_type_site_defaults_id', 
-					$defaults->id)
+					//$defaults->id
+					$defaults['id']
+					)
 				->get();
 
 				foreach($report_plan_values as $item) {
@@ -46,13 +60,16 @@ class ReportPaymentCalculation {
 					$override_array[$override->plan_value] = $override->payment_amount;
 				}
 
+				//dd($defaults->spiff_value, 'testy?');
+
 				foreach($matching_sims as $sim) {
 
 					$new_charge = self::calc_spiff_payments(
 						$override_array, 
 						$sim->value, 
 						$values_array, 
-						$defaults->spiff_value,
+						//$defaults->spiff_value,
+						$defaults['spiff_value'],
 						$site_id
 					);
 
@@ -133,9 +150,9 @@ class ReportPaymentCalculation {
 
 			$percent = $user_override->residual_percent;
 
-		} elseif (isset($defaults->residual_percent)) {
+		} elseif (isset($defaults['residual_percent'])) {
 
-			$percent = $defaults->residual_percent;
+			$percent = $defaults['residual_percent'];
 
 		} elseif ($site_default = Site::find($site_id)) {
 

@@ -14,13 +14,15 @@ class ReportDataUser {
 	public $total_payment;
 	public $count;
 	private $site_id;
+	private $defaults_array;
 
-	public function __construct($user_name, $user_company, $user_id, $site_id = null) {
+	public function __construct($user_name, $user_company, $user_id, $site_id = null, $defaults_array = null) {
 
 		$this->user_name = $user_name;
 		$this->user_company = $user_company;
 		$this->user_id = $user_id;
 		$this->site_id = $site_id;
+		$this->defaults_array = $defaults_array;
 		$this->count = SimUser::where('user_id', $user_id)->count();
 		//dd('ReportData->get_data() continues...');
 		$this->get_data();
@@ -68,7 +70,8 @@ class ReportDataUser {
 				$this->site_id,
 				$matching_sims,
 				$report_type->spiff,
-				$this->user_id
+				$this->user_id,
+				$this->defaults_array
 			);
 
 			$report_data_array[] = new ReportDataItem(

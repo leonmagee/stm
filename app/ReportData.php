@@ -8,14 +8,16 @@ class ReportData {
 	private $current_date;
 	public $report_data;
 	public $total_payment_all_users;
+	private $defaults_array;
 
-	public function __construct($site_id, $current_date, $user_id = null) {
+	public function __construct($site_id, $current_date, $user_id = null, $defaults_array = null) {
 
 		$this->site_id = $site_id;
 		$this->role_id = Helpers::get_role_id($this->site_id);
 		$this->current_date = $current_date;
 		$this->user_id = $user_id;
-
+		$this->defaults_array = $defaults_array;
+		//dd('in ReportData class');
 		$this->get_data();
 	}
 
@@ -40,14 +42,17 @@ class ReportData {
 
 		$total_payment_all_users = 0;
 
+		// loop starts now
 		foreach ( $users as $user ) {
-
+			//dd('in loop start');
 			$report_data_user = new ReportDataUser(
 				$user->name, 
 				$user->company, 
 				$user->id,
-				$this->site_id
+				$this->site_id,
+				$this->defaults_array	
 			);
+			//dd('we got the report data for one user');
 
 			$report_data_array[] = $report_data_user;
 
@@ -55,7 +60,7 @@ class ReportData {
 
 			//dd($report_data_user->total_payment);
 		}
-
+		// END - it takes 10 seconds to get here for agents
 		//dd($total_payment_all_users);
 
 		$this->total_payment_all_users = $total_payment_all_users;

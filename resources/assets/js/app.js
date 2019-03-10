@@ -67,10 +67,9 @@ $('.mobile-menu a.has-menu').click(function() {
 * Show spinner
 * This is linked to buttons that show the spinner prior to refreshing the page.
 */
-$('button.call-loader').click(function() {
+$('button.call-loader, ul.sidebar-menu li a[href="/reports"]').click(function() {
 	$('.stm-absolute-wrap#loader-wrap').css({'display':'flex'});
 });
-
 
 // loader for datatables processing
 

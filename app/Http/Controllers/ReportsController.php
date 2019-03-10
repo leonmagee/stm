@@ -10,6 +10,7 @@ use App\ReportUserCSV;
 use App\Settings;
 use App\Site;
 use App\User;
+use App\ReportTypeSiteDefault;
 use Illuminate\Http\Request;
 use \DB;
 
@@ -39,10 +40,37 @@ class ReportsController extends Controller
         $site_id = Settings::first()->get_site_id();
         $site_name = Site::find($site_id)->name;
 
-        $report_data_object = new ReportData($site_id, $current_date);
+        /**
+         * Step one - get all default data and pass that to an array
+         * so we can avoice having to run queries for this down the line.
+         * 1. just query for the current site? we will never need to query for other sites.
+         */
+        $defaults_array = ReportTypeSiteDefault::where([
+			'site_id' => $site_id,
+        ])->with('report_type_site_values')->get()->toArray();
+
+        // $defaults_array = DB::table('report_type_site_defaults')
+        // ->select('report_type_site_defaults.id', 'report_type_site_defaults.report_type_id','report_type_site_defaults.spiff_value','report_type_site_defaults.residual_percent')
+        // ->join('report_type_site_values', 'report_type_site_defaults.id', '=', 'report_type_site_values.report_type_site_defaults_id')
+        // ->where('site_id', $site_id)
+        // ->get()->toArray();
+
+        // @todo modify this to include report_type_site_values
+        dd($defaults_array);
+
+        /**
+         * Here's what takes a long time
+         * 1. instantiate new ReportData object, with id the current data
+         * 2. 
+         * 
+         * 
+         */
+        $report_data_object = new ReportData($site_id, $current_date, null, $defaults_array);
         $total_payment_all_users = $report_data_object->total_payment_all_users;
 
         $report_data_array = $report_data_object->report_data;
+
+
         $is_admin = Helpers::current_user_admin();
 
         return view('reports.index', compact(
