@@ -84,11 +84,13 @@ class ReportPaymentCalculation {
 	}
 
 	public static function calc_residual_percent($user_id, $report_type_id, $defaults, $site_id, $res_override = null) {
-		$user_res_override = $res_override[$user_id];
 		$res_override_array = false;
-		foreach( $user_res_override as $item ) {
-			if ( $item['report_type_id'] == $report_type_id) {
-				$res_override_array = $item;
+		if(isset($res_override[$user_id])) {
+			$user_res_override = $res_override[$user_id];	
+			foreach( $user_res_override as $item ) {
+				if ( $item['report_type_id'] == $report_type_id) {
+					$res_override_array = $item;
+				}
 			}
 		}
 		if ( $res_override_array ) {
