@@ -21,7 +21,6 @@ class SettingsController extends Controller
      */
     public function index()
     {
-
         // $current_site_id = session('current_site_id', 1);
         // echo 'site id: ' . $current_site_id;
 

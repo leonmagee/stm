@@ -11,6 +11,8 @@ use App\Settings;
 use App\Site;
 use App\User;
 use App\ReportTypeSiteDefault;
+use App\UserResidualPercent;
+use App\UserPlanValues;
 use Illuminate\Http\Request;
 use \DB;
 
@@ -29,50 +31,50 @@ class ReportsController extends Controller
      */
     public function index()
     {
-        /**
-         * @todo here's where we get the report data - so this should probably be its own class.
-         * for now, we'll just omit the per user spiff and residual settings and credit or bonus
-         * features.
-         */
-
-        $current_date = Settings::first()->current_date;
-        $current_site_date = Helpers::current_date_name();
-        $site_id = Settings::first()->get_site_id();
-        $site_name = Site::find($site_id)->name;
+        $settings = Settings::first();
+        $current_date = $settings->current_date;
+        $current_site_date = Helpers::get_date_name($current_date);
+        $site_id = $settings->get_site_id();
+        $site = Site::find($site_id);
+        $site_name = $site->name;
 
         /**
-         * Step one - get all default data and pass that to an array
-         * so we can avoice having to run queries for this down the line.
-         * 1. just query for the current site? we will never need to query for other sites.
+         * Get report_type_sites_default table data
          */
-        $defaults_array = ReportTypeSiteDefault::where([
+        $defaults_array_orig = ReportTypeSiteDefault::where([
 			'site_id' => $site_id,
         ])->with('report_type_site_values')->get()->toArray();
 
-        // $defaults_array = DB::table('report_type_site_defaults')
-        // ->select('report_type_site_defaults.id', 'report_type_site_defaults.report_type_id','report_type_site_defaults.spiff_value','report_type_site_defaults.residual_percent')
-        // ->join('report_type_site_values', 'report_type_site_defaults.id', '=', 'report_type_site_values.report_type_site_defaults_id')
-        // ->where('site_id', $site_id)
-        // ->get()->toArray();
-
-        // @todo modify this to include report_type_site_values
-        dd($defaults_array);
+         $defaults_array = [];
+         foreach ( $defaults_array_orig as $item ) {
+            $defaults_array[$item['report_type_id']] = $item;
+         }
+        
+        /**
+         * Get Residual Overrides
+         */
+        $user_residual = UserResidualPercent::all()->toArray();
+        $user_residual_override = [];
+        foreach($user_residual as $item) {
+            $user_residual_override[$item['user_id']][] = $item;
+        }
 
         /**
-         * Here's what takes a long time
-         * 1. instantiate new ReportData object, with id the current data
-         * 2. 
-         * 
-         * 
+         * Get Spiff Overrides
          */
-        $report_data_object = new ReportData($site_id, $current_date, null, $defaults_array);
+        $user_spiff = UserPlanValues::all()->toArray();
+        $user_spiff_override = [];
+        foreach($user_spiff as $item) {
+            $user_spiff_override[$item['user_id']][] = $item;
+        }
+
+        /**
+         * Get ReportData
+         */
+        $report_data_object = new ReportData($site_id, $current_date, null, $defaults_array, $user_residual_override, $user_spiff_override, $site);
         $total_payment_all_users = $report_data_object->total_payment_all_users;
-
         $report_data_array = $report_data_object->report_data;
-
-
         $is_admin = Helpers::current_user_admin();
-
         return view('reports.index', compact(
             'site_name',
             'current_site_date',
@@ -109,27 +111,13 @@ class ReportsController extends Controller
                     ->where('sims.report_type_id', $report_type->id)
                     ->where('sims.upload_date', $current_date)
                     ->where('users.role_id', $role_id)
-                //->where('sim_users.user_id', 7)
-                //->where('users.role_id', $role_id)
                     ->count();
 
                 $name = $report_type->carrier->name . ' ' . $report_type->name;
 
                 $report_type_totals_array[$name] = $matching_sims_count;
                 $total_count_final += $matching_sims_count;
-
             }
-
-            // else { // residual query
-
-            //     $matching_sims_count = DB::table('sim_residuals')
-            //     ->select('sim_residuals.value', 'sim_residuals.report_type_id')
-            //     ->join('sim_users', 'sim_users.sim_number', '=', 'sim_residuals.sim_number')
-            //     ->where('sim_residuals.report_type_id', $report_type->id)
-            //     ->where('sim_residuals.upload_date', $current_date)
-            //     ->count();
-            // }
-
         }
 
         return view('reports.totals', compact(
