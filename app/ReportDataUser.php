@@ -50,8 +50,42 @@ class ReportDataUser {
 	public function get_data() {
 		$total_count = $total_payment = 0;
 		$current_date = $this->current_date;
+
+		$matching_sims_spiff = DB::table('sims')
+		->select('sims.value', 'sims.report_type_id')
+		->join('sim_users', 'sim_users.sim_number', '=', 'sims.sim_number')
+		->where('sim_users.user_id', $this->user_id)
+		->where('sims.upload_date', $current_date)
+		->get()->toArray();
+		//dd($matching_sims_spiff);
+
+		$matching_spiff_array = [];
+		foreach($matching_sims_spiff as $item) {
+			$matching_spiff_array[$item->report_type_id][] = $item->value;
+		}
+		//dd($matching_spiff_array);
+
+		$matching_sims_res = DB::table('sim_residuals')
+		->select('sim_residuals.value', 'sim_residuals.report_type_id')
+		->join('sim_users', 'sim_users.sim_number', '=', 'sim_residuals.sim_number')
+		->where('sim_users.user_id', $this->user_id)
+		->where('sim_residuals.upload_date', $current_date)
+		->get();
+
+		$matching_res_array = [];
+		foreach($matching_sims_res as $item) {
+			$matching_res_array[$item->report_type_id][] = $item->value;
+		}
+		//dd($matching_res_array);
+
+
 		foreach($this->report_types as $report_type) {
 			if ($report_type->spiff) {
+				if(isset($matching_spiff_array[$report_type->id])) {
+					$matching_sims_new = $matching_spiff_array[$report_type->id];
+				} else {
+					$matching_sims_new = null;
+				}
 				$matching_sims = DB::table('sims')
 				->select('sims.value', 'sims.report_type_id')
 				->join('sim_users', 'sim_users.sim_number', '=', 'sims.sim_number')
@@ -59,7 +93,13 @@ class ReportDataUser {
 				->where('sims.report_type_id', $report_type->id)
 				->where('sims.upload_date', $current_date)
 				->get();
+				//dd($matching_sims);
 			} else {
+				if(isset($matching_res_array[$report_type->id])) {
+					$matching_sims_new = $matching_res_array[$report_type->id];
+				} else {
+					$matching_sims_new = null;
+				}
 				$matching_sims = DB::table('sim_residuals')
 				->select('sim_residuals.value', 'sim_residuals.report_type_id')
 				->join('sim_users', 'sim_users.sim_number', '=', 'sim_residuals.sim_number')
@@ -68,6 +108,8 @@ class ReportDataUser {
 				->where('sim_residuals.upload_date', $current_date)
 				->get();
 			}
+			// this is number sims per report type, we need to get this in
+			// the calculation... 
 			if ($matching_sims) {
 				$number_sims = count($matching_sims);
 			} else {
@@ -82,7 +124,8 @@ class ReportDataUser {
 				$this->defaults_array,
 				$this->res_override,
 				$this->spiff_override,
-				$this->site
+				$this->site,
+				$matching_sims_new
 			);
 			$report_data_array[] = new ReportDataItem(
 				$report_type->carrier->name . ' ' .$report_type->name,

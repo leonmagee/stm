@@ -17,7 +17,8 @@ class ReportPaymentCalculation {
 		$defaults_array = null, 
 		$res_override = null,
 		$spiff_override = null,
-		$site = null
+		$site = null,
+		$matching_sims_new = null
 	) {
 		$values_array = [];
 		$defaults = $defaults_array[$report_type_id];
