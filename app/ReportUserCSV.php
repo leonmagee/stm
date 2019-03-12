@@ -187,14 +187,58 @@ class ReportUserCSV {
 
 		//$site = Site::where('role_id', $user->role_id)->first();
 		$site_id = Helpers::get_site_id($user->role_id);
+		$site = Site::find($site_id);
+
+		/**
+         * Get report_type_sites_default table data
+         */
+        $defaults_array_orig = ReportTypeSiteDefault::where([
+			'site_id' => $site_id,
+        ])->with('report_type_site_values')->get()->toArray();
+
+		$defaults_array = [];
+		foreach ( $defaults_array_orig as $item ) {
+			$defaults_array[$item['report_type_id']] = $item;
+		}
+
+		/**
+         * Get Residual Overrides
+         */
+        $user_residual = UserResidualPercent::all()->toArray();
+        $user_residual_override = [];
+        foreach($user_residual as $item) {
+            $user_residual_override[$item['user_id']][] = $item;
+        }
+
+        /**
+         * Get Spiff Overrides
+         */
+        $user_spiff = UserPlanValues::all()->toArray();
+        $user_spiff_override = [];
+        foreach($user_spiff as $item) {
+            $user_spiff_override[$item['user_id']][] = $item;
+        }
 
 		// get payment overview data
+		// $report_data_user = new ReportDataUser(
+		// 	$user->name,
+		// 	$user->company,
+		// 	$user->id,
+		// 	//$user->role_id
+		// 	$site_id
+		// );
+
 		$report_data_user = new ReportDataUser(
-			$user->name,
-			$user->company,
+			$user->name, 
+			$user->company, 
 			$user->id,
-			//$user->role_id
-			$site_id
+			$site_id,
+			$defaults_array,
+			$user_residual_override,
+			$user_spiff_override,
+			$report_types,
+			$current_date,
+			$site
 		);
 
 		//dd($report_data_user);

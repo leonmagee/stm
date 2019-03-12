@@ -45,10 +45,10 @@ class ReportsController extends Controller
 			'site_id' => $site_id,
         ])->with('report_type_site_values')->get()->toArray();
 
-         $defaults_array = [];
-         foreach ( $defaults_array_orig as $item ) {
+        $defaults_array = [];
+        foreach ( $defaults_array_orig as $item ) {
             $defaults_array[$item['report_type_id']] = $item;
-         }
+        }
         
         /**
          * Get Residual Overrides
