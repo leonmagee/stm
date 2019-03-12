@@ -30,7 +30,7 @@ class UserController extends Controller
         $role_id = $settings->get_role_id();
         $site_name = Site::find($site_id)->name;
         //dd($role_id);
-        $users = User::where('role_id', $role_id)->get();
+        $users = User::where('role_id', $role_id)->orderBy('company')->get();
         return view('users.index', compact('users', 'site_name'));
     }
 
