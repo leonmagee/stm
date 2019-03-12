@@ -86,13 +86,13 @@ class ReportDataUser {
 				} else {
 					$matching_sims_new = null;
 				}
-				$matching_sims = DB::table('sims')
-				->select('sims.value', 'sims.report_type_id')
-				->join('sim_users', 'sim_users.sim_number', '=', 'sims.sim_number')
-				->where('sim_users.user_id', $this->user_id)
-				->where('sims.report_type_id', $report_type->id)
-				->where('sims.upload_date', $current_date)
-				->get();
+				// $matching_sims = DB::table('sims')
+				// ->select('sims.value', 'sims.report_type_id')
+				// ->join('sim_users', 'sim_users.sim_number', '=', 'sims.sim_number')
+				// ->where('sim_users.user_id', $this->user_id)
+				// ->where('sims.report_type_id', $report_type->id)
+				// ->where('sims.upload_date', $current_date)
+				// ->get();
 				//dd($matching_sims);
 			} else {
 				if(isset($matching_res_array[$report_type->id])) {
@@ -100,21 +100,24 @@ class ReportDataUser {
 				} else {
 					$matching_sims_new = null;
 				}
-				$matching_sims = DB::table('sim_residuals')
-				->select('sim_residuals.value', 'sim_residuals.report_type_id')
-				->join('sim_users', 'sim_users.sim_number', '=', 'sim_residuals.sim_number')
-				->where('sim_users.user_id', $this->user_id)
-				->where('sim_residuals.report_type_id', $report_type->id)
-				->where('sim_residuals.upload_date', $current_date)
-				->get();
+				// $matching_sims = DB::table('sim_residuals')
+				// ->select('sim_residuals.value', 'sim_residuals.report_type_id')
+				// ->join('sim_users', 'sim_users.sim_number', '=', 'sim_residuals.sim_number')
+				// ->where('sim_users.user_id', $this->user_id)
+				// ->where('sim_residuals.report_type_id', $report_type->id)
+				// ->where('sim_residuals.upload_date', $current_date)
+				// ->get();
 			}
 			// this is number sims per report type, we need to get this in
 			// the calculation... 
-			if ($matching_sims) {
-				$number_sims = count($matching_sims);
+			if ($matching_sims_new) {
+				//$number_sims = count($matching_sims);
+				$number_sims = count($matching_sims_new);
+				//dd($number_sims);
 			} else {
 				$number_sims = 0;
 			}
+			$matching_sims = false;
 			$payment = new ReportPaymentCalculation(
 				$report_type->id,
 				$this->site_id,

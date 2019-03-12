@@ -551,17 +551,59 @@ class ReportsController extends Controller
      */
     public function show(User $user)
     {
+        $settings = Settings::first();
+        $current_date = $settings->current_date;
+        $current_site_date = Helpers::get_date_name($current_date);
+        $site_id = $settings->get_site_id();
+        $site = Site::find($site_id);
+        $site_name = $site->name;
+
+        /**
+         * Get report_type_sites_default table data
+         */
+        $defaults_array_orig = ReportTypeSiteDefault::where([
+			'site_id' => $site_id,
+        ])->with('report_type_site_values')->get()->toArray();
+
+         $defaults_array = [];
+         foreach ( $defaults_array_orig as $item ) {
+            $defaults_array[$item['report_type_id']] = $item;
+         }
+        
+        /**
+         * Get Residual Overrides
+         */
+        $user_residual = UserResidualPercent::all()->toArray();
+        $user_residual_override = [];
+        foreach($user_residual as $item) {
+            $user_residual_override[$item['user_id']][] = $item;
+        }
+
+        /**
+         * Get Spiff Overrides
+         */
+        $user_spiff = UserPlanValues::all()->toArray();
+        $user_spiff_override = [];
+        foreach($user_spiff as $item) {
+            $user_spiff_override[$item['user_id']][] = $item;
+        }
+
+        /**
+         * Get ReportData
+         */
+        $report_data_object = new ReportData($site_id, $current_date, $user->id, $defaults_array, $user_residual_override, $user_spiff_override, $site);
+
 
         /**
          * @todo here's where we get the report data - so this should probably be its own class.
          * for now, we'll just omit the per user spiff and residual settings and credit or bonus
          * features.
          */
-        $current_date = Settings::first()->current_date;
-        $current_site_date = Helpers::current_date_name();
-        $site_id = Settings::first()->get_site_id();
-        $site_name = Site::find($site_id)->name;
-        $report_data_object = new ReportData($site_id, $current_date, $user->id);
+        // $current_date = Settings::first()->current_date;
+        // $current_site_date = Helpers::current_date_name();
+        // $site_id = Settings::first()->get_site_id();
+        // $site_name = Site::find($site_id)->name;
+        // $report_data_object = new ReportData($site_id, $current_date, $user->id);
         $report_data_array = $report_data_object->report_data;
         $is_admin = Helpers::current_user_admin();
         $total_payment_all_users = $report_data_array[0]->total_payment;

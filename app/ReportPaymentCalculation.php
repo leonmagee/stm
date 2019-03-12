@@ -18,7 +18,7 @@ class ReportPaymentCalculation {
 		$res_override = null,
 		$spiff_override = null,
 		$site = null,
-		$matching_sims_new = null
+		$matching_sims_new = []
 	) {
 		$values_array = [];
 		$defaults = $defaults_array[$report_type_id];
@@ -34,16 +34,21 @@ class ReportPaymentCalculation {
 						$override_array[$override['plan_value']] = $override['payment_amount'];
 					}
 				}
-				foreach($matching_sims as $sim) {
-					$new_charge = self::calc_spiff_payments(
-						$override_array, 
-						$sim->value, 
-						$values_array, 
-						$defaults['spiff_value'],
-						$site_id,
-						$site
-					);
-					$total_charge += $new_charge;
+				//dd($matching_sims_new);
+				if($matching_sims_new) {
+					foreach($matching_sims_new as $sim) {
+						//dd($sim);
+						$new_charge = self::calc_spiff_payments(
+							$override_array, 
+							//$sim->value, 
+							$sim, 
+							$values_array, 
+							$defaults['spiff_value'],
+							$site_id,
+							$site
+						);
+						$total_charge += $new_charge;
+					}	
 				}
 			} else {
 				$percent = self::calc_residual_percent(
@@ -54,8 +59,10 @@ class ReportPaymentCalculation {
 					$res_override
 				);
 				$total_charge = 0;
-				foreach($matching_sims as $sim) {
-					$total_charge += ( $sim->value * ( $percent / 100));
+				if($matching_sims_new) {
+					foreach($matching_sims_new as $sim) {
+						$total_charge += ( $sim * ( $percent / 100));
+					}
 				}
 			}
 			$this->total_payment = $total_charge;
