@@ -81,7 +81,7 @@ class SimController extends Controller
 
         $role_id = Helpers::current_role_id();
 
-        $users = User::where('role_id', $role_id)->get();
+        $users = User::where('role_id', $role_id)->orderBy('company')->get();
 
         if(Helpers::current_user_admin())
         {
