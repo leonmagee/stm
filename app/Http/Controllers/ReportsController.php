@@ -484,11 +484,52 @@ class ReportsController extends Controller
 
     public function save_archive()
     {
-        $current_date = Settings::first()->current_date;
-        $current_site_date = Helpers::current_date_name();
-        $site_id = Settings::first()->get_site_id();
-        $site_name = Site::find($site_id)->name;
-        $report_data_object = new ReportData($site_id, $current_date);
+        $settings = Settings::first();
+        $current_date = $settings->current_date;
+        $current_site_date = Helpers::get_date_name($current_date);
+        $site_id = $settings->get_site_id();
+        $site = Site::find($site_id);
+        $site_name = $site->name;
+
+        /**
+         * Get report_type_sites_default table data
+         */
+        $defaults_array_orig = ReportTypeSiteDefault::where([
+			'site_id' => $site_id,
+        ])->with('report_type_site_values')->get()->toArray();
+
+        $defaults_array = [];
+        foreach ( $defaults_array_orig as $item ) {
+            $defaults_array[$item['report_type_id']] = $item;
+        }
+        
+        /**
+         * Get Residual Overrides
+         */
+        $user_residual = UserResidualPercent::all()->toArray();
+        $user_residual_override = [];
+        foreach($user_residual as $item) {
+            $user_residual_override[$item['user_id']][] = $item;
+        }
+
+        /**
+         * Get Spiff Overrides
+         */
+        $user_spiff = UserPlanValues::all()->toArray();
+        $user_spiff_override = [];
+        foreach($user_spiff as $item) {
+            $user_spiff_override[$item['user_id']][] = $item;
+        }
+
+
+
+
+
+
+
+
+        //$report_data_object = new ReportData($site_id, $current_date);
+        $report_data_object = new ReportData($site_id, $current_date, null, $defaults_array, $user_residual_override, $user_spiff_override, $site);
         $report_data_array = $report_data_object->report_data;
 
         foreach ($report_data_array as $report_data) {
