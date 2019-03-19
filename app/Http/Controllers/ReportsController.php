@@ -154,7 +154,7 @@ class ReportsController extends Controller
             'current' => 1, // Month
             'current_instant' => 4, // Emida / GS Posa
             'current_bundles' => 23, // Bundles
-            'current_hdn' => 28, // Instant HDN
+            'current_hdn' => 25, // Instant HDN
             // 'current_instant_hdn' => 19, // this isn't necessary
             'recharge' => 5, // H2O 2nd Recharge
             'recharge_instant' => 6, // H2O 2nd Rechage Instant
