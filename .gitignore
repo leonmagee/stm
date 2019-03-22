@@ -6,7 +6,7 @@
 /.idea
 /.vscode
 /.vagrant
-/database/seeds/UserTableSeeder.php
+#/database/seeds/UserTableSeeder.php
 Homestead.json
 Homestead.yaml
 npm-debug.log
