@@ -49,7 +49,7 @@ class ReportsController extends Controller
         foreach ( $defaults_array_orig as $item ) {
             $defaults_array[$item['report_type_id']] = $item;
         }
-        
+
         /**
          * Get Residual Overrides
          */
@@ -502,7 +502,7 @@ class ReportsController extends Controller
         foreach ( $defaults_array_orig as $item ) {
             $defaults_array[$item['report_type_id']] = $item;
         }
-        
+
         /**
          * Get Residual Overrides
          */
@@ -520,13 +520,6 @@ class ReportsController extends Controller
         foreach($user_spiff as $item) {
             $user_spiff_override[$item['user_id']][] = $item;
         }
-
-
-
-
-
-
-
 
         //$report_data_object = new ReportData($site_id, $current_date);
         $report_data_object = new ReportData($site_id, $current_date, null, $defaults_array, $user_residual_override, $user_spiff_override, $site);
@@ -610,7 +603,7 @@ class ReportsController extends Controller
          foreach ( $defaults_array_orig as $item ) {
             $defaults_array[$item['report_type_id']] = $item;
          }
-        
+
         /**
          * Get Residual Overrides
          */

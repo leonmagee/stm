@@ -31,17 +31,17 @@ class ArchiveController extends Controller
         } else {
             $current_date = Settings::first()->current_date;
         }
-        
+
         $current_site_date = Helpers::current_date_name();
         $site_id = Settings::first()->get_site_id();
         $site_name = Site::find($site_id)->name;
         $archive_data = Archive::where('date', $current_date)->get();
 
-
         $report_data_array = [];
-        
+
         foreach($archive_data as $data)
         {
+          //dd($data);
 
             if($user = User::find($data->user_id))
             {
@@ -69,8 +69,8 @@ class ArchiveController extends Controller
         }
 
         return view('archive.index', compact(
-            'site_name', 
-            'current_date', 
+            'site_name',
+            'current_date',
             'report_data_array',
             'date_select_array'
         ));

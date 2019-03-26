@@ -12,11 +12,11 @@ class ReportData {
 	private $spiff_override;
 	private $site;
 	public function __construct(
-		$site_id, 
-		$current_date, 
-		$user_id = null, 
-		$defaults_array = null, 
-		$res_override = null, 
+		$site_id,
+		$current_date,
+		$user_id = null,
+		$defaults_array = null,
+		$res_override = null,
 		$spiff_override = null,
 		$site = null
 	) {
@@ -39,9 +39,9 @@ class ReportData {
 		}
 		elseif ($current_user->isAdmin() || $current_user->isManager())
 		{
-			$users = User::where('role_id', $this->role_id)->get();
-		} 
-		else 
+			$users = User::where('role_id', $this->role_id)->orderBy('company')->get();
+		}
+		else
 		{
 			$users = User::where('id', $current_user->id)->get();
 		}
@@ -50,8 +50,8 @@ class ReportData {
 		$report_types = ReportType::query()->orderBy('order_index')->get();
 		foreach ( $users as $user ) {
 			$report_data_user = new ReportDataUser(
-				$user->name, 
-				$user->company, 
+				$user->name,
+				$user->company,
 				$user->id,
 				$this->site_id,
 				$this->defaults_array,

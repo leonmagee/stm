@@ -26,7 +26,7 @@ class SiteTableSeeder extends Seeder
                 'default_spiff_amount' => 10
             ],
             [
-                'name' => 'Signature Store',
+                'name' => 'VIP Prime',
                 'role_id' => 5,
                 'default_residual_percent' => 0,
                 'default_spiff_amount' => 0

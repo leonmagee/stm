@@ -26,7 +26,7 @@ class RolesTableSeeder extends Seeder
                 'name' => 'Dealer',
             ],
             [
-                'name' => 'Signature Store Dealer',
+                'name' => 'VIP Prime Dealer',
             ],
         ]);
     }
