@@ -11,10 +11,17 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/assets/js/app.js', 'public/js')
+mix.react('resources/assets/js/app.js', 'public/js')
     .sass('resources/assets/sass/app.scss', 'public/css')
     .disableNotifications()
-    .browserSync('https://stm.test');
+    .browserSync({
+        proxy: 'https://stm.test',
+        port: 3000,
+        https: {
+            key: '/Users/leonmagee/.localhost-ssl/key.pem',
+            cert: '/Users/leonmagee/.localhost-ssl/cert.pem',
+        },
+    });
 
 // mix.js('resources/assets/js/app.js', 'public/js')
 // .sass('resources/assets/sass/app.scss', 'public/css').version().disableNotifications();

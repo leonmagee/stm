@@ -66,7 +66,7 @@ class AppServiceProvider extends ServiceProvider
 
             $users_sub = [
                 [
-                    'name' => 'All Users',
+                    'name' => 'Site Users',
                     'link' => '/users'
                 ],
                 [
@@ -164,6 +164,13 @@ class AppServiceProvider extends ServiceProvider
                     ],
                     [
                         'name' => 'All Users',
+                        'link' => '/all-users',
+                        'sub' => false,
+                        'icon' => 'flaticon-group',
+                        'default' => false,
+                    ],
+                    [
+                        'name' => 'Site Users',
                         'link' => '/users',
                         'sub' => false,
                         'icon' => 'flaticon-group',
@@ -369,7 +376,7 @@ class AppServiceProvider extends ServiceProvider
                         'default' => false,
                     ],
                     [
-                        'name' => 'All Users',
+                        'name' => 'Site Users',
                         'link' => '/users',
                         'sub' => false,
                         'icon' => 'flaticon-group',

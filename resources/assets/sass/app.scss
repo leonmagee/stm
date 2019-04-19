@@ -6,20 +6,17 @@
 //@import url("https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700,800");
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:400,700,800");
 
-@import '~@fortawesome/fontawesome-free/scss/brands';
-@import '~@fortawesome/fontawesome-free/scss/regular';
-@import '~@fortawesome/fontawesome-free/scss/solid';
-@import '~@fortawesome/fontawesome-free/scss/fontawesome';
+@import "~@fortawesome/fontawesome-free/scss/brands";
+@import "~@fortawesome/fontawesome-free/scss/regular";
+@import "~@fortawesome/fontawesome-free/scss/solid";
+@import "~@fortawesome/fontawesome-free/scss/fontawesome";
 
 // not sure how this was working before with this commented out
-@import '../../../public/fonts/vendor/flat-icon/_flaticon.scss';
+@import "../../../public/fonts/vendor/flat-icon/_flaticon.scss";
 
 //@import "~bulma/css/bulma.min.css";
 
 @import "variables";
-
-
-
 
 /*! bulma.io v0.7.1 | MIT License | github.com/jgthms/bulma */
 //@import "~bulma/sass/utilities/_all";
@@ -31,7 +28,6 @@
 @import "~bulma/sass/utilities/animations.sass";
 @import "~bulma/sass/utilities/mixins.sass";
 @import "~bulma/sass/utilities/controls.sass";
-
 
 @import "~bulma/sass/base/_all";
 @import "~bulma/sass/elements/_all";
@@ -74,6 +70,8 @@
 @import "datatables";
 
 @import "users";
+
+@import "all-users";
 
 @import "report-types";
 

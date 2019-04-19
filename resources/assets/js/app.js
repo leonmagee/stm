@@ -12,17 +12,23 @@ require('chart.js');
 
 require('axios');
 
+require('./components/AllUsers');
+
 /**
-* Fade out notification on click
-*/
+ * Fade out notification on click
+ */
 $('.notification .delete').click(function() {
-	$(this).parent().fadeOut();
+    $(this)
+        .parent()
+        .fadeOut();
 });
 
 /**
-* Modals
-*/
-$('.modal-open, #layout-modal .modal-close, #layout-modal .modal-close-button').click(function() {
+ * Modals
+ */
+$(
+    '.modal-open, #layout-modal .modal-close, #layout-modal .modal-close-button'
+).click(function() {
     $('.modal#layout-modal').toggleClass('is-active');
 });
 
@@ -31,23 +37,26 @@ $('.menu-modal-open, #menu-modal .menu-modal-close').click(function() {
 });
 
 $('#modal_delete_sims').click(function() {
-	console.log('click worked new');
-	$('#delete_sims_form').submit();
+    console.log('click worked new');
+    $('#delete_sims_form').submit();
 });
 
 /**
-* Toggle mobile menu
-*/
+ * Toggle mobile menu
+ */
 $('.mobile-menu a.has-menu').click(function() {
-	$(this).parent().toggleClass('active').find('ul').toggleClass('active');
+    $(this)
+        .parent()
+        .toggleClass('active')
+        .find('ul')
+        .toggleClass('active');
 });
 
-
 /**
-* Activate data tables
-* Now handled by ajax
-*/
-//$('#sims_table').DataTable();
+ * Activate data tables
+ * Now handled by ajax
+ */
+// $('#sims_table').DataTable();
 
 // $('#sims_table').DataTable({
 //     "processing": true,
@@ -62,50 +71,37 @@ $('.mobile-menu a.has-menu').click(function() {
 //     ]
 // });
 
-
 /**
-* Show spinner
-* This is linked to buttons that show the spinner prior to refreshing the page.
-*/
-$('button.call-loader, ul.sidebar-menu li a[href="/reports"]').click(function() {
-	$('.stm-absolute-wrap#loader-wrap').css({'display':'flex'});
-});
+ * Show spinner
+ * This is linked to buttons that show the spinner prior to refreshing the page.
+ */
+$('button.call-loader, ul.sidebar-menu li a[href="/reports"]').click(
+    function() {
+        $('.stm-absolute-wrap#loader-wrap').css({ display: 'flex' });
+    }
+);
 
 // loader for datatables processing
 
-$('#sims_table')
-    .on( 'processing.dt', function ( e, settings, processing ) {
-    	if(processing === true)
-    	{
-			$('.stm-absolute-wrap#loader-wrap').css({'display':'flex'});
-    	}
-    	else {
-    		$('.stm-absolute-wrap#loader-wrap').css({'display':'none'});
-    	}
-} );
-
-/**
-* Add file name to inputs
-*/
-$('.upload-file-js').on('change', function() {
-	if ( this.files.length > 0 ) {
-		$(this).parent().find('.file-name').html(this.files[0].name);
-	}
+$('#sims_table').on('processing.dt', function(e, settings, processing) {
+    if (processing === true) {
+        $('.stm-absolute-wrap#loader-wrap').css({ display: 'flex' });
+    } else {
+        $('.stm-absolute-wrap#loader-wrap').css({ display: 'none' });
+    }
 });
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+/**
+ * Add file name to inputs
+ */
+$('.upload-file-js').on('change', function() {
+    if (this.files.length > 0) {
+        $(this)
+            .parent()
+            .find('.file-name')
+            .html(this.files[0].name);
+    }
+});
 
 // var data = {
 // 	labels: ['January', 'February', 'March'],
@@ -140,7 +136,7 @@ $('.upload-file-js').on('change', function() {
 //     options: options
 // });
 
-//window.Vue = require('vue');
+// window.Vue = require('vue');
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -162,4 +158,4 @@ $('.upload-file-js').on('change', function() {
 //     $('#example').DataTable();
 // } );
 
-//$('div').hide();
+// $('div').hide();

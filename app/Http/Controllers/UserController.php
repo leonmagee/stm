@@ -29,9 +29,28 @@ class UserController extends Controller
         $site_id = $settings->get_site_id();
         $role_id = $settings->get_role_id();
         $site_name = Site::find($site_id)->name;
-        //dd($role_id);
         $users = User::where('role_id', $role_id)->orderBy('company')->get();
         return view('users.index', compact('users', 'site_name'));
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function all_users()
+    {
+        $settings = Settings::first();
+        $site_id = $settings->get_site_id();
+        $role_id = $settings->get_role_id();
+        $site_name = Site::find($site_id)->name;
+        // query all non-admin users
+        $users = User::whereIn('role_id', array(3,4,5))->orderBy('company')->get();
+
+        //$users = User::all();
+        return view('users.all-users')->with('users', json_encode($users));
+        //$users = User::where('role_id', $role_id)->orderBy('company')->get();
+        //return view('users.all-users', compact('users', 'site_name'));
     }
 
     /**
@@ -190,8 +209,8 @@ class UserController extends Controller
         ->orderBy('report_type_id')->get();
 
         return view('users.user-plan-values', compact(
-            'user', 
-            'report_types_spiff', 
+            'user',
+            'report_types_spiff',
             'report_types_residual',
             'user_plan_items',
             'user_residual_items'
@@ -208,7 +227,7 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         /**
-        * @todo test this - refactor - big conidtional isn't necessary anymore... 
+        * @todo test this - refactor - big conidtional isn't necessary anymore...
         */
         //validate the form
         if(Helpers::current_user_admin())
@@ -312,7 +331,7 @@ class UserController extends Controller
         }
     }
 
-    
+
 
     /**
      * Update the specified resource in storage.

@@ -1,0 +1,132 @@
+// react component
+.allUsersList {
+    .allUsersItem {
+        background-color: #fcfcfc;
+        border: 1px solid #ddd;
+        padding: 15px 50px;
+        display: flex;
+        justify-content: space-between;
+        margin: 15px 0;
+        .detail {
+            //text-align: center;
+            flex: 1;
+        }
+    }
+}
+
+.all-users-wrap {
+    //background-color: tomato !important;
+    a.user-wrap {
+        .flex-item {
+            &.company-wrap {
+                //font-size: 15px;
+                font-size: 0.9em;
+                flex: 0 1 45%;
+                padding: 0 20px;
+            }
+            &.name-phone-wrap {
+                flex: 0 1 45%;
+                padding: 0 10px;
+                .name {
+                    font-size: 13px;
+                }
+                .phone {
+                    color: #777;
+                }
+            }
+        }
+
+        &:hover {
+            .flex-item {
+                &.name-phone-wrap {
+                    .phone {
+                        color: #ddd;
+                    }
+                }
+            }
+        }
+    }
+}
+
+// users single
+.single-user-wrap {
+    background-color: #fbfbfb; // use a mixin for this?
+    border: 1px solid #e5e5e5;
+    @media (min-width: $screen-md) {
+        display: inline-block;
+    }
+    padding: 5px 20px;
+    border-radius: 10px;
+    font-weight: 700;
+    white-space: nowrap;
+    color: #555;
+    min-width: 50%;
+    .flex-wrap {
+        display: flex;
+        align-items: center;
+        i {
+            margin-right: 15px;
+            font-size: 1.2em;
+            color: #aaa;
+            width: 30px;
+            text-align: center;
+            &.fa-user-plus,
+            &.fa-user-minus {
+                padding-left: 5px;
+            }
+        }
+    }
+    .item {
+        padding: 5px 0;
+        span {
+            font-size: 1.2em;
+        }
+    }
+    .company {
+        font-size: 2.4em;
+        font-weight: 700;
+        color: $brand-primary;
+        border-bottom: 2px solid #ddd;
+        padding-bottom: 0px;
+        margin-bottom: 7px;
+    }
+    .name span {
+        font-size: 1.8em;
+        //color: #555;
+    }
+    .role span {
+        //color: $color-red;
+        //font-size: 1.5em;
+    }
+    .email span {
+        //font-size: 1.3em;
+    }
+    .phone span {
+        //color: #555;
+        //font-size: 1.5em;
+    }
+    .credit-bonus span {
+        span.bonus-val,
+        span.credit-val {
+            font-size: 1em;
+            margin-left: 5px;
+        }
+        span.bonus-val {
+            color: $color-green-text;
+        }
+        span.credit-val {
+            color: $color-red;
+        }
+    }
+    .address-wrap {
+        font-size: 1.2em;
+        .address {
+            //font-size: 1.5em;
+            //color: #555;
+        }
+        .city_state_zip {
+            font-size: 0.8em;
+            color: #666;
+        }
+    }
+}

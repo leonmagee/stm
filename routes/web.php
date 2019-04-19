@@ -42,7 +42,8 @@ Route::group(['middleware' => 'App\Http\Middleware\LockOutUsersManagers'], funct
 
 Route::group(['middleware' => 'App\Http\Middleware\LockOutUsers'], function()
 {
-	Route::get('users', 'UserController@index')->name('users');
+  Route::get('users', 'UserController@index')->name('users');
+  Route::get('all-users', 'UserController@all_users')->name('all-users');
 });
 
 Route::group(['middleware' => 'App\Http\Middleware\LockOutUsersManagers'], function()
