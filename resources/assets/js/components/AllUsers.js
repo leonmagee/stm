@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
+import axios from 'axios';
 
 export default class AllUsers extends Component {
     constructor(props) {
@@ -18,7 +19,35 @@ export default class AllUsers extends Component {
     setUserType(roleId) {
         this.setState({
             roleId,
+            selectedUsers: [],
         });
+    }
+
+    udateUserSites() {
+        const { selectedUsers } = this.state;
+        console.log("button clicked?", selectedUsers);
+        $(".stm-absolute-wrap#loader-wrap").css({
+            display: "flex"
+        });
+
+		axios({
+            method: "post",
+            url: "/update-user-sites",
+            data: {
+                selectedUsers
+            }
+        }).then(response => {
+            console.log("here is the response", response);
+            $(".stm-absolute-wrap#loader-wrap").css({
+                display: "none"
+            });
+        }).catch(error => {
+          console.error('errorzz', error);
+          $(".stm-absolute-wrap#loader-wrap").css({
+              display: "none"
+          });
+        });
+
     }
 
     selectUser(key) {
@@ -34,8 +63,9 @@ export default class AllUsers extends Component {
         });
     }
 
+
     render() {
-        const { users, sites, roleId } = this.state;
+        const { users, sites, roleId, selectedUsers } = this.state;
         console.log(users);
 
         const allUsers = users.map((item, key) => {
@@ -61,14 +91,36 @@ export default class AllUsers extends Component {
                         <div className="detail">
                             <a href={linkUrl}>{item.company}</a>
                         </div>
+                        <div className="divider" />
                         <div className="detail">{item.name}</div>
+                        <div className="divider" />
                         <div className="detail">{item.email}</div>
+                        <div className="divider" />
                         <div className="detail">{item.phone}</div>
                     </div>
                 );
             }
             return false;
         });
+
+        let updateButton = <div />;
+        if (selectedUsers.length) {
+            updateButton = (
+                <button
+                    type="button"
+                    onClick={() => this.udateUserSites()}
+                    className="button is-primary"
+                >
+                    Update
+                </button>
+            );
+        } else {
+            updateButton = (
+                <button type="button" disabled className="button is-primary">
+                    Update
+                </button>
+            );
+        }
 
         const nav = sites.map((item, key) => {
             if (item.role_id !== roleId) {
@@ -94,9 +146,33 @@ export default class AllUsers extends Component {
             );
         });
 
+        // const siteOptions = sites.map((item, key) => (
+        //     <option key={key} value={item.role_id}>
+        //         {item.name}
+        //     </option>
+        // ));
+
+        const siteForm = (
+            <form method="post" className="changeSiteForm">
+                <label htmlFor="siteSelect">Change Site</label>
+                <div className="select">
+                    <select id="siteSelect" name="site">
+                        {sites.map((item, key) => (
+                            <option key={key} value={item.role_id}>
+                                {item.name}
+                            </option>
+                        ))}
+                    </select>
+                </div>
+                {updateButton}
+            </form>
+        );
+
         return (
             <div>
-                <div className="allUserToggle">{nav}</div>
+                <div className="allUserToggle">
+                    {nav} {siteForm}
+                </div>
                 <div className="allUsersList">{allUsers}</div>
             </div>
         );

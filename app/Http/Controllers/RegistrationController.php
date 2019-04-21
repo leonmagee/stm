@@ -56,7 +56,7 @@ class RegistrationController extends Controller
 		//dd($sites_array);
 
 		$settings = Settings::first();
-		
+
 		$current_site_id = $settings->get_site_id();
 
 		return view('registration.create', compact('sites_array', 'current_site_id'));
@@ -119,7 +119,7 @@ class RegistrationController extends Controller
 
 		/**
 		* Update this email to include branding and reflect that a user account was created.
-		* Mandate strong password... 
+		* Mandate strong password...
 		* @todo this will currently not work on the server - prob because of mail driver in .env?
 		*/
 		\Mail::to($user)->send(new NewUser($user, $request->password));
@@ -130,5 +130,5 @@ class RegistrationController extends Controller
 
 		// this doesn't happen as ajax is being used?
 		//return redirect('users/' . $user->id);
-	}
+  }
 }

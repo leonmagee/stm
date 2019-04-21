@@ -18,11 +18,11 @@ class APIController extends Controller
     {
         $this->middleware('auth');
     }
-  
+
     public function getSimsArchive($id)
     {
     	$report_type = ReportType::find($id);
-        
+
         if ($report_type->spiff) {
 
         	$query = $this->archiveQuery(new Sim(), $id);
@@ -43,9 +43,9 @@ class APIController extends Controller
                 'upload_date' => Helpers::current_date(),
             ]
         )->select(
-	    	'sim_number', 
-	    	'value', 
-	    	'activation_date', 
+	    	'sim_number',
+	    	'value',
+	    	'activation_date',
 	    	'mobile_number'
 	    );
 	}
@@ -82,5 +82,8 @@ class APIController extends Controller
 
         return Datatables::of($sim_users_query)->make(true);
     }
+
 }
+
+
 

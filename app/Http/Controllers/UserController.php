@@ -417,4 +417,13 @@ class UserController extends Controller
 
         return redirect('users');
     }
+
+    /**
+     * Axios change user sites
+     */
+
+    public function changeUserSites(request $request) {
+      //dd('this is working?');
+      return $request;
+    }
 }

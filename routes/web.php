@@ -37,8 +37,10 @@ Route::group(['middleware' => 'App\Http\Middleware\LockOutUsersManagers'], funct
 	Route::get('admins-managers', 'UserController@admin_managers');
 	Route::get('edit-user/{user}', 'UserController@edit');
 	Route::get('change-password/{user}', 'UserController@edit_password');
-	Route::post('update-user-password/{id}','UserController@update_password');
+  Route::post('update-user-password/{id}','UserController@update_password');
+  Route::post('update-user-sites', 'UserController@changeUserSites');
 });
+
 
 Route::group(['middleware' => 'App\Http\Middleware\LockOutUsers'], function()
 {

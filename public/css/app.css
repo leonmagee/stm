@@ -17920,7 +17920,6 @@ table.dataTable thead .sorting_desc_disabled:after {
 .allUsersList .allUsersItem {
   background-color: #fcfcfc;
   border: 1px solid #ddd;
-  padding: 15px 5px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -17931,9 +17930,13 @@ table.dataTable thead .sorting_desc_disabled:after {
       -ms-flex-align: center;
           align-items: center;
   margin: 15px 0;
+  font-weight: bold;
+  color: #333;
+  position: relative;
 }
 
 .allUsersList .allUsersItem .detail {
+  padding: 15px 5px;
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
@@ -17944,6 +17947,13 @@ table.dataTable thead .sorting_desc_disabled:after {
   position: relative;
   width: 40px;
   height: 40px;
+}
+
+.allUsersList .allUsersItem .divider {
+  width: 1px;
+  height: 60px;
+  background-color: #eee;
+  margin-right: 30px;
 }
 
 .fake-checkbox-wrap {
@@ -17978,8 +17988,38 @@ table.dataTable thead .sorting_desc_disabled:after {
   border-color: #1B9AAA;
 }
 
+.allUserToggle {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
 .allUserToggle button {
   margin-right: 15px;
+}
+
+.allUserToggle button:focus {
+  outline: none;
+}
+
+.allUserToggle div.select {
+  margin-right: 15px;
+}
+
+.allUserToggle .changeSiteForm {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.allUserToggle .changeSiteForm label {
+  margin: 0 10px;
 }
 
 .all-users-wrap a.user-wrap .flex-item.company-wrap {
