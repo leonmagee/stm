@@ -3,14 +3,50 @@
     .allUsersItem {
         background-color: #fcfcfc;
         border: 1px solid #ddd;
-        padding: 15px 50px;
+        padding: 15px 5px;
         display: flex;
         justify-content: space-between;
+        align-items: center;
         margin: 15px 0;
         .detail {
-            //text-align: center;
             flex: 1;
         }
+        .detail-small {
+            margin: 0 15px 0 30px;
+            position: relative;
+            width: 40px;
+            height: 40px;
+        }
+    }
+}
+
+.fake-checkbox-wrap {
+    //background-color: tomato;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .fake-checkbox {
+        background-color: #fff;
+        border: 1px solid #ddd;
+        width: 50%;
+        height: 50%;
+        &:hover {
+            background-color: $brand-danger;
+            border-color: $brand-danger;
+            cursor: pointer;
+        }
+        &.selected {
+            background-color: $brand-primary;
+            border-color: $brand-primary;
+        }
+    }
+}
+
+.allUserToggle {
+    button {
+        margin-right: 15px;
     }
 }
 

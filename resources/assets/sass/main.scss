@@ -1,118 +1,119 @@
 html {
-	height: 100%;
-	padding: 0;
-	margin: 0;
+    height: 100%;
+    padding: 0;
+    margin: 0;
 }
 
 body.stm-body {
-	display: flex;
-	flex-direction: column;
-	min-height: 100%;
-	@include current_font;
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+    @include current_font;
 
-	//mobile settings
-	.chart-wrap-outer {
-		display: none;
+    //mobile settings
+    .chart-wrap-outer {
+        display: none;
+    }
 
-	}
+    @media (min-width: $screen-md) {
+        .chart-wrap-outer {
+            display: block;
+        }
+        .mobile-only {
+            display: none;
+        }
+    }
 
-	@media(min-width: $screen-md) {
-		.chart-wrap-outer {
-			display: block;
-		}
-		.mobile-only {
-			display: none;
-		}
-	}
+    .main-wrap {
+        // @media(min-width: $screen-sm) {
+        // 	display: flex;
+        // }
+        display: flex;
+        flex: 1 1 100%;
 
-	.main-wrap {
-		// @media(min-width: $screen-sm) {
-		// 	display: flex;
-		// }
-		display: flex;
-		flex: 1 1 100%;
+        #content {
+            height: 100%;
+        }
 
-		#content {
-			height: 100%;
-		}
+        .middle-content-wrap {
+            position: relative;
+            flex: 1;
+            background-color: #f1f1f1;
+            padding: 20px;
+            @media (min-width: $screen-sm) {
+                padding: 20px 35px;
+            }
+            .container {
+                //padding: 20px;
+            }
+        }
+    }
 
-		.middle-content-wrap {
-			position: relative;
-			flex: 1;
-			background-color: #F1F1F1;
-			padding: 20px;
-			@media(min-width: $screen-sm) {
-				padding: 20px 35px;
-			}
-			.container {
-				//padding: 20px;
-			}
-		}	
-	}
+    a {
+        color: $brand-primary;
 
+        &:hover {
+            color: darken($brand-primary, 5%);
+        }
+    }
 
+    button.button,
+    a.button {
+        font-weight: 700;
+        //background-color: $brand-primary;
+        //transition: 0.3s;
+        // text-shadow: 1px 1px darken($brand-primary, 2%);
+        // &:hover {
+        // 	background-color: darken($brand-primary, 3%);
+        // 	text-shadow: 1px 1px darken($brand-primary, 5%);
+        // }
+    }
 
-	a {
-		color: $brand-primary;
+    button.disabled {
+        &:hover {
+            cursor: default;
+        }
+    }
 
-		&:hover {
-			color: darken( $brand-primary, 5%);
-		}
-	}
+    //notifications / alerts
+    .notification {
+        font-weight: 700;
+        &.is-success {
+            color: #fff;
+            text-shadow: 1px 1px darken($color-green, 2%);
+        }
+    }
 
-	button.button, a.button {
-		font-weight: 700;
-		//background-color: $brand-primary;
-		//transition: 0.3s;
-		// text-shadow: 1px 1px darken($brand-primary, 2%);
-		// &:hover {
-		// 	background-color: darken($brand-primary, 3%);
-		// 	text-shadow: 1px 1px darken($brand-primary, 5%);
-		// }
-	}
+    .button-bar-wrap {
+        padding: 10px 5px 0;
 
-	//notifications / alerts
-	.notification {
-		font-weight: 700;
-		&.is-success {
-			color: #FFF;
-			text-shadow: 1px 1px darken($color-green, 2%);
-		}
-	}
+        .button-bar {
+            padding: 0 15px 0;
 
-	.button-bar-wrap {
+            @media (min-width: $screen-md) {
+                padding: 10px 0 0;
+                display: flex;
+                justify-content: space-between;
+                width: 50%;
+            }
+            a {
+                margin: 5px;
+                display: block;
+                flex: 0 1 100%;
+            }
+        }
+    }
 
-		padding: 10px 5px 0;
-
-		.button-bar {
-			
-			padding: 0 15px 0;
-
-			@media(min-width: $screen-md) {
-				padding: 10px 0 0;
-				display: flex;
-				justify-content: space-between;
-				width: 50%;
-			}
-			a {
-				margin: 5px;
-				display: block;
-				flex: 0 1 100%;
-			}
-		}
-	}
-
-	.banner-image-wrap {
-		margin: 40px 0;
-		@media(min-width: $screen-md) {
-			margin: 0 3%;
-			&.image-1 {
-				order: 0;
-			}
-			&.image-2 {
-				order: 2;
-			}
-		}
-	}
+    .banner-image-wrap {
+        margin: 40px 0;
+        @media (min-width: $screen-md) {
+            margin: 0 3%;
+            &.image-1 {
+                order: 0;
+            }
+            &.image-2 {
+                order: 2;
+            }
+        }
+    }
 }
-

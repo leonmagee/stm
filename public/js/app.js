@@ -32389,7 +32389,7 @@ module.exports = {
 if (false) {
   module.exports = require('./cjs/react.production.min.js');
 } else {
-  module.exports = __webpack_require__(224);
+  module.exports = __webpack_require__(223);
 }
 
 
@@ -32507,7 +32507,7 @@ module.exports = shouldUseNative() ? Object.assign : function (target, source) {
 var printWarning = function() {};
 
 if (true) {
-  var ReactPropTypesSecret = __webpack_require__(225);
+  var ReactPropTypesSecret = __webpack_require__(224);
   var loggedTypeFailures = {};
   var has = Function.call.bind(Object.prototype.hasOwnProperty);
 
@@ -32604,7 +32604,7 @@ module.exports = checkPropTypes;
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(151);
-module.exports = __webpack_require__(232);
+module.exports = __webpack_require__(231);
 
 
 /***/ }),
@@ -82852,9 +82852,11 @@ module.exports = {
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(147);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_dom__ = __webpack_require__(226);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_dom__ = __webpack_require__(225);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_dom___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react_dom__);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -82873,21 +82875,42 @@ var AllUsers = function (_Component) {
 
         var _this = _possibleConstructorReturn(this, (AllUsers.__proto__ || Object.getPrototypeOf(AllUsers)).call(this, props));
 
-        var users = _this.props.users;
+        var _this$props = _this.props,
+            users = _this$props.users,
+            sites = _this$props.sites,
+            current = _this$props.current;
+        // console.log(JSON.parse(sites));
         // console.log('data from component', JSON.parse(users));
 
         _this.state = {
             users: JSON.parse(users),
-            roleId: 3
+            sites: JSON.parse(sites),
+            roleId: parseInt(current),
+            selectedUsers: []
         };
         return _this;
     }
 
     _createClass(AllUsers, [{
-        key: 'setDealers',
-        value: function setDealers() {
+        key: 'setUserType',
+        value: function setUserType(roleId) {
             this.setState({
-                roleId: 4
+                roleId: roleId
+            });
+        }
+    }, {
+        key: 'selectUser',
+        value: function selectUser(key) {
+            var selectedUsers = this.state.selectedUsers;
+
+            if (selectedUsers.includes(key)) {
+                var index = selectedUsers.indexOf(key);
+                selectedUsers.splice(index, 1);
+            } else {
+                selectedUsers.push(key);
+            }
+            this.setState({
+                selectedUsers: [].concat(_toConsumableArray(selectedUsers))
             });
         }
     }, {
@@ -82897,19 +82920,46 @@ var AllUsers = function (_Component) {
 
             var _state = this.state,
                 users = _state.users,
+                sites = _state.sites,
                 roleId = _state.roleId;
 
             console.log(users);
 
             var allUsers = users.map(function (item, key) {
                 if (item.role_id === roleId) {
+                    var checkboxClass = '';
+                    if (_this2.state.selectedUsers.includes(key)) {
+                        console.log('this is in the array!');
+                        checkboxClass = 'fake-checkbox selected';
+                    } else {
+                        checkboxClass = 'fake-checkbox';
+                    }
+                    var linkUrl = '/users/' + item.id;
                     return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                         'div',
                         { className: 'allUsersItem', key: key },
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                             'div',
+                            { className: 'detail-small' },
+                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                'div',
+                                { className: 'fake-checkbox-wrap' },
+                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div', {
+                                    onClick: function onClick() {
+                                        return _this2.selectUser(key);
+                                    },
+                                    className: checkboxClass
+                                })
+                            )
+                        ),
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                            'div',
                             { className: 'detail' },
-                            item.company
+                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                'a',
+                                { href: linkUrl },
+                                item.company
+                            )
                         ),
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                             'div',
@@ -82931,19 +82981,39 @@ var AllUsers = function (_Component) {
                 return false;
             });
 
+            var nav = sites.map(function (item, key) {
+                if (item.role_id !== roleId) {
+                    return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        'button',
+                        {
+                            className: 'button is-primary',
+                            type: 'button',
+                            onClick: function onClick() {
+                                return _this2.setUserType(item.role_id);
+                            },
+                            key: key
+                        },
+                        item.name
+                    );
+                }
+                return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                    'button',
+                    {
+                        className: 'button is-danger disabled',
+                        type: 'button',
+                        key: key
+                    },
+                    item.name
+                );
+            });
+
             return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 'div',
                 null,
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                     'div',
                     { className: 'allUserToggle' },
-                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                        'button',
-                        { type: 'button', onClick: function onClick() {
-                                return _this2.setDealers();
-                            } },
-                        'See Dealers'
-                    )
+                    nav
                 ),
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                     'div',
@@ -82961,15 +83031,17 @@ var AllUsers = function (_Component) {
 
 
 if (document.getElementById('allUsers')) {
-    var data = document.getElementById('allUsers').getAttribute('users');
-    __WEBPACK_IMPORTED_MODULE_1_react_dom___default.a.render(__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(AllUsers, { users: data }), document.getElementById('allUsers'));
+    var allUsers = document.getElementById('allUsers');
+    var users = allUsers.getAttribute('users');
+    var sites = allUsers.getAttribute('sites');
+    var current = allUsers.getAttribute('current');
+    __WEBPACK_IMPORTED_MODULE_1_react_dom___default.a.render(__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(AllUsers, { users: users, sites: sites, current: current }), document.getElementById('allUsers'));
 }
 
 // module.exports = AllUsers;
 
 /***/ }),
-/* 223 */,
-/* 224 */
+/* 223 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -84877,7 +84949,7 @@ module.exports = react;
 
 
 /***/ }),
-/* 225 */
+/* 224 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -84896,7 +84968,7 @@ module.exports = ReactPropTypesSecret;
 
 
 /***/ }),
-/* 226 */
+/* 225 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -84936,12 +85008,12 @@ if (false) {
   checkDCE();
   module.exports = require('./cjs/react-dom.production.min.js');
 } else {
-  module.exports = __webpack_require__(227);
+  module.exports = __webpack_require__(226);
 }
 
 
 /***/ }),
-/* 227 */
+/* 226 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -84965,8 +85037,8 @@ if (true) {
 var React = __webpack_require__(147);
 var _assign = __webpack_require__(148);
 var checkPropTypes = __webpack_require__(149);
-var scheduler = __webpack_require__(228);
-var tracing = __webpack_require__(230);
+var scheduler = __webpack_require__(227);
+var tracing = __webpack_require__(229);
 
 /**
  * Use invariant() to assert state which your program assumes to be true.
@@ -106226,7 +106298,7 @@ module.exports = reactDom;
 
 
 /***/ }),
-/* 228 */
+/* 227 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -106235,12 +106307,12 @@ module.exports = reactDom;
 if (false) {
   module.exports = require('./cjs/scheduler.production.min.js');
 } else {
-  module.exports = __webpack_require__(229);
+  module.exports = __webpack_require__(228);
 }
 
 
 /***/ }),
-/* 229 */
+/* 228 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -106947,7 +107019,7 @@ exports.unstable_getFirstCallbackNode = unstable_getFirstCallbackNode;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(9)))
 
 /***/ }),
-/* 230 */
+/* 229 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -106956,12 +107028,12 @@ exports.unstable_getFirstCallbackNode = unstable_getFirstCallbackNode;
 if (false) {
   module.exports = require('./cjs/scheduler-tracing.production.min.js');
 } else {
-  module.exports = __webpack_require__(231);
+  module.exports = __webpack_require__(230);
 }
 
 
 /***/ }),
-/* 231 */
+/* 230 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -107391,7 +107463,7 @@ exports.unstable_unsubscribe = unstable_unsubscribe;
 
 
 /***/ }),
-/* 232 */
+/* 231 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin

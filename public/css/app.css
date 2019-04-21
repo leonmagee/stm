@@ -17034,7 +17034,7 @@ body.stm-body .main-wrap .middle-content-wrap {
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
-  background-color: #F1F1F1;
+  background-color: #f1f1f1;
   padding: 20px;
 }
 
@@ -17057,12 +17057,16 @@ body.stm-body a.button {
   font-weight: 700;
 }
 
+body.stm-body button.disabled:hover {
+  cursor: default;
+}
+
 body.stm-body .notification {
   font-weight: 700;
 }
 
 body.stm-body .notification.is-success {
-  color: #FFF;
+  color: #fff;
   text-shadow: 1px 1px #05d19b;
 }
 
@@ -17916,13 +17920,16 @@ table.dataTable thead .sorting_desc_disabled:after {
 .allUsersList .allUsersItem {
   background-color: #fcfcfc;
   border: 1px solid #ddd;
-  padding: 15px 50px;
+  padding: 15px 5px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   margin: 15px 0;
 }
 
@@ -17930,6 +17937,49 @@ table.dataTable thead .sorting_desc_disabled:after {
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
+}
+
+.allUsersList .allUsersItem .detail-small {
+  margin: 0 15px 0 30px;
+  position: relative;
+  width: 40px;
+  height: 40px;
+}
+
+.fake-checkbox-wrap {
+  width: 100%;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.fake-checkbox-wrap .fake-checkbox {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  width: 50%;
+  height: 50%;
+}
+
+.fake-checkbox-wrap .fake-checkbox:hover {
+  background-color: #EF476F;
+  border-color: #EF476F;
+  cursor: pointer;
+}
+
+.fake-checkbox-wrap .fake-checkbox.selected {
+  background-color: #1B9AAA;
+  border-color: #1B9AAA;
+}
+
+.allUserToggle button {
+  margin-right: 15px;
 }
 
 .all-users-wrap a.user-wrap .flex-item.company-wrap {
