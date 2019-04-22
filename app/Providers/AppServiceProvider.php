@@ -124,6 +124,17 @@ class AppServiceProvider extends ServiceProvider
                 ]
             ];
 
+            $users_sub = [
+                [
+                    'name' => 'All Users',
+                    'link' => '/all-users'
+                ],
+                [
+                    'name' => 'Site Users',
+                    'link' => '/users'
+                ]
+            ];
+
             // $recharge_data = [
             //     [
             //         'name' => '2nd Recharge Data',
@@ -163,18 +174,11 @@ class AppServiceProvider extends ServiceProvider
                         'default' => false,
                     ],
                     [
-                        'name' => 'All Users',
-                        'link' => '/all-users',
-                        'sub' => false,
+                        'name' => 'Users',
+                        'link' => false,
+                        'sub' => $users_sub,
                         'icon' => 'flaticon-group',
-                        'default' => false,
-                    ],
-                    [
-                        'name' => 'Site Users',
-                        'link' => '/users',
-                        'sub' => false,
-                        'icon' => 'flaticon-group',
-                        'default' => false,
+                        'default' => '/all-users',
                     ],
                     [
                         'name' => 'Admin Users',

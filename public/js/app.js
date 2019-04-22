@@ -4574,7 +4574,7 @@
 
 })));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(12)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(13)(module)))
 
 /***/ }),
 /* 1 */
@@ -16305,6 +16305,12 @@ return jQuery;
 /* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
+module.exports = __webpack_require__(155);
+
+/***/ }),
+/* 12 */
+/***/ (function(module, exports, __webpack_require__) {
+
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process) {
 
@@ -16406,7 +16412,7 @@ module.exports = defaults;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(158)))
 
 /***/ }),
-/* 12 */
+/* 13 */
 /***/ (function(module, exports) {
 
 module.exports = function(module) {
@@ -16434,7 +16440,7 @@ module.exports = function(module) {
 
 
 /***/ }),
-/* 13 */
+/* 14 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -18961,12 +18967,6 @@ Popper.Defaults = Defaults;
 //# sourceMappingURL=popper.js.map
 
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(9)))
-
-/***/ }),
-/* 14 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__(155);
 
 /***/ }),
 /* 15 */
@@ -32623,7 +32623,7 @@ __webpack_require__(174);
 
 __webpack_require__(175);
 
-__webpack_require__(14);
+__webpack_require__(11);
 
 __webpack_require__(222);
 
@@ -32773,7 +32773,7 @@ window._ = __webpack_require__(153);
  */
 
 try {
-  window.Popper = __webpack_require__(13).default;
+  window.Popper = __webpack_require__(14).default;
   window.$ = window.jQuery = __webpack_require__(10);
 
   __webpack_require__(154);
@@ -32785,7 +32785,7 @@ try {
  * CSRF token as a header based on the value of the "XSRF" token cookie.
  */
 
-window.axios = __webpack_require__(14);
+window.axios = __webpack_require__(11);
 
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
@@ -49931,7 +49931,7 @@ if (token) {
   }
 }.call(this));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(9), __webpack_require__(12)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(9), __webpack_require__(13)(module)))
 
 /***/ }),
 /* 154 */
@@ -49943,7 +49943,7 @@ if (token) {
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
   */
 (function (global, factory) {
-   true ? factory(exports, __webpack_require__(10), __webpack_require__(13)) :
+   true ? factory(exports, __webpack_require__(10), __webpack_require__(14)) :
   typeof define === 'function' && define.amd ? define(['exports', 'jquery', 'popper.js'], factory) :
   (factory((global.bootstrap = {}),global.jQuery,global.Popper));
 }(this, (function (exports,$,Popper) { 'use strict';
@@ -53876,7 +53876,7 @@ if (token) {
 var utils = __webpack_require__(3);
 var bind = __webpack_require__(15);
 var Axios = __webpack_require__(157);
-var defaults = __webpack_require__(11);
+var defaults = __webpack_require__(12);
 
 /**
  * Create an instance of Axios
@@ -53959,7 +53959,7 @@ function isSlowBuffer (obj) {
 "use strict";
 
 
-var defaults = __webpack_require__(11);
+var defaults = __webpack_require__(12);
 var utils = __webpack_require__(3);
 var InterceptorManager = __webpack_require__(167);
 var dispatchRequest = __webpack_require__(168);
@@ -54688,7 +54688,7 @@ module.exports = InterceptorManager;
 var utils = __webpack_require__(3);
 var transformData = __webpack_require__(169);
 var isCancel = __webpack_require__(18);
-var defaults = __webpack_require__(11);
+var defaults = __webpack_require__(12);
 var isAbsoluteURL = __webpack_require__(170);
 var combineURLs = __webpack_require__(171);
 
@@ -82854,7 +82854,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_dom__ = __webpack_require__(225);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_dom___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react_dom__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_axios__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_axios__ = __webpack_require__(11);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_axios__);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -82882,13 +82882,12 @@ var AllUsers = function (_Component) {
             users = _this$props.users,
             sites = _this$props.sites,
             current = _this$props.current;
-        // console.log(JSON.parse(sites));
-        // console.log('data from component', JSON.parse(users));
 
         _this.state = {
             users: JSON.parse(users),
             sites: JSON.parse(sites),
             roleId: parseInt(current),
+            selectedRoleId: false,
             selectedUsers: []
         };
         return _this;
@@ -82899,13 +82898,16 @@ var AllUsers = function (_Component) {
         value: function setUserType(roleId) {
             this.setState({
                 roleId: roleId,
+                selectedRoleId: false,
                 selectedUsers: []
             });
         }
     }, {
         key: 'udateUserSites',
         value: function udateUserSites() {
-            var selectedUsers = this.state.selectedUsers;
+            var _state = this.state,
+                selectedUsers = _state.selectedUsers,
+                selectedRoleId = _state.selectedRoleId;
 
             console.log("button clicked?", selectedUsers);
             $(".stm-absolute-wrap#loader-wrap").css({
@@ -82916,7 +82918,8 @@ var AllUsers = function (_Component) {
                 method: "post",
                 url: "/update-user-sites",
                 data: {
-                    selectedUsers: selectedUsers
+                    selectedUsers: selectedUsers,
+                    roleId: selectedRoleId
                 }
             }).then(function (response) {
                 console.log("here is the response", response);
@@ -82924,7 +82927,7 @@ var AllUsers = function (_Component) {
                     display: "none"
                 });
             }).catch(function (error) {
-                console.error('errorzz', error);
+                console.error("errorzz", error);
                 $(".stm-absolute-wrap#loader-wrap").css({
                     display: "none"
                 });
@@ -82946,23 +82949,37 @@ var AllUsers = function (_Component) {
             });
         }
     }, {
+        key: 'selectSite',
+        value: function selectSite(event) {
+            this.setState({
+                selectedRoleId: event.target.value
+            });
+        }
+
+        //selectSite = e => this.setState({selectedRoleId: e.target.value})
+        // selectSite() {
+        //   return e => this.setState({ selectedRoleId: e.target.value });
+        // }
+
+
+    }, {
         key: 'render',
         value: function render() {
             var _this2 = this;
 
-            var _state = this.state,
-                users = _state.users,
-                sites = _state.sites,
-                roleId = _state.roleId,
-                selectedUsers = _state.selectedUsers;
-
-            console.log(users);
+            var _state2 = this.state,
+                users = _state2.users,
+                sites = _state2.sites,
+                roleId = _state2.roleId,
+                selectedUsers = _state2.selectedUsers,
+                selectedRoleId = _state2.selectedRoleId;
+            // console.log(users);
 
             var allUsers = users.map(function (item, key) {
                 if (item.role_id === roleId) {
                     var checkboxClass = '';
-                    if (_this2.state.selectedUsers.includes(key)) {
-                        console.log('this is in the array!');
+                    if (_this2.state.selectedUsers.includes(item.id)) {
+                        //console.log('this is in the array!');
                         checkboxClass = 'fake-checkbox selected';
                     } else {
                         checkboxClass = 'fake-checkbox';
@@ -82979,7 +82996,7 @@ var AllUsers = function (_Component) {
                                 { className: 'fake-checkbox-wrap' },
                                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div', {
                                     onClick: function onClick() {
-                                        return _this2.selectUser(key);
+                                        return _this2.selectUser(item.id);
                                     },
                                     className: checkboxClass
                                 })
@@ -83018,7 +83035,7 @@ var AllUsers = function (_Component) {
             });
 
             var updateButton = __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div', null);
-            if (selectedUsers.length) {
+            if (selectedRoleId) {
                 updateButton = __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                     'button',
                     {
@@ -83069,32 +83086,36 @@ var AllUsers = function (_Component) {
             //         {item.name}
             //     </option>
             // ));
-
-            var siteForm = __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                'form',
-                { method: 'post', className: 'changeSiteForm' },
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                    'label',
-                    { htmlFor: 'siteSelect' },
-                    'Change Site'
-                ),
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                    'div',
-                    { className: 'select' },
+            var siteForm = __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div', null);
+            if (selectedUsers.length) {
+                siteForm = __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                    'form',
+                    { method: 'post', className: 'changeSiteForm' },
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                        'select',
-                        { id: 'siteSelect', name: 'site' },
-                        sites.map(function (item, key) {
-                            return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        'div',
+                        { className: 'select' },
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                            'select',
+                            { onChange: this.selectSite.bind(this), id: 'siteSelect', name: 'site' },
+                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                                 'option',
-                                { key: key, value: item.role_id },
-                                item.name
-                            );
-                        })
-                    )
-                ),
-                updateButton
-            );
+                                null,
+                                'Change Site'
+                            ),
+                            sites.map(function (item, key) {
+                                if (item.role_id !== _this2.state.roleId) {
+                                    return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                        'option',
+                                        { key: key, value: item.role_id },
+                                        item.name
+                                    );
+                                }
+                            })
+                        )
+                    ),
+                    updateButton
+                );
+            }
 
             return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 'div',

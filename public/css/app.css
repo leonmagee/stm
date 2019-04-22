@@ -18018,10 +18018,6 @@ table.dataTable thead .sorting_desc_disabled:after {
           align-items: center;
 }
 
-.allUserToggle .changeSiteForm label {
-  margin: 0 10px;
-}
-
 .all-users-wrap a.user-wrap .flex-item.company-wrap {
   font-size: 0.9em;
   -webkit-box-flex: 0;

@@ -423,7 +423,24 @@ class UserController extends Controller
      */
 
     public function changeUserSites(request $request) {
-      //dd('this is working?');
-      return $request;
+
+      // $this->validate(request(), [
+      // 	'data' => 'required',
+      // ]);
+
+      //   dd($request->data);
+      //   var_dump($request);
+
+      //$data = json_decode($request->selectedUsers);
+
+      $rold_id_int = intval($request->roleId);
+      foreach( $request->selectedUsers as $id ) {
+        $id_intval = intval($id);
+            User::find($id_intval)->update([
+                'role_id' => $rold_id_int
+            ]);
+      }
+      // how to validate this worked?
+      return $request->selectedUsers;
     }
 }

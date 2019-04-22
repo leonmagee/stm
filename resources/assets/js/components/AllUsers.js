@@ -6,12 +6,11 @@ export default class AllUsers extends Component {
     constructor(props) {
         super(props);
         const { users, sites, current } = this.props;
-        // console.log(JSON.parse(sites));
-        // console.log('data from component', JSON.parse(users));
         this.state = {
             users: JSON.parse(users),
             sites: JSON.parse(sites),
             roleId: parseInt(current),
+            selectedRoleId: false,
             selectedUsers: [],
         };
     }
@@ -19,34 +18,39 @@ export default class AllUsers extends Component {
     setUserType(roleId) {
         this.setState({
             roleId,
+            selectedRoleId: false,
             selectedUsers: [],
         });
     }
 
     udateUserSites() {
-        const { selectedUsers } = this.state;
+
+        const { selectedUsers, selectedRoleId } = this.state;
         console.log("button clicked?", selectedUsers);
         $(".stm-absolute-wrap#loader-wrap").css({
             display: "flex"
         });
 
-		axios({
-            method: "post",
-            url: "/update-user-sites",
-            data: {
-                selectedUsers
-            }
-        }).then(response => {
-            console.log("here is the response", response);
-            $(".stm-absolute-wrap#loader-wrap").css({
-                display: "none"
-            });
-        }).catch(error => {
-          console.error('errorzz', error);
-          $(".stm-absolute-wrap#loader-wrap").css({
-              display: "none"
-          });
-        });
+		  axios({
+              method: "post",
+              url: "/update-user-sites",
+              data: {
+                  selectedUsers,
+                  roleId: selectedRoleId
+              }
+          })
+              .then(response => {
+                  console.log("here is the response", response);
+                  $(".stm-absolute-wrap#loader-wrap").css({
+                      display: "none"
+                  });
+              })
+              .catch(error => {
+                  console.error("errorzz", error);
+                  $(".stm-absolute-wrap#loader-wrap").css({
+                      display: "none"
+                  });
+              });
 
     }
 
@@ -63,16 +67,29 @@ export default class AllUsers extends Component {
         });
     }
 
+    selectSite(event) {
+      this.setState({
+          selectedRoleId: event.target.value
+      });
+    }
+
+    //selectSite = e => this.setState({selectedRoleId: e.target.value})
+    // selectSite() {
+    //   return e => this.setState({ selectedRoleId: e.target.value });
+    // }
+
+
+
 
     render() {
-        const { users, sites, roleId, selectedUsers } = this.state;
-        console.log(users);
+        const { users, sites, roleId, selectedUsers, selectedRoleId } = this.state;
+        // console.log(users);
 
         const allUsers = users.map((item, key) => {
             if (item.role_id === roleId) {
                 let checkboxClass = '';
-                if (this.state.selectedUsers.includes(key)) {
-                    console.log('this is in the array!');
+                if (this.state.selectedUsers.includes(item.id)) {
+                    //console.log('this is in the array!');
                     checkboxClass = 'fake-checkbox selected';
                 } else {
                     checkboxClass = 'fake-checkbox';
@@ -83,7 +100,7 @@ export default class AllUsers extends Component {
                         <div className="detail-small">
                             <div className="fake-checkbox-wrap">
                                 <div
-                                    onClick={() => this.selectUser(key)}
+                                    onClick={() => this.selectUser(item.id)}
                                     className={checkboxClass}
                                 />
                             </div>
@@ -104,7 +121,7 @@ export default class AllUsers extends Component {
         });
 
         let updateButton = <div />;
-        if (selectedUsers.length) {
+        if (selectedRoleId) {
             updateButton = (
                 <button
                     type="button"
@@ -151,22 +168,29 @@ export default class AllUsers extends Component {
         //         {item.name}
         //     </option>
         // ));
-
-        const siteForm = (
+        let siteForm = <div></div>;
+if (selectedUsers.length) {
+        siteForm = (
             <form method="post" className="changeSiteForm">
-                <label htmlFor="siteSelect">Change Site</label>
+                {/* <label htmlFor="siteSelect">Change Site</label> */}
                 <div className="select">
-                    <select id="siteSelect" name="site">
-                        {sites.map((item, key) => (
-                            <option key={key} value={item.role_id}>
-                                {item.name}
-                            </option>
-                        ))}
+                    <select  onChange={this.selectSite.bind(this)} id="siteSelect" name="site">
+                        <option>Change Site</option>
+                        {sites.map((item, key) => {
+                          if(item.role_id !== this.state.roleId) {
+                              return (
+                                <option key={key} value={item.role_id}>
+                                    {item.name}
+                                </option>
+                            )
+                          }
+                        })}
                     </select>
                 </div>
                 {updateButton}
             </form>
         );
+        }
 
         return (
             <div>
