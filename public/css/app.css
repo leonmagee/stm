@@ -17917,6 +17917,16 @@ table.dataTable thead .sorting_desc_disabled:after {
   color: #666;
 }
 
+.allUsersList .hide-mobile {
+  display: none;
+}
+
+@media (min-width: 980px) {
+  .allUsersList .hide-mobile {
+    display: block;
+  }
+}
+
 .allUsersList .allUsersItem {
   background-color: #fcfcfc;
   border: 1px solid #ddd;

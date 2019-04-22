@@ -11,8 +11,20 @@ export default class AllUsers extends Component {
             sites: JSON.parse(sites),
             roleId: parseInt(current),
             selectedRoleId: false,
+            userMatrix: false,
             selectedUsers: [],
         };
+    }
+
+    componentDidMount() {
+        const { users } = this.state;
+        const userMatrix = {};
+        users.map(user => {
+            userMatrix[user.id] = user.role_id;
+        });
+        this.setState({
+            userMatrix,
+        });
     }
 
     setUserType(roleId) {
@@ -23,35 +35,39 @@ export default class AllUsers extends Component {
         });
     }
 
-    udateUserSites() {
-
-        const { selectedUsers, selectedRoleId } = this.state;
-        console.log("button clicked?", selectedUsers);
-        $(".stm-absolute-wrap#loader-wrap").css({
-            display: "flex"
+    updateUserSites() {
+        const { selectedUsers, selectedRoleId, userMatrix } = this.state;
+        $('.stm-absolute-wrap#loader-wrap').css({
+            display: 'flex',
         });
 
-		  axios({
-              method: "post",
-              url: "/update-user-sites",
-              data: {
-                  selectedUsers,
-                  roleId: selectedRoleId
-              }
-          })
-              .then(response => {
-                  console.log("here is the response", response);
-                  $(".stm-absolute-wrap#loader-wrap").css({
-                      display: "none"
-                  });
-              })
-              .catch(error => {
-                  console.error("errorzz", error);
-                  $(".stm-absolute-wrap#loader-wrap").css({
-                      display: "none"
-                  });
-              });
+        axios({
+            method: 'post',
+            url: '/update-user-sites',
+            data: {
+                selectedUsers,
+                roleId: selectedRoleId,
+            },
+        })
+            .then(response => {
+                $('.stm-absolute-wrap#loader-wrap').css({
+                    display: 'none',
+                });
 
+                response.data.map(id => {
+                    userMatrix[id] = parseInt(selectedRoleId);
+                });
+
+                this.setState({
+                    userMatrix: { ...userMatrix },
+                });
+            })
+            .catch(error => {
+                console.error('errorzz', error);
+                $('.stm-absolute-wrap#loader-wrap').css({
+                    display: 'none',
+                });
+            });
     }
 
     selectUser(key) {
@@ -68,28 +84,30 @@ export default class AllUsers extends Component {
     }
 
     selectSite(event) {
-      this.setState({
-          selectedRoleId: event.target.value
-      });
+        this.setState({
+            selectedRoleId: event.target.value,
+        });
     }
 
-    //selectSite = e => this.setState({selectedRoleId: e.target.value})
-    // selectSite() {
-    //   return e => this.setState({ selectedRoleId: e.target.value });
-    // }
-
-
-
-
     render() {
-        const { users, sites, roleId, selectedUsers, selectedRoleId } = this.state;
-        // console.log(users);
+        const {
+            users,
+            sites,
+            roleId,
+            selectedUsers,
+            selectedRoleId,
+            userMatrix,
+        } = this.state;
+
+        /**
+         * So instead of just matching the item.role_id to the current roleId... what I need to do
+         * I loop through once first to make an array of key value pairs for
+         */
 
         const allUsers = users.map((item, key) => {
-            if (item.role_id === roleId) {
+            if (userMatrix[item.id] === roleId) {
                 let checkboxClass = '';
-                if (this.state.selectedUsers.includes(item.id)) {
-                    //console.log('this is in the array!');
+                if (selectedUsers.includes(item.id)) {
                     checkboxClass = 'fake-checkbox selected';
                 } else {
                     checkboxClass = 'fake-checkbox';
@@ -110,10 +128,10 @@ export default class AllUsers extends Component {
                         </div>
                         <div className="divider" />
                         <div className="detail">{item.name}</div>
-                        <div className="divider" />
-                        <div className="detail">{item.email}</div>
-                        <div className="divider" />
-                        <div className="detail">{item.phone}</div>
+                        <div className="divider hide-mobile" />
+                        <div className="detail hide-mobile">{item.email}</div>
+                        <div className="divider hide-mobile" />
+                        <div className="detail hide-mobile">{item.phone}</div>
                     </div>
                 );
             }
@@ -125,7 +143,7 @@ export default class AllUsers extends Component {
             updateButton = (
                 <button
                     type="button"
-                    onClick={() => this.udateUserSites()}
+                    onClick={() => this.updateUserSites()}
                     className="button is-primary"
                 >
                     Update
@@ -163,33 +181,32 @@ export default class AllUsers extends Component {
             );
         });
 
-        // const siteOptions = sites.map((item, key) => (
-        //     <option key={key} value={item.role_id}>
-        //         {item.name}
-        //     </option>
-        // ));
-        let siteForm = <div></div>;
-if (selectedUsers.length) {
-        siteForm = (
-            <form method="post" className="changeSiteForm">
-                {/* <label htmlFor="siteSelect">Change Site</label> */}
-                <div className="select">
-                    <select  onChange={this.selectSite.bind(this)} id="siteSelect" name="site">
-                        <option>Change Site</option>
-                        {sites.map((item, key) => {
-                          if(item.role_id !== this.state.roleId) {
-                              return (
-                                <option key={key} value={item.role_id}>
-                                    {item.name}
-                                </option>
-                            )
-                          }
-                        })}
-                    </select>
-                </div>
-                {updateButton}
-            </form>
-        );
+        let siteForm = <div />;
+
+        if (selectedUsers.length) {
+            siteForm = (
+                <form method="post" className="changeSiteForm">
+                    <div className="select">
+                        <select
+                            onChange={this.selectSite.bind(this)}
+                            id="siteSelect"
+                            name="site"
+                        >
+                            <option>Change Site</option>
+                            {sites.map((item, key) => {
+                                if (item.role_id !== this.state.roleId) {
+                                    return (
+                                        <option key={key} value={item.role_id}>
+                                            {item.name}
+                                        </option>
+                                    );
+                                }
+                            })}
+                        </select>
+                    </div>
+                    {updateButton}
+                </form>
+            );
         }
 
         return (
@@ -213,5 +230,3 @@ if (document.getElementById('allUsers')) {
         document.getElementById('allUsers')
     );
 }
-
-// module.exports = AllUsers;

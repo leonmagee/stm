@@ -41,19 +41,13 @@ class UserController extends Controller
     public function all_users()
     {
         $sites = Site::all();
-        // $sites_array = [];
-        // foreach($sites as $site) {
-        //   $sites_array[$site->role_id] = $site->name;
-        // }
-        //dd($sites_array);
         $settings = Settings::first();
         $site_id = $settings->get_site_id();
         $role_id = $settings->get_role_id();
-        //dd($role_id);
         $site_name = Site::find($site_id)->name;
         // query all non-admin users
+        // @todo fix this hardcoding...
         $users = User::whereIn('role_id', array(3,4,5))->orderBy('company')->get();
-
         //$users = User::all();
         return view('users.all-users')->with(
           [

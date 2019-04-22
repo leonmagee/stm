@@ -1,5 +1,11 @@
 // react component
 .allUsersList {
+    .hide-mobile {
+        display: none;
+        @media (min-width: $screen-md) {
+            display: block;
+        }
+    }
     .allUsersItem {
         background-color: #fcfcfc;
         border: 1px solid #ddd;
