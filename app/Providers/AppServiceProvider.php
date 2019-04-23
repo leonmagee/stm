@@ -126,11 +126,11 @@ class AppServiceProvider extends ServiceProvider
 
             $users_sub = [
                 [
-                    'name' => 'All Users',
+                    'name' => 'All Agents / Dealers',
                     'link' => '/all-users'
                 ],
                 [
-                    'name' => 'Site Users',
+                    'name' => 'Site Agents / Dealers',
                     'link' => '/users'
                 ]
             ];
@@ -174,7 +174,7 @@ class AppServiceProvider extends ServiceProvider
                         'default' => false,
                     ],
                     [
-                        'name' => 'Users',
+                        'name' => 'Agents / Dealers',
                         'link' => false,
                         'sub' => $users_sub,
                         'icon' => 'flaticon-group',

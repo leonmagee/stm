@@ -83024,6 +83024,7 @@ var AllUsers = function (_Component) {
                                 })
                             )
                         ),
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div', { className: 'divider' }),
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                             'div',
                             { className: 'detail' },

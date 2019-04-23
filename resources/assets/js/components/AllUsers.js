@@ -123,6 +123,7 @@ export default class AllUsers extends Component {
                                 />
                             </div>
                         </div>
+                        <div className="divider" />
                         <div className="detail">
                             <a href={linkUrl}>{item.company}</a>
                         </div>

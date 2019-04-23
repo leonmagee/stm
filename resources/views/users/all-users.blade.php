@@ -1,7 +1,7 @@
 @extends('layouts.layout')
 
 @section('title')
-All Users
+All Agents / Dealers
 @endsection
 
 @section('content')

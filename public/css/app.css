@@ -17953,7 +17953,7 @@ table.dataTable thead .sorting_desc_disabled:after {
 }
 
 .allUsersList .allUsersItem .detail-small {
-  margin: 0 15px 0 30px;
+  margin: 0 20px;
   position: relative;
   width: 40px;
   height: 40px;
