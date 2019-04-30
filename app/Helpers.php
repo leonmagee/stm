@@ -8,9 +8,24 @@ use \Carbon\Carbon;
 class Helpers {
 
 	public static function get_date_name($date) {
-
+    $month_array = [
+      'January',
+      'February',
+      'March',
+      'April',
+      'May',
+      'June',
+      'July',
+      'August',
+      'September',
+      'October',
+      'November',
+      'December'
+    ];
 		$exploded = explode('_', $date);
-		$month = Carbon::createFromFormat('m', $exploded[0])->format('F');
+    //$month = Carbon::createFromFormat('m', $exploded[0])->format('F');
+    // carbon doesn't work for some weird reason - issue with february?
+    $month = $month_array[$exploded[0] -1];
 		$current_site_date = $month . ' ' . $exploded[1];
 		return $current_site_date;
 	}
@@ -23,7 +38,7 @@ class Helpers {
 
 	public static function current_date() {
 		$settings = Settings::first();
-		return $settings->current_date;	
+		return $settings->current_date;
 	}
 
 	public static function verify_sim($sim) {
@@ -274,5 +289,5 @@ class Helpers {
             '12_2030',
         ];
 	}
-	
+
 }
