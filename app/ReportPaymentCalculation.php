@@ -9,12 +9,12 @@ class ReportPaymentCalculation {
 	private $defaults_array;
 	private $site;
 	public function __construct(
-		$report_type_id, 
-		$site_id, 
-		$matching_sims, 
-		$is_spiff, 
-		$user_id = null, 
-		$defaults_array = null, 
+		$report_type_id,
+		$site_id,
+		$matching_sims,
+		$is_spiff,
+		$user_id = null,
+		$defaults_array = null,
 		$res_override = null,
 		$spiff_override = null,
 		$site = null,
@@ -26,7 +26,7 @@ class ReportPaymentCalculation {
 			if ( $is_spiff ) {
 				foreach($defaults['report_type_site_values'] as $item) {
 					$values_array[$item['plan_value']] = $item['payment_amount'];
-				}	
+				}
 				$total_charge = 0;
 				$override_array = [];
 				if(isset($spiff_override[$user_id])) {
@@ -39,16 +39,16 @@ class ReportPaymentCalculation {
 					foreach($matching_sims_new as $sim) {
 						//dd($sim);
 						$new_charge = self::calc_spiff_payments(
-							$override_array, 
-							//$sim->value, 
-							$sim, 
-							$values_array, 
+							$override_array,
+							//$sim->value,
+							$sim,
+							$values_array,
 							$defaults['spiff_value'],
 							$site_id,
 							$site
 						);
 						$total_charge += $new_charge;
-					}	
+					}
 				}
 			} else {
 				$percent = self::calc_residual_percent(
@@ -82,7 +82,7 @@ class ReportPaymentCalculation {
 			//$site_default = Site::find($site_id);
 			//dd($site);
 			//dd($site_default);
-			if ( $site->default_spiff_amount ) {
+			if ( isset($site->default_spiff_amount) ) {
 				$new_charge = $site->default_spiff_amount;
 			} else {
 				$new_charge = 0;
@@ -94,7 +94,7 @@ class ReportPaymentCalculation {
 	public static function calc_residual_percent($user_id, $report_type_id, $defaults, $site_id, $res_override = null) {
 		$res_override_array = false;
 		if(isset($res_override[$user_id])) {
-			$user_res_override = $res_override[$user_id];	
+			$user_res_override = $res_override[$user_id];
 			foreach( $user_res_override as $item ) {
 				if ( $item['report_type_id'] == $report_type_id) {
 					$res_override_array = $item;
