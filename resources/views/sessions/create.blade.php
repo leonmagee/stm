@@ -49,11 +49,15 @@
 	</div>
 
 	<div class="form-wrapper-inner image-1 banner-image-wrap">
-		<img src="{{ $banner_1 }}" />
+    <a href="https://mygsaccessories.com" target="_blank">
+		  <img src="{{ $banner_2 }}" />
+    </a>
 	</div>
 
 	<div class="form-wrapper-inner image-2 banner-image-wrap">
-		<img src="{{ $banner_2 }}" />
+    <a href="https://mygswireless.com" target="_blank">
+		  <img src="{{ $banner_1 }}" />
+    </a>
 	</div>
 
 </div>

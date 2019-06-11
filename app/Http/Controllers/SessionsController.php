@@ -6,21 +6,23 @@ use Illuminate\Http\Request;
 
 class SessionsController extends Controller
 {
-	public function __construct() 
+	public function __construct()
     {
 		$this->middleware('guest')->except('destroy');
 	}
 
-    public function create() 
+    public function create()
     {
-        $banner_1 = "https://res.cloudinary.com/dabvi4jmx/image/upload/v1551818964/stm/port-in-spiff-20.jpg";
-        $banner_2 = "https://res.cloudinary.com/dabvi4jmx/image/upload/v1551818965/stm/port-in-spiff-40.jpg";
+        $banner_1 = "https://res.cloudinary.com/dabvi4jmx/image/upload/v1560143448/stm/h2o-wireless-banner.png";
+        //$banner_1 = "https://res.cloudinary.com/dabvi4jmx/image/upload/v1551818964/stm/port-in-spiff-20.jpg";
+        $banner_2 = "https://res.cloudinary.com/dabvi4jmx/image/upload/v1560214428/stm/gsa-link.png";
+        //$banner_2 = "https://res.cloudinary.com/dabvi4jmx/image/upload/v1551818965/stm/port-in-spiff-40.jpg";
     	return view('sessions.create', compact('banner_1', 'banner_2'));
     }
 
     public function store()
     {
-    	if (! auth()->attempt(request(['email','password']))) 
+    	if (! auth()->attempt(request(['email','password'])))
         {
     		return back()->withErrors([
                 'message' => 'Login Failed'
@@ -30,7 +32,7 @@ class SessionsController extends Controller
     	return redirect()->home();
     }
 
-    public function destroy() 
+    public function destroy()
     {
     	auth()->logout();
 

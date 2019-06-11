@@ -17121,6 +17121,12 @@ body.stm-body .banner-image-wrap {
   }
 }
 
+body.stm-body .banner-image-wrap img {
+  padding: 0;
+  margin: 0;
+  display: block;
+}
+
 .modal-box {
   background-color: #FFF;
   text-align: center;
