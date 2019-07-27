@@ -12,7 +12,7 @@
 			<div class="select">
 				<select id="archive-date-select" name="archive_date">
 					@foreach($date_select_array as $date => $date_name)
-					<option 
+					<option
 					@if($current_date === $date)
 					selected="selected"
 					@endif
@@ -68,7 +68,7 @@
 					<tr>
 						<td>Total Assigned Sims</td>
 						<td></td>
-						<td class="bold">{{ number_format($item->count) }}</td>
+						<td class="bold blue">{{ number_format($item->count) }}</td>
 					</tr>
 				</tbody>
 				<tfoot>

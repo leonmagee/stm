@@ -18463,6 +18463,10 @@ table.dataTable thead .sorting_desc_disabled:after {
   width: 100%;
 }
 
+.reports-wrap .report-wrap .report-details table td.blue {
+  color: #00b1d1;
+}
+
 .reports-wrap .report-wrap .title-line {
   font-weight: 700;
   padding: 5px 11px;
@@ -18476,7 +18480,7 @@ table.dataTable thead .sorting_desc_disabled:after {
 
 .reports-wrap .report-wrap .title-line span {
   font-weight: 400;
-  color: #AAA;
+  color: #aaa;
 }
 
 .reports-wrap .report-wrap .title-line span.name,

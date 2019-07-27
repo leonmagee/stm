@@ -1,137 +1,141 @@
 // user report and archives
 .reports-data-header {
-	padding: 20px;
-	@include normal_background;
-	margin-bottom: 20px;
-	font-weight: 700;
+    padding: 20px;
+    @include normal_background;
+    margin-bottom: 20px;
+    font-weight: 700;
 }
-.reports-wrap	{
-	@media(min-width: $screen-md) {
-		display: grid;
-		grid-gap: 15px;
-		 grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-	}
-	@media(min-width: $screen-xlg) {
-		grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
-	}
+.reports-wrap {
+    @media (min-width: $screen-md) {
+        display: grid;
+        grid-gap: 15px;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    }
+    @media (min-width: $screen-xlg) {
+        grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
+    }
 
-	font-size: 0.8em;
-	.report-wrap {
+    font-size: 0.8em;
+    .report-wrap {
+        // box-shadow: 1px 1px rgba(0,0,0,0.05);
+        // background-color: #FFF;
+        // color: #333;
+        // padding: 15px;
+        @include normal_background;
+        margin-bottom: 20px;
+        @media (min-width: $screen-md) {
+            margin-bottom: 0;
+        }
 
-		// box-shadow: 1px 1px rgba(0,0,0,0.05);
-		// background-color: #FFF;
-		// color: #333;
-		// padding: 15px;
-		@include normal_background;
-		margin-bottom: 20px;
-		@media(min-width: $screen-md) {
-			margin-bottom: 0;	
-		}
+        .report-details {
+            table {
+                width: 100%;
+                td.blue {
+                    color: darken($brand-fifth, 25%);
+                }
+            }
+        }
+        //display: flex;
+        //align-items: center;
+        //min-height: 300px;
+        .title-line {
+            font-weight: 700;
+            padding: 5px 11px;
+            font-size: 1em;
+            i {
+                color: #555;
+                margin-right: 8px;
+            }
+            span {
+                font-weight: 400;
+                //margin: 0 2px;
+                color: #aaa;
+                &.name,
+                &.company {
+                    font-weight: 700;
+                    color: $brand-primary;
+                }
+            }
+        }
 
-		.report-details {
-			table {
-				width: 100%;
-			}
-		}
-		//display: flex;
-		//align-items: center;
-		//min-height: 300px;
-		.title-line {
-			font-weight: 700;
-			padding: 5px 11px;
-			font-size: 1em;
-			i {
-				color: #555;
-				margin-right: 8px;
-			}
-			span {
-				font-weight: 400;
-				//margin: 0 2px;
-				color: #AAA;
-				&.name, &.company {
-					font-weight: 700;
-					color: $brand-primary;
-				}
-			}
-		}
+        table.table {
+            font-size: 1em;
+            //font-size: 0.9em;
+            white-space: nowrap;
+            margin-bottom: 10px;
 
-		table.table {
-			font-size: 1em;
-			//font-size: 0.9em;
-			white-space: nowrap;
-			margin-bottom: 10px;
+            td {
+                //text-align: center;
+            }
 
-			td {
-				//text-align: center;
-			}
+            td.bold,
+            td.plus_minus {
+                font-weight: 700;
+            }
 
-			td.bold, td.plus_minus {
-				font-weight: 700;
-			}
-			
-			td.bonus {
-				color: $color-green-text;
-			}
+            td.bonus {
+                color: $color-green-text;
+            }
 
-			td.credit {
-				color: $color-red;
-			}
-		}
+            td.credit {
+                color: $color-red;
+            }
+        }
 
-		.flex-item {
-			//font-size: 12px;
-			//white-space: no-wrap;
-		}
-	}
+        .flex-item {
+            //font-size: 12px;
+            //white-space: no-wrap;
+        }
+    }
 }
 
 // report totals
 .report-totals-final-count {
-	font-weight: 700;
-	font-size: 1.4em;
-	@include normal_background;
-	margin-bottom: 20px;
-	span {
-		color: $brand-primary;
-	}
+    font-weight: 700;
+    font-size: 1.4em;
+    @include normal_background;
+    margin-bottom: 20px;
+    span {
+        color: $brand-primary;
+    }
 }
 
-.report-totals-wrap { // within grid
-	.report-totals-item {
-		padding: 10px 15px;
-		font-size: 1em !important;
-		display: flex;
-		align-items: center;
-		span {
-			color: $brand-primary;
-			font-size: 1.2em;
-			margin-left: 9px;
-		}
-	}
-
+.report-totals-wrap {
+    // within grid
+    .report-totals-item {
+        padding: 10px 15px;
+        font-size: 1em !important;
+        display: flex;
+        align-items: center;
+        span {
+            color: $brand-primary;
+            font-size: 1.2em;
+            margin-left: 9px;
+        }
+    }
 }
 
 .save-archive-button-wrap {
-	padding-bottom: 15px;
-	@media(min-width: $screen-sm) {
-		position: absolute;
-		top: 15px;
-		right: 30px;
-		padding-bottom: 0;
-	}
+    padding-bottom: 15px;
+    @media (min-width: $screen-sm) {
+        position: absolute;
+        top: 15px;
+        right: 30px;
+        padding-bottom: 0;
+    }
 }
 
 // archive header
 
 .title-form-wrap {
-	display: flex;
-	align-items: center;
-	padding-bottom: 25px;
-	h1 {
-		margin-bottom: 0 !important;
-		padding-bottom: 3px;
-	}
-	.select-field-wrap {
-		margin: 0 15px;
-	}
+    display: flex;
+    align-items: center;
+    padding-bottom: 25px;
+    h1 {
+        margin-bottom: 0 !important;
+        padding-bottom: 3px;
+    }
+    .select-field-wrap {
+        margin: 0 15px;
+    }
 }

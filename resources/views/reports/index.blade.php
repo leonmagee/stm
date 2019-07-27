@@ -58,7 +58,7 @@
 					<tr>
 						<td>Total Assigned Sims</td>
 						<td></td>
-						<td class="bold">{{ number_format($item->count) }}</td>
+						<td class="bold blue">{{ number_format($item->count) }}</td>
 					</tr>
 				</tbody>
 				<tfoot>
