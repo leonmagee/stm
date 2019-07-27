@@ -1,8 +1,8 @@
 // Screen Sizes
-$screen-sm: '768px';
-$screen-md: '980px';
-$screen-lg: '1200px';
-$screen-xlg: '1500px';
+$screen-sm: "768px";
+$screen-md: "980px";
+$screen-lg: "1200px";
+$screen-xlg: "1500px";
 
 // Brands
 // $brand-primary: #20BDFF;
@@ -10,20 +10,20 @@ $screen-xlg: '1500px';
 // $color-green: #20BF55;
 // $color-green: #56E39F;
 
-$brand-primary: #1B9AAA;
+$brand-primary: #1b9aaa;
 //rgba(27, 154, 170, 1)
-$color-green-base: #06E5AA;
+$color-green-base: #06e5aa;
 $color-green: darken($color-green-base, 2%);
 $color-green-text: darken($color-green, 5%);
 //rgba(6, 229, 170, 1)
-$color-red: #EF476F;
+$color-red: #ef476f;
 //rgba(239, 71, 111, 1)
 //$brand-fourth: #FFC43D; // yellow
-$color-yellow: #FFC43D;
+$color-yellow: #ffc43d;
 //rgba(255, 196, 61, 1)
-$brand-fifth: #51E5FF; // light blue
+$brand-fifth: #51e5ff; // light blue
+$brand-blue: #55759e; // darker blue
 //rgba(81, 229, 255, 1)
-
 
 $brand-danger: $color-red;
 

@@ -31,7 +31,8 @@
             table {
                 width: 100%;
                 td.blue {
-                    color: darken($brand-fifth, 25%);
+                    //color: darken($brand-fifth, 25%);
+                    color: $brand-blue;
                 }
             }
         }
