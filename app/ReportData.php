@@ -37,7 +37,7 @@ class ReportData {
 		{
 			$users = User::where('id', $user_id)->get();
 		}
-		elseif ($current_user->isAdmin() || $current_user->isManager())
+		elseif ($current_user->isAdmin() || $current_user->isManager() || $current_user->isEmployee())
 		{
 			$users = User::where('role_id', $this->role_id)->orderBy('company')->get();
 		}

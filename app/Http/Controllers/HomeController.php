@@ -39,15 +39,14 @@ class HomeController extends Controller
 
         $user = \Auth::user();
 
-        if ($user->isAdmin())
+        if ($user->isAdmin() || $user->isManager() || $user->isEmployee())
         {
             return $this->outputCharts();
         }
-        elseif ($user->isManager())
-        {
-            return $this->outputCharts();
-            //return $this->outputUpload();
-        }
+        // elseif ($user->isManager())
+        // {
+        //     return $this->outputCharts();
+        // }
         else
         {
             if(Helpers::is_site_locked())
