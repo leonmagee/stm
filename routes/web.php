@@ -62,7 +62,7 @@ Route::group(['middleware' => 'App\Http\Middleware\LockOutUsersManagers'], funct
 /**
 * SIMs Routes
 */
-Route::group(['middleware' => 'App\Http\Middleware\LockOutUsersManagersAgent'], function()
+Route::group(['middleware' => 'App\Http\Middleware\LockOutUsersEmployees'], function()
 {
 	Route::get('sims/upload', 'SimController@upload_form');
 	Route::post('upload', 'SimController@upload');
