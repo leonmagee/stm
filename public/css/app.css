@@ -16725,8 +16725,8 @@ body.stm-body h1.title span {
 }
 
 .form-wrapper .form-wrapper-inner {
-  background: #FDFDFD;
-  background: #FAFAFA;
+  background: #fdfdfd;
+  background: #fafafa;
   -webkit-box-shadow: 1px 1px rgba(0, 0, 0, 0.1);
           box-shadow: 1px 1px rgba(0, 0, 0, 0.1);
   display: -webkit-box;
@@ -16772,7 +16772,7 @@ body.stm-body h1.title span {
   color: #111;
   background-color: #f3f3f3;
   background-color: #1b9aaa;
-  color: #FFF;
+  color: #fff;
 }
 
 .form-wrapper .form-wrapper-inner form {
@@ -16826,6 +16826,10 @@ body.stm-body h1.title span {
     margin-right: 1%;
     margin-left: 1%;
   }
+}
+
+.form-wrapper .form-wrapper-inner form .form-wrap .padding-top {
+  padding-top: 15px !important;
 }
 
 @media (min-width: 980px) {

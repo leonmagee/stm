@@ -1,130 +1,133 @@
-.form-wrapper { // Settings | Uploads
-	@media(min-width: $screen-md) {
-		display: flex;
-		justify-content: space-between;
-		//padding-top: 20px;
-		grid-gap: 50px;
+.form-wrapper {
+    // Settings | Uploads
+    @media (min-width: $screen-md) {
+        display: flex;
+        justify-content: space-between;
+        //padding-top: 20px;
+        grid-gap: 50px;
 
-		&.center {
-			justify-content: center;
-		}
-	}
-	.form-wrapper-inner {
-		//margin: 10px 30px;
-		background: #FDFDFD;
-		background: #FAFAFA;
-		//border: 1px solid #E7E7E7;
-		box-shadow: 1px 1px rgba(0,0,0,0.1);
-		display: flex;
-		flex-direction: column;
-		border-radius: 10px;
-		overflow: hidden;
-		margin-bottom: 30px;
-		flex: 1;
-		height: 100%;
-		@media(min-width: $screen-md) {
+        &.center {
+            justify-content: center;
+        }
+    }
+    .form-wrapper-inner {
+        //margin: 10px 30px;
+        background: #fdfdfd;
+        background: #fafafa;
+        //border: 1px solid #E7E7E7;
+        box-shadow: 1px 1px rgba(0, 0, 0, 0.1);
+        display: flex;
+        flex-direction: column;
+        border-radius: 10px;
+        overflow: hidden;
+        margin-bottom: 30px;
+        flex: 1;
+        height: 100%;
+        @media (min-width: $screen-md) {
+            flex: 1;
+            &.third {
+                max-width: 31%;
+                order: 1;
+            }
 
-			flex: 1;
-			&.third {
-				max-width: 31%;
-				order: 1;
-			}
-			
-			&.half {
-				max-width: 48%;
-			}
-		}
+            &.half {
+                max-width: 48%;
+            }
+        }
 
-		h3 {
-			text-align: center;
-			font-weight: 700;
-			font-size: 17px;
-			padding: 10px;
-			color: #111;
-			//text-shadow: 1px 1px rgba(255,255,255,0.5);
-			background-color: #f3f3f3;
-			background-color: $brand-primary;
-			color: #FFF;
-		}
+        h3 {
+            text-align: center;
+            font-weight: 700;
+            font-size: 17px;
+            padding: 10px;
+            color: #111;
+            //text-shadow: 1px 1px rgba(255,255,255,0.5);
+            background-color: #f3f3f3;
+            background-color: $brand-primary;
+            color: #fff;
+        }
 
-		form {
-			height: 100%;
+        form {
+            height: 100%;
 
-			.form-wrap {
-				display: flex;
-				flex-direction: column;
-				//justify-content: space-between;
-				height: 100%;
-				padding: 20px;
+            .form-wrap {
+                display: flex;
+                flex-direction: column;
+                //justify-content: space-between;
+                height: 100%;
+                padding: 20px;
 
-				.field {
-					padding-top: 2px;
-					padding-bottom: 2px;
-					&.update {
-						margin-top: auto;
-					}
-					.select {
-						width: 100%;
-						select {
-							width: 100%;
-						}
-					}
-					&.submit {
-						margin-top: auto;
-					}
-					textarea {
-						resize: none;
-					}
-					&.flex-margin {
-						padding-top: 15px;
-						@media(min-width: $screen-md) {
-							padding-top: 0;
-							margin-right: 1%;
-							margin-left: 1%;
-						}
-					}
-				}
+                .field {
+                    padding-top: 2px;
+                    padding-bottom: 2px;
+                    &.update {
+                        margin-top: auto;
+                    }
+                    .select {
+                        width: 100%;
+                        select {
+                            width: 100%;
+                        }
+                    }
+                    &.submit {
+                        margin-top: auto;
+                    }
+                    textarea {
+                        resize: none;
+                    }
+                    &.flex-margin {
+                        padding-top: 15px;
+                        @media (min-width: $screen-md) {
+                            padding-top: 0;
+                            margin-right: 1%;
+                            margin-left: 1%;
+                        }
+                    }
+                }
 
-				.form-wrap-flex {
-					@media(min-width: $screen-md) {
-						display: flex;
-						flex-wrap: wrap;
-						
-					}
-					.field {
-						@media(min-width: $screen-md) {
-							flex: 0 1 31.3%;
-							margin-right: 1%;
-							margin-left: 1%;
+                .padding-top {
+                    padding-top: 15px !important;
+                }
 
-							&.half {
-								flex: 0 1 48%;
+                .form-wrap-flex {
+                    @media (min-width: $screen-md) {
+                        display: flex;
+                        flex-wrap: wrap;
+                    }
+                    .field {
+                        @media (min-width: $screen-md) {
+                            flex: 0 1 31.3%;
+                            margin-right: 1%;
+                            margin-left: 1%;
 
-							}
+                            &.half {
+                                flex: 0 1 48%;
+                            }
 
-							&.full {
-								flex: 1 1 100%;
-							}
-							&.padding-bottom {
-								padding-bottom: 20px;
-							}
-							
-						}
-					}
-				}
-			}
+                            &.full {
+                                flex: 1 1 100%;
+                            }
+                            &.padding-bottom {
+                                padding-bottom: 20px;
+                            }
+                        }
+                    }
+                }
+            }
 
-			// span.file-name {
-			// 	display: none;
-			// }
-		}
-	}
+            // span.file-name {
+            // 	display: none;
+            // }
+        }
+    }
 }
 
 // update bulma select
 .select:after {
-	border-color: $brand-primary !important;
+    border-color: $brand-primary !important;
 }
-input:focus, select:focus, textarea:focus {
-	border-color: $brand-primary !important
+input:focus,
+select:focus,
+textarea:focus {
+    border-color: $brand-primary !important;
 }

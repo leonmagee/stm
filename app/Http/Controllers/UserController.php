@@ -248,6 +248,7 @@ class UserController extends Controller
                 'city' => 'required',
                 'state' => 'required',
                 'zip' => 'required',
+                'notes' => 'string',
                 'role_id' => 'required',
                 //'role_id' => 'required|gt:2', //prevent front end hack to create admin
             ]);
@@ -262,6 +263,7 @@ class UserController extends Controller
                 'city' => $request->city,
                 'state' => $request->state,
                 'zip' => $request->zip,
+                'notes' => $request->notes,
                 'role_id' => $request->role_id,
             ]);
         }
@@ -276,6 +278,7 @@ class UserController extends Controller
                 'city' => 'required',
                 'state' => 'required',
                 'zip' => 'required',
+                'notes' => 'string',
             ]);
 
             // update user
@@ -288,6 +291,7 @@ class UserController extends Controller
                 'city' => $request->city,
                 'state' => $request->state,
                 'zip' => $request->zip,
+                'notes' => $request->notes,
             ]);
         }
 

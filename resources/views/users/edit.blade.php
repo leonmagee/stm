@@ -62,12 +62,12 @@
 								>Employee</option>
 								@else
 								@foreach ($sites as $site)
-								<option 
+								<option
 								@if ($user->role->id == $site->role_id)
 								selected="selected"
 								@endif
 								value="{{ $site->role_id }}">{{ $site->name }}
-								</option>	
+								</option>
 								@endforeach
 								@endif
 							</select>
@@ -110,9 +110,16 @@
 						</div>
 					</div>
 
+          <div class="field full">
+            <label class="label" for="notes">Notes</label>
+            <div class="control">
+              <textarea class="textarea" name="notes">{{ $user->notes }}</textarea>
+            </div>
+          </div>
+
 				</div>
 
-				<div class="field flex-margin">
+				<div class="field flex-margin padding-top">
 					<div class="control">
 						<button class="button is-primary" type="submit">Update</button>
 					</div>

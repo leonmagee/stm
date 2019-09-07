@@ -15,7 +15,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password','company', 'phone', 'address', 'city', 'state', 'zip', 'role_id'
+        'name', 'email', 'password','company', 'phone', 'address', 'city', 'state', 'zip', 'notes', 'role_id'
     ];
 
     /**
@@ -81,7 +81,7 @@ class User extends Authenticatable
     /**
     * @todo create a different role for Juan and Jessica?
     * Not sure what will be different? Just have the ability to upload sims?
-    * Prob need a different homepage view.. 
+    * Prob need a different homepage view..
     */
     // public function isManager() {
     //     if ( $this->role === 'manager') {
@@ -102,10 +102,10 @@ class User extends Authenticatable
     // public function authorizeRoles($roles)
     // {
     //   if (is_array($roles)) {
-    //       return $this->hasAnyRole($roles) || 
+    //       return $this->hasAnyRole($roles) ||
     //              abort(401, 'This action is unauthorized.');
     //   }
-    //   return $this->hasRole($roles) || 
+    //   return $this->hasRole($roles) ||
     //          abort(401, 'This action is unauthorized.');
     // }
 
