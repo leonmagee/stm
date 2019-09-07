@@ -248,7 +248,7 @@ class UserController extends Controller
                 'city' => 'required',
                 'state' => 'required',
                 'zip' => 'required',
-                'notes' => 'string',
+                'notes' => 'string|nullable',
                 'role_id' => 'required',
                 //'role_id' => 'required|gt:2', //prevent front end hack to create admin
             ]);
@@ -277,7 +277,7 @@ class UserController extends Controller
                 'address' => 'required',
                 'city' => 'required',
                 'state' => 'required',
-                'zip' => 'required',
+                'zip' => 'required|nullable',
                 'notes' => 'string',
             ]);
 
