@@ -94,6 +94,61 @@ class UserController extends Controller
         //
     }
 
+   /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function add_note(Request $request, User $user)
+    {
+      $current_user = \Auth::user();
+      $new_note = [
+        'note' => $request->note,
+        'user' => $current_user->name,
+        'date' => date('m/d/Y'),
+      ];
+      if($user->notes) {
+        $notes = json_decode($user->notes);
+        $notes[] = $new_note;
+      } else {
+        $notes = [
+          $new_note
+        ];
+      }
+      $user->notes = json_encode($notes);
+      $user->save();
+      session()->flash('message', 'Note Added');
+      return redirect('/users/' . $user->id);
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function delete_note(User $user, $index)
+    {
+      if($user->notes) {
+        $notes = json_decode($user->notes);
+        unset($notes[$index]);
+        $notes = array_values($notes); // re-index array
+        if(!empty($notes)) {
+          $user->notes = json_encode($notes);
+        } else {
+          $user->notes = NULL;
+        }
+        $user->save();
+        session()->flash('danger', 'Note Deleted');
+        return redirect('/users/' . $user->id);
+        /**
+         * Then I need to check if the array is empty?
+         * @todo check array length and then set notes to null if empty?
+         */
+      }
+    }
+
     /**
      * Display the specified resource.
      *
@@ -130,7 +185,9 @@ class UserController extends Controller
             //$role = Site::find($role)->name;
             $role = $user->role->name;
         }
-        return view('users.show', compact('user', 'role', 'bonus', 'credit', 'is_admin'));
+
+        $notes = json_decode($user->notes);
+        return view('users.show', compact('user', 'notes', 'role', 'bonus', 'credit', 'is_admin'));
     }
 
     /**
@@ -248,7 +305,7 @@ class UserController extends Controller
                 'city' => 'required',
                 'state' => 'required',
                 'zip' => 'required',
-                'notes' => 'string|nullable',
+                //'notes' => 'string|nullable',
                 'role_id' => 'required',
                 //'role_id' => 'required|gt:2', //prevent front end hack to create admin
             ]);
@@ -263,7 +320,7 @@ class UserController extends Controller
                 'city' => $request->city,
                 'state' => $request->state,
                 'zip' => $request->zip,
-                'notes' => $request->notes,
+                //'notes' => $request->notes,
                 'role_id' => $request->role_id,
             ]);
         }
@@ -278,7 +335,7 @@ class UserController extends Controller
                 'city' => 'required',
                 'state' => 'required',
                 'zip' => 'required|nullable',
-                'notes' => 'string',
+                //'notes' => 'string|nullable',
             ]);
 
             // update user
@@ -291,7 +348,7 @@ class UserController extends Controller
                 'city' => $request->city,
                 'state' => $request->state,
                 'zip' => $request->zip,
-                'notes' => $request->notes,
+                //'notes' => $request->notes,
             ]);
         }
 

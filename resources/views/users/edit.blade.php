@@ -110,13 +110,6 @@
 						</div>
 					</div>
 
-          <div class="field full">
-            <label class="label" for="notes">Notes</label>
-            <div class="control">
-              <textarea class="textarea" name="notes">{{ $user->notes }}</textarea>
-            </div>
-          </div>
-
 				</div>
 
 				<div class="field flex-margin padding-top">

@@ -23,6 +23,9 @@ Route::get('/', 'HomeController@index')->name('home');
 * Profile & Users Routes
 */
 Route::get('users/{user}', 'UserController@show');
+// @todo can anyone add a note?
+Route::post('add-note/{user}', 'UserController@add_note');
+Route::post('delete-note/{user}/{index}', 'UserController@delete_note');
 Route::get('profile', 'UserController@profile');
 Route::get('edit-profile', 'UserController@edit_profile');
 Route::get('change-profile-password', 'UserController@edit_profile_password');

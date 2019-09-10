@@ -7,7 +7,7 @@
 @section('content')
 
     <div class="stm-grid-wrap users-wrap">
-	    
+
 	    @foreach( $users as $user )
 
 	        <a href="/users/{{ $user->id }}" class="single-grid-item user-wrap">
@@ -24,13 +24,13 @@
 	            	<div class="name">{{ $user->name }}</div>
 	            	<div class="phone">{{ $user->phone }}</div>
 				</div>
-				
+
 	        </a>
 
 	    @endforeach
 
     </div>
-    
+
 
 @endsection
 
