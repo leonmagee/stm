@@ -9,7 +9,7 @@
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
 |
-*/
+ */
 
 //dd(phpinfo());
 
@@ -20,93 +20,87 @@
 Route::get('/', 'HomeController@index')->name('home');
 
 /**
-* Profile & Users Routes
-*/
-Route::get('users/{user}', 'UserController@show');
-// @todo can anyone add a note?
-Route::post('add-note/{user}', 'UserController@add_note');
-Route::post('delete-note/{user}/{index}', 'UserController@delete_note');
+ * Profile & Users Routes
+ */
 Route::get('profile', 'UserController@profile');
 Route::get('edit-profile', 'UserController@edit_profile');
 Route::get('change-profile-password', 'UserController@edit_profile_password');
-Route::post('update-user/{id}','UserController@update');
-Route::post('update-user-profile-password','UserController@update_profile_password');
+Route::post('update-user/{id}', 'UserController@update');
+Route::post('update-user-profile-password', 'UserController@update_profile_password');
 /**
-* @todo change the name of this, it can update any profile
-*/
-Route::post('update-admin-manager','UserController@update_admin_manager');
+ * @todo change the name of this, it can update any profile
+ */
+Route::post('update-admin-manager', 'UserController@update_admin_manager');
 
-Route::group(['middleware' => 'App\Http\Middleware\LockOutUsersManagers'], function() {
-	Route::get('admins-managers', 'UserController@admin_managers');
-	Route::get('edit-user/{user}', 'UserController@edit');
-	Route::get('change-password/{user}', 'UserController@edit_password');
-  Route::post('update-user-password/{id}','UserController@update_password');
-  Route::post('update-user-sites', 'UserController@changeUserSites');
+Route::group(['middleware' => 'App\Http\Middleware\LockOutUsersManagers'], function () {
+    Route::get('admins-managers', 'UserController@admin_managers');
+    Route::get('edit-user/{user}', 'UserController@edit');
+    Route::get('change-password/{user}', 'UserController@edit_password');
+    Route::post('update-user-password/{id}', 'UserController@update_password');
+    Route::post('update-user-sites', 'UserController@changeUserSites');
+    Route::post('delete-note/{user}/{index}', 'UserController@delete_note');
 });
 
-
-Route::group(['middleware' => 'App\Http\Middleware\LockOutUsers'], function()
-{
-  Route::get('users', 'UserController@index')->name('users');
-  Route::get('all-users', 'UserController@all_users')->name('all-users');
+Route::group(['middleware' => 'App\Http\Middleware\LockOutUsers'], function () {
+    Route::get('users/{user}', 'UserController@show');
+// @todo can anyone add a note?
+    Route::post('add-note/{user}', 'UserController@add_note');
+    Route::get('users', 'UserController@index')->name('users');
+    Route::get('all-users', 'UserController@all_users')->name('all-users');
 });
 
-Route::group(['middleware' => 'App\Http\Middleware\LockOutUsersManagers'], function()
-{
-	Route::get('bonus-credit/{user}', 'UserCreditBonusController@edit');
-	Route::post('bonus-credit/{user}', 'UserCreditBonusController@update');
-	Route::get('delete-user/{user}', 'UserController@destroy');
-	Route::get('user-plan-values/{user}', 'UserController@user_plan_residual');
-	Route::post('user-plan-values/{id}', 'UserPlanValuesController@store');
-	Route::post('user-residual-percent/{id}', 'UserResidualPercentController@store');
-	Route::post('delete-user-plan-value/{userPlanValues}', 'UserPlanValuesController@destroy');
-	Route::post('delete-user-residual-percent/{userResidualPercent}', 'UserResidualPercentController@destroy');
+Route::group(['middleware' => 'App\Http\Middleware\LockOutUsersManagers'], function () {
+    Route::get('bonus-credit/{user}', 'UserCreditBonusController@edit');
+    Route::post('bonus-credit/{user}', 'UserCreditBonusController@update');
+    Route::get('delete-user/{user}', 'UserController@destroy');
+    Route::get('user-plan-values/{user}', 'UserController@user_plan_residual');
+    Route::post('user-plan-values/{id}', 'UserPlanValuesController@store');
+    Route::post('user-residual-percent/{id}', 'UserResidualPercentController@store');
+    Route::post('delete-user-plan-value/{userPlanValues}', 'UserPlanValuesController@destroy');
+    Route::post('delete-user-residual-percent/{userResidualPercent}', 'UserResidualPercentController@destroy');
 });
 /**
-* SIMs Routes
-*/
-Route::group(['middleware' => 'App\Http\Middleware\LockOutUsersEmployees'], function()
-{
-	Route::get('sims/upload', 'SimController@upload_form');
-	Route::post('upload', 'SimController@upload');
-	Route::post('upload-single', 'SimController@upload_single');
-	Route::post('upload-single-paste', 'SimController@upload_single_paste');
+ * SIMs Routes
+ */
+Route::group(['middleware' => 'App\Http\Middleware\LockOutUsersEmployees'], function () {
+    Route::get('sims/upload', 'SimController@upload_form');
+    Route::post('upload', 'SimController@upload');
+    Route::post('upload-single', 'SimController@upload_single');
+    Route::post('upload-single-paste', 'SimController@upload_single_paste');
 });
 //Route::get('sims/create', 'SimController@addSim');
 Route::get('sims/archive/{id}', 'SimController@archive');
 
 //Route::get('sims/{sim_number}', 'SimController@show');
 
-Route::group(['middleware' => 'App\Http\Middleware\LockOutUsers'], function()
-{
-	Route::post('sims', 'SimController@store');
+Route::group(['middleware' => 'App\Http\Middleware\LockOutUsers'], function () {
+    Route::post('sims', 'SimController@store');
 });
 
 // API Routes
 Route::get('/api/v1/sims', 'APIController@getSims')->name('api.sims.index');
 Route::get('/api/v1/sims_archive/{id}', 'APIController@getSimsArchive')
-->name('api.sims.archive');
+    ->name('api.sims.archive');
 Route::get('/api/v1/sim_users', 'APIController@getSimUsers')->name('api.sim_users.index');
 Route::get('/api/v1/sim_user/{id}', 'APIController@getSimUser')->name('api.sim_users.index_user');
 
 /**
-* Settings Routes
-*/
+ * Settings Routes
+ */
 
-Route::group(['middleware' => 'App\Http\Middleware\LockOutUsers'], function()
-{
-	Route::get('settings', 'SettingsController@index');
-	Route::get('site-settings', 'SettingsController@index_site');
-	Route::post('date', 'SettingsController@update_date');
-	Route::post('mode', 'SettingsController@update_mode');
-	Route::post('site', 'SettingsController@update_site');
-	Route::post('default_spiff_payment', 'SettingsController@update_spiff');
-	Route::post('default_residual_percent', 'SettingsController@update_residual');
+Route::group(['middleware' => 'App\Http\Middleware\LockOutUsers'], function () {
+    Route::get('settings', 'SettingsController@index');
+    Route::get('site-settings', 'SettingsController@index_site');
+    Route::post('date', 'SettingsController@update_date');
+    Route::post('mode', 'SettingsController@update_mode');
+    Route::post('site', 'SettingsController@update_site');
+    Route::post('default_spiff_payment', 'SettingsController@update_spiff');
+    Route::post('default_residual_percent', 'SettingsController@update_residual');
 });
 
 /**
-* SIM Users Routes
-*/
+ * SIM Users Routes
+ */
 Route::get('user-sims', 'SimUserController@index');
 Route::get('user-sims/{sim}', 'SimUserController@show');
 //Route::get('assign-sims', 'SimUserController@create');
@@ -117,38 +111,35 @@ Route::post('find_sims_phone', 'SimUserController@find_sims_phone');
 Route::get('list-sims/{sims}', 'SimUserController@show_list');
 Route::get('list-sims-phone/{sims}', 'SimUserController@show_list_phone');
 
-Route::group(['middleware' => 'App\Http\Middleware\LockOutUsers'], function()
-{
-	Route::get('user-sims/user/{user}', 'SimUserController@index_user');
+Route::group(['middleware' => 'App\Http\Middleware\LockOutUsers'], function () {
+    Route::get('user-sims/user/{user}', 'SimUserController@index_user');
     Route::get('delete-sims', 'SimUserController@delete');
-	Route::post('delete_sims', 'SimUserController@destroy');
-});
-
-
-/**
-* Report Types Routes
-*/
-
-Route::group(['middleware' => 'App\Http\Middleware\LockOutUsers'], function()
-{
-	Route::get('report-types', 'ReportTypeController@index');
-	Route::get('report-types/{report_type}', 'ReportTypeController@show');
-	Route::get('add-report-type-spiff', 'ReportTypeController@create');
-	Route::get('add-report-type-residual', 'ReportTypeController@create_residual');
-	Route::post('new-report-type', 'ReportTypeController@store');
-	Route::post('new-report-type-residual', 'ReportTypeController@store_residual');
-	Route::get('delete-report-type/{report_type}', 'ReportTypeController@destroy');
-	Route::get('edit-report-type/{report_type}', 'ReportTypeController@edit');
-	Route::get('edit-report-type-residual/{report_type}', 'ReportTypeController@edit_residual');
-	Route::post('save-report-type/{report_type}', 'ReportTypeController@update');
-	Route::post('save-report-type-residual/{report_type}', 'ReportTypeController@update_residual');
-	Route::post('add-report-plan-value/{report_type}', 'ReportTypeController@add_plan_value');
-	Route::post('remove-report-plan-value/{report_type}', 'ReportTypeController@remove_plan_value');
+    Route::post('delete_sims', 'SimUserController@destroy');
 });
 
 /**
-* Reports
-*/
+ * Report Types Routes
+ */
+
+Route::group(['middleware' => 'App\Http\Middleware\LockOutUsers'], function () {
+    Route::get('report-types', 'ReportTypeController@index');
+    Route::get('report-types/{report_type}', 'ReportTypeController@show');
+    Route::get('add-report-type-spiff', 'ReportTypeController@create');
+    Route::get('add-report-type-residual', 'ReportTypeController@create_residual');
+    Route::post('new-report-type', 'ReportTypeController@store');
+    Route::post('new-report-type-residual', 'ReportTypeController@store_residual');
+    Route::get('delete-report-type/{report_type}', 'ReportTypeController@destroy');
+    Route::get('edit-report-type/{report_type}', 'ReportTypeController@edit');
+    Route::get('edit-report-type-residual/{report_type}', 'ReportTypeController@edit_residual');
+    Route::post('save-report-type/{report_type}', 'ReportTypeController@update');
+    Route::post('save-report-type-residual/{report_type}', 'ReportTypeController@update_residual');
+    Route::post('add-report-plan-value/{report_type}', 'ReportTypeController@add_plan_value');
+    Route::post('remove-report-plan-value/{report_type}', 'ReportTypeController@remove_plan_value');
+});
+
+/**
+ * Reports
+ */
 Route::get('reports', 'ReportsController@index');
 Route::get('reports/{user}', 'ReportsController@show');
 Route::get('report-totals', 'ReportsController@totals');
@@ -157,36 +148,33 @@ Route::get('3rd-recharge-data', 'ReportsController@third_recharge');
 Route::post('get-csv-report/{id}', 'ReportsController@download_csv');
 Route::post('get-csv-report-archive/{id}', 'ReportsController@download_csv_archive');
 
-Route::group(['middleware' => 'App\Http\Middleware\LockOutUsers'], function()
-{
-	Route::post('save-archive', 'ReportsController@save_archive');
+Route::group(['middleware' => 'App\Http\Middleware\LockOutUsers'], function () {
+    Route::post('save-archive', 'ReportsController@save_archive');
 });
 
 /**
-* Archives
-*/
+ * Archives
+ */
 Route::get('archives', 'ArchiveController@index');
 
-Route::group(['middleware' => 'App\Http\Middleware\LockOutUsers'], function()
-{
-	Route::post('change-archive-date', 'ArchiveController@change_archive_date');
+Route::group(['middleware' => 'App\Http\Middleware\LockOutUsers'], function () {
+    Route::post('change-archive-date', 'ArchiveController@change_archive_date');
 });
 
 /**
-* Carriers Routes
-*/
+ * Carriers Routes
+ */
 Route::get('carriers', 'CarrierController@index');
 Route::get('carriers/{carrier}', 'CarrierController@show');
 
 /**
-* Auth Routes
-*/
+ * Auth Routes
+ */
 //Route::get('register', 'AuthController@register');
 
-Route::group(['middleware' => 'App\Http\Middleware\LockOutUsersManagers'], function()
-{
-	Route::get('register', 'RegistrationController@create');
-	Route::post('register', 'RegistrationController@store');
+Route::group(['middleware' => 'App\Http\Middleware\LockOutUsersManagers'], function () {
+    Route::get('register', 'RegistrationController@create');
+    Route::post('register', 'RegistrationController@store');
 });
 
 //Route::get('login', 'AuthController@login');
@@ -194,7 +182,7 @@ Route::get('login', 'SessionsController@create')->name('login');
 Route::post('login', 'SessionsController@store');
 Route::get('logout', 'SessionsController@destroy');
 // Route::get('reset-password', function() {
-// 	return view('auth.passwords.reset');
+//     return view('auth.passwords.reset');
 // });
 
 Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
@@ -203,59 +191,57 @@ Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm
 Route::post('password/reset', 'Auth\ResetPasswordController@reset')->name('password.update');
 
 /**
-* Email Routes
-*/
-Route::group(['middleware' => 'App\Http\Middleware\LockOutUsers'], function()
-{
-	Route::get('email-blast', 'EmailBlastController@index');
-	Route::post('email-blast', 'EmailBlastController@email');
+ * Email Routes
+ */
+Route::group(['middleware' => 'App\Http\Middleware\LockOutUsers'], function () {
+    Route::get('email-blast', 'EmailBlastController@index');
+    Route::post('email-blast', 'EmailBlastController@email');
 });
 
 /**
-* Test Routes
-*/
+ * Test Routes
+ */
 // Route::get('test-email', function() {
-// 	return view('mail-sent-test');
+//     return view('mail-sent-test');
 // });
 
 // Route::post('send_test_email', function() {
 
-// 	$user_leon = User::find(1);
-// 	//$user_kareem = User::find(2);
+//     $user_leon = User::find(1);
+//     //$user_kareem = User::find(2);
 
-// 	$message = 'Here is a test email just to show you how the email formating is going to look for the new STM. Let me know what you think. xxx';
+//     $message = 'Here is a test email just to show you how the email formating is going to look for the new STM. Let me know what you think. xxx';
 
-// 	$mail_success = \Mail::to($user_leon)->send(new EmailBlast($user_leon, $message));
-// 	//$mail_success2 = \Mail::to($user_kareem)->send(new EmailBlast($user_kareem, $message));
+//     $mail_success = \Mail::to($user_leon)->send(new EmailBlast($user_leon, $message));
+//     //$mail_success2 = \Mail::to($user_kareem)->send(new EmailBlast($user_kareem, $message));
 
-// 	session()->flash('message', 'Emails have been sent?');
+//     session()->flash('message', 'Emails have been sent?');
 
-// 	return redirect('/email-blast');
-
+//     return redirect('/email-blast');
 
 // });
 
 /**
-* Enables User Registration
-* @todo this is done custom in laracast tutorials
-*/
+ * Enables User Registration
+ * @todo this is done custom in laracast tutorials
+ */
 //Auth::routes();
 
 /**
-* Named Route - naming this route home allows you to reference it other places.
-**/
+ * Named Route - naming this route home allows you to reference it other places.
+ **/
 
 // Route::get('/home', 'HomeController@index')->name('home');
 // Route::get('/logmeout', function() {
-// 	Auth::logout();
-// 	return redirect('/home');
+//     Auth::logout();
+//     return redirect('/home');
 // });
 
 /**
-* Service Containers
-* bind vs. singleton
-* should not go in this file?
-**/
+ * Service Containers
+ * bind vs. singleton
+ * should not go in this file?
+ **/
 
 // App::singleton('App\Billing\Stripe', function() {
 //     return new \App\Billing\Stripe(config('services.stripe.secret'));
@@ -274,5 +260,3 @@ Route::group(['middleware' => 'App\Http\Middleware\LockOutUsers'], function()
 // dd($stripe2);
 
 //resolve();
-
-

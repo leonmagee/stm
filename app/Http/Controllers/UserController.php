@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\User;
-use App\Site;
-use App\Settings;
-use App\UserCreditBonus;
 use App\Helpers;
 use App\ReportType;
+use App\Settings;
+use App\Site;
+use App\User;
+use App\UserCreditBonus;
 use App\UserPlanValues;
 use App\UserResidualPercent;
 use Illuminate\Http\Request;
@@ -47,14 +47,14 @@ class UserController extends Controller
         $site_name = Site::find($site_id)->name;
         // query all non-admin users
         // @todo fix this hardcoding...
-        $users = User::whereIn('role_id', array(3,4,5))->orderBy('company')->get();
+        $users = User::whereIn('role_id', array(3, 4, 5))->orderBy('company')->get();
         //$users = User::all();
         return view('users.all-users')->with(
-          [
-            'users' => json_encode($users),
-            'sites' => json_encode($sites),
-            'current' => $role_id
-          ]
+            [
+                'users' => json_encode($users),
+                'sites' => json_encode($sites),
+                'current' => $role_id,
+            ]
         );
         //$users = User::where('role_id', $role_id)->orderBy('company')->get();
         //return view('users.all-users', compact('users', 'site_name'));
@@ -68,7 +68,7 @@ class UserController extends Controller
     public function admin_managers()
     {
         $site_name = 'Admin & Manager';
-        $managers_array = [1,2,6];
+        $managers_array = [1, 2, 6];
         $users = User::whereIn('role_id', $managers_array)->get();
         return view('users.index', compact('users', 'site_name'));
     }
@@ -94,7 +94,7 @@ class UserController extends Controller
         //
     }
 
-   /**
+    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -102,24 +102,24 @@ class UserController extends Controller
      */
     public function add_note(Request $request, User $user)
     {
-      $current_user = \Auth::user();
-      $new_note = [
-        'note' => $request->note,
-        'user' => $current_user->name,
-        'date' => date('m/d/Y'),
-      ];
-      if($user->notes) {
-        $notes = json_decode($user->notes);
-        $notes[] = $new_note;
-      } else {
-        $notes = [
-          $new_note
+        $current_user = \Auth::user();
+        $new_note = [
+            'note' => $request->note,
+            'user' => $current_user->name,
+            'date' => date('m/d/Y'),
         ];
-      }
-      $user->notes = json_encode($notes);
-      $user->save();
-      session()->flash('message', 'Note Added');
-      return redirect('/users/' . $user->id);
+        if ($user->notes) {
+            $notes = json_decode($user->notes);
+            $notes[] = $new_note;
+        } else {
+            $notes = [
+                $new_note,
+            ];
+        }
+        $user->notes = json_encode($notes);
+        $user->save();
+        session()->flash('message', 'Note Added');
+        return redirect('/users/' . $user->id);
     }
 
     /**
@@ -130,23 +130,23 @@ class UserController extends Controller
      */
     public function delete_note(User $user, $index)
     {
-      if($user->notes) {
-        $notes = json_decode($user->notes);
-        unset($notes[$index]);
-        $notes = array_values($notes); // re-index array
-        if(!empty($notes)) {
-          $user->notes = json_encode($notes);
-        } else {
-          $user->notes = NULL;
+        if ($user->notes) {
+            $notes = json_decode($user->notes);
+            unset($notes[$index]);
+            $notes = array_values($notes); // re-index array
+            if (!empty($notes)) {
+                $user->notes = json_encode($notes);
+            } else {
+                $user->notes = null;
+            }
+            $user->save();
+            session()->flash('danger', 'Note Deleted');
+            return redirect('/users/' . $user->id);
+            /**
+             * Then I need to check if the array is empty?
+             * @todo check array length and then set notes to null if empty?
+             */
         }
-        $user->save();
-        session()->flash('danger', 'Note Deleted');
-        return redirect('/users/' . $user->id);
-        /**
-         * Then I need to check if the array is empty?
-         * @todo check array length and then set notes to null if empty?
-         */
-      }
     }
 
     /**
@@ -159,15 +159,15 @@ class UserController extends Controller
     {
         $bonus_credit = UserCreditBonus::where([
             'user_id' => $user->id,
-            'date' => Helpers::current_date()
+            'date' => Helpers::current_date(),
         ])->first();
 
-        if ( isset($bonus_credit->bonus) ) {
+        if (isset($bonus_credit->bonus)) {
             $bonus = '$' . number_format($bonus_credit->bonus, 2);
         } else {
             $bonus = false;
         }
-        if ( isset($bonus_credit->credit) ) {
+        if (isset($bonus_credit->credit)) {
             $credit = '$' . number_format($bonus_credit->credit, 2);
         } else {
             $credit = false;
@@ -179,7 +179,7 @@ class UserController extends Controller
 
         //dd($user->role->name);
 
-        if ( $role === 1 ) {
+        if ($role === 1) {
             $role = 'Admin';
         } else {
             //$role = Site::find($role)->name;
@@ -202,28 +202,25 @@ class UserController extends Controller
 
         $role = $user->role->name;
 
-        if ($user->role->id > 2)
-        {
+        if ($user->role->id > 2) {
             $bonus_credit = UserCreditBonus::where([
-            'user_id' => $user->id,
-            'date' => Helpers::current_date()
+                'user_id' => $user->id,
+                'date' => Helpers::current_date(),
             ])->first();
 
-            if ( isset($bonus_credit->bonus) ) {
+            if (isset($bonus_credit->bonus)) {
                 $bonus = '$' . number_format($bonus_credit->bonus, 2);
             } else {
                 $bonus = false;
             }
-            if ( isset($bonus_credit->credit) ) {
+            if (isset($bonus_credit->credit)) {
                 $credit = '$' . number_format($bonus_credit->credit, 2);
             } else {
                 $credit = false;
             }
 
             return view('users.profile-user', compact('user', 'role', 'bonus', 'credit'));
-        }
-        else
-        {
+        } else {
             return view('users.profile-admin-manager', compact('user', 'role'));
         }
     }
@@ -243,7 +240,7 @@ class UserController extends Controller
 
     public function edit_profile()
     {
-        if($user = \Auth::user()) {
+        if ($user = \Auth::user()) {
             return view('users.edit_profile', compact('user'));
 
         } else {
@@ -262,15 +259,16 @@ class UserController extends Controller
     }
 
     /**
-    * User Plan Values and Residual Percent overrides
-    */
-    public function user_plan_residual(User $user) {
+     * User Plan Values and Residual Percent overrides
+     */
+    public function user_plan_residual(User $user)
+    {
         $report_types_spiff = ReportType::where('spiff', 1)->get();
         $report_types_residual = ReportType::where('spiff', 0)->get();
         $user_plan_items = UserPlanValues::where('user_id', $user->id)
-        ->orderBy('report_type_id')->orderBy('plan_value')->get();
+            ->orderBy('report_type_id')->orderBy('plan_value')->get();
         $user_residual_items = UserResidualPercent::where('user_id', $user->id)
-        ->orderBy('report_type_id')->get();
+            ->orderBy('report_type_id')->get();
 
         return view('users.user-plan-values', compact(
             'user',
@@ -291,11 +289,10 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         /**
-        * @todo test this - refactor - big conidtional isn't necessary anymore...
-        */
+         * @todo test this - refactor - big conidtional isn't necessary anymore...
+         */
         //validate the form
-        if(Helpers::current_user_admin())
-        {
+        if (Helpers::current_user_admin()) {
             $this->validate(request(), [
                 'name' => 'required',
                 'email' => 'required|unique:users,email,' . $id,
@@ -323,9 +320,7 @@ class UserController extends Controller
                 //'notes' => $request->notes,
                 'role_id' => $request->role_id,
             ]);
-        }
-        else
-        {
+        } else {
             $this->validate(request(), [
                 'name' => 'required',
                 'email' => 'required|unique:users,email,' . $id,
@@ -352,7 +347,6 @@ class UserController extends Controller
             ]);
         }
 
-
         session()->flash('message', 'User ' . $request->name . ' has been updated.');
 
         return redirect('users/' . $id);
@@ -361,7 +355,7 @@ class UserController extends Controller
     public function update_admin_manager(Request $request)
     {
 
-        if($user = \Auth::user()) {
+        if ($user = \Auth::user()) {
 
             $id = $user->id;
 
@@ -388,7 +382,6 @@ class UserController extends Controller
                 'zip' => $request->zip,
             ]);
 
-
             session()->flash('message', 'Your profile has been updated.');
 
             return redirect('/profile');
@@ -398,8 +391,6 @@ class UserController extends Controller
             return redirect('/');
         }
     }
-
-
 
     /**
      * Update the specified resource in storage.
@@ -412,12 +403,12 @@ class UserController extends Controller
     {
         // validate the form
         $this->validate(request(), [
-            'password' => 'required|confirmed|min:8'
+            'password' => 'required|confirmed|min:8',
         ]);
 
         // update user
         $user = User::find($id)->update([
-            'password' => bcrypt($request->password)
+            'password' => bcrypt($request->password),
         ]);
 
         session()->flash('message', 'Password updated.');
@@ -434,18 +425,17 @@ class UserController extends Controller
      */
     public function update_profile_password(Request $request)
     {
-        if($user = \Auth::user())
-        {
+        if ($user = \Auth::user()) {
 
             $id = $user->id;
             // validate the form
             $this->validate(request(), [
-                'password' => 'required|confirmed|min:8'
+                'password' => 'required|confirmed|min:8',
             ]);
 
             // update user
             $user = User::find($id)->update([
-                'password' => bcrypt($request->password)
+                'password' => bcrypt($request->password),
             ]);
 
             session()->flash('message', 'Password updated.');
@@ -477,25 +467,26 @@ class UserController extends Controller
      * Axios change user sites
      */
 
-    public function changeUserSites(request $request) {
+    public function changeUserSites(request $request)
+    {
 
-      // $this->validate(request(), [
-      // 	'data' => 'required',
-      // ]);
+        // $this->validate(request(), [
+        //     'data' => 'required',
+        // ]);
 
-      //   dd($request->data);
-      //   var_dump($request);
+        //   dd($request->data);
+        //   var_dump($request);
 
-      //$data = json_decode($request->selectedUsers);
+        //$data = json_decode($request->selectedUsers);
 
-      $rold_id_int = intval($request->roleId);
-      foreach( $request->selectedUsers as $id ) {
-        $id_intval = intval($id);
+        $rold_id_int = intval($request->roleId);
+        foreach ($request->selectedUsers as $id) {
+            $id_intval = intval($id);
             User::find($id_intval)->update([
-                'role_id' => $rold_id_int
+                'role_id' => $rold_id_int,
             ]);
-      }
-      // how to validate this worked?
-      return $request->selectedUsers;
+        }
+        // how to validate this worked?
+        return $request->selectedUsers;
     }
 }

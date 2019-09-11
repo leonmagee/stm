@@ -2,8 +2,8 @@
 
 namespace App;
 
-use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
@@ -15,7 +15,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password','company', 'phone', 'address', 'city', 'state', 'zip', 'notes', 'role_id'
+        'name', 'email', 'password', 'company', 'phone', 'address', 'city', 'state', 'zip', 'notes', 'role_id',
     ];
 
     /**
@@ -36,17 +36,19 @@ class User extends Authenticatable
     // }
 
     /**
-    * Query like this: $user->sims->find(2)->sim_number // this will return one sim with the id 2
-    **/
-    public function sims() {
+     * Query like this: $user->sims->find(2)->sim_number // this will return one sim with the id 2
+     **/
+    public function sims()
+    {
         return $this->hasMany(SimUser::class);
     }
 
     /**
-    * @todo can probably remove this, or maybe just modify it?
-    * instead of checking the role value, it will check the user_role pivot table?
-    */
-    public function isAdmin() {
+     * @todo can probably remove this, or maybe just modify it?
+     * instead of checking the role value, it will check the user_role pivot table?
+     */
+    public function isAdmin()
+    {
         if ($this->role->id === 1) {
             return true;
         } else {
@@ -54,7 +56,8 @@ class User extends Authenticatable
         }
     }
 
-    public function isManager() {
+    public function isManager()
+    {
         if ($this->role->id === 2) {
             return true;
         } else {
@@ -62,7 +65,8 @@ class User extends Authenticatable
         }
     }
 
-    public function isEmployee() {
+    public function isEmployee()
+    {
         if ($this->role->id === 6) {
             return true;
         } else {
@@ -70,7 +74,8 @@ class User extends Authenticatable
         }
     }
 
-    public function isAdminManagerEmployee() {
+    public function isAdminManagerEmployee()
+    {
         if (($this->role->id === 1) || ($this->role->id === 2) || ($this->role->id === 6)) {
             return true;
         } else {
@@ -79,10 +84,10 @@ class User extends Authenticatable
     }
 
     /**
-    * @todo create a different role for Juan and Jessica?
-    * Not sure what will be different? Just have the ability to upload sims?
-    * Prob need a different homepage view..
-    */
+     * @todo create a different role for Juan and Jessica?
+     * Not sure what will be different? Just have the ability to upload sims?
+     * Prob need a different homepage view..
+     */
     // public function isManager() {
     //     if ( $this->role === 'manager') {
     //         return true;
@@ -93,12 +98,12 @@ class User extends Authenticatable
 
     public function role()
     {
-      return $this->belongsTo(Role::class);
+        return $this->belongsTo(Role::class);
     }
 
     /**
-    * @param string|array $roles
-    */
+     * @param string|array $roles
+     */
     // public function authorizeRoles($roles)
     // {
     //   if (is_array($roles)) {
@@ -110,18 +115,18 @@ class User extends Authenticatable
     // }
 
     /**
-    * Check multiple roles
-    * @param array $roles
-    */
+     * Check multiple roles
+     * @param array $roles
+     */
     // public function hasAnyRole($roles)
     // {
     //   return null !== $this->roles()->whereIn('name', $roles)->first();
     // }
 
     /**
-    * Check one role
-    * @param string $role
-    */
+     * Check one role
+     * @param string $role
+     */
     // public function hasRole($role)
     // {
     //   return null !== $this->roles()->where('name', $role)->first();

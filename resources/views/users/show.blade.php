@@ -93,12 +93,14 @@
               <span class="date">{{ $note->date }}</span>
               <span class="user">{{ $note->user }}</span>
               <span class="icon">
+               @if(Auth()->user()->isAdmin())
                 <form method="POST" action="/delete-note/{{$user->id}}/{{$index}}">
                   @csrf
                   <button>
                     <i class="fas fa-times-circle"></i>
                   </button>
                 </form>
+                @endif
               </span>
             </div>
             <div class="note-body">{{ $note->note }}</div>
