@@ -2,15 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Helpers;
 use App\Carrier;
-use App\Settings;
-use App\Site;
+use App\Helpers;
 use App\ReportType;
+use App\Settings;
+use App\Sim;
 use App\User;
 use App\UserCreditBonus;
-use App\Sim;
 
 class HomeController extends Controller
 {
@@ -33,28 +31,26 @@ class HomeController extends Controller
     {
 
         /**
-        * Create separate methods for getting reports
-        * or outputting user homepage?
-        */
+         * Create separate methods for getting reports
+         * or outputting user homepage?
+         */
 
         $user = \Auth::user();
+        //$notes = $user->notes;
+        //$sims = $user->sims;
+        //dd($user->notes);
 
-        if ($user->isAdmin() || $user->isManager() || $user->isEmployee())
-        {
+        if ($user->isAdmin() || $user->isManager() || $user->isEmployee()) {
             return $this->outputCharts();
         }
         // elseif ($user->isManager())
         // {
         //     return $this->outputCharts();
         // }
-        else
-        {
-            if(Helpers::is_site_locked())
-            {
+        else {
+            if (Helpers::is_site_locked()) {
                 return $this->outputLockedPage();
-            }
-            else
-            {
+            } else {
                 return $this->outputCharts();
             }
             //return $this->outputProfile($user);
@@ -62,24 +58,26 @@ class HomeController extends Controller
 
     }
 
-    public function outputLockedPage() {
+    public function outputLockedPage()
+    {
 
         return view('locked');
     }
 
-    public function outputProfile(User $user) {
+    public function outputProfile(User $user)
+    {
         //dd('profile');
         $bonus_credit = UserCreditBonus::where([
             'user_id' => $user->id,
-            'date' => Helpers::current_date()
+            'date' => Helpers::current_date(),
         ])->first();
 
-        if ( isset($bonus_credit->bonus) ) {
+        if (isset($bonus_credit->bonus)) {
             $bonus = '$' . number_format($bonus_credit->bonus, 2);
         } else {
             $bonus = false;
         }
-        if ( isset($bonus_credit->credit) ) {
+        if (isset($bonus_credit->credit)) {
             $credit = '$' . number_format($bonus_credit->credit, 2);
         } else {
             $credit = false;
@@ -89,7 +87,7 @@ class HomeController extends Controller
 
         // dd($user->role->id);
 
-        if ( $user->role->id === 1 ) {
+        if ($user->role->id === 1) {
             $role = 'Admin';
         } else {
             //$role = Site::find($role)->name;
@@ -98,7 +96,8 @@ class HomeController extends Controller
         return view('users.show_not_admin', compact('user', 'role', 'bonus', 'credit'));
     }
 
-    public function outputUpload() {
+    public function outputUpload()
+    {
 
         $report_types = ReportType::query()->orderBy('order_index')->get();
 
@@ -110,7 +109,8 @@ class HomeController extends Controller
         return view('sims.upload', compact('report_types', 'users', 'carriers'));
     }
 
-    public function outputCharts() {
+    public function outputCharts()
+    {
 
         $current_date = Settings::first()->current_date;
 
@@ -141,19 +141,19 @@ class HomeController extends Controller
             $current_date,
             $one_month_ago,
             $two_month_ago,
-            $three_month_ago
+            $three_month_ago,
         ];
 
         $date_name_array = [
             Helpers::current_date_name(),
             Helpers::get_date_name($one_month_ago),
             Helpers::get_date_name($two_month_ago),
-            Helpers::get_date_name($three_month_ago)
+            Helpers::get_date_name($three_month_ago),
         ];
 
-        $report_types_array = ReportType::where('spiff',1)->orderBy('order_index')->get();
+        $report_types_array = ReportType::where('spiff', 1)->orderBy('order_index')->get();
 
-        foreach( $report_types_array as $report_type ) {
+        foreach ($report_types_array as $report_type) {
 
             $name = $report_type->name;
 
@@ -163,11 +163,11 @@ class HomeController extends Controller
 
             $temp_count = 0;
 
-            foreach( $date_array_final as $date ) {
+            foreach ($date_array_final as $date) {
 
                 $sims = Sim::where([
                     'upload_date' => $date,
-                    'report_type_id' => $report_type->id
+                    'report_type_id' => $report_type->id,
                 ])->get();
 
                 // $sims = Sim::where([
@@ -182,7 +182,7 @@ class HomeController extends Controller
                 $temp_count += $number;
             }
 
-            if ( $temp_count > 0 ) { // exclude report types with no data
+            if ($temp_count > 0) { // exclude report types with no data
                 $data_array[] = $array_item;
             }
 

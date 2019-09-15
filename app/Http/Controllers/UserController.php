@@ -102,22 +102,15 @@ class UserController extends Controller
      */
     public function add_note(Request $request, User $user)
     {
+        /**
+         * @todo change this to use the new model...
+         */
         $current_user = \Auth::user();
-        $new_note = [
-            'note' => $request->note,
-            'user' => $current_user->name,
-            'date' => date('m/d/Y'),
-        ];
-        if ($user->notes) {
-            $notes = json_decode($user->notes);
-            $notes[] = $new_note;
-        } else {
-            $notes = [
-                $new_note,
-            ];
-        }
-        $user->notes = json_encode($notes);
-        $user->save();
+        $note = new \App\Note;
+        $note->text = $request->note;
+        $note->user_id = $user->id;
+        $note->author = $current_user->name;
+        $note->save();
         session()->flash('message', 'Note Added');
         return redirect('/users/' . $user->id);
     }
@@ -128,26 +121,26 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function delete_note(User $user, $index)
-    {
-        if ($user->notes) {
-            $notes = json_decode($user->notes);
-            unset($notes[$index]);
-            $notes = array_values($notes); // re-index array
-            if (!empty($notes)) {
-                $user->notes = json_encode($notes);
-            } else {
-                $user->notes = null;
-            }
-            $user->save();
-            session()->flash('danger', 'Note Deleted');
-            return redirect('/users/' . $user->id);
-            /**
-             * Then I need to check if the array is empty?
-             * @todo check array length and then set notes to null if empty?
-             */
-        }
-    }
+    // public function delete_note(User $user, $index)
+    // {
+    //     if ($user->notes) {
+    //         $notes = json_decode($user->notes);
+    //         unset($notes[$index]);
+    //         $notes = array_values($notes); // re-index array
+    //         if (!empty($notes)) {
+    //             $user->notes = json_encode($notes);
+    //         } else {
+    //             $user->notes = null;
+    //         }
+    //         $user->save();
+    //         session()->flash('danger', 'Note Deleted');
+    //         return redirect('/users/' . $user->id);
+    //         /**
+    //          * Then I need to check if the array is empty?
+    //          * @todo check array length and then set notes to null if empty?
+    //          */
+    //     }
+    // }
 
     /**
      * Display the specified resource.
@@ -186,7 +179,9 @@ class UserController extends Controller
             $role = $user->role->name;
         }
 
-        $notes = json_decode($user->notes);
+        //$notes = json_decode($user->notes);
+        $notes = $user->notes;
+        //dd($notes);
         return view('users.show', compact('user', 'notes', 'role', 'bonus', 'credit', 'is_admin'));
     }
 

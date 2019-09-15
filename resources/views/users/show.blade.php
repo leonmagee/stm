@@ -86,24 +86,38 @@
       </form>
       <div class="notes-list-wrap">
         <label>Notes</label>
-        @if($notes)
-        @foreach($notes as $index => $note)
+        @if($notes->count())
+        @foreach($notes as $note)
           <div class="note">
             <div class="note-header">
-              <span class="date">{{ $note->date }}</span>
-              <span class="user">{{ $note->user }}</span>
+              <span class="date">{{ $note->created_at->format('m/d/Y') }}</span>
+              <span class="user">{{ $note->author }}</span>
               <span class="icon">
                @if(Auth()->user()->isAdmin())
-                <form method="POST" action="/delete-note/{{$user->id}}/{{$index}}">
-                  @csrf
-                  <button>
-                    <i class="fas fa-times-circle"></i>
-                  </button>
-                </form>
+               <i class="fas fa-times-circle modal-delete-open" note_id={{ $note->id }}></i>
                 @endif
               </span>
             </div>
-            <div class="note-body">{{ $note->note }}</div>
+            <div class="note-body">{{ $note->text }}</div>
+          </div>
+          <div class="modal" id="delete-note-modal-{{ $note->id }}">
+
+            <div class="modal-background"></div>
+
+            <div class="modal-content">
+
+              <div class="modal-box">
+
+                <h3 class="title">Are You Sure?</h3>
+
+                <a href="/delete-note/{{ $note->id }}" class="button is-danger">Delete Note</a>
+                <a class="modal-delete-close-button button is-primary" note_id={{ $note->id }}>Cancel</a>
+              </div>
+
+            </div>
+
+            <button class="modal-delete-close is-large" aria-label="close" note_id={{ $note->id }}></button>
+
           </div>
         @endforeach
         @else

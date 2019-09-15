@@ -15,7 +15,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'company', 'phone', 'address', 'city', 'state', 'zip', 'notes', 'role_id',
+        'name', 'email', 'password', 'company', 'phone', 'address', 'city', 'state', 'zip', 'role_id',
     ];
 
     /**
@@ -41,6 +41,14 @@ class User extends Authenticatable
     public function sims()
     {
         return $this->hasMany(SimUser::class);
+    }
+
+    /**
+     * Link to Notes
+     */
+    public function notes()
+    {
+        return $this->hasMany(Note::class)->orderBy('created_at', 'DESC');
     }
 
     /**

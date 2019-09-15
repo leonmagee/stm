@@ -174,19 +174,12 @@
                         flex: 1;
                         display: flex;
                         justify-content: flex-end;
-                        button {
-                            border: none;
-                            background-color: transpasrent;
-                            padding: 0;
+                        i {
+                            font-size: 1.7em;
+                            color: $color-red;
                             &:hover {
                                 cursor: pointer;
-                                opacity: 0.8;
                             }
-                        }
-                        i {
-                            font-size: 2em;
-                            line-height: 10px;
-                            color: $color-red;
                         }
                     }
                 }

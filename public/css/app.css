@@ -18020,21 +18020,13 @@ table.dataTable thead .sorting_desc_disabled:after {
           justify-content: flex-end;
 }
 
-.users-flex-wrap .notes-wrap .notes-list-wrap .note span.icon button {
-  border: none;
-  background-color: transpasrent;
-  padding: 0;
-}
-
-.users-flex-wrap .notes-wrap .notes-list-wrap .note span.icon button:hover {
-  cursor: pointer;
-  opacity: 0.8;
-}
-
 .users-flex-wrap .notes-wrap .notes-list-wrap .note span.icon i {
-  font-size: 2em;
-  line-height: 10px;
+  font-size: 1.7em;
   color: #ef476f;
+}
+
+.users-flex-wrap .notes-wrap .notes-list-wrap .note span.icon i:hover {
+  cursor: pointer;
 }
 
 .users-flex-wrap .notes-wrap button {
