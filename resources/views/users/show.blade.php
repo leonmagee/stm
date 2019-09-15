@@ -73,6 +73,87 @@
         </div>
         @endif
     </div>
+
+
+
+
+
+<div class="reports-wrap">
+
+	@foreach( $recharge_data_array as $item )
+
+	<div class="report-wrap">
+    <h3 class='recharge-title'>2nd Recharge</h3>
+
+		<div class="recharge-details">
+
+			@foreach($item['data'] as $data)
+
+				<div class="recharge-item">
+					<div class="item">
+						<label>{!! $data['act_name'] !!}</label>
+						<div class="count">{{ $data['act_count'] }}</div>
+					</div>
+					<div class="item">
+						<label>{!! $data['rec_name'] !!}</label>
+						<div class="count">{{ $data['rec_count'] }}</div>
+					</div>
+					<div class="item percent {{ $data['class'] }}">
+						<span>{{ $data['percent'] }}%</span>
+					</div>
+
+				</div>
+
+			@endforeach
+
+		</div>
+
+	</div>
+
+	@endforeach
+
+</div>
+
+
+<div class="reports-wrap">
+
+	@foreach( $third_recharge_data_array as $item )
+
+	<div class="report-wrap">
+    <h3 class='recharge-title'>3rd Recharge</h3>
+
+		<div class="recharge-details">
+
+			@foreach($item['data'] as $data)
+
+				<div class="recharge-item">
+					<div class="item">
+						<label>{!! $data['act_name'] !!}</label>
+						<div class="count">{{ $data['act_count'] }}</div>
+					</div>
+					<div class="item">
+						<label>{!! $data['rec_name'] !!}</label>
+						<div class="count">{{ $data['rec_count'] }}</div>
+					</div>
+					<div class="item percent {{ $data['class'] }}">
+						<span>{{ $data['percent'] }}%</span>
+					</div>
+
+				</div>
+
+			@endforeach
+
+		</div>
+
+	</div>
+
+	@endforeach
+
+</div>
+
+
+
+
     </div>
 
     <div class="notes-wrap">

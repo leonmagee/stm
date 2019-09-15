@@ -18039,6 +18039,22 @@ table.dataTable thead .sorting_desc_disabled:after {
   }
 }
 
+.users-flex-wrap .reports-wrap {
+  padding-top: 20px;
+}
+
+.users-flex-wrap .reports-wrap .report-wrap {
+  border-radius: 10px;
+}
+
+.users-flex-wrap .reports-wrap .report-wrap h3.recharge-title {
+  font-weight: bold;
+  font-size: 1.5em;
+  margin: 5px 5px 15px 5px;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 7px;
+}
+
 .allUsersList .hide-mobile {
   display: none;
 }

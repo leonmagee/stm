@@ -196,4 +196,17 @@
             }
         }
     }
+    .reports-wrap {
+        padding-top: 20px;
+        .report-wrap {
+            border-radius: 10px;
+            h3.recharge-title {
+                font-weight: bold;
+                font-size: 1.5em;
+                margin: 5px 5px 15px 5px;
+                border-bottom: 1px solid #eee;
+                padding-bottom: 7px;
+            }
+        }
+    }
 }

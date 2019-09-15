@@ -34,11 +34,7 @@ class HomeController extends Controller
          * Create separate methods for getting reports
          * or outputting user homepage?
          */
-
         $user = \Auth::user();
-        //$notes = $user->notes;
-        //$sims = $user->sims;
-        //dd($user->notes);
 
         if ($user->isAdmin() || $user->isManager() || $user->isEmployee()) {
             return $this->outputCharts();
