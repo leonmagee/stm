@@ -68,7 +68,13 @@
 								@endif
 								value="{{ $site->role_id }}">{{ $site->name }}
 								</option>
-								@endforeach
+                @endforeach
+                <option
+								@if ($user->role->id == 7)
+								selected="selected"
+								@endif
+								value="7">Canceled
+								</option>
 								@endif
 							</select>
 						</div>

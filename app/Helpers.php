@@ -3,134 +3,137 @@
 namespace App;
 
 use App\Settings;
-use \Carbon\Carbon;
 
-class Helpers {
+class Helpers
+{
 
-	public static function get_date_name($date) {
-    $month_array = [
-      'January',
-      'February',
-      'March',
-      'April',
-      'May',
-      'June',
-      'July',
-      'August',
-      'September',
-      'October',
-      'November',
-      'December'
-    ];
-		$exploded = explode('_', $date);
-    //$month = Carbon::createFromFormat('m', $exploded[0])->format('F');
-    // carbon doesn't work for some weird reason - issue with february?
-    $month = $month_array[$exploded[0] -1];
-		$current_site_date = $month . ' ' . $exploded[1];
-		return $current_site_date;
-	}
+    public static function get_date_name($date)
+    {
+        $month_array = [
+            'January',
+            'February',
+            'March',
+            'April',
+            'May',
+            'June',
+            'July',
+            'August',
+            'September',
+            'October',
+            'November',
+            'December',
+        ];
+        $exploded = explode('_', $date);
+        //$month = Carbon::createFromFormat('m', $exploded[0])->format('F');
+        // carbon doesn't work for some weird reason - issue with february?
+        $month = $month_array[$exploded[0] - 1];
+        $current_site_date = $month . ' ' . $exploded[1];
+        return $current_site_date;
+    }
 
-	public static function current_date_name() {
+    public static function current_date_name()
+    {
 
-		$settings = Settings::first();
-		return Self::get_date_name($settings->current_date);
-	}
+        $settings = Settings::first();
+        return Self::get_date_name($settings->current_date);
+    }
 
-	public static function current_date() {
-		$settings = Settings::first();
-		return $settings->current_date;
-	}
+    public static function current_date()
+    {
+        $settings = Settings::first();
+        return $settings->current_date;
+    }
 
-	public static function verify_sim($sim) {
-		if (strlen($sim) > 7) {
-			return true;
-		} else {
-			return false;
-		}
-	}
-
-      public static function is_site_locked() {
-
-            $settings = Settings::first();
-            if ($settings->mode === 'locked')
-            {
-                  return true;
-            }
+    public static function verify_sim($sim)
+    {
+        if (strlen($sim) > 7) {
+            return true;
+        } else {
             return false;
-      }
+        }
+    }
 
-      public static function current_user_admin() {
-            if($user = \Auth::user())
-            {
-                  if ($user->role_id === 1)
-                  {
-                        return true;
-                  }
+    public static function is_site_locked()
+    {
+
+        $settings = Settings::first();
+        if ($settings->mode === 'locked') {
+            return true;
+        }
+        return false;
+    }
+
+    public static function current_user_admin()
+    {
+        if ($user = \Auth::user()) {
+            if ($user->role_id === 1) {
+                return true;
             }
-            return false;
-      }
+        }
+        return false;
+    }
 
-      public static function current_user_manager() {
-            if($user = \Auth::user())
-            {
-                  if ($user->role_id === 2)
-                  {
-                        return true;
-                  }
+    public static function current_user_manager()
+    {
+        if ($user = \Auth::user()) {
+            if ($user->role_id === 2) {
+                return true;
             }
-            return false;
-      }
+        }
+        return false;
+    }
 
-      public static function current_user_employee() {
-            if($user = \Auth::user())
-            {
-                  if ($user->role_id === 6)
-                  {
-                        return true;
-                  }
+    public static function current_user_employee()
+    {
+        if ($user = \Auth::user()) {
+            if ($user->role_id === 6) {
+                return true;
             }
-            return false;
-      }
+        }
+        return false;
+    }
 
-      public static function is_normal_user() {
-            if($user = \Auth::user())
-            {
-                  if (($user->role_id === 3) || ($user->role_id === 4) || ($user->role_id === 5))
-                  {
-                        return true;
-                  }
+    public static function is_normal_user()
+    {
+        if ($user = \Auth::user()) {
+            if (($user->role_id === 3) || ($user->role_id === 4) || ($user->role_id === 5)) {
+                return true;
             }
-            return false;
-      }
+        }
+        return false;
+    }
 
-      public static function restrict_page() {
-            if($user = \Auth::user())
-            {
-                  if (($user->role_id === 3) || ($user->role_id === 4) || ($user->role_id === 5))
-                  {
-                        return redirect('/');
-                  }
+    public static function restrict_page()
+    {
+        if ($user = \Auth::user()) {
+            if (($user->role_id === 3) || ($user->role_id === 4) || ($user->role_id === 5)) {
+                return redirect('/');
             }
-      }
+        }
+    }
 
-      public static function current_role_id() {
-            $current_site_id = session('current_site_id', 1);
-            $current_site = Site::find($current_site_id);
-            return $current_site->role_id;
-      }
+    public static function current_role_id()
+    {
+        $current_site_id = session('current_site_id', 1);
+        $current_site = Site::find($current_site_id);
+        return $current_site->role_id;
+    }
 
-      public static function get_role_id($site_id) {
-            $current_site = Site::find($site_id);
-            return $current_site->role_id;
-      }
+    public static function get_role_id($site_id)
+    {
+        $current_site = Site::find($site_id);
+        return $current_site->role_id;
+    }
 
-      public static function get_site_id($role_id) {
-            $site = Site::where('role_id', $role_id)->first();
-            return $site->id;
-      }
+    public static function get_site_id($role_id)
+    {
+        $site = Site::where('role_id', $role_id)->first();
+        return $site->id;
+    }
 
-	public static function date_array() {
-		return [
+    public static function date_array()
+    {
+        return [
             '1_2018',
             '2_2018',
             '3_2018',
@@ -288,6 +291,6 @@ class Helpers {
             '11_2030',
             '12_2030',
         ];
-	}
+    }
 
 }

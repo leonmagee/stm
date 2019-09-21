@@ -77,6 +77,7 @@
 
 
 
+@if(!$user->isAdminManagerEmployee())
 
 <div class="reports-wrap">
 
@@ -114,7 +115,6 @@
 
 </div>
 
-
 <div class="reports-wrap">
 
 	@foreach( $third_recharge_data_array as $item )
@@ -150,11 +150,10 @@
 	@endforeach
 
 </div>
-
-
-
+@endif
 
     </div>
+@if(!$user->isAdminManagerEmployee())
 
     <div class="notes-wrap">
       <form method="POST" action="/add-note/{{$user->id}}">
@@ -206,6 +205,7 @@
         @endif
       </div>
     </div>
+    @endif
   </div>
 
 
