@@ -7,7 +7,7 @@
 
 	<i class="fi flaticon-locked-padlock"></i>
 
-	<p>Your STM account is currently closed.</p>
+	<p>Your STM account is currently suspended.</p>
 
 </div>
 
