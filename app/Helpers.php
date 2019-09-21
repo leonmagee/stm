@@ -103,6 +103,16 @@ class Helpers
         return false;
     }
 
+    public static function is_closed_user()
+    {
+        if ($user = \Auth::user()) {
+            if ($user->role_id === 7) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public static function restrict_page()
     {
         if ($user = \Auth::user()) {

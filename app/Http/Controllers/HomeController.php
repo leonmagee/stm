@@ -36,14 +36,14 @@ class HomeController extends Controller
          */
         $user = \Auth::user();
 
+        // if (Helpers::is_closed_user()) {
+        //     dd('working');
+        //     return $this->outputClosedPage();
+        // }
+
         if ($user->isAdmin() || $user->isManager() || $user->isEmployee()) {
             return $this->outputCharts();
-        }
-        // elseif ($user->isManager())
-        // {
-        //     return $this->outputCharts();
-        // }
-        else {
+        } else {
             if (Helpers::is_site_locked()) {
                 return $this->outputLockedPage();
             } else {
@@ -56,9 +56,13 @@ class HomeController extends Controller
 
     public function outputLockedPage()
     {
-
         return view('locked');
     }
+
+    // public function outputClosedPage()
+    // {
+    //     return view('closed');
+    // }
 
     public function outputProfile(User $user)
     {

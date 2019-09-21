@@ -199,6 +199,13 @@ Route::group(['middleware' => 'App\Http\Middleware\LockOutUsers'], function () {
 });
 
 /**
+ * Closed Route
+ */
+Route::get('closed', function () {
+    return view('closed');
+})->name('closed');
+
+/**
  * Test Routes
  */
 // Route::get('test-email', function() {

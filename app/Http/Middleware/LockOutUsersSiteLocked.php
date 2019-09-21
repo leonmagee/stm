@@ -3,7 +3,6 @@
 namespace App\Http\Middleware;
 
 use App\Helpers;
-
 use Closure;
 
 class LockOutUsersSiteLocked
@@ -18,10 +17,14 @@ class LockOutUsersSiteLocked
     public function handle($request, Closure $next)
     {
 
-        if(Helpers::is_normal_user() && Helpers::is_site_locked())
-        {
-            if(($request->path() != '/')  && ($request->path() != 'logout'))
-            {
+        if (Helpers::is_closed_user()) {
+            if ($request->path() != 'closed' && $request->path() != 'logout') {
+                return redirect('closed');
+            }
+        }
+
+        if (Helpers::is_normal_user() && Helpers::is_site_locked()) {
+            if (($request->path() != '/') && ($request->path() != 'logout')) {
                 return redirect()->home();
             }
         }
