@@ -73,7 +73,7 @@
 								@if ($user->role->id == 7)
 								selected="selected"
 								@endif
-								value="7">Canceled
+								value="7">Closed
 								</option>
 								@endif
 							</select>
