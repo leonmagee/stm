@@ -162,7 +162,7 @@ export default class AllUsers extends Component {
             if (item.role_id !== roleId) {
                 return (
                     <button
-                        className="button is-primary"
+                        className={`button is-primary button_${item.role_id}`}
                         type="button"
                         onClick={() => this.setUserType(item.role_id)}
                         key={key}

@@ -83064,7 +83064,7 @@ var AllUsers = function (_Component) {
                     return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                         'button',
                         {
-                            className: 'button is-primary',
+                            className: 'button is-primary button_' + item.role_id,
                             type: 'button',
                             onClick: function onClick() {
                                 return _this3.setUserType(item.role_id);

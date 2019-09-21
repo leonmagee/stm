@@ -18153,6 +18153,10 @@ table.dataTable thead .sorting_desc_disabled:after {
   outline: none;
 }
 
+.allUserToggle button.is-primary.button_7 {
+  background-color: #222;
+}
+
 .allUserToggle div.select {
   margin-right: 15px;
 }

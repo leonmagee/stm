@@ -68,6 +68,11 @@
         &:focus {
             outline: none;
         }
+        &.is-primary {
+            &.button_7 {
+                background-color: #222;
+            }
+        }
     }
 
     div.select {
