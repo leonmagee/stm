@@ -55,11 +55,11 @@ class UserController extends Controller
         //     var_dump($user->role_id);
         // }
         //dd($users->first());
-        $fake_site = new \stdClass();
-        $fake_site->name = "Closed";
-        $fake_site->role_id = 7;
-        $sites[] = $fake_site;
-        $sites_decoded = json_encode($sites);
+        // $fake_site = new \stdClass();
+        // $fake_site->name = "Closed";
+        // $fake_site->role_id = 7;
+        // $sites[] = $fake_site;
+        // $sites_decoded = json_encode($sites);
         //dd($sites_decoded);
         return view('users.all-users')->with(
             [
