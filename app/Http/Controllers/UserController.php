@@ -123,13 +123,14 @@ class UserController extends Controller
         $date = \Carbon\Carbon::now()->toDateTimeString();
         $note->save();
 
-        $users = User::getAdminManageerEmployeeUsers();
-        foreach ($users as $user) {
-            \Mail::to($user)->send(new EmailNote(
-                $user,
+        $admin_users = User::getAdminManageerEmployeeUsers();
+        foreach ($admin_users as $admin) {
+            \Mail::to($admin)->send(new EmailNote(
+                $admin,
                 $note->text,
                 $note->author,
-                $date
+                $date,
+                $user
             ));
         }
 

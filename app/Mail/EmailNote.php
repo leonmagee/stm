@@ -15,18 +15,20 @@ class EmailNote extends Mailable
     public $note;
     public $author;
     public $date;
+    public $agent;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct(User $user, $note = null, $author = null, $date = null)
+    public function __construct(User $user, $note = null, $author = null, $date = null, $agent = null)
     {
         $this->user = $user;
         $this->note = $note;
         $this->author = $author;
         $this->date = $date;
+        $this->agent = $agent;
         $this->subject('New Note Added');
     }
 
