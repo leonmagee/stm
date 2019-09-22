@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Helpers;
+use App\Mail\EmailNote;
 use App\ReportType;
 use App\Settings;
 use App\Site;
@@ -114,15 +115,24 @@ class UserController extends Controller
      */
     public function add_note(Request $request, User $user)
     {
-        /**
-         * @todo change this to use the new model...
-         */
         $current_user = \Auth::user();
         $note = new \App\Note;
         $note->text = $request->note;
         $note->user_id = $user->id;
         $note->author = $current_user->name;
+        $date = \Carbon\Carbon::now()->toDateTimeString();
         $note->save();
+
+        $users = User::getAdminManageerEmployeeUsers();
+        foreach ($users as $user) {
+            \Mail::to($user)->send(new EmailNote(
+                $user,
+                $note->text,
+                $note->author,
+                $date
+            ));
+        }
+
         session()->flash('message', 'Note Added');
         return redirect('/users/' . $user->id);
     }

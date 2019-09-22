@@ -64,6 +64,14 @@ class User extends Authenticatable
         }
     }
 
+    public static function getAdminManageerEmployeeUsers()
+    {
+        $users_array = [1, 2, 6];
+        $users = self::whereIn('role_id', $users_array)->get();
+        return $users;
+        //dd($users);
+    }
+
     public function isManager()
     {
         if ($this->role->id === 2) {
