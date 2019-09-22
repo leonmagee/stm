@@ -151,8 +151,8 @@ class AppServiceProvider extends ServiceProvider
                 $menu_array = [
                     [
                         'name' => 'Notes',
-                        'link' => false,
-                        'sub' => $monthly_sims_sub,
+                        'link' => 'notes',
+                        'sub' => false,
                         'icon' => 'flaticon-graph-1',
                         'default' => false,
                     ],
