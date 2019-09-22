@@ -17,9 +17,11 @@ Notes
             </div>
 
             <div class="flex-item note-text">
+              @if(isset($note->user))
               <div>
                 <span><a href="/users/{{ $note->user_id }}">{{ $note->user->name }}</a></span>
               </div>
+              @endif
               <div>
                 <span>{{ $note->text }}</span>
               </div>
