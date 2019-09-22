@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\EmailBlast;
 use App\User;
 use Illuminate\Http\Request;
-use App\Mail\EmailBlast;
 
 class EmailBlastController extends Controller
 {
@@ -24,15 +24,17 @@ class EmailBlastController extends Controller
     }
 
     /**
-    * Email all users
-    */
-    public function email(Request $request) {
+     * Email all users
+     */
+    public function email(Request $request)
+    {
 
         $users = User::all();
 
-        foreach( $users as $user ) {
-
-            \Mail::to($user)->send(new EmailBlast($user, $request->message));
+        foreach ($users as $user) {
+            if ($user->role_id !== 7) {
+                \Mail::to($user)->send(new EmailBlast($user, $request->message));
+            }
         }
 
         session()->flash('message', 'Email Blast has been sent!');
