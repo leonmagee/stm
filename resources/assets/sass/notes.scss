@@ -8,6 +8,7 @@
                 flex: 1;
                 padding: 0 20px;
                 padding: 10px 15px;
+                border-left: 1px solid #eee;
                 border-right: 1px solid #eee;
                 margin-right: 15px;
             }
@@ -21,7 +22,11 @@
                 min-height: 50px;
             }
 
-            &.icon-wrap {
+            &.notes-icon-wrap {
+                padding: 25px 20px 25px 25px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
                 i {
                     font-size: 2em;
                 }

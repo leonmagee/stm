@@ -12,7 +12,7 @@ Notes
 
 	        <div class="single-grid-item note-wrap">
 
-            <div class="flex-item icon-wrap">
+            <div class="flex-item notes-icon-wrap">
               <i class="fas fa-edit"></i>
             </div>
 

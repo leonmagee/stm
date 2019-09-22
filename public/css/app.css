@@ -18541,6 +18541,7 @@ table.dataTable thead .sorting_desc_disabled:after {
           flex: 1;
   padding: 0 20px;
   padding: 10px 15px;
+  border-left: 1px solid #eee;
   border-right: 1px solid #eee;
   margin-right: 15px;
 }
@@ -18561,7 +18562,20 @@ table.dataTable thead .sorting_desc_disabled:after {
   min-height: 50px;
 }
 
-.notes-wrap .note-wrap .flex-item.icon-wrap i {
+.notes-wrap .note-wrap .flex-item.notes-icon-wrap {
+  padding: 25px 20px 25px 25px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.notes-wrap .note-wrap .flex-item.notes-icon-wrap i {
   font-size: 2em;
 }
 
