@@ -162,7 +162,7 @@
         <div class="control">
           <textarea class="textarea" name="note"></textarea>
         </div>
-        <button class="button is-primary" type="submit">Add Note</button>
+        <button class="button is-primary call-loader" type="submit">Add Note</button>
       </form>
       <div class="notes-list-wrap">
         <label>Notes</label>
