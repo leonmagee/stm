@@ -49,7 +49,8 @@ class UserController extends Controller
         $site_name = Site::find($site_id)->name;
         // query all non-admin users
         // @todo fix this hardcoding...
-        $users = User::whereIn('role_id', array(3, 4, 5, 7))->orderBy('company')->get();
+        //$users = User::whereIn('role_id', array(3, 4, 5, 7))->orderBy('company')->get();
+        $users = User::orderBy('company')->get();
         //$users = User::all();
         // dd($sites);
         // foreach ($users as $user) {
