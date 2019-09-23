@@ -151,7 +151,7 @@ class AppServiceProvider extends ServiceProvider
                 $menu_array = [
                     [
                         'name' => 'Notes',
-                        'link' => 'notes',
+                        'link' => '/notes',
                         'sub' => false,
                         'icon' => 'flaticon-graph-1',
                         'default' => false,
