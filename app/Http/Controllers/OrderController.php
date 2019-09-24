@@ -28,7 +28,8 @@ class OrderController extends Controller
      */
     public function create()
     {
-        $carriers = Carrier::all();
+        //$carriers = Carrier::all();
+        $carriers = Carrier::whereIn('id', [1, 2])->get();
         return view('orders.create', compact('carriers'));
     }
 
