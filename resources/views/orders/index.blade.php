@@ -23,7 +23,7 @@ Orders
               </div>
               @endif
               <div>
-                <span>Number Sims Ordered: {{ $order->sims }} {{ $order->carrier->name }}</span>
+                <span>Number Sims Ordered: {{ number_format($order->sims) }} {{ $order->carrier->name }}</span>
               </div>
 
             </div>
