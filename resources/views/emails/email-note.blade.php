@@ -4,7 +4,12 @@
 
 A new note has been added:<br /><br />
 <strong>{{ $note }}</strong><br /><br />
-Agent/Dealer: <strong>{{ $agent->company }} - {{ $agent->name }}</strong><br /><br />
+<strong style="font-size: 1.3em">{{ $agent->company }}</strong><br />
+<strong>{{ $agent->name }}</strong><br />
+<strong>{{ $agent->address }}</strong><br />
+<strong>{{ $agent->city }}, {{ $agent->state }} {{ $agent->zip }}</strong><br /><br />
+Date: <strong>{{ $date }}</strong>
+
 Author: <strong>{{ $author }}</strong><br /><br />
 Date: <strong>{{ $date }}</strong>
 

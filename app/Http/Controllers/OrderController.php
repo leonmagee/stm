@@ -53,7 +53,12 @@ class OrderController extends Controller
         $date = \Carbon\Carbon::now()->toDateTimeString();
 
         // 2. Email Managers
-        $admin_users = User::getAdminManageerEmployeeUsers();
+        //$admin_users = User::getAdminManageerEmployeeUsers();
+
+        /**
+         * Just Kareem and Leon
+         */
+        $admin_users = User::whereIn('id', [1, 2])->get();
 
         $sims = number_format($request->sims);
         foreach ($admin_users as $admin) {

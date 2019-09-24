@@ -4,7 +4,10 @@
 
 A new sims order has been requested:<br /><br />
 <strong>{{ $sims . ' ' . $carrier }} Sims</strong><br /><br />
-Agent/Dealer: <strong>{{ $user->company }} - {{ $user->name }}</strong><br /><br />
+<strong style="font-size: 1.3em">{{ $user->company }}</strong><br />
+<strong>{{ $user->name }}</strong><br />
+<strong>{{ $user->address }}</strong><br />
+<strong>{{ $user->city }}, {{ $user->state }} {{ $user->zip }}</strong><br /><br />
 Date: <strong>{{ $date }}</strong>
 
 @component('mail::button', ['url' => 'https://stmmax.com'])
