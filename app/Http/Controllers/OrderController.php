@@ -61,7 +61,7 @@ class OrderController extends Controller
                 $user,
                 $sims,
                 $order->carrier->name,
-                $date,
+                $date
             ));
         }
 
