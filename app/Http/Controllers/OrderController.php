@@ -54,10 +54,12 @@ class OrderController extends Controller
 
         // 2. Email Managers
         $admin_users = User::getAdminManageerEmployeeUsers();
+
+        $sims = number_format($request->sims);
         foreach ($admin_users as $admin) {
             \Mail::to($admin)->send(new EmailOrder(
                 $user,
-                number_format($request->sims),
+                $sims,
                 $order->carrier->name,
                 $date,
             ));
