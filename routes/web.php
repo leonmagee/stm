@@ -40,7 +40,11 @@ Route::group(['middleware' => 'App\Http\Middleware\LockOutUsersManagers'], funct
     Route::post('update-user-sites', 'UserController@changeUserSites');
     Route::get('delete-note/{note}', 'NoteController@destroy');
     Route::get('notes', 'NoteController@index');
+    Route::get('orders', 'OrderController@index');
 });
+
+Route::get('order-sims', 'OrderController@create');
+Route::post('order-sims', 'OrderController@store');
 
 Route::group(['middleware' => 'App\Http\Middleware\LockOutUsers'], function () {
     Route::get('users/{user}', 'UserController@show');

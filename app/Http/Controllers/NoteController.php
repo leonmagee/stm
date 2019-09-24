@@ -15,9 +15,6 @@ class NoteController extends Controller
     public function index()
     {
         $notes = Note::orderBy('created_at', 'DESC')->get();
-        //dd($notes);
-        //        "text" => "Here is a new note!"
-        // "author" => "Leon Magee"
         return view('notes.index', compact('notes'));
     }
 
