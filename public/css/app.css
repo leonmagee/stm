@@ -16868,6 +16868,27 @@ body.stm-body h1.title span {
   }
 }
 
+.form-wrapper .form-wrapper-inner form .form-wrap .form-wrap-flex .email-blast-wrap-top {
+  padding: 5px 0 15px;
+}
+
+.form-wrapper .form-wrapper-inner form .form-wrap .form-wrap-flex .email-blast-wrap-top label {
+  font-size: 1.2em;
+  font-weight: bold;
+  margin-right: 20px;
+}
+
+.form-wrapper .form-wrapper-inner form .form-wrap .form-wrap-flex .email-blast-wrap-top label input {
+  margin-right: 3px;
+  margin-top: -5px;
+  vertical-align: middle;
+}
+
+.form-wrapper .form-wrapper-inner form .form-wrap .form-wrap-flex .email-blast-wrap-bottom {
+  padding: 5px 0 25px;
+  max-width: 25%;
+}
+
 .select:after {
   border-color: #1b9aaa !important;
 }

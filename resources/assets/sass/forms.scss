@@ -112,6 +112,23 @@
                             }
                         }
                     }
+                    .email-blast-wrap-top {
+                        padding: 5px 0 15px;
+                        label {
+                            font-size: 1.2em;
+                            font-weight: bold;
+                            margin-right: 20px;
+                            input {
+                                margin-right: 3px;
+                                margin-top: -5px;
+                                vertical-align: middle;
+                            }
+                        }
+                    }
+                    .email-blast-wrap-bottom {
+                        padding: 5px 0 25px;
+                        max-width: 25%;
+                    }
                 }
             }
 
