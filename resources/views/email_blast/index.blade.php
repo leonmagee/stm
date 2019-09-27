@@ -42,6 +42,11 @@
                 </select>
               </div>
             </div>
+            <label class="label">Email Subject</label>
+            <div class="control email-blast-wrap-bottom">
+              <input class="input" name="subject" value="Commission Report Ready" />
+            </div>
+            <label class="label">Email Text</label>
             <div class="control">
               <textarea class="textarea"
                 name="message">Sim Track Manager is now unlocked. Please log in to view your monthly activation commission report.</textarea>

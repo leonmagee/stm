@@ -46,7 +46,11 @@ class EmailBlastController extends Controller
         }
 
         foreach ($users as $user) {
-            \Mail::to($user)->send(new EmailBlast($user, $request->message));
+            \Mail::to($user)->send(new EmailBlast(
+                $user,
+                $request->message,
+                $request->subject
+            ));
         }
 
         session()->flash('message', 'Email Blast has been sent!');

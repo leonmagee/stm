@@ -6,7 +6,6 @@ use App\User;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
-use Illuminate\Contracts\Queue\ShouldQueue;
 
 class EmailBlast extends Mailable
 {
@@ -20,11 +19,11 @@ class EmailBlast extends Mailable
      *
      * @return void
      */
-    public function __construct(User $user, $message = null)
+    public function __construct(User $user, $message = null, $subject = 'Sim Track Manager')
     {
         $this->user = $user;
         $this->message = $message;
-        $this->subject('Commission Report Ready');
+        $this->subject($subject);
     }
 
     /**
