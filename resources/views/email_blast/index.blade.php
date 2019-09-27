@@ -52,7 +52,7 @@
 
         <div class="field flex-margin">
           <div class="control">
-            <button class="button is-primary call-loader" type="submit">Email All Users</button>
+            <button class="button is-primary call-loader" type="submit">Email Selected Users</button>
           </div>
         </div>
 
