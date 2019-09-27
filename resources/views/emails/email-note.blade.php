@@ -7,7 +7,9 @@ A new note has been added:<br /><br />
 <strong style="font-size: 1.3em">{{ $agent->company }}</strong><br />
 <strong>{{ $agent->name }}</strong><br />
 <strong>{{ $agent->address }}</strong><br />
-<strong>{{ $agent->city }}, {{ $agent->state }} {{ $agent->zip }}</strong><br /><br />
+<strong>{{ $agent->city }}, {{ $agent->state }} {{ $agent->zip }}</strong><br />
+<span style="color: #1b9aaa">{{ $user->email }}</span><br />
+<strong>{{ $agent->phone }}</strong><br /><br />
 
 Author: <strong>{{ $author }}</strong><br /><br />
 Date: <strong>{{ $date }}</strong>

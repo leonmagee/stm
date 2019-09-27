@@ -12,6 +12,15 @@
                 border-right: 1px solid #eee;
                 margin-right: 15px;
             }
+            &.note-date {
+                padding-right: 15px;
+                font-size: 0.6em;
+                color: #333;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-around;
+                min-height: 50px;
+            }
             &.note-end {
                 padding-right: 15px;
                 font-size: 0.6em;

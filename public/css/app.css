@@ -18567,6 +18567,22 @@ table.dataTable thead .sorting_desc_disabled:after {
   margin-right: 15px;
 }
 
+.notes-wrap .note-wrap .flex-item.note-date {
+  padding-right: 15px;
+  font-size: 0.6em;
+  color: #333;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  min-height: 50px;
+}
+
 .notes-wrap .note-wrap .flex-item.note-end {
   padding-right: 15px;
   font-size: 0.6em;
