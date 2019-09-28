@@ -21,7 +21,7 @@
             <label class="label" for="name">Choose All Users or All Users from One Site</label>
             <div class="control email-blast-wrap-top">
               <label class="radio">
-                <input type="radio" name="email_site" value="all_users">
+                <input checked="checked" type="radio" name="email_site" value="all_users">
                 All Users
               </label>
               @foreach($sites as $site)

@@ -32,12 +32,22 @@
             }
 
             &.notes-icon-wrap {
-                padding: 25px 20px 25px 25px;
+                padding: 17px 15px 17px 17px;
                 display: flex;
                 align-items: center;
                 justify-content: center;
+                &.border-left {
+                    border-left: 1px solid #eee;
+                }
                 i {
                     font-size: 2em;
+                    &.delete-icon {
+                        color: $color-red;
+                    }
+                    &:hover {
+                        cursor: pointer;
+                        opacity: 0.9;
+                    }
                 }
             }
         }

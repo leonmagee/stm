@@ -38,9 +38,10 @@ Route::group(['middleware' => 'App\Http\Middleware\LockOutUsersManagers'], funct
     Route::get('change-password/{user}', 'UserController@edit_password');
     Route::post('update-user-password/{id}', 'UserController@update_password');
     Route::post('update-user-sites', 'UserController@changeUserSites');
-    Route::get('delete-note/{note}', 'NoteController@destroy');
     Route::get('notes', 'NoteController@index');
+    Route::get('delete-note/{note}', 'NoteController@destroy');
     Route::get('orders', 'OrderController@index');
+    Route::get('delete-order/{order}', 'OrderController@destroy');
 });
 
 Route::get('order-sims', 'OrderController@create');
