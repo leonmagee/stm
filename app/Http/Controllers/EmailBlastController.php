@@ -33,7 +33,8 @@ class EmailBlastController extends Controller
     public function email(Request $request)
     {
 
-        dd($request);
+        $file = $request->file('upload-file-email');
+        //dd($file->path());
         if (intval($request->just_one_user)) {
             // email just one user
             $users = User::where('id', $request->just_one_user)->get();
@@ -51,7 +52,8 @@ class EmailBlastController extends Controller
             \Mail::to($user)->send(new EmailBlast(
                 $user,
                 $request->message,
-                $request->subject
+                $request->subject,
+                $file
             ));
         }
 

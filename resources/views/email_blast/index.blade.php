@@ -10,7 +10,7 @@
 
     <h3>Commission Ready Mass Email</h3>
 
-    <form method="POST" action="/email-blast">
+    <form method="POST" action="/email-blast" enctype="multipart/form-data">
 
       <div class="form-wrap">
 
@@ -44,21 +44,20 @@
             </div>
             <label class="label">Add Attachments</label>
             <div class="control email-blast-wrap-bottom">
-              <div class="file has-name">
-                <label class="file-label">
-                  <input class="file-input" type="file" name="resume">
-                  <span class="file-cta">
-                    <span class="file-icon">
+              <div class="field">
+                <div class="file has-name">
+                  <label class="file-label">
+                    <input class="file-input upload-file-js" type="file" id="upload-file" name="upload-file-email">
+                    <span class="file-cta">
+                      <span class="file-label">
+                        Select File
+                      </span>
+                    </span>
+                    <span class="file-name" id="upload-file-email">
                       <i class="fas fa-upload"></i>
                     </span>
-                    <span class="file-label">
-                      Choose a file…
-                    </span>
-                  </span>
-                  <span class="file-name">
-                    Screen Shot 2017-07-29 at 15.54.25.png
-                  </span>
-                </label>
+                  </label>
+                </div>
               </div>
             </div>
             <label class="label">Email Subject</label>
