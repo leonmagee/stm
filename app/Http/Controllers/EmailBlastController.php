@@ -32,6 +32,8 @@ class EmailBlastController extends Controller
      */
     public function email(Request $request)
     {
+
+        dd($request);
         if (intval($request->just_one_user)) {
             // email just one user
             $users = User::where('id', $request->just_one_user)->get();

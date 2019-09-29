@@ -42,6 +42,25 @@
                 </select>
               </div>
             </div>
+            <label class="label">Add Attachments</label>
+            <div class="control email-blast-wrap-bottom">
+              <div class="file has-name">
+                <label class="file-label">
+                  <input class="file-input" type="file" name="resume">
+                  <span class="file-cta">
+                    <span class="file-icon">
+                      <i class="fas fa-upload"></i>
+                    </span>
+                    <span class="file-label">
+                      Choose a file…
+                    </span>
+                  </span>
+                  <span class="file-name">
+                    Screen Shot 2017-07-29 at 15.54.25.png
+                  </span>
+                </label>
+              </div>
+            </div>
             <label class="label">Email Subject</label>
             <div class="control email-blast-wrap-bottom">
               <input class="input" name="subject" value="Commission Report Ready" />
@@ -52,7 +71,6 @@
                 name="message">Sim Track Manager is now unlocked. Please log in to view your monthly activation commission report.</textarea>
             </div>
           </div>
-
         </div>
 
         <div class="field flex-margin">
