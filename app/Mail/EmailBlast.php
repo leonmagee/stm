@@ -25,9 +25,11 @@ class EmailBlast extends Mailable
         $this->message = $message;
         $this->subject($subject);
         if ($file) {
-            $this->attach($file->path());
+            $this->attach($file->path(), [
+                'as' => $file->getClientOriginalName(),
+                'mime' => $file->getMimeType(),
+            ]);
         }
-
     }
 
     /**
