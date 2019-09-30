@@ -1,103 +1,99 @@
 ul.sidebar-menu {
-	list-style-type: none;
-	margin: 0;
-	padding: 0;
-	font-size: 16px;
-	width: 210px;
-	@include background_gradient;
-	li {
-		position: relative;
-		//border-bottom: 1px solid #DFDFDF;
-		//border-bottom: 1px solid #CCC;
-		font-size: 16px;
-		display: flex;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+    width: 210px;
+    position: relative;
+    @include background_gradient;
+    li {
+        //border-bottom: 1px solid #DFDFDF;
+        //border-bottom: 1px solid #CCC;
+        font-size: 16px;
+        display: flex;
 
-		.icon-wrap {
+        .icon-wrap {
+            flex: 0 1 22%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.08);
+            border-bottom: 1px solid #ccc;
+            i {
+                font-weight: normal;
+                margin: 0;
+                margin-right: 5px;
+                color: #333;
+                &:before {
+                    font-size: 1.4em;
+                    margin: 0;
+                }
+            }
+        }
 
-			flex: 0 1 22%;
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			background: rgba(0,0,0,0.08);
-			border-bottom: 1px solid #CCC;
-			i {
-				font-weight: normal;
-				margin: 0;
-				margin-right: 5px;
-				color: #333;
-				&:before {
-					font-size: 1.4em;
-					margin: 0;
-				}
-			}
-		}
+        a {
+            border-bottom: 1px solid #dfdfdf;
+            flex: 0 1 78%;
+            text-decoration: none;
+            //padding: 10px 20px;
+            padding: 7px 5px 7px 15px;
+            //display: block;
+            color: #222;
+            font-weight: 700;
+        }
+        ul.sub-menu {
+            display: none;
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            background-color: #eee;
+            position: absolute;
+            z-index: 1000;
+            top: 10px;
+            //top: 0;
+            left: 190px;
+            //width: 250px;
+            font-size: 16px;
+            max-height: 75vh;
+            overflow: auto;
+            li {
+                font-size: 12px;
 
-		a {
-			border-bottom: 1px solid #DFDFDF;
-			flex: 0 1 78%;
-			text-decoration: none;
-			//padding: 10px 20px;
-			padding: 7px 5px 7px 15px;
-			//display: block;
-			color: #222;
-			font-weight: 700;
-
-		}
-		ul.sub-menu {
-			display: none;
-			list-style-type: none;
-			margin: 0;
-			padding: 0;
-			background-color: #EEE;
-			position: absolute;
-			z-index: 1000;
-			top: 10px;
-			//top: 0;
-			left: 190px;
-			//width: 250px;
-			font-size: 16px;
-			max-height: 75vh;
-			overflow: auto;
-			li {
-				font-size: 12px;
-
-				a {
-					padding: 5px 20px;
-					white-space: nowrap;
-					display: block;
-					min-width: 100%;
-				}
-			}
-
-		}
-		&:hover {
-			background-color: $brand-primary;
-			border-color: $brand-primary;
-			cursor: pointer;
-			a {
-				color: #FFF;
-				text-shadow: 1px 1px darken($brand-primary, 1%);
-			}
-			ul.sub-menu {
-				display: block;
-				//border: 1px solid #BBB;
-				box-shadow: 1px 1px 1px 1px rgba(0,0,0,0.2);
-				font-size: 14px;
-				li {
-					a {
-						color: #222;
-						text-shadow: none;
-					}
-					&:hover {
-						background-color: $brand-primary;
-						a {
-							color: #FFF;
-							text-shadow: 1px 1px darken($brand-primary, 5%);
-						}
-					}
-				}
-
-			}
-		}
-	}
+                a {
+                    padding: 5px 20px;
+                    white-space: nowrap;
+                    display: block;
+                    min-width: 100%;
+                }
+            }
+        }
+        &:hover {
+            background-color: $brand-primary;
+            border-color: $brand-primary;
+            cursor: pointer;
+            a {
+                color: #fff;
+                text-shadow: 1px 1px darken($brand-primary, 1%);
+            }
+            ul.sub-menu {
+                display: block;
+                //border: 1px solid #BBB;
+                box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.2);
+                font-size: 14px;
+                li {
+                    a {
+                        color: #222;
+                        text-shadow: none;
+                    }
+                    &:hover {
+                        background-color: $brand-primary;
+                        a {
+                            color: #fff;
+                            text-shadow: 1px 1px darken($brand-primary, 5%);
+                        }
+                    }
+                }
+            }
+        }
+    }
 }

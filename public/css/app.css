@@ -17466,6 +17466,7 @@ ul.sidebar-menu {
   padding: 0;
   font-size: 16px;
   width: 210px;
+  position: relative;
   /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#eeeeee+0,f3f3f3+100 */
   background: #eeeeee;
   /* Old browsers */
@@ -17479,7 +17480,6 @@ ul.sidebar-menu {
 }
 
 ul.sidebar-menu li {
-  position: relative;
   font-size: 16px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -17500,7 +17500,7 @@ ul.sidebar-menu li .icon-wrap {
       -ms-flex-align: center;
           align-items: center;
   background: rgba(0, 0, 0, 0.08);
-  border-bottom: 1px solid #CCC;
+  border-bottom: 1px solid #ccc;
 }
 
 ul.sidebar-menu li .icon-wrap i {
@@ -17516,7 +17516,7 @@ ul.sidebar-menu li .icon-wrap i:before {
 }
 
 ul.sidebar-menu li a {
-  border-bottom: 1px solid #DFDFDF;
+  border-bottom: 1px solid #dfdfdf;
   -webkit-box-flex: 0;
       -ms-flex: 0 1 78%;
           flex: 0 1 78%;
@@ -17531,7 +17531,7 @@ ul.sidebar-menu li ul.sub-menu {
   list-style-type: none;
   margin: 0;
   padding: 0;
-  background-color: #EEE;
+  background-color: #eee;
   position: absolute;
   z-index: 1000;
   top: 10px;
@@ -17559,7 +17559,7 @@ ul.sidebar-menu li:hover {
 }
 
 ul.sidebar-menu li:hover a {
-  color: #FFF;
+  color: #fff;
   text-shadow: 1px 1px #1a96a6;
 }
 
@@ -17580,7 +17580,7 @@ ul.sidebar-menu li:hover ul.sub-menu li:hover {
 }
 
 ul.sidebar-menu li:hover ul.sub-menu li:hover a {
-  color: #FFF;
+  color: #fff;
   text-shadow: 1px 1px #188694;
 }
 
