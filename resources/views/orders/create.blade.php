@@ -6,6 +6,8 @@ Order Sims
 
 @section('content')
 
+@include('layouts.errors')
+
 <div class="form-wrapper">
 
   <div class="form-wrapper-inner half">
@@ -36,8 +38,6 @@ Order Sims
     </form>
 
   </div>
-
-  @include('layouts.errors')
 
 </div>
 

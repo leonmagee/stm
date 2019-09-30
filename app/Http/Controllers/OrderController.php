@@ -52,11 +52,16 @@ class OrderController extends Controller
         $user_id = $user->id;
         $carriers = Carrier::all();
         $sims_array = [];
+        $no_sims_added = true;
         foreach ($carriers as $carrier) {
             $key = 'sims-' . $carrier->id;
             if ($request->{$key}) {
                 $sims_array[$carrier->name] = number_format($request->{$key});
+                $no_sims_added = false;
             }
+        }
+        if ($no_sims_added) {
+            return \Redirect::back()->withErrors(['You must add some sims.']);
         }
 
         //dd($sims_array);
