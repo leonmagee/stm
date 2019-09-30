@@ -3,7 +3,10 @@
 # Hello {{ $user->name }}!
 
 A new sims order has been requested:<br /><br />
-<strong>{{ $sims . ' ' . $carrier }} Sims</strong><br /><br />
+@foreach($sims as $carrier => $sims)
+<strong>{{ $sims . ' ' . $carrier }} Sims</strong><br />
+@endforeach
+<br />
 <strong style="font-size: 1.3em">{{ $user->company }}</strong><br />
 <strong>{{ $user->name }}</strong><br />
 <strong>{{ $user->address }}</strong><br />

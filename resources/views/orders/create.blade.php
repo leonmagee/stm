@@ -14,39 +14,30 @@ Order Sims
 
     <form action="/order-sims" method="POST" enctype="multipart/form-data">
 
-     <div class="form-wrap">
+      <div class="form-wrap">
 
-      {{ csrf_field() }}
+        {{ csrf_field() }}
 
-      <div class="field">
-        <label class="label">Number of Sims</label>
-        <input name="sims" type="number" class="input" placeholder="0" />
-      </div>
-
-      <div class="field">
-        <label class="label">Carrier</label>
-        <div class="select">
-          <select name="carrier_id">
-            @foreach($carriers as $carrier)
-            <option value="{{ $carrier->id }}">{{ $carrier->name }}</option>
-            @endforeach
-          </select>
+        @foreach($carriers as $carrier)
+        <div class="field">
+          <label class="label">Number of {{ $carrier->name }} Sims</label>
+          <input name="sims-{{ $carrier->id }}" type="number" class="input" placeholder="0" />
         </div>
+        @endforeach
+
+        <div class="field submit">
+          <div class="control">
+            <button class="button is-primary call-loader" type="submit">Order Sims</button>
+          </div>
+        </div>
+
       </div>
 
-      <div class="field submit">
-        <div class="control">
-         <button class="button is-primary call-loader" type="submit">Order Sims</button>
-       </div>
-     </div>
+    </form>
 
-   </div>
+  </div>
 
- </form>
-
-</div>
-
-@include('layouts.errors')
+  @include('layouts.errors')
 
 </div>
 

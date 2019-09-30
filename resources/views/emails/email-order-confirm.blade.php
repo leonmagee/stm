@@ -3,7 +3,10 @@
 # Hello {{ $user->name }}!
 
 Your sims order has been processed:<br /><br />
-<strong>{{ $sims . ' ' . $carrier }} Sims</strong><br /><br />
+@foreach($sims as $carrier => $sims)
+<strong>{{ $sims . ' ' . $carrier }} Sims</strong><br />
+@endforeach
+<br />
 Thank You!
 <br /><br />
 Date: <strong>{{ $date }}</strong>

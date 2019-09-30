@@ -25,9 +25,11 @@ Orders
         <span><a href="/users/{{ $order->user_id }}">{{ $order->user->company }} - {{ $order->user->name }}</a></span>
       </div>
       @endif
+      @foreach(json_decode($order->data) as $carrier => $sims)
       <div>
-        <span>Number Sims Ordered: {{ number_format($order->sims) }} {{ $order->carrier->name }}</span>
+        <span>{{ $sims }} {{ $carrier }} Sims Ordered</span>
       </div>
+      @endforeach
 
     </div>
     <div class="flex-item note-end">
@@ -35,9 +37,11 @@ Orders
         <span>{{ $order->created_at->format('m/d/Y') }}</span>
       </div>
     </div>
+    @if(\Auth()->user()->isAdmin())
     <div class="flex-item notes-icon-wrap border-left">
       <i class="fas fa-times-circle delete-icon modal-delete-open" order_id={{ $order->id }}></i>
     </div>
+    @endif
 
   </div>
 

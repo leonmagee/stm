@@ -13,7 +13,6 @@ class EmailOrderConfirm extends Mailable
 
     public $user;
     public $sims;
-    public $carrier;
     public $date;
 
     /**
@@ -21,11 +20,10 @@ class EmailOrderConfirm extends Mailable
      *
      * @return void
      */
-    public function __construct(User $user, $sims, $carrier, $date)
+    public function __construct(User $user, $sims, $date)
     {
         $this->user = $user;
         $this->sims = $sims;
-        $this->carrier = $carrier;
         $this->date = $date;
         $this->subject('STM New Sims Order');
     }

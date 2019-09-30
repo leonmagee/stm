@@ -30,7 +30,7 @@ class OrderController extends Controller
     public function create()
     {
         //$carriers = Carrier::all();
-        $carriers = Carrier::whereIn('id', [1, 2])->get();
+        $carriers = Carrier::whereNotIn('id', [3])->get();
         return view('orders.create', compact('carriers'));
     }
 
@@ -45,23 +45,31 @@ class OrderController extends Controller
         // 1. Store new order
         $user = \Auth()->user();
         $user_id = $user->id;
+        $carriers = Carrier::all();
+        $sims_array = [];
+        foreach ($carriers as $carrier) {
+            $key = 'sims-' . $carrier->id;
+            if ($request->{$key}) {
+                $sims_array[$carrier->name] = number_format($request->{$key});
+            }
+        }
+
+        //dd($sims_array);
         $order = new Order([
             'user_id' => $user_id,
-            'sims' => $request->sims,
-            'carrier_id' => $request->carrier_id,
+            'data' => json_encode($sims_array),
         ]);
         $order->save();
 
         $date = \Carbon\Carbon::now()->toDateTimeString();
-        $sims = number_format($request->sims);
+        //$sims = number_format($request->sims);
 
         /**
          * Send confirmation email
          */
         \Mail::to($user)->send(new EmailOrderConfirm(
             $user,
-            $sims,
-            $order->carrier->name,
+            $sims_array,
             $date
         ));
 
@@ -72,8 +80,7 @@ class OrderController extends Controller
         foreach ($admin_users as $admin) {
             \Mail::to($admin)->send(new EmailOrder(
                 $user,
-                $sims,
-                $order->carrier->name,
+                $sims_array,
                 $date
             ));
         }
