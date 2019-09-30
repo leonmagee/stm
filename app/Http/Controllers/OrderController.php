@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Carrier;
 use App\Mail\EmailOrder;
+use App\Mail\EmailOrderConfirm;
 use App\Order;
 use App\User;
 use Illuminate\Http\Request;
@@ -52,16 +53,22 @@ class OrderController extends Controller
         $order->save();
 
         $date = \Carbon\Carbon::now()->toDateTimeString();
-
-        // 2. Email Managers
-        //$admin_users = User::getAdminManageerEmployeeUsers();
+        $sims = number_format($request->sims);
 
         /**
-         * Just Kareem and Leon
+         * Send confirmation email
+         */
+        \Mail::to($user)->send(new EmailOrderConfirm(
+            $user,
+            $sims,
+            $order->carrier->name,
+            $date
+        ));
+
+        /**
+         * Admin email - Just Kareem and Leon
          */
         $admin_users = User::whereIn('id', [1, 2])->get();
-
-        $sims = number_format($request->sims);
         foreach ($admin_users as $admin) {
             \Mail::to($admin)->send(new EmailOrder(
                 $user,
@@ -75,8 +82,8 @@ class OrderController extends Controller
         /**
          * @todo change this for actual users
          */
-        session()->flash('message', 'New Order Added');
-        return redirect('/orders');
+        session()->flash('message', 'Thank you! Your order has been submitted.');
+        return redirect('/order-sims');
     }
 
     /**

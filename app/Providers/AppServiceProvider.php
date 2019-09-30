@@ -269,13 +269,6 @@ class AppServiceProvider extends ServiceProvider
                         'default' => false,
                     ],
                     [
-                        'name' => 'Order Sims',
-                        'link' => '/order-sims',
-                        'sub' => false,
-                        'icon' => 'flaticon-sim',
-                        'default' => false,
-                    ],
-                    [
                         'name' => 'Sim Orders',
                         'link' => '/orders',
                         'sub' => false,
@@ -524,6 +517,13 @@ class AppServiceProvider extends ServiceProvider
                         'link' => '/3rd-recharge-data',
                         'sub' => false,
                         'icon' => 'flaticon-charging-battery',
+                        'default' => false,
+                    ],
+                    [
+                        'name' => 'Order Sims',
+                        'link' => '/order-sims',
+                        'sub' => false,
+                        'icon' => 'flaticon-sim',
                         'default' => false,
                     ],
                     [
