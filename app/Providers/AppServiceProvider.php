@@ -171,6 +171,13 @@ class AppServiceProvider extends ServiceProvider
                         'default' => false,
                     ],
                     [
+                        'name' => 'Email Blast',
+                        'link' => '/email-blast',
+                        'sub' => false,
+                        'icon' => 'flaticon-mail',
+                        'default' => false,
+                    ],
+                    [
                         'name' => 'Upload Sims',
                         'link' => '/sims/upload',
                         'sub' => false,
@@ -275,13 +282,6 @@ class AppServiceProvider extends ServiceProvider
                         'icon' => 'flaticon-charging-battery',
                         'default' => false,
                     ],
-                    [
-                        'name' => 'Email Blast',
-                        'link' => '/email-blast',
-                        'sub' => false,
-                        'icon' => 'flaticon-mail',
-                        'default' => false,
-                    ],
                 ];
 
             } elseif ($user->isManager()) {
@@ -302,10 +302,10 @@ class AppServiceProvider extends ServiceProvider
                         'default' => false,
                     ],
                     [
-                        'name' => 'Monthly Sims',
-                        'link' => false,
-                        'sub' => $monthly_sims_sub,
-                        'icon' => 'flaticon-sim-card',
+                        'name' => 'Sim Orders',
+                        'link' => '/orders',
+                        'sub' => false,
+                        'icon' => 'flaticon-sim',
                         'default' => false,
                     ],
                     [
@@ -316,20 +316,6 @@ class AppServiceProvider extends ServiceProvider
                         'default' => false,
                     ],
                     [
-                        'name' => 'Agents / Dealers',
-                        'link' => false,
-                        'sub' => $users_sub,
-                        'icon' => 'flaticon-group',
-                        'default' => '/all-users',
-                    ],
-                    [
-                        'name' => 'User Sims',
-                        'link' => '/user-sims',
-                        'sub' => false,
-                        'icon' => 'flaticon-report-1',
-                        'default' => false,
-                    ],
-                    [
                         'name' => 'Look Up Sims',
                         'link' => '/find-sims',
                         'sub' => false,
@@ -337,17 +323,17 @@ class AppServiceProvider extends ServiceProvider
                         'default' => false,
                     ],
                     [
-                        'name' => 'Settings',
-                        'link' => '/settings',
-                        'sub' => false,
-                        'icon' => 'flaticon-gear',
+                        'name' => 'Monthly Sims',
+                        'link' => false,
+                        'sub' => $monthly_sims_sub,
+                        'icon' => 'flaticon-sim-card',
                         'default' => false,
                     ],
                     [
-                        'name' => 'Your Profile',
-                        'link' => '/profile',
+                        'name' => 'User Sims',
+                        'link' => '/user-sims',
                         'sub' => false,
-                        'icon' => 'flaticon-user',
+                        'icon' => 'flaticon-report-1',
                         'default' => false,
                     ],
                     [
@@ -372,6 +358,20 @@ class AppServiceProvider extends ServiceProvider
                         'default' => false,
                     ],
                     [
+                        'name' => 'Settings',
+                        'link' => '/settings',
+                        'sub' => false,
+                        'icon' => 'flaticon-gear',
+                        'default' => false,
+                    ],
+                    [
+                        'name' => 'Agents / Dealers',
+                        'link' => false,
+                        'sub' => $users_sub,
+                        'icon' => 'flaticon-group',
+                        'default' => '/all-users',
+                    ],
+                    [
                         'name' => '2nd Recharge',
                         'link' => '/recharge-data',
                         'sub' => false,
@@ -386,10 +386,10 @@ class AppServiceProvider extends ServiceProvider
                         'default' => false,
                     ],
                     [
-                        'name' => 'Sim Orders',
-                        'link' => '/orders',
+                        'name' => 'Your Profile',
+                        'link' => '/profile',
                         'sub' => false,
-                        'icon' => 'flaticon-sim',
+                        'icon' => 'flaticon-user',
                         'default' => false,
                     ],
                 ];
@@ -412,24 +412,10 @@ class AppServiceProvider extends ServiceProvider
                         'default' => false,
                     ],
                     [
-                        'name' => 'Monthly Sims',
-                        'link' => false,
-                        'sub' => $monthly_sims_sub,
-                        'icon' => 'flaticon-sim-card',
-                        'default' => false,
-                    ],
-                    [
-                        'name' => 'Agents / Dealers',
-                        'link' => false,
-                        'sub' => $users_sub,
-                        'icon' => 'flaticon-group',
-                        'default' => '/all-users',
-                    ],
-                    [
-                        'name' => 'User Sims',
-                        'link' => '/user-sims',
+                        'name' => 'Sim Orders',
+                        'link' => '/orders',
                         'sub' => false,
-                        'icon' => 'flaticon-report-1',
+                        'icon' => 'flaticon-sim',
                         'default' => false,
                     ],
                     [
@@ -440,17 +426,17 @@ class AppServiceProvider extends ServiceProvider
                         'default' => false,
                     ],
                     [
-                        'name' => 'Settings',
-                        'link' => '/settings',
-                        'sub' => false,
-                        'icon' => 'flaticon-gear',
+                        'name' => 'Monthly Sims',
+                        'link' => false,
+                        'sub' => $monthly_sims_sub,
+                        'icon' => 'flaticon-sim-card',
                         'default' => false,
                     ],
                     [
-                        'name' => 'Your Profile',
-                        'link' => '/profile',
+                        'name' => 'User Sims',
+                        'link' => '/user-sims',
                         'sub' => false,
-                        'icon' => 'flaticon-user',
+                        'icon' => 'flaticon-report-1',
                         'default' => false,
                     ],
                     [
@@ -475,6 +461,20 @@ class AppServiceProvider extends ServiceProvider
                         'default' => false,
                     ],
                     [
+                        'name' => 'Settings',
+                        'link' => '/settings',
+                        'sub' => false,
+                        'icon' => 'flaticon-gear',
+                        'default' => false,
+                    ],
+                    [
+                        'name' => 'Agents / Dealers',
+                        'link' => false,
+                        'sub' => $users_sub,
+                        'icon' => 'flaticon-group',
+                        'default' => '/all-users',
+                    ],
+                    [
                         'name' => '2nd Recharge',
                         'link' => '/recharge-data',
                         'sub' => false,
@@ -489,10 +489,10 @@ class AppServiceProvider extends ServiceProvider
                         'default' => false,
                     ],
                     [
-                        'name' => 'Sim Orders',
-                        'link' => '/orders',
+                        'name' => 'Your Profile',
+                        'link' => '/profile',
                         'sub' => false,
-                        'icon' => 'flaticon-sim',
+                        'icon' => 'flaticon-user',
                         'default' => false,
                     ],
                 ];
@@ -510,6 +510,20 @@ class AppServiceProvider extends ServiceProvider
                         'default' => false,
                     ],
                     [
+                        'name' => 'Order Sims',
+                        'link' => '/order-sims',
+                        'sub' => false,
+                        'icon' => 'flaticon-sim',
+                        'default' => false,
+                    ],
+                    [
+                        'name' => 'Look Up Sims',
+                        'link' => '/find-sims',
+                        'sub' => false,
+                        'icon' => 'flaticon-zoom-1',
+                        'default' => false,
+                    ],
+                    [
                         'name' => 'Monthly Sims',
                         'link' => false,
                         'sub' => $monthly_sims_sub,
@@ -521,13 +535,6 @@ class AppServiceProvider extends ServiceProvider
                         'link' => '/user-sims',
                         'sub' => false,
                         'icon' => 'flaticon-report-1',
-                        'default' => false,
-                    ],
-                    [
-                        'name' => 'Look Up Sims',
-                        'link' => '/find-sims',
-                        'sub' => false,
-                        'icon' => 'flaticon-zoom-1',
                         'default' => false,
                     ],
                     [
@@ -549,13 +556,6 @@ class AppServiceProvider extends ServiceProvider
                         'link' => '/3rd-recharge-data',
                         'sub' => false,
                         'icon' => 'flaticon-charging-battery',
-                        'default' => false,
-                    ],
-                    [
-                        'name' => 'Order Sims',
-                        'link' => '/order-sims',
-                        'sub' => false,
-                        'icon' => 'flaticon-sim',
                         'default' => false,
                     ],
                     [
