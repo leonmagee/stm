@@ -106,6 +106,7 @@
             </div>
           </div>
 
+          @if($user->isAdminManagerEmployee())
           <div class="field notes-checkbox-field">
             <label class="checkbox">
               <input type="checkbox" name="notes_email_disable" @if($user->notes_email_disable)
@@ -115,6 +116,7 @@
               Disable Notes Email
             </label>
           </div>
+          @endif
         </div>
 
         <div class="field flex-margin padding-top">
