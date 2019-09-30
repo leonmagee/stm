@@ -34,6 +34,8 @@ class EmailBlastController extends Controller
     {
 
         $file = $request->file('upload-file-email');
+        $file2 = $request->file('upload-file-email-2');
+        $file3 = $request->file('upload-file-email-3');
         //dd($file);
         if (intval($request->just_one_user)) {
             // email just one user
@@ -53,7 +55,9 @@ class EmailBlastController extends Controller
                 $user,
                 $request->message,
                 $request->subject,
-                $file
+                $file,
+                $file2,
+                $file3
             ));
         }
 

@@ -19,7 +19,7 @@ class EmailBlast extends Mailable
      *
      * @return void
      */
-    public function __construct(User $user, $message = null, $subject = 'Sim Track Manager', $file = null)
+    public function __construct(User $user, $message = null, $subject = 'Sim Track Manager', $file = null, $file2 = null, $file3 = null)
     {
         $this->user = $user;
         $this->message = $message;
@@ -30,6 +30,19 @@ class EmailBlast extends Mailable
                 'mime' => $file->getMimeType(),
             ]);
         }
+        if ($file2) {
+            $this->attach($file2->path(), [
+                'as' => $file2->getClientOriginalName(),
+                'mime' => $file2->getMimeType(),
+            ]);
+        }
+        if ($file3) {
+            $this->attach($file3->path(), [
+                'as' => $file3->getClientOriginalName(),
+                'mime' => $file3->getMimeType(),
+            ]);
+        }
+
     }
 
     /**

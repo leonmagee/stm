@@ -16889,6 +16889,14 @@ body.stm-body h1.title span {
   max-width: 25%;
 }
 
+.form-wrapper .form-wrapper-inner form .form-wrap .form-wrap-flex .attachment-wrap {
+  padding: 5px 0 25px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 45%;
+}
+
 .select:after {
   border-color: #1b9aaa !important;
 }
