@@ -150,10 +150,45 @@ class AppServiceProvider extends ServiceProvider
                 // complete menu
                 $menu_array = [
                     [
+                        'name' => 'Homepage',
+                        'link' => '/',
+                        'sub' => false,
+                        'icon' => 'flaticon-home',
+                        'default' => false,
+                    ],
+                    [
                         'name' => 'Notes',
                         'link' => '/notes',
                         'sub' => false,
                         'icon' => 'flaticon-graph-1',
+                        'default' => false,
+                    ],
+                    [
+                        'name' => 'Sim Orders',
+                        'link' => '/orders',
+                        'sub' => false,
+                        'icon' => 'flaticon-sim',
+                        'default' => false,
+                    ],
+                    [
+                        'name' => 'Upload Sims',
+                        'link' => '/sims/upload',
+                        'sub' => false,
+                        'icon' => 'flaticon-upload',
+                        'default' => false,
+                    ],
+                    [
+                        'name' => 'Look Up Sims',
+                        'link' => '/find-sims',
+                        'sub' => false,
+                        'icon' => 'flaticon-zoom-1',
+                        'default' => false,
+                    ],
+                    [
+                        'name' => 'Delete Sims',
+                        'link' => '/delete-sims',
+                        'sub' => false,
+                        'icon' => 'flaticon-delete',
                         'default' => false,
                     ],
                     [
@@ -164,6 +199,13 @@ class AppServiceProvider extends ServiceProvider
                         'default' => false,
                     ],
                     [
+                        'name' => 'User Sims',
+                        'link' => '/user-sims',
+                        'sub' => false,
+                        'icon' => 'flaticon-report-1',
+                        'default' => false,
+                    ],
+                    [
                         'name' => 'Report Types',
                         'link' => false,
                         'sub' => $report_types_sub,
@@ -171,11 +213,32 @@ class AppServiceProvider extends ServiceProvider
                         'default' => '/report-types',
                     ],
                     [
-                        'name' => 'Upload Sims',
-                        'link' => '/sims/upload',
+                        'name' => 'Report Totals',
+                        'link' => '/report-totals',
                         'sub' => false,
-                        'icon' => 'flaticon-upload',
+                        'icon' => 'flaticon-growth',
                         'default' => false,
+                    ],
+                    [
+                        'name' => 'User Reports',
+                        'link' => '/reports',
+                        'sub' => false,
+                        'icon' => 'flaticon-bar-chart',
+                        'default' => false,
+                    ],
+                    [
+                        'name' => 'Archives',
+                        'link' => '/archives',
+                        'sub' => false,
+                        'icon' => 'flaticon-history-clock-button',
+                        'default' => false,
+                    ],
+                    [
+                        'name' => 'Settings',
+                        'link' => false,
+                        'sub' => $settings_sub,
+                        'icon' => 'flaticon-gear',
+                        'default' => '/settings',
                     ],
                     [
                         'name' => 'Agents / Dealers',
@@ -199,55 +262,6 @@ class AppServiceProvider extends ServiceProvider
                         'default' => false,
                     ],
                     [
-                        'name' => 'User Sims',
-                        'link' => '/user-sims',
-                        'sub' => false,
-                        'icon' => 'flaticon-report-1',
-                        'default' => false,
-                    ],
-                    [
-                        'name' => 'Look Up Sims',
-                        'link' => '/find-sims',
-                        'sub' => false,
-                        'icon' => 'flaticon-zoom-1',
-                        'default' => false,
-                    ],
-                    [
-                        'name' => 'Delete Sims',
-                        'link' => '/delete-sims',
-                        'sub' => false,
-                        'icon' => 'flaticon-delete',
-                        'default' => false,
-                    ],
-                    [
-                        'name' => 'Settings',
-                        'link' => false,
-                        'sub' => $settings_sub,
-                        'icon' => 'flaticon-gear',
-                        'default' => '/settings',
-                    ],
-                    [
-                        'name' => 'Report Totals',
-                        'link' => '/report-totals',
-                        'sub' => false,
-                        'icon' => 'flaticon-growth',
-                        'default' => false,
-                    ],
-                    [
-                        'name' => 'User Reports',
-                        'link' => '/reports',
-                        'sub' => false,
-                        'icon' => 'flaticon-bar-chart',
-                        'default' => false,
-                    ],
-                    [
-                        'name' => 'Archives',
-                        'link' => '/archives',
-                        'sub' => false,
-                        'icon' => 'flaticon-history-clock-button',
-                        'default' => false,
-                    ],
-                    [
                         'name' => '2nd Recharge',
                         'link' => '/recharge-data',
                         'sub' => false,
@@ -268,13 +282,11 @@ class AppServiceProvider extends ServiceProvider
                         'icon' => 'flaticon-mail',
                         'default' => false,
                     ],
-                    [
-                        'name' => 'Sim Orders',
-                        'link' => '/orders',
-                        'sub' => false,
-                        'icon' => 'flaticon-sim',
-                        'default' => false,
-                    ],
+                ];
+
+            } elseif ($user->isManager()) {
+
+                $menu_array = [
                     [
                         'name' => 'Homepage',
                         'link' => '/',
@@ -282,11 +294,6 @@ class AppServiceProvider extends ServiceProvider
                         'icon' => 'flaticon-home',
                         'default' => false,
                     ],
-                ];
-
-            } elseif ($user->isManager()) {
-
-                $menu_array = [
                     [
                         'name' => 'Notes',
                         'link' => '/notes',
@@ -385,6 +392,11 @@ class AppServiceProvider extends ServiceProvider
                         'icon' => 'flaticon-sim',
                         'default' => false,
                     ],
+                ];
+
+            } elseif ($user->isEmployee()) {
+
+                $menu_array = [
                     [
                         'name' => 'Homepage',
                         'link' => '/',
@@ -392,11 +404,6 @@ class AppServiceProvider extends ServiceProvider
                         'icon' => 'flaticon-home',
                         'default' => false,
                     ],
-                ];
-
-            } elseif ($user->isEmployee()) {
-
-                $menu_array = [
                     [
                         'name' => 'Notes',
                         'link' => '/notes',
@@ -488,6 +495,13 @@ class AppServiceProvider extends ServiceProvider
                         'icon' => 'flaticon-sim',
                         'default' => false,
                     ],
+                ];
+
+            } else {
+                /**
+                 * Agents / Dealers / VIP Menu
+                 */
+                $menu_array = [
                     [
                         'name' => 'Homepage',
                         'link' => '/',
@@ -495,14 +509,6 @@ class AppServiceProvider extends ServiceProvider
                         'icon' => 'flaticon-home',
                         'default' => false,
                     ],
-                ];
-
-            } else {
-
-                /**
-                 * Agents / Dealers / VIP Menu
-                 */
-                $menu_array = [
                     [
                         'name' => 'Monthly Sims',
                         'link' => false,
@@ -557,13 +563,6 @@ class AppServiceProvider extends ServiceProvider
                         'link' => '/profile',
                         'sub' => false,
                         'icon' => 'flaticon-user',
-                        'default' => false,
-                    ],
-                    [
-                        'name' => 'Homepage',
-                        'link' => '/',
-                        'sub' => false,
-                        'icon' => 'flaticon-home',
                         'default' => false,
                     ],
                 ];
