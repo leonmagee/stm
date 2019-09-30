@@ -14,6 +14,8 @@ require('axios');
 
 require('./components/AllUsers');
 
+require('./components/AllUsersNotAdmin');
+
 /**
  * Fade out notification on click
  */
@@ -47,11 +49,11 @@ $('.modal-delete-open, .modal-delete-close, .modal-delete-close-button').click(
  * Modal for deleting order
  */
 $('.modal-delete-open, .modal-delete-close, .modal-delete-close-button').click(
-  function () {
-    const orderId = $(this).attr('order_id');
-    // console.log('note id', noteId);
-    $(`.modal#delete-order-modal-${orderId}`).toggleClass('is-active');
-  }
+    function() {
+        const orderId = $(this).attr('order_id');
+        // console.log('note id', noteId);
+        $(`.modal#delete-order-modal-${orderId}`).toggleClass('is-active');
+    }
 );
 
 $('.menu-modal-open, #menu-modal .menu-modal-close').click(function() {

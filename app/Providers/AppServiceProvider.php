@@ -302,11 +302,11 @@ class AppServiceProvider extends ServiceProvider
                         'default' => false,
                     ],
                     [
-                        'name' => 'All Users',
-                        'link' => '/users',
-                        'sub' => false,
+                        'name' => 'Agents / Dealers',
+                        'link' => false,
+                        'sub' => $users_sub,
                         'icon' => 'flaticon-group',
-                        'default' => false,
+                        'default' => '/all-users',
                     ],
                     [
                         'name' => 'User Sims',
@@ -391,11 +391,11 @@ class AppServiceProvider extends ServiceProvider
                         'default' => false,
                     ],
                     [
-                        'name' => 'Site Users',
-                        'link' => '/users',
-                        'sub' => false,
+                        'name' => 'Agents / Dealers',
+                        'link' => false,
+                        'sub' => $users_sub,
                         'icon' => 'flaticon-group',
-                        'default' => false,
+                        'default' => '/all-users',
                     ],
                     [
                         'name' => 'User Sims',

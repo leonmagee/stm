@@ -30294,6 +30294,8 @@ __webpack_require__(4);
 
 __webpack_require__(165);
 
+__webpack_require__(199);
+
 /**
  * Fade out notification on click
  */
@@ -107590,6 +107592,345 @@ exports.unstable_unsubscribe = unstable_unsubscribe;
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 175 */,
+/* 176 */,
+/* 177 */,
+/* 178 */,
+/* 179 */,
+/* 180 */,
+/* 181 */,
+/* 182 */,
+/* 183 */,
+/* 184 */,
+/* 185 */,
+/* 186 */,
+/* 187 */,
+/* 188 */,
+/* 189 */,
+/* 190 */,
+/* 191 */,
+/* 192 */,
+/* 193 */,
+/* 194 */,
+/* 195 */,
+/* 196 */,
+/* 197 */,
+/* 198 */,
+/* 199 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(136);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_dom__ = __webpack_require__(168);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_dom___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react_dom__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_axios__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_axios__);
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+
+
+
+
+var AllUsersNotAdmin = function (_Component) {
+    _inherits(AllUsersNotAdmin, _Component);
+
+    function AllUsersNotAdmin(props) {
+        _classCallCheck(this, AllUsersNotAdmin);
+
+        var _this = _possibleConstructorReturn(this, (AllUsersNotAdmin.__proto__ || Object.getPrototypeOf(AllUsersNotAdmin)).call(this, props));
+
+        var _this$props = _this.props,
+            users = _this$props.users,
+            sites = _this$props.sites,
+            current = _this$props.current;
+
+        _this.state = {
+            users: JSON.parse(users),
+            sites: JSON.parse(sites),
+            roleId: parseInt(current),
+            selectedRoleId: false,
+            userMatrix: false,
+            selectedUsers: []
+        };
+        return _this;
+    }
+
+    _createClass(AllUsersNotAdmin, [{
+        key: 'componentDidMount',
+        value: function componentDidMount() {
+            var users = this.state.users;
+
+            var userMatrix = {};
+            users.map(function (user) {
+                userMatrix[user.id] = user.role_id;
+            });
+            this.setState({
+                userMatrix: userMatrix
+            });
+        }
+    }, {
+        key: 'setUserType',
+        value: function setUserType(roleId) {
+            this.setState({
+                roleId: roleId,
+                selectedRoleId: false,
+                selectedUsers: []
+            });
+        }
+    }, {
+        key: 'updateUserSites',
+        value: function updateUserSites() {
+            var _this2 = this;
+
+            var _state = this.state,
+                selectedUsers = _state.selectedUsers,
+                selectedRoleId = _state.selectedRoleId,
+                userMatrix = _state.userMatrix;
+
+            $('.stm-absolute-wrap#loader-wrap').css({
+                display: 'flex'
+            });
+
+            __WEBPACK_IMPORTED_MODULE_2_axios___default()({
+                method: 'post',
+                url: '/update-user-sites',
+                data: {
+                    selectedUsers: selectedUsers,
+                    roleId: selectedRoleId
+                }
+            }).then(function (response) {
+                $('.stm-absolute-wrap#loader-wrap').css({
+                    display: 'none'
+                });
+
+                response.data.map(function (id) {
+                    userMatrix[id] = parseInt(selectedRoleId);
+                });
+
+                _this2.setState({
+                    userMatrix: _extends({}, userMatrix)
+                });
+            }).catch(function (error) {
+                console.error('errorzz', error);
+                $('.stm-absolute-wrap#loader-wrap').css({
+                    display: 'none'
+                });
+            });
+        }
+    }, {
+        key: 'selectUser',
+        value: function selectUser(key) {
+            var selectedUsers = this.state.selectedUsers;
+
+            if (selectedUsers.includes(key)) {
+                var index = selectedUsers.indexOf(key);
+                selectedUsers.splice(index, 1);
+            } else {
+                selectedUsers.push(key);
+            }
+            this.setState({
+                selectedUsers: [].concat(_toConsumableArray(selectedUsers))
+            });
+        }
+    }, {
+        key: 'selectSite',
+        value: function selectSite(event) {
+            this.setState({
+                selectedRoleId: event.target.value
+            });
+        }
+    }, {
+        key: 'render',
+        value: function render() {
+            var _this3 = this;
+
+            var _state2 = this.state,
+                users = _state2.users,
+                sites = _state2.sites,
+                roleId = _state2.roleId,
+                selectedUsers = _state2.selectedUsers,
+                selectedRoleId = _state2.selectedRoleId,
+                userMatrix = _state2.userMatrix;
+
+            /**
+             * So instead of just matching the item.role_id to the current roleId... what I need to do
+             * I loop through once first to make an array of key value pairs for
+             */
+
+            var allUsers = users.map(function (item, key) {
+                if (userMatrix[item.id] === roleId) {
+                    var checkboxClass = '';
+                    if (selectedUsers.includes(item.id)) {
+                        checkboxClass = 'fake-checkbox selected';
+                    } else {
+                        checkboxClass = 'fake-checkbox';
+                    }
+                    var linkUrl = '/users/' + item.id;
+                    return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        'div',
+                        { className: 'allUsersItem', key: key },
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div', { className: 'divider' }),
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                            'div',
+                            { className: 'detail' },
+                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                'a',
+                                { href: linkUrl },
+                                item.company
+                            )
+                        ),
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div', { className: 'divider' }),
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                            'div',
+                            { className: 'detail' },
+                            item.name
+                        ),
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div', { className: 'divider hide-mobile' }),
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                            'div',
+                            { className: 'detail hide-mobile' },
+                            item.email
+                        ),
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div', { className: 'divider hide-mobile' }),
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                            'div',
+                            { className: 'detail hide-mobile' },
+                            item.phone
+                        )
+                    );
+                }
+                return false;
+            });
+
+            var updateButton = __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div', null);
+            if (selectedRoleId) {
+                updateButton = __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                    'button',
+                    {
+                        type: 'button',
+                        onClick: function onClick() {
+                            return _this3.updateUserSites();
+                        },
+                        className: 'button is-primary'
+                    },
+                    'Update'
+                );
+            } else {
+                updateButton = __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                    'button',
+                    { type: 'button', disabled: true, className: 'button is-primary' },
+                    'Update'
+                );
+            }
+
+            var nav = sites.map(function (item, key) {
+                if (item.role_id !== roleId) {
+                    return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        'button',
+                        {
+                            className: 'button is-primary button_' + item.role_id,
+                            type: 'button',
+                            onClick: function onClick() {
+                                return _this3.setUserType(item.role_id);
+                            },
+                            key: key
+                        },
+                        item.name
+                    );
+                }
+                return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                    'button',
+                    {
+                        className: 'button is-danger disabled',
+                        type: 'button',
+                        key: key
+                    },
+                    item.name
+                );
+            });
+
+            var siteForm = __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div', null);
+
+            if (selectedUsers.length) {
+                siteForm = __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                    'form',
+                    { method: 'post', className: 'changeSiteForm' },
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        'div',
+                        { className: 'select' },
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                            'select',
+                            {
+                                onChange: this.selectSite.bind(this),
+                                id: 'siteSelect',
+                                name: 'site'
+                            },
+                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                'option',
+                                null,
+                                'Change Site'
+                            ),
+                            sites.map(function (item, key) {
+                                if (item.role_id !== _this3.state.roleId) {
+                                    return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                        'option',
+                                        { key: key, value: item.role_id },
+                                        item.name
+                                    );
+                                }
+                            })
+                        )
+                    ),
+                    updateButton
+                );
+            }
+
+            return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                'div',
+                null,
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                    'div',
+                    { className: 'allUserToggle' },
+                    nav,
+                    ' ',
+                    siteForm
+                ),
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                    'div',
+                    { className: 'allUsersList' },
+                    allUsers
+                )
+            );
+        }
+    }]);
+
+    return AllUsersNotAdmin;
+}(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]);
+
+/* harmony default export */ __webpack_exports__["default"] = (AllUsersNotAdmin);
+
+
+if (document.getElementById('allUsersNotAdmin')) {
+    var allUsers = document.getElementById('allUsersNotAdmin');
+    var users = allUsers.getAttribute('users');
+    var sites = allUsers.getAttribute('sites');
+    var current = allUsers.getAttribute('current');
+    __WEBPACK_IMPORTED_MODULE_1_react_dom___default.a.render(__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(AllUsersNotAdmin, { users: users, sites: sites, current: current }), document.getElementById('allUsersNotAdmin'));
+}
 
 /***/ })
 /******/ ]);
