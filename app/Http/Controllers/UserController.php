@@ -126,13 +126,15 @@ class UserController extends Controller
 
         $admin_users = User::getAdminManageerEmployeeUsers();
         foreach ($admin_users as $admin) {
-            \Mail::to($admin)->send(new EmailNote(
-                $admin,
-                $note->text,
-                $note->author,
-                $date,
-                $user
-            ));
+            if (!$admin->notes_email_disable) {
+                \Mail::to($admin)->send(new EmailNote(
+                    $admin,
+                    $note->text,
+                    $note->author,
+                    $date,
+                    $user
+                ));
+            }
         }
 
         session()->flash('message', 'Note Added');
@@ -314,6 +316,14 @@ class UserController extends Controller
         /**
          * @todo test this - refactor - big conidtional isn't necessary anymore...
          */
+        if ($request->notes_email_disable) {
+            $disable = 1;
+        } else {
+            $disable = 0;
+        }
+
+        //dd($request);
+
         //validate the form
         if (Helpers::current_user_admin()) {
             $this->validate(request(), [
@@ -342,6 +352,7 @@ class UserController extends Controller
                 'zip' => $request->zip,
                 //'notes' => $request->notes,
                 'role_id' => $request->role_id,
+                'notes_email_disable' => $disable,
             ]);
         } else {
             $this->validate(request(), [
@@ -366,6 +377,7 @@ class UserController extends Controller
                 'city' => $request->city,
                 'state' => $request->state,
                 'zip' => $request->zip,
+                'notes_email_disable' => $disable,
                 //'notes' => $request->notes,
             ]);
         }
@@ -379,6 +391,12 @@ class UserController extends Controller
     {
 
         if ($user = \Auth::user()) {
+
+            if ($request->notes_email_disable) {
+                $disable = 1;
+            } else {
+                $disable = 0;
+            }
 
             $id = $user->id;
 
@@ -403,6 +421,7 @@ class UserController extends Controller
                 'city' => $request->city,
                 'state' => $request->state,
                 'zip' => $request->zip,
+                'notes_email_disable' => $disable,
             ]);
 
             session()->flash('message', 'Your profile has been updated.');

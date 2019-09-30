@@ -210,3 +210,15 @@
         }
     }
 }
+
+.notes-checkbox-field {
+    margin: 5px 0;
+    label {
+        font-weight: bold;
+    }
+    input {
+        margin-right: 5px;
+        margin-top: -4px;
+        vertical-align: middle;
+    }
+}

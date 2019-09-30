@@ -18088,6 +18088,20 @@ table.dataTable thead .sorting_desc_disabled:after {
   padding-bottom: 7px;
 }
 
+.notes-checkbox-field {
+  margin: 5px 0;
+}
+
+.notes-checkbox-field label {
+  font-weight: bold;
+}
+
+.notes-checkbox-field input {
+  margin-right: 5px;
+  margin-top: -4px;
+  vertical-align: middle;
+}
+
 .allUsersList .hide-mobile {
   display: none;
 }
