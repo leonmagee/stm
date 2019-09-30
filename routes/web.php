@@ -38,7 +38,6 @@ Route::group(['middleware' => 'App\Http\Middleware\LockOutUsersManagers'], funct
     Route::get('change-password/{user}', 'UserController@edit_password');
     Route::post('update-user-password/{id}', 'UserController@update_password');
     Route::post('update-user-sites', 'UserController@changeUserSites');
-    Route::get('notes', 'NoteController@index');
     Route::get('delete-note/{note}', 'NoteController@destroy');
     Route::get('orders', 'OrderController@index');
     Route::get('delete-order/{order}', 'OrderController@destroy');
@@ -48,6 +47,7 @@ Route::get('order-sims', 'OrderController@create');
 Route::post('order-sims', 'OrderController@store');
 
 Route::group(['middleware' => 'App\Http\Middleware\LockOutUsers'], function () {
+    Route::get('notes', 'NoteController@index');
     Route::get('users/{user}', 'UserController@show');
 // @todo can anyone add a note?
     Route::post('add-note/{user}', 'UserController@add_note');

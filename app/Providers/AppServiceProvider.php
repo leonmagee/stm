@@ -288,6 +288,13 @@ class AppServiceProvider extends ServiceProvider
 
                 $menu_array = [
                     [
+                        'name' => 'Notes',
+                        'link' => '/notes',
+                        'sub' => false,
+                        'icon' => 'flaticon-graph-1',
+                        'default' => false,
+                    ],
+                    [
                         'name' => 'Monthly Sims',
                         'link' => false,
                         'sub' => $monthly_sims_sub,
@@ -384,6 +391,13 @@ class AppServiceProvider extends ServiceProvider
 
                 $menu_array = [
                     [
+                        'name' => 'Notes',
+                        'link' => '/notes',
+                        'sub' => false,
+                        'icon' => 'flaticon-graph-1',
+                        'default' => false,
+                    ],
+                    [
                         'name' => 'Monthly Sims',
                         'link' => false,
                         'sub' => $monthly_sims_sub,
@@ -472,10 +486,8 @@ class AppServiceProvider extends ServiceProvider
             } else {
 
                 /**
-                 * @todo create a menu for 'Managers'
+                 * Agents / Dealers / VIP Menu
                  */
-
-                // user menu
                 $menu_array = [
                     [
                         'name' => 'Monthly Sims',
