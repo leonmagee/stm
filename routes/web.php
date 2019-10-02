@@ -74,12 +74,12 @@ Route::group(['middleware' => 'App\Http\Middleware\LockOutUsersEmployees'], func
     Route::post('upload-single-paste', 'SimController@upload_single_paste');
 });
 //Route::get('sims/create', 'SimController@addSim');
-Route::get('sims/archive/{id}', 'SimController@archive');
 
 //Route::get('sims/{sim_number}', 'SimController@show');
 
 Route::group(['middleware' => 'App\Http\Middleware\LockOutUsers'], function () {
     Route::post('sims', 'SimController@store');
+    Route::get('sims/archive/{id}', 'SimController@archive');
 });
 
 // API Routes

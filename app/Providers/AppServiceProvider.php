@@ -510,6 +510,13 @@ class AppServiceProvider extends ServiceProvider
                         'default' => false,
                     ],
                     [
+                        'name' => 'Your Profile',
+                        'link' => '/profile',
+                        'sub' => false,
+                        'icon' => 'flaticon-user',
+                        'default' => false,
+                    ],
+                    [
                         'name' => 'Order Sims',
                         'link' => '/order-sims',
                         'sub' => false,
@@ -523,13 +530,13 @@ class AppServiceProvider extends ServiceProvider
                         'icon' => 'flaticon-zoom-1',
                         'default' => false,
                     ],
-                    [
-                        'name' => 'Monthly Sims',
-                        'link' => false,
-                        'sub' => $monthly_sims_sub,
-                        'icon' => 'flaticon-sim-card',
-                        'default' => false,
-                    ],
+                    // [
+                    //     'name' => 'Monthly Sims',
+                    //     'link' => false,
+                    //     'sub' => $monthly_sims_sub,
+                    //     'icon' => 'flaticon-sim-card',
+                    //     'default' => false,
+                    // ],
                     [
                         'name' => 'Your Sims',
                         'link' => '/user-sims',
@@ -556,13 +563,6 @@ class AppServiceProvider extends ServiceProvider
                         'link' => '/3rd-recharge-data',
                         'sub' => false,
                         'icon' => 'flaticon-charging-battery',
-                        'default' => false,
-                    ],
-                    [
-                        'name' => 'Your Profile',
-                        'link' => '/profile',
-                        'sub' => false,
-                        'icon' => 'flaticon-user',
                         'default' => false,
                     ],
                 ];
