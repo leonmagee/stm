@@ -1,43 +1,45 @@
 <ul class="sidebar-menu">
 
-	@foreach($menu as $item)
+  @foreach($menu as $item)
 
-		<li>
+  <?php $className = strtolower(str_replace(' ', '-', $item['name'])); ?>
 
-			<div class="icon-wrap">
-				<i class="fi {{ $item['icon'] }}"></i>
-			</div>
+  <li class="{{ $className }}">
 
-			@if($item['link'])
+    <div class="icon-wrap">
+      <i class="fi {{ $item['icon'] }}"></i>
+    </div>
 
-				<a href="{{ $item['link'] }}">{{ $item['name'] }}</a>
+    @if($item['link'])
 
-			@else
+    <a href="{{ $item['link'] }}">{{ $item['name'] }}</a>
 
-				@if($item['default'])
-				
-					<a href="{{ $item['default'] }}">{{ $item['name'] }}</a>
+    @else
 
-				@else
+    @if($item['default'])
 
-					<a>{{ $item['name'] }}</a>
+    <a href="{{ $item['default'] }}">{{ $item['name'] }}</a>
 
-				@endif
+    @else
 
-			<ul class="sub-menu">
+    <a>{{ $item['name'] }}</a>
 
-				@foreach( $item['sub'] as $sub)
+    @endif
 
-					<li><a href="{{ $sub['link'] }}">{{ $sub['name'] }}</a></li>
+    <ul class="sub-menu">
 
-				@endforeach
-				
-			</ul>
+      @foreach( $item['sub'] as $sub)
 
-			@endif
+      <li><a href="{{ $sub['link'] }}">{{ $sub['name'] }}</a></li>
 
-		</li>
+      @endforeach
 
-	@endforeach
+    </ul>
+
+    @endif
+
+  </li>
+
+  @endforeach
 
 </ul>

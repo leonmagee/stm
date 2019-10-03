@@ -17466,7 +17466,6 @@ ul.sidebar-menu {
   padding: 0;
   font-size: 16px;
   width: 210px;
-  position: relative;
   /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#eeeeee+0,f3f3f3+100 */
   background: #eeeeee;
   /* Old browsers */
@@ -17480,6 +17479,7 @@ ul.sidebar-menu {
 }
 
 ul.sidebar-menu li {
+  position: relative;
   font-size: 16px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -17550,6 +17550,14 @@ ul.sidebar-menu li ul.sub-menu li a {
   white-space: nowrap;
   display: block;
   min-width: 100%;
+}
+
+ul.sidebar-menu li.monthly-sims ul.sub-menu {
+  top: -16em;
+}
+
+ul.sidebar-menu li.report-types ul.sub-menu {
+  top: -22em;
 }
 
 ul.sidebar-menu li:hover {
