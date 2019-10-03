@@ -1,6 +1,6 @@
 @component('mail::message')
 
-# Hello {{ $user->name }}!
+# Hello {{ $admin->name }}!
 
 A new sims order has been requested:<br /><br />
 @foreach($sims as $carrier => $sims)

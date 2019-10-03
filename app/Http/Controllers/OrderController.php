@@ -84,14 +84,17 @@ class OrderController extends Controller
         ));
 
         /**
-         * Admin email - Just Kareem and Leon
+         * Admin email
          */
-        $admin_users = User::whereIn('id', [1, 2])->get();
+        $admin_users = User::getAdminUsers();
+        //dd($admin_users);
+        //$admin_users = User::whereIn('id', [1, 2])->get();
         foreach ($admin_users as $admin) {
             \Mail::to($admin)->send(new EmailOrder(
                 $user,
                 $sims_array,
-                $date
+                $date,
+                $admin
             ));
         }
 

@@ -14,17 +14,19 @@ class EmailOrder extends Mailable
     public $user;
     public $sims;
     public $date;
+    public $admin;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct(User $user, $sims, $date)
+    public function __construct(User $user, $sims, $date, $admin = null)
     {
         $this->user = $user;
         $this->sims = $sims;
         $this->date = $date;
+        $this->admin = $admin;
         $this->subject('STM New Sims Order');
     }
 
