@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Helpers;
-use App\Mail\EmailNote;
 use App\ReportType;
 use App\Settings;
 use App\Site;
@@ -114,32 +113,32 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function add_note(Request $request, User $user)
-    {
-        $current_user = \Auth::user();
-        $note = new \App\Note;
-        $note->text = $request->note;
-        $note->user_id = $user->id;
-        $note->author = $current_user->name;
-        $date = \Carbon\Carbon::now()->toDateTimeString();
-        $note->save();
+    // public function add_note(Request $request, User $user)
+    // {
+    //     $current_user = \Auth::user();
+    //     $note = new \App\Note;
+    //     $note->text = $request->note;
+    //     $note->user_id = $user->id;
+    //     $note->author = $current_user->name;
+    //     $date = \Carbon\Carbon::now()->toDateTimeString();
+    //     $note->save();
 
-        $admin_users = User::getAdminManageerEmployeeUsers();
-        foreach ($admin_users as $admin) {
-            if (!$admin->notes_email_disable) {
-                \Mail::to($admin)->send(new EmailNote(
-                    $admin,
-                    $note->text,
-                    $note->author,
-                    $date,
-                    $user
-                ));
-            }
-        }
+    //     $admin_users = User::getAdminManageerEmployeeUsers();
+    //     foreach ($admin_users as $admin) {
+    //         if (!$admin->notes_email_disable) {
+    //             \Mail::to($admin)->send(new EmailNote(
+    //                 $admin,
+    //                 $note->text,
+    //                 $note->author,
+    //                 $date,
+    //                 $user
+    //             ));
+    //         }
+    //     }
 
-        session()->flash('message', 'Note Added');
-        return redirect('/users/' . $user->id);
-    }
+    //     session()->flash('message', 'Note Added');
+    //     return redirect('/users/' . $user->id);
+    // }
 
     /**
      * Store a newly created resource in storage.

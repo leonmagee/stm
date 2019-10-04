@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\EmailNote;
 use App\Note;
+use App\User;
 use Illuminate\Http\Request;
 
 class NoteController extends Controller
@@ -39,9 +41,37 @@ class NoteController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, User $user)
     {
-        //
+
+        $this->validate(request(), [
+            'note' => 'required|max:150',
+        ]);
+
+        $current_user = \Auth::user();
+        $note = new \App\Note;
+        $note->text = $request->note;
+        $note->user_id = $user->id;
+        $note->author = $current_user->name;
+        $date = \Carbon\Carbon::now()->toDateTimeString();
+        $note->save();
+
+        $admin_users = User::getAdminManageerEmployeeUsers();
+        foreach ($admin_users as $admin) {
+            if (!$admin->notes_email_disable) {
+                \Mail::to($admin)->send(new EmailNote(
+                    $admin,
+                    $note->text,
+                    $note->author,
+                    $date,
+                    $user
+                ));
+            }
+        }
+
+        session()->flash('message', 'Note Added');
+        return redirect('/users/' . $user->id);
+
     }
 
     /**
