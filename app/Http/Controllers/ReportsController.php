@@ -6,13 +6,13 @@ use App\Archive;
 use App\Helpers;
 use App\ReportData;
 use App\ReportType;
+use App\ReportTypeSiteDefault;
 use App\ReportUserCSV;
 use App\Settings;
 use App\Site;
 use App\User;
-use App\ReportTypeSiteDefault;
-use App\UserResidualPercent;
 use App\UserPlanValues;
+use App\UserResidualPercent;
 use Illuminate\Http\Request;
 use \DB;
 
@@ -42,11 +42,11 @@ class ReportsController extends Controller
          * Get report_type_sites_default table data
          */
         $defaults_array_orig = ReportTypeSiteDefault::where([
-			'site_id' => $site_id,
+            'site_id' => $site_id,
         ])->with('report_type_site_values')->get()->toArray();
 
         $defaults_array = [];
-        foreach ( $defaults_array_orig as $item ) {
+        foreach ($defaults_array_orig as $item) {
             $defaults_array[$item['report_type_id']] = $item;
         }
 
@@ -55,7 +55,7 @@ class ReportsController extends Controller
          */
         $user_residual = UserResidualPercent::all()->toArray();
         $user_residual_override = [];
-        foreach($user_residual as $item) {
+        foreach ($user_residual as $item) {
             $user_residual_override[$item['user_id']][] = $item;
         }
 
@@ -64,7 +64,7 @@ class ReportsController extends Controller
          */
         $user_spiff = UserPlanValues::all()->toArray();
         $user_spiff_override = [];
-        foreach($user_spiff as $item) {
+        foreach ($user_spiff as $item) {
             $user_spiff_override[$item['user_id']][] = $item;
         }
 
@@ -128,12 +128,12 @@ class ReportsController extends Controller
         ));
     }
 
-    public function recharge()
+    private static function recharge_data()
     {
         $current_date = Settings::first()->current_date;
-        $current_site_date = Helpers::current_date_name();
-        $site_id = Settings::first()->get_site_id();
-        $site_name = Site::find($site_id)->name;
+        //$current_site_date = Helpers::current_date_name();
+        //$site_id = Settings::first()->get_site_id();
+        //$site_name = Site::find($site_id)->name;
 
         $role_id = Helpers::current_role_id();
         if (Helpers::is_normal_user()) {
@@ -290,6 +290,15 @@ class ReportsController extends Controller
 
         }
 
+        return $recharge_data_array;
+    }
+
+    public function recharge()
+    {
+        $current_site_date = Helpers::current_date_name();
+        $site_id = Settings::first()->get_site_id();
+        $site_name = Site::find($site_id)->name;
+        $recharge_data_array = self::recharge_data();
         $recharge = '2nd';
 
         return view('reports.recharge', compact(
@@ -300,12 +309,12 @@ class ReportsController extends Controller
         ));
     }
 
-    public function third_recharge()
+    private static function third_recharge_data()
     {
         $current_date = Settings::first()->current_date;
-        $current_site_date = Helpers::current_date_name();
-        $site_id = Settings::first()->get_site_id();
-        $site_name = Site::find($site_id)->name;
+        //$current_site_date = Helpers::current_date_name();
+        //$site_id = Settings::first()->get_site_id();
+        //$site_name = Site::find($site_id)->name;
 
         $role_id = Helpers::current_role_id();
         if (Helpers::is_normal_user()) {
@@ -317,10 +326,10 @@ class ReportsController extends Controller
 
         $recharge_data_array = [];
 
-        /**
-         * I need to chagne this so it combines multiple report types, so I can
-         * use both regular and instant...
-         */
+/**
+ * I need to chagne this so it combines multiple report types, so I can
+ * use both regular and instant...
+ */
         $config_array = [ // this can be changed for different report types
             'current' => 5, // H2O 2nd Recharge
             'current_instant' => 6, // H2O 2nd Rechage Instant
@@ -339,7 +348,7 @@ class ReportsController extends Controller
         $report_type_recharge = ReportType::find($config_array['recharge']);
         $report_type_recharge_emida = ReportType::find($config_array['recharge_emida']);
         $report_type_recharge_hdn = ReportType::find($config_array['recharge_hdn']);
-        //$report_type_recharge_instant = ReportType::find($config_array['recharge_instant']);
+//$report_type_recharge_instant = ReportType::find($config_array['recharge_instant']);
 
         $date_array = Helpers::date_array();
 
@@ -460,6 +469,18 @@ class ReportsController extends Controller
 
         }
 
+        return $recharge_data_array;
+
+    }
+
+    public function third_recharge()
+    {
+        $current_site_date = Helpers::current_date_name();
+        $site_id = Settings::first()->get_site_id();
+        $site_name = Site::find($site_id)->name;
+
+        $recharge_data_array = self::third_recharge_data();
+
         $recharge = '3rd';
 
         return view('reports.recharge', compact(
@@ -468,6 +489,23 @@ class ReportsController extends Controller
             'recharge_data_array',
             'recharge'
         ));
+    }
+
+    public function all_recharge()
+    {
+        $current_site_date = Helpers::current_date_name();
+        $site_id = Settings::first()->get_site_id();
+        $site_name = Site::find($site_id)->name;
+        $recharge_data_array = self::recharge_data();
+        $recharge_data_array_third = self::third_recharge_data();
+
+        return view('reports.recharge-all', compact(
+            'site_name',
+            'current_site_date',
+            'recharge_data_array',
+            'recharge_data_array_third',
+        ));
+
     }
 
     public function download_csv(Request $request, $id)
@@ -495,11 +533,11 @@ class ReportsController extends Controller
          * Get report_type_sites_default table data
          */
         $defaults_array_orig = ReportTypeSiteDefault::where([
-			'site_id' => $site_id,
+            'site_id' => $site_id,
         ])->with('report_type_site_values')->get()->toArray();
 
         $defaults_array = [];
-        foreach ( $defaults_array_orig as $item ) {
+        foreach ($defaults_array_orig as $item) {
             $defaults_array[$item['report_type_id']] = $item;
         }
 
@@ -508,7 +546,7 @@ class ReportsController extends Controller
          */
         $user_residual = UserResidualPercent::all()->toArray();
         $user_residual_override = [];
-        foreach($user_residual as $item) {
+        foreach ($user_residual as $item) {
             $user_residual_override[$item['user_id']][] = $item;
         }
 
@@ -517,7 +555,7 @@ class ReportsController extends Controller
          */
         $user_spiff = UserPlanValues::all()->toArray();
         $user_spiff_override = [];
-        foreach($user_spiff as $item) {
+        foreach ($user_spiff as $item) {
             $user_spiff_override[$item['user_id']][] = $item;
         }
 
@@ -596,20 +634,20 @@ class ReportsController extends Controller
          * Get report_type_sites_default table data
          */
         $defaults_array_orig = ReportTypeSiteDefault::where([
-			'site_id' => $site_id,
+            'site_id' => $site_id,
         ])->with('report_type_site_values')->get()->toArray();
 
-         $defaults_array = [];
-         foreach ( $defaults_array_orig as $item ) {
+        $defaults_array = [];
+        foreach ($defaults_array_orig as $item) {
             $defaults_array[$item['report_type_id']] = $item;
-         }
+        }
 
         /**
          * Get Residual Overrides
          */
         $user_residual = UserResidualPercent::all()->toArray();
         $user_residual_override = [];
-        foreach($user_residual as $item) {
+        foreach ($user_residual as $item) {
             $user_residual_override[$item['user_id']][] = $item;
         }
 
@@ -618,7 +656,7 @@ class ReportsController extends Controller
          */
         $user_spiff = UserPlanValues::all()->toArray();
         $user_spiff_override = [];
-        foreach($user_spiff as $item) {
+        foreach ($user_spiff as $item) {
             $user_spiff_override[$item['user_id']][] = $item;
         }
 
@@ -626,7 +664,6 @@ class ReportsController extends Controller
          * Get ReportData
          */
         $report_data_object = new ReportData($site_id, $current_date, $user->id, $defaults_array, $user_residual_override, $user_spiff_override, $site);
-
 
         /**
          * @todo here's where we get the report data - so this should probably be its own class.

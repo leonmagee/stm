@@ -552,19 +552,19 @@ class AppServiceProvider extends ServiceProvider
                         'default' => false,
                     ],
                     [
-                        'name' => '2nd Recharge',
-                        'link' => '/recharge-data',
+                        'name' => 'Recharge Data',
+                        'link' => '/all-recharge-data',
                         'sub' => false,
                         'icon' => 'flaticon-electric-plug',
                         'default' => false,
                     ],
-                    [
-                        'name' => '3rd Recharge',
-                        'link' => '/3rd-recharge-data',
-                        'sub' => false,
-                        'icon' => 'flaticon-charging-battery',
-                        'default' => false,
-                    ],
+                    // [
+                    //     'name' => '3rd Recharge',
+                    //     'link' => '/3rd-recharge-data',
+                    //     'sub' => false,
+                    //     'icon' => 'flaticon-charging-battery',
+                    //     'default' => false,
+                    // ],
                 ];
 
             }

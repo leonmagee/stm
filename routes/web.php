@@ -151,6 +151,7 @@ Route::get('reports/{user}', 'ReportsController@show');
 Route::get('report-totals', 'ReportsController@totals');
 Route::get('recharge-data', 'ReportsController@recharge');
 Route::get('3rd-recharge-data', 'ReportsController@third_recharge');
+Route::get('all-recharge-data', 'ReportsController@all_recharge');
 Route::post('get-csv-report/{id}', 'ReportsController@download_csv');
 Route::post('get-csv-report-archive/{id}', 'ReportsController@download_csv_archive');
 
