@@ -161,7 +161,7 @@
       @csrf
       <label>Add New Note</label>
       <div class="control">
-        <textarea class="textarea" name="note"></textarea>
+        <textarea class="textarea" name="note">{{ old('note') }}</textarea>
       </div>
       <button class="button is-primary call-loader" type="submit">Add Note</button>
     </form>

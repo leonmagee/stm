@@ -18225,6 +18225,11 @@ table.dataTable thead .sorting_desc_disabled:after {
           align-items: center;
 }
 
+.allUserToggle span.user-separator {
+  margin: 0 5px;
+  opacity: 0.8;
+}
+
 .all-users-wrap a.user-wrap .flex-item.company-wrap {
   font-size: 0.9em;
   -webkit-box-flex: 0;

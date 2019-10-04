@@ -82928,7 +82928,8 @@ var AllUsers = function (_Component) {
             roleId: parseInt(current),
             selectedRoleId: false,
             userMatrix: false,
-            selectedUsers: []
+            selectedUsers: [],
+            usersCount: []
         };
         return _this;
     }
@@ -82936,15 +82937,22 @@ var AllUsers = function (_Component) {
     _createClass(AllUsers, [{
         key: 'componentDidMount',
         value: function componentDidMount() {
-            var users = this.state.users;
+            var _state = this.state,
+                users = _state.users,
+                usersCount = _state.usersCount;
 
             var userMatrix = {};
             users.map(function (user) {
                 userMatrix[user.id] = user.role_id;
+                var currentCount = usersCount[user.role_id] ? usersCount[user.role_id] : 0;
+                //console.log(user.name, user.role_id);
+                usersCount[user.role_id] = parseInt(currentCount) + 1;
             });
             this.setState({
+                usersCount: usersCount,
                 userMatrix: userMatrix
             });
+            //console.log('arrayz', usersCount);
         }
     }, {
         key: 'setUserType',
@@ -82960,10 +82968,10 @@ var AllUsers = function (_Component) {
         value: function updateUserSites() {
             var _this2 = this;
 
-            var _state = this.state,
-                selectedUsers = _state.selectedUsers,
-                selectedRoleId = _state.selectedRoleId,
-                userMatrix = _state.userMatrix;
+            var _state2 = this.state,
+                selectedUsers = _state2.selectedUsers,
+                selectedRoleId = _state2.selectedRoleId,
+                userMatrix = _state2.userMatrix;
 
             $('.stm-absolute-wrap#loader-wrap').css({
                 display: 'flex'
@@ -83022,13 +83030,14 @@ var AllUsers = function (_Component) {
         value: function render() {
             var _this3 = this;
 
-            var _state2 = this.state,
-                users = _state2.users,
-                sites = _state2.sites,
-                roleId = _state2.roleId,
-                selectedUsers = _state2.selectedUsers,
-                selectedRoleId = _state2.selectedRoleId,
-                userMatrix = _state2.userMatrix;
+            var _state3 = this.state,
+                users = _state3.users,
+                sites = _state3.sites,
+                roleId = _state3.roleId,
+                selectedUsers = _state3.selectedUsers,
+                selectedRoleId = _state3.selectedRoleId,
+                userMatrix = _state3.userMatrix,
+                usersCount = _state3.usersCount;
 
             /**
              * So instead of just matching the item.role_id to the current roleId... what I need to do
@@ -83127,7 +83136,17 @@ var AllUsers = function (_Component) {
                             },
                             key: key
                         },
-                        item.name
+                        item.name,
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                            'span',
+                            { className: 'user-separator' },
+                            '-'
+                        ),
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                            'span',
+                            { className: 'user-number' },
+                            usersCount[item.role_id] || 0
+                        )
                     );
                 }
                 return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
@@ -83137,7 +83156,17 @@ var AllUsers = function (_Component) {
                         type: 'button',
                         key: key
                     },
-                    item.name
+                    item.name,
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        'span',
+                        { className: 'user-separator' },
+                        '-'
+                    ),
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        'span',
+                        { className: 'user-number' },
+                        usersCount[item.role_id] || 0
+                    )
                 );
             });
 

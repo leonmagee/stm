@@ -13,18 +13,24 @@ export default class AllUsers extends Component {
             selectedRoleId: false,
             userMatrix: false,
             selectedUsers: [],
+            usersCount: [],
         };
     }
 
     componentDidMount() {
-        const { users } = this.state;
+      const { users, usersCount } = this.state;
         const userMatrix = {};
         users.map(user => {
             userMatrix[user.id] = user.role_id;
+          let currentCount = usersCount[user.role_id] ? usersCount[user.role_id] : 0;
+          //console.log(user.name, user.role_id);
+          usersCount[user.role_id] = parseInt(currentCount) + 1;
         });
         this.setState({
+            usersCount,
             userMatrix,
         });
+        //console.log('arrayz', usersCount);
     }
 
     setUserType(roleId) {
@@ -97,6 +103,7 @@ export default class AllUsers extends Component {
             selectedUsers,
             selectedRoleId,
             userMatrix,
+            usersCount,
         } = this.state;
 
         /**
@@ -167,7 +174,7 @@ export default class AllUsers extends Component {
                         onClick={() => this.setUserType(item.role_id)}
                         key={key}
                     >
-                        {item.name}
+                    {item.name}<span className="user-separator">-</span><span className="user-number">{usersCount[item.role_id] || 0}</span>
                     </button>
                 );
             }
@@ -177,7 +184,7 @@ export default class AllUsers extends Component {
                     type="button"
                     key={key}
                 >
-                    {item.name}
+                {item.name}<span className="user-separator">-</span><span className="user-number">{usersCount[item.role_id] || 0}</span>
                 </button>
             );
         });
