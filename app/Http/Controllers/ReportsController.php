@@ -503,7 +503,7 @@ class ReportsController extends Controller
             'site_name',
             'current_site_date',
             'recharge_data_array',
-            'recharge_data_array_third',
+            'recharge_data_array_third'
         ));
 
     }
