@@ -1,81 +1,82 @@
 ul.mobile-menu {
-	list-style-type: none;
-	margin: 0;
-	padding: 0;
-	font-size: 16px;
-	li {
-		position: relative;
-		border-bottom: 1px solid #DFDFDF;
-		font-size: 16px;
-		padding: 0;
-		&.active {
-			border-bottom: none;
-		}
-		a {
-			text-decoration: none;
-			padding: 10px 20px;
-			display: block;
-			color: #222;
-			font-weight: bold;
-			margin: 0;
-		}
-		&:hover {
-			background-color: $brand-primary;
-			//border-color: $brand-primary;
-			cursor: pointer;
-			a {
-				color: #FFF;
-				text-shadow: 1px 1px darken($brand-primary, 1%);
-			}
-		}
-		ul.sub-menu {
-			display: none;
-			list-style-type: none;
-			margin: 0;
-			padding: 0;
-			background-color: #F5F5F5;
-			font-size: 16px;
-			li {
-				font-size: 14px;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+    li {
+        position: relative;
+        border-bottom: 1px solid #dfdfdf;
+        font-size: 16px;
+        padding: 0;
+        span {
+            margin: 0 3px;
+        }
+        &.active {
+            border-bottom: none;
+        }
+        a {
+            text-decoration: none;
+            padding: 10px 20px;
+            display: block;
+            color: #222;
+            font-weight: bold;
+            margin: 0;
+        }
+        &:hover {
+            background-color: $brand-primary;
+            //border-color: $brand-primary;
+            cursor: pointer;
+            a {
+                color: #fff;
+                text-shadow: 1px 1px darken($brand-primary, 1%);
+            }
+        }
+        ul.sub-menu {
+            display: none;
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            font-size: 16px;
+            li {
+                font-size: 14px;
 
-				&:first-child {
-					border-top: 1px solid #DFDFDF;
-				}
-				
-				a {
-					padding: 5px 20px;
-				}
+                &:first-child {
+                    border-top: 1px solid #dfdfdf;
+                }
 
-				&:hover {
-					background-color: darken($brand-primary, 3%) !important;
-					border-color: darken($brand-primary, 3%);
-				}
-			}
+                a {
+                    padding: 5px 20px;
+                }
 
-		}
+                &:hover {
+                    background-color: darken($brand-primary, 3%) !important;
+                    border-color: darken($brand-primary, 3%);
+                }
+            }
+        }
 
-		ul.sub-menu.active {
-				display: block;
-				font-size: 14px;
-				li {
-					a {
-						color: #222;
-						text-shadow: none;
-					}
-					&:hover {
-						background-color: $brand-primary;
-						a {
-							color: #FFF;
-							text-shadow: 1px 1px darken($brand-primary, 5%);
-						}
-					}
-				}
-
-			}
-	}
+        ul.sub-menu.active {
+            display: block;
+            font-size: 14px;
+            li {
+                a {
+                    color: #222;
+                    text-shadow: none;
+                }
+                &:hover {
+                    background-color: $brand-primary;
+                    a {
+                        color: #fff;
+                        text-shadow: 1px 1px darken($brand-primary, 5%);
+                    }
+                }
+            }
+        }
+    }
 }
 
 .close-button-wrap {
-	border-bottom: 1px solid #DFDFDF;
-	padding: 10px 20px;
+    border-bottom: 1px solid #dfdfdf;
+    padding: 10px 20px;
 }

@@ -1,51 +1,51 @@
-	<div class="modal" id="menu-modal">
+<div class="modal" id="menu-modal">
 
-		<div class="modal-background"></div>
+  <div class="modal-background"></div>
 
-		<div class="modal-content">
-			
-			<div class="modal-box">
+  <div class="modal-content">
 
-				<div class="close-button-wrap">
+    <div class="modal-box">
 
-					<button class="menu-modal-close button is-primary">Close Menu</button>
+      <div class="close-button-wrap">
 
-				</div>
+        <button class="menu-modal-close button is-primary">Close Menu</button>
 
-					<ul class="mobile-menu">
+      </div>
 
-					@foreach($menu as $item)
+      <ul class="mobile-menu">
 
-						<li>
+        @foreach($menu as $item)
 
-							@if($item['link'])
+        <li>
 
-								<a href="{{ $item['link'] }}">{{ $item['name'] }}</a>
+          @if($item['link'])
 
-							@else
+          <a href="{{ $item['link'] }}">{!! $item['name'] !!}</a>
 
-							<a class="has-menu">{{ $item['name'] }}</a>
+          @else
 
-							<ul class="sub-menu">
+          <a class="has-menu">{{ $item['name'] }}</a>
 
-								@foreach( $item['sub'] as $sub)
+          <ul class="sub-menu">
 
-									<li><a href="{{ $sub['link'] }}">{{ $sub['name'] }}</a></li>
+            @foreach( $item['sub'] as $sub)
 
-								@endforeach
-								
-							</ul>
+            <li><a href="{{ $sub['link'] }}">{{ $sub['name'] }}</a></li>
 
-							@endif
+            @endforeach
 
-						</li>
+          </ul>
 
-					@endforeach
+          @endif
 
-				</ul>
+        </li>
 
-			</div>
+        @endforeach
 
-		</div>
+      </ul>
 
-	</div>
+    </div>
+
+  </div>
+
+</div>

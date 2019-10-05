@@ -17465,7 +17465,7 @@ ul.sidebar-menu {
   margin: 0;
   padding: 0;
   font-size: 16px;
-  width: 210px;
+  width: 242px;
   /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#eeeeee+0,f3f3f3+100 */
   background: #eeeeee;
   /* Old browsers */
@@ -17484,6 +17484,10 @@ ul.sidebar-menu li {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+}
+
+ul.sidebar-menu li span {
+  margin: 0 3px;
 }
 
 ul.sidebar-menu li .icon-wrap {
@@ -17601,9 +17605,13 @@ ul.mobile-menu {
 
 ul.mobile-menu li {
   position: relative;
-  border-bottom: 1px solid #DFDFDF;
+  border-bottom: 1px solid #dfdfdf;
   font-size: 16px;
   padding: 0;
+}
+
+ul.mobile-menu li span {
+  margin: 0 3px;
 }
 
 ul.mobile-menu li.active {
@@ -17625,7 +17633,7 @@ ul.mobile-menu li:hover {
 }
 
 ul.mobile-menu li:hover a {
-  color: #FFF;
+  color: #fff;
   text-shadow: 1px 1px #1a96a6;
 }
 
@@ -17634,7 +17642,7 @@ ul.mobile-menu li ul.sub-menu {
   list-style-type: none;
   margin: 0;
   padding: 0;
-  background-color: #F5F5F5;
+  background-color: #f5f5f5;
   font-size: 16px;
 }
 
@@ -17643,7 +17651,7 @@ ul.mobile-menu li ul.sub-menu li {
 }
 
 ul.mobile-menu li ul.sub-menu li:first-child {
-  border-top: 1px solid #DFDFDF;
+  border-top: 1px solid #dfdfdf;
 }
 
 ul.mobile-menu li ul.sub-menu li a {
@@ -17670,12 +17678,12 @@ ul.mobile-menu li ul.sub-menu.active li:hover {
 }
 
 ul.mobile-menu li ul.sub-menu.active li:hover a {
-  color: #FFF;
+  color: #fff;
   text-shadow: 1px 1px #188694;
 }
 
 .close-button-wrap {
-  border-bottom: 1px solid #DFDFDF;
+  border-bottom: 1px solid #dfdfdf;
   padding: 10px 20px;
 }
 

@@ -12,7 +12,7 @@
 
     @if($item['link'])
 
-    <a href="{{ $item['link'] }}">{{ $item['name'] }}</a>
+    <a href="{{ $item['link'] }}">{!! $item['name'] !!}</a>
 
     @else
 

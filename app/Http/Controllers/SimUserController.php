@@ -1,13 +1,15 @@
 <?php
 
 namespace App\Http\Controllers;
-use Illuminate\Http\Request;
-use App\SimUser;
-use App\Sim;
-use App\SimResidual;
-use App\User;
+
 use App\Carrier;
 use App\Helpers;
+use App\Sim;
+use App\SimResidual;
+use App\SimUser;
+use App\User;
+use Illuminate\Http\Request;
+
 //use Yajra\Datatables\Datatables;
 
 class SimUserController extends AuthorizedController
@@ -27,12 +29,9 @@ class SimUserController extends AuthorizedController
     {
         $user = \Auth::user();
 
-        if ($user->isAdmin() || $user->isManager())
-        {
+        if ($user->isAdmin() || $user->isManager()) {
             $user_title = 'Users';
-        } 
-        else 
-        {
+        } else {
             $user_title = $user->company . ' - ' . $user->name;
         }
 
@@ -79,7 +78,7 @@ class SimUserController extends AuthorizedController
         SimUser::create([
             'sim_number' => $request->sim_number,
             'user_id' => $request->user_id,
-            'carrier_id' => $request->carrier
+            'carrier_id' => $request->carrier,
         ]);
 
         return redirect('/sim-users'); //@todo create new route for sims assigned to users
@@ -120,21 +119,21 @@ class SimUserController extends AuthorizedController
     }
 
     /**
-    * Show the form for finding sims
-    */
+     * Show the form for finding sims
+     */
     public function find()
     {
         return view('sim_users.find');
     }
 
     /**
-    * Process sim search
-    */
+     * Process sim search
+     */
     public function find_sims(Request $request)
     {
         $data = $request->sims_paste;
 
-        if (! $data) {
+        if (!$data) {
             session()->flash('danger', 'No Sims were found.');
             return redirect('find-sims');
         }
@@ -147,13 +146,13 @@ class SimUserController extends AuthorizedController
     }
 
     /**
-    * Process sim phone serch
-    */
+     * Process sim phone serch
+     */
     public function find_sims_phone(Request $request)
     {
         $data = $request->phones_paste;
 
-        if (! $data) {
+        if (!$data) {
             session()->flash('danger', 'No Sims were found.');
             return redirect('find-sims');
         }
@@ -173,26 +172,22 @@ class SimUserController extends AuthorizedController
 
         $sims_found = false;
 
-        foreach( $sims_array as $sim ) {
+        foreach ($sims_array as $sim) {
 
-            if (Helpers::is_normal_user())
-            {
+            if (Helpers::is_normal_user()) {
                 $user = \Auth::user();
                 //dd($user);
                 $sim_user_result = SimUser::where([
                     'sim_number' => $sim,
-                    'user_id' => $user->id
+                    'user_id' => $user->id,
                 ])->first();
 
-            }
-            else
-            {
+            } else {
                 $sim_user_result = SimUser::where('sim_number', $sim)->first();
             }
 
             $user_data = [];
-            if ($sim_user_result)
-            {
+            if ($sim_user_result) {
                 $user_data = [
                     'id' => $sim_user_result->id,
                     'sim_number' => $sim,
@@ -200,10 +195,8 @@ class SimUserController extends AuthorizedController
                     'company' => $sim_user_result->user->company,
                     'user' => $sim_user_result->user->name,
                 ];
-            }
-            else
-            {
-                $user_data = false;    
+            } else {
+                $user_data = false;
             }
 
             $sim_spiff_result = Sim::where(['sim_number' => $sim])->orderBy('upload_date', 'DESC')->first();
@@ -212,55 +205,45 @@ class SimUserController extends AuthorizedController
 
             $monthly_data = [];
 
-            if ($sim_user_result || $sim_spiff_result || $sim_residual_result) 
-            {
+            if ($sim_user_result || $sim_spiff_result || $sim_residual_result) {
                 $sims_found = true;
 
-
-                if ($sim_spiff_result)
-                {
+                if ($sim_spiff_result) {
                     $monthly_data = [
                         'sim_number' => $sim,
                         'value' => $sim_spiff_result->value,
                         'date' => $sim_spiff_result->activation_date,
                         'mobile' => $sim_spiff_result->mobile_number,
                         'report_type' => $sim_spiff_result->report_type->carrier->name . ' ' . $sim_spiff_result->report_type->name,
-                        'upload_date' => Helpers::get_date_name($sim_spiff_result->upload_date)
+                        'upload_date' => Helpers::get_date_name($sim_spiff_result->upload_date),
 
                     ];
 
-                }
-                elseif ($sim_residual_result)
-                {
+                } elseif ($sim_residual_result) {
                     $monthly_data = [
                         'sim_number' => $sim,
                         'value' => $sim_residual_result->value,
                         'date' => $sim_residual_result->activation_date,
                         'mobile' => $sim_residual_result->mobile_number,
                         'report_type' => $sim_residual_result->report_type->carrier->name . ' ' . $sim_residual_result->report_type->name,
-                        'upload_date' => Helpers::get_date_name($sim_residual_result->upload_date)
+                        'upload_date' => Helpers::get_date_name($sim_residual_result->upload_date),
                     ];
-                }
-                else
-                {
+                } else {
                     $monthly_data = false;
                 }
 
-
                 $list_array[] = [
                     'user_data' => $user_data,
-                    'monthly_data' => $monthly_data
+                    'monthly_data' => $monthly_data,
                 ];
 
             }
         }
 
-        if (! $sims_found)
-        {
+        if (!$sims_found) {
             session()->flash('danger', 'No Sims were found.');
             return redirect('find-sims');
         }
-
 
         return view('sim_users.list', compact('list_array'));
     }
@@ -273,7 +256,7 @@ class SimUserController extends AuthorizedController
 
         $sims_found = false;
 
-        foreach( $phones_array as $phone ) {
+        foreach ($phones_array as $phone) {
 
             $sim = false;
 
@@ -281,35 +264,26 @@ class SimUserController extends AuthorizedController
 
             $sim_residual_result = SimResidual::where(['mobile_number' => $phone])->orderBy('upload_date', 'DESC')->first();
 
-
-            if ($sim_spiff_result)
-            {
+            if ($sim_spiff_result) {
                 $sim = $sim_spiff_result->sim_number;
-            }
-            elseif($sim_residual_result)
-            {
+            } elseif ($sim_residual_result) {
                 $sim = $sim_residual_result->sim_number;
             }
 
-            if($sim)
-            {
+            if ($sim) {
 
-                if (Helpers::is_normal_user())
-                {
+                if (Helpers::is_normal_user()) {
                     $user = \Auth::user();
                     $sim_user_result = SimUser::where([
                         'sim_number' => $sim,
-                        'user_id' => $user->id
+                        'user_id' => $user->id,
                     ])->first();
-                }
-                else
-                {
+                } else {
                     $sim_user_result = SimUser::where('sim_number', $sim)->first();
                 }
 
                 $user_data = [];
-                if ($sim_user_result)
-                {
+                if ($sim_user_result) {
                     $user_data = [
                         'id' => $sim_user_result->id,
                         'sim_number' => $sim,
@@ -317,10 +291,8 @@ class SimUserController extends AuthorizedController
                         'company' => $sim_user_result->user->company,
                         'user' => $sim_user_result->user->name,
                     ];
-                }
-                else
-                {
-                    $user_data = false;    
+                } else {
+                    $user_data = false;
                 }
             } else {
                 $user_data = false;
@@ -329,52 +301,43 @@ class SimUserController extends AuthorizedController
 
             $monthly_data = [];
 
-            if ($sim_user_result || $sim_spiff_result || $sim_residual_result) 
-            {
+            if ($sim_user_result || $sim_spiff_result || $sim_residual_result) {
                 $sims_found = true;
 
-                if ($sim_spiff_result)
-                {
+                if ($sim_spiff_result) {
                     $monthly_data = [
                         'sim_number' => $sim,
                         'value' => $sim_spiff_result->value,
                         'date' => $sim_spiff_result->activation_date,
                         'mobile' => $sim_spiff_result->mobile_number,
                         'report_type' => $sim_spiff_result->report_type->carrier->name . ' ' . $sim_spiff_result->report_type->name,
-                        'upload_date' => Helpers::get_date_name($sim_spiff_result->upload_date)
+                        'upload_date' => Helpers::get_date_name($sim_spiff_result->upload_date),
 
                     ];
 
-                }
-                elseif ($sim_residual_result)
-                {
+                } elseif ($sim_residual_result) {
                     $monthly_data = [
                         'sim_number' => $sim,
                         'value' => $sim_residual_result->value,
                         'date' => $sim_residual_result->activation_date,
                         'mobile' => $sim_residual_result->mobile_number,
                         'report_type' => $sim_residual_result->report_type->carrier->name . ' ' . $sim_residual_result->report_type->name,
-                        'upload_date' => Helpers::get_date_name($sim_residual_result->upload_date)
+                        'upload_date' => Helpers::get_date_name($sim_residual_result->upload_date),
 
                     ];
-                }
-                else
-                {
+                } else {
                     $monthly_data = false;
                 }
 
                 $list_array[] = [
                     'user_data' => $user_data,
-                    'monthly_data' => $monthly_data
+                    'monthly_data' => $monthly_data,
                 ];
             }
 
-
-
         }
 
-        if (! $sims_found)
-        {
+        if (!$sims_found) {
             session()->flash('danger', 'No Sims were found.');
             return redirect('find-sims');
         }
@@ -383,8 +346,8 @@ class SimUserController extends AuthorizedController
     }
 
     /**
-    * Show the form for deleting sims
-    */
+     * Show the form for deleting sims
+     */
     public function delete()
     {
         return view('sim_users.delete');
@@ -399,8 +362,7 @@ class SimUserController extends AuthorizedController
     public function destroy(Request $request)
     {
 
-        if (! $request->sims_paste)
-        {
+        if (!$request->sims_paste) {
             session()->flash('danger', 'Please enter sims to remove.');
             return redirect('/delete-sims');
         }
@@ -412,16 +374,13 @@ class SimUserController extends AuthorizedController
         $removed_array = [];
         $not_removed_array = [];
 
-        foreach( $exploded as $item ) {
+        foreach ($exploded as $item) {
 
-            if (SimUser::where('sim_number', $item)->delete())
-            {
+            if (SimUser::where('sim_number', $item)->delete()) {
 
                 $removed_array[] = $item;
 
-            } 
-            else
-            {
+            } else {
 
                 $not_removed_array[] = $item;
 
@@ -438,6 +397,14 @@ class SimUserController extends AuthorizedController
         }
 
         return redirect('/delete-sims');
+    }
+
+    /**
+     * Show the form for transferring sims
+     */
+    public function transfer()
+    {
+        return view('sim_users.transfer');
     }
 
 }

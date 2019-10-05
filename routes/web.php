@@ -119,8 +119,13 @@ Route::get('list-sims-phone/{sims}', 'SimUserController@show_list_phone');
 
 Route::group(['middleware' => 'App\Http\Middleware\LockOutUsers'], function () {
     Route::get('user-sims/user/{user}', 'SimUserController@index_user');
+});
+
+Route::group(['middleware' => 'App\Http\Middleware\LockOutUsersManagers'], function () {
     Route::get('delete-sims', 'SimUserController@delete');
     Route::post('delete_sims', 'SimUserController@destroy');
+    Route::get('transfer-sims', 'SimUserController@transfer');
+    Route::post('transfer_sims', 'SimUserController@process_transfer');
 });
 
 /**

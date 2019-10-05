@@ -199,6 +199,13 @@ class AppServiceProvider extends ServiceProvider
                         'default' => false,
                     ],
                     [
+                        'name' => 'Transfer Sims',
+                        'link' => '/transfer-sims',
+                        'sub' => false,
+                        'icon' => 'flaticon-delete',
+                        'default' => false,
+                    ],
+                    [
                         'name' => 'Monthly Sims',
                         'link' => false,
                         'sub' => $monthly_sims_sub,
@@ -552,7 +559,7 @@ class AppServiceProvider extends ServiceProvider
                         'default' => false,
                     ],
                     [
-                        'name' => 'Recharge Data',
+                        'name' => '2nd<span>/</span>3rd Recharge',
                         'link' => '/all-recharge-data',
                         'sub' => false,
                         'icon' => 'flaticon-electric-plug',
