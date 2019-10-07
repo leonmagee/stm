@@ -23,7 +23,25 @@ Transfer Sims
         </div>
 
         <div class="field">
+          <label class="label">From User</label>
+          <div class="select">
+            <select name="user_id">
+              @foreach($from_users as $user)
+              <option value="{{ $user->id }}">{{ $user->company }} | {{ $user->name }}</option>
+              @endforeach
+            </select>
+          </div>
+        </div>
 
+        <div class="field">
+          <label class="label">Recipient User</label>
+          <div class="select">
+            <select name="user_id">
+              @foreach($to_users as $to_user)
+              <option value="{{ $to_user->id }}">{{ $to_user->company }} | {{ $to_user->name }}</option>
+              @endforeach
+            </select>
+          </div>
         </div>
 
         <div class="field submit">

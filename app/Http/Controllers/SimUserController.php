@@ -404,7 +404,10 @@ class SimUserController extends AuthorizedController
      */
     public function transfer()
     {
-        return view('sim_users.transfer');
+        $from_users = User::whereNotIn('role_id', [1, 2, 6])->get();
+        $to_users = User::whereNotIn('role_id', [1, 2, 6, 7])->get();
+
+        return view('sim_users.transfer', compact('from_users', 'to_users'));
     }
 
 }
