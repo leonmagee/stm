@@ -6,61 +6,61 @@
 
 <body class='stm-body'>
 
-	<div class="stm-absolute-wrap" id="loader-wrap">
-		<div class="loader"></div>
-	</div>
+  <div class="stm-absolute-wrap" id="loader-wrap">
+    <div class="loader"></div>
+  </div>
 
-	@include('layouts.header')
+  @include('layouts.header')
 
-	@include('layouts.nav-mobile')
+  @include('layouts.nav-mobile')
 
-	<div class="main-wrap">
+  <div class="main-wrap">
 
-		@include('layouts.sidebar')
+    @include('layouts.sidebar')
 
-		<div class="middle-content-wrap">
+    <div class="middle-content-wrap">
 
-			<h1 class="title">
-				@yield('title')
-			</h1>
-
-
-			<div id="content">
-
-				@include('layouts.alert')
-
-				@yield('content')
-
-			</div>
+      <h1 class="title">
+        @yield('title')
+      </h1>
 
 
-		</div>
+      <div id="content">
 
-	</div>
+        @include('layouts.alert')
 
-	<div class="modal" id="layout-modal">
+        @yield('content')
 
-		<div class="modal-background"></div>
+      </div>
 
-		<div class="modal-content">
 
-			<div class="modal-box">
+    </div>
 
-				@yield('modal')
+  </div>
 
-			</div>
+  <div class="modal" id="layout-modal">
 
-		</div>
+    <div class="modal-background"></div>
 
-		<button class="modal-close is-large" aria-label="close"></button>
+    <div class="modal-content">
 
-	</div>
+      <div class="modal-box">
 
-	@include('layouts.footer')
+        @yield('modal')
 
-	@include('layouts.scripts')
-	
-	@yield('page-script')
+      </div>
+
+    </div>
+
+    <button class="modal-close is-large" aria-label="close"></button>
+
+  </div>
+
+  @include('layouts.footer')
+
+  @include('layouts.scripts')
+
+  @yield('page-script')
 
 </body>
 

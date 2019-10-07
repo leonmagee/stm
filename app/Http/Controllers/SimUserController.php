@@ -410,4 +410,20 @@ class SimUserController extends AuthorizedController
         return view('sim_users.transfer', compact('from_users', 'to_users'));
     }
 
+    /**
+     * Process SIM Transfer
+     */
+    public function transfer_sims(Request $request)
+    {
+        dd('some sims', $request);
+    }
+
+    /**
+     * Process SIM Transfer
+     */
+    public function transfer_sims_all(Request $request)
+    {
+        dd('all sims', $request);
+    }
+
 }

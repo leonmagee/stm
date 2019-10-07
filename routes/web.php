@@ -125,7 +125,8 @@ Route::group(['middleware' => 'App\Http\Middleware\LockOutUsersManagers'], funct
     Route::get('delete-sims', 'SimUserController@delete');
     Route::post('delete_sims', 'SimUserController@destroy');
     Route::get('transfer-sims', 'SimUserController@transfer');
-    Route::post('transfer_sims', 'SimUserController@process_transfer');
+    Route::post('transfer_sims', 'SimUserController@transfer_sims');
+    Route::post('transfer_sims_all', 'SimUserController@transfer_sims_all');
 });
 
 /**
