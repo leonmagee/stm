@@ -39,18 +39,8 @@ class EmailBlastController extends Controller
         //dd($file);
         if (intval($request->just_one_user)) {
             // email just one user
-            $users = User::where('id', $request->just_one_user)->get();
-        } else {
-            if ($request->email_site === 'all_users') {
-                // email all users (but not canceld)
-                $users = User::whereNotIn('role_id', [7])->get();
-            } else {
-                // email all users from one site
-                $users = User::whereIn('role_id', [$request->email_site])->get();
-            }
-        }
+            $user = User::where('id', $request->just_one_user)->first();
 
-        foreach ($users as $user) {
             \Mail::to($user)->send(new EmailBlast(
                 $user,
                 $request->message,
@@ -59,9 +49,34 @@ class EmailBlastController extends Controller
                 $file2,
                 $file3
             ));
-        }
 
-        session()->flash('message', 'Email Blast has been sent!');
+            session()->flash('message', 'Email has been sent to ' . $user->company . ' - ' . $user->name);
+
+        } else {
+            if ($request->email_site === 'all_users') {
+                // email all users (but not canceld)
+                $users = User::whereNotIn('role_id', [7])->get();
+            } else {
+                // email all users from one site
+                $users = User::whereIn('role_id', [$request->email_site])->get();
+            }
+
+            foreach ($users as $user) {
+                if (!$user->email_blast_disable) {
+                    \Mail::to($user)->send(new EmailBlast(
+                        $user,
+                        $request->message,
+                        $request->subject,
+                        $file,
+                        $file2,
+                        $file3
+                    ));
+                }
+            }
+
+            session()->flash('message', 'Email Blast has been sent!');
+
+        }
 
         return redirect('email-blast');
     }

@@ -321,6 +321,12 @@ class UserController extends Controller
             $disable = 0;
         }
 
+        if ($request->email_blast_disable) {
+            $blast_disable = 1;
+        } else {
+            $blast_disable = 0;
+        }
+
         //dd($request);
 
         //validate the form
@@ -352,6 +358,8 @@ class UserController extends Controller
                 //'notes' => $request->notes,
                 'role_id' => $request->role_id,
                 'notes_email_disable' => $disable,
+                'email_blast_disable' => $blast_disable,
+
             ]);
         } else {
             $this->validate(request(), [
@@ -377,6 +385,7 @@ class UserController extends Controller
                 'state' => $request->state,
                 'zip' => $request->zip,
                 'notes_email_disable' => $disable,
+                'email_blast_disable' => $blast_disable,
                 //'notes' => $request->notes,
             ]);
         }
@@ -388,13 +397,18 @@ class UserController extends Controller
 
     public function update_admin_manager(Request $request)
     {
-
         if ($user = \Auth::user()) {
 
             if ($request->notes_email_disable) {
                 $disable = 1;
             } else {
                 $disable = 0;
+            }
+
+            if ($request->email_blast_disable) {
+                $blast_disable = 1;
+            } else {
+                $blast_disable = 0;
             }
 
             $id = $user->id;
@@ -421,6 +435,7 @@ class UserController extends Controller
                 'state' => $request->state,
                 'zip' => $request->zip,
                 'notes_email_disable' => $disable,
+                'email_blast_disable' => $blast_disable,
             ]);
 
             session()->flash('message', 'Your profile has been updated.');

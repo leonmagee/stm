@@ -116,6 +116,15 @@
               Disable Notes Email
             </label>
           </div>
+          <div class="field notes-checkbox-field">
+            <label class="checkbox">
+              <input type="checkbox" name="email_blast_disable" @if($user->email_blast_disable)
+              checked="checked"
+              @endif
+              />
+              Disable Email Blast
+            </label>
+          </div>
           @endif
         </div>
 
