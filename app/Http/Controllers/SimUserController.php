@@ -450,12 +450,13 @@ class SimUserController extends AuthorizedController
         // does debug effect this?
         $sims = SimUser::where('user_id', $request->user_id_from)->get();
         dd($sims);
+        dd('testing');
 
-        foreach ($sims as $sim) {
-            $sim->user_id = $request->user_id_to;
-            dd($sim);
-            $sims->save();
-        }
+        // foreach ($sims as $sim) {
+        //     $sim->user_id = $request->user_id_to;
+        //     dd($sim);
+        //     $sims->save();
+        // }
 
         //dd('all sims', $request);
     }
