@@ -404,8 +404,8 @@ class SimUserController extends AuthorizedController
      */
     public function transfer()
     {
-        $from_users = User::whereNotIn('role_id', [1, 2, 6])->get();
-        $to_users = User::whereNotIn('role_id', [1, 2, 6, 7])->get();
+        $from_users = User::whereNotIn('role_id', [1, 2, 6])->orderBy('company')->get();
+        $to_users = User::whereNotIn('role_id', [1, 2, 6, 7])->orderBy('company')->get();
 
         return view('sim_users.transfer', compact('from_users', 'to_users'));
     }
@@ -445,20 +445,17 @@ class SimUserController extends AuthorizedController
             return redirect('/transfer-sims');
         }
 
-        // this times out when a user has lots of sims...
-        // is this eager loading?
-        // does debug effect this?
         $sims = SimUser::where('user_id', $request->user_id_from)->get();
-        dd($sims);
-        dd('testing');
 
-        // foreach ($sims as $sim) {
-        //     $sim->user_id = $request->user_id_to;
-        //     dd($sim);
-        //     $sims->save();
-        // }
+        foreach ($sims as $sim) {
+            $sim->user_id = $request->user_id_to;
+            $sim->save();
+        }
 
-        //dd('all sims', $request);
+        session()->flash('message', 'Sims Transferred');
+
+        return redirect('/transfer-sims');
+
     }
 
 }
