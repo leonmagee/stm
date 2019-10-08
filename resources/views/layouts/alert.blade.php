@@ -2,9 +2,9 @@
 
 <div class="notification is-success">
 
- 	<button class="delete"></button>
+  <button class="delete"></button>
 
-	{{ $flash }}
+  {{ $flash }}
 
 </div>
 
@@ -14,9 +14,9 @@
 
 <div class="notification is-success">
 
- 	<button class="delete"></button>
+  <button class="delete"></button>
 
-	{{ $flash }}
+  {{ $flash }}
 
 </div>
 
@@ -26,9 +26,9 @@
 
 <div class="notification is-danger">
 
- 	<button class="delete"></button>
+  <button class="delete"></button>
 
-	{{ $flash }}
+  {{ $flash }}
 
 </div>
 
@@ -38,17 +38,57 @@
 
 <div class="notification is-danger">
 
- 	<button class="delete"></button>
+  <button class="delete"></button>
 
- 	<span>Duplicate Sims Not Uploaded:</span>
- 	
-	<ul>
-		@foreach($duplicates as $duplicate)
-			
-			<li>{{ $duplicate }}</li>
+  <span>Duplicate Sims Not Uploaded:</span>
 
-		@endforeach
-	</ul>
+  <ul>
+    @foreach($duplicates as $duplicate)
+
+    <li>{{ $duplicate }}</li>
+
+    @endforeach
+  </ul>
+
+</div>
+
+@endif
+
+@if($sims = session('sims_not_found'))
+
+<div class="notification is-danger">
+
+  <button class="delete"></button>
+
+  <span>Sims Not Found:</span>
+
+  <ul>
+    @foreach($sims as $sim)
+
+    <li>{{ $sim }}</li>
+
+    @endforeach
+  </ul>
+
+</div>
+
+@endif
+
+@if($sims = session('sims_transferred'))
+
+<div class="notification is-success">
+
+  <button class="delete"></button>
+
+  <span>Sims Transferred:</span>
+
+  <ul>
+    @foreach($sims as $sim)
+
+    <li>{{ $sim }}</li>
+
+    @endforeach
+  </ul>
 
 </div>
 
@@ -58,17 +98,17 @@
 
 <div class="notification is-success">
 
- 	<button class="delete"></button>
+  <button class="delete"></button>
 
- 	<span>The following sims were removed:</span>
- 	
-	<ul>
-		@foreach($removed_sims as $sim)
-			
-			<li>{{ $sim }}</li>
+  <span>The following sims were removed:</span>
 
-		@endforeach
-	</ul>
+  <ul>
+    @foreach($removed_sims as $sim)
+
+    <li>{{ $sim }}</li>
+
+    @endforeach
+  </ul>
 
 </div>
 
@@ -78,17 +118,17 @@
 
 <div class="notification is-danger">
 
- 	<button class="delete"></button>
+  <button class="delete"></button>
 
- 	<span>The following sims were not found:</span>
- 	
-	<ul>
-		@foreach($removed_sims as $sim)
-			
-			<li>{{ $sim }}</li>
+  <span>The following sims were not found:</span>
 
-		@endforeach
-	</ul>
+  <ul>
+    @foreach($removed_sims as $sim)
+
+    <li>{{ $sim }}</li>
+
+    @endforeach
+  </ul>
 
 </div>
 

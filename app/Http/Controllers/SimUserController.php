@@ -424,13 +424,27 @@ class SimUserController extends AuthorizedController
 
         $exploded = explode("\r\n", $data);
 
+        $found_array = [];
+        $not_found_array = [];
+
         foreach ($exploded as $item) {
             $sim = SimUser::where('sim_number', $item)->first();
-            $sim->user_id = $request->user_id_to;
-            $sim->save();
+            if (!$sim) {
+                $not_found_array[] = $item;
+            } else {
+                $found_array[] = $item;
+                $sim->user_id = $request->user_id_to;
+                $sim->save();
+            }
         }
 
-        session()->flash('message', 'Sims Transferred');
+        if (count($found_array)) {
+            session()->flash('sims_transferred', $found_array);
+        }
+
+        if (count($not_found_array)) {
+            session()->flash('sims_not_found', $not_found_array);
+        }
 
         return redirect('/transfer-sims');
     }
