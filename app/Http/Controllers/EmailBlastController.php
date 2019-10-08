@@ -33,10 +33,12 @@ class EmailBlastController extends Controller
     public function email(Request $request)
     {
 
+        //dd($request);
+
         $file = $request->file('upload-file-email');
         $file2 = $request->file('upload-file-email-2');
         $file3 = $request->file('upload-file-email-3');
-        //dd($file);
+
         if (intval($request->just_one_user)) {
             // email just one user
             $user = User::where('id', $request->just_one_user)->first();
@@ -51,8 +53,15 @@ class EmailBlastController extends Controller
             ));
 
             session()->flash('message', 'Email has been sent to ' . $user->company . ' - ' . $user->name);
-
         } else {
+            // email multiple users
+
+            if ($request->exclude_users) {
+                $exclude_array = $request->exclude_users;
+            } else {
+                $exclude_array = [];
+            }
+
             if ($request->email_site === 'all_users') {
                 // email all users (but not canceld)
                 $users = User::whereNotIn('role_id', [7])->get();
@@ -62,7 +71,7 @@ class EmailBlastController extends Controller
             }
 
             foreach ($users as $user) {
-                if (!$user->email_blast_disable) {
+                if (!$user->email_blast_disable && !in_array($user->id, $exclude_array)) {
                     \Mail::to($user)->send(new EmailBlast(
                         $user,
                         $request->message,

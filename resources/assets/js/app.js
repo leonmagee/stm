@@ -46,6 +46,12 @@ $(
   $('.modal#layout-modal-transfer-2').toggleClass('is-active');
 });
 
+$(
+  '.modal-open-exclude-users, #layout-modal-exclude-users .modal-close, #layout-modal-exclude-users .modal-close-button'
+).click(function () {
+  $('.modal#layout-modal-exclude-users').toggleClass('is-active');
+});
+
 /**
  * Modal for deleting note
  */

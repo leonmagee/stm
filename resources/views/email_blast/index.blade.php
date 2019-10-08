@@ -31,7 +31,45 @@
               </label>
               @endforeach
             </div>
-            <label class="label" for="name">Choose One User</label>
+            <div class="modal" id="layout-modal-exclude-users">
+
+              <div class="modal-background"></div>
+
+              <div class="modal-content large">
+
+                <div class="modal-box exclude-users-modal">
+
+                  <h4 class="title">Exclude Users</h4>
+
+                  <div class="columns is-multiline">
+
+
+                    @foreach($users as $user)
+                    <div class="column is-one-third-desktop is-one-fifth-fullhd">
+                      {{-- <option value="{{ $user->id }}">{{ $user->company }} - {{ $user->name }}</option> --}}
+                      <label class="checkbox exclude-modal-label">
+                        <input type="checkbox" value="{{ $user->id }}" name="exclude_users[]" />
+                        <span class="user-details-wrap">
+                          <span class="company-name">{{ $user->company }}</span><br />
+                          <span class="user-name">{{ $user->name }}</span>
+                          <span>
+                      </label>
+                    </div>
+                    @endforeach
+                  </div>
+
+                  <a href="#" class="modal-close-button button is-primary">Continue</a>
+
+                </div>
+
+              </div>
+
+              <button class="modal-close is-large" aria-label="close"></button>
+
+            </div>
+            <a href="#" class="modal-open-exclude-users button is-primary">Exclude Users</a>
+            <div class="line-divider"></div>
+            <label class="label" for="name">OR Choose One User</label>
             <div class="control email-blast-wrap-bottom">
               <div class="select">
                 <select name="just_one_user">
