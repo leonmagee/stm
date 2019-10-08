@@ -415,7 +415,24 @@ class SimUserController extends AuthorizedController
      */
     public function transfer_sims(Request $request)
     {
-        dd('some sims', $request);
+        if (!$request->sims_paste) {
+            session()->flash('danger', 'Please enter sims to transfer.');
+            return redirect('/transfer-sims');
+        }
+
+        $data = $request->sims_paste;
+
+        $exploded = explode("\r\n", $data);
+
+        foreach ($exploded as $item) {
+            $sim = SimUser::where('sim_number', $item)->first();
+            $sim->user_id = $request->user_id_to;
+            $sim->save();
+        }
+
+        session()->flash('message', 'Sims Transferred');
+
+        return redirect('/transfer-sims');
     }
 
     /**
@@ -423,7 +440,24 @@ class SimUserController extends AuthorizedController
      */
     public function transfer_sims_all(Request $request)
     {
-        dd('all sims', $request);
+        if ($request->user_id_to == $request->user_id_from) {
+            session()->flash('danger', 'Please select different users.');
+            return redirect('/transfer-sims');
+        }
+
+        // this times out when a user has lots of sims...
+        // is this eager loading?
+        // does debug effect this?
+        $sims = SimUser::where('user_id', $request->user_id_from)->get();
+        dd($sims);
+
+        foreach ($sims as $sim) {
+            $sim->user_id = $request->user_id_to;
+            dd($sim);
+            $sims->save();
+        }
+
+        //dd('all sims', $request);
     }
 
 }

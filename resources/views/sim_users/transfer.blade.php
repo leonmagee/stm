@@ -19,26 +19,16 @@ Transfer Sims
         {{ csrf_field() }}
 
         <div class="field">
-          <textarea class="textarea" name="sims_paste"></textarea>
-        </div>
-
-        <div class="field">
-          <label class="label">From User</label>
-          <div class="select">
-            <select name="user_id_from">
-              @foreach($from_users as $user)
-              <option value="{{ $user->id }}">{{ $user->company }} | {{ $user->name }}</option>
-              @endforeach
-            </select>
-          </div>
+          <label class="label">Enter Sims</label>
+          <textarea class="textarea" name="sims_paste" placeholder="One SIM Per Line"></textarea>
         </div>
 
         <div class="field">
           <label class="label">To User</label>
           <div class="select">
             <select name="user_id_to">
-              @foreach($to_users as $to_user)
-              <option value="{{ $to_user->id }}">{{ $to_user->company }} | {{ $to_user->name }}</option>
+              @foreach($to_users as $user)
+              <option value="{{ $user->id }}">{{ $user->company }} | {{ $user->name }}</option>
               @endforeach
             </select>
           </div>
