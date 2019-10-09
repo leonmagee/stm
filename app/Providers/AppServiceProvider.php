@@ -132,6 +132,21 @@ class AppServiceProvider extends ServiceProvider
                 ],
             ];
 
+            $settings = Settings::first();
+
+            $site = $settings->get_site_object()->name;
+
+            $uploads_sub = [
+                [
+                    'name' => 'Upload to All Users',
+                    'link' => '/sims/upload-all',
+                ],
+                [
+                    'name' => 'Upload to ' . $site . ' Only',
+                    'link' => '/sims/upload',
+                ],
+            ];
+
             // $recharge_data = [
             //     [
             //         'name' => '2nd Recharge Data',
@@ -179,10 +194,10 @@ class AppServiceProvider extends ServiceProvider
                     ],
                     [
                         'name' => 'Upload Sims',
-                        'link' => '/sims/upload',
-                        'sub' => false,
+                        'link' => false,
+                        'sub' => $uploads_sub,
                         'icon' => 'flaticon-upload',
-                        'default' => false,
+                        'default' => '/sims/upload',
                     ],
                     [
                         'name' => 'Look Up Sims',
@@ -317,10 +332,10 @@ class AppServiceProvider extends ServiceProvider
                     ],
                     [
                         'name' => 'Upload Sims',
-                        'link' => '/sims/upload',
-                        'sub' => false,
+                        'link' => false,
+                        'sub' => $uploads_sub,
                         'icon' => 'flaticon-upload',
-                        'default' => false,
+                        'default' => '/sims/upload',
                     ],
                     [
                         'name' => 'Look Up Sims',

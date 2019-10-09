@@ -2,16 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Site;
-use App\User;
-use App\SimMaster;
+use App\Carrier;
+use App\Helpers;
+use App\ReportType;
+use App\Settings;
 use App\Sim;
+use App\SimMaster;
 use App\SimResidual;
 use App\SimUser;
-use App\ReportType;
-use App\Carrier;
-use App\Settings;
-use App\Helpers;
+use App\User;
 //use League\Csv\Reader;
 use Illuminate\Http\Request;
 
@@ -39,7 +38,8 @@ class SimController extends Controller
     //     return view('sims.index', compact('current_site_date'));
     // }
 
-    public function archive($id) {
+    public function archive($id)
+    {
 
         $report_type = ReportType::find($id);
 
@@ -55,7 +55,8 @@ class SimController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function addSim() {
+    public function addSim()
+    {
         $report_types = ReportType::query()->orderBy('order_index')->get();
         return view('sims.add-sim', compact('report_types'));
     }
@@ -71,8 +72,8 @@ class SimController extends Controller
     // }
 
     /**
-    * Show the upload form
-    */
+     * Show the upload form
+     */
     public function upload_form()
     {
         $report_types = ReportType::query()->orderBy('order_index')->get();
@@ -83,29 +84,46 @@ class SimController extends Controller
 
         $users = User::where('role_id', $role_id)->orderBy('company')->get();
 
-        if(Helpers::current_user_admin())
-        {
+        if (Helpers::current_user_admin()) {
             return view('sims.upload', compact('report_types', 'users', 'carriers'));
-        }
-        else
-        {
+        } else {
             return view('sims.upload-manager', compact('report_types', 'users', 'carriers'));
         }
     }
 
     /**
-    * Process the upload for monthly sims
-    *
-    * @todo I might still want to do this based on the header column names...
-    * but I should get the timeout issue wit the residual worked out first. After that is done
-    * and I have something that acutually works I can try getting it to work with the column
-    * titles instead of just the row position.
-    */
+     * Show the upload form
+     */
+    public function upload_form_all()
+    {
+        $report_types = ReportType::query()->orderBy('order_index')->get();
+
+        $carriers = Carrier::all();
+
+        $role_id = Helpers::current_role_id();
+
+        $users = User::whereNotIn('role_id', [1, 2, 6, 7])->orderBy('company')->get();
+
+        if (Helpers::current_user_admin()) {
+            return view('sims.upload', compact('report_types', 'users', 'carriers'));
+        } else {
+            return view('sims.upload-manager', compact('report_types', 'users', 'carriers'));
+        }
+    }
+
+    /**
+     * Process the upload for monthly sims
+     *
+     * @todo I might still want to do this based on the header column names...
+     * but I should get the timeout issue wit the residual worked out first. After that is done
+     * and I have something that acutually works I can try getting it to work with the column
+     * titles instead of just the row position.
+     */
     public function upload(Request $request)
     {
         /**
-        * @todo try using League CSV for this?
-        */
+         * @todo try using League CSV for this?
+         */
 
         $spiff_or_resid = ReportType::find($request->report_type)->spiff;
 
@@ -121,7 +139,7 @@ class SimController extends Controller
 
         $report_type_id = $request->report_type;
 
-        if ( $spiff_or_resid ) {
+        if ($spiff_or_resid) {
 
             $sims = new Sim();
 
@@ -143,37 +161,37 @@ class SimController extends Controller
         return redirect('/sims/upload');
     }
 
-
-    public function handle_upload(SimMaster $sims, $file, $report_type_id, $current_date) {
+    public function handle_upload(SimMaster $sims, $file, $report_type_id, $current_date)
+    {
 
         $sim_number_array = [];
         $duplicate_sims = [];
         $count = 0;
 
-        while( $row = fgetcsv($file)) {
+        while ($row = fgetcsv($file)) {
 
             // if ( $row[0] == '' || ! is_numeric($row[0])) {
             //     continue;
             // }
 
-            if ( ( ! in_array($row[0],$sim_number_array ) ) && (Helpers::verify_sim($row[0]))) {
+            if ((!in_array($row[0], $sim_number_array)) && (Helpers::verify_sim($row[0]))) {
 
                 try { // use verify_sim here as well? test with bad data...
 
-                $sims->create(array(
-                    'sim_number' => $row[0],
-                    'value' => $row[1],
-                    'activation_date' => $row[2],
-                    'mobile_number' => $row[3],
-                    'report_type_id' => $report_type_id,
-                    'upload_date' => $current_date
-                ));
+                    $sims->create(array(
+                        'sim_number' => $row[0],
+                        'value' => $row[1],
+                        'activation_date' => $row[2],
+                        'mobile_number' => $row[3],
+                        'report_type_id' => $report_type_id,
+                        'upload_date' => $current_date,
+                    ));
 
-                $count++;
+                    $count++;
 
-                } catch(\Illuminate\Database\QueryException $e) {
+                } catch (\Illuminate\Database\QueryException $e) {
                     $errorCode = $e->errorInfo[1];
-                    if($errorCode == '1062'){
+                    if ($errorCode == '1062') {
                         $duplicate_sims[] = $row[0];
                         continue;
                     }
@@ -188,11 +206,10 @@ class SimController extends Controller
         $this->duplicate_sims = $duplicate_sims;
     }
 
-
     /**
-    * Process the upload for monthly sims
-    * @todo refactor this so it works for both the text or file upload
-    */
+     * Process the upload for monthly sims
+     * @todo refactor this so it works for both the text or file upload
+     */
     public function upload_single(Request $request)
     {
         $upload = $request->file('upload-file-single');
@@ -203,9 +220,9 @@ class SimController extends Controller
 
         $data_array = [];
 
-        while( $row = fgetcsv($file)) {
+        while ($row = fgetcsv($file)) {
 
-            if ( ! is_numeric($row[0]) ) {
+            if (!is_numeric($row[0])) {
                 continue;
             }
 
@@ -215,11 +232,10 @@ class SimController extends Controller
         return $this->complete_single_upload($data_array, $request, $filePath);
     }
 
-
     /**
-    * Process the upload for monthly sims
-    * @todo refactor this so it works for both the text or file upload
-    */
+     * Process the upload for monthly sims
+     * @todo refactor this so it works for both the text or file upload
+     */
     public function upload_single_paste(Request $request)
     {
 
@@ -231,7 +247,7 @@ class SimController extends Controller
 
         $data_array = [];
 
-        foreach( $exploded as $item ) {
+        foreach ($exploded as $item) {
 
             // strip out anything obviously not a sim number?
             // create a function to use anywhere to test_sim()
@@ -246,8 +262,8 @@ class SimController extends Controller
         return $this->complete_single_upload($data_array, $request);
     }
 
-
-    public function complete_single_upload($data_array, Request $request, $filePath = false) {
+    public function complete_single_upload($data_array, Request $request, $filePath = false)
+    {
 
         array_unique($data_array);
 
@@ -258,21 +274,21 @@ class SimController extends Controller
 
         $carrier_id = $request->carrier_id;
 
-        foreach( $data_array as $data ) {
+        foreach ($data_array as $data) {
 
             try {
 
                 SimUser::create(array(
                     'sim_number' => $data,
                     'user_id' => $user_id,
-                    'carrier_id' => $carrier_id
+                    'carrier_id' => $carrier_id,
                 ));
 
                 $count++;
 
-            } catch(\Illuminate\Database\QueryException $e) {
+            } catch (\Illuminate\Database\QueryException $e) {
                 $errorCode = $e->errorInfo[1];
-                if($errorCode == '1062'){
+                if ($errorCode == '1062') {
                     $duplicate_sims[] = $data;
                     continue;
                 }
@@ -339,7 +355,7 @@ class SimController extends Controller
             'activation_date' => $request->activation_date,
             'mobile_number' => $request->mobile_number,
             'report_type_id' => $request->report_type_id,
-            'upload_date' => Settings::first()->current_date
+            'upload_date' => Settings::first()->current_date,
         ]);
 
         // Sim::create(request([
