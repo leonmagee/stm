@@ -43,7 +43,6 @@
 
                   <div class="columns is-multiline">
 
-
                     @foreach($users as $user)
                     <div class="column is-one-third-desktop is-one-fifth-fullhd">
                       {{-- <option value="{{ $user->id }}">{{ $user->company }} - {{ $user->name }}</option> --}}
@@ -58,13 +57,12 @@
                     @endforeach
                   </div>
 
-                  <a href="#" class="modal-close-button button is-primary">Continue</a>
+                  <a class="modal-close-button button is-primary">Continue</a>
 
                 </div>
 
               </div>
 
-              <button class="modal-close is-large" aria-label="close"></button>
 
             </div>
             <a href="#" class="modal-open-exclude-users button is-primary">Exclude Users</a>
