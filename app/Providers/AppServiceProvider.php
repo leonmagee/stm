@@ -574,6 +574,13 @@ class AppServiceProvider extends ServiceProvider
                         'default' => false,
                     ],
                     [
+                        'name' => 'Your Archives',
+                        'link' => '/archives',
+                        'sub' => false,
+                        'icon' => 'flaticon-history-clock-button',
+                        'default' => false,
+                    ],
+                    [
                         'name' => '2nd<span>/</span>3rd Recharge',
                         'link' => '/all-recharge-data',
                         'sub' => false,

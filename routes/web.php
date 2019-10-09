@@ -172,10 +172,11 @@ Route::group(['middleware' => 'App\Http\Middleware\LockOutUsers'], function () {
  * Archives
  */
 Route::get('archives', 'ArchiveController@index');
+Route::post('change-archive-date', 'ArchiveController@change_archive_date');
 
-Route::group(['middleware' => 'App\Http\Middleware\LockOutUsers'], function () {
-    Route::post('change-archive-date', 'ArchiveController@change_archive_date');
-});
+// Route::group(['middleware' => 'App\Http\Middleware\LockOutUsers'], function () {
+//     Route::post('change-archive-date', 'ArchiveController@change_archive_date');
+// });
 
 /**
  * Carriers Routes
