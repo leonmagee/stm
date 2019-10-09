@@ -33,7 +33,9 @@ class EmailBlastController extends Controller
     public function email(Request $request)
     {
 
-        //dd($request);
+        if (!$request->just_one_user && !$request->email_site) {
+            return back()->withErrors('Please choose All Users, One Site or One User.');
+        }
 
         $file = $request->file('upload-file-email');
         $file2 = $request->file('upload-file-email-2');
