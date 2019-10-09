@@ -8,6 +8,7 @@ use App\Sim;
 use App\SimResidual;
 use App\SimUser;
 use App\User;
+use App\UserSimsCSV;
 use Illuminate\Http\Request;
 
 //use Yajra\Datatables\Datatables;
@@ -405,7 +406,7 @@ class SimUserController extends AuthorizedController
     public function transfer()
     {
         $from_users = User::whereNotIn('role_id', [1, 2, 6])->orderBy('company')->get();
-        $to_users = User::whereNotIn('role_id', [1, 2, 6, 7])->orderBy('company')->get();
+        $to_users = User::whereNotIn('role_id', [1, 2, 6])->orderBy('company')->get();
 
         return view('sim_users.transfer', compact('from_users', 'to_users'));
     }
@@ -470,6 +471,12 @@ class SimUserController extends AuthorizedController
 
         return redirect('/transfer-sims');
 
+    }
+
+    public function download_sims()
+    {
+        $user_id = \Auth::user()->id;
+        UserSimsCSV::process_csv_download($user_id);
     }
 
 }

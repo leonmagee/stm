@@ -1,70 +1,67 @@
 .sims-list {
+    ul {
+        li {
+            background-color: #fff;
+            border: 1px solid #e9e9e9;
+            margin: 15px 0;
+            padding: 15px 15px 0;
+            //display: flex;
+            justify-content: space-between;
 
-	ul {
-		li {
-			background-color: #FFF;
-			border: 1px solid #E9E9E9;
-			margin: 15px 0;
-			padding: 15px 15px 0;
-			//display: flex;
-			justify-content: space-between;
+            .detail-wrap {
+                border: 1px solid #eee;
+                //padding: 10px;
+                margin: 10px 10px 25px;
+                display: flex;
+                flex-wrap: wrap;
 
+                .detail-header {
+                    flex: 1 0 100%;
+                    background-color: $brand-primary;
+                    color: #fff;
+                    padding: 5px 10px;
+                }
+                .detail-item {
+                    padding: 10px 15px;
+                    font-weight: 700;
+                    color: #222;
 
-			.detail-wrap {
+                    label {
+                        color: #666;
+                        font-size: 0.9em;
+                    }
+                    div {
+                        padding-top: 3px;
+                    }
+                }
+            }
 
-				border: 1px solid #EEE;
-				//padding: 10px;
-				margin: 10px 10px 25px;
-				display: flex;
-				flex-wrap: wrap;
+            // span {
+            // 	margin: 0 10px;
+            // 	font-weight: 700;
+            // 	color: #777;
+            // 	font-size: 1.1em;
 
-				.detail-header {
-					flex: 1 0 100%;
-					background-color: $brand-primary;
-					color: #FFF;
-					padding: 5px 10px;
-				}
-				.detail-item {
-					
-					padding: 10px 15px;
-					font-weight: 700;
-					color: #222;
+            // 	&.user {
+            // 		color: $color-red;
+            // 	}
+            // }
 
-					label {
-						color: #666;
-						font-size: 0.9em;
-					}
-					div {
-						padding-top: 3px;
-					}
+            // sep {
+            // 	color: #BBB;
+            // 	font-weight: 400;
+            // }
 
-				}
-			}
+            // .sim-details {
+            // 	border: 1px solid #EEE;
+            // 	padding: 10px;
+            // 	margin: 20px 10px;
 
+            // }
+        }
+    }
+}
 
-
-			// span {
-			// 	margin: 0 10px;
-			// 	font-weight: 700;
-			// 	color: #777;
-			// 	font-size: 1.1em;
-
-			// 	&.user {
-			// 		color: $color-red;
-			// 	}
-			// }
-
-			// sep {
-			// 	color: #BBB;
-			// 	font-weight: 400;
-			// }
-
-			// .sim-details {
-			// 	border: 1px solid #EEE;
-			// 	padding: 10px;
-			// 	margin: 20px 10px;
-
-			// }
-		}
-	}
+.csv-button-wrap {
+    padding: 20px;
 }

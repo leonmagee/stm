@@ -8,24 +8,32 @@ All Sims assigned to {{ $user_title }}
 
 
 <table id="sims_table" class="stripe compact">
-    <thead>
-        <tr>
-            <th>Sim Number</th>
-            <th>Carrier</th>
-            <th>Company</th>
-            <th>Name</th>
-        </tr>
-    </thead>
-    <tbody></tbody>
+  <thead>
+    <tr>
+      <th>Sim Number</th>
+      <th>Carrier</th>
+      <th>Company</th>
+      <th>Name</th>
+    </tr>
+  </thead>
+  <tbody></tbody>
 </table>
+
+@if(!\Auth::user()->isAdminManagerEmployee())
+<div class="csv-button-wrap">
+  <form method="POST" action="/download-sims">
+    @csrf
+    <button class="button is-primary">Download SIMS CSV</button>
+  </form>
+</div>
+@endif
 
 @endsection
 
 @section('page-script')
 
 <script>
-
-$('#sims_table').DataTable({
+  $('#sims_table').DataTable({
     "processing": true,
     "serverSide": true,
     "ajax": "{{ route('api.sim_users.index') }}",
@@ -40,4 +48,3 @@ $('#sims_table').DataTable({
 </script>
 
 @endsection
-

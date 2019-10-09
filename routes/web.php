@@ -129,6 +129,8 @@ Route::group(['middleware' => 'App\Http\Middleware\LockOutUsersManagers'], funct
     Route::post('transfer_sims_all', 'SimUserController@transfer_sims_all');
 });
 
+Route::post('download-sims', 'SimUserController@download_sims');
+
 /**
  * Report Types Routes
  */
