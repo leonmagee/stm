@@ -136,16 +136,16 @@ class AppServiceProvider extends ServiceProvider
 
             $site = $settings->get_site_object()->name;
 
-            $uploads_sub = [
-                [
-                    'name' => 'Upload to All Users',
-                    'link' => '/sims/upload-all',
-                ],
-                [
-                    'name' => 'Upload to ' . $site . ' Only',
-                    'link' => '/sims/upload',
-                ],
-            ];
+            // $uploads_sub = [
+            //     [
+            //         'name' => 'Upload to All Users',
+            //         'link' => '/sims/upload-all',
+            //     ],
+            //     [
+            //         'name' => 'Upload to ' . $site . ' Only',
+            //         'link' => '/sims/upload',
+            //     ],
+            // ];
 
             // $recharge_data = [
             //     [
@@ -194,10 +194,10 @@ class AppServiceProvider extends ServiceProvider
                     ],
                     [
                         'name' => 'Upload Sims',
-                        'link' => false,
-                        'sub' => $uploads_sub,
+                        'link' => '/sims/upload-all',
+                        'sub' => false,
                         'icon' => 'flaticon-upload',
-                        'default' => '/sims/upload',
+                        'default' => false,
                     ],
                     [
                         'name' => 'Look Up Sims',
@@ -332,10 +332,10 @@ class AppServiceProvider extends ServiceProvider
                     ],
                     [
                         'name' => 'Upload Sims',
-                        'link' => false,
-                        'sub' => $uploads_sub,
+                        'link' => '/sims/upload-all',
+                        'sub' => false,
                         'icon' => 'flaticon-upload',
-                        'default' => '/sims/upload',
+                        'default' => false,
                     ],
                     [
                         'name' => 'Look Up Sims',
