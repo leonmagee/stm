@@ -26,6 +26,19 @@ $('.notification .delete').click(function() {
 });
 
 /**
+ * Email Blast Toggle
+ */
+$('#all-users-radio').click(function() {
+  //console.log('workzzzzzzzz');
+  $('#exclude-sites-wrap').addClass('active');
+});
+
+$('.one-site-radio').click(function () {
+  //console.log('workzzzzzzzz');
+  $('#exclude-sites-wrap').removeClass('active');
+});
+
+/**
  * Modals
  */
 $(

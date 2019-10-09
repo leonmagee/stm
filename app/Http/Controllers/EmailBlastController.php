@@ -23,8 +23,8 @@ class EmailBlastController extends Controller
     {
         $sites = Site::all();
         $users = User::orderBy('company')->get();
-        //dd($users[0]);
-        return view('email_blast.index', compact('sites', 'users'));
+        $sites_exclude = Site::whereNotIn('id', [4])->get();
+        return view('email_blast.index', compact('sites', 'sites_exclude', 'users'));
     }
 
     /**
@@ -32,6 +32,8 @@ class EmailBlastController extends Controller
      */
     public function email(Request $request)
     {
+
+        //dd($request);
 
         if (!$request->just_one_user && !$request->email_site) {
             return back()->withErrors('Please choose All Users, One Site or One User.');
@@ -58,31 +60,53 @@ class EmailBlastController extends Controller
         } else {
             // email multiple users
 
-            if ($request->exclude_users) {
-                $exclude_array = $request->exclude_users;
+            if ($request->exclude_sites) {
+                $exclude_array = $request->exclude_sites;
             } else {
                 $exclude_array = [];
             }
 
+            // if ($request->exclude_users) {
+            //     $exclude_array = $request->exclude_users;
+            // } else {
+            //     $exclude_array = [];
+            // }
+
             if ($request->email_site === 'all_users') {
                 // email all users (but not canceld)
                 $users = User::whereNotIn('role_id', [7])->get();
+
+                foreach ($users as $user) {
+                    if (!$user->email_blast_disable && !in_array($user->role_id, $exclude_array)) {
+                        \Mail::to($user)->send(new EmailBlast(
+                            $user,
+                            $request->message,
+                            $request->subject,
+                            $file,
+                            $file2,
+                            $file3
+                        ));
+                    }
+                }
+
             } else {
                 // email all users from one site
                 $users = User::whereIn('role_id', [$request->email_site])->get();
-            }
 
-            foreach ($users as $user) {
-                if (!$user->email_blast_disable && !in_array($user->id, $exclude_array)) {
-                    \Mail::to($user)->send(new EmailBlast(
-                        $user,
-                        $request->message,
-                        $request->subject,
-                        $file,
-                        $file2,
-                        $file3
-                    ));
+                foreach ($users as $user) {
+                    if (!$user->email_blast_disable) {
+                        //if (!$user->email_blast_disable && !in_array($user->id, $exclude_array)) {
+                        \Mail::to($user)->send(new EmailBlast(
+                            $user,
+                            $request->message,
+                            $request->subject,
+                            $file,
+                            $file2,
+                            $file3
+                        ));
+                    }
                 }
+
             }
 
             session()->flash('message', 'Email Blast has been sent!');

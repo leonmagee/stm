@@ -20,33 +20,53 @@
           <div class="field full padding-bottom">
             <label class="label" for="name">Choose All Users or All Users from One Site</label>
             <div class="control email-blast-wrap-top">
-              <label class="radio" id="all-users-radio">
+              <label class="radio">
                 <input type="radio" name="email_site" value="all_users">
                 All Users
               </label>
               @foreach($sites as $site)
-              <label class="radio one-site-radio">
+              <label class="radio">
                 <input type="radio" name="email_site" value="{{ $site->role_id }}">
                 {{ $site->name }}
               </label>
               @endforeach
             </div>
+            <div class="modal" id="layout-modal-exclude-users">
 
-            <div class="line-divider"></div>
+              <div class="modal-background"></div>
 
-            <div id="exclude-sites-wrap">
-              <label class="label" for="name">Choose Sites to Exclude</label>
-              <div class="control email-blast-wrap-top">
-                @foreach($sites_exclude as $site)
-                <label class="checkbox">
-                  <input type="checkbox" name="exclude_sites[]" value="{{ $site->role_id }}">
-                  {{ $site->name }}
-                </label>
-                @endforeach
+              <div class="modal-content large">
+
+                <div class="modal-box exclude-users-modal">
+
+                  <h4 class="title">Exclude Users</h4>
+
+                  <div class="columns is-multiline">
+
+                    @foreach($users as $user)
+                    <div class="column is-one-third-desktop is-one-fifth-fullhd">
+                      {{-- <option value="{{ $user->id }}">{{ $user->company }} - {{ $user->name }}</option> --}}
+                      <label class="checkbox exclude-modal-label">
+                        <input type="checkbox" value="{{ $user->id }}" name="exclude_users[]" />
+                        <span class="user-details-wrap">
+                          <span class="company-name">{{ $user->company }}</span><br />
+                          <span class="user-name">{{ $user->name }}</span>
+                          <span>
+                      </label>
+                    </div>
+                    @endforeach
+                  </div>
+
+                  <a class="modal-close-button button is-primary">Continue</a>
+
+                </div>
+
               </div>
-              <div class="line-divider"></div>
-            </div>
 
+
+            </div>
+            <a href="#" class="modal-open-exclude-users button is-primary">Exclude Users</a>
+            <div class="line-divider"></div>
             <label class="label" for="name">OR Choose One User</label>
             <div class="control email-blast-wrap-bottom">
               <div class="select">

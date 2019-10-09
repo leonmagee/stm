@@ -17164,12 +17164,6 @@ body.stm-body .banner-image-wrap img {
   display: block;
 }
 
-body.stm-body .line-divider {
-  border-bottom: 1px solid #e7e7e7;
-  margin-top: 20px;
-  margin-bottom: 15px;
-}
-
 .modal-box {
   background-color: #fff;
   text-align: center;
@@ -19067,6 +19061,20 @@ h4.recharge-subheader {
 .user-plan-section .user-plan-item .data div {
   font-size: 1em;
   font-weight: 700;
+}
+
+#exclude-sites-wrap {
+  display: none;
+}
+
+#exclude-sites-wrap.active {
+  display: block;
+}
+
+.line-divider {
+  border-bottom: 1px solid #e7e7e7;
+  margin-top: 10px;
+  margin-bottom: 15px;
 }
 
 .locked-wrapper {

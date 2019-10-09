@@ -1,0 +1,12 @@
+#exclude-sites-wrap {
+    display: none;
+    &.active {
+        display: block;
+    }
+}
+
+.line-divider {
+    border-bottom: 1px solid #e7e7e7;
+    margin-top: 10px;
+    margin-bottom: 15px;
+}
