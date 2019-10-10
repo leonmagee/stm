@@ -73,6 +73,19 @@ class ArchiveController extends Controller
             $date_select_array[$date->date] = Helpers::get_date_name($date->date);
         }
 
+        $date_select_array = array_flip($date_select_array);
+
+        uksort($date_select_array, function ($a1, $a2) {
+            $time1 = strtotime($a1);
+            $time2 = strtotime($a2);
+
+            return $time1 - $time2;
+        });
+
+        $date_select_array = array_flip($date_select_array);
+
+        //dd($date_select_array);
+
         return view('archive.index', compact(
             'site_name',
             'current_date',
