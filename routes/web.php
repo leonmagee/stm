@@ -55,8 +55,10 @@ Route::group(['middleware' => 'App\Http\Middleware\LockOutUsers'], function () {
     Route::get('all-users', 'UserController@all_users')->name('all-users');
 });
 
-// lock out non 'master' users? I should probably do this.
+// *** LOCK OUT non 'master' users
 Route::get('your-dealers', 'UserController@your_dealers');
+Route::get('dealer/{user}', 'UserController@show_dealer');
+// END LOCK OUT ***
 
 Route::group(['middleware' => 'App\Http\Middleware\LockOutUsersManagers'], function () {
     Route::get('bonus-credit/{user}', 'UserCreditBonusController@edit');

@@ -102,8 +102,12 @@ class ReportsController extends Controller
         $settings = Settings::first();
         $current_date = $settings->current_date;
         $current_site_date = Helpers::get_date_name($current_date);
-        $site_id = $settings->get_site_id();
-        $site_id = 3;
+        $current_user = \Auth::user();
+        if ($current_user->isAdmin() || $current_user->isManager() || $current_user->isEmployee()) {
+            $site_id = $settings->get_site_id();
+        } else {
+            $site_id = $current_user->site_id();
+        }
         $site = Site::find($site_id);
         $site_name = $site->name;
 
@@ -113,8 +117,6 @@ class ReportsController extends Controller
         $defaults_array_orig = ReportTypeSiteDefault::where([
             'site_id' => $site_id,
         ])->with('report_type_site_values')->get()->toArray();
-
-        //dd($site_name);
 
         $defaults_array = [];
         foreach ($defaults_array_orig as $item) {
@@ -142,7 +144,8 @@ class ReportsController extends Controller
         /**
          * Get ReportData
          */
-        $report_data_object = new ReportData($site_id, $current_date, null, $defaults_array, $user_residual_override, $user_spiff_override, $site);
+
+        $report_data_object = new ReportData($site_id, $current_date, null, $defaults_array, $user_residual_override, $user_spiff_override, $site, $current_user->master_agent_site);
         $total_payment_all_users = $report_data_object->total_payment_all_users;
         $report_data_array = $report_data_object->report_data;
         $is_admin = Helpers::current_user_admin();
@@ -153,6 +156,7 @@ class ReportsController extends Controller
             'total_payment_all_users',
             'is_admin'
         ));
+
     }
 
     /**
