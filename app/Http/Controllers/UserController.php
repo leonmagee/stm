@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Helpers;
 use App\ReportType;
+//use App\Role;
 use App\Settings;
 use App\Site;
 use App\User;
@@ -31,6 +32,23 @@ class UserController extends Controller
         $role_id = $settings->get_role_id();
         $site_name = Site::find($site_id)->name;
         $users = User::where('role_id', $role_id)->orderBy('company')->get();
+        return view('users.index', compact('users', 'site_name'));
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function your_dealers()
+    {
+        $logged_in_user = \Auth::user();
+        if (!$id = $logged_in_user->master_agent_site) {
+            return redirect('/');
+        }
+        $site = Site::find($id);
+        $site_name = $site->name;
+        $users = User::where('role_id', $site->role_id)->orderBy('company')->get();
         return view('users.index', compact('users', 'site_name'));
     }
 

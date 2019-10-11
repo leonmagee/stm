@@ -34,7 +34,15 @@ class ReportsController extends Controller
         $settings = Settings::first();
         $current_date = $settings->current_date;
         $current_site_date = Helpers::get_date_name($current_date);
-        $site_id = $settings->get_site_id();
+        /**
+         * Here the site needs to change per user if it's we're looking just talking about a single user...
+         */
+        $current_user = \Auth::user();
+        if ($current_user->isAdmin() || $current_user->isManager() || $current_user->isEmployee()) {
+            $site_id = $settings->get_site_id();
+        } else {
+            $site_id = $current_user->site_id();
+        }
         $site = Site::find($site_id);
         $site_name = $site->name;
 
@@ -44,6 +52,69 @@ class ReportsController extends Controller
         $defaults_array_orig = ReportTypeSiteDefault::where([
             'site_id' => $site_id,
         ])->with('report_type_site_values')->get()->toArray();
+
+        $defaults_array = [];
+        foreach ($defaults_array_orig as $item) {
+            $defaults_array[$item['report_type_id']] = $item;
+        }
+
+        /**
+         * Get Residual Overrides
+         */
+        $user_residual = UserResidualPercent::all()->toArray();
+        $user_residual_override = [];
+        foreach ($user_residual as $item) {
+            $user_residual_override[$item['user_id']][] = $item;
+        }
+
+        /**
+         * Get Spiff Overrides
+         */
+        $user_spiff = UserPlanValues::all()->toArray();
+        $user_spiff_override = [];
+        foreach ($user_spiff as $item) {
+            $user_spiff_override[$item['user_id']][] = $item;
+        }
+
+        /**
+         * Get ReportData
+         */
+        $report_data_object = new ReportData($site_id, $current_date, null, $defaults_array, $user_residual_override, $user_spiff_override, $site);
+        $total_payment_all_users = $report_data_object->total_payment_all_users;
+        $report_data_array = $report_data_object->report_data;
+        $is_admin = Helpers::current_user_admin();
+        return view('reports.index', compact(
+            'site_name',
+            'current_site_date',
+            'report_data_array',
+            'total_payment_all_users',
+            'is_admin'
+        ));
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function dealer_reports()
+    {
+        $settings = Settings::first();
+        $current_date = $settings->current_date;
+        $current_site_date = Helpers::get_date_name($current_date);
+        $site_id = $settings->get_site_id();
+        $site_id = 3;
+        $site = Site::find($site_id);
+        $site_name = $site->name;
+
+        /**
+         * Get report_type_sites_default table data
+         */
+        $defaults_array_orig = ReportTypeSiteDefault::where([
+            'site_id' => $site_id,
+        ])->with('report_type_site_values')->get()->toArray();
+
+        //dd($site_name);
 
         $defaults_array = [];
         foreach ($defaults_array_orig as $item) {
@@ -626,7 +697,9 @@ class ReportsController extends Controller
         $settings = Settings::first();
         $current_date = $settings->current_date;
         $current_site_date = Helpers::get_date_name($current_date);
-        $site_id = $settings->get_site_id();
+        //$site_id = $settings->get_site_id();
+        $site_id = $user->site_id();
+        //dd($user->site_id());
         $site = Site::find($site_id);
         $site_name = $site->name;
 

@@ -134,6 +134,12 @@ class User extends Authenticatable
         return $this->belongsTo(Role::class);
     }
 
+    public function site_id()
+    {
+        $site = Site::where('role_id', $this->role->id)->first();
+        return $site->id;
+    }
+
     /**
      * @param string|array $roles
      */
