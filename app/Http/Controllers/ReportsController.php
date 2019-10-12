@@ -210,7 +210,9 @@ class ReportsController extends Controller
     {
         $current_date = Settings::first()->current_date;
         $current_site_date = Helpers::current_date_name();
-        $site_id = Settings::first()->get_site_id();
+        $user = \Auth::user();
+        $site_id = $user->master_agent_site;
+        //$site_id = Settings::first()->get_site_id();
         $site = Site::find($site_id);
         $site_name = $site->name;
         $role_id = $site->role_id;
