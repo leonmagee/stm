@@ -58,6 +58,7 @@ Route::group(['middleware' => 'App\Http\Middleware\LockOutUsers'], function () {
 // *** LOCK OUT non 'master' users
 Route::get('your-dealers', 'UserController@your_dealers');
 Route::get('dealer/{user}', 'UserController@show_dealer');
+Route::get('dealer-report-totals', 'ReportsController@totals_dealers');
 // END LOCK OUT ***
 
 Route::group(['middleware' => 'App\Http\Middleware\LockOutUsersManagers'], function () {
@@ -163,7 +164,6 @@ Route::group(['middleware' => 'App\Http\Middleware\LockOutUsers'], function () {
 Route::get('reports', 'ReportsController@index');
 Route::get('dealer-reports', 'ReportsController@dealer_reports');
 Route::get('reports/{user}', 'ReportsController@show');
-Route::get('report-totals', 'ReportsController@totals');
 Route::get('recharge-data', 'ReportsController@recharge');
 Route::get('3rd-recharge-data', 'ReportsController@third_recharge');
 Route::get('all-recharge-data', 'ReportsController@all_recharge');
@@ -172,6 +172,7 @@ Route::post('get-csv-report-archive/{id}', 'ReportsController@download_csv_archi
 
 Route::group(['middleware' => 'App\Http\Middleware\LockOutUsers'], function () {
     Route::post('save-archive', 'ReportsController@save_archive');
+    Route::get('report-totals', 'ReportsController@totals');
 });
 
 /**

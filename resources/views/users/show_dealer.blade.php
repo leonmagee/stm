@@ -143,7 +143,6 @@
         <div class="note-header">
           <span class="date">{{ $note->created_at->format('m/d/Y') }}</span>
           <span class="user">{{ $note->author }}</span>
-
         </div>
         <div class="note-body">{{ $note->text }}</div>
       </div>

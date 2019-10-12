@@ -594,6 +594,13 @@ class AppServiceProvider extends ServiceProvider
                         'icon' => 'flaticon-bar-chart',
                         'default' => false,
                     ],
+                    [
+                        'name' => 'Report Totals',
+                        'link' => '/dealer-report-totals',
+                        'sub' => false,
+                        'icon' => 'flaticon-growth',
+                        'default' => false,
+                    ],
                 ];
 
             } else {

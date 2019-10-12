@@ -203,6 +203,50 @@ class ReportsController extends Controller
         ));
     }
 
+    /**
+     * Report Totals Page
+     */
+    public function totals_dealers()
+    {
+        $current_date = Settings::first()->current_date;
+        $current_site_date = Helpers::current_date_name();
+        $site_id = Settings::first()->get_site_id();
+        $site = Site::find($site_id);
+        $site_name = $site->name;
+        $role_id = $site->role_id;
+        $report_types = ReportType::query()->orderBy('order_index')->get();
+        $current_date = Helpers::current_date();
+        $report_type_totals_array = [];
+        $total_count_final = 0;
+
+        foreach ($report_types as $report_type) {
+
+            if ($report_type->spiff) {
+
+                $matching_sims_count = DB::table('sims')
+                    ->select('sims.value', 'sims.report_type_id')
+                    ->join('sim_users', 'sim_users.sim_number', '=', 'sims.sim_number')
+                    ->join('users', 'users.id', '=', 'sim_users.user_id')
+                    ->where('sims.report_type_id', $report_type->id)
+                    ->where('sims.upload_date', $current_date)
+                    ->where('users.role_id', $role_id)
+                    ->count();
+
+                $name = $report_type->carrier->name . ' ' . $report_type->name;
+
+                $report_type_totals_array[$name] = $matching_sims_count;
+                $total_count_final += $matching_sims_count;
+            }
+        }
+
+        return view('reports.totals', compact(
+            'site_name',
+            'current_site_date',
+            'report_type_totals_array',
+            'total_count_final'
+        ));
+    }
+
     private static function recharge_data()
     {
         $current_date = Settings::first()->current_date;
