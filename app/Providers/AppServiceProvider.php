@@ -317,6 +317,13 @@ class AppServiceProvider extends ServiceProvider
                         'default' => false,
                     ],
                     [
+                        'name' => 'Your Profile',
+                        'link' => '/profile',
+                        'sub' => false,
+                        'icon' => 'flaticon-user',
+                        'default' => false,
+                    ],
+                    [
                         'name' => 'Notes',
                         'link' => '/notes',
                         'sub' => false,
@@ -414,13 +421,6 @@ class AppServiceProvider extends ServiceProvider
                         'icon' => 'flaticon-charging-battery',
                         'default' => false,
                     ],
-                    [
-                        'name' => 'Your Profile',
-                        'link' => '/profile',
-                        'sub' => false,
-                        'icon' => 'flaticon-user',
-                        'default' => false,
-                    ],
                 ];
 
             } elseif ($user->isEmployee()) {
@@ -431,6 +431,13 @@ class AppServiceProvider extends ServiceProvider
                         'link' => '/',
                         'sub' => false,
                         'icon' => 'flaticon-home',
+                        'default' => false,
+                    ],
+                    [
+                        'name' => 'Your Profile',
+                        'link' => '/profile',
+                        'sub' => false,
+                        'icon' => 'flaticon-user',
                         'default' => false,
                     ],
                     [
@@ -515,13 +522,6 @@ class AppServiceProvider extends ServiceProvider
                         'link' => '/3rd-recharge-data',
                         'sub' => false,
                         'icon' => 'flaticon-charging-battery',
-                        'default' => false,
-                    ],
-                    [
-                        'name' => 'Your Profile',
-                        'link' => '/profile',
-                        'sub' => false,
-                        'icon' => 'flaticon-user',
                         'default' => false,
                     ],
                 ];
