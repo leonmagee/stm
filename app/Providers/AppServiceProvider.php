@@ -331,6 +331,13 @@ class AppServiceProvider extends ServiceProvider
                         'default' => false,
                     ],
                     [
+                        'name' => 'Send Email',
+                        'link' => '/send-email',
+                        'sub' => false,
+                        'icon' => 'flaticon-mail',
+                        'default' => false,
+                    ],
+                    [
                         'name' => 'Upload Sims',
                         'link' => '/sims/upload-all',
                         'sub' => false,

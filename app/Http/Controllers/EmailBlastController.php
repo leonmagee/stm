@@ -28,12 +28,21 @@ class EmailBlastController extends Controller
     }
 
     /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index_send_email()
+    {
+        $users = User::orderBy('company')->get();
+        return view('email_blast.send-email', compact('users'));
+    }
+
+    /**
      * Email users
      */
     public function email(Request $request)
     {
-
-        //dd($request);
 
         if (!$request->just_one_user && !$request->email_site) {
             return back()->withErrors('Please choose All Users, One Site or One User.');
@@ -114,6 +123,37 @@ class EmailBlastController extends Controller
         }
 
         return redirect('email-blast');
+    }
+
+    /**
+     * Email users
+     */
+    public function send_email(Request $request)
+    {
+        $this->validate($request, [
+            'just_one_user' => 'required',
+            'subject' => 'required',
+            'message' => 'required',
+        ]);
+
+        $file = $request->file('upload-file-email');
+        $file2 = $request->file('upload-file-email-2');
+        $file3 = $request->file('upload-file-email-3');
+
+        $user = User::where('id', $request->just_one_user)->first();
+
+        \Mail::to($user)->send(new EmailBlast(
+            $user,
+            $request->message,
+            $request->subject,
+            $file,
+            $file2,
+            $file3
+        ));
+
+        session()->flash('message', 'Email has been sent to ' . $user->company . ' - ' . $user->name);
+
+        return redirect('send-email');
     }
 
 }
