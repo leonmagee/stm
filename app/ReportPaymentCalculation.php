@@ -22,7 +22,12 @@ class ReportPaymentCalculation
         $matching_sims_new = []
     ) {
         $values_array = [];
-        $defaults = $defaults_array[$report_type_id];
+        if (isset($defaults_array[$report_type_id])) {
+            $defaults = $defaults_array[$report_type_id];
+        } else {
+            $defaults = ['report_type_site_values' => [], 'spiff_value' => null];
+        }
+        //old: $defaults = $defaults_array[$report_type_id];
         if ($defaults) {
             if ($is_spiff) {
                 foreach ($defaults['report_type_site_values'] as $item) {
