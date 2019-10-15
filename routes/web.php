@@ -227,6 +227,9 @@ Route::group(['middleware' => 'App\Http\Middleware\LockOutUsers'], function () {
     Route::post('send-email', 'EmailBlastController@send_email');
 });
 
+Route::get('contact', 'EmailBlastController@contact');
+Route::post('contact', 'EmailBlastController@contact_submit');
+
 /**
  * Closed Route
  */

@@ -125,6 +125,15 @@
               Disable Email Blast
             </label>
           </div>
+          <div class="field notes-checkbox-field">
+            <label class="checkbox">
+              <input type="checkbox" name="contact_email_disable" @if($user->contact_email_disable)
+              checked="checked"
+              @endif
+              />
+              Disable Contact Email
+            </label>
+          </div>
           @endif
         </div>
 

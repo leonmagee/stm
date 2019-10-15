@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\ContactEmail;
 use App\Mail\EmailBlast;
 use App\Site;
 use App\User;
@@ -25,6 +26,16 @@ class EmailBlastController extends Controller
         $users = User::orderBy('company')->get();
         $sites_exclude = Site::whereNotIn('id', [4])->get();
         return view('email_blast.index', compact('sites', 'sites_exclude', 'users'));
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function contact()
+    {
+        return view('email_blast.contact');
     }
 
     /**
@@ -126,7 +137,7 @@ class EmailBlastController extends Controller
     }
 
     /**
-     * Email users
+     * Email single user
      */
     public function send_email(Request $request)
     {
@@ -154,6 +165,43 @@ class EmailBlastController extends Controller
         session()->flash('message', 'Email has been sent to ' . $user->company . ' - ' . $user->name);
 
         return redirect('send-email');
+    }
+
+    /**
+     * Contact form submit
+     */
+    public function contact_submit(Request $request)
+    {
+        $this->validate($request, [
+            'message' => 'required',
+        ]);
+
+        $user = \Auth::user();
+
+        // 1. get all admin users
+        $admin_users = User::getAdminManageerEmployeeUsers();
+
+        // 2. loop through all admin users to send email
+        foreach ($admin_users as $admin) {
+            if (!$admin->contact_email_disable) {
+                \Mail::to($admin)->send(new ContactEmail(
+                    $user,
+                    $admin,
+                    $request->message,
+                ));
+            }
+        }
+
+        // 3. confirmation email
+        \Mail::to($user)->send(new EmailBlast(
+            $user,
+            'Thank you for contacting Sim Track Manager. We will get in touch as soon as possible.',
+            'STM Contact',
+        ));
+
+        session()->flash('message', 'Thank you ' . $user->name . '! We will get in touch as soon as possible.');
+
+        return redirect('contact');
     }
 
 }

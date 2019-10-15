@@ -27,6 +27,7 @@ class User extends Authenticatable
         'role_id',
         'notes_email_disable',
         'email_blast_disable',
+        'contact_email_disable',
     ];
 
     /**

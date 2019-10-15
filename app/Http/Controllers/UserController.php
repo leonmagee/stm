@@ -392,6 +392,12 @@ class UserController extends Controller
             $blast_disable = 0;
         }
 
+        if ($request->contact_email_disable) {
+            $contact_disable = 1;
+        } else {
+            $contact_disable = 0;
+        }
+
         //dd($request);
 
         //validate the form
@@ -424,6 +430,7 @@ class UserController extends Controller
                 'role_id' => $request->role_id,
                 'notes_email_disable' => $disable,
                 'email_blast_disable' => $blast_disable,
+                'contact_email_disable' => $contact_disable,
 
             ]);
         } else {
@@ -451,6 +458,7 @@ class UserController extends Controller
                 'zip' => $request->zip,
                 'notes_email_disable' => $disable,
                 'email_blast_disable' => $blast_disable,
+                'contact_email_disable' => $contact_disable,
                 //'notes' => $request->notes,
             ]);
         }
@@ -474,6 +482,12 @@ class UserController extends Controller
                 $blast_disable = 1;
             } else {
                 $blast_disable = 0;
+            }
+
+            if ($request->contact_email_disable) {
+                $contact_disable = 1;
+            } else {
+                $contact_disable = 0;
             }
 
             $id = $user->id;
@@ -501,6 +515,7 @@ class UserController extends Controller
                 'zip' => $request->zip,
                 'notes_email_disable' => $disable,
                 'email_blast_disable' => $blast_disable,
+                'contact_email_disable' => $contact_disable,
             ]);
 
             session()->flash('message', 'Your profile has been updated.');
