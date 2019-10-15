@@ -187,7 +187,7 @@ class EmailBlastController extends Controller
                 \Mail::to($admin)->send(new ContactEmail(
                     $user,
                     $admin,
-                    $request->message,
+                    $request->message
                 ));
             }
         }
@@ -196,7 +196,7 @@ class EmailBlastController extends Controller
         \Mail::to($user)->send(new EmailBlast(
             $user,
             'Thank you for contacting Sim Track Manager. We will get in touch as soon as possible.',
-            'STM Contact',
+            'STM Contact'
         ));
 
         session()->flash('message', 'Thank you ' . $user->name . '! We will get in touch as soon as possible.');
