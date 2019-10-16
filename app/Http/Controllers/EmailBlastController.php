@@ -195,7 +195,7 @@ class EmailBlastController extends Controller
         // 3. confirmation email
         \Mail::to($user)->send(new EmailBlast(
             $user,
-            'Thank you for contacting Sim Track Manager. We will get in touch as soon as possible.',
+            'Thank you for contacting us. One of our professional staff will get in touch with you as soon as possible.',
             'STM Contact'
         ));
 
