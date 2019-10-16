@@ -7,8 +7,10 @@ All Agents / Dealers
 @section('content')
 @if(\Auth()->user()->isAdmin())
 <div id="allUsers" users='{{ $users }}' sites='{{ $sites }}' current='{{ $current }}'></div>
-@else
+@elseif(\Auth()->user()->isManager() || \Auth()->user()->isEmployee())
 <div id="allUsersNotAdmin" users='{{ $users }}' sites='{{ $sites }}' current='{{ $current }}'></div>
+@else
+<div id="allUsersAgents" users='{{ $users }}'></div>
 @endif
 <script src="js/app.js"></script>
 @endsection

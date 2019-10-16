@@ -49,7 +49,8 @@ class UserController extends Controller
         $site = Site::find($id);
         $site_name = $site->name;
         $users = User::where('role_id', $site->role_id)->orderBy('company')->get();
-        return view('users.your_dealers', compact('users', 'site_name'));
+        //return view('users.your_dealers', compact('users', 'site_name'));
+        return view('users.all-users', compact('users', 'site_name'));
     }
 
     /**

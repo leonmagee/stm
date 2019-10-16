@@ -19,7 +19,7 @@ class EmailBlast extends Mailable
      *
      * @return void
      */
-    public function __construct(User $user, $message = null, $subject = 'Sim Track Manager', $file = null, $file2 = null, $file3 = null)
+    public function __construct(User $user, $message = null, $subject = 'Sim Track Manager', $file = null, $file2 = null, $file3 = null, $width = null)
     {
         $this->user = $user;
         $this->message = $message;

@@ -16,6 +16,8 @@ require('./components/AllUsers');
 
 require('./components/AllUsersNotAdmin');
 
+require('./components/AllUsersAgents');
+
 /**
  * Fade out notification on click
  */
