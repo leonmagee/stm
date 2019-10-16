@@ -1,7 +1,11 @@
 @extends('layouts.layout')
 
 @section('title')
+@if(\Auth()->user()->isAdmin() || \Auth()->user()->isManager() || \Auth()->user()->isEmployee())
 All Agents / Dealers
+@else
+Your Dealers
+@endif
 @endsection
 
 @section('content')
