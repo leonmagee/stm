@@ -106,6 +106,24 @@
             </div>
           </div>
 
+          @if($is_admin)
+          <div class="field">
+            <label class="label" for="role">Master Agent Site</label>
+            <div class="select">
+              <select name="master_agent_site" id="master_agent_site">
+                <option value="0">N/A</option>
+                @foreach ($master_agent_sites as $site)
+                <option @if ($user->master_agent_site == $site->id )
+                  selected="selected"
+                  @endif
+                  value="{{ $site->id }}">{{ $site->name }}
+                </option>
+                @endforeach
+              </select>
+            </div>
+          </div>
+          @endif
+
           @if($user->isAdminManagerEmployee())
           <div class="field notes-checkbox-field">
             <label class="checkbox">

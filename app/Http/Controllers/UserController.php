@@ -324,7 +324,8 @@ class UserController extends Controller
     {
         $is_admin = Helpers::current_user_admin();
         $sites = Site::all();
-        return view('users.edit', compact('user', 'sites', 'is_admin'));
+        $master_agent_sites = Site::whereNotIn('id', [4])->get();
+        return view('users.edit', compact('user', 'sites', 'is_admin', 'master_agent_sites'));
     }
 
     public function edit_profile()
@@ -398,10 +399,17 @@ class UserController extends Controller
             $contact_disable = 0;
         }
 
+        if ($request->master_agent_site) {
+            $master_agent_site = $request->master_agent_site;
+        } else {
+            $master_agent_site = null;
+        }
+
         //dd($request);
 
         //validate the form
         if (Helpers::current_user_admin()) {
+
             $this->validate(request(), [
                 'name' => 'required',
                 'email' => 'required|unique:users,email,' . $id,
@@ -431,7 +439,7 @@ class UserController extends Controller
                 'notes_email_disable' => $disable,
                 'email_blast_disable' => $blast_disable,
                 'contact_email_disable' => $contact_disable,
-
+                'master_agent_site' => $master_agent_site,
             ]);
         } else {
             $this->validate(request(), [
