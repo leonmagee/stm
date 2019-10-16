@@ -79,11 +79,14 @@
             </div>
             <label class="label">Email Subject</label>
             <div class="control email-blast-wrap-bottom">
-              <input class="input" name="subject" placeholder="Enter Subject" />
+              <input class="input" name="subject" value="Welcome to H2O Wireless / Lyca Mobile" />
+              {{-- <input class="input" name="subject" placeholder="Enter Subject" value="" /> --}}
             </div>
             <label class="label">Email Message</label>
             <div class="control">
-              <textarea class="textarea" name="message" placeholder="Enter Message"></textarea>
+              <textarea class="textarea"
+                name="message">Thank you for choosing GS Wireless as your premier master agent for H2O Wireless / Lyca Mobile. At GS Wireless we
+include free support & extraordinary customer service that many competitors consider an “add-on” for additional cost. You might find “the hottest deal” elsewhere, but unreliable sources will always come back to bite you. You’re not just activating H2O Wireless & Lyca Mobile. We’re creating a partnership. We want your business to succeed because when you’re successful, we’re successful. We have attached some important information about your new account, if you have any question or concern, please feel free to contact us. You may also place your H2O / Lyca sim order for FREE through STM.</textarea>
             </div>
           </div>
         </div>
