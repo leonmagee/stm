@@ -145,6 +145,8 @@ class EmailBlastController extends Controller
             'just_one_user' => 'required',
             'subject' => 'required',
             'message' => 'required',
+        ], [
+            'just_one_user.required' => 'The user field is required.',
         ]);
 
         $file = $request->file('upload-file-email');

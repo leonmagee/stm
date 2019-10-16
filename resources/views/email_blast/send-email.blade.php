@@ -22,6 +22,7 @@
             <div class="control email-blast-wrap-bottom">
               <div class="select">
                 <select name="just_one_user">
+                  <option></option>
                   @foreach($users as $user)
                   <option value="{{ $user->id }}">{{ $user->company }} - {{ $user->name }}</option>
                   @endforeach

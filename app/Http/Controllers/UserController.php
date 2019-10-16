@@ -324,7 +324,7 @@ class UserController extends Controller
     {
         $is_admin = Helpers::current_user_admin();
         $sites = Site::all();
-        $master_agent_sites = Site::whereNotIn('id', [4])->get();
+        $master_agent_sites = Site::whereNotIn('id', [1, 2, 3, 4])->get();
         return view('users.edit', compact('user', 'sites', 'is_admin', 'master_agent_sites'));
     }
 
