@@ -10,6 +10,7 @@
 
     <h3>Contact Us</h3>
 
+
     <form method="POST" action="/contact">
 
       <div class="form-wrap">
@@ -18,6 +19,9 @@
 
         <div class="form-wrap-flex">
           <div class="field full padding-bottom">
+            <h4>Please submit this form or call use at <strong>619-795-9200</strong> or <strong>916-458-9171</strong>
+            </h4>
+            <br />
 
             <label class="label">Your Message</label>
             <div class="control">
