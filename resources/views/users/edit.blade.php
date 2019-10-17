@@ -106,7 +106,7 @@
             </div>
           </div>
 
-          @if($is_admin)
+          @if($is_admin && !$user->isAdminManagerEmployee())
           <div class="field">
             <label class="label" for="role">Master Agent Site</label>
             <div class="select">
