@@ -174,6 +174,7 @@ class ReportsController extends Controller
         $current_date = Helpers::current_date();
         $report_type_totals_array = [];
         $total_count_final = 0;
+        $total_count_final_res = 0;
 
         foreach ($report_types as $report_type) {
 
@@ -192,6 +193,22 @@ class ReportsController extends Controller
 
                 $report_type_totals_array[$name] = $matching_sims_count;
                 $total_count_final += $matching_sims_count;
+
+            } else {
+
+                $matching_sims_count = DB::table('sim_residuals')
+                    ->select('sim_residuals.value', 'sim_residuals.report_type_id')
+                    ->join('sim_users', 'sim_users.sim_number', '=', 'sim_residuals.sim_number')
+                    ->join('users', 'users.id', '=', 'sim_users.user_id')
+                    ->where('sim_residuals.report_type_id', $report_type->id)
+                    ->where('sim_residuals.upload_date', $current_date)
+                    ->where('users.role_id', $role_id)
+                    ->count();
+
+                $name = $report_type->carrier->name . ' ' . $report_type->name;
+
+                $report_type_totals_array[$name] = $matching_sims_count;
+                $total_count_final_res += $matching_sims_count;
             }
         }
 
@@ -199,7 +216,8 @@ class ReportsController extends Controller
             'site_name',
             'current_site_date',
             'report_type_totals_array',
-            'total_count_final'
+            'total_count_final',
+            'total_count_final_res'
         ));
     }
 
@@ -220,6 +238,7 @@ class ReportsController extends Controller
         $current_date = Helpers::current_date();
         $report_type_totals_array = [];
         $total_count_final = 0;
+        $total_count_final_res = 0;
 
         foreach ($report_types as $report_type) {
 
@@ -238,6 +257,21 @@ class ReportsController extends Controller
 
                 $report_type_totals_array[$name] = $matching_sims_count;
                 $total_count_final += $matching_sims_count;
+            } else {
+
+                $matching_sims_count = DB::table('sim_residuals')
+                    ->select('sim_residuals.value', 'sim_residuals.report_type_id')
+                    ->join('sim_users', 'sim_users.sim_number', '=', 'sim_residuals.sim_number')
+                    ->join('users', 'users.id', '=', 'sim_users.user_id')
+                    ->where('sim_residuals.report_type_id', $report_type->id)
+                    ->where('sim_residuals.upload_date', $current_date)
+                    ->where('users.role_id', $role_id)
+                    ->count();
+
+                $name = $report_type->carrier->name . ' ' . $report_type->name;
+
+                $report_type_totals_array[$name] = $matching_sims_count;
+                $total_count_final_res += $matching_sims_count;
             }
         }
 
@@ -245,7 +279,8 @@ class ReportsController extends Controller
             'site_name',
             'current_site_date',
             'report_type_totals_array',
-            'total_count_final'
+            'total_count_final',
+            'total_count_final_res'
         ));
     }
 
