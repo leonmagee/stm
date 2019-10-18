@@ -1,4 +1,13 @@
 // react component
+.dealersCount {
+    font-weight: bold;
+    color: #555;
+    font-size: 1em;
+    padding-left: 5px;
+    span {
+        color: $brand-primary;
+    }
+}
 .allUsersList {
     .hide-mobile {
         display: none;

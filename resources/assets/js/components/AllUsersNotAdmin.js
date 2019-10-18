@@ -13,18 +13,23 @@ export default class AllUsersNotAdmin extends Component {
             selectedRoleId: false,
             userMatrix: false,
             selectedUsers: [],
+            usersCount: [],
         };
     }
 
     componentDidMount() {
-        const { users } = this.state;
-        const userMatrix = {};
-        users.map(user => {
-            userMatrix[user.id] = user.role_id;
-        });
-        this.setState({
-            userMatrix,
-        });
+      const { users, usersCount } = this.state;
+      const userMatrix = {};
+      users.map(user => {
+        userMatrix[user.id] = user.role_id;
+        let currentCount = usersCount[user.role_id] ? usersCount[user.role_id] : 0;
+        //console.log(user.name, user.role_id);
+        usersCount[user.role_id] = parseInt(currentCount) + 1;
+      });
+      this.setState({
+        usersCount,
+        userMatrix,
+      });
     }
 
     setUserType(roleId) {
@@ -97,6 +102,7 @@ export default class AllUsersNotAdmin extends Component {
             selectedUsers,
             selectedRoleId,
             userMatrix,
+            usersCount,
         } = this.state;
 
         /**
@@ -159,7 +165,7 @@ export default class AllUsersNotAdmin extends Component {
                         onClick={() => this.setUserType(item.role_id)}
                         key={key}
                     >
-                        {item.name}
+                    {item.name}<span className="user-separator">-</span><span className="user-number">{usersCount[item.role_id] || 0}</span>
                     </button>
                 );
             }
@@ -169,7 +175,7 @@ export default class AllUsersNotAdmin extends Component {
                     type="button"
                     key={key}
                 >
-                    {item.name}
+                  {item.name}<span className="user-separator">-</span><span className="user-number">{usersCount[item.role_id] || 0}</span>
                 </button>
             );
         });

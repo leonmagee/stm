@@ -8,16 +8,21 @@ export default class AllUsersAgents extends Component {
         const { users } = this.props;
         this.state = {
             users: JSON.parse(users),
+            count: 0,
         };
     }
 
     componentDidMount() {
         const { users } = this.state;
+        this.setState({
+          count: users.length,
+        })
     }
 
     render() {
         const {
             users,
+            count
         } = this.state;
 
         const allUsers = users.map((item, key) => {
@@ -40,6 +45,7 @@ export default class AllUsersAgents extends Component {
 
         return (
             <div>
+            <h2 className="dealersCount">Total Number of Dealers: <span>{count}</span></h2>
                 <div className="allUsersList">{allUsers}</div>
             </div>
         );
