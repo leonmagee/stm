@@ -61,16 +61,16 @@ class AppServiceProvider extends ServiceProvider
                 ];
             }
 
-            $users_sub = [
-                [
-                    'name' => 'Site Users',
-                    'link' => '/users',
-                ],
-                [
-                    'name' => 'Add New User',
-                    'link' => '/register',
-                ],
-            ];
+            // $users_sub = [
+            //     [
+            //         'name' => 'Site Users',
+            //         'link' => '/users',
+            //     ],
+            //     [
+            //         'name' => 'Add New User',
+            //         'link' => '/register',
+            //     ],
+            // ];
 
             $user_sims_sub = [
                 [
@@ -121,16 +121,16 @@ class AppServiceProvider extends ServiceProvider
                 ],
             ];
 
-            $users_sub = [
-                [
-                    'name' => 'All Agents / Dealers',
-                    'link' => '/all-users',
-                ],
-                [
-                    'name' => 'Site Agents / Dealers',
-                    'link' => '/users',
-                ],
-            ];
+            // $users_sub = [
+            //     [
+            //         'name' => 'All Agents / Dealers',
+            //         'link' => '/all-users',
+            //     ],
+            //     [
+            //         'name' => 'Site Agents / Dealers',
+            //         'link' => '/users',
+            //     ],
+            // ];
 
             $settings = Settings::first();
 
@@ -271,10 +271,10 @@ class AppServiceProvider extends ServiceProvider
                     ],
                     [
                         'name' => 'Agents / Dealers',
-                        'link' => false,
-                        'sub' => $users_sub,
+                        'link' => '/all-users',
+                        'sub' => false,
                         'icon' => 'flaticon-group',
-                        'default' => '/all-users',
+                        'default' => false,
                     ],
                     [
                         'name' => 'Admin Users',
@@ -402,10 +402,10 @@ class AppServiceProvider extends ServiceProvider
                     ],
                     [
                         'name' => 'Agents / Dealers',
-                        'link' => false,
-                        'sub' => $users_sub,
+                        'link' => '/all-users',
+                        'sub' => false,
                         'icon' => 'flaticon-group',
-                        'default' => '/all-users',
+                        'default' => false,
                     ],
                     [
                         'name' => '2nd Recharge',
@@ -505,10 +505,10 @@ class AppServiceProvider extends ServiceProvider
                     ],
                     [
                         'name' => 'Agents / Dealers',
-                        'link' => false,
-                        'sub' => $users_sub,
+                        'link' => '/all-users',
+                        'sub' => false,
                         'icon' => 'flaticon-group',
-                        'default' => '/all-users',
+                        'default' => false,
                     ],
                     [
                         'name' => '2nd Recharge',
