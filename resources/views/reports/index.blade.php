@@ -2,6 +2,10 @@
 
 @section('title')
 Reports for {{ $current_site_date }} / Total Payment: <span>${{ number_format($total_payment_all_users, 2) }}</span>
+@foreach($total_payments_residual as $item)
+<div class="title-line-break"></div>
+{{ $item['name'] }} total: <span>{{ $item['total'] }}</span>
+@endforeach
 @endsection
 
 @section('content')
