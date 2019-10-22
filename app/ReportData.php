@@ -82,11 +82,15 @@ class ReportData
         $this->total_payment_all_users = $total_payment_all_users;
         $total_payments_residual = [];
         $report_types_collection = ReportType::where('spiff', 0)->get();
-        foreach ($report_types_collection as $report_type) {
-            $total_payments_residual[] = [
-                'name' => $report_type->carrier->name . ' ' . $report_type->name,
-                'total' => '$' . number_format($total_payments_residual_data[$report_type->id], 2),
-            ];
+        if (count($total_payments_residual_data)) {
+            foreach ($report_types_collection as $report_type) {
+                $total_payments_residual[] = [
+                    'name' => $report_type->carrier->name . ' ' . $report_type->name,
+                    'total' => '$' . number_format($total_payments_residual_data[$report_type->id], 2),
+                ];
+            }
+        } else {
+            $total_payments_residual = [];
         }
         $this->total_payments_residual = $total_payments_residual;
 

@@ -81,11 +81,16 @@ class ReportsController extends Controller
          */
         $report_data_object = new ReportData($site_id, $current_date, null, $defaults_array, $user_residual_override, $user_spiff_override, $site);
         $total_payment_all_users = $report_data_object->total_payment_all_users;
-        $total_payments_residual = $report_data_object->total_payments_residual;
+        /**
+         * Residual total listing - only for agents
+         */
+        if ($site_id == 1) {
+            $total_payments_residual = $report_data_object->total_payments_residual;
+        } else {
+            $total_payments_residual = [];
+        }
         $report_data_array = $report_data_object->report_data;
         $is_admin = Helpers::current_user_admin();
-
-        //$total_payments_residual = ReportType::where('spiff', 0)->get();
 
         return view('reports.index', compact(
             'site_name',
@@ -152,7 +157,8 @@ class ReportsController extends Controller
 
         $report_data_object = new ReportData($site_id, $current_date, null, $defaults_array, $user_residual_override, $user_spiff_override, $site, $current_user->master_agent_site);
         $total_payment_all_users = $report_data_object->total_payment_all_users;
-        $total_payments_residual = $report_data_object->total_payments_residual;
+        //$total_payments_residual = $report_data_object->total_payments_residual;
+        $total_payments_residual = [];
         $report_data_array = $report_data_object->report_data;
         $is_admin = Helpers::current_user_admin();
         return view('reports.index', compact(
