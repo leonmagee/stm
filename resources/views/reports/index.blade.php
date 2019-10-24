@@ -1,11 +1,16 @@
 @extends('layouts.layout')
 
 @section('title')
-Reports for {{ $current_site_date }} / Total Payment: <span>${{ number_format($total_payment_all_users, 2) }}</span>
+@if(count($report_data_array) > 1)
+Reports for {{ $current_site_date }}
+/ Total Payment: <span>${{ number_format($total_payment_all_users, 2) }}</span>
 @foreach($total_payments_residual as $item)
 <div class="title-line-break"></div>
 {{ $item['name'] }} total: <span>{{ $item['total'] }}</span>
 @endforeach
+@else
+Report for {{ $current_site_date }}
+@endif
 @endsection
 
 @section('content')

@@ -84,12 +84,13 @@ class ReportsController extends Controller
         /**
          * Residual total listing - only for master agents
          */
-        // if ($site_id == 1) {
-        //     $total_payments_residual = $report_data_object->total_payments_residual;
-        // } else {
-        //     $total_payments_residual = [];
-        // }
-        $total_payments_residual = [];
+        $not_in_array = [1, 2, 3, 4];
+        if (!in_array($site_id, $not_in_array)) {
+            $total_payments_residual = $report_data_object->total_payments_residual;
+        } else {
+            $total_payments_residual = [];
+        }
+        //$total_payments_residual = [];
         $report_data_array = $report_data_object->report_data;
         $is_admin = Helpers::current_user_admin();
 
