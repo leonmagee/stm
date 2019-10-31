@@ -4,61 +4,66 @@
 
 <div class="form-wrapper">
 
-	<div class="form-wrapper-inner third">
+  <div class="homepage-third">
 
-		<h3>Log In</h3>
+    <div class="form-wrapper-inner homepage-form-wrap-inner">
 
-		<form method="POST" action="/login">
+      <h3>Log In</h3>
 
-			<div class="form-wrap">
+      <form method="POST" action="/login">
 
-				{{ csrf_field() }}
+        <div class="form-wrap">
 
-				<div class="field">
-					<label class="label" for="email">Email</label>
-					<div class="control">
-						<input class="input" type="email" id="email" name="email" />
-					</div>
-				</div>
+          {{ csrf_field() }}
 
-				<div class="field">
-					<label class="label" for="password">Password</label>
-					<div class="control">
-						<input class="input" type="password" id="password" name="password" />
-					</div>
-				</div>
+          <div class="field">
+            <label class="label" for="email">Email</label>
+            <div class="control">
+              <input class="input" type="email" id="email" name="email" />
+            </div>
+          </div>
 
-				<div class="field">
-					<div class="control">
-						<button class="button is-primary" type="submit">Log In</button>
-					</div>
-				</div>
+          <div class="field">
+            <label class="label" for="password">Password</label>
+            <div class="control">
+              <input class="input" type="password" id="password" name="password" />
+            </div>
+          </div>
 
-				<a href="/password/reset">Reset Password</a>
+          <div class="field">
+            <div class="control">
+              <button class="button is-primary" type="submit">Log In</button>
+            </div>
+          </div>
 
-				<div class="field">
+          <a href="/password/reset">Reset Password</a>
 
-					@include('layouts.errors')
+          <div class="field">
 
-				</div>
+            @include('layouts.errors')
 
-			</div>
+          </div>
 
-		</form>
+        </div>
 
-	</div>
+      </form>
 
-	<div class="form-wrapper-inner image-1 banner-image-wrap">
+    </div>
+    <a class="homepage-link" href="https://www.h2odirectnow.com" target="_blank">Login to H2O Direct</a>
+    <a class="homepage-link" href="http://www.gswmax.com" target="_blank">Login to Lyca Direct</a>
+  </div>
+
+  <div class="form-wrapper-inner image-1 banner-image-wrap">
     <a href="https://mygsaccessories.com" target="_blank">
-		  <img src="{{ $banner_2 }}" />
+      <img src="{{ $banner_2 }}" />
     </a>
-	</div>
+  </div>
 
-	<div class="form-wrapper-inner image-2 banner-image-wrap">
+  <div class="form-wrapper-inner image-2 banner-image-wrap">
     <a href="https://mygswireless.com" target="_blank">
-		  <img src="{{ $banner_1 }}" />
+      <img src="{{ $banner_1 }}" />
     </a>
-	</div>
+  </div>
 
 </div>
 
