@@ -51,6 +51,7 @@
     </div>
     <a class="homepage-link" href="https://www.h2odirectnow.com" target="_blank">Login to H2O Direct</a>
     <a class="homepage-link" href="http://www.gswmax.com" target="_blank">Login to Lyca Direct</a>
+    <a class="homepage-link" href="http://www.gsposa.com" target="_blank">Login to GS POSA</a>
   </div>
 
   <div class="form-wrapper-inner image-1 banner-image-wrap">
