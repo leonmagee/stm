@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\ReportType;
-use App\Site;
 use App\Carrier;
+use App\ReportType;
 use App\ReportTypeSiteDefault;
 use App\ReportTypeSiteValue;
+use App\Site;
 //use App\Helpers;
 use Illuminate\Http\Request;
 
@@ -14,8 +14,8 @@ class ReportTypeController extends Controller
 {
 
     /**
-    * Only Logged In Users can see this
-    **/
+     * Only Logged In Users can see this
+     **/
     public function __construct()
     {
         $this->middleware('auth');
@@ -40,7 +40,8 @@ class ReportTypeController extends Controller
      */
     public function create()
     {
-        $sites = Site::all();
+        //$sites = Site::all();
+        $sites = Site::whereNotIn('id', [4])->get();
 
         $carriers = Carrier::all();
 
@@ -49,7 +50,8 @@ class ReportTypeController extends Controller
 
     public function create_residual()
     {
-        $sites = Site::all();
+        //$sites = Site::all();
+        $sites = Site::whereNotIn('id', [4])->get();
 
         $carriers = Carrier::all();
 
@@ -75,9 +77,10 @@ class ReportTypeController extends Controller
             'carrier_id' => $request->carrier,
         ]);
 
-        $sites = Site::all();
+        //$sites = Site::all();
+        $sites = Site::whereNotIn('id', [4])->get();
 
-        foreach( $sites as $site ) {
+        foreach ($sites as $site) {
             $spiff_key = 'spiff_' . $site->id;
             ReportTypeSiteDefault::create([
                 'site_id' => $site->id,
@@ -102,14 +105,15 @@ class ReportTypeController extends Controller
             'carrier_id' => $request->carrier,
         ]);
 
-        $sites = Site::all();
+        //$sites = Site::all();
+        $sites = Site::whereNotIn('id', [4])->get();
 
-        foreach( $sites as $site ) {
+        foreach ($sites as $site) {
             $residual_key = 'residual_' . $site->id;
             ReportTypeSiteDefault::create([
                 'site_id' => $site->id,
                 'report_type_id' => $report_type->id,
-                'residual_percent' => $request->{$residual_key}
+                'residual_percent' => $request->{$residual_key},
             ]);
         }
 
@@ -127,15 +131,16 @@ class ReportTypeController extends Controller
     {
 
         $user = \Auth::user();
-        if ( ! $user->isAdmin() ) {
+        if (!$user->isAdmin()) {
             return redirect('/');
         }
 
         //return Helpers::admin_lock();
 
-        $sites = Site::all();
+        //$sites = Site::all();
+        $sites = Site::whereNotIn('id', [4])->get();
 
-        if ( $reportType->spiff ) {
+        if ($reportType->spiff) {
 
             return $this->show_spiff($reportType, $sites);
 
@@ -144,39 +149,46 @@ class ReportTypeController extends Controller
             return $this->show_residual($reportType, $sites);
         }
 
-
     }
 
-    public function show_spiff($reportType, $sites) {
+    public function show_spiff($reportType, $sites)
+    {
 
         $site_values_array = array();
 
         /**
-        * @todo conver part of this to be another class...
-        */
+         * @todo conver part of this to be another class...
+         */
 
         $site_values_array = [];
 
-        foreach( $sites as $site ) {
+        foreach ($sites as $site) {
 
             $value = ReportTypeSiteDefault::where(
                 [
                     'site_id' => $site->id,
-                    'report_type_id' => $reportType->id
+                    'report_type_id' => $reportType->id,
                 ]
             )->first();
 
-            //dd($value->spiff_value);
+            if (!$value) {
+                $value = new ReportTypeSiteDefault();
+                $value->site_id = $site->id;
+                $value->report_type_id = $reportType->id;
+                $value->spiff_value = 0;
+                $value->residual_percent = null;
+                $value->save();
+            }
 
             /**
-            * @todo In the case of no value, this should list the site default instead?
-            * @todo here we should get the current site defalt and display it with like ($0 (default))
-            */
+             * @todo In the case of no value, this should list the site default instead?
+             * @todo here we should get the current site defalt and display it with like ($0 (default))
+             */
 
             $default_spiff_string = '$' . $site->default_spiff_amount . ' <span>(Site Default)</span>';
 
-            if ( $value ) {
-                if ( $value->spiff_value !== null ) {
+            if ($value) {
+                if ($value->spiff_value !== null) {
                     $spiff_value = '$' . $value->spiff_value;
                 } else {
                     $spiff_value = $default_spiff_string;
@@ -190,7 +202,7 @@ class ReportTypeController extends Controller
                     'id' => $value->id,
                     'value' => $spiff_value,
                     'name' => $site->name,
-                    'plans' => $plan_payments
+                    'plans' => $plan_payments,
                 ];
 
             } else {
@@ -202,23 +214,33 @@ class ReportTypeController extends Controller
         return view('report_types.show', compact('reportType', 'site_values_array'));
     }
 
-    public function show_residual(ReportType $reportType, $sites) {
+    public function show_residual(ReportType $reportType, $sites)
+    {
 
         $site_values_array = [];
 
-        foreach( $sites as $site ) {
+        foreach ($sites as $site) {
 
             $value = ReportTypeSiteDefault::where(
                 [
                     'site_id' => $site->id,
-                    'report_type_id' => $reportType->id
+                    'report_type_id' => $reportType->id,
                 ]
             )->first();
 
+            if (!$value) {
+                $value = new ReportTypeSiteDefault();
+                $value->site_id = $site->id;
+                $value->report_type_id = $reportType->id;
+                $value->spiff_value = null;
+                $value->residual_percent = 0;
+                $value->save();
+            }
+
             $default_residual_string = $site->default_residual_percent . '% <span>(Site Default)</span>';
 
-            if ( $value ) {
-                if ( $value->residual_percent ) {
+            if ($value) {
+                if ($value->residual_percent) {
                     $residual_percent = $value->residual_percent . '%';
                 } else {
                     $residual_percent = $default_residual_string;
@@ -228,22 +250,20 @@ class ReportTypeController extends Controller
                     'id' => $value->id,
                     'value' => $residual_percent,
                     'name' => $site->name,
-                    'plans' => []
+                    'plans' => [],
                 ];
 
             } else {
                 $residual_percent = $default_residual_string;
             }
 
-
         }
 
         return view('report_types.show', compact('reportType', 'site_values_array'));
     }
 
-
-    public function add_plan_value(Request $request, ReportType $reportType) {
-
+    public function add_plan_value(Request $request, ReportType $reportType)
+    {
 
         $this->validate(request(), [
             'plan_value' => 'required',
@@ -254,19 +274,19 @@ class ReportTypeController extends Controller
             'plan_value' => $request->plan_value,
             'report_type_site_defaults_id' => $request->plan_value_id])->get();
 
-        if ( ! count($current) ) {
+        if (!count($current)) {
             ReportTypeSiteValue::create([
                 'plan_value' => $request->plan_value,
                 'payment_amount' => $request->payment_amount,
-                'report_type_site_defaults_id' => $request->plan_value_id
+                'report_type_site_defaults_id' => $request->plan_value_id,
             ]);
         }
         return redirect('report-types/' . $reportType->id);
 
-
     }
 
-    public function remove_plan_value(Request $request, ReportType $reportType) {
+    public function remove_plan_value(Request $request, ReportType $reportType)
+    {
 
         $toDelete = ReportTypeSiteValue::find($request->report_plan_id);
 
@@ -284,14 +304,16 @@ class ReportTypeController extends Controller
     public function edit(ReportType $reportType)
     {
         $carriers = Carrier::all();
-        $sites = Site::all();
+        //$sites = Site::all();
+        $sites = Site::whereNotIn('id', [4])->get();
         return view('report_types.edit', compact('reportType', 'carriers', 'sites'));
     }
 
     public function edit_residual(ReportType $reportType)
     {
         $carriers = Carrier::all();
-        $sites = Site::all();
+        //$sites = Site::all();
+        $sites = Site::whereNotIn('id', [4])->get();
         return view('report_types.edit_residual', compact('reportType', 'carriers', 'sites'));
     }
 
@@ -314,18 +336,19 @@ class ReportTypeController extends Controller
             'carrier_id' => $request->carrier,
         ]);
 
-        $sites = Site::all();
+//        $sites = Site::all();
+        $sites = Site::whereNotIn('id', [4])->get();
 
-        foreach( $sites as $site ) {
+        foreach ($sites as $site) {
 
             $spiff_key = 'spiff_' . $site->id;
 
             $row = ReportTypeSiteDefault::where([
                 'site_id' => $site->id,
-                'report_type_id' => $reportType->id
+                'report_type_id' => $reportType->id,
             ])->first();
 
-            if ( $row ) {
+            if ($row) {
 
                 $row->spiff_value = $request->{$spiff_key};
 
@@ -359,18 +382,19 @@ class ReportTypeController extends Controller
             'carrier_id' => $request->carrier,
         ]);
 
-        $sites = Site::all();
+        //$sites = Site::all();
+        $sites = Site::whereNotIn('id', [4])->get();
 
-        foreach( $sites as $site ) {
+        foreach ($sites as $site) {
 
             $residual_key = 'residual_' . $site->id;
 
             $row = ReportTypeSiteDefault::where([
                 'site_id' => $site->id,
-                'report_type_id' => $reportType->id
+                'report_type_id' => $reportType->id,
             ])->first();
 
-            if ( $row ) {
+            if ($row) {
 
                 $row->residual_percent = $request->{$residual_key};
 
