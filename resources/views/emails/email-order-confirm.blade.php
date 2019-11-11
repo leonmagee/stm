@@ -2,9 +2,9 @@
 
 # Hello {{ $user->name }}!
 
-Your sims order has been processed:<br /><br />
+Your Sims / POS order has been processed:<br /><br />
 @foreach($sims as $carrier => $sims)
-<strong>{{ $sims . ' ' . $carrier }} Sims</strong><br />
+<strong>{{ $sims . ' ' . $carrier }}</strong><br />
 @endforeach
 <br />
 Thank You!

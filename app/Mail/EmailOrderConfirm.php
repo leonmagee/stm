@@ -25,7 +25,7 @@ class EmailOrderConfirm extends Mailable
         $this->user = $user;
         $this->sims = $sims;
         $this->date = $date;
-        $this->subject('STM New Sims Order');
+        $this->subject('STM New Sims / POS Order');
     }
 
     /**

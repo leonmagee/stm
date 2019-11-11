@@ -27,7 +27,7 @@ class EmailOrder extends Mailable
         $this->sims = $sims;
         $this->date = $date;
         $this->admin = $admin;
-        $this->subject('STM New Sims Order');
+        $this->subject('STM New Sims / POS Order');
     }
 
     /**

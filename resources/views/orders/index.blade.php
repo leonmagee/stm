@@ -27,7 +27,7 @@ Orders
       @endif
       @foreach(json_decode($order->data) as $carrier => $sims)
       <div>
-        <span>{{ $sims }} {{ $carrier }} Sims Ordered</span>
+        <span>{{ $sims }} {{ $carrier }} Ordered</span>
       </div>
       @endforeach
 

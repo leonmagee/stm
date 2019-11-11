@@ -2,9 +2,9 @@
 
 # Hello {{ $admin->name }}!
 
-A new sims order has been requested:<br /><br />
+A new Sims / POS order has been requested:<br /><br />
 @foreach($sims as $carrier => $sims)
-<strong>{{ $sims . ' ' . $carrier }} Sims</strong><br />
+<strong>{{ $sims . ' ' . $carrier }}</strong><br />
 @endforeach
 <br />
 <strong style="font-size: 1.3em">{{ $user->company }}</strong><br />

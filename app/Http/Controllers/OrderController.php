@@ -56,15 +56,20 @@ class OrderController extends Controller
         foreach ($carriers as $carrier) {
             $key = 'sims-' . $carrier->id;
             if ($request->{$key}) {
-                $sims_array[$carrier->name] = number_format($request->{$key});
+                $sims_array[$carrier->name . ' Sims'] = number_format($request->{$key});
                 $no_sims_added = false;
             }
+            $key2 = 'brochures-' . $carrier->id;
+            if ($request->{$key2}) {
+                $sims_array[$carrier->name . ' Brochures'] = number_format($request->{$key2});
+                $no_sims_added = false;
+            }
+
         }
         if ($no_sims_added) {
-            return \Redirect::back()->withErrors(['You must add some sims.']);
+            return \Redirect::back()->withErrors(['You must add some sims or brochures.']);
         }
 
-        //dd($sims_array);
         $order = new Order([
             'user_id' => $user_id,
             'data' => json_encode($sims_array),
@@ -72,7 +77,6 @@ class OrderController extends Controller
         $order->save();
 
         $date = \Carbon\Carbon::now()->toDateTimeString();
-        //$sims = number_format($request->sims);
 
         /**
          * Send confirmation email

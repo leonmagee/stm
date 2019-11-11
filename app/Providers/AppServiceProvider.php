@@ -546,7 +546,7 @@ class AppServiceProvider extends ServiceProvider
                         'default' => false,
                     ],
                     [
-                        'name' => 'Order Sims',
+                        'name' => 'Order Sims / POS',
                         'link' => '/order-sims',
                         'sub' => false,
                         'icon' => 'flaticon-sim',
@@ -630,7 +630,7 @@ class AppServiceProvider extends ServiceProvider
                         'default' => false,
                     ],
                     [
-                        'name' => 'Order Sims',
+                        'name' => 'Order Sims / POS',
                         'link' => '/order-sims',
                         'sub' => false,
                         'icon' => 'flaticon-sim',
