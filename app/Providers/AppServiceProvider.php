@@ -179,7 +179,7 @@ class AppServiceProvider extends ServiceProvider
                         'default' => false,
                     ],
                     [
-                        'name' => 'Sim / POS Orders',
+                        'name' => 'Sim Orders / POS',
                         'link' => '/orders',
                         'sub' => false,
                         'icon' => 'flaticon-sim',
@@ -331,7 +331,7 @@ class AppServiceProvider extends ServiceProvider
                         'default' => false,
                     ],
                     [
-                        'name' => 'Sim / POS Orders',
+                        'name' => 'Sim Orders / POS',
                         'link' => '/orders',
                         'sub' => false,
                         'icon' => 'flaticon-sim',
@@ -448,7 +448,7 @@ class AppServiceProvider extends ServiceProvider
                         'default' => false,
                     ],
                     [
-                        'name' => 'Sim / POS Orders',
+                        'name' => 'Sim Orders / POS',
                         'link' => '/orders',
                         'sub' => false,
                         'icon' => 'flaticon-sim',
