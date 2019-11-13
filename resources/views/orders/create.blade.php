@@ -1,7 +1,7 @@
 @extends('layouts.layout')
 
 @section('title')
-Order Sims
+Order Sims / POS
 @endsection
 
 @section('content')
