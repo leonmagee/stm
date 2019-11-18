@@ -45,7 +45,7 @@ class NoteController extends Controller
     {
 
         $this->validate(request(), [
-            'note' => 'required|max:150',
+            'note' => 'required|max:200',
         ]);
 
         $current_user = \Auth::user();
