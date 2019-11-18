@@ -47,15 +47,38 @@
               <div class="line-divider"></div>
             </div>
 
-            <label class="label" for="name">OR Choose One User</label>
-            <div class="control email-blast-wrap-bottom">
-              <div class="select">
-                <select name="just_one_user">
-                  <option value="0">---</option>
-                  @foreach($users as $user)
-                  <option value="{{ $user->id }}">{{ $user->company }} - {{ $user->name }}</option>
-                  @endforeach
-                </select>
+            <div class="columns">
+              <div class="column is-one-third is-one-quarter-fullhd">
+                <label class="label" for="just_one_user">OR Choose One User</label>
+                <div class="control email-blast-cc-item">
+                  <div class="select">
+                    <select name="just_one_user">
+                      <option value="0">---</option>
+                      @foreach($users as $user)
+                      <option value="{{ $user->id }}">{{ $user->company }} - {{ $user->name }}</option>
+                      @endforeach
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <div class="column is-one-third is-one-quarter-fullhd">
+                <label class="label" for="cc_just_one_user">Add User</label>
+                <div class="control email-blast-cc-item">
+                  <div class="select">
+                    <select name="cc_just_one_user">
+                      <option value="0">---</option>
+                      @foreach($users as $user)
+                      <option value="{{ $user->id }}">{{ $user->company }} - {{ $user->name }}</option>
+                      @endforeach
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <div class="column is-one-third is-one-quarter-fullhd">
+                <label class="label" for="cc_manual_email">Add Email Address</label>
+                <div class="control email-blast-cc-item">
+                  <input class="input" type="text" name="cc_manual_email" />
+                </div>
               </div>
             </div>
             <label class="label">Add Attachments</label>

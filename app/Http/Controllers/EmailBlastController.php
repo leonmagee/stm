@@ -55,6 +55,12 @@ class EmailBlastController extends Controller
     public function email(Request $request)
     {
 
+        $this->validate($request, [
+            'cc_manual_email' => 'email|nullable',
+        ], [
+            'cc_manual_email.email' => 'Must be a valid email address.',
+        ]);
+
         if (!$request->just_one_user && !$request->email_site) {
             return back()->withErrors('Please choose All Users, One Site or One User.');
         }
@@ -76,7 +82,43 @@ class EmailBlastController extends Controller
                 $file3
             ));
 
-            session()->flash('message', 'Email has been sent to ' . $user->company . ' - ' . $user->name);
+            $email_to_string = $user->company . ' - ' . $user->name;
+
+            if (intval($request->cc_just_one_user)) {
+                // cc one user
+                $user_cc = User::where('id', $request->cc_just_one_user)->first();
+
+                $email_to_string .= ' / ' . $user_cc->company . ' - ' . $user_cc->name;
+
+                \Mail::to($user_cc)->send(new EmailBlast(
+                    $user_cc,
+                    $request->message,
+                    $request->subject,
+                    $file,
+                    $file2,
+                    $file3
+                ));
+            }
+
+            if ($request->cc_manual_email) {
+
+                $user_manual = new User;
+                $user_manual->name = false;
+                $user_manual->email = $request->cc_manual_email;
+
+                $email_to_string .= ' / ' . $user_manual->email;
+
+                \Mail::to($user_manual)->send(new EmailBlast(
+                    $user_manual,
+                    $request->message,
+                    $request->subject,
+                    $file,
+                    $file2,
+                    $file3
+                ));
+            }
+
+            session()->flash('message', 'Email has been sent to ' . $email_to_string);
         } else {
             // email multiple users
 

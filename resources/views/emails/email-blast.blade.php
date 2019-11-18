@@ -1,6 +1,8 @@
 @component('mail::message')
 
+@if($user->name)
 # Hello {{ $user->name }}!
+@endif
 
 {{ $message }}
 
