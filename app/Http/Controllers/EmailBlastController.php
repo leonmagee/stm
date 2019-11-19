@@ -72,6 +72,8 @@ class EmailBlastController extends Controller
         if (intval($request->just_one_user)) {
             // email just one user
             $user = User::where('id', $request->just_one_user)->first();
+            $hello = '# Hello ' . $user->name . '!';
+            $hello_cc = '# Copy of email sent to ' . $user->name . ' - ' . $user->company;
 
             \Mail::to($user)->send(new EmailBlast(
                 $user,
@@ -79,7 +81,9 @@ class EmailBlastController extends Controller
                 $request->subject,
                 $file,
                 $file2,
-                $file3
+                $file3,
+                null,
+                $hello
             ));
 
             $email_to_string = $user->company . ' - ' . $user->name;
@@ -96,7 +100,9 @@ class EmailBlastController extends Controller
                     $request->subject,
                     $file,
                     $file2,
-                    $file3
+                    $file3,
+                    null,
+                    $hello_cc
                 ));
             }
 
@@ -114,7 +120,9 @@ class EmailBlastController extends Controller
                     $request->subject,
                     $file,
                     $file2,
-                    $file3
+                    $file3,
+                    null,
+                    $hello_cc
                 ));
             }
 
