@@ -4,32 +4,31 @@
 
 <div class="chart-wrap-outer">
 
-	<h1 class="title">SIM Activations Per Month</h1>
+  <h1 class="title">SIM Activations Per Month</h1>
 
-	<div class="chart-toggle">
-		<a class="button is-primary" id="toggle">Toggle Chart</a>
-	</div>
+  <div class="chart-toggle">
+    <a class="button is-primary" id="toggle">Toggle Chart</a>
+  </div>
 
-	<div class="homepage-wrap">
+  <div class="homepage-wrap">
 
-		<div class="chart-wrap">
-			<canvas id="graph"></canvas>
-		</div>
+    <div class="chart-wrap">
+      <canvas id="graph"></canvas>
+    </div>
 
-	</div>
+  </div>
 
 </div>
 
 <div class="mobile-only">
-	<h1 class="title">Welcome to Sim Track Manager!</h1>
+  <h1 class="title">Welcome to Sim Track Manager!</h1>
 </div>
 
 @endsection
 
 @section('page-script')
 <script>
-
-	var report_types_array = [];
+  var report_types_array = [];
 
 	var fill_color_array = [
 	'rgba(27, 154, 170, 0.3)',
@@ -124,7 +123,7 @@
 		{{ $data['counts'][0] }},
 		{{ $data['counts'][1] }},
 		{{ $data['counts'][2] }},
-		{{ $data['counts'][2] }}
+		{{ $data['counts'][3] }}
 		],
 		backgroundColor: fill_color_array[{{$key}}],
 		borderColor: stroke_color_array[{{$key}}],
@@ -139,7 +138,7 @@
 
 	var data = {
 	//labels: ['April 2018', 'May 2018', 'June 2018'],
-	labels: date_name_array, 
+	labels: date_name_array,
 	//labels: date_array,
 	datasets: report_types_array
 	// [
@@ -234,7 +233,7 @@ init();
 function toggleChart() {
   //destroy chart:
   chartReport.destroy();
-  //change chart type: 
+  //change chart type:
   this.chartType = (this.chartType == 'bar') ? 'line' : 'bar';
   //restart chart:
   init();
