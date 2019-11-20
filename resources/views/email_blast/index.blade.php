@@ -62,7 +62,7 @@
                 </div>
               </div>
               <div class="column is-one-third is-one-quarter-fullhd">
-                <label class="label" for="cc_just_one_user">Add User</label>
+                <label class="label" for="cc_just_one_user">BCC User</label>
                 <div class="control email-blast-cc-item">
                   <div class="select">
                     <select name="cc_just_one_user">
@@ -75,9 +75,9 @@
                 </div>
               </div>
               <div class="column is-one-third is-one-quarter-fullhd">
-                <label class="label" for="cc_manual_email">Add Email Address</label>
+                <label class="label" for="cc_manual_email">BCC Another User</label>
                 <div class="control email-blast-cc-item">
-                  <input class="input" type="text" name="cc_manual_email" />
+                  <input class="input" type="text" name="cc_manual_email" placeholder="Email Address" />
                 </div>
               </div>
             </div>

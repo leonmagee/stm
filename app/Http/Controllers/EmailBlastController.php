@@ -193,28 +193,83 @@ class EmailBlastController extends Controller
     {
         $this->validate($request, [
             'just_one_user' => 'required',
+            'cc_manual_email' => 'email|nullable',
             'subject' => 'required',
             'message' => 'required',
         ], [
             'just_one_user.required' => 'The user field is required.',
+            'cc_manual_email.email' => 'Must be a valid email address.',
         ]);
 
-        $file = $request->file('upload-file-email');
-        $file2 = $request->file('upload-file-email-2');
-        $file3 = $request->file('upload-file-email-3');
+        if (intval($request->just_one_user)) {
 
-        $user = User::where('id', $request->just_one_user)->first();
+            $file = $request->file('upload-file-email');
+            $file2 = $request->file('upload-file-email-2');
+            $file3 = $request->file('upload-file-email-3');
 
-        \Mail::to($user)->send(new EmailBlast(
-            $user,
-            $request->message,
-            $request->subject,
-            $file,
-            $file2,
-            $file3
-        ));
+            // email just one user
+            $user = User::where('id', $request->just_one_user)->first();
+            $hello = '# Hello ' . $user->name . '!';
+            $hello_cc = '# Copy of email sent to ' . $user->name . ' - ' . $user->company;
 
-        session()->flash('message', 'Email has been sent to ' . $user->company . ' - ' . $user->name);
+            \Mail::to($user)->send(new EmailBlast(
+                $user,
+                $request->message,
+                $request->subject,
+                $file,
+                $file2,
+                $file3,
+                null,
+                $hello
+            ));
+
+            $email_to_string = $user->company . ' - ' . $user->name;
+
+            if (intval($request->cc_just_one_user)) {
+                // cc one user
+                $user_cc = User::where('id', $request->cc_just_one_user)->first();
+
+                $email_to_string .= ' / ' . $user_cc->company . ' - ' . $user_cc->name;
+
+                \Mail::to($user_cc)->send(new EmailBlast(
+                    $user_cc,
+                    $request->message,
+                    $request->subject,
+                    $file,
+                    $file2,
+                    $file3,
+                    null,
+                    $hello_cc
+                ));
+            }
+
+            if ($request->cc_manual_email) {
+
+                $user_manual = new User;
+                $user_manual->name = false;
+                $user_manual->email = $request->cc_manual_email;
+
+                $email_to_string .= ' / ' . $user_manual->email;
+
+                \Mail::to($user_manual)->send(new EmailBlast(
+                    $user_manual,
+                    $request->message,
+                    $request->subject,
+                    $file,
+                    $file2,
+                    $file3,
+                    null,
+                    $hello_cc
+                ));
+            }
+        } else {
+            return redirect()->back()->with('danger', 'The user field is required.');
+
+        }
+
+        session()->flash('message', 'Email has been sent to ' . $email_to_string);
+
+        //session()->flash('message', 'Email has been sent to ' . $user->company . ' - ' . $user->name);
 
         return redirect('send-email');
     }

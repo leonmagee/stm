@@ -18,17 +18,46 @@
 
         <div class="form-wrap-flex">
           <div class="field full padding-bottom">
-            <label class="label" for="name">Choose One User</label>
-            <div class="control email-blast-wrap-bottom">
-              <div class="select">
-                <select name="just_one_user">
-                  <option></option>
-                  @foreach($users as $user)
-                  <option value="{{ $user->id }}">{{ $user->company }} - {{ $user->name }}</option>
-                  @endforeach
-                </select>
+
+            <div class="columns">
+              <div class="column is-one-third is-one-quarter-fullhd">
+                <label class="label" for="just_one_user">Choose One User</label>
+                <div class="control email-blast-cc-item">
+                  <div class="select">
+                    <select name="just_one_user">
+                      <option value="0">---</option>
+                      @foreach($users as $user)
+                      <option value="{{ $user->id }}">{{ $user->company }} - {{ $user->name }}</option>
+                      @endforeach
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <div class="column is-one-third is-one-quarter-fullhd">
+                <label class="label" for="cc_just_one_user">BCC User</label>
+                <div class="control email-blast-cc-item">
+                  <div class="select">
+                    <select name="cc_just_one_user">
+                      <option value="0">---</option>
+                      @foreach($users as $user)
+                      <option value="{{ $user->id }}">{{ $user->company }} - {{ $user->name }}</option>
+                      @endforeach
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <div class="column is-one-third is-one-quarter-fullhd">
+                <label class="label" for="cc_manual_email">BCC Another User</label>
+                <div class="control email-blast-cc-item">
+                  <input class="input" type="text" name="cc_manual_email" placeholder="Email Address" />
+                </div>
               </div>
             </div>
+
+
+
+
+
             <label class="label">Add Attachments</label>
             <div class="control attachment-wrap">
               <div class="field">
@@ -86,8 +115,7 @@
             <label class="label">Email Message</label>
             <div class="control">
               <textarea class="textarea"
-                name="message">Thank you for choosing GS Wireless as your premier master agent for H2O Wireless / Lyca Mobile. At GS Wireless we
-include free support & extraordinary customer service that many competitors consider an “add-on” for additional cost. You might find “the hottest deal” elsewhere, but unreliable sources will always come back to bite you. You’re not just activating H2O Wireless & Lyca Mobile. We’re creating a partnership. We want your business to succeed because when you’re successful, we’re successful. We have attached some important information about your new account, if you have any question or concern, please feel free to contact us. You may also place your H2O / Lyca sim order for FREE through STM.</textarea>
+                name="message">Thank you for choosing GS Wireless as your premier master agent for H2O Wireless / Lyca Mobile. You’re not just activating H2O Wireless & Lyca Mobile. We’re creating a partnership. We want your business to succeed because when you’re successful, we’re successful. At GS Wireless we include free support & extraordinary customer service that many competitors consider an “add-on” for additional cost. Remember unreliable sources will always come back to bite you.</textarea>
             </div>
           </div>
         </div>
