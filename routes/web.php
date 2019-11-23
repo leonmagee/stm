@@ -16,6 +16,7 @@
 // just for testing
 // use App\User;
 // use App\Mail\EmailBlast;
+// just a test edit
 
 Route::get('/', 'HomeController@index')->name('home');
 
