@@ -52,7 +52,7 @@ return [
     /**
      * Number of emails per page in the admin view
      */
-    'emails-per-page' => 30,
+    'emails-per-page' => 5,
 
     /**
      * Date Format
