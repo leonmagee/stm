@@ -32,8 +32,7 @@ return [
         'prefix' => 'email-manager',
         'middleware' => [
             'web',
-            //'can:see-sent-emails',
-            //'LockOutUsersManagersAgent',
+            'can:see-sent-emails',
         ],
     ],
 
@@ -52,7 +51,7 @@ return [
     /**
      * Number of emails per page in the admin view
      */
-    'emails-per-page' => 5,
+    'emails-per-page' => 20,
 
     /**
      * Date Format

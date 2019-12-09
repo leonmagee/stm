@@ -40,14 +40,6 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    // public function setPasswordAttribute($password)
-    // {
-    //     if ( $password !== null & $password !== "" )
-    //     {
-    //         $this->attributes['password'] = bcrypt($password);
-    //     }
-    // }
-
     /**
      * Query like this: $user->sims->find(2)->sim_number // this will return one sim with the id 2
      **/
@@ -64,10 +56,6 @@ class User extends Authenticatable
         return $this->hasMany(Note::class)->orderBy('created_at', 'DESC');
     }
 
-    /**
-     * @todo can probably remove this, or maybe just modify it?
-     * instead of checking the role value, it will check the user_role pivot table?
-     */
     public function isAdmin()
     {
         if ($this->role->id === 1) {
@@ -88,7 +76,6 @@ class User extends Authenticatable
         $users_array = [1, 2, 6];
         $users = self::whereIn('role_id', $users_array)->get();
         return $users;
-        //dd($users);
     }
 
     public function isManager()
@@ -118,19 +105,6 @@ class User extends Authenticatable
         }
     }
 
-    /**
-     * @todo create a different role for Juan and Jessica?
-     * Not sure what will be different? Just have the ability to upload sims?
-     * Prob need a different homepage view..
-     */
-    // public function isManager() {
-    //     if ( $this->role === 'manager') {
-    //         return true;
-    //     } else {
-    //         return false;
-    //     }
-    // }
-
     public function role()
     {
         return $this->belongsTo(Role::class);
@@ -141,36 +115,5 @@ class User extends Authenticatable
         $site = Site::where('role_id', $this->role->id)->first();
         return $site->id;
     }
-
-    /**
-     * @param string|array $roles
-     */
-    // public function authorizeRoles($roles)
-    // {
-    //   if (is_array($roles)) {
-    //       return $this->hasAnyRole($roles) ||
-    //              abort(401, 'This action is unauthorized.');
-    //   }
-    //   return $this->hasRole($roles) ||
-    //          abort(401, 'This action is unauthorized.');
-    // }
-
-    /**
-     * Check multiple roles
-     * @param array $roles
-     */
-    // public function hasAnyRole($roles)
-    // {
-    //   return null !== $this->roles()->whereIn('name', $roles)->first();
-    // }
-
-    /**
-     * Check one role
-     * @param string $role
-     */
-    // public function hasRole($role)
-    // {
-    //   return null !== $this->roles()->where('name', $role)->first();
-    // }
 
 }

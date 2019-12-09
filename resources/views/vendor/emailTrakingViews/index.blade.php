@@ -6,7 +6,7 @@
 
   <div class="form-wrapper-inner">
 
-    <h3>Email Tracker</h3>
+    <h3>Email Manager</h3>
 
     <div class="email-manager-wrap">
 
@@ -15,10 +15,10 @@
           @csrf
           <input class="input item" type="text" name="search" id="search" placeholder="Text to Search"
             value="{{ session('mail-tracker-index-search') }}">
-          <button type="submit" class="button item">
+          <button type="submit" class="button call-loader item search-button">
             Search
           </button>
-          <a class="button item" href="{{ route('mailTracker_ClearSearch') }}">
+          <a class="button item clear-button" href="{{ route('mailTracker_ClearSearch') }}">
             Clear Search
           </a>
         </div>
