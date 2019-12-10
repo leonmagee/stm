@@ -14,7 +14,7 @@ return [
     /**
      * Optionally expire old emails, set to 0 to keep forever.
      */
-    'expire-days' => 60,
+    'expire-days' => 120,
 
     /**
      * Where should the pingback URL route be?
@@ -29,7 +29,7 @@ return [
      */
     'admin-route' => [
         'enabled' => true, // Should the admin routes be enabled?
-        'prefix' => 'email-manager',
+        'prefix' => 'email-tracker',
         'middleware' => [
             'web',
             'can:see-sent-emails',

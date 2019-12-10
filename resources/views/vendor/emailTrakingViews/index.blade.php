@@ -6,7 +6,7 @@
 
   <div class="form-wrapper-inner">
 
-    <h3>Email Manager</h3>
+    <h3>Email Tracker</h3>
 
     <div class="email-manager-wrap">
 
