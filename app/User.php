@@ -96,6 +96,15 @@ class User extends Authenticatable
         }
     }
 
+    public function isAdminManager()
+    {
+        if (($this->role->id === 1) || ($this->role->id === 2)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public function isAdminManagerEmployee()
     {
         if (($this->role->id === 1) || ($this->role->id === 2) || ($this->role->id === 6)) {
