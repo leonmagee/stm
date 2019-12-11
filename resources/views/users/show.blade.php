@@ -181,7 +181,7 @@
         </div>
         <div class="note-body">{{ $note->text }}</div>
       </div>
-      <div class="modal is-active" id="delete-item-modal-{{ $note->id }}">
+      <div class="modal" id="delete-item-modal-{{ $note->id }}">
 
         <div class="modal-background"></div>
 
