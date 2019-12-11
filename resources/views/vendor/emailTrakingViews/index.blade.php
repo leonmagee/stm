@@ -33,6 +33,7 @@
             <th>Sent At</th>
             <th>View Email</th>
             <th>Clicks</th>
+            <th></th>
           </tr>
           @foreach($emails as $email)
           <td>{{$email->recipient}}</td>
@@ -52,6 +53,7 @@
             No Clicks
             @endif
           </td>
+          <td><i class="fas fa-times-circle modal-delete-open" item_id={{ $email->id }}></i></td>
           </tr>
           @endforeach
         </table>
@@ -61,6 +63,27 @@
       </div>
     </div>
   </div>
+  @foreach($emails as $email)
+  <div class="modal" id="delete-item-modal-{{ $email->id }}">
+
+    <div class="modal-background"></div>
+
+    <div class="modal-content">
+
+      <div class="modal-box">
+
+        <h3 class="title">Are You Sure?</h3>
+
+        <a href="/delete-email/{{ $email->id }}" class="button is-danger">Delete Email</a>
+        <a class="modal-delete-close-button button is-primary" item_id={{ $email->id }}>Cancel</a>
+      </div>
+
+    </div>
+
+    <button class="modal-delete-close is-large" aria-label="close" item_id={{ $email->id }}></button>
+
+  </div>
+  @endforeach
 </div>
 
 

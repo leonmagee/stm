@@ -175,13 +175,13 @@
           <span class="user">{{ $note->author }}</span>
           <span class="icon">
             @if(Auth()->user()->isAdmin())
-            <i class="fas fa-times-circle modal-delete-open" note_id={{ $note->id }}></i>
+            <i class="fas fa-times-circle modal-delete-open" item_id={{ $note->id }}></i>
             @endif
           </span>
         </div>
         <div class="note-body">{{ $note->text }}</div>
       </div>
-      <div class="modal" id="delete-note-modal-{{ $note->id }}">
+      <div class="modal is-active" id="delete-item-modal-{{ $note->id }}">
 
         <div class="modal-background"></div>
 
@@ -192,12 +192,12 @@
             <h3 class="title">Are You Sure?</h3>
 
             <a href="/delete-note/{{ $note->id }}" class="button is-danger">Delete Note</a>
-            <a class="modal-delete-close-button button is-primary" note_id={{ $note->id }}>Cancel</a>
+            <a class="modal-delete-close-button button is-primary" item_id={{ $note->id }}>Cancel</a>
           </div>
 
         </div>
 
-        <button class="modal-delete-close is-large" aria-label="close" note_id={{ $note->id }}></button>
+        <button class="modal-delete-close is-large" aria-label="close" item_id={{ $note->id }}></button>
 
       </div>
       @endforeach

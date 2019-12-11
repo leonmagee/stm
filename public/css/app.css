@@ -19190,6 +19190,14 @@ h4.recharge-subheader {
   color: #777;
 }
 
+.email-manager-wrap i.fa-times-circle {
+  color: #ef476f;
+}
+
+.email-manager-wrap i.fa-times-circle:hover {
+  cursor: pointer;
+}
+
 .locked-wrapper {
   display: -webkit-box;
   display: -ms-flexbox;

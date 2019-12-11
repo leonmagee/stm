@@ -68,13 +68,12 @@ $(
 });
 
 /**
- * Modal for deleting note
+ * Modal for deleting note and email
  */
 $('.modal-delete-open, .modal-delete-close, .modal-delete-close-button').click(
     function() {
-        const noteId = $(this).attr('note_id');
-        // console.log('note id', noteId);
-        $(`.modal#delete-note-modal-${noteId}`).toggleClass('is-active');
+        const itemId = $(this).attr('item_id');
+        $(`.modal#delete-item-modal-${itemId}`).toggleClass('is-active');
     }
 );
 

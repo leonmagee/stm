@@ -30383,12 +30383,11 @@ $('.modal-open-exclude-users, #layout-modal-exclude-users .modal-close, #layout-
 });
 
 /**
- * Modal for deleting note
+ * Modal for deleting note and email
  */
 $('.modal-delete-open, .modal-delete-close, .modal-delete-close-button').click(function () {
-    var noteId = $(this).attr('note_id');
-    // console.log('note id', noteId);
-    $('.modal#delete-note-modal-' + noteId).toggleClass('is-active');
+    var itemId = $(this).attr('item_id');
+    $('.modal#delete-item-modal-' + itemId).toggleClass('is-active');
 });
 
 /**

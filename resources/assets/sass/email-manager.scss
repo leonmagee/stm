@@ -43,4 +43,10 @@
             }
         }
     }
+    i.fa-times-circle {
+        color: $color-red;
+        &:hover {
+            cursor: pointer;
+        }
+    }
 }
