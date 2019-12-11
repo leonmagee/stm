@@ -33,7 +33,9 @@
             <th>Sent At</th>
             <th>View Email</th>
             <th>Clicks</th>
+            @if(Auth()->user()->isAdmin())
             <th></th>
+            @endif
           </tr>
           @foreach($emails as $email)
           <td>{{$email->recipient}}</td>
@@ -53,7 +55,9 @@
             No Clicks
             @endif
           </td>
+          @if(Auth()->user()->isAdmin())
           <td><i class="fas fa-times-circle modal-delete-open" item_id={{ $email->id }}></i></td>
+          @endif
           </tr>
           @endforeach
         </table>
