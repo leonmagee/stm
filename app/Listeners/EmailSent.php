@@ -32,10 +32,12 @@ class EmailSent
         if ($header) {
             $number = intval(str_replace('user_id: ', '', $matches[0]));
             $user = User::find($number);
-            $email = SentEmail::find($event->sent_email->id);
-            if ($company = $user->company) {
-                $email->company = $company;
-                $email->save();
+            if ($user) {
+                $email = SentEmail::find($event->sent_email->id);
+                if ($company = $user->company) {
+                    $email->company = $company;
+                    $email->save();
+                }
             }
         }
     }
