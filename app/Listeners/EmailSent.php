@@ -27,7 +27,6 @@ class EmailSent
     public function handle(EmailSentEvent $event)
     {
         // Access the model using $event->sent_email...
-        //\Log::info('event id: ' . $event->sent_email->id);
         $matches = [];
         $header = preg_match('/user_id: [0-9]*/', $event->sent_email->headers, $matches);
         if ($header) {
