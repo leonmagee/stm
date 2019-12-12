@@ -38,7 +38,13 @@
             @endif
           </tr>
           @foreach($emails as $email)
-          <td>{{$email->recipient}}</td>
+          <td>
+            @if($email->company)
+            {{$email->company}}
+            @else
+            {{$email->recipient}}
+            @endif
+          </td>
           <td>{{$email->subject}}</td>
           <td>{{$email->opens}}</td>
           <td>{{$email->clicks}}</td>

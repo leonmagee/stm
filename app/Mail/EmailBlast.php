@@ -53,6 +53,8 @@ class EmailBlast extends Mailable
             ]);
         }
 
+        $this->callbacks[] = (function ($message) use ($user) {$message->getHeaders()->addTextHeader('user_id', $user->id);});
+
     }
 
     /**

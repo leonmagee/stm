@@ -6,6 +6,7 @@ use App\User;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Support\Str;
 
 class ContactEmail extends Mailable
 {
@@ -26,6 +27,7 @@ class ContactEmail extends Mailable
         $this->admin = $admin;
         $this->message = $message;
         $this->subject = 'STM Contact Form';
+        $this->callbacks[] = (function ($message) {$message->getHeaders()->addTextHeader('X-No-Track', Str::random(10));});
     }
 
     /**

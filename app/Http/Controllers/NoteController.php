@@ -6,7 +6,6 @@ use App\Mail\EmailNote;
 use App\Note;
 use App\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Str;
 use jdavidbakr\MailTracker\Model\SentEmail;
 
 class NoteController extends Controller
@@ -67,11 +66,12 @@ class NoteController extends Controller
                     $note->author,
                     $date,
                     $user
-                ),
-                    [],
-                    function ($message) {
-                        $message->getHeaders()->addTextHeader('X-No-Track', Str::random(10));
-                    });
+                )
+                    // [],
+                    // function ($message) {
+                    //     $message->getHeaders()->addTextHeader('X-No-Track', Str::random(10));
+                    // }
+                );
             }
         }
 

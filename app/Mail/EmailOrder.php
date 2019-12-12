@@ -6,6 +6,7 @@ use App\User;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Support\Str;
 
 class EmailOrder extends Mailable
 {
@@ -28,6 +29,8 @@ class EmailOrder extends Mailable
         $this->date = $date;
         $this->admin = $admin;
         $this->subject('STM New Sims / POS Order');
+        $this->callbacks[] = (function ($message) {$message->getHeaders()->addTextHeader('X-No-Track', Str::random(10));});
+
     }
 
     /**

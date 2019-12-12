@@ -2,8 +2,8 @@
 
 namespace App\Providers;
 
-use Illuminate\Support\Facades\Event;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
+use Illuminate\Support\Facades\Event;
 
 class EventServiceProvider extends ServiceProvider
 {
@@ -16,7 +16,31 @@ class EventServiceProvider extends ServiceProvider
         'App\Events\Event' => [
             'App\Listeners\EventListener',
         ],
+        'jdavidbakr\MailTracker\Events\EmailSentEvent' => [
+            'App\Listeners\EmailSent',
+        ],
     ];
+
+//     protected $listen = [
+    //     'jdavidbakr\MailTracker\Events\EmailSentEvent' => [
+    //         'App\Listeners\EmailSent',
+    //     ],
+    //     'jdavidbakr\MailTracker\Events\ViewEmailEvent' => [
+    //         'App\Listeners\EmailViewed',
+    //     ],
+    //     'jdavidbakr\MailTracker\Events\LinkClickedEvent' => [
+    //         'App\Listeners\EmailLinkClicked',
+    //     ],
+    //     'jdavidbakr\MailTracker\Events\EmailDeliveredEvent' => [
+    //         'App\Listeners\EmailDelivered',
+    //     ],
+    //     'jdavidbakr\MailTracker\Events\ComplaintMessageEvent' => [
+    //         'App\Listeners\EmailComplaint',
+    //     ],
+    //     'jdavidbakr\MailTracker\Events\PermanentBouncedMessageEvent' => [
+    //         'App\Listeners\BouncedEmail',
+    //     ],
+    // ];
 
     /**
      * Register any events for your application.

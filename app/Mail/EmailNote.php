@@ -6,6 +6,7 @@ use App\User;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Support\Str;
 
 class EmailNote extends Mailable
 {
@@ -30,6 +31,8 @@ class EmailNote extends Mailable
         $this->date = $date;
         $this->agent = $agent;
         $this->subject('New Note Added');
+        $this->callbacks[] = (function ($message) {$message->getHeaders()->addTextHeader('X-No-Track', Str::random(10));});
+        //$this->getSwiftMessage()->getHeaders()->addTextHeader('x-mailgun-native-send', 'true');
     }
 
     /**
