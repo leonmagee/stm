@@ -40,8 +40,8 @@ Route::group(['middleware' => 'App\Http\Middleware\LockOutUsersManagers'], funct
     Route::post('update-user-password/{id}', 'UserController@update_password');
     Route::post('update-user-sites', 'UserController@changeUserSites');
     Route::get('delete-note/{note}', 'NoteController@destroy');
-    Route::get('delete-email/{email}', 'NoteController@destroy_email');
-    Route::get('delete-emails/{string}', 'NoteController@destroy_emails');
+    Route::get('delete-email/{email}', 'EmailTrackerController@destroy');
+    Route::get('delete-emails/{string}', 'EmailTrackerController@destroy_page');
     Route::get('delete-order/{order}', 'OrderController@destroy');
 });
 

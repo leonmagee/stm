@@ -10,6 +10,9 @@
                 flex: 0 1 30%;
             }
         }
+        .delete-emails {
+            margin-left: auto;
+        }
         .button {
             &.search-button {
                 color: darken($primary, 5%);

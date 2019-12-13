@@ -28,7 +28,8 @@
           <a class="button item clear-button" href="{{ route('mailTracker_ClearSearch') }}">
             Clear Search
           </a>
-          <a href="/delete-emails/{{ $final_id_array }}" class="button is-danger call-loader">Delete Emails</a>
+          <a class="button is-danger delete-emails modal-delete-open" item_id="page">Delete
+            Emails</a>
         </div>
       </form>
       <div class="table-container">
@@ -102,6 +103,27 @@
 
   </div>
   @endforeach
+</div>
+
+<!-- delete all emails on page modal -->
+<div class="modal" id="delete-item-modal-page">
+
+  <div class="modal-background"></div>
+
+  <div class="modal-content">
+
+    <div class="modal-box">
+
+      <h3 class="title">Are You Sure?</h3>
+
+      <a href="/delete-emails/{{ $final_id_array }}" class="button is-danger">Delete Emails</a>
+      <a class="modal-delete-close-button button is-primary" item_id="page">Cancel</a>
+    </div>
+
+  </div>
+
+  <button class="modal-delete-close is-large" aria-label="close" item_id="page"></button>
+
 </div>
 
 

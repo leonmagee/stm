@@ -6,7 +6,6 @@ use App\Mail\EmailNote;
 use App\Note;
 use App\User;
 use Illuminate\Http\Request;
-use jdavidbakr\MailTracker\Model\SentEmail;
 
 class NoteController extends Controller
 {
@@ -133,34 +132,4 @@ class NoteController extends Controller
         return redirect('/users/' . $user);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Note  $note
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy_email(SentEmail $email)
-    {
-        $email->delete();
-        session()->flash('danger', 'Email Deleted');
-        return redirect('/email-tracker');
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Note  $note
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy_emails($string)
-    {
-
-        $array = json_decode(base64_decode($string));
-        foreach ($array as $item) {
-            $email = SentEmail::find($item);
-            $email->delete();
-        }
-        session()->flash('danger', 'Emails Deleted');
-        return redirect('/email-tracker');
-    }
 }
