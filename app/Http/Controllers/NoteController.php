@@ -141,13 +141,26 @@ class NoteController extends Controller
      */
     public function destroy_email(SentEmail $email)
     {
-        //dd($email);
         $email->delete();
         session()->flash('danger', 'Email Deleted');
         return redirect('/email-tracker');
-        // $user = $note->user->id;
-        // $note->delete();
-        // session()->flash('danger', 'Note Deleted');
-        // return redirect('/users/' . $user);
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Note  $note
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy_emails($string)
+    {
+
+        $array = json_decode(base64_decode($string));
+        foreach ($array as $item) {
+            $email = SentEmail::find($item);
+            $email->delete();
+        }
+        session()->flash('danger', 'Emails Deleted');
+        return redirect('/email-tracker');
     }
 }

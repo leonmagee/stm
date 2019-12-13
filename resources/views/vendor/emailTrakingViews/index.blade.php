@@ -1,7 +1,6 @@
 @extends('layouts.layout')
 @section(config('mail-tracker.admin-template.section'))
 
-
 <div class="form-wrapper">
 
   <div class="form-wrapper-inner">
@@ -9,6 +8,14 @@
     <h3>Email Tracker</h3>
 
     <div class="email-manager-wrap">
+
+      <?php
+        $email_id_array = [];
+        foreach($emails as $email) {
+          $email_id_array[] = $email->id;
+        }
+        $final_id_array = base64_encode(json_encode($email_id_array));
+      ?>
 
       <form action="{{ route('mailTracker_Search') }}" method="post" class="form-inline">
         <div class="email-header-wrap">
@@ -21,6 +28,7 @@
           <a class="button item clear-button" href="{{ route('mailTracker_ClearSearch') }}">
             Clear Search
           </a>
+          <a href="/delete-emails/{{ $final_id_array }}" class="button is-danger call-loader">Delete Emails</a>
         </div>
       </form>
       <div class="table-container">
