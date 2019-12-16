@@ -75,7 +75,7 @@ class EmailTrackerController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  jdavidbakr\MailTracker\Model\SentEmail;
      * @return \Illuminate\Http\Response
      */
     public function destroy(SentEmail $email)
