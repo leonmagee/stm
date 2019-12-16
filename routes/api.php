@@ -18,13 +18,15 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 // Works with Amazon SNS/SES to record email bounces
-Route::post('/email-bounced', function ($data) {
-    $data_json = json_encode($data);
-    \Log::notice($data_json);
-    return 'this rest endpoint is working?';
-    //return 'email bounce testing';
-});
+// Route is /api/email-bounced
+// Route::post('/email-bounced', function ($data) {
+//     //$data_json = json_encode($data);
+//     \Log::notice($data);
+//     return 'this rest endpoint is working?';
+//     //return 'email bounce testing';
+// });
 
-Route::get('/api-testing', function () {
-    return 'api success with get?';
-});
+// Route::get('/api-testing', function () {
+//     \Log::notice('log some data?');
+//     return 'api success with get?';
+// });

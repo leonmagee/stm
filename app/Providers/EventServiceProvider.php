@@ -19,6 +19,9 @@ class EventServiceProvider extends ServiceProvider
         'jdavidbakr\MailTracker\Events\EmailSentEvent' => [
             'App\Listeners\EmailSent',
         ],
+        'jdavidbakr\MailTracker\Events\PermanentBouncedMessageEvent' => [
+            'App\Listeners\BouncedEmail',
+        ],
     ];
 
 //     protected $listen = [

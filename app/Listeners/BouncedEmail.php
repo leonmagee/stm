@@ -25,5 +25,8 @@ class BouncedEmail
     public function handle(PermanentBouncedMessageEvent $event)
     {
         // Access the email address using $event->email_address...
+        \Log::notice('Email was bounced?');
+        $json_data = json_encode($event);
+        \Log::notice($json_data);
     }
 }
