@@ -104,6 +104,7 @@ Route::get('/api/v1/sim_user/{id}', 'APIController@getSimUser')->name('api.sim_u
 Route::post('/email-bounced', function ($data) {
     $data_json = json_encode($data);
     \Log::notice($data_json);
+    return 'this rest endpoint is working?';
     //return 'email bounce testing';
 });
 //https: //stmmax.com/email-bounced
