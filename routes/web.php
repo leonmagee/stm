@@ -100,13 +100,6 @@ Route::get('/api/v1/sims_archive/{id}', 'APIController@getSimsArchive')
 Route::get('/api/v1/sim_users', 'APIController@getSimUsers')->name('api.sim_users.index');
 Route::get('/api/v1/sim_user/{id}', 'APIController@getSimUser')->name('api.sim_users.index_user');
 
-// Works with Amazon SNS/SES to record email bounces
-Route::post('/email-bounced', function ($data) {
-    $data_json = json_encode($data);
-    \Log::notice($data_json);
-    return 'this rest endpoint is working?';
-    //return 'email bounce testing';
-});
 //https: //stmmax.com/email-bounced
 
 /**
