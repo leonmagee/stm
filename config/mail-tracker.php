@@ -65,6 +65,7 @@ return [
 
     /**
      * The SNS notification topic - if set, discard all notifications not in this topic.
+     * Set to 'Email-Bounce' ???
      */
     'sns-topic' => null,
 

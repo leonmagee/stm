@@ -3,6 +3,7 @@
 namespace App\Listeners;
 
 use jdavidbakr\MailTracker\Events\PermanentBouncedMessageEvent;
+use jdavidbakr\MailTracker\Model\SentEmail;
 
 class BouncedEmail
 {
@@ -25,7 +26,12 @@ class BouncedEmail
     public function handle(PermanentBouncedMessageEvent $event)
     {
         // Access the email address using $event->email_address...
-        \Log::notice('Email was bounced?');
+        if ($event->email_address) {
+            $email = SentEmail::where('email_address', $event->email_address)->orderBy('id', 'DESC')->first();
+            $email->bounced = 1;
+            $email->save();
+        }
+        \Log::notice('Email was bounced new');
         $json_data = json_encode($event);
         \Log::notice($json_data);
     }
