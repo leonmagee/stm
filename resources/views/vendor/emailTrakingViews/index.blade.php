@@ -28,8 +28,10 @@
           <a class="button item clear-button" href="{{ route('mailTracker_ClearSearch') }}">
             Clear Search
           </a>
+          @if(Auth()->user()->isAdmin())
           <a class="button is-danger delete-emails modal-delete-open" item_id="page">Delete
             Emails</a>
+          @endif
         </div>
       </form>
       <div class="table-container">
