@@ -28,7 +28,7 @@ class EmailSent
     {
         if ($event->sent_email->subject == 'Reset Password Notification') {
             //var_dump('wrong type of email!!!', $event->sent_email->id);
-            $event->sent_email->delete();
+            //$event->sent_email->delete();
             //dd('deleted?');
         } else {
             //Reset Password Notification
