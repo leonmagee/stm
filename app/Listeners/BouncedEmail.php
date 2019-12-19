@@ -31,8 +31,8 @@ class BouncedEmail
             $email->bounced = 1;
             $email->save();
         }
-        \Log::notice('Email was bounced new');
-        $json_data = json_encode($event);
-        \Log::notice($json_data);
+        //\Log::notice('Email was bounced new');
+        //$json_data = json_encode($event);
+        //\Log::notice($json_data);
     }
 }
