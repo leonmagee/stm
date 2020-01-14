@@ -96,9 +96,14 @@ class Helpers
     public static function is_normal_user()
     {
         if ($user = \Auth::user()) {
-            if (($user->role_id === 3) || ($user->role_id === 4) || ($user->role_id === 5)) {
-                return true;
+            $admin_users = [1, 2, 6]; //1 = admin, 2 = manager, 6 = employee
+            if (in_array($user->role_id, $admin_users)) {
+                return false;
             }
+            return true;
+            // if (($user->role_id === 3) || ($user->role_id === 4) || ($user->role_id === 5)) {
+            //     return true;
+            // }
         }
         return false;
     }
