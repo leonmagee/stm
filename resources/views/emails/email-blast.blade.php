@@ -8,7 +8,7 @@
 @endif
 @endif
 
-{{ $message }}
+{!! $message !!}
 
 @component('mail::button', ['url' => 'https://stmmax.com'])
 Login to Sim Track Manager

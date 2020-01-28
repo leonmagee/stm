@@ -75,6 +75,8 @@ class EmailBlastController extends Controller
             $hello = '# Hello ' . $user->name . '!';
             $hello_cc = '# Copy of email sent to ' . $user->name . ' - ' . $user->company;
 
+            //dd($request->message);
+
             \Mail::to($user)->send(new EmailBlast(
                 $user,
                 $request->message,
