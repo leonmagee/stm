@@ -1,7 +1,8 @@
 @extends('layouts.layout')
 
 @section('title')
-@if(count($report_data_array) > 1)
+<?php if(!isset($is_single)) {$is_single = false; }?>
+@if(!$is_single && count($report_data_array) > 0)
 Reports for {{ $current_site_date }}
 / Total Payment: <span>${{ number_format($total_payment_all_users, 2) }}</span>
 @foreach($total_payments_residual as $item)

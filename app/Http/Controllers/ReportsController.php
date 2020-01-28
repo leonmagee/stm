@@ -851,13 +851,14 @@ class ReportsController extends Controller
         $report_data_array = $report_data_object->report_data;
         $is_admin = Helpers::current_user_admin();
         $total_payment_all_users = $report_data_array[0]->total_payment;
-
+        $is_single = true;
         return view('reports.index', compact(
             'site_name',
             'current_site_date',
             'report_data_array',
             'total_payment_all_users',
-            'is_admin'
+            'is_admin',
+            'is_single'
         ));
     }
 
