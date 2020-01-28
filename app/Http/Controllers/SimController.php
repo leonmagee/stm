@@ -78,7 +78,8 @@ class SimController extends Controller
     {
         $report_types = ReportType::query()->orderBy('order_index')->get();
 
-        $carriers = Carrier::all();
+        //$carriers = Carrier::all();
+        $carriers = Carrier::whereNotIn('id', [3])->get();
 
         $role_id = Helpers::current_role_id();
 
@@ -98,7 +99,8 @@ class SimController extends Controller
     {
         $report_types = ReportType::query()->orderBy('order_index')->get();
 
-        $carriers = Carrier::all();
+        //$carriers = Carrier::all();
+        $carriers = Carrier::whereNotIn('id', [3])->get();
 
         $role_id = Helpers::current_role_id();
 
