@@ -59,7 +59,7 @@
     </a>
     <a class="homepage-link eco" href="https://portal.ecomobile.com" target="_blank">
       <span>Login to Eco Direct</span>
-      <img src="https://res.cloudinary.com/dabvi4jmx/image/upload/v1580356972/stm/logo-eco2.png" />
+      <img src="https://res.cloudinary.com/dabvi4jmx/image/upload/v1580357592/stm/logo-eco3.png" />
     </a>
   </div>
 
