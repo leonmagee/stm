@@ -58,8 +58,8 @@
       <img src="https://res.cloudinary.com/dabvi4jmx/image/upload/v1580272755/stm/logo-lyca.png" />
     </a>
     <a class="homepage-link eco" href="https://portal.ecomobile.com" target="_blank">
-      <span>Login to Eco Mobile Direct</span>
-      <img src="https://res.cloudinary.com/dabvi4jmx/image/upload/v1580273246/stm/logo-eco.png" />
+      <span>Login to Eco Direct</span>
+      <img src="https://res.cloudinary.com/dabvi4jmx/image/upload/v1580356972/stm/logo-eco2.png" />
     </a>
   </div>
 

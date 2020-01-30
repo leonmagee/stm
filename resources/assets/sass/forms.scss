@@ -161,6 +161,8 @@
             align-items: center;
             //text-align: center;
             padding: 7px 15px 7px 20px;
+            padding: 0 15px 0 20px;
+            height: 5em;
             font-size: 1.2em;
             font-weight: bold;
             &.h2o {
@@ -184,6 +186,7 @@
             img {
                 //max-width: em;
                 max-height: 3.6em;
+                max-width: 50%;
             }
         }
     }
