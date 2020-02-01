@@ -11,11 +11,8 @@
       <h3>Log In</h3>
 
       <form method="POST" action="/login">
-
+        @csrf
         <div class="form-wrap">
-
-          {{ csrf_field() }}
-
           <div class="field">
             <label class="label" for="email">Email</label>
             <div class="control">

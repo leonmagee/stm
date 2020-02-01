@@ -55,6 +55,16 @@ class Handler extends ExceptionHandler
             return redirect('/');
         }
 
+        /**
+         * This method will redirect you to the login page when the 419 error happens.
+         * This login error happens because you try to login without refreshing the page, so your csrf token
+         * does not match.
+         */
+        if ($exception instanceof \Illuminate\Session\TokenMismatchException) {
+            session()->flash('danger', 'Please Login Again');
+            return redirect()->route('login');
+        }
+
         return parent::render($request, $exception);
     }
 }
