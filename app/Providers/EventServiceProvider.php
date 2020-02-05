@@ -13,9 +13,9 @@ class EventServiceProvider extends ServiceProvider
      * @var array
      */
     protected $listen = [
-        'App\Events\Event' => [
-            'App\Listeners\EventListener',
-        ],
+        // 'App\Events\Event' => [
+        //     'App\Listeners\EventListener',
+        // ],
         'Illuminate\Mail\Events\MessageSending' => [
             'App\Listeners\NotificationSent',
         ],
@@ -24,6 +24,12 @@ class EventServiceProvider extends ServiceProvider
         ],
         'jdavidbakr\MailTracker\Events\PermanentBouncedMessageEvent' => [
             'App\Listeners\BouncedEmail',
+        ],
+        'Illuminate\Auth\Events\Login' => [
+            'App\Listeners\SuccessLogin',
+        ],
+        'Illuminate\Auth\Events\Logout' => [
+            'App\Listeners\SuccessLogout',
         ],
     ];
 

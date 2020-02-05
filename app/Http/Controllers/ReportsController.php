@@ -85,12 +85,12 @@ class ReportsController extends Controller
          * Residual total listing - only for master agents
          */
         $not_in_array = [1, 2, 3, 4];
-        if (!in_array($site_id, $not_in_array)) {
+        if (!in_array($site_id, $not_in_array) && \Auth::user()->isAdmin()) {
             $total_payments_residual = $report_data_object->total_payments_residual;
         } else {
             $total_payments_residual = [];
         }
-        //$total_payments_residual = [];
+
         $report_data_array = $report_data_object->report_data;
         $is_admin = Helpers::current_user_admin();
 
