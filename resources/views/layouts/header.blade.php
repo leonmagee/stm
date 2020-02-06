@@ -49,14 +49,14 @@
               <span class="text">Log Out</span>
             </a>
           </p>
-          <p class="control">
+          {{-- <p class="control">
             <a class="button settings" href="/settings">
               <span class="icon is-small">
                 <i class="fas fa-cog"></i>
               </span>
               <span class="text">Settings</span>
             </a>
-          </p>
+          </p> --}}
           <p class="control">
             <a class="button mode {{ $mode }}" href="/settings">
               <span class="icon is-small">
