@@ -289,9 +289,7 @@ class UserController extends Controller
     public function profile(Request $request)
     {
         $user = \Auth::user();
-
         $role = $user->role->name;
-
         if ($user->role->id > 2) {
             $bonus_credit = UserCreditBonus::where([
                 'user_id' => $user->id,
