@@ -37,7 +37,7 @@ class APIController extends Controller
     public function getLogins()
     {
         //$report_type = ReportType::find($id);
-        $logs = UserLoginLogout::with('user')->orderBy('id', 'DESC')->get();
+        $logs = UserLoginLogout::orderBy('id', 'DESC')->with('user')->get();
 
         return datatables($logs)->make(true);
     }
