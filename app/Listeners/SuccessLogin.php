@@ -31,17 +31,20 @@ class SuccessLogin
         /**
          * Get Data
          */
-        $user_id = Auth::user()->id;
-        $session_id = $this->request->cookie('stm_session');
-        $current_time = Carbon::now();
+        $user = Auth::user();
+        if ($user) {
+            $user_id = Auth::user()->id;
+            $session_id = $this->request->cookie('stm_session');
+            $current_time = Carbon::now();
 
-        /**
-         * Save Record
-         */
-        $record = new UserLoginLogout;
-        $record->user_id = $user_id;
-        //$record->session_id = $session_id;
-        $record->login = $current_time;
-        $record->save();
+            /**
+             * Save Record
+             */
+            $record = new UserLoginLogout;
+            $record->user_id = $user_id;
+            //$record->session_id = $session_id;
+            $record->login = $current_time;
+            $record->save();
+        }
     }
 }
