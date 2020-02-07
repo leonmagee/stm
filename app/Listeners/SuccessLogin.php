@@ -17,7 +17,7 @@ class SuccessLogin
      */
     public function __construct(Request $request)
     {
-        $this->request = $request;
+        //$this->request = $request;
     }
 
     /**
@@ -34,7 +34,7 @@ class SuccessLogin
         $user = Auth::user();
         if ($user) {
             $user_id = Auth::user()->id;
-            $session_id = $this->request->cookie('stm_session');
+            //$session_id = $this->request->cookie('stm_session');
             $current_time = Carbon::now();
 
             /**
@@ -42,7 +42,6 @@ class SuccessLogin
              */
             $record = new UserLoginLogout;
             $record->user_id = $user_id;
-            //$record->session_id = $session_id;
             $record->login = $current_time;
             $record->save();
         }

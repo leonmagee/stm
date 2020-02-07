@@ -95,11 +95,11 @@ Route::group(['middleware' => 'App\Http\Middleware\LockOutUsers'], function () {
 });
 
 // API Routes
-Route::get('/api/v1/sims', 'APIController@getSims')->name('api.sims.index');
-Route::get('/api/v1/sims_archive/{id}', 'APIController@getSimsArchive')
-    ->name('api.sims.archive');
+//Route::get('/api/v1/sims', 'APIController@getSims')->name('api.sims.index');
+Route::get('/api/v1/sims_archive/{id}', 'APIController@getSimsArchive')->name('api.sims.archive');
 Route::get('/api/v1/sim_users', 'APIController@getSimUsers')->name('api.sim_users.index');
 Route::get('/api/v1/sim_user/{id}', 'APIController@getSimUser')->name('api.sim_users.index_user');
+Route::get('/api/v1/logins', 'APIController@getLogins')->name('api.logins.index');
 
 //https: //stmmax.com/email-bounced
 

@@ -121,16 +121,43 @@ class AppServiceProvider extends ServiceProvider
                 ],
             ];
 
-            // $users_sub = [
-            //     [
-            //         'name' => 'All Agents / Dealers',
-            //         'link' => '/all-users',
-            //     ],
-            //     [
-            //         'name' => 'Site Agents / Dealers',
-            //         'link' => '/users',
-            //     ],
-            // ];
+            $sims_sub = [
+                [
+                    'name' => 'User Sims',
+                    'link' => '/user-sims',
+                ],
+                [
+                    'name' => 'Look Up Sims',
+                    'link' => '/find-sims',
+                ],
+                [
+                    'name' => 'Transfer Sims',
+                    'link' => '/transfer-sims',
+                ],
+                [
+                    'name' => 'Delete Sims',
+                    'link' => '/delete-sims',
+                ],
+            ];
+
+            $users_sub = [
+                [
+                    'name' => 'Agents / Dealers',
+                    'link' => '/all-users',
+                ],
+                [
+                    'name' => 'Admin Users',
+                    'link' => '/admins-managers',
+                ],
+                [
+                    'name' => 'Add New User',
+                    'link' => '/register',
+                ],
+                [
+                    'name' => 'Login Tracker',
+                    'link' => '/login-tracker',
+                ],
+            ];
 
             $settings = Settings::first();
 
@@ -206,26 +233,33 @@ class AppServiceProvider extends ServiceProvider
                         'icon' => 'flaticon-upload',
                         'default' => false,
                     ],
+                    // [
+                    //     'name' => 'Look Up Sims',
+                    //     'link' => '/find-sims',
+                    //     'sub' => false,
+                    //     'icon' => 'flaticon-zoom-1',
+                    //     'default' => false,
+                    // ],
+                    // [
+                    //     'name' => 'Transfer Sims',
+                    //     'link' => '/transfer-sims',
+                    //     'sub' => false,
+                    //     'icon' => 'flaticon-sim-card-1',
+                    //     'default' => false,
+                    // ],
+                    // [
+                    //     'name' => 'Delete Sims',
+                    //     'link' => '/delete-sims',
+                    //     'sub' => false,
+                    //     'icon' => 'flaticon-delete',
+                    //     'default' => false,
+                    // ],
                     [
-                        'name' => 'Look Up Sims',
-                        'link' => '/find-sims',
-                        'sub' => false,
-                        'icon' => 'flaticon-zoom-1',
-                        'default' => false,
-                    ],
-                    [
-                        'name' => 'Transfer Sims',
-                        'link' => '/transfer-sims',
-                        'sub' => false,
+                        'name' => 'Sims',
+                        'link' => false,
+                        'sub' => $sims_sub,
                         'icon' => 'flaticon-sim-card-1',
-                        'default' => false,
-                    ],
-                    [
-                        'name' => 'Delete Sims',
-                        'link' => '/delete-sims',
-                        'sub' => false,
-                        'icon' => 'flaticon-delete',
-                        'default' => false,
+                        'default' => 'user-sims',
                     ],
                     [
                         'name' => 'Monthly Sims',
@@ -234,13 +268,13 @@ class AppServiceProvider extends ServiceProvider
                         'icon' => 'flaticon-sim-card',
                         'default' => false,
                     ],
-                    [
-                        'name' => 'User Sims',
-                        'link' => '/user-sims',
-                        'sub' => false,
-                        'icon' => 'flaticon-report-1',
-                        'default' => false,
-                    ],
+                    // [
+                    //     'name' => 'User Sims',
+                    //     'link' => '/user-sims',
+                    //     'sub' => false,
+                    //     'icon' => 'flaticon-report-1',
+                    //     'default' => false,
+                    // ],
                     [
                         'name' => 'Report Types',
                         'link' => false,
@@ -277,26 +311,33 @@ class AppServiceProvider extends ServiceProvider
                         'default' => '/settings',
                     ],
                     [
-                        'name' => 'Agents / Dealers',
-                        'link' => '/all-users',
-                        'sub' => false,
+                        'name' => 'Users',
+                        'link' => false,
+                        'sub' => $users_sub,
                         'icon' => 'flaticon-group',
-                        'default' => false,
+                        'default' => '/all-users',
                     ],
-                    [
-                        'name' => 'Admin Users',
-                        'link' => '/admins-managers',
-                        'sub' => false,
-                        'icon' => 'flaticon-user-3',
-                        'default' => false,
-                    ],
-                    [
-                        'name' => 'Add New User',
-                        'link' => '/register',
-                        'sub' => false,
-                        'icon' => 'flaticon-add-a-contact-on-phone-interface-symbol-of-a-user-with-a-plus-sign',
-                        'default' => false,
-                    ],
+                    // [
+                    //     'name' => 'Agents / Dealers',
+                    //     'link' => '/all-users',
+                    //     'sub' => false,
+                    //     'icon' => 'flaticon-group',
+                    //     'default' => false,
+                    // ],
+                    // [
+                    //     'name' => 'Admin Users',
+                    //     'link' => '/admins-managers',
+                    //     'sub' => false,
+                    //     'icon' => 'flaticon-user-3',
+                    //     'default' => false,
+                    // ],
+                    // [
+                    //     'name' => 'Add New User',
+                    //     'link' => '/register',
+                    //     'sub' => false,
+                    //     'icon' => 'flaticon-add-a-contact-on-phone-interface-symbol-of-a-user-with-a-plus-sign',
+                    //     'default' => false,
+                    // ],
                     [
                         'name' => '2nd Recharge',
                         'link' => '/recharge-data',
@@ -311,6 +352,13 @@ class AppServiceProvider extends ServiceProvider
                         'icon' => 'flaticon-charging-battery',
                         'default' => false,
                     ],
+                    // [
+                    //     'name' => 'Login Tracker',
+                    //     'link' => '/login-tracker',
+                    //     'sub' => false,
+                    //     'icon' => 'flaticon-group',
+                    //     'default' => false,
+                    // ],
                 ];
 
             } elseif ($user->isManager()) {

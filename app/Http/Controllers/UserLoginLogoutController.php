@@ -14,8 +14,8 @@ class UserLoginLogoutController extends Controller
      */
     public function index()
     {
-        //dd('track your user logins here...');
-        return view('login_tracker.index');
+        $logs = UserLoginLogout::orderBy('id', 'DESC')->get();
+        return view('login_tracker.index', compact('logs'));
         // 1. Create a custom view for this...
         // 2. Use datatables? There will eventually be a lot of these, but not so many it can't be queried at once.
     }

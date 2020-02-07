@@ -17,7 +17,7 @@ class SuccessLogout
      */
     public function __construct(Request $request)
     {
-        $this->request = $request;
+        //$this->request = $request;
     }
 
     /**
@@ -39,8 +39,5 @@ class SuccessLogout
                 }
             }
         }
-
-        //dd($record);
-        //$session_id = $this->request->cookie('stm_session');
     }
 }
