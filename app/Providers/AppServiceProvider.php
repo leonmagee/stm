@@ -127,6 +127,10 @@ class AppServiceProvider extends ServiceProvider
                     'link' => '/user-sims',
                 ],
                 [
+                    'name' => 'Upload Sims',
+                    'link' => '/sims/upload-all',
+                ],
+                [
                     'name' => 'Look Up Sims',
                     'link' => '/find-sims',
                 ],
@@ -156,6 +160,28 @@ class AppServiceProvider extends ServiceProvider
                 [
                     'name' => 'Login Tracker',
                     'link' => '/login-tracker',
+                ],
+            ];
+
+            $reports_sub = [
+                [
+                    'name' => 'Report Totals',
+                    'link' => '/report-totals',
+                ],
+                [
+                    'name' => 'User Reports',
+                    'link' => '/reports',
+                ],
+            ];
+
+            $emails_sub = [
+                [
+                    'name' => 'Email Blast',
+                    'link' => '/email-blast',
+                ],
+                [
+                    'name' => 'Email Tracker',
+                    'link' => '/email-tracker',
                 ],
             ];
 
@@ -213,26 +239,27 @@ class AppServiceProvider extends ServiceProvider
                         'default' => false,
                     ],
                     [
-                        'name' => 'Email Blast',
-                        'link' => '/email-blast',
-                        'sub' => false,
+                        'name' => 'Emails',
+                        'link' => false,
+                        'sub' => $emails_sub,
                         'icon' => 'flaticon-mail',
-                        'default' => false,
+                        'default' => '/email-blast',
                     ],
-                    [
-                        'name' => 'Email Tracker',
-                        'link' => '/email-tracker',
-                        'sub' => false,
-                        'icon' => 'flaticon-mail-2',
-                        'default' => false,
-                    ],
-                    [
-                        'name' => 'Upload Sims',
-                        'link' => '/sims/upload-all',
-                        'sub' => false,
-                        'icon' => 'flaticon-upload',
-                        'default' => false,
-                    ],
+
+                    // [
+                    //     'name' => 'Email Tracker',
+                    //     'link' => '/email-tracker',
+                    //     'sub' => false,
+                    //     'icon' => 'flaticon-mail-2',
+                    //     'default' => false,
+                    // ],
+                    // [
+                    //     'name' => 'Upload Sims',
+                    //     'link' => '/sims/upload-all',
+                    //     'sub' => false,
+                    //     'icon' => 'flaticon-upload',
+                    //     'default' => false,
+                    // ],
                     // [
                     //     'name' => 'Look Up Sims',
                     //     'link' => '/find-sims',
@@ -259,7 +286,7 @@ class AppServiceProvider extends ServiceProvider
                         'link' => false,
                         'sub' => $sims_sub,
                         'icon' => 'flaticon-sim-card-1',
-                        'default' => 'user-sims',
+                        'default' => '/user-sims',
                     ],
                     [
                         'name' => 'Monthly Sims',
@@ -276,26 +303,33 @@ class AppServiceProvider extends ServiceProvider
                     //     'default' => false,
                     // ],
                     [
+                        'name' => 'Reports',
+                        'link' => false,
+                        'sub' => $reports_sub,
+                        'icon' => 'flaticon-growth',
+                        'default' => '/report-totals',
+                    ],
+                    [
                         'name' => 'Report Types',
                         'link' => false,
                         'sub' => $report_types_sub,
                         'icon' => 'flaticon-report',
                         'default' => '/report-types',
                     ],
-                    [
-                        'name' => 'Report Totals',
-                        'link' => '/report-totals',
-                        'sub' => false,
-                        'icon' => 'flaticon-growth',
-                        'default' => false,
-                    ],
-                    [
-                        'name' => 'User Reports',
-                        'link' => '/reports',
-                        'sub' => false,
-                        'icon' => 'flaticon-bar-chart',
-                        'default' => false,
-                    ],
+                    // [
+                    //     'name' => 'Report Totals',
+                    //     'link' => '/report-totals',
+                    //     'sub' => false,
+                    //     'icon' => 'flaticon-growth',
+                    //     'default' => false,
+                    // ],
+                    // [
+                    //     'name' => 'User Reports',
+                    //     'link' => '/reports',
+                    //     'sub' => false,
+                    //     'icon' => 'flaticon-bar-chart',
+                    //     'default' => false,
+                    // ],
                     [
                         'name' => 'Archives',
                         'link' => '/archives',
