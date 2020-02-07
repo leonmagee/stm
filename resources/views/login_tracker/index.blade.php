@@ -9,6 +9,7 @@ Login Tracker
 <table id="sims_table" class="stripe compact">
   <thead>
     <tr>
+      <th>Id</th>
       <th>Company</th>
       <th>User</th>
       <th>Login Time</th>
@@ -28,7 +29,9 @@ Login Tracker
 "processing": true,
 "serverSide": true,
 "ajax": "{!! route('api.logins.index') !!}",
+"order": [[ 0, "desc" ]],
 "columns": [
+{ "data": "id" },
 { "data": "user.company" },
 { "data": "user.name" },
 { "data": "login" },

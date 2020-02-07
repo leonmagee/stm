@@ -37,7 +37,21 @@ class APIController extends Controller
     public function getLogins()
     {
         //$report_type = ReportType::find($id);
-        $logs = UserLoginLogout::orderBy('id', 'DESC')->with('user')->get();
+        $logs = UserLoginLogout::with('user')->get();
+
+        // $logs = UserLoginLogout::join('users', 'user_login_logouts.user_id', '=', 'users.id')
+        //     ->orderBy('user_login_logouts.id', 'DESC')
+        //     ->get();
+
+        //   Student::with('exam')
+        //  ->join('exam', 'students.id', '=', 'exam.student_id')
+        //  ->orderBy('exam.result', 'DESC')
+        //  ->get()
+
+// Student::with(array('exam' => function ($query) {
+        //     $query->orderBy('result', 'DESC');
+        // }))
+        //     ->get();
 
         return datatables($logs)->make(true);
     }
