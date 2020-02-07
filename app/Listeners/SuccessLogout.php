@@ -32,9 +32,11 @@ class SuccessLogout
         if ($user) {
             $user_id = $user->id;
             $record = UserLoginLogout::where('user_id', $user_id)->orderBy('id', 'DESC')->first();
-            if ($record->logout == null) {
-                $record->logout = Carbon::now();
-                $record->save();
+            if ($record) {
+                if ($record->logout == null) {
+                    $record->logout = Carbon::now();
+                    $record->save();
+                }
             }
         }
 
