@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use App\UserLoginLogout;
 use Illuminate\Http\Request;
 
@@ -14,10 +15,8 @@ class UserLoginLogoutController extends Controller
      */
     public function index()
     {
-        $logs = UserLoginLogout::orderBy('id', 'DESC')->get();
-        return view('login_tracker.index', compact('logs'));
-        // 1. Create a custom view for this...
-        // 2. Use datatables? There will eventually be a lot of these, but not so many it can't be queried at once.
+        //$logs = UserLoginLogout::orderBy('id', 'DESC')->get();
+        return view('login_tracker.index');
     }
 
     /**
@@ -38,14 +37,7 @@ class UserLoginLogoutController extends Controller
      */
     public function store(Request $request)
     {
-        // if ($logout) {
-        //     dd('this is a logout?');
-        // } else {
-        //     dd('this is a login!');
-        // }
-        // $user_id = \Auth::user()->id;
-        // $session_id = $request->cookie('stm_session');
-        // $time = Carbon::now();
+        //
     }
 
     /**
@@ -54,9 +46,14 @@ class UserLoginLogoutController extends Controller
      * @param  \App\UserLoginLogout  $userLoginLogout
      * @return \Illuminate\Http\Response
      */
-    public function show(UserLoginLogout $userLoginLogout)
+    public function show(User $user)
     {
-        //
+        $logs = UserLoginLogout::where('user_id', $user->id)->get();
+        $data = true;
+        if ($logs->isEmpty()) {
+            $data = false;
+        }
+        return view('login_tracker.show', compact('user', 'data'));
     }
 
     /**
