@@ -157,10 +157,6 @@ class AppServiceProvider extends ServiceProvider
                     'name' => 'Add New User',
                     'link' => '/register',
                 ],
-                [
-                    'name' => 'Login Tracker',
-                    'link' => '/login-tracker',
-                ],
             ];
 
             $reports_sub = [
@@ -182,6 +178,10 @@ class AppServiceProvider extends ServiceProvider
                 [
                     'name' => 'Email Tracker',
                     'link' => '/email-tracker',
+                ],
+                [
+                    'name' => 'Login Tracker',
+                    'link' => '/login-tracker',
                 ],
             ];
 

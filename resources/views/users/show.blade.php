@@ -68,7 +68,7 @@
 
       @if($is_admin)
       <div class="button-bar">
-        <a href="/login-tracker/{{ $user->id }}" class="button is-primary">Logins</a>
+        <a href="/login-tracker/{{ $user->id }}" class="button is-primary">Login Tracker</a>
         <a href="/bonus-credit/{{ $user->id }}" class="button is-primary">Bonus / Credit</a>
         <a href="/user-plan-values/{{ $user->id }}" class="button is-primary">Payment Override</a>
         <a href="#" class="modal-open button is-danger">Delete User</a>
