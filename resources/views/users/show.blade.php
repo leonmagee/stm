@@ -43,7 +43,7 @@
       @endif
 
       @if($user->address || $user->city || $user->state || $user->zip)
-      <did class="item address-wrap flex-wrap">
+      <div class="item address-wrap flex-wrap">
         <i class="fas fa-map-marker-alt"></i>
         <div class="address-wrap-inner">
           <div class="address">{{ $user->address }}</div>
@@ -51,7 +51,7 @@
             {{ $user->city }} {{ $user->state }}, {{ $user->zip }}
           </div>
         </div>
-      </did>
+      </div>
       @endif
 
     </div>

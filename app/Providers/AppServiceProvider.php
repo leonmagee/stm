@@ -144,6 +144,32 @@ class AppServiceProvider extends ServiceProvider
                 ],
             ];
 
+            $sims_sub_manager = [
+                [
+                    'name' => 'User Sims',
+                    'link' => '/user-sims',
+                ],
+                [
+                    'name' => 'Upload Sims',
+                    'link' => '/sims/upload-all',
+                ],
+                [
+                    'name' => 'Look Up Sims',
+                    'link' => '/find-sims',
+                ],
+            ];
+
+            $sims_sub_employees = [
+                [
+                    'name' => 'User Sims',
+                    'link' => '/user-sims',
+                ],
+                [
+                    'name' => 'Look Up Sims',
+                    'link' => '/find-sims',
+                ],
+            ];
+
             $users_sub = [
                 [
                     'name' => 'Agents / Dealers',
@@ -174,6 +200,21 @@ class AppServiceProvider extends ServiceProvider
                 [
                     'name' => 'Email Blast',
                     'link' => '/email-blast',
+                ],
+                [
+                    'name' => 'Email Tracker',
+                    'link' => '/email-tracker',
+                ],
+                [
+                    'name' => 'Login Tracker',
+                    'link' => '/login-tracker',
+                ],
+            ];
+
+            $emails_sub_manager = [
+                [
+                    'name' => 'Send Email',
+                    'link' => '/send-email',
                 ],
                 [
                     'name' => 'Email Tracker',
@@ -245,42 +286,6 @@ class AppServiceProvider extends ServiceProvider
                         'icon' => 'flaticon-mail',
                         'default' => '/email-blast',
                     ],
-
-                    // [
-                    //     'name' => 'Email Tracker',
-                    //     'link' => '/email-tracker',
-                    //     'sub' => false,
-                    //     'icon' => 'flaticon-mail-2',
-                    //     'default' => false,
-                    // ],
-                    // [
-                    //     'name' => 'Upload Sims',
-                    //     'link' => '/sims/upload-all',
-                    //     'sub' => false,
-                    //     'icon' => 'flaticon-upload',
-                    //     'default' => false,
-                    // ],
-                    // [
-                    //     'name' => 'Look Up Sims',
-                    //     'link' => '/find-sims',
-                    //     'sub' => false,
-                    //     'icon' => 'flaticon-zoom-1',
-                    //     'default' => false,
-                    // ],
-                    // [
-                    //     'name' => 'Transfer Sims',
-                    //     'link' => '/transfer-sims',
-                    //     'sub' => false,
-                    //     'icon' => 'flaticon-sim-card-1',
-                    //     'default' => false,
-                    // ],
-                    // [
-                    //     'name' => 'Delete Sims',
-                    //     'link' => '/delete-sims',
-                    //     'sub' => false,
-                    //     'icon' => 'flaticon-delete',
-                    //     'default' => false,
-                    // ],
                     [
                         'name' => 'Sims',
                         'link' => false,
@@ -295,13 +300,6 @@ class AppServiceProvider extends ServiceProvider
                         'icon' => 'flaticon-sim-card',
                         'default' => false,
                     ],
-                    // [
-                    //     'name' => 'User Sims',
-                    //     'link' => '/user-sims',
-                    //     'sub' => false,
-                    //     'icon' => 'flaticon-report-1',
-                    //     'default' => false,
-                    // ],
                     [
                         'name' => 'Reports',
                         'link' => false,
@@ -316,20 +314,6 @@ class AppServiceProvider extends ServiceProvider
                         'icon' => 'flaticon-report',
                         'default' => '/report-types',
                     ],
-                    // [
-                    //     'name' => 'Report Totals',
-                    //     'link' => '/report-totals',
-                    //     'sub' => false,
-                    //     'icon' => 'flaticon-growth',
-                    //     'default' => false,
-                    // ],
-                    // [
-                    //     'name' => 'User Reports',
-                    //     'link' => '/reports',
-                    //     'sub' => false,
-                    //     'icon' => 'flaticon-bar-chart',
-                    //     'default' => false,
-                    // ],
                     [
                         'name' => 'Archives',
                         'link' => '/archives',
@@ -351,27 +335,6 @@ class AppServiceProvider extends ServiceProvider
                         'icon' => 'flaticon-group',
                         'default' => '/all-users',
                     ],
-                    // [
-                    //     'name' => 'Agents / Dealers',
-                    //     'link' => '/all-users',
-                    //     'sub' => false,
-                    //     'icon' => 'flaticon-group',
-                    //     'default' => false,
-                    // ],
-                    // [
-                    //     'name' => 'Admin Users',
-                    //     'link' => '/admins-managers',
-                    //     'sub' => false,
-                    //     'icon' => 'flaticon-user-3',
-                    //     'default' => false,
-                    // ],
-                    // [
-                    //     'name' => 'Add New User',
-                    //     'link' => '/register',
-                    //     'sub' => false,
-                    //     'icon' => 'flaticon-add-a-contact-on-phone-interface-symbol-of-a-user-with-a-plus-sign',
-                    //     'default' => false,
-                    // ],
                     [
                         'name' => '2nd Recharge',
                         'link' => '/recharge-data',
@@ -386,13 +349,6 @@ class AppServiceProvider extends ServiceProvider
                         'icon' => 'flaticon-charging-battery',
                         'default' => false,
                     ],
-                    // [
-                    //     'name' => 'Login Tracker',
-                    //     'link' => '/login-tracker',
-                    //     'sub' => false,
-                    //     'icon' => 'flaticon-group',
-                    //     'default' => false,
-                    // ],
                 ];
 
             } elseif ($user->isManager()) {
@@ -405,13 +361,13 @@ class AppServiceProvider extends ServiceProvider
                         'icon' => 'flaticon-home',
                         'default' => false,
                     ],
-                    [
-                        'name' => 'Your Profile',
-                        'link' => '/profile',
-                        'sub' => false,
-                        'icon' => 'flaticon-user',
-                        'default' => false,
-                    ],
+                    // [
+                    //     'name' => 'Your Profile',
+                    //     'link' => '/profile',
+                    //     'sub' => false,
+                    //     'icon' => 'flaticon-user',
+                    //     'default' => false,
+                    // ],
                     [
                         'name' => 'Notes',
                         'link' => '/notes',
@@ -427,32 +383,18 @@ class AppServiceProvider extends ServiceProvider
                         'default' => false,
                     ],
                     [
-                        'name' => 'Send Email',
-                        'link' => '/send-email',
-                        'sub' => false,
+                        'name' => 'Emails',
+                        'link' => false,
+                        'sub' => $emails_sub_manager,
                         'icon' => 'flaticon-mail',
-                        'default' => false,
+                        'default' => '/email-blast',
                     ],
                     [
-                        'name' => 'Email Tracker',
-                        'link' => '/email-tracker',
-                        'sub' => false,
-                        'icon' => 'flaticon-mail-2',
-                        'default' => false,
-                    ],
-                    [
-                        'name' => 'Upload Sims',
-                        'link' => '/sims/upload-all',
-                        'sub' => false,
-                        'icon' => 'flaticon-upload',
-                        'default' => false,
-                    ],
-                    [
-                        'name' => 'Look Up Sims',
-                        'link' => '/find-sims',
-                        'sub' => false,
-                        'icon' => 'flaticon-zoom-1',
-                        'default' => false,
+                        'name' => 'Sims',
+                        'link' => false,
+                        'sub' => $sims_sub_manager,
+                        'icon' => 'flaticon-sim-card-1',
+                        'default' => '/user-sims',
                     ],
                     [
                         'name' => 'Monthly Sims',
@@ -462,26 +404,26 @@ class AppServiceProvider extends ServiceProvider
                         'default' => false,
                     ],
                     [
-                        'name' => 'User Sims',
-                        'link' => '/user-sims',
-                        'sub' => false,
-                        'icon' => 'flaticon-report-1',
-                        'default' => false,
-                    ],
-                    [
-                        'name' => 'Report Totals',
-                        'link' => '/report-totals',
-                        'sub' => false,
+                        'name' => 'Reports',
+                        'link' => false,
+                        'sub' => $reports_sub,
                         'icon' => 'flaticon-growth',
-                        'default' => false,
+                        'default' => '/report-totals',
                     ],
-                    [
-                        'name' => 'User Reports',
-                        'link' => '/reports',
-                        'sub' => false,
-                        'icon' => 'flaticon-bar-chart',
-                        'default' => false,
-                    ],
+                    // [
+                    //     'name' => 'Report Totals',
+                    //     'link' => '/report-totals',
+                    //     'sub' => false,
+                    //     'icon' => 'flaticon-growth',
+                    //     'default' => false,
+                    // ],
+                    // [
+                    //     'name' => 'User Reports',
+                    //     'link' => '/reports',
+                    //     'sub' => false,
+                    //     'icon' => 'flaticon-bar-chart',
+                    //     'default' => false,
+                    // ],
                     [
                         'name' => 'Archives',
                         'link' => '/archives',
@@ -529,13 +471,13 @@ class AppServiceProvider extends ServiceProvider
                         'icon' => 'flaticon-home',
                         'default' => false,
                     ],
-                    [
-                        'name' => 'Your Profile',
-                        'link' => '/profile',
-                        'sub' => false,
-                        'icon' => 'flaticon-user',
-                        'default' => false,
-                    ],
+                    // [
+                    //     'name' => 'Your Profile',
+                    //     'link' => '/profile',
+                    //     'sub' => false,
+                    //     'icon' => 'flaticon-user',
+                    //     'default' => false,
+                    // ],
                     [
                         'name' => 'Notes',
                         'link' => '/notes',
@@ -551,11 +493,11 @@ class AppServiceProvider extends ServiceProvider
                         'default' => false,
                     ],
                     [
-                        'name' => 'Look Up Sims',
-                        'link' => '/find-sims',
-                        'sub' => false,
-                        'icon' => 'flaticon-zoom-1',
-                        'default' => false,
+                        'name' => 'Sims',
+                        'link' => false,
+                        'sub' => $sims_sub_employees,
+                        'icon' => 'flaticon-sim-card-1',
+                        'default' => '/user-sims',
                     ],
                     [
                         'name' => 'Monthly Sims',
@@ -565,26 +507,26 @@ class AppServiceProvider extends ServiceProvider
                         'default' => false,
                     ],
                     [
-                        'name' => 'User Sims',
-                        'link' => '/user-sims',
-                        'sub' => false,
-                        'icon' => 'flaticon-report-1',
-                        'default' => false,
-                    ],
-                    [
-                        'name' => 'Report Totals',
-                        'link' => '/report-totals',
-                        'sub' => false,
+                        'name' => 'Reports',
+                        'link' => false,
+                        'sub' => $reports_sub,
                         'icon' => 'flaticon-growth',
-                        'default' => false,
+                        'default' => '/report-totals',
                     ],
-                    [
-                        'name' => 'User Reports',
-                        'link' => '/reports',
-                        'sub' => false,
-                        'icon' => 'flaticon-bar-chart',
-                        'default' => false,
-                    ],
+                    // [
+                    //     'name' => 'Report Totals',
+                    //     'link' => '/report-totals',
+                    //     'sub' => false,
+                    //     'icon' => 'flaticon-growth',
+                    //     'default' => false,
+                    // ],
+                    // [
+                    //     'name' => 'User Reports',
+                    //     'link' => '/reports',
+                    //     'sub' => false,
+                    //     'icon' => 'flaticon-bar-chart',
+                    //     'default' => false,
+                    // ],
                     [
                         'name' => 'Archives',
                         'link' => '/archives',

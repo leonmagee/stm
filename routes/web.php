@@ -43,14 +43,14 @@ Route::group(['middleware' => 'App\Http\Middleware\LockOutUsersManagers'], funct
     Route::get('delete-email/{email}', 'EmailTrackerController@destroy');
     Route::get('delete-emails/{string}', 'EmailTrackerController@destroy_page');
     Route::get('delete-order/{order}', 'OrderController@destroy');
-    Route::get('login-tracker', 'UserLoginLogoutController@index');
-    Route::get('login-tracker/{user}', 'UserLoginLogoutController@show');
 });
 
 Route::get('order-sims', 'OrderController@create');
 Route::post('order-sims', 'OrderController@store');
 
 Route::group(['middleware' => 'App\Http\Middleware\LockOutUsers'], function () {
+    Route::get('login-tracker', 'UserLoginLogoutController@index');
+    Route::get('login-tracker/{user}', 'UserLoginLogoutController@show');
     Route::get('notes', 'NoteController@index');
     Route::get('orders', 'OrderController@index');
     Route::get('users/{user}', 'UserController@show');
