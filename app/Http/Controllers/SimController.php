@@ -114,6 +114,15 @@ class SimController extends Controller
     }
 
     /**
+     * Show the upload form
+     */
+    public function upload_single_form(User $user)
+    {
+        $carriers = Carrier::whereNotIn('id', [3])->get();
+        return view('sims.upload-single', compact('carriers', 'user'));
+    }
+
+    /**
      * Process the upload for monthly sims
      *
      * @todo I might still want to do this based on the header column names...

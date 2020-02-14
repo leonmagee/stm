@@ -3,11 +3,15 @@
 @section('title')
 <?php if(!isset($is_single)) {$is_single = false; }?>
 @if(!$is_single && count($report_data_array) > 0)
-Reports for {{ $current_site_date }}
-/ Total Payment: <span>${{ number_format($total_payment_all_users, 2) }}</span>
+<div class="user-report-totals-final-count">
+  Reports for {{ $current_site_date }}
+  / Total Payment: <span>${{ number_format($total_payment_all_users, 2) }}</span>
+</div>
 @foreach($total_payments_residual as $item)
 <div class="title-line-break"></div>
-{{ $item['name'] }} total: <span>{{ $item['total'] }}</span>
+<div class="user-report-totals-final-count">
+  {{ $item['name'] }} total: <span>{{ $item['total'] }}</span>
+</div>
 @endforeach
 @else
 Report for {{ $current_site_date }}

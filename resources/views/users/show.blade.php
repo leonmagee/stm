@@ -64,6 +64,7 @@
         @endif
         <a href="/user-sims/user/{{ $user->id }}" class="button is-primary">View Sims</a>
         <a href="/reports/{{ $user->id }}" class="button is-primary">Report</a>
+        <a href="/sims/upload/{{ $user->id }}" class="button is-primary">Upload Sims</a>
       </div>
 
       @if($is_admin)

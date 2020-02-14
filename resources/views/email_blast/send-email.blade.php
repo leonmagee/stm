@@ -109,13 +109,11 @@
             </div>
             <label class="label">Email Subject</label>
             <div class="control email-blast-wrap-bottom">
-              <input class="input" name="subject" value="Welcome to H2O Wireless / Lyca Mobile" />
-              {{-- <input class="input" name="subject" placeholder="Enter Subject" value="" /> --}}
+              <input class="input" name="subject" />
             </div>
             <label class="label">Email Message</label>
             <div class="control">
-              <textarea class="textarea"
-                name="message">Thank you for choosing GS Wireless as your premier master agent for H2O Wireless / Lyca Mobile. You’re not just activating H2O Wireless & Lyca Mobile. We’re creating a partnership. We want your business to succeed because when you’re successful, we’re successful. At GS Wireless we include free support & extraordinary customer service that many competitors consider an “add-on” for additional cost. Remember unreliable sources will always come back to bite you.</textarea>
+              <textarea class="textarea" name="message"></textarea>
             </div>
           </div>
         </div>

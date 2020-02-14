@@ -101,6 +101,13 @@
     }
 }
 
+// user report totals
+.user-report-totals-final-count {
+    @include normal_background;
+    min-width: 40%;
+    display: inline-block;
+}
+
 .report-totals-wrap {
     // within grid
     .report-totals-item {
