@@ -23,7 +23,7 @@ class EmailBlast extends Mailable
     public function __construct(
         User $user,
         $message = null,
-        $subject = 'Sim Track Manager',
+        $subject = 'GS Wireless',
         $file = null,
         $file2 = null,
         $file3 = null,
