@@ -107,10 +107,10 @@ class AppServiceProvider extends ServiceProvider
                     'name' => 'Site Settings',
                     'link' => '/site-settings',
                 ],
-                [
-                    'name' => 'Carriers',
-                    'link' => '/carriers',
-                ],
+                // [
+                //     'name' => 'Carriers',
+                //     'link' => '/carriers',
+                // ],
                 [
                     'name' => 'Add New Spiff',
                     'link' => '/add-report-type-spiff',

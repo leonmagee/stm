@@ -197,8 +197,8 @@ Route::post('change-archive-date', 'ArchiveController@change_archive_date');
 /**
  * Carriers Routes
  */
-Route::get('carriers', 'CarrierController@index');
-Route::get('carriers/{carrier}', 'CarrierController@show');
+// Route::get('carriers', 'CarrierController@index');
+// Route::get('carriers/{carrier}', 'CarrierController@show');
 
 /**
  * Auth Routes
