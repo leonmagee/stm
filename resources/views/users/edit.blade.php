@@ -4,6 +4,8 @@
 
 @include('layouts.errors')
 
+@include('mixins.user-back', ['user' => $user])
+
 <div class="form-wrapper">
 
   <div class="form-wrapper-inner">

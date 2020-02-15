@@ -18216,6 +18216,47 @@ table.dataTable thead .sorting_desc_disabled:after {
   vertical-align: middle;
 }
 
+.user-back-mixin-wrap {
+  display: inline-block;
+}
+
+.user-back-mixin-wrap a.user-back-mixin-link {
+  -webkit-box-shadow: 1px 1px rgba(0, 0, 0, 0.05);
+          box-shadow: 1px 1px rgba(0, 0, 0, 0.05);
+  background-color: #FFF;
+  color: #333;
+  padding: 15px;
+  padding: 0;
+  margin-bottom: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: #1b9aaa;
+  border-radius: 5px;
+}
+
+.user-back-mixin-wrap a.user-back-mixin-link i {
+  color: #fff;
+  font-size: 2em;
+  padding: 0 5px 0 3px;
+}
+
+.user-back-mixin-wrap a.user-back-mixin-link span {
+  color: #1b9aaa;
+  font-weight: bold;
+  padding: 5px 12px 5px 10px;
+  background-color: #fff;
+  font-size: 1.2em;
+  border-radius: 0 5px 5px 0;
+}
+
+.user-back-mixin-wrap a.user-back-mixin-link:hover {
+  opacity: 0.7;
+}
+
 .dealersCount {
   font-weight: bold;
   color: #555;
