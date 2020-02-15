@@ -5,6 +5,7 @@ Logins for {{ $user->company . ' - ' . $user->name }}
 @endsection
 
 @section('content')
+@include('mixins.user-back', ['user' => $user])
 @if($data)
 <table id="sims_table" class="stripe compact">
   <thead>

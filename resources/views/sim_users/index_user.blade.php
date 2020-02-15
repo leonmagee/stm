@@ -1,22 +1,24 @@
 @extends('layouts.layout')
 
-@section('title')
+{{-- @section('title')
 Sims For {{ $user->company }} - {{ $user->name }}
-@endsection
+@endsection --}}
 
 @section('content')
 
+@include('mixins.user-back', ['user' => $user])
+
 <table id="sims_table" class="stripe compact">
-    <thead>
-        <tr>
-            <th>Sim Number</th>
-            <th>Carrier</th>
-            <th>Company</th>
-            <th>Name</th>
-        </tr>
-    </thead>
-    <tbody>
-    </tbody>
+  <thead>
+    <tr>
+      <th>Sim Number</th>
+      <th>Carrier</th>
+      <th>Company</th>
+      <th>Name</th>
+    </tr>
+  </thead>
+  <tbody>
+  </tbody>
 </table>
 
 @endsection
@@ -24,8 +26,7 @@ Sims For {{ $user->company }} - {{ $user->name }}
 @section('page-script')
 
 <script>
-
-$('#sims_table').DataTable({
+  $('#sims_table').DataTable({
     "processing": true,
     "serverSide": true,
     "ajax": "{!! route('api.sim_users.index_user', ['id' => $user->id]) !!}",
@@ -40,4 +41,3 @@ $('#sims_table').DataTable({
 </script>
 
 @endsection
-

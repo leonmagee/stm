@@ -1,10 +1,12 @@
 @extends('layouts.layout')
 
-@section('title')
+{{-- @section('title')
 Upload Sims for {{ $user->company . ' - ' . $user->name }}
-@endsection
+@endsection --}}
 
 @section('content')
+
+@include('mixins.user-back', ['user' => $user])
 
 <div class="form-wrapper">
 
