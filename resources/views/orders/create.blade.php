@@ -26,7 +26,7 @@ Order Sims / POS
           <div class="column is-half-desktop">
             <div class="field">
               <label class="label">Number of {{ $carrier->name }} Sims</label>
-              <input name="sims-{{ $carrier->id }}" type="number" class="input" placeholder="0" />
+              <input name="sims-{{ $carrier->id }}" type="number" class="input" placeholder="0" min="0" />
             </div>
           </div>
           @endforeach
@@ -35,7 +35,7 @@ Order Sims / POS
           <div class="column is-half-desktop">
             <div class="field">
               <label class="label">Number of {{ $carrier->name }} Brochures</label>
-              <input name="brochures-{{ $carrier->id }}" type="number" class="input" placeholder="0" />
+              <input name="brochures-{{ $carrier->id }}" type="number" class="input" placeholder="0" min="0" />
             </div>
           </div>
           @endforeach
