@@ -14,7 +14,7 @@ Order Sims / POS
 
     <h3>Choose Details of SIM / POS Order</h3>
 
-    <form action="/order-sims" method="POST" enctype="multipart/form-data">
+    <form id="order_sims_form" action="/order-sims" method="POST" enctype="multipart/form-data">
 
       <div class="form-wrap">
 
