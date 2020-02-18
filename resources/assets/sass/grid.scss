@@ -30,14 +30,17 @@
                 flex: 0 1 10%;
                 padding: 25px 15px;
                 &.carrier-1 {
+                    // h2o
                     background: #fbe84e;
                 }
                 &.carrier-2 {
+                    // lyca
                     background-color: #026fba;
                     color: #fff;
                 }
                 &.carrier-3 {
-                    background-color: $color-red;
+                    // easy go
+                    background-color: darken(#cede00, 3%);
                     color: #fff;
                 }
             }
