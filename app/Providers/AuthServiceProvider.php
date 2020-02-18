@@ -26,7 +26,7 @@ class AuthServiceProvider extends ServiceProvider
         $this->registerPolicies();
 
         Gate::define('see-sent-emails', function ($user) {
-            if ($user->isAdminManager()) {
+            if ($user->isAdminManagerEmployee()) {
                 return true;
             }
             return false;

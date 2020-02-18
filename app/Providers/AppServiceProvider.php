@@ -226,6 +226,17 @@ class AppServiceProvider extends ServiceProvider
                 ],
             ];
 
+            $emails_sub_employee = [
+                [
+                    'name' => 'Email Tracker',
+                    'link' => '/email-tracker',
+                ],
+                [
+                    'name' => 'Login Tracker',
+                    'link' => '/login-tracker',
+                ],
+            ];
+
             $settings = Settings::first();
 
             $site = $settings->get_site_object()->name;
@@ -491,6 +502,13 @@ class AppServiceProvider extends ServiceProvider
                         'sub' => false,
                         'icon' => 'flaticon-sim',
                         'default' => false,
+                    ],
+                    [
+                        'name' => 'Emails',
+                        'link' => false,
+                        'sub' => $emails_sub_employee,
+                        'icon' => 'flaticon-mail',
+                        'default' => '/email-tracker',
                     ],
                     [
                         'name' => 'Sims',

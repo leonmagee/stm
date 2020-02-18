@@ -64,12 +64,17 @@
         @endif
         <a href="/user-sims/user/{{ $user->id }}" class="button is-primary">View Sims</a>
         <a href="/reports/{{ $user->id }}" class="button is-primary">Report</a>
+        @if(\Auth::user()->isAdminManager())
         <a href="/sims/upload/{{ $user->id }}" class="button is-primary">Upload Sims</a>
+        @endif
+        @if(\Auth::user()->isAdminManagerEmployee())
+        <a href="/login-tracker/{{ $user->id }}" class="button is-primary">Login Tracker</a>
+        @endif
       </div>
 
       @if($is_admin)
       <div class="button-bar">
-        <a href="/login-tracker/{{ $user->id }}" class="button is-primary">Login Tracker</a>
+        {{-- <a href="/login-tracker/{{ $user->id }}" class="button is-primary">Login Tracker</a> --}}
         <a href="/bonus-credit/{{ $user->id }}" class="button is-primary">Bonus / Credit</a>
         <a href="/user-plan-values/{{ $user->id }}" class="button is-primary">Payment Override</a>
         <a href="#" class="modal-open button is-danger">Delete User</a>
