@@ -18,7 +18,11 @@ Report for {{ $current_site_date }}
 @endif
 @endsection
 
+
 @section('content')
+@if($is_single && isset($user))
+@include('mixins.user-back', ['user' => $user])
+@endif
 
 @if($is_admin)
 <div class="save-archive-button-wrap">

@@ -293,7 +293,13 @@ class ReportsController extends Controller
 
                 $name = $report_type->carrier->name . ' ' . $report_type->name;
 
-                $report_type_totals_array[$name] = $matching_sims_count;
+                //$report_type_totals_array[$name] = $matching_sims_count;
+                $report_type_totals_array[] = [
+                    'name' => $name,
+                    'count' => $matching_sims_count,
+                    'carrier' => $report_type->carrier_id,
+                ];
+
                 $total_count_final += $matching_sims_count;
             } else {
 
@@ -308,7 +314,13 @@ class ReportsController extends Controller
 
                 $name = $report_type->carrier->name . ' ' . $report_type->name;
 
-                $report_type_totals_array[$name] = $matching_sims_count;
+                //$report_type_totals_array[$name] = $matching_sims_count;
+                $report_type_totals_array[] = [
+                    'name' => $name,
+                    'count' => $matching_sims_count,
+                    'carrier' => $report_type->carrier_id,
+                ];
+
                 $total_count_final_res += $matching_sims_count;
             }
         }
@@ -881,7 +893,8 @@ class ReportsController extends Controller
             'report_data_array',
             'total_payment_all_users',
             'is_admin',
-            'is_single'
+            'is_single',
+            'user'
         ));
     }
 
