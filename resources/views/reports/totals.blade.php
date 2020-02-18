@@ -12,17 +12,18 @@
 
 <div class="stm-grid-wrap report-totals-wrap">
 
-  @foreach( $report_type_totals_array as $report_type => $total )
+  {{-- @foreach( $report_type_totals_array as $report_type => $total ) --}}
+  @foreach( $report_type_totals_array as $item )
 
   <div class="single-grid-item">
 
-    <div class="flex-item icon-wrap">
+    <div class="flex-item icon-wrap carrier-{{ $item['carrier'] }}">
       <i class="fas fa-chart-pie"></i>
     </div>
 
     <div class="flex-item report-totals-item">
 
-      {{ $report_type }}: <span>{{ number_format($total) }}</span>
+      {{ $item['name'] }}: <span>{{ number_format($item['count']) }}</span>
 
     </div>
 

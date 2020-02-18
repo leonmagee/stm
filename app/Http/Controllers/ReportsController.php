@@ -201,6 +201,8 @@ class ReportsController extends Controller
 
         foreach ($report_types as $report_type) {
 
+            //dd($report_type);
+
             if ($report_type->spiff) {
 
                 $matching_sims_count = DB::table('sims')
@@ -214,7 +216,12 @@ class ReportsController extends Controller
 
                 $name = $report_type->carrier->name . ' ' . $report_type->name;
 
-                $report_type_totals_array[$name] = $matching_sims_count;
+                //$report_type_totals_array[$name] = $matching_sims_count;
+                $report_type_totals_array[] = [
+                    'name' => $name,
+                    'count' => $matching_sims_count,
+                    'carrier' => $report_type->carrier_id,
+                ];
                 $total_count_final += $matching_sims_count;
 
             } else {
@@ -230,10 +237,18 @@ class ReportsController extends Controller
 
                 $name = $report_type->carrier->name . ' ' . $report_type->name;
 
-                $report_type_totals_array[$name] = $matching_sims_count;
+                //$report_type_totals_array[$name] = $matching_sims_count;
+                $report_type_totals_array[] = [
+                    'name' => $name,
+                    'count' => $matching_sims_count,
+                    'carrier' => $report_type->carrier_id,
+                ];
+
                 $total_count_final_res += $matching_sims_count;
             }
         }
+
+        //dd($report_type_totals_array);
 
         return view('reports.totals', compact(
             'site_name',

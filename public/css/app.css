@@ -17020,6 +17020,20 @@ textarea:focus {
   padding: 25px 15px;
 }
 
+.stm-grid-wrap .single-grid-item .flex-item.icon-wrap.carrier-1 {
+  background: #fbe84e;
+}
+
+.stm-grid-wrap .single-grid-item .flex-item.icon-wrap.carrier-2 {
+  background-color: #026fba;
+  color: #fff;
+}
+
+.stm-grid-wrap .single-grid-item .flex-item.icon-wrap.carrier-3 {
+  background-color: #ef476f;
+  color: #fff;
+}
+
 .stm-grid-wrap a.single-grid-item:hover {
   background: #1b9aaa;
   border-color: #1b9aaa;

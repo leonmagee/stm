@@ -29,6 +29,17 @@
                 background-color: rgba(0, 0, 0, 0.03);
                 flex: 0 1 10%;
                 padding: 25px 15px;
+                &.carrier-1 {
+                    background: #fbe84e;
+                }
+                &.carrier-2 {
+                    background-color: #026fba;
+                    color: #fff;
+                }
+                &.carrier-3 {
+                    background-color: $color-red;
+                    color: #fff;
+                }
             }
         }
     }
