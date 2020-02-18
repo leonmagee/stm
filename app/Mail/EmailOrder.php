@@ -28,7 +28,7 @@ class EmailOrder extends Mailable
         $this->sims = $sims;
         $this->date = $date;
         $this->admin = $admin;
-        $this->subject('GS Wireless New Sims / POS Order');
+        $this->subject('New Sims / POS Order');
         $this->callbacks[] = (function ($message) {$message->getHeaders()->addTextHeader('X-No-Track', Str::random(10));});
 
     }
