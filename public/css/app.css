@@ -18234,7 +18234,7 @@ table.dataTable thead .sorting_desc_disabled:after {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  background-color: #1b9aaa;
+  background-color: #ef476f;
   border-radius: 5px;
 }
 
