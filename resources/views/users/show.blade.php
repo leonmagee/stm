@@ -70,16 +70,13 @@
         @if(\Auth::user()->isAdminManagerEmployee())
         <a href="/login-tracker/{{ $user->id }}" class="button is-primary">Login Tracker</a>
         @endif
-      </div>
-
-      @if($is_admin)
-      <div class="button-bar">
+        @if($is_admin)
         <a href="/email-tracker/{{ $user->id }}" class="button is-primary">Email Tracker</a>
         <a href="/bonus-credit/{{ $user->id }}" class="button is-primary">Bonus / Credit</a>
         <a href="/user-plan-values/{{ $user->id }}" class="button is-primary">Payment Override</a>
         <a href="#" class="modal-open button is-danger">Delete User</a>
+        @endif
       </div>
-      @endif
     </div>
 
 
