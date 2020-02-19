@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use Illuminate\Http\Request;
 use jdavidbakr\MailTracker\Model\SentEmail;
 
@@ -12,9 +13,10 @@ class EmailTrackerController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index_one_user(User $user)
     {
-        //
+        $emails = SentEmail::where('email_address', $user->email)->get();
+        return view('vendor.emailTrakingViews.index-one-user', compact('emails'));
     }
 
     /**

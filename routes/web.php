@@ -234,6 +234,7 @@ Route::group(['middleware' => 'App\Http\Middleware\LockOutUsersManagers'], funct
 Route::group(['middleware' => 'App\Http\Middleware\LockOutUsers'], function () {
     Route::get('send-email', 'EmailBlastController@index_send_email');
     Route::post('send-email', 'EmailBlastController@send_email');
+    Route::get('email-tracker/{user}', 'EmailTrackerController@index_one_user');
 });
 
 Route::get('contact', 'EmailBlastController@contact');
