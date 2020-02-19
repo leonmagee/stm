@@ -15,8 +15,20 @@ class EmailTrackerController extends Controller
      */
     public function index_one_user(User $user)
     {
-        $emails = SentEmail::where('email_address', $user->email)->get();
-        return view('vendor.emailTrakingViews.index-one-user', compact('emails'));
+        $emails = SentEmail::where('email_address', $user->email)->orderBy('created_at', 'desc')->get();
+        return view('vendor.emailTrakingViews.index-one-user', compact('emails', 'user'));
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function your_emails(User $user)
+    {
+        $user = \Auth::user();
+        $emails = SentEmail::where('email_address', $user->email)->orderBy('created_at', 'desc')->get();
+        return view('vendor.emailTrakingViews.your-emails', compact('emails', 'user'));
     }
 
     /**
@@ -85,6 +97,19 @@ class EmailTrackerController extends Controller
         $email->delete();
         session()->flash('danger', 'Email Deleted');
         return redirect('/email-tracker');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  jdavidbakr\MailTracker\Model\SentEmail;
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy_on_user(SentEmail $email, $user)
+    {
+        $email->delete();
+        session()->flash('danger', 'Email Deleted');
+        return redirect('/email-tracker/' . $user);
     }
 
     /**

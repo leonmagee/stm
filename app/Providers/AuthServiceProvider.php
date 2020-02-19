@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
+use jdavidbakr\MailTracker\Model\SentEmail;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -28,6 +29,25 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('see-sent-emails', function ($user) {
             if ($user->isAdminManagerEmployee()) {
                 return true;
+            } else {
+                $request = resolve(\Illuminate\Http\Request::class);
+                $uri = $request->getUri();
+                $matches = false;
+                $match = preg_match('/email-tracker\/show-email\/([0-9]*)/', $uri, $matches);
+                if ($match) {
+                    $user_email = $user->email; // logged in user
+                    $email_id = $matches[1];
+                    $email = SentEmail::find($email_id);
+                    if ($email) {
+                        if ($user_email == $email->email_address) {
+                            return true;
+                        }
+                        return false;
+                    }
+                    return false;
+                }
+                return false;
+
             }
             return false;
         });

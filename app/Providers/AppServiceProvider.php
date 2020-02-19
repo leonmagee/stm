@@ -602,6 +602,13 @@ class AppServiceProvider extends ServiceProvider
                         'default' => false,
                     ],
                     [
+                        'name' => 'Your Emails',
+                        'link' => '/your-emails',
+                        'sub' => false,
+                        'icon' => 'flaticon-mail',
+                        'default' => false,
+                    ],
+                    [
                         'name' => 'Order Sims / POS',
                         'link' => '/order-sims',
                         'sub' => false,
@@ -683,6 +690,13 @@ class AppServiceProvider extends ServiceProvider
                         'link' => '/profile',
                         'sub' => false,
                         'icon' => 'flaticon-user',
+                        'default' => false,
+                    ],
+                    [
+                        'name' => 'Your Emails',
+                        'link' => '/your-emails',
+                        'sub' => false,
+                        'icon' => 'flaticon-mail',
                         'default' => false,
                     ],
                     [

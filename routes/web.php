@@ -41,6 +41,7 @@ Route::group(['middleware' => 'App\Http\Middleware\LockOutUsersManagers'], funct
     Route::post('update-user-sites', 'UserController@changeUserSites');
     Route::get('delete-note/{note}', 'NoteController@destroy');
     Route::get('delete-email/{email}', 'EmailTrackerController@destroy');
+    Route::get('delete-email-user/{email}/{user}', 'EmailTrackerController@destroy_on_user');
     Route::get('delete-emails/{string}', 'EmailTrackerController@destroy_page');
     Route::get('delete-order/{order}', 'OrderController@destroy');
 });
@@ -236,6 +237,8 @@ Route::group(['middleware' => 'App\Http\Middleware\LockOutUsers'], function () {
     Route::post('send-email', 'EmailBlastController@send_email');
     Route::get('email-tracker/{user}', 'EmailTrackerController@index_one_user');
 });
+
+Route::get('your-emails', 'EmailTrackerController@your_emails');
 
 Route::get('contact', 'EmailBlastController@contact');
 Route::post('contact', 'EmailBlastController@contact_submit');
