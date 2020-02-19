@@ -18984,7 +18984,6 @@ table.dataTable thead .sorting_desc_disabled:after {
 
 .report-totals-wrap .report-totals-item {
   padding: 10px 15px;
-  font-size: 1em !important;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
