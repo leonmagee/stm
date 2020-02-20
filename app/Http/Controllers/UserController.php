@@ -978,6 +978,7 @@ class UserController extends Controller
             ->where('name', 'LIKE', "%{$search}%")
             ->orWhere('email', 'LIKE', "%{$search}%")
             ->orWhere('company', 'LIKE', "%{$search}%")
+            ->orWhere('phone', 'LIKE', "%{$search}%")
             ->get();
 
         return view('users.search-results', compact('users', 'search'));
