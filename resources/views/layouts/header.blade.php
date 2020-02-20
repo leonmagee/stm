@@ -15,7 +15,18 @@
 
       @if($logged_in_user->isAdmin())
 
+
+
       <div class="large-menu">
+        <div class="search-wrap">
+          <form method="POST" action="/search-user">
+            @csrf
+            <input type="text" class="search" name="user_search" placeholder="Search..." />
+            <button type="submit" class="submit">
+              <i class="fas fa-search"></i>
+            </button>
+          </form>
+        </div>
         <div class="field has-addons">
           <p class="control">
             <a class="button type" href="/settings">
@@ -49,14 +60,6 @@
               <span class="text">Log Out</span>
             </a>
           </p>
-          {{-- <p class="control">
-            <a class="button settings" href="/settings">
-              <span class="icon is-small">
-                <i class="fas fa-cog"></i>
-              </span>
-              <span class="text">Settings</span>
-            </a>
-          </p> --}}
           <p class="control">
             <a class="button mode {{ $mode }}" href="/settings">
               <span class="icon is-small">

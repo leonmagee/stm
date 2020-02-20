@@ -113,22 +113,30 @@ class ReportsController extends Controller
     }
 
     /**
-     * Display a listing of the resource.
+     * This should only apply to agents with dealers under them to show that report.
+     * The 'site_id' will be the 'master_agent_site' from the users table.
      *
      * @return \Illuminate\Http\Response
      */
     public function dealer_reports()
     {
+
         $settings = Settings::first();
         $current_date = $settings->current_date;
         $current_site_date = Helpers::get_date_name($current_date);
         $current_user = \Auth::user();
-        if ($current_user->isAdmin() || $current_user->isManager() || $current_user->isEmployee()) {
-            $site_id = $settings->get_site_id();
-        } else {
-            $site_id = $current_user->site_id();
+        // if ($current_user->isAdmin() || $current_user->isManager() || $current_user->isEmployee()) {
+        //     $site_id = $settings->get_site_id();
+        // } else {
+        //     $site_id = $current_user->site_id();
+        // }
+        $user = \Auth::user();
+        $site_id = $user->master_agent_site;
+        if (!$site_id) {
+            return redirect('/');
         }
         $site = Site::find($site_id);
+
         $site_name = $site->name;
 
         /**

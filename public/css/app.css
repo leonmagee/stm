@@ -17370,12 +17370,12 @@ body.stm-body .banner-image-wrap img {
 .header-wrap .logo-wrap a {
   text-transform: uppercase;
   font-weight: 800;
-  color: #FFF;
+  color: #fff;
   font-size: 25px;
 }
 
 .header-wrap .logo-wrap a:hover {
-  color: #FFF;
+  color: #fff;
 }
 
 .header-wrap .logo-wrap a.menu-toggle {
@@ -17413,6 +17413,41 @@ body.stm-body .banner-image-wrap img {
 @media (min-width: 980px) {
   .header-wrap .header-area .large-menu {
     display: block;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+
+  .header-wrap .header-area .large-menu .search-wrap {
+    background-color: white;
+    margin-right: 25px;
+    color: #555;
+    border-radius: 5px;
+  }
+
+  .header-wrap .header-area .large-menu .search-wrap form {
+    padding: 3px 8px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    height: 100%;
+  }
+
+  .header-wrap .header-area .large-menu .search-wrap form input {
+    font-size: 1em;
+    margin-right: 5px;
+  }
+
+  .header-wrap .header-area .large-menu .search-wrap form button.submit {
+    color: #fff;
+    background-color: #1b9aaa;
+    border: none;
+    font-size: 1em;
+    padding: 3px 6px;
+    border-radius: 3px;
   }
 
   .header-wrap .header-area .mobile-menu {
@@ -17438,7 +17473,12 @@ body.stm-body .banner-image-wrap img {
 .header-wrap .header-area a.button.date,
 .header-wrap .header-area a.button.user,
 .header-wrap .header-area a.button.settings {
-  border-left: 1px solid #CCC;
+  border-left: 1px solid #ccc;
+}
+
+.header-wrap .header-area a.button input.search {
+  font-size: 1.05em;
+  padding: 3px;
 }
 
 @media (max-width: 979px) {
@@ -17449,7 +17489,7 @@ body.stm-body .banner-image-wrap img {
 
 .header-wrap .header-area a.button.logout:hover {
   background-color: #ef476f;
-  color: #FFF;
+  color: #fff;
 }
 
 .header-wrap .header-area a.button.login.add-radius,
@@ -17467,7 +17507,7 @@ body.stm-body .banner-image-wrap img {
 .header-wrap .header-area a.button.type:hover,
 .header-wrap .header-area a.button.user:hover,
 .header-wrap .header-area a.button.settings:hover {
-  background-color: #EEE;
+  background-color: #eee;
 }
 
 .header-wrap .header-area a.button.login:hover.not-link,
@@ -17476,12 +17516,12 @@ body.stm-body .banner-image-wrap img {
 .header-wrap .header-area a.button.type:hover.not-link,
 .header-wrap .header-area a.button.user:hover.not-link,
 .header-wrap .header-area a.button.settings:hover.not-link {
-  background-color: #FFF;
+  background-color: #fff;
   cursor: default;
 }
 
 .header-wrap .header-area a.button.online {
-  color: #FFF;
+  color: #fff;
   background-color: #06dba3;
 }
 
@@ -17490,7 +17530,7 @@ body.stm-body .banner-image-wrap img {
 }
 
 .header-wrap .header-area a.button.locked {
-  color: #FFF;
+  color: #fff;
   background-color: #ef476f;
 }
 
@@ -17544,22 +17584,22 @@ body.stm-body .banner-image-wrap img {
   -webkit-box-flex: 1;
       -ms-flex: 1 1 auto;
           flex: 1 1 auto;
-  background-color: #DDD;
-  border-bottom: 1px solid #CCC;
+  background-color: #ddd;
+  border-bottom: 1px solid #ccc;
   padding: 5px;
   text-align: center;
 }
 
 .header-sub-wrap .sub.sub-1 {
-  border-right: 1px solid #CCC;
+  border-right: 1px solid #ccc;
 }
 
 .header-sub-wrap .sub.sub-2 {
-  border-right: 1px solid #CCC;
+  border-right: 1px solid #ccc;
 }
 
 .header-sub-wrap .sub.sub-3 {
-  color: #FFF;
+  color: #fff;
   -webkit-box-flex: 0;
       -ms-flex: 0 1 10%;
           flex: 0 1 10%;

@@ -55,10 +55,11 @@ Route::group(['middleware' => 'App\Http\Middleware\LockOutUsers'], function () {
     Route::get('notes', 'NoteController@index');
     Route::get('orders', 'OrderController@index');
     Route::get('users/{user}', 'UserController@show');
-    //Route::post('add-note/{user}', 'UserController@add_note');
     Route::post('add-note/{user}', 'NoteController@store');
     Route::get('users', 'UserController@index')->name('users');
     Route::get('all-users', 'UserController@all_users')->name('all-users');
+    Route::post('search-user', 'UserController@search');
+    Route::get('search-user', 'UserController@search_page');
 });
 
 // *** LOCK OUT non 'master' users

@@ -966,4 +966,21 @@ class UserController extends Controller
 
     }
 
+    public function search(Request $request)
+    {
+        return redirect('/search-user?user=' . $request->user_search);
+    }
+
+    public function search_page(Request $request)
+    {
+        $search = $request->user;
+        $users = User::query()
+            ->where('name', 'LIKE', "%{$search}%")
+            ->orWhere('email', 'LIKE', "%{$search}%")
+            ->orWhere('company', 'LIKE', "%{$search}%")
+            ->get();
+
+        return view('users.search-results', compact('users', 'search'));
+    }
+
 }
