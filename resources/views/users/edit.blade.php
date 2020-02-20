@@ -76,7 +76,7 @@
           <div class="field">
             <label class="label" for="phone">Phone Number</label>
             <div class="control">
-              <input class="input" value="{{ $user->phone }}" type="text" id="phone" name="phone" />
+              <input class="input" value="{{ $user->phone }}" type="number" id="phone" name="phone" />
             </div>
           </div>
 

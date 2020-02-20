@@ -54,7 +54,7 @@
           <div class="field">
             <label class="label" for="phone">Phone Number</label>
             <div class="control">
-              <input class="input" type="text" id="phone" name="phone" />
+              <input class="input" type="number" id="phone" name="phone" />
             </div>
           </div>
 

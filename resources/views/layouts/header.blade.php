@@ -114,6 +114,15 @@
       @elseif($logged_in_user->isManager())
 
       <div class="large-menu">
+        <div class="search-wrap">
+          <form method="POST" action="/search-user">
+            @csrf
+            <input type="text" class="search" name="user_search" placeholder="Search..." />
+            <button type="submit" class="submit">
+              <i class="fas fa-search"></i>
+            </button>
+          </form>
+        </div>
         <div class="field has-addons">
           <p class="control">
             <a class="button type" href="/settings">
@@ -200,6 +209,15 @@
 
       @elseif($logged_in_user->isEmployee())
       <div class="large-menu">
+        <div class="search-wrap">
+          <form method="POST" action="/search-user">
+            @csrf
+            <input type="text" class="search" name="user_search" placeholder="Search..." />
+            <button type="submit" class="submit">
+              <i class="fas fa-search"></i>
+            </button>
+          </form>
+        </div>
         <div class="field has-addons">
           <p class="control">
             <a class="button type not-link">
