@@ -130,11 +130,11 @@
                 </div>
               </div>
             </div>
-            <label class="label">Email Subject</label>
+            <label class="label">Email Subject<span class="required">*</span></label>
             <div class="control email-blast-wrap-bottom">
               <input class="input" name="subject" />
             </div>
-            <label class="label">Email Text</label>
+            <label class="label">Email Text<span class="required">*</span></label>
             <div class="control">
               <textarea class="textarea" name="message"></textarea>
             </div>

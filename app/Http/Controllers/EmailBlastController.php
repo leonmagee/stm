@@ -55,7 +55,12 @@ class EmailBlastController extends Controller
     public function email(Request $request)
     {
 
+        /**
+         * Add required fields here?
+         */
         $this->validate($request, [
+            'subject' => 'required',
+            'message' => 'required',
             'cc_manual_email' => 'email|nullable',
         ], [
             'cc_manual_email.email' => 'Must be a valid email address.',

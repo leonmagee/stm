@@ -16972,6 +16972,11 @@ textarea:focus {
   border-color: #1b9aaa !important;
 }
 
+label span.required {
+  color: #ef476f;
+  margin-left: 5px;
+}
+
 @media (min-width: 980px) {
   .stm-grid-wrap {
     display: grid;

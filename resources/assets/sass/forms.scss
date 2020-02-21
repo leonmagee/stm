@@ -201,3 +201,10 @@ select:focus,
 textarea:focus {
     border-color: $brand-primary !important;
 }
+
+label {
+    span.required {
+        color: $color-red;
+        margin-left: 5px;
+    }
+}
