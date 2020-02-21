@@ -143,9 +143,30 @@
 
         <div class="field flex-margin">
           <div class="control">
-            <button class="button is-primary call-loader" type="submit">Email Selected Users</button>
+            <a class="button is-primary modal-open-email-blast">Email Selected Users</a>
           </div>
         </div>
+
+      </div>
+
+      <div class="modal" id="email-blast-modal">
+
+        <div class="modal-background"></div>
+
+        <div class="modal-content">
+
+          <div class="modal-box">
+
+            <h4 class="title">Are You Sure?</h4>
+
+            <button class="button is-danger call-loader" type="submit">Email Selected Users</button>
+
+            <a class="modal-delete-close-button button is-primary">Cancel</a>
+          </div>
+
+        </div>
+
+        <button class="modal-delete-close is-large" aria-label="close"></button>
 
       </div>
 

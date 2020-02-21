@@ -30380,6 +30380,10 @@ $('.modal-open-transfer-1, #layout-modal-transfer-1 .modal-close, #layout-modal-
     $('.modal#layout-modal-transfer-1').toggleClass('is-active');
 });
 
+$('.modal-open-email-blast').click(function () {
+    $('#email-blast-modal').toggleClass('is-active');
+});
+
 $('.modal-open-transfer-2, #layout-modal-transfer-2 .modal-close, #layout-modal-transfer-2 .modal-close-button').click(function () {
     $('.modal#layout-modal-transfer-2').toggleClass('is-active');
 });
