@@ -96,8 +96,16 @@
 
           <div class="field">
             <label class="label" for="state">State</label>
-            <div class="control">
-              <input class="input" value="{{ $user->state }}" type="text" id="state" name="state" />
+            <div class="select">
+              <select name="state" id="state">
+                @foreach ($states as $state)
+                <option @if ($user->state == $state )
+                  selected="selected"
+                  @endif
+                  value="{{ $state }}">{{ $state }}
+                </option>
+                @endforeach
+              </select>
             </div>
           </div>
 

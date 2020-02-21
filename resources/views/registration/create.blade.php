@@ -74,8 +74,12 @@
 
           <div class="field">
             <label class="label" for="state">State</label>
-            <div class="control">
-              <input class="input" type="text" id="state" name="state" />
+            <div class="select">
+              <select name="state" id="state">
+                @foreach ($states as $state)
+                <option value="{{ $state }}">{{ $state }}</option>
+                @endforeach
+              </select>
             </div>
           </div>
 
