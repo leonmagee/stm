@@ -64,7 +64,7 @@ $(
 });
 
 $(
-  '.modal-open-email-blast'
+  '.modal-open-email-blast, .modal-email-close, .modal-close',
 ).click(function () {
   $('#email-blast-modal').toggleClass('is-active');
 });

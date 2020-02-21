@@ -30380,7 +30380,7 @@ $('.modal-open-transfer-1, #layout-modal-transfer-1 .modal-close, #layout-modal-
     $('.modal#layout-modal-transfer-1').toggleClass('is-active');
 });
 
-$('.modal-open-email-blast').click(function () {
+$('.modal-open-email-blast, .modal-email-close, .modal-close').click(function () {
     $('#email-blast-modal').toggleClass('is-active');
 });
 

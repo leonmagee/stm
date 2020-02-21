@@ -161,12 +161,12 @@
 
             <button class="button is-danger call-loader" type="submit">Email Selected Users</button>
 
-            <a class="modal-delete-close-button button is-primary">Cancel</a>
+            <a class="modal-email-close button is-primary">Cancel</a>
           </div>
 
         </div>
 
-        <button class="modal-delete-close is-large" aria-label="close"></button>
+        <a class="modal-close is-large" aria-label="close"></a>
 
       </div>
 
