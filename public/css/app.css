@@ -17410,6 +17410,44 @@ body.stm-body .banner-image-wrap img {
   display: none;
 }
 
+.header-wrap .header-area .search-wrap {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.header-wrap .header-area .search-wrap form {
+  color: #555;
+  border-radius: 5px;
+  background-color: white;
+  display: inline-block;
+  padding: 5px 8px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 100%;
+}
+
+.header-wrap .header-area .search-wrap form input {
+  font-size: 1em;
+  margin-right: 5px;
+}
+
+.header-wrap .header-area .search-wrap form button.submit {
+  color: #fff;
+  background-color: #1b9aaa;
+  border: none;
+  font-size: 1em;
+  padding: 3px 6px;
+  border-radius: 3px;
+}
+
 @media (min-width: 980px) {
   .header-wrap .header-area .large-menu {
     display: block;

@@ -109,6 +109,16 @@
           </p>
         </div>
 
+        <div class="search-wrap">
+          <form method="POST" action="/search-user">
+            @csrf
+            <input type="text" class="search" name="user_search" placeholder="Search..." />
+            <button type="submit" class="submit">
+              <i class="fas fa-search"></i>
+            </button>
+          </form>
+        </div>
+
       </div>
 
       @elseif($logged_in_user->isManager())

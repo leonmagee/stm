@@ -63,6 +63,32 @@
         .large-menu {
             display: none;
         }
+        .search-wrap {
+            display: flex;
+            justify-content: center;
+            form {
+                color: #555;
+                border-radius: 5px;
+                background-color: white;
+                display: inline-block;
+                padding: 5px 8px;
+                display: flex;
+                align-items: center;
+                height: 100%;
+                input {
+                    font-size: 1em;
+                    margin-right: 5px;
+                }
+                button.submit {
+                    color: #fff;
+                    background-color: $brand-primary;
+                    border: none;
+                    font-size: 1em;
+                    padding: 3px 6px;
+                    border-radius: 3px;
+                }
+            }
+        }
         @media (min-width: $screen-md) {
             .large-menu {
                 display: block;
@@ -92,6 +118,7 @@
                     }
                 }
             }
+
             .mobile-menu {
                 display: none;
             }
