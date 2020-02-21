@@ -18,12 +18,12 @@ Search Results for <span>{{ $search }}</span>
     <div class="detail">
       {{ $user->name }}
     </div>
-    <div class="divider"></div>
-    <div class="detail">
+    <div class="divider hide-mobile"></div>
+    <div class="detail hide-mobile">
       {{ $user->email }}
     </div>
-    <div class="divider"></div>
-    <div class="detail">
+    <div class="divider hide-mobile"></div>
+    <div class="detail hide-mobile">
       {{ $user->phone }}
     </div>
   </div>
