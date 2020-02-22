@@ -46,8 +46,22 @@
             }
         }
     }
+    i {
+        margin: 0 !important;
+        padding: 0 !important;
+        &:before {
+            margin: 0 !important;
+            padding: 0 !important;
+        }
+    }
     i.fa-times-circle {
         color: $color-red;
+        &:hover {
+            cursor: pointer;
+        }
+    }
+    i.fa-share {
+        color: $brand-primary;
         &:hover {
             cursor: pointer;
         }
@@ -72,6 +86,12 @@ table#sent-emails {
         }
         &.pending {
             background-color: #eee;
+        }
+        &.icon-wrap {
+            i {
+                width: 100%;
+                text-align: center;
+            }
         }
     }
 }

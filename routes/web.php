@@ -44,6 +44,7 @@ Route::group(['middleware' => 'App\Http\Middleware\LockOutUsersManagers'], funct
     Route::get('delete-email-user/{email}/{user}', 'EmailTrackerController@destroy_on_user');
     Route::get('delete-emails/{string}', 'EmailTrackerController@destroy_page');
     Route::get('delete-order/{order}', 'OrderController@destroy');
+    Route::get('resend-email/{email}', 'EmailTrackerController@resend');
 });
 
 Route::get('order-sims', 'OrderController@create');

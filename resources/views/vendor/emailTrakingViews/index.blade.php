@@ -47,6 +47,7 @@
             <th>Clicks</th>
             @if(Auth()->user()->isAdmin())
             <th></th>
+            <th></th>
             @endif
           </tr>
           @foreach($emails as $email)
@@ -86,7 +87,8 @@
               @endif
             </td>
             @if(Auth()->user()->isAdmin())
-            <td><i class="fas fa-times-circle modal-delete-open" item_id={{ $email->id }}></i></td>
+            <td class="icon-wrap"><i class="fas fa-times-circle modal-delete-open" item_id={{ $email->id }}></i></td>
+            <td class="icon-wrap"><i class="fas fa-share modal-resend-open" item_id={{ $email->id }}></i></td>
             @endif
           </tr>
           @endforeach
@@ -115,6 +117,25 @@
     </div>
 
     <button class="modal-delete-close is-large" aria-label="close" item_id={{ $email->id }}></button>
+
+  </div>
+  <div class="modal" id="resend-item-modal-{{ $email->id }}">
+
+    <div class="modal-background"></div>
+
+    <div class="modal-content">
+
+      <div class="modal-box">
+
+        <h3 class="title">Are You Sure?</h3>
+
+        <a href="/resend-email/{{ $email->id }}" class="button is-danger">Resend Email</a>
+        <a class="modal-resend-close-button button is-primary" item_id={{ $email->id }}>Cancel</a>
+      </div>
+
+    </div>
+
+    <button class="modal-resend-close is-large" aria-label="close" item_id={{ $email->id }}></button>
 
   </div>
   @endforeach

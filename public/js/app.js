@@ -30401,6 +30401,14 @@ $('.modal-delete-open, .modal-delete-close, .modal-delete-close-button').click(f
 });
 
 /**
+ * Modal for resending email
+ */
+$('.modal-resend-open, .modal-resend-close, .modal-resend-close-button').click(function () {
+    var itemId = $(this).attr('item_id');
+    $('.modal#resend-item-modal-' + itemId).toggleClass('is-active');
+});
+
+/**
  * Modal for deleting order
  */
 $('.modal-delete-open, .modal-delete-close, .modal-delete-close-button').click(function () {

@@ -1,2 +1,1 @@
 {!!$email->content!!}
-xxxx

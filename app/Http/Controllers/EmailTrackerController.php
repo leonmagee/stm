@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\User;
 use Illuminate\Http\Request;
 use jdavidbakr\MailTracker\Model\SentEmail;
+use Mail;
 
 class EmailTrackerController extends Controller
 {
@@ -126,6 +127,37 @@ class EmailTrackerController extends Controller
             $email->delete();
         }
         session()->flash('danger', 'Emails Deleted');
+        return redirect('/email-tracker');
+    }
+
+    /**
+     * Resend the email to the same email address
+     *
+     * @param  jdavidbakr\MailTracker\Model\SentEmail;
+     * @return \Illuminate\Http\Response
+     */
+    public function resend(SentEmail $email)
+    {
+        $email_address = $email->email_address;
+        $subject = $email->subject;
+        $content = $email->content;
+        $recipient = $email->company ? $email->company : $email_address;
+
+        Mail::send([], [], function ($message) use ($email_address, $subject, $content) {
+            $message->to($email_address)
+                ->subject($subject)
+                ->setBody($content, 'text/html');
+        });
+
+        // $message = 'this is a message...';
+        // $user = User::where('email', $email_address)->first();
+        // Mail::to($user)->send(new EmailBlast(
+        //     $user,
+        //     $message,
+        //     $subject
+        // ));
+
+        session()->flash('message', 'Email has been resent to ' . $recipient);
         return redirect('/email-tracker');
     }
 }
