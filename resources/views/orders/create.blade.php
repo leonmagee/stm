@@ -42,6 +42,8 @@ Order Sims / POS
 
         </div>
 
+        <div class="info-red">Please order sims responsibly based on your average monthly activations.</div>
+
         <div class="field submit">
           <div class="control">
             <button class="button is-primary call-loader" type="submit">Order Sims</button>
