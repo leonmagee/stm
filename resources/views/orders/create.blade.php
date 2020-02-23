@@ -42,7 +42,7 @@ Order Sims / POS
 
         </div>
 
-        <div class="info-red">Please order sims responsibly based on your average monthly activations.</div>
+        <div class="info-red">* Please order sims responsibly based on your trending average monthly activations.</div>
 
         <div class="field submit">
           <div class="control">
