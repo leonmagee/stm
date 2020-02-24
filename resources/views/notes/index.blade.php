@@ -1,7 +1,9 @@
 @extends('layouts.layout')
 
 @section('title')
-Notes
+<div class="with-background">
+  All Notes
+</div>
 @endsection
 
 @section('content')

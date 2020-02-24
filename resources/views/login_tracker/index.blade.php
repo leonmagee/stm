@@ -1,7 +1,9 @@
 @extends('layouts.layout')
 
 @section('title')
-Login Tracker
+<div class="with-background">
+  Login Tracker
+</div>
 @endsection
 
 @section('content')

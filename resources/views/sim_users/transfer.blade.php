@@ -1,9 +1,5 @@
 @extends('layouts.layout')
 
-@section('title')
-Transfer Sims
-@endsection
-
 @section('content')
 
 <div class="form-wrapper">

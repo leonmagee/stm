@@ -1,13 +1,19 @@
 body.stm-body {
-	h1.title {
-		text-align: center;
-		font-size: 1.4em;
-		margin: 0 0 20px 0;
-		@media(min-width: $screen-sm) {
-			text-align: left;
-		}
-		span {
-			color: $color-red;
-		}
-	}
+    h1.title {
+        text-align: center;
+        font-size: 1.3em;
+        margin: 0 0 10px 0;
+        .with-background {
+            @include normal_background;
+            display: inline-block;
+            padding: 10px 17px;
+        }
+
+        @media (min-width: $screen-sm) {
+            text-align: left;
+        }
+        span {
+            color: $color-red;
+        }
+    }
 }

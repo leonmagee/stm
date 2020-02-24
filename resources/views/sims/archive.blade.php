@@ -1,33 +1,34 @@
 @extends('layouts.layout')
 
 @section('title')
-{{ $name }} Sims | {{ $current_site_date }}
+<div class="with-background">
+  {{ $name }} Sims | {{ $current_site_date }}
+</div>
 @endsection
 
 @section('content')
 
-    <table id="sims_table" class="stripe compact">
+<table id="sims_table" class="stripe compact">
 
-		<thead>
-			<tr>
-				<th>Sim Number</th>
-				<th>Value</th>
-				<th>Activation Date</th>
-				<th>Mobile Number</th>
-			</tr>
-		</thead>
+  <thead>
+    <tr>
+      <th>Sim Number</th>
+      <th>Value</th>
+      <th>Activation Date</th>
+      <th>Mobile Number</th>
+    </tr>
+  </thead>
 
-		<tbody>
-		</tbody>
-	</table>
+  <tbody>
+  </tbody>
+</table>
 
 @endsection
 
 @section('page-script')
 
 <script>
-
-$('#sims_table').DataTable({
+  $('#sims_table').DataTable({
     "processing": true,
     "serverSide": true,
     "ajax": "{!! route('api.sims.archive', ['id' => $id]) !!}",

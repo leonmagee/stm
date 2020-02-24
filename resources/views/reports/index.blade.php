@@ -4,17 +4,16 @@
 <?php if(!isset($is_single)) {$is_single = false; }?>
 @if(!$is_single && count($report_data_array) > 0)
 <div class="user-report-totals-final-count">
-  Reports for {{ $current_site_date }}
-  / Total Payment: <span>${{ number_format($total_payment_all_users, 2) }}</span>
+  <div class="item">
+    Reports for {{ $current_site_date }}
+    / Total Payment: <span>${{ number_format($total_payment_all_users, 2) }}</span>
+  </div>
+  @foreach($total_payments_residual as $item)
+  <div class="item">
+    {{ $item['name'] }} total: <span>{{ $item['total'] }}</span>
+  </div>
+  @endforeach
 </div>
-@foreach($total_payments_residual as $item)
-<div class="title-line-break"></div>
-<div class="user-report-totals-final-count">
-  {{ $item['name'] }} total: <span>{{ $item['total'] }}</span>
-</div>
-@endforeach
-@else
-Report for {{ $current_site_date }}
 @endif
 @endsection
 
@@ -24,7 +23,7 @@ Report for {{ $current_site_date }}
 @include('mixins.user-back', ['user' => $user])
 @endif
 
-@if($is_admin)
+@if($is_admin && !$is_single)
 <div class="save-archive-button-wrap">
   <form method="POST" action="save-archive">
     {{ csrf_field() }}

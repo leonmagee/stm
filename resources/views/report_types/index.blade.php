@@ -1,7 +1,9 @@
 @extends('layouts.layout')
 
 @section('title')
-Report Types
+<div class="with-background">
+  Report Types
+</div>
 @endsection
 
 @section('content')

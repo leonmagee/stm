@@ -93,7 +93,7 @@
 // report totals
 .report-totals-final-count {
     font-weight: 700;
-    font-size: 1.4em;
+    //font-size: 1.4em;
     @include normal_background;
     margin-bottom: 20px;
     span {
@@ -104,8 +104,25 @@
 // user report totals
 .user-report-totals-final-count {
     @include normal_background;
-    min-width: 40%;
+    font-size: 0.8em;
+    max-width: 80%;
     display: inline-block;
+    margin-bottom: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    .item {
+        flex: 0 1 50%;
+        display: inline-block;
+        &:nth-child(3),
+        &:nth-child(4) {
+            margin-top: 15px;
+        }
+    }
+    //padding-bottom: 5px;
+    // //min-width: 40%;
+    // display: inline-block;
+    // font-size: 0.8em;
+    //color: red;
 }
 
 .report-totals-wrap {

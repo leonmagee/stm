@@ -1,7 +1,9 @@
 @extends('layouts.layout')
 
 @section('title')
-{{ $site_name }} {{ $recharge }} Recharge Data for {{ $current_site_date }}
+<div class="with-background">
+  {{ $site_name }} {{ $recharge }} Recharge Data for {{ $current_site_date }}
+</div>
 @endsection
 
 @section('content')

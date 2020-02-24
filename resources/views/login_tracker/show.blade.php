@@ -1,7 +1,9 @@
 @extends('layouts.layout')
 
 @section('title')
-Logins for {{ $user->company . ' - ' . $user->name }}
+<div class="with-background">
+  Logins for {{ $user->company . ' - ' . $user->name }}
+</div>
 @endsection
 
 @section('content')

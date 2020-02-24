@@ -1,7 +1,9 @@
 @extends('layouts.layout')
 
 @section('title')
-All Sims assigned to {{ $user_title }}
+<div class="with-background">
+  All Sims assigned to {{ $user_title }}
+</div>
 @endsection
 
 @section('content')

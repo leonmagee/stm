@@ -1,7 +1,9 @@
 @extends('layouts.layout')
 
 @section('title')
-Orders
+<div class="with-background">
+  Orders
+</div>
 @endsection
 
 @section('content')

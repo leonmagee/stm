@@ -3,11 +3,8 @@
 @section('content')
 
 <div class="report-totals-final-count">
-  {{ $site_name }} {{ $current_site_date }} Total Activations: <span>{{ number_format($total_count_final) }}</span>
-</div>
-
-<div class="report-totals-final-count">
-  {{ $site_name }} {{ $current_site_date }} Total Residuals: <span>{{ number_format($total_count_final_res) }}</span>
+  {{ $site_name }} {{ $current_site_date }} Total Activations: <span>{{ number_format($total_count_final) }}</span> /
+  Total Residuals: <span>{{ number_format($total_count_final_res) }}</span>
 </div>
 
 <div class="stm-grid-wrap report-totals-wrap">
