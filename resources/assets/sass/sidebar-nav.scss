@@ -82,6 +82,14 @@ ul.sidebar-menu {
                 top: -22em;
             }
         }
+        &.active {
+            background-color: $brand-primary;
+            border-color: $brand-primary;
+            a {
+                color: #fff;
+                text-shadow: 1px 1px darken($brand-primary, 1%);
+            }
+        }
         &:hover {
             background-color: $brand-primary;
             border-color: $brand-primary;

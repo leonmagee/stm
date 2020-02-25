@@ -2,15 +2,29 @@
 
   @foreach($menu as $item)
 
-  <?php $className = strtolower(str_replace(' ', '-', $item['name'])); ?>
+  <?php
 
-  <li class="{{ $className }}">
+  $className = strtolower(str_replace(' ', '-', $item['name']));
+  $active = '';
+  if($path == '/') {
+    $path_new = $path;
+  } else {
+  $path_new = '/' . $path;
+  }
+  if(($path_new == $item['link']) || ($path_new == $item['default'])) {
+    $active = 'active';
+  }
+  ?>
+
+
+  <li class="{{ $className }} {{ $active }}">
 
     <div class="icon-wrap">
       <i class="fi {{ $item['icon'] }}"></i>
     </div>
-
     @if($item['link'])
+
+
 
     <a href="{{ $item['link'] }}">{!! $item['name'] !!}</a>
 

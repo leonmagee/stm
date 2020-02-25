@@ -26,6 +26,8 @@ class AppServiceProvider extends ServiceProvider
 
         view()->composer(['layouts.nav', 'layouts.nav-mobile'], function ($view) {
 
+            $path = \Request::path();
+
             $report_types = ReportType::query()->orderBy('order_index')->get();
 
             $monthly_sims_sub = [
@@ -745,7 +747,8 @@ class AppServiceProvider extends ServiceProvider
 
             }
 
-            $view->with('menu', $menu_array);
+            //$view->with('menu', $menu_array);
+            $view->with(['menu' => $menu_array, 'path' => $path]);
         });
 
         view()->composer('layouts.header', function ($view) {
