@@ -1,11 +1,5 @@
 @extends('layouts.layout')
 
-@section('title')
-<div class="with-background">
-  All Notes
-</div>
-@endsection
-
 @section('content')
 
 <div class="stm-grid-wrap notes-wrap">
