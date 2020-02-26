@@ -89,6 +89,9 @@ ul.sidebar-menu {
                 color: #fff;
                 text-shadow: 1px 1px darken($brand-primary, 1%);
             }
+            i {
+                color: #fff;
+            }
         }
         &:hover {
             background-color: $brand-primary;
@@ -97,6 +100,9 @@ ul.sidebar-menu {
             a {
                 color: #fff;
                 text-shadow: 1px 1px darken($brand-primary, 1%);
+            }
+            i {
+                color: #fff;
             }
             ul.sub-menu {
                 display: block;

@@ -1,10 +1,10 @@
 @extends('layouts.layout')
 
-@section('title')
+{{-- @section('title')
 <div class="with-background">
   Report Types
 </div>
-@endsection
+@endsection --}}
 
 @section('content')
 

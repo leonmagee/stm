@@ -1,14 +1,14 @@
 @extends('layouts.layout')
 
-@section('title')
+{{-- @section('title')
 @if(\Auth()->user()->isAdmin() || \Auth()->user()->isManager() || \Auth()->user()->isEmployee())
 <div class="with-background">
   All Agents / Dealers
 </div>
-{{-- @else
-Your Dealers --}}
+@else
+Your Dealers
 @endif
-@endsection
+@endsection --}}
 
 @section('content')
 @if(\Auth()->user()->isAdmin())
