@@ -30,7 +30,7 @@ class SimUserController extends AuthorizedController
     {
         $user = \Auth::user();
 
-        if ($user->isAdmin() || $user->isManager()) {
+        if ($user->isAdminManagerEmployee()) {
             $user_title = 'Users';
         } else {
             $user_title = $user->company . ' - ' . $user->name;
