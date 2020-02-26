@@ -45,8 +45,8 @@ export default class AllUsersAgents extends Component {
 
         return (
             <div>
-            <h2 className="dealersCount">Total Number of Dealers: <span>{count}</span></h2>
-                <div className="allUsersList">{allUsers}</div>
+            <h2 className="dealersCount">Your Dealers <span>(<span>{count}</span> Total)</span></h2>
+            <div className="allUsersList">{allUsers}</div>
             </div>
         );
     }

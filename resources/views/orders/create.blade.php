@@ -1,8 +1,8 @@
 @extends('layouts.layout')
 
-@section('title')
+{{-- @section('title')
 Order Sims / POS
-@endsection
+@endsection --}}
 
 @section('content')
 
