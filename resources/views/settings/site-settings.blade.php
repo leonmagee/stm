@@ -1,10 +1,10 @@
 @extends('layouts.layout')
 
-@section('title')
+{{-- @section('title')
 <div class="with-background">
   {{ $site_name }} Site Settings
 </div>
-@endsection
+@endsection --}}
 
 @section('content')
 
