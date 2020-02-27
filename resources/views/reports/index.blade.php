@@ -5,12 +5,11 @@
 @if(!$is_single && count($report_data_array) > 0)
 <div class="user-report-totals-final-count">
   <div class="item">
-    Reports for {{ $current_site_date }}
-    / Total Payment: <span>${{ number_format($total_payment_all_users, 2) }}</span>
+    Total Payment: ${{ number_format($total_payment_all_users, 2) }}
   </div>
   @foreach($total_payments_residual as $item)
   <div class="item">
-    {{ $item['name'] }} total: <span>{{ $item['total'] }}</span>
+    {{ $item['name'] }} total: {{ $item['total'] }}
   </div>
   @endforeach
 </div>
@@ -21,15 +20,6 @@
 @section('content')
 @if($is_single && isset($user))
 @include('mixins.user-back', ['user' => $user])
-@endif
-
-@if($is_admin && !$is_single)
-<div class="save-archive-button-wrap">
-  <form method="POST" action="save-archive">
-    {{ csrf_field() }}
-    <button type="submit" class="button is-primary call-loader">Save Current Archive</button>
-  </form>
-</div>
 @endif
 
 <div class="reports-wrap">
@@ -100,6 +90,13 @@
   @endforeach
 
 </div>
-
+@if($is_admin && !$is_single)
+<div class="save-archive-button-wrap">
+  <form method="POST" action="save-archive">
+    {{ csrf_field() }}
+    <button type="submit" class="button is-primary call-loader">Save Current Archive</button>
+  </form>
+</div>
+@endif
 
 @endsection

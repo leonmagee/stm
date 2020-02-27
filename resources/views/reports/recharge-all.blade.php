@@ -1,10 +1,10 @@
 @extends('layouts.layout')
 
-@section('title')
+{{-- @section('title')
 <div class="with-background">
   Recharge Data for {{ $current_site_date }}
 </div>
-@endsection
+@endsection --}}
 
 @section('content')
 <h4 class="recharge-subheader">2nd Recharge</h4>

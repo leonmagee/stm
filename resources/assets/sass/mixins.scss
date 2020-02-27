@@ -13,26 +13,33 @@
 // }
 
 @mixin background_pattern {
-	background-color: #333;
-	background-image: url(/img/black_thread.png);
-	//background-size: 600px 600px;
-	//background-size: 98px 56px;
-	background-size: 49px 28px;
+    background-color: #333;
+    background-image: url(/img/black_thread.png);
+    //background-size: 600px 600px;
+    //background-size: 98px 56px;
+    background-size: 49px 28px;
 }
 
 @mixin current_font {
-	font-family: 'Open Sans', sans-serif;
-	font-weight: 400;
+    font-family: "Open Sans", sans-serif;
+    font-weight: 400;
 }
 
 @mixin normal_background {
-	box-shadow: 1px 1px rgba(0,0,0,0.05);
-	background-color: #FFF;
-	color: #333;
-	padding: 15px;
+    box-shadow: 1px 1px rgba(0, 0, 0, 0.05);
+    background-color: #fff;
+    color: #333;
+    padding: 15px;
 }
 
-
+@mixin teal_background {
+    font-weight: 700;
+    background-color: $brand-primary;
+    font-size: 1em;
+    color: #fff;
+    text-align: center;
+    padding: 15px;
+}
 
 // @mixin background_gradient {
 // /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#5433ff+0,20bdff+68,20bdff+99 */
@@ -44,10 +51,22 @@
 // }
 
 @mixin background_gradient {
-/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#eeeeee+0,f3f3f3+100 */
-background: #eeeeee; /* Old browsers */
-background: -moz-linear-gradient(left, #eeeeee 0%, #f3f3f3 100%); /* FF3.6-15 */
-background: -webkit-linear-gradient(left, #eeeeee 0%,#f3f3f3 100%); /* Chrome10-25,Safari5.1-6 */
-background: linear-gradient(to right, #eeeeee 0%,#f3f3f3 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eeeeee', endColorstr='#f3f3f3',GradientType=1 ); /* IE6-9 */
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#eeeeee+0,f3f3f3+100 */
+    background: #eeeeee; /* Old browsers */
+    background: -moz-linear-gradient(
+        left,
+        #eeeeee 0%,
+        #f3f3f3 100%
+    ); /* FF3.6-15 */
+    background: -webkit-linear-gradient(
+        left,
+        #eeeeee 0%,
+        #f3f3f3 100%
+    ); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(
+        to right,
+        #eeeeee 0%,
+        #f3f3f3 100%
+    ); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eeeeee', endColorstr='#f3f3f3',GradientType=1 ); /* IE6-9 */
 }

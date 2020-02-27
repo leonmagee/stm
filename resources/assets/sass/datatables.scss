@@ -1,141 +1,160 @@
 // bulma datatables...
-table.dataTable.nowrap th, table.dataTable.nowrap td {
-  white-space: nowrap;
+table.dataTable.nowrap th,
+table.dataTable.nowrap td {
+    white-space: nowrap;
 }
 
 div.dataTables_wrapper div.dataTables_length select {
-  width: 75px;
-  display: inline-block;
+    width: 75px;
+    display: inline-block;
 }
 
 div.dataTables_wrapper div.dataTables_filter {
-  text-align: right;
+    text-align: right;
 }
 
 div.dataTables_wrapper div.dataTables_filter label {
-  font-weight: normal;
-  white-space: nowrap;
-  text-align: left;
+    font-weight: normal;
+    white-space: nowrap;
+    text-align: left;
 }
 
 div.dataTables_wrapper div.dataTables_filter input {
-  margin-left: 0.5em;
-  display: inline-block;
-  width: auto;
+    margin-left: 0.5em;
+    display: inline-block;
+    width: auto;
 }
 
 div.dataTables_wrapper div.dataTables_paginate {
-  white-space: nowrap;
-  float: right;
+    white-space: nowrap;
+    float: right;
 }
 
-table.dataTable thead>tr>th.sorting_asc, table.dataTable thead>tr>th.sorting_desc, table.dataTable thead>tr>th.sorting, table.dataTable thead>tr>td.sorting_asc, table.dataTable thead>tr>td.sorting_desc, table.dataTable thead>tr>td.sorting {
-  padding-right: 30px
+table.dataTable thead > tr > th.sorting_asc,
+table.dataTable thead > tr > th.sorting_desc,
+table.dataTable thead > tr > th.sorting,
+table.dataTable thead > tr > td.sorting_asc,
+table.dataTable thead > tr > td.sorting_desc,
+table.dataTable thead > tr > td.sorting {
+    padding-right: 30px;
 }
 
-table.dataTable thead .sorting, table.dataTable thead .sorting_asc, table.dataTable thead .sorting_desc, table.dataTable thead .sorting_asc_disabled, table.dataTable thead .sorting_desc_disabled {
-  cursor: pointer;
-  position: relative;
+table.dataTable thead .sorting,
+table.dataTable thead .sorting_asc,
+table.dataTable thead .sorting_desc,
+table.dataTable thead .sorting_asc_disabled,
+table.dataTable thead .sorting_desc_disabled {
+    cursor: pointer;
+    position: relative;
 }
 
-table.dataTable thead .sorting:after, table.dataTable thead .sorting_asc:after, table.dataTable thead .sorting_desc:after, table.dataTable thead .sorting_asc_disabled:after, table.dataTable thead .sorting_desc_disabled:after {
-  position: absolute;
-  bottom: 4px;
-  right: 4px;
-  display: block;
-  font-family: "Font Awesome\ 5 Free";
-  opacity: 0.5;
+table.dataTable thead .sorting:after,
+table.dataTable thead .sorting_asc:after,
+table.dataTable thead .sorting_desc:after,
+table.dataTable thead .sorting_asc_disabled:after,
+table.dataTable thead .sorting_desc_disabled:after {
+    position: absolute;
+    bottom: 4px;
+    right: 4px;
+    display: block;
+    font-family: "Font Awesome\ 5 Free";
+    opacity: 0.5;
 }
 
 table.dataTable thead .sorting:after {
-  opacity: 0.2;
-  content: "\f0dc";
+    opacity: 0.2;
+    content: "\f0dc";
 }
 
 table.dataTable thead .sorting_asc:after {
-  content: "\f0de";
+    content: "\f0de";
 }
 
 table.dataTable thead .sorting_desc:after {
-  content: "\f0dd";
+    content: "\f0dd";
 }
 
-table.dataTable thead .sorting_asc_disabled:after, table.dataTable thead .sorting_desc_disabled:after {
-  color: #eee;
+table.dataTable thead .sorting_asc_disabled:after,
+table.dataTable thead .sorting_desc_disabled:after {
+    color: #eee;
 }
 
 @media screen and (max-width: 767px) {
-  div.dataTables_wrapper div.dataTables_length, div.dataTables_wrapper div.dataTables_filter, div.dataTables_wrapper div.dataTables_info, div.dataTables_wrapper div.dataTables_paginate {
-    text-align: center;
-  }
+    div.dataTables_wrapper div.dataTables_length,
+    div.dataTables_wrapper div.dataTables_filter,
+    div.dataTables_wrapper div.dataTables_info,
+    div.dataTables_wrapper div.dataTables_paginate {
+        text-align: center;
+    }
 }
 
 #sims_table_wrapper {
-	background-color: #FFF;
-	padding: 15px;
-	border: 1px solid #ECECEC;
-	border-radius: 5px;
+    background-color: #fff;
+    padding: 15px;
+    border: 1px solid #ececec;
+    //border-radius: 5px;
 }
 
 .dataTables_paginate.paging_simple_numbers {
+    font-size: 10px;
+    @media (min-width: $screen-sm) {
+        font-size: 1em;
+    }
 
-	font-size: 10px;
-	@media(min-width: $screen-sm) {
-		font-size: 1em;
-	}
-
-	a.paginate_button {
-		font-weight: bold;
-		padding: 2px 10px !important;
-		&.current, &:focus, &:hover {
-			background: $brand-primary;
-			color: #FFF !important;
-			border-color: $brand-primary;
-			text-shadow: 1px 1px darken($brand-primary, 5%);
-		}
-		&.current {
-			&:hover {
-				background: $brand-primary;
-				color: #FFF !important;
-				border-color: $brand-primary;
-			}
-		}
-		&.disabled {
-			text-shadow: none;
-			&:hover {
-				text-shadow: none;
-			}
-		}
-	}
+    a.paginate_button {
+        font-weight: bold;
+        padding: 2px 10px !important;
+        &.current,
+        &:focus,
+        &:hover {
+            background: $brand-primary;
+            color: #fff !important;
+            border-color: $brand-primary;
+            text-shadow: 1px 1px darken($brand-primary, 5%);
+        }
+        &.current {
+            &:hover {
+                background: $brand-primary;
+                color: #fff !important;
+                border-color: $brand-primary;
+            }
+        }
+        &.disabled {
+            text-shadow: none;
+            &:hover {
+                text-shadow: none;
+            }
+        }
+    }
 }
 
 #sims_table {
-	font-size: 8px;
-	width: 100% !important;
-	@media(min-width: $screen-sm) {
-		font-size: 1em;
-	}
-	a {
-		color: darken($brand-primary, 5%);
-		color: $brand-primary;
-		font-weight: 700;
-		&:hover {
-			color: $brand-primary;
-			text-decoration: underline;
-		}
-	}
+    font-size: 8px;
+    width: 100% !important;
+    @media (min-width: $screen-sm) {
+        font-size: 1em;
+    }
+    a {
+        color: darken($brand-primary, 5%);
+        color: $brand-primary;
+        font-weight: 700;
+        &:hover {
+            color: $brand-primary;
+            text-decoration: underline;
+        }
+    }
 
-	tr {
-		th {
-			border-color: #DDD;
-		}
-	}
+    tr {
+        th {
+            border-color: #ddd;
+        }
+    }
 
-	&.dataTable.no-footer {
-		border-color: #DDD;
-	}
+    &.dataTable.no-footer {
+        border-color: #ddd;
+    }
 }
 
 #sims_table_processing {
-	display: none !important;
+    display: none !important;
 }

@@ -400,7 +400,7 @@ class AppServiceProvider extends ServiceProvider
                         'link' => false,
                         'sub' => $emails_sub_manager,
                         'icon' => 'flaticon-mail',
-                        'default' => '/email-blast',
+                        'default' => '/send-email',
                     ],
                     [
                         'name' => 'Sims',
@@ -452,7 +452,7 @@ class AppServiceProvider extends ServiceProvider
                         'default' => false,
                     ],
                     [
-                        'name' => 'Agents / Dealers',
+                        'name' => 'Users',
                         'link' => '/all-users',
                         'sub' => false,
                         'icon' => 'flaticon-group',
@@ -562,7 +562,7 @@ class AppServiceProvider extends ServiceProvider
                         'default' => false,
                     ],
                     [
-                        'name' => 'Agents / Dealers',
+                        'name' => 'Users',
                         'link' => '/all-users',
                         'sub' => false,
                         'icon' => 'flaticon-group',
@@ -747,8 +747,26 @@ class AppServiceProvider extends ServiceProvider
 
             }
 
+            $match_array = [
+                'email-tracker' => 'email-blast',
+                'login-tracker' => 'email-blast',
+                //'send-email' => 'email-blast',
+                'sims/upload-all' => 'user-sims',
+                'find-sims' => 'user-sims',
+                'transfer-sims' => 'user-sims',
+                'delete-sims' => 'user-sims',
+                'reports' => 'report-totals',
+                'site-settings' => 'settings',
+                'add-report-type-spiff' => 'settings',
+                'add-report-type-residual' => 'settings',
+                'edit-profile' => 'settings',
+                'profile' => 'settings',
+                'admins-managers' => 'all-users',
+                'register' => 'all-users',
+            ];
+
             //$view->with('menu', $menu_array);
-            $view->with(['menu' => $menu_array, 'path' => $path]);
+            $view->with(['menu' => $menu_array, 'path' => $path, 'match_array' => $match_array]);
         });
 
         view()->composer('layouts.header', function ($view) {
