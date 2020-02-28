@@ -660,6 +660,13 @@ class AppServiceProvider extends ServiceProvider
                         'default' => false,
                     ],
                     [
+                        'name' => 'Report Totals',
+                        'link' => '/dealer-report-totals',
+                        'sub' => false,
+                        'icon' => 'flaticon-growth',
+                        'default' => false,
+                    ],
+                    [
                         'name' => 'Dealer Reports',
                         'link' => '/dealer-reports',
                         'sub' => false,
@@ -678,13 +685,6 @@ class AppServiceProvider extends ServiceProvider
                         'link' => '/dealer-3rd-recharge',
                         'sub' => false,
                         'icon' => 'flaticon-charging-battery',
-                        'default' => false,
-                    ],
-                    [
-                        'name' => 'Report Totals',
-                        'link' => '/dealer-report-totals',
-                        'sub' => false,
-                        'icon' => 'flaticon-growth',
                         'default' => false,
                     ],
                 ];
