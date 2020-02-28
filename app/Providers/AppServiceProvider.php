@@ -633,7 +633,7 @@ class AppServiceProvider extends ServiceProvider
                     ],
                     [
                         'name' => 'Look Up Sims',
-                        'link' => '/find-sims',
+                        'link' => '/look-up-sims',
                         'sub' => false,
                         'icon' => 'flaticon-zoom-1',
                         'default' => false,
@@ -724,7 +724,7 @@ class AppServiceProvider extends ServiceProvider
                     ],
                     [
                         'name' => 'Look Up Sims',
-                        'link' => '/find-sims',
+                        'link' => '/look-up-sims',
                         'sub' => false,
                         'icon' => 'flaticon-zoom-1',
                         'default' => false,

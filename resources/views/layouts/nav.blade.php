@@ -99,6 +99,30 @@
 
   }
 
+  if($item['name'] == 'Sims') {
+
+  $match_array = [
+  [
+  'length' => 10,
+  'match_array' => ['list-sims/']
+  ],
+  [
+  'length' => 16,
+  'match_array' => ['list-sims-phone/']
+  ],
+  ];
+
+  foreach($match_array as $match) {
+  $sub_path = substr($path, 0, $match['length']);
+  if(in_array($sub_path, $match['match_array'])) {
+  $active = 'active';
+  }
+  }
+
+  }
+
+  //
+
   // if($item['name'] == 'Users') {
   //   $sub_path = substr($path, 0, 15);
   //   //dd($sub_path);
