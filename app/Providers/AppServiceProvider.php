@@ -667,6 +667,20 @@ class AppServiceProvider extends ServiceProvider
                         'default' => false,
                     ],
                     [
+                        'name' => 'Dealer 2nd Recharge',
+                        'link' => '/dealer-2nd-recharge',
+                        'sub' => false,
+                        'icon' => 'flaticon-electric-plug',
+                        'default' => false,
+                    ],
+                    [
+                        'name' => 'Dealer 3rd Recharge',
+                        'link' => '/dealer-3rd-recharge',
+                        'sub' => false,
+                        'icon' => 'flaticon-charging-battery',
+                        'default' => false,
+                    ],
+                    [
                         'name' => 'Report Totals',
                         'link' => '/dealer-report-totals',
                         'sub' => false,

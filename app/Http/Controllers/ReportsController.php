@@ -722,6 +722,34 @@ class ReportsController extends Controller
 
     }
 
+    /**
+     * Dealer 2nd Recharge
+     */
+    public function dealer_2nd_recharge()
+    {
+        $current_site_date = Helpers::current_date_name();
+        $site_id = Settings::first()->get_site_id();
+        $site_name = Site::find($site_id)->name;
+        $recharge_data_array = self::recharge_data();
+        $recharge = '2nd';
+
+        return view('reports.recharge', compact(
+            'site_name',
+            'current_site_date',
+            'recharge_data_array',
+            'recharge'
+        ));
+
+    }
+
+    /**
+     * Dealer 3rd Recharge
+     */
+    public function dealer_3rd_recharge()
+    {
+        dd('3rd');
+    }
+
     public function download_csv(Request $request, $id)
     {
         $user = User::find($id);
