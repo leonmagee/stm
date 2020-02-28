@@ -59,6 +59,7 @@ body.stm-body {
 
     button.button,
     a.button {
+        @include current_font;
         font-weight: 700;
         //background-color: $brand-primary;
         //transition: 0.3s;

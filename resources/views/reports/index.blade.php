@@ -94,9 +94,22 @@
 <div class="save-archive-button-wrap">
   <form method="POST" action="save-archive">
     {{ csrf_field() }}
-    <button type="submit" class="button is-primary call-loader">Save Current Archive</button>
+    <a class="button is-primary modal-open">Save Current Archive</a>
   </form>
 </div>
 @endif
+
+@endsection
+
+@section('modal')
+
+<h3 class="title">Are You Sure?</h3>
+
+<form method="POST" action="save-archive">
+  {{ csrf_field() }}
+  <button type="submit" class="button is-danger call-loader">Save Current Archive</button>
+</form>
+
+<a href="#" class="modal-close-button button is-primary">Cancel</a>
 
 @endsection
