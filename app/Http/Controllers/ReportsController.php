@@ -342,19 +342,21 @@ class ReportsController extends Controller
         ));
     }
 
-    private static function recharge_data()
+    private static function recharge_data($master_agent_id = null)
     {
         $current_date = Settings::first()->current_date;
-        //$current_site_date = Helpers::current_date_name();
-        //$site_id = Settings::first()->get_site_id();
-        //$site_name = Site::find($site_id)->name;
 
-        $role_id = Helpers::current_role_id();
-        if (Helpers::is_normal_user()) {
-            $logged_in_user = \Auth::user();
-            $users = User::where('id', $logged_in_user->id)->get();
+        if ($master_agent_id) {
+            $role_id = Helpers::get_role_id($master_agent_id);
+            $users = User::where('role_id', $role_id)->orderBy('company')->get();
         } else {
-            $users = User::where('role_id', $role_id)->get();
+            $role_id = Helpers::current_role_id();
+            if (Helpers::is_normal_user()) {
+                $logged_in_user = \Auth::user();
+                $users = User::where('id', $logged_in_user->id)->get();
+            } else {
+                $users = User::where('role_id', $role_id)->orderBy('company')->get();
+            }
         }
 
         $recharge_data_array = [];
@@ -523,19 +525,21 @@ class ReportsController extends Controller
         ));
     }
 
-    private static function third_recharge_data()
+    private static function third_recharge_data($master_agent_id = null)
     {
         $current_date = Settings::first()->current_date;
-        //$current_site_date = Helpers::current_date_name();
-        //$site_id = Settings::first()->get_site_id();
-        //$site_name = Site::find($site_id)->name;
 
-        $role_id = Helpers::current_role_id();
-        if (Helpers::is_normal_user()) {
-            $logged_in_user = \Auth::user();
-            $users = User::where('id', $logged_in_user->id)->get();
+        if ($master_agent_id) {
+            $role_id = Helpers::get_role_id($master_agent_id);
+            $users = User::where('role_id', $role_id)->orderBy('company')->get();
         } else {
-            $users = User::where('role_id', $role_id)->get();
+            $role_id = Helpers::current_role_id();
+            if (Helpers::is_normal_user()) {
+                $logged_in_user = \Auth::user();
+                $users = User::where('id', $logged_in_user->id)->get();
+            } else {
+                $users = User::where('role_id', $role_id)->orderBy('company')->get();
+            }
         }
 
         $recharge_data_array = [];
@@ -727,18 +731,23 @@ class ReportsController extends Controller
      */
     public function dealer_2nd_recharge()
     {
-        $current_site_date = Helpers::current_date_name();
-        $site_id = Settings::first()->get_site_id();
-        $site_name = Site::find($site_id)->name;
-        $recharge_data_array = self::recharge_data();
-        $recharge = '2nd';
+        if ($master_agent_id = \Auth::user()->master_agent_site) {
+            $current_site_date = Helpers::current_date_name();
+            $site_id = Settings::first()->get_site_id();
+            $site_name = Site::find($site_id)->name;
 
-        return view('reports.recharge', compact(
-            'site_name',
-            'current_site_date',
-            'recharge_data_array',
-            'recharge'
-        ));
+            $recharge_data_array = self::recharge_data($master_agent_id);
+            $recharge = '2nd';
+            return view('reports.recharge', compact(
+                'site_name',
+                'current_site_date',
+                'recharge_data_array',
+                'recharge'
+            ));
+
+        } else {
+            return redirect('/');
+        }
 
     }
 
@@ -747,7 +756,25 @@ class ReportsController extends Controller
      */
     public function dealer_3rd_recharge()
     {
-        dd('3rd');
+        if ($master_agent_id = \Auth::user()->master_agent_site) {
+            $current_site_date = Helpers::current_date_name();
+            $site_id = Settings::first()->get_site_id();
+            $site_name = Site::find($site_id)->name;
+
+            $recharge_data_array = self::third_recharge_data($master_agent_id);
+
+            $recharge = '3rd';
+
+            return view('reports.recharge', compact(
+                'site_name',
+                'current_site_date',
+                'recharge_data_array',
+                'recharge'
+            ));
+        } else {
+            return redirect('/');
+        }
+
     }
 
     public function download_csv(Request $request, $id)
