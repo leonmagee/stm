@@ -649,7 +649,7 @@ class AppServiceProvider extends ServiceProvider
                         'name' => '2nd<span>/</span>3rd Recharge',
                         'link' => '/all-recharge-data',
                         'sub' => false,
-                        'icon' => 'flaticon-electric-plug',
+                        'icon' => 'flaticon-battery-status',
                         'default' => false,
                     ],
                     [
