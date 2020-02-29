@@ -4,7 +4,7 @@
 
 <div class="title-form-wrap">
 
-  <h1 class="title">Archive Reports</h1>
+  {{-- <h1 class="title">Archive Reports</h1> --}}
 
   <form id="change-archive-date-form" method="POST" action="change-archive-date">
     {{ csrf_field() }}
@@ -96,9 +96,7 @@
 
 @section('page-script')
 <script>
-  console.log('page script working?');
-
-$('#archive-date-select').change(function() {
+  $('#archive-date-select').change(function() {
 
 	// call loader
 	$('.stm-absolute-wrap#loader-wrap').css({'display':'flex'});
