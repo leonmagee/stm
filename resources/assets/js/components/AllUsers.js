@@ -140,6 +140,10 @@ export default class AllUsers extends Component {
                         <div className="detail hide-mobile">{item.email}</div>
                         <div className="divider hide-mobile" />
                         <div className="detail hide-mobile">{item.phone}</div>
+                        <div className="divider hide-mobile" />
+                        <div className="detail">
+                          <a href="#">$3,777.00</a>
+                        </div>
                     </div>
                 );
             }
