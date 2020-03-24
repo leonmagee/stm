@@ -14,6 +14,8 @@ export default class AllUsers extends Component {
             userMatrix: false,
             selectedUsers: [],
             usersCount: [],
+            modalActive: false,
+            selectedUserEdit: null
         };
     }
 
@@ -39,6 +41,20 @@ export default class AllUsers extends Component {
             selectedRoleId: false,
             selectedUsers: [],
         });
+    }
+
+    openModal(id) {
+      this.setState({
+        //modalActive: true,
+        selectedUserEdit: id
+      })
+    }
+
+    closeModal() {
+      this.setState({
+        modalActive: false,
+        selectedUserEdit: false
+      })
     }
 
     updateUserSites() {
@@ -120,6 +136,7 @@ export default class AllUsers extends Component {
                     checkboxClass = 'fake-checkbox';
                 }
                 const linkUrl = `/users/${item.id}`;
+              const balance = item.balance ? '$' + item.balance : '$0.00';
                 return (
                     <div className="allUsersItem" key={key}>
                         <div className="detail-small">
@@ -142,7 +159,7 @@ export default class AllUsers extends Component {
                         <div className="detail hide-mobile">{item.phone}</div>
                         <div className="divider hide-mobile" />
                         <div className="detail">
-                          <a href="#">$3,777.00</a>
+                          <a className="balance" onClick={() => this.openModal(item.id)}>{balance}</a>
                         </div>
                     </div>
                 );
@@ -221,8 +238,19 @@ export default class AllUsers extends Component {
             );
         }
 
+      var allUsersModal = <div></div>;
+        if(this.state.modalActive) {
+          allUsersModal = <div className="allUserModal">
+            <div className="allUserModalInner">
+              Here is some content...
+              <a onClick={() => this.closeModal()}>Close</a>
+            </div>
+          </div>;
+        }
+
         return (
             <div>
+                {allUsersModal}
                 <div className="allUserToggle">
                     {nav} {siteForm}
                 </div>

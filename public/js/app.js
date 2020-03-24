@@ -30351,7 +30351,7 @@ $('.notification .delete').click(function () {
 });
 
 $('form#order_sims_form input, form input[type="number"]').keydown(function (e) {
-    if (!(e.keyCode > 95 && e.keyCode < 106 || e.keyCode > 47 && e.keyCode < 58 || e.keyCode == 8)) {
+    if (!(e.keyCode > 95 && e.keyCode < 106 || e.keyCode > 47 && e.keyCode < 58 || e.keyCode == 8) && e.keyCode !== 190) {
         return false;
     }
 });
@@ -82973,7 +82973,9 @@ var AllUsers = function (_Component) {
             selectedRoleId: false,
             userMatrix: false,
             selectedUsers: [],
-            usersCount: []
+            usersCount: [],
+            modalActive: false,
+            selectedUserEdit: null
         };
         return _this;
     }
@@ -83005,6 +83007,22 @@ var AllUsers = function (_Component) {
                 roleId: roleId,
                 selectedRoleId: false,
                 selectedUsers: []
+            });
+        }
+    }, {
+        key: 'openModal',
+        value: function openModal(id) {
+            this.setState({
+                //modalActive: true,
+                selectedUserEdit: id
+            });
+        }
+    }, {
+        key: 'closeModal',
+        value: function closeModal() {
+            this.setState({
+                modalActive: false,
+                selectedUserEdit: false
             });
         }
     }, {
@@ -83097,6 +83115,7 @@ var AllUsers = function (_Component) {
                         checkboxClass = 'fake-checkbox';
                     }
                     var linkUrl = '/users/' + item.id;
+                    var balance = item.balance ? '$' + item.balance : '$0.00';
                     return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                         'div',
                         { className: 'allUsersItem', key: key },
@@ -83148,8 +83167,10 @@ var AllUsers = function (_Component) {
                             { className: 'detail' },
                             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                                 'a',
-                                { href: '#' },
-                                '$3,777.00'
+                                { className: 'balance', onClick: function onClick() {
+                                        return _this3.openModal(item.id);
+                                    } },
+                                balance
                             )
                         )
                     );
@@ -83260,9 +83281,30 @@ var AllUsers = function (_Component) {
                 );
             }
 
+            var allUsersModal = __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div', null);
+            if (this.state.modalActive) {
+                allUsersModal = __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                    'div',
+                    { className: 'allUserModal' },
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        'div',
+                        { className: 'allUserModalInner' },
+                        'Here is some content...',
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                            'a',
+                            { onClick: function onClick() {
+                                    return _this3.closeModal();
+                                } },
+                            'Close'
+                        )
+                    )
+                );
+            }
+
             return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 'div',
                 null,
+                allUsersModal,
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                     'div',
                     { className: 'allUserToggle' },
