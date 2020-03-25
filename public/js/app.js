@@ -83078,8 +83078,13 @@ var AllUsers = function (_Component) {
                 });
                 //console.log(new_users);
                 _this2.setState({
-                    users: [].concat(_toConsumableArray(new_users))
+                    users: [].concat(_toConsumableArray(new_users)),
+                    modalActive: false,
+                    selectedUserEdit: false,
+                    newBalance: false,
+                    currentBalance: false
                 });
+
                 //console.log(new_users);
                 //console.log(users);
                 $('.stm-absolute-wrap#loader-wrap').css({
@@ -83391,6 +83396,11 @@ var AllUsers = function (_Component) {
                             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                                 'div',
                                 { className: 'control' },
+                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                    'label',
+                                    { className: 'label' },
+                                    'Set New Balance'
+                                ),
                                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { className: 'input', type: 'number', placeholder: 'enter new balance', onChange: function onChange(e) {
                                         return _this4.updateBalanceInput(e);
                                     }, value: currentBalance })
@@ -83416,7 +83426,7 @@ var AllUsers = function (_Component) {
 
             return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 'div',
-                null,
+                { className: 'allUsersWrap' },
                 allUsersModal,
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                     'div',

@@ -23,6 +23,13 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        view()->composer('*', function ($view) {
+            $name = str_replace('.', '-', $view->getName());
+            // if ($name == 'auth.login') {
+            //     $name = 'login_template';
+            // }
+            view()->share('view_name', $name);
+        });
 
         view()->composer(['layouts.nav', 'layouts.nav-mobile'], function ($view) {
 

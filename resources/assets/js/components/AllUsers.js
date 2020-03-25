@@ -100,8 +100,13 @@ export default class AllUsers extends Component {
         });
         //console.log(new_users);
         this.setState({
-          users: [...new_users]
+          users: [...new_users],
+          modalActive: false,
+          selectedUserEdit: false,
+          newBalance: false,
+          currentBalance: false,
         });
+
         //console.log(new_users);
         //console.log(users);
         $('.stm-absolute-wrap#loader-wrap').css({
@@ -312,6 +317,7 @@ export default class AllUsers extends Component {
               </div>
               <form action="" className="update-balance">
                 <div className="control">
+                  <label className="label">Set New Balance</label>
                   <input className="input" type="number" placeholder="enter new balance" onChange={e => this.updateBalanceInput(e)} value={currentBalance} />
                 </div>
                 <a className="button is-primary call-loader" onClick={() => this.updateBalance()}>Update</a>
@@ -322,7 +328,7 @@ export default class AllUsers extends Component {
         }
 
         return (
-            <div>
+            <div className="allUsersWrap">
                 {allUsersModal}
                 <div className="allUserToggle">
                     {nav} {siteForm}

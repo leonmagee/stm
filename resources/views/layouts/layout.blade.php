@@ -4,7 +4,7 @@
 
 @include('layouts.head')
 
-<body class='stm-body'>
+<body class='stm-body {{ $view_name }}'>
 
   <div class="stm-absolute-wrap" id="loader-wrap">
     <div class="loader"></div>
