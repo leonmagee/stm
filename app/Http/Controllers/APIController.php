@@ -41,6 +41,13 @@ class APIController extends Controller
         return datatables($logs)->make(true);
     }
 
+    public function getBalanceChanges()
+    {
+        $logs = UserLoginLogout::with('user')->get();
+
+        return datatables($logs)->make(true);
+    }
+
     public function getLogin($id)
     {
         $logs = UserLoginLogout::where('user_id', $id)->with('user')->get();

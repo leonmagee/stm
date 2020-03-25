@@ -40,6 +40,7 @@ Route::group(['middleware' => 'App\Http\Middleware\LockOutUsersManagers'], funct
     Route::post('update-user-password/{id}', 'UserController@update_password');
     Route::post('update-user-sites', 'UserController@changeUserSites');
     Route::post('update-user-balance', 'UserController@changeUserBalance');
+    Route::get('balance-tracker', 'UserController@balanceTracker');
     Route::get('delete-note/{note}', 'NoteController@destroy');
     Route::get('delete-email/{email}', 'EmailTrackerController@destroy');
     Route::get('delete-email-user/{email}/{user}', 'EmailTrackerController@destroy_on_user');
@@ -106,6 +107,7 @@ Route::get('/api/v1/sims_archive/{id}', 'APIController@getSimsArchive')->name('a
 Route::get('/api/v1/sim_users', 'APIController@getSimUsers')->name('api.sim_users.index');
 Route::get('/api/v1/sim_user/{id}', 'APIController@getSimUser')->name('api.sim_users.index_user');
 Route::get('/api/v1/logins', 'APIController@getLogins')->name('api.logins.index');
+Route::get('/api/v1/logins', 'APIController@getBalanceChanges')->name('api.balance.index');
 Route::get('/api/v1/logins-show/{id}', 'APIController@getLogin')->name('api.logins.show');
 
 //https: //stmmax.com/email-bounced

@@ -19,7 +19,7 @@
 
         <div class="form-wrap-flex">
           <div class="field full padding-bottom">
-            <h4>Please submit this form or call us at <strong>619-795-9200</strong> or <strong>619-458-9171</strong>
+            <h4>Please submit this form or call us at <strong>619-795-9200</strong>
             </h4>
             <br />
 

@@ -36,6 +36,15 @@ class UserController extends Controller
     }
 
     /**
+     * Track user balance changes
+     */
+    public function balanceTracker()
+    {
+        //return view('login_tracker.index');
+        return view('users.balance-tracker');
+    }
+
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response

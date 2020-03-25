@@ -192,6 +192,10 @@ class AppServiceProvider extends ServiceProvider
                     'name' => 'Add New User',
                     'link' => '/register',
                 ],
+                [
+                    'name' => 'Balance Tracker',
+                    'link' => '/balance-tracker',
+                ],
             ];
 
             $reports_sub = [
