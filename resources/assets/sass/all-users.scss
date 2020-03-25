@@ -90,7 +90,6 @@
 
 .allUserModal {
     background-color: rgba(0, 0, 0, 0.2);
-    font-size: 2em;
     position: absolute;
     z-index: 2000;
     width: 100%;
@@ -100,12 +99,41 @@
     justify-content: center;
     .allUserModalInner {
         background-color: #fff;
-        padding: 15px;
+        padding: 25px;
         width: 80%;
         height: 60%;
         margin-right: 1em;
         margin-bottom: 1em;
         border-radius: 10px;
+        position: relative;
+        .title-line {
+            font-size: 1.3em;
+            color: #bbb;
+            span {
+                color: $primary;
+                font-weight: bold;
+            }
+        }
+        .current-balance {
+            padding: 5px 0 15px;
+            span {
+                color: $color-red;
+                font-weight: bold;
+            }
+        }
+        form.update-balance {
+            max-width: 30%;
+            a {
+                margin-top: 15px;
+            }
+        }
+        .close-icon {
+            position: absolute;
+            right: 16px;
+            bottom: 9px;
+            color: $color-red;
+            font-size: 1.7em;
+        }
     }
 }
 

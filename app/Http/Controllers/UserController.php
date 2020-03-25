@@ -609,19 +609,8 @@ class UserController extends Controller
     /**
      * Axios change user sites
      */
-
     public function changeUserSites(request $request)
     {
-
-        // $this->validate(request(), [
-        //     'data' => 'required',
-        // ]);
-
-        //   dd($request->data);
-        //   var_dump($request);
-
-        //$data = json_decode($request->selectedUsers);
-
         $rold_id_int = intval($request->roleId);
         foreach ($request->selectedUsers as $id) {
             $id_intval = intval($id);
@@ -629,8 +618,24 @@ class UserController extends Controller
                 'role_id' => $rold_id_int,
             ]);
         }
-        // how to validate this worked?
         return $request->selectedUsers;
+    }
+
+    /**
+     * Axios change user balance
+     */
+    public function changeUserBalance(request $request)
+    {
+        $user_id = intval($request->selectedUserEdit['id']);
+        $balance = floatval($request->newBalance);
+
+        // $updated_user = User::find($user_id)->update([
+        //     'balance' => $balance,
+        // ]);
+        $user = User::find($user_id);
+        $user->balance = $balance;
+        $user->save();
+        return $user;
     }
 
     public function recharge($id)

@@ -39,6 +39,7 @@ Route::group(['middleware' => 'App\Http\Middleware\LockOutUsersManagers'], funct
     Route::get('change-password/{user}', 'UserController@edit_password');
     Route::post('update-user-password/{id}', 'UserController@update_password');
     Route::post('update-user-sites', 'UserController@changeUserSites');
+    Route::post('update-user-balance', 'UserController@changeUserBalance');
     Route::get('delete-note/{note}', 'NoteController@destroy');
     Route::get('delete-email/{email}', 'EmailTrackerController@destroy');
     Route::get('delete-email-user/{email}/{user}', 'EmailTrackerController@destroy_on_user');

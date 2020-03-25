@@ -15,7 +15,8 @@ export default class AllUsers extends Component {
             selectedUsers: [],
             usersCount: [],
             modalActive: false,
-            selectedUserEdit: null
+            selectedUserEdit: null,
+            currentBalance: 0
         };
     }
 
@@ -44,17 +45,75 @@ export default class AllUsers extends Component {
     }
 
     openModal(id) {
+      const { users } = this.state;
+      let selectedUserEdit = null;
+      users.map(user => {
+        if(user.id === id) {
+          selectedUserEdit = user;
+        }
+      });
+      const currentBalance = selectedUserEdit.balance ? selectedUserEdit.balance : 0;
+      //console.log(selectedUserEdit);
       this.setState({
-        //modalActive: true,
-        selectedUserEdit: id
+        modalActive: true,
+        selectedUserEdit,
+        currentBalance
       })
     }
 
     closeModal() {
       this.setState({
         modalActive: false,
-        selectedUserEdit: false
+        selectedUserEdit: false,
+        newBalance: false,
+        currentBalance: false,
       })
+    }
+
+    updateBalanceInput(e) {
+      this.setState({
+        currentBalance: e.target.value
+      });
+    }
+
+    updateBalance() {
+      const { selectedUserEdit, newBalance, currentBalance, users } = this.state;
+      //console.log(users);
+      $('.stm-absolute-wrap#loader-wrap').css({
+        display: 'flex',
+      });
+      //console.log('we have selected a user:', selectedUserEdit);
+      axios({
+        method: 'post',
+        url: '/update-user-balance',
+        data: {
+          selectedUserEdit,
+          newBalance: currentBalance,
+        }
+      })
+      .then(response => {
+        let new_users = users.map(user => {
+          if (user.id === response.data.id) {
+            user.balance = response.data.balance;
+          }
+          return user;
+        });
+        //console.log(new_users);
+        this.setState({
+          users: [...new_users]
+        });
+        //console.log(new_users);
+        //console.log(users);
+        $('.stm-absolute-wrap#loader-wrap').css({
+          display: 'none',
+        });
+      })
+      .catch(error => {
+        console.error('errorzz', error);
+        $('.stm-absolute-wrap#loader-wrap').css({
+          display: 'none',
+        });
+      });
     }
 
     updateUserSites() {
@@ -120,6 +179,8 @@ export default class AllUsers extends Component {
             selectedRoleId,
             userMatrix,
             usersCount,
+            selectedUserEdit,
+            currentBalance
         } = this.state;
 
         /**
@@ -136,7 +197,7 @@ export default class AllUsers extends Component {
                     checkboxClass = 'fake-checkbox';
                 }
                 const linkUrl = `/users/${item.id}`;
-              const balance = item.balance ? '$' + item.balance : '$0.00';
+              const balance = item.balance ? '$' + item.balance.toFixed(2) : '$0.00';
                 return (
                     <div className="allUsersItem" key={key}>
                         <div className="detail-small">
@@ -240,10 +301,22 @@ export default class AllUsers extends Component {
 
       var allUsersModal = <div></div>;
         if(this.state.modalActive) {
+          const balance = selectedUserEdit.balance ? selectedUserEdit.balance.toFixed(2) : 0;
           allUsersModal = <div className="allUserModal">
             <div className="allUserModalInner">
-              Here is some content...
-              <a onClick={() => this.closeModal()}>Close</a>
+              <div className="title-line">
+              <span>{selectedUserEdit.company}</span> / <span>{selectedUserEdit.name}</span>
+              </div>
+              <div className="current-balance">
+                Current Balance: <span>${balance}</span>
+              </div>
+              <form action="" className="update-balance">
+                <div className="control">
+                  <input className="input" type="number" placeholder="enter new balance" onChange={e => this.updateBalanceInput(e)} value={currentBalance} />
+                </div>
+                <a className="button is-primary call-loader" onClick={() => this.updateBalance()}>Update</a>
+              </form>
+              <a className="close-icon" onClick={() => this.closeModal()}><i className="fas fa-times-circle"></i></a>
             </div>
           </div>;
         }

@@ -25,6 +25,7 @@ class User extends Authenticatable
         'state',
         'zip',
         'role_id',
+        'balance',
         'notes_email_disable',
         'email_blast_disable',
         'contact_email_disable',

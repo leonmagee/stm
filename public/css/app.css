@@ -18501,7 +18501,6 @@ table.dataTable thead .sorting_desc_disabled:after {
 
 .allUserModal {
   background-color: rgba(0, 0, 0, 0.2);
-  font-size: 2em;
   position: absolute;
   z-index: 2000;
   width: 100%;
@@ -18519,12 +18518,48 @@ table.dataTable thead .sorting_desc_disabled:after {
 
 .allUserModal .allUserModalInner {
   background-color: #fff;
-  padding: 15px;
+  padding: 25px;
   width: 80%;
   height: 60%;
   margin-right: 1em;
   margin-bottom: 1em;
   border-radius: 10px;
+  position: relative;
+}
+
+.allUserModal .allUserModalInner .title-line {
+  font-size: 1.3em;
+  color: #bbb;
+}
+
+.allUserModal .allUserModalInner .title-line span {
+  color: #1b9aaa;
+  font-weight: bold;
+}
+
+.allUserModal .allUserModalInner .current-balance {
+  padding: 5px 0 15px;
+}
+
+.allUserModal .allUserModalInner .current-balance span {
+  color: #ef476f;
+  font-weight: bold;
+}
+
+.allUserModal .allUserModalInner form.update-balance {
+  max-width: 30%;
+}
+
+.allUserModal .allUserModalInner form.update-balance a {
+  margin-top: 15px;
+}
+
+.allUserModal .allUserModalInner .close-icon {
+  position: absolute;
+  right: 16px;
+  bottom: 9px;
+  color: #ef476f;
+  font-size: 1.7em;
 }
 
 .allUserToggle {

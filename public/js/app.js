@@ -82975,7 +82975,8 @@ var AllUsers = function (_Component) {
             selectedUsers: [],
             usersCount: [],
             modalActive: false,
-            selectedUserEdit: null
+            selectedUserEdit: null,
+            currentBalance: 0
         };
         return _this;
     }
@@ -83012,9 +83013,20 @@ var AllUsers = function (_Component) {
     }, {
         key: 'openModal',
         value: function openModal(id) {
+            var users = this.state.users;
+
+            var selectedUserEdit = null;
+            users.map(function (user) {
+                if (user.id === id) {
+                    selectedUserEdit = user;
+                }
+            });
+            var currentBalance = selectedUserEdit.balance ? selectedUserEdit.balance : 0;
+            //console.log(selectedUserEdit);
             this.setState({
-                //modalActive: true,
-                selectedUserEdit: id
+                modalActive: true,
+                selectedUserEdit: selectedUserEdit,
+                currentBalance: currentBalance
             });
         }
     }, {
@@ -83022,18 +83034,73 @@ var AllUsers = function (_Component) {
         value: function closeModal() {
             this.setState({
                 modalActive: false,
-                selectedUserEdit: false
+                selectedUserEdit: false,
+                newBalance: false,
+                currentBalance: false
+            });
+        }
+    }, {
+        key: 'updateBalanceInput',
+        value: function updateBalanceInput(e) {
+            this.setState({
+                currentBalance: e.target.value
+            });
+        }
+    }, {
+        key: 'updateBalance',
+        value: function updateBalance() {
+            var _this2 = this;
+
+            var _state2 = this.state,
+                selectedUserEdit = _state2.selectedUserEdit,
+                newBalance = _state2.newBalance,
+                currentBalance = _state2.currentBalance,
+                users = _state2.users;
+            //console.log(users);
+
+            $('.stm-absolute-wrap#loader-wrap').css({
+                display: 'flex'
+            });
+            //console.log('we have selected a user:', selectedUserEdit);
+            __WEBPACK_IMPORTED_MODULE_2_axios___default()({
+                method: 'post',
+                url: '/update-user-balance',
+                data: {
+                    selectedUserEdit: selectedUserEdit,
+                    newBalance: currentBalance
+                }
+            }).then(function (response) {
+                var new_users = users.map(function (user) {
+                    if (user.id === response.data.id) {
+                        user.balance = response.data.balance;
+                    }
+                    return user;
+                });
+                //console.log(new_users);
+                _this2.setState({
+                    users: [].concat(_toConsumableArray(new_users))
+                });
+                //console.log(new_users);
+                //console.log(users);
+                $('.stm-absolute-wrap#loader-wrap').css({
+                    display: 'none'
+                });
+            }).catch(function (error) {
+                console.error('errorzz', error);
+                $('.stm-absolute-wrap#loader-wrap').css({
+                    display: 'none'
+                });
             });
         }
     }, {
         key: 'updateUserSites',
         value: function updateUserSites() {
-            var _this2 = this;
+            var _this3 = this;
 
-            var _state2 = this.state,
-                selectedUsers = _state2.selectedUsers,
-                selectedRoleId = _state2.selectedRoleId,
-                userMatrix = _state2.userMatrix;
+            var _state3 = this.state,
+                selectedUsers = _state3.selectedUsers,
+                selectedRoleId = _state3.selectedRoleId,
+                userMatrix = _state3.userMatrix;
 
             $('.stm-absolute-wrap#loader-wrap').css({
                 display: 'flex'
@@ -83055,7 +83122,7 @@ var AllUsers = function (_Component) {
                     userMatrix[id] = parseInt(selectedRoleId);
                 });
 
-                _this2.setState({
+                _this3.setState({
                     userMatrix: _extends({}, userMatrix)
                 });
             }).catch(function (error) {
@@ -83090,16 +83157,18 @@ var AllUsers = function (_Component) {
     }, {
         key: 'render',
         value: function render() {
-            var _this3 = this;
+            var _this4 = this;
 
-            var _state3 = this.state,
-                users = _state3.users,
-                sites = _state3.sites,
-                roleId = _state3.roleId,
-                selectedUsers = _state3.selectedUsers,
-                selectedRoleId = _state3.selectedRoleId,
-                userMatrix = _state3.userMatrix,
-                usersCount = _state3.usersCount;
+            var _state4 = this.state,
+                users = _state4.users,
+                sites = _state4.sites,
+                roleId = _state4.roleId,
+                selectedUsers = _state4.selectedUsers,
+                selectedRoleId = _state4.selectedRoleId,
+                userMatrix = _state4.userMatrix,
+                usersCount = _state4.usersCount,
+                selectedUserEdit = _state4.selectedUserEdit,
+                currentBalance = _state4.currentBalance;
 
             /**
              * So instead of just matching the item.role_id to the current roleId... what I need to do
@@ -83115,7 +83184,7 @@ var AllUsers = function (_Component) {
                         checkboxClass = 'fake-checkbox';
                     }
                     var linkUrl = '/users/' + item.id;
-                    var balance = item.balance ? '$' + item.balance : '$0.00';
+                    var balance = item.balance ? '$' + item.balance.toFixed(2) : '$0.00';
                     return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                         'div',
                         { className: 'allUsersItem', key: key },
@@ -83127,7 +83196,7 @@ var AllUsers = function (_Component) {
                                 { className: 'fake-checkbox-wrap' },
                                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div', {
                                     onClick: function onClick() {
-                                        return _this3.selectUser(item.id);
+                                        return _this4.selectUser(item.id);
                                     },
                                     className: checkboxClass
                                 })
@@ -83168,7 +83237,7 @@ var AllUsers = function (_Component) {
                             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                                 'a',
                                 { className: 'balance', onClick: function onClick() {
-                                        return _this3.openModal(item.id);
+                                        return _this4.openModal(item.id);
                                     } },
                                 balance
                             )
@@ -83185,7 +83254,7 @@ var AllUsers = function (_Component) {
                     {
                         type: 'button',
                         onClick: function onClick() {
-                            return _this3.updateUserSites();
+                            return _this4.updateUserSites();
                         },
                         className: 'button is-primary'
                     },
@@ -83207,7 +83276,7 @@ var AllUsers = function (_Component) {
                             className: 'button is-primary button_' + item.role_id,
                             type: 'button',
                             onClick: function onClick() {
-                                return _this3.setUserType(item.role_id);
+                                return _this4.setUserType(item.role_id);
                             },
                             key: key
                         },
@@ -83267,7 +83336,7 @@ var AllUsers = function (_Component) {
                                 'Change Site'
                             ),
                             sites.map(function (item, key) {
-                                if (item.role_id !== _this3.state.roleId) {
+                                if (item.role_id !== _this4.state.roleId) {
                                     return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                                         'option',
                                         { key: key, value: item.role_id },
@@ -83283,19 +83352,63 @@ var AllUsers = function (_Component) {
 
             var allUsersModal = __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div', null);
             if (this.state.modalActive) {
+                var balance = selectedUserEdit.balance ? selectedUserEdit.balance.toFixed(2) : 0;
                 allUsersModal = __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                     'div',
                     { className: 'allUserModal' },
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                         'div',
                         { className: 'allUserModalInner' },
-                        'Here is some content...',
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                            'div',
+                            { className: 'title-line' },
+                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                'span',
+                                null,
+                                selectedUserEdit.company
+                            ),
+                            ' / ',
+                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                'span',
+                                null,
+                                selectedUserEdit.name
+                            )
+                        ),
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                            'div',
+                            { className: 'current-balance' },
+                            'Current Balance: ',
+                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                'span',
+                                null,
+                                '$',
+                                balance
+                            )
+                        ),
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                            'form',
+                            { action: '', className: 'update-balance' },
+                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                'div',
+                                { className: 'control' },
+                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { className: 'input', type: 'number', placeholder: 'enter new balance', onChange: function onChange(e) {
+                                        return _this4.updateBalanceInput(e);
+                                    }, value: currentBalance })
+                            ),
+                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                'a',
+                                { className: 'button is-primary call-loader', onClick: function onClick() {
+                                        return _this4.updateBalance();
+                                    } },
+                                'Update'
+                            )
+                        ),
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                             'a',
-                            { onClick: function onClick() {
-                                    return _this3.closeModal();
+                            { className: 'close-icon', onClick: function onClick() {
+                                    return _this4.closeModal();
                                 } },
-                            'Close'
+                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', { className: 'fas fa-times-circle' })
                         )
                     )
                 );
