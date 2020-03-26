@@ -45,6 +45,7 @@
                     min-width: 6em;
                     text-align: right;
                     display: inline-block;
+                    color: $color-green-text;
                 }
             }
         }
@@ -123,9 +124,12 @@
             }
         }
         .current-balance {
-            padding: 5px 0 15px;
+            padding: 7px 0 7px;
+            margin: 7px 0 11px;
+            border-top: 1px solid #eee;
+            border-bottom: 1px solid #eee;
             span {
-                color: $color-red;
+                color: $color-green-text;
                 font-weight: bold;
             }
         }

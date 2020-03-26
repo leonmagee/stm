@@ -18451,6 +18451,7 @@ table.dataTable thead .sorting_desc_disabled:after {
   min-width: 6em;
   text-align: right;
   display: inline-block;
+  color: #05c290;
 }
 
 .allUsersList .allUsersItem .detail-small {
@@ -18538,11 +18539,14 @@ table.dataTable thead .sorting_desc_disabled:after {
 }
 
 .allUserModal .allUserModalInner .current-balance {
-  padding: 5px 0 15px;
+  padding: 7px 0 7px;
+  margin: 7px 0 11px;
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
 }
 
 .allUserModal .allUserModalInner .current-balance span {
-  color: #ef476f;
+  color: #05c290;
   font-weight: bold;
 }
 
