@@ -13,7 +13,7 @@ class CreateBalanceTrackerTable extends Migration
      */
     public function up()
     {
-        Schema::create('balance_tracker', function (Blueprint $table) {
+        Schema::create('balance_trackers', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('admin_id');
             $table->integer('user_id');
@@ -30,6 +30,6 @@ class CreateBalanceTrackerTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('balance_tracker');
+        Schema::dropIfExists('balance_trackers');
     }
 }

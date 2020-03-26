@@ -14,8 +14,10 @@
       <th>Id</th>
       <th>Company</th>
       <th>User</th>
-      <th>Login Time</th>
-      <th>Logout Time</th>
+      <th>Admin</th>
+      <th>Old Balance</th>
+      <th>New Balance</th>
+      <th>Date</th>
     </tr>
   </thead>
   <tbody>
@@ -36,8 +38,10 @@
 { "data": "id" },
 { "data": "user.company" },
 { "data": "user.name" },
-{ "data": "login" },
-{ "data": "logout" }
+{ "data": "admin_user.name" },
+{ "data": "previous_balance" },
+{ "data": "new_balance" },
+{ "data": "created_at" }
 ]
 });
 

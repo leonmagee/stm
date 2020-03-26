@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\BalanceTracker;
 use App\Helpers;
 use App\ReportType;
-//use App\Role;
 use App\Settings;
 use App\Site;
 use App\User;
@@ -642,8 +642,16 @@ class UserController extends Controller
         //     'balance' => $balance,
         // ]);
         $user = User::find($user_id);
+        $old_balance = $user->balance ? $user->balance : 0;
         $user->balance = $balance;
         $user->save();
+        $logged_in = \Auth()->user();
+        BalanceTracker::create([
+            'admin_id' => $logged_in->id,
+            'user_id' => $user_id,
+            'previous_balance' => $old_balance,
+            'new_balance' => $balance,
+        ]);
         return $user;
     }
 

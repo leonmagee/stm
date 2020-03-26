@@ -1,6 +1,7 @@
 <?php
 namespace App\Http\Controllers;
 
+use App\BalanceTracker;
 use App\Helpers;
 use App\ReportType;
 use App\Sim;
@@ -43,9 +44,9 @@ class APIController extends Controller
 
     public function getBalanceChanges()
     {
-        $logs = UserLoginLogout::with('user')->get();
+        $balance = BalanceTracker::with(['user', 'admin_user'])->get();
 
-        return datatables($logs)->make(true);
+        return datatables($balance)->make(true);
     }
 
     public function getLogin($id)
