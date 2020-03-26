@@ -16,7 +16,8 @@ export default class AllUsers extends Component {
             usersCount: [],
             modalActive: false,
             selectedUserEdit: null,
-            currentBalance: 0
+            currentBalance: 0,
+            note: ''
         };
     }
 
@@ -67,6 +68,7 @@ export default class AllUsers extends Component {
         selectedUserEdit: false,
         newBalance: false,
         currentBalance: false,
+        note: '',
       })
     }
 
@@ -76,8 +78,14 @@ export default class AllUsers extends Component {
       });
     }
 
+    updateNoteValue(e) {
+      this.setState({
+        note: e.target.value
+      })
+    }
+
     updateBalance() {
-      const { selectedUserEdit, newBalance, currentBalance, users } = this.state;
+      const { selectedUserEdit, newBalance, currentBalance, users, note } = this.state;
       //console.log(users);
       $('.stm-absolute-wrap#loader-wrap').css({
         display: 'flex',
@@ -89,6 +97,7 @@ export default class AllUsers extends Component {
         data: {
           selectedUserEdit,
           newBalance: currentBalance,
+          note
         }
       })
       .then(response => {
@@ -105,6 +114,7 @@ export default class AllUsers extends Component {
           selectedUserEdit: false,
           newBalance: false,
           currentBalance: false,
+          note: '',
         });
 
         //console.log(new_users);
@@ -316,9 +326,15 @@ export default class AllUsers extends Component {
                 Current Balance: <span>${balance}</span>
               </div>
               <form action="" className="update-balance">
-                <div className="control">
-                  <label className="label">Set New Balance</label>
-                  <input className="input" type="number" placeholder="enter new balance" onChange={e => this.updateBalanceInput(e)} value={currentBalance} />
+                <div className="input-wrap">
+                  <div className="control">
+                    <label className="label">Set New Balance</label>
+                    <input className="input" type="number" placeholder="enter new balance" onChange={e => this.updateBalanceInput(e)} value={currentBalance} />
+                  </div>
+                  <div className="control">
+                    <label className="label">Add Note</label>
+                    <textarea className="textarea" onChange={e => this.updateNoteValue(e)} />
+                  </div>
                 </div>
                 <a className="button is-primary call-loader" onClick={() => this.updateBalance()}>Update</a>
               </form>

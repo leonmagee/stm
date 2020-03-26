@@ -18,6 +18,7 @@
       <th>Old Balance</th>
       <th>New Balance</th>
       <th>Date</th>
+      <th>Note</th>
     </tr>
   </thead>
   <tbody>
@@ -41,7 +42,8 @@
 { "data": "admin_user.name" },
 { "data": "previous_balance" },
 { "data": "new_balance" },
-{ "data": "created_at" }
+{ "data": "created_at" },
+{ "data": "note", "width":"23%" }
 ]
 });
 

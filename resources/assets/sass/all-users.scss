@@ -110,7 +110,7 @@
         background-color: #fff;
         padding: 25px;
         width: 40%;
-        height: 30%;
+        min-height: 30%;
         //margin-right: 1em;
         //margin-bottom: 1em;
         border-radius: 20px;
@@ -134,7 +134,19 @@
             }
         }
         form.update-balance {
-            max-width: 30%;
+            .input-wrap {
+                display: flex;
+                justify-content: space-between;
+                .control {
+                    flex: 0 1 73%;
+                    &:first-child {
+                        flex: 0 1 25%;
+                    }
+                    textarea {
+                        resize: none;
+                    }
+                }
+            }
             a {
                 margin-top: 15px;
             }

@@ -82976,7 +82976,8 @@ var AllUsers = function (_Component) {
             usersCount: [],
             modalActive: false,
             selectedUserEdit: null,
-            currentBalance: 0
+            currentBalance: 0,
+            note: ''
         };
         return _this;
     }
@@ -83036,7 +83037,8 @@ var AllUsers = function (_Component) {
                 modalActive: false,
                 selectedUserEdit: false,
                 newBalance: false,
-                currentBalance: false
+                currentBalance: false,
+                note: ''
             });
         }
     }, {
@@ -83044,6 +83046,13 @@ var AllUsers = function (_Component) {
         value: function updateBalanceInput(e) {
             this.setState({
                 currentBalance: e.target.value
+            });
+        }
+    }, {
+        key: 'updateNoteValue',
+        value: function updateNoteValue(e) {
+            this.setState({
+                note: e.target.value
             });
         }
     }, {
@@ -83055,7 +83064,8 @@ var AllUsers = function (_Component) {
                 selectedUserEdit = _state2.selectedUserEdit,
                 newBalance = _state2.newBalance,
                 currentBalance = _state2.currentBalance,
-                users = _state2.users;
+                users = _state2.users,
+                note = _state2.note;
             //console.log(users);
 
             $('.stm-absolute-wrap#loader-wrap').css({
@@ -83067,7 +83077,8 @@ var AllUsers = function (_Component) {
                 url: '/update-user-balance',
                 data: {
                     selectedUserEdit: selectedUserEdit,
-                    newBalance: currentBalance
+                    newBalance: currentBalance,
+                    note: note
                 }
             }).then(function (response) {
                 var new_users = users.map(function (user) {
@@ -83082,7 +83093,8 @@ var AllUsers = function (_Component) {
                     modalActive: false,
                     selectedUserEdit: false,
                     newBalance: false,
-                    currentBalance: false
+                    currentBalance: false,
+                    note: ''
                 });
 
                 //console.log(new_users);
@@ -83395,15 +83407,31 @@ var AllUsers = function (_Component) {
                             { action: '', className: 'update-balance' },
                             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                                 'div',
-                                { className: 'control' },
+                                { className: 'input-wrap' },
                                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                    'label',
-                                    { className: 'label' },
-                                    'Set New Balance'
+                                    'div',
+                                    { className: 'control' },
+                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                        'label',
+                                        { className: 'label' },
+                                        'Set New Balance'
+                                    ),
+                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { className: 'input', type: 'number', placeholder: 'enter new balance', onChange: function onChange(e) {
+                                            return _this4.updateBalanceInput(e);
+                                        }, value: currentBalance })
                                 ),
-                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { className: 'input', type: 'number', placeholder: 'enter new balance', onChange: function onChange(e) {
-                                        return _this4.updateBalanceInput(e);
-                                    }, value: currentBalance })
+                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                    'div',
+                                    { className: 'control' },
+                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                        'label',
+                                        { className: 'label' },
+                                        'Add Note'
+                                    ),
+                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('textarea', { className: 'textarea', onChange: function onChange(e) {
+                                            return _this4.updateNoteValue(e);
+                                        } })
+                                )
                             ),
                             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                                 'a',
