@@ -18550,6 +18550,10 @@ table.dataTable thead .sorting_desc_disabled:after {
   font-weight: bold;
 }
 
+.allUserModal .allUserModalInner form.update-balance .label-2 {
+  margin-top: 0.9em;
+}
+
 .allUserModal .allUserModalInner form.update-balance .input-wrap {
   display: -webkit-box;
   display: -ms-flexbox;

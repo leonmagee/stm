@@ -82976,6 +82976,8 @@ var AllUsers = function (_Component) {
             usersCount: [],
             modalActive: false,
             selectedUserEdit: null,
+            creditAmount: '',
+            subtractAmount: '',
             currentBalance: 0,
             note: ''
         };
@@ -83037,15 +83039,40 @@ var AllUsers = function (_Component) {
                 modalActive: false,
                 selectedUserEdit: false,
                 newBalance: false,
+                creditAmount: '',
+                subtractAmount: '',
                 currentBalance: false,
                 note: ''
             });
         }
+
+        // updateBalanceInput(e) {
+        //   this.setState({
+        //     currentBalance: e.target.value
+        //   });
+        // }
+
     }, {
-        key: 'updateBalanceInput',
-        value: function updateBalanceInput(e) {
+        key: 'creditBalanceInput',
+        value: function creditBalanceInput(e) {
             this.setState({
-                currentBalance: e.target.value
+                creditAmount: e.target.value,
+                subtractAmount: ''
+            });
+        }
+    }, {
+        key: 'subtractBalanceInput',
+        value: function subtractBalanceInput(e) {
+            console.log('current', this.state.currentBalance);
+            var currentBalance = this.state.currentBalance;
+
+            var subtractAmount = e.target.value;
+            if (subtractAmount > currentBalance) {
+                subtractAmount = currentBalance;
+            }
+            this.setState({
+                subtractAmount: subtractAmount,
+                creditAmount: ''
             });
         }
     }, {
@@ -83062,7 +83089,8 @@ var AllUsers = function (_Component) {
 
             var _state2 = this.state,
                 selectedUserEdit = _state2.selectedUserEdit,
-                newBalance = _state2.newBalance,
+                creditAmount = _state2.creditAmount,
+                subtractAmount = _state2.subtractAmount,
                 currentBalance = _state2.currentBalance,
                 users = _state2.users,
                 note = _state2.note;
@@ -83072,12 +83100,26 @@ var AllUsers = function (_Component) {
                 display: 'flex'
             });
             //console.log('we have selected a user:', selectedUserEdit);
+            var balance = selectedUserEdit.balance ? parseFloat(selectedUserEdit.balance) : 0;
+            var updatedBalance = 0;
+            var difference = 0;
+            if (creditAmount) {
+                updatedBalance = balance + parseFloat(creditAmount);
+                difference = creditAmount;
+            } else if (subtractAmount) {
+                updatedBalance = balance - parseFloat(subtractAmount);
+                difference = 0 - subtractAmount;
+            } else {
+                return;
+            }
+
             __WEBPACK_IMPORTED_MODULE_2_axios___default()({
                 method: 'post',
                 url: '/update-user-balance',
                 data: {
                     selectedUserEdit: selectedUserEdit,
-                    newBalance: currentBalance,
+                    difference: difference,
+                    newBalance: updatedBalance,
                     note: note
                 }
             }).then(function (response) {
@@ -83092,6 +83134,8 @@ var AllUsers = function (_Component) {
                     users: [].concat(_toConsumableArray(new_users)),
                     modalActive: false,
                     selectedUserEdit: false,
+                    creditAmount: '',
+                    subtractAmount: '',
                     newBalance: false,
                     currentBalance: false,
                     note: ''
@@ -83185,6 +83229,8 @@ var AllUsers = function (_Component) {
                 userMatrix = _state4.userMatrix,
                 usersCount = _state4.usersCount,
                 selectedUserEdit = _state4.selectedUserEdit,
+                creditAmount = _state4.creditAmount,
+                subtractAmount = _state4.subtractAmount,
                 currentBalance = _state4.currentBalance;
 
             /**
@@ -83414,11 +83460,19 @@ var AllUsers = function (_Component) {
                                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                                         'label',
                                         { className: 'label' },
-                                        'Set New Balance'
+                                        'Credit Amount'
                                     ),
-                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { className: 'input', type: 'number', placeholder: 'enter new balance', onChange: function onChange(e) {
-                                            return _this4.updateBalanceInput(e);
-                                        }, value: currentBalance })
+                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { className: 'input', type: 'number', placeholder: 'Enter Value', onChange: function onChange(e) {
+                                            return _this4.creditBalanceInput(e);
+                                        }, value: creditAmount }),
+                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                        'label',
+                                        { className: 'label label-2' },
+                                        'Subtract Amount'
+                                    ),
+                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { className: 'input', type: 'number', placeholder: 'Enter Value', onChange: function onChange(e) {
+                                            return _this4.subtractBalanceInput(e);
+                                        }, value: subtractAmount })
                                 ),
                                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                                     'div',

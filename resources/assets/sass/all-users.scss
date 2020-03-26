@@ -134,6 +134,9 @@
             }
         }
         form.update-balance {
+            .label-2 {
+                margin-top: 0.9em;
+            }
             .input-wrap {
                 display: flex;
                 justify-content: space-between;

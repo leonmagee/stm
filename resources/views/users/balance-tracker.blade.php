@@ -16,6 +16,7 @@
       <th>User</th>
       <th>Admin</th>
       <th>Old Balance</th>
+      <th>Difference</th>
       <th>New Balance</th>
       <th>Date</th>
       <th>Note</th>
@@ -41,6 +42,7 @@
 { "data": "user.name" },
 { "data": "admin_user.name" },
 { "data": "previous_balance" },
+{ "data": "difference" },
 { "data": "new_balance" },
 { "data": "created_at" },
 { "data": "note", "width":"23%" }

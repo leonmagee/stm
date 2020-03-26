@@ -16,6 +16,8 @@ export default class AllUsers extends Component {
             usersCount: [],
             modalActive: false,
             selectedUserEdit: null,
+            creditAmount: '',
+            subtractAmount: '',
             currentBalance: 0,
             note: ''
         };
@@ -67,14 +69,36 @@ export default class AllUsers extends Component {
         modalActive: false,
         selectedUserEdit: false,
         newBalance: false,
+        creditAmount: '',
+        subtractAmount: '',
         currentBalance: false,
         note: '',
       })
     }
 
-    updateBalanceInput(e) {
+    // updateBalanceInput(e) {
+    //   this.setState({
+    //     currentBalance: e.target.value
+    //   });
+    // }
+
+    creditBalanceInput(e) {
       this.setState({
-        currentBalance: e.target.value
+        creditAmount: e.target.value,
+        subtractAmount: '',
+      });
+    }
+
+    subtractBalanceInput(e) {
+      console.log('current', this.state.currentBalance);
+      const { currentBalance } = this.state;
+      let subtractAmount = e.target.value;
+      if (subtractAmount > currentBalance) {
+        subtractAmount = currentBalance;
+      }
+      this.setState({
+        subtractAmount,
+        creditAmount: '',
       });
     }
 
@@ -85,18 +109,32 @@ export default class AllUsers extends Component {
     }
 
     updateBalance() {
-      const { selectedUserEdit, newBalance, currentBalance, users, note } = this.state;
+      const { selectedUserEdit, creditAmount, subtractAmount, currentBalance, users, note } = this.state;
       //console.log(users);
       $('.stm-absolute-wrap#loader-wrap').css({
         display: 'flex',
       });
       //console.log('we have selected a user:', selectedUserEdit);
+      const balance = selectedUserEdit.balance ? parseFloat(selectedUserEdit.balance) : 0;
+      let updatedBalance = 0;
+      let difference = 0;
+      if(creditAmount) {
+        updatedBalance = balance + parseFloat(creditAmount);
+        difference = creditAmount;
+      } else if (subtractAmount) {
+        updatedBalance = balance - parseFloat(subtractAmount);
+        difference = 0 - subtractAmount;
+      } else {
+        return;
+      }
+
       axios({
         method: 'post',
         url: '/update-user-balance',
         data: {
           selectedUserEdit,
-          newBalance: currentBalance,
+          difference,
+          newBalance: updatedBalance,
           note
         }
       })
@@ -112,6 +150,8 @@ export default class AllUsers extends Component {
           users: [...new_users],
           modalActive: false,
           selectedUserEdit: false,
+          creditAmount: '',
+          subtractAmount: '',
           newBalance: false,
           currentBalance: false,
           note: '',
@@ -195,6 +235,8 @@ export default class AllUsers extends Component {
             userMatrix,
             usersCount,
             selectedUserEdit,
+            creditAmount,
+            subtractAmount,
             currentBalance
         } = this.state;
 
@@ -328,8 +370,10 @@ export default class AllUsers extends Component {
               <form action="" className="update-balance">
                 <div className="input-wrap">
                   <div className="control">
-                    <label className="label">Set New Balance</label>
-                    <input className="input" type="number" placeholder="enter new balance" onChange={e => this.updateBalanceInput(e)} value={currentBalance} />
+                    <label className="label">Credit Amount</label>
+                    <input className="input" type="number" placeholder="Enter Value" onChange={e => this.creditBalanceInput(e)}  value={creditAmount} />
+                    <label className="label label-2">Subtract Amount</label>
+                    <input className="input" type="number" placeholder="Enter Value" onChange={e => this.subtractBalanceInput(e)}  value={subtractAmount} />
                   </div>
                   <div className="control">
                     <label className="label">Add Note</label>

@@ -637,6 +637,7 @@ class UserController extends Controller
     {
         $user_id = intval($request->selectedUserEdit['id']);
         $balance = floatval($request->newBalance);
+        $difference = $request->difference;
         $note = $request->note;
 
         // $updated_user = User::find($user_id)->update([
@@ -651,6 +652,7 @@ class UserController extends Controller
             'admin_id' => $logged_in->id,
             'user_id' => $user_id,
             'previous_balance' => $old_balance,
+            'difference' => $difference,
             'new_balance' => $balance,
             'note' => $note,
         ]);
