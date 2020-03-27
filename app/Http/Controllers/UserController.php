@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\BalanceTracker;
 use App\Helpers;
+use App\Mail\EmailBalance;
 use App\ReportType;
 use App\Settings;
 use App\Site;
@@ -639,10 +640,6 @@ class UserController extends Controller
         $balance = floatval($request->newBalance);
         $difference = $request->difference;
         $note = $request->note;
-
-        // $updated_user = User::find($user_id)->update([
-        //     'balance' => $balance,
-        // ]);
         $user = User::find($user_id);
         $old_balance = $user->balance ? $user->balance : 0;
         $user->balance = $balance;
@@ -656,6 +653,19 @@ class UserController extends Controller
             'new_balance' => $balance,
             'note' => $note,
         ]);
+        $date = \Carbon\Carbon::now()->toDateTimeString();
+        /**
+         * Loop through to send the same email to admins as well
+         */
+        \Mail::to($user)->send(new EmailBalance(
+            $user,
+            $old_balance,
+            $difference,
+            $balance,
+            $note,
+            $date
+        ));
+
         return $user;
     }
 

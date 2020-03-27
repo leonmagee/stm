@@ -30350,11 +30350,13 @@ $('.notification .delete').click(function () {
     $(this).parent().fadeOut();
 });
 
-$('form#order_sims_form input, form input[type="number"]').keydown(function (e) {
-    if (!(e.keyCode > 95 && e.keyCode < 106 || e.keyCode > 47 && e.keyCode < 58 || e.keyCode == 8) && e.keyCode !== 190) {
-        return false;
-    }
-});
+// $('form#order_sims_form input, form input[type="number"]').keydown(function (e) {
+//   if (!((e.keyCode > 95 && e.keyCode < 106)
+//     || (e.keyCode > 47 && e.keyCode < 58)
+//     || e.keyCode == 8) && e.keyCode !== 190) {
+//       return false;
+//     }
+// });
 
 /**
  * Email Blast Toggle
@@ -83055,18 +83057,24 @@ var AllUsers = function (_Component) {
     }, {
         key: 'creditBalanceInput',
         value: function creditBalanceInput(e) {
+            var value_new = e.target.value;
+            if (e.target.value < 0) {
+                value_new = Math.abs(e.target.value);
+            }
             this.setState({
-                creditAmount: e.target.value,
+                creditAmount: value_new,
                 subtractAmount: ''
             });
         }
     }, {
         key: 'subtractBalanceInput',
         value: function subtractBalanceInput(e) {
-            console.log('current', this.state.currentBalance);
+            var subtractAmount = e.target.value;
+            if (e.target.value < 0) {
+                subtractAmount = Math.abs(e.target.value);
+            }
             var currentBalance = this.state.currentBalance;
 
-            var subtractAmount = e.target.value;
             if (subtractAmount > currentBalance) {
                 subtractAmount = currentBalance;
             }
@@ -83464,7 +83472,7 @@ var AllUsers = function (_Component) {
                                     ),
                                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { className: 'input', type: 'number', placeholder: 'Enter Value', onChange: function onChange(e) {
                                             return _this4.creditBalanceInput(e);
-                                        }, value: creditAmount }),
+                                        }, value: creditAmount, min: '0' }),
                                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                                         'label',
                                         { className: 'label label-2' },
@@ -83472,7 +83480,7 @@ var AllUsers = function (_Component) {
                                     ),
                                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { className: 'input', type: 'number', placeholder: 'Enter Value', onChange: function onChange(e) {
                                             return _this4.subtractBalanceInput(e);
-                                        }, value: subtractAmount })
+                                        }, value: subtractAmount, min: '0' })
                                 ),
                                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                                     'div',

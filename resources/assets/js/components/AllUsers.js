@@ -83,16 +83,22 @@ export default class AllUsers extends Component {
     // }
 
     creditBalanceInput(e) {
+      let value_new = e.target.value;
+      if(e.target.value < 0) {
+        value_new = Math.abs(e.target.value);
+      }
       this.setState({
-        creditAmount: e.target.value,
+        creditAmount: value_new,
         subtractAmount: '',
       });
     }
 
     subtractBalanceInput(e) {
-      console.log('current', this.state.currentBalance);
-      const { currentBalance } = this.state;
       let subtractAmount = e.target.value;
+      if (e.target.value < 0) {
+        subtractAmount = Math.abs(e.target.value);
+      }
+      const { currentBalance } = this.state;
       if (subtractAmount > currentBalance) {
         subtractAmount = currentBalance;
       }
@@ -371,9 +377,9 @@ export default class AllUsers extends Component {
                 <div className="input-wrap">
                   <div className="control">
                     <label className="label">Credit Amount</label>
-                    <input className="input" type="number" placeholder="Enter Value" onChange={e => this.creditBalanceInput(e)}  value={creditAmount} />
+                    <input className="input" type="number" placeholder="Enter Value" onChange={e => this.creditBalanceInput(e)}  value={creditAmount} min="0" />
                     <label className="label label-2">Subtract Amount</label>
-                    <input className="input" type="number" placeholder="Enter Value" onChange={e => this.subtractBalanceInput(e)}  value={subtractAmount} />
+                    <input className="input" type="number" placeholder="Enter Value" onChange={e => this.subtractBalanceInput(e)}  value={subtractAmount} min="0" />
                   </div>
                   <div className="control">
                     <label className="label">Add Note</label>

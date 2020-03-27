@@ -27,13 +27,13 @@ $('.notification .delete').click(function() {
         .fadeOut();
 });
 
-$('form#order_sims_form input, form input[type="number"]').keydown(function (e) {
-  if (!((e.keyCode > 95 && e.keyCode < 106)
-    || (e.keyCode > 47 && e.keyCode < 58)
-    || e.keyCode == 8) && e.keyCode !== 190) {
-      return false;
-    }
-});
+// $('form#order_sims_form input, form input[type="number"]').keydown(function (e) {
+//   if (!((e.keyCode > 95 && e.keyCode < 106)
+//     || (e.keyCode > 47 && e.keyCode < 58)
+//     || e.keyCode == 8) && e.keyCode !== 190) {
+//       return false;
+//     }
+// });
 
 /**
  * Email Blast Toggle

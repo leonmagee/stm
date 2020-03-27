@@ -205,11 +205,26 @@ class AppServiceProvider extends ServiceProvider
                 ],
             ];
 
-            $emails_sub = [
-                [
-                    'name' => 'Email Blast',
-                    'link' => '/email-blast',
-                ],
+            // $emails_sub = [
+            //     [
+            //         'name' => 'Email Blast',
+            //         'link' => '/email-blast',
+            //     ],
+            //     [
+            //         'name' => 'Email Tracker',
+            //         'link' => '/email-tracker',
+            //     ],
+            //     [
+            //         'name' => 'Login Tracker',
+            //         'link' => '/login-tracker',
+            //     ],
+            //     [
+            //         'name' => 'Balance Tracker',
+            //         'link' => '/balance-tracker',
+            //     ],
+            // ];
+
+            $trackers_sub = [
                 [
                     'name' => 'Email Tracker',
                     'link' => '/email-tracker',
@@ -304,11 +319,18 @@ class AppServiceProvider extends ServiceProvider
                         'default' => false,
                     ],
                     [
-                        'name' => 'Emails',
-                        'link' => false,
-                        'sub' => $emails_sub,
+                        'name' => 'Email Blast',
+                        'link' => '/email-blast',
+                        'sub' => false,
                         'icon' => 'flaticon-mail',
                         'default' => '/email-blast',
+                    ],
+                    [
+                        'name' => 'Trackers',
+                        'link' => false,
+                        'sub' => $trackers_sub,
+                        'icon' => 'flaticon-bar-graph-on-a-rectangle',
+                        'default' => '/email-tracker',
                     ],
                     [
                         'name' => 'Sims',
@@ -773,8 +795,10 @@ class AppServiceProvider extends ServiceProvider
             }
 
             $match_array = [
-                'email-tracker' => 'email-blast',
-                'login-tracker' => 'email-blast',
+                //'email-tracker' => 'email-blast',
+                //'email-tracker' => 'email-blast',
+                'login-tracker' => 'email-tracker',
+                'balance-tracker' => 'email-tracker',
                 //'send-email' => 'email-blast',
                 'sims/upload-all' => 'user-sims',
                 'find-sims' => 'user-sims',
