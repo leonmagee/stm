@@ -653,9 +653,14 @@ class UserController extends Controller
             'new_balance' => $balance,
             'note' => $note,
         ]);
-        $date = \Carbon\Carbon::now()->toDateTimeString();
+        $date = \Carbon\Carbon::now()->format('F d, Y');
+        if ($difference > 0) {
+            $difference = '$' . number_format($difference, 2);
+        } else {
+            $difference = '-$' . number_format(abs($difference), 2);
+        }
         /**
-         * Loop through to send the same email to admins as well
+         * Email user then all admins without note email disabled
          */
         \Mail::to($user)->send(new EmailBalance(
             $user,
@@ -665,6 +670,20 @@ class UserController extends Controller
             $note,
             $date
         ));
+        $admin_users = User::getAdminManageerEmployeeUsers();
+        foreach ($admin_users as $admin) {
+            if (!$admin->notes_email_disable) {
+                \Mail::to($admin)->send(new EmailBalance(
+                    $admin,
+                    $old_balance,
+                    $difference,
+                    $balance,
+                    $note,
+                    $date
+                ));
+
+            }
+        }
 
         return $user;
     }

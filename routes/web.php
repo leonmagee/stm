@@ -261,8 +261,19 @@ Route::get('closed', function () {
 /**
  * Test Routes
  */
-// Route::get('test-email', function() {
-//     return view('mail-sent-test');
+// Route::group(['middleware' => 'App\Http\Middleware\LockOutUsersManagers'], function () {
+//     Route::get('laravel-tester', function () {
+//         \Log::emergency('emergency');
+//         \Log::alert('alert');
+//         \Log::critical('critical');
+//         \Log::error('error');
+//         \Log::warning('warning');
+//         \Log::notice('notice');
+//         \Log::info('info');
+//         \Log::debug('debug');
+
+//         return 'just a test';
+//     })->name('laravel-tester');
 // });
 
 // Route::post('send_test_email', function() {

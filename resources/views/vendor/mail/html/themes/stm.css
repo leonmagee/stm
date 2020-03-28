@@ -195,6 +195,27 @@ img {
     margin: 0;
 }
 
+.table.custom {
+    float: none;
+    table-layout: fixed;
+    border-spacing: 0;
+    margin-bottom: 10px;
+}
+.table.custom th,
+.table.custom td {
+    text-align: left;
+    padding: 7px 15px;
+    border: 1px solid #e3e3e3;
+    border-right: none;
+}
+.table.custom th:last-child,
+.table.custom td:last-child {
+    border-right: 1px solid #e3e3e3;
+}
+.table.custom td {
+    border-top: none;
+}
+
 .content-cell {
     padding: 35px;
 }
@@ -291,4 +312,18 @@ img {
 .promotion p {
     font-size: 15px;
     text-align: center;
+}
+
+/* balance change email */
+.note-wrap {
+    font-size: 20px;
+    padding: 1px 0 23px;
+}
+.customer-info {
+    font-size: 11px;
+    font-weight: bold;
+    padding: 20px 0;
+}
+.customer-info .email {
+    color: #1b9aaa;
 }

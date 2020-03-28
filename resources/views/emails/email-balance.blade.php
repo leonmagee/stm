@@ -2,20 +2,32 @@
 
 # Hello {{ $user->name }}!
 
-Your STM Balance has been udpated:<br /><br />
-Previous Balance: <strong>{{ $previous }}</strong><br /><br />
-Transaction Amount: <strong>{{ $difference }}</strong><br /><br />
-Current Balance: <strong>{{ $current }}</strong><br /><br />
-<strong>{{ $note }}</strong><br /><br />
-Date: <strong>{{ $date }}</strong>
+<div class="note-wrap">
+  {{ $note }}
+</div>
 
+<table class="table custom">
+  <tr>
+    <th>Previous Balance</th>
+    <th>Transaction Amount</th>
+    <th>Current Balance</th>
+    <th>Date</th>
+  </tr>
+  <tr>
+    <td>${{ number_format($previous, 2) }}</td>
+    <td>{{ $difference }}</td>
+    <td>${{ number_format($current, 2) }}</td>
+    <td>{{ $date }}</td>
+  </tr>
+</table>
 
-
-<strong>{{ $user->name }}</strong><br />
-<strong>{{ $user->address }}</strong><br />
-<strong>{{ $user->city }}, {{ $user->state }} {{ $user->zip }}</strong><br />
-<span style="color: #1b9aaa">{{ $user->email }}</span><br />
-<strong>{{ $user->phone }}</strong><br /><br />
+<div class="customer-info">
+  <div>{{ $user->company . ' / ' . $user->name }}</div>
+  <div>{{ $user->address }}</div>
+  <div>{{ $user->city }}, {{ $user->state }} {{ $user->zip }}</div>
+  <div class="email">{{ $user->email }}</div>
+  <div>{{ $user->phone }}</div>
+</div>
 
 
 @component('mail::button', ['url' => 'https://stmmax.com'])
