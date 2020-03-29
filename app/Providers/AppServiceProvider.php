@@ -326,7 +326,7 @@ class AppServiceProvider extends ServiceProvider
                         'default' => false,
                     ],
                     [
-                        'name' => 'History Tracker',
+                        'name' => 'History Trackers',
                         'link' => false,
                         'sub' => $trackers_sub,
                         'icon' => 'flaticon-bar-graph-on-a-rectangle',
@@ -429,7 +429,7 @@ class AppServiceProvider extends ServiceProvider
                         'default' => false,
                     ],
                     [
-                        'name' => 'History Tracker',
+                        'name' => 'History Trackers',
                         'link' => false,
                         'sub' => $trackers_sub,
                         'icon' => 'flaticon-bar-graph-on-a-rectangle',
@@ -539,7 +539,7 @@ class AppServiceProvider extends ServiceProvider
                         'default' => false,
                     ],
                     [
-                        'name' => 'History Tracker',
+                        'name' => 'History Trackers',
                         'link' => false,
                         'sub' => $trackers_sub,
                         'icon' => 'flaticon-bar-graph-on-a-rectangle',
