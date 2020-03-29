@@ -644,6 +644,13 @@ class AppServiceProvider extends ServiceProvider
                         'default' => false,
                     ],
                     [
+                        'name' => 'Balance History',
+                        'link' => '/balance-tracker',
+                        'sub' => false,
+                        'icon' => 'flaticon-bar-graph-on-a-rectangle',
+                        'default' => false,
+                    ],
+                    [
                         'name' => 'Your Report',
                         'link' => '/reports',
                         'sub' => false,
@@ -746,6 +753,13 @@ class AppServiceProvider extends ServiceProvider
                         'link' => '/your-emails',
                         'sub' => false,
                         'icon' => 'flaticon-mail',
+                        'default' => false,
+                    ],
+                    [
+                        'name' => 'Balance History',
+                        'link' => '/balance-tracker',
+                        'sub' => false,
+                        'icon' => 'flaticon-bar-graph-on-a-rectangle',
                         'default' => false,
                     ],
                     [

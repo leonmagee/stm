@@ -43,6 +43,12 @@
     }
   }
 
+  if($item['name'] == 'Balance History') {
+    if($path == 'balance-tracker') {
+      $active = 'active';
+    }
+  }
+
   if($item['name'] == 'Monthly Sims') {
     $sub_path = substr($path, 0, 13);
     if($sub_path == 'sims/archive/') {

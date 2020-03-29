@@ -40,7 +40,6 @@ Route::group(['middleware' => 'App\Http\Middleware\LockOutUsersManagers'], funct
     Route::post('update-user-password/{id}', 'UserController@update_password');
     Route::post('update-user-sites', 'UserController@changeUserSites');
     Route::post('update-user-balance', 'UserController@changeUserBalance');
-    Route::get('balance-tracker', 'UserController@balanceTracker');
     Route::get('delete-note/{note}', 'NoteController@destroy');
     Route::get('delete-email/{email}', 'EmailTrackerController@destroy');
     Route::get('delete-email-user/{email}/{user}', 'EmailTrackerController@destroy_on_user');
@@ -49,6 +48,7 @@ Route::group(['middleware' => 'App\Http\Middleware\LockOutUsersManagers'], funct
     Route::get('resend-email/{email}', 'EmailTrackerController@resend');
 });
 
+Route::get('balance-tracker', 'UserController@balanceTracker');
 Route::get('order-sims', 'OrderController@create');
 Route::post('order-sims', 'OrderController@store');
 
@@ -108,6 +108,7 @@ Route::get('/api/v1/sim_users', 'APIController@getSimUsers')->name('api.sim_user
 Route::get('/api/v1/sim_user/{id}', 'APIController@getSimUser')->name('api.sim_users.index_user');
 Route::get('/api/v1/logins', 'APIController@getLogins')->name('api.logins.index');
 Route::get('/api/v1/balance', 'APIController@getBalanceChanges')->name('api.balance.index');
+Route::get('/api/v1/balance-user', 'APIController@getBalanceChangesUser')->name('api.balance.user');
 Route::get('/api/v1/logins-show/{id}', 'APIController@getLogin')->name('api.logins.show');
 
 //https: //stmmax.com/email-bounced

@@ -41,8 +41,11 @@ class UserController extends Controller
      */
     public function balanceTracker()
     {
-        //return view('login_tracker.index');
-        return view('users.balance-tracker');
+        if (\Auth::user()->isAdminManagerEmployee()) {
+            return view('users.balance-tracker');
+        } else {
+            return view('users.balance-tracker-user');
+        }
     }
 
     /**

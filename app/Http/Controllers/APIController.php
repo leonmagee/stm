@@ -49,6 +49,17 @@ class APIController extends Controller
         return datatables($balance)->make(true);
     }
 
+    public function getBalanceChangesUser()
+    {
+        // if (\Auth::user()->isAdminManagerEmployee()) {
+        //     $balance = BalanceTracker::with(['user', 'admin_user'])->get();
+        // } else {
+        // }
+        $balance = BalanceTracker::where('user_id', \Auth::user()->id)->with(['user', 'admin_user'])->get();
+
+        return datatables($balance)->make(true);
+    }
+
     public function getLogin($id)
     {
         $logs = UserLoginLogout::where('user_id', $id)->with('user')->get();
