@@ -42,20 +42,36 @@ class APIController extends Controller
         return datatables($logs)->make(true);
     }
 
+    private static function processBalance($balance)
+    {
+        foreach ($balance as $item) {
+            if ($item->difference < 0) {
+                $item->difference = '-$' . number_format(abs($item->difference), 2);
+            } else {
+                $item->difference = '$' . number_format($item->difference, 2);
+            }
+            $item->previous_balance = '$' . number_format($item->previous_balance, 2);
+            $item->new_balance = '$' . number_format($item->new_balance, 2);
+            $item->created_at_new = $item->created_at->format('M d, Y');
+        }
+
+        return $balance;
+    }
+
     public function getBalanceChanges()
     {
         $balance = BalanceTracker::with(['user', 'admin_user'])->get();
+
+        $balance = self::processBalance($balance);
 
         return datatables($balance)->make(true);
     }
 
     public function getBalanceChangesUser()
     {
-        // if (\Auth::user()->isAdminManagerEmployee()) {
-        //     $balance = BalanceTracker::with(['user', 'admin_user'])->get();
-        // } else {
-        // }
         $balance = BalanceTracker::where('user_id', \Auth::user()->id)->with(['user', 'admin_user'])->get();
+
+        $balance = self::processBalance($balance);
 
         return datatables($balance)->make(true);
     }

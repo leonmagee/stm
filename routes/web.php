@@ -48,7 +48,7 @@ Route::group(['middleware' => 'App\Http\Middleware\LockOutUsersManagers'], funct
     Route::get('resend-email/{email}', 'EmailTrackerController@resend');
 });
 
-Route::get('balance-tracker', 'UserController@balanceTracker');
+Route::get('transaction-tracker', 'UserController@transactionTracker');
 Route::get('order-sims', 'OrderController@create');
 Route::post('order-sims', 'OrderController@store');
 

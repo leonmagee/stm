@@ -219,8 +219,8 @@ class AppServiceProvider extends ServiceProvider
             //         'link' => '/login-tracker',
             //     ],
             //     [
-            //         'name' => 'Balance Tracker',
-            //         'link' => '/balance-tracker',
+            //         'name' => 'Transaction Tracker',
+            //         'link' => '/transaction-tracker',
             //     ],
             // ];
 
@@ -234,8 +234,8 @@ class AppServiceProvider extends ServiceProvider
                     'link' => '/login-tracker',
                 ],
                 [
-                    'name' => 'Balance Tracker',
-                    'link' => '/balance-tracker',
+                    'name' => 'Transaction Tracker',
+                    'link' => '/transaction-tracker',
                 ],
             ];
 
@@ -323,10 +323,10 @@ class AppServiceProvider extends ServiceProvider
                         'link' => '/email-blast',
                         'sub' => false,
                         'icon' => 'flaticon-mail',
-                        'default' => '/email-blast',
+                        'default' => false,
                     ],
                     [
-                        'name' => 'Trackers',
+                        'name' => 'History Tracker',
                         'link' => false,
                         'sub' => $trackers_sub,
                         'icon' => 'flaticon-bar-graph-on-a-rectangle',
@@ -407,13 +407,6 @@ class AppServiceProvider extends ServiceProvider
                         'icon' => 'flaticon-home',
                         'default' => false,
                     ],
-                    // [
-                    //     'name' => 'Your Profile',
-                    //     'link' => '/profile',
-                    //     'sub' => false,
-                    //     'icon' => 'flaticon-user',
-                    //     'default' => false,
-                    // ],
                     [
                         'name' => 'Notes',
                         'link' => '/notes',
@@ -429,11 +422,18 @@ class AppServiceProvider extends ServiceProvider
                         'default' => false,
                     ],
                     [
-                        'name' => 'Emails',
-                        'link' => false,
-                        'sub' => $emails_sub_manager,
+                        'name' => 'Send Email',
+                        'link' => '/send-email',
+                        'sub' => false,
                         'icon' => 'flaticon-mail',
-                        'default' => '/send-email',
+                        'default' => false,
+                    ],
+                    [
+                        'name' => 'History Tracker',
+                        'link' => false,
+                        'sub' => $trackers_sub,
+                        'icon' => 'flaticon-bar-graph-on-a-rectangle',
+                        'default' => '/email-tracker',
                     ],
                     [
                         'name' => 'Sims',
@@ -539,10 +539,10 @@ class AppServiceProvider extends ServiceProvider
                         'default' => false,
                     ],
                     [
-                        'name' => 'Emails',
+                        'name' => 'History Tracker',
                         'link' => false,
-                        'sub' => $emails_sub_employee,
-                        'icon' => 'flaticon-mail',
+                        'sub' => $trackers_sub,
+                        'icon' => 'flaticon-bar-graph-on-a-rectangle',
                         'default' => '/email-tracker',
                     ],
                     [
@@ -637,20 +637,6 @@ class AppServiceProvider extends ServiceProvider
                         'default' => false,
                     ],
                     [
-                        'name' => 'Your Emails',
-                        'link' => '/your-emails',
-                        'sub' => false,
-                        'icon' => 'flaticon-mail',
-                        'default' => false,
-                    ],
-                    [
-                        'name' => 'Balance History',
-                        'link' => '/balance-tracker',
-                        'sub' => false,
-                        'icon' => 'flaticon-bar-graph-on-a-rectangle',
-                        'default' => false,
-                    ],
-                    [
                         'name' => 'Your Report',
                         'link' => '/reports',
                         'sub' => false,
@@ -683,6 +669,20 @@ class AppServiceProvider extends ServiceProvider
                         'link' => '/order-sims',
                         'sub' => false,
                         'icon' => 'flaticon-sim',
+                        'default' => false,
+                    ],
+                    [
+                        'name' => 'Emails History',
+                        'link' => '/your-emails',
+                        'sub' => false,
+                        'icon' => 'flaticon-mail',
+                        'default' => false,
+                    ],
+                    [
+                        'name' => 'Transaction History',
+                        'link' => '/transaction-tracker',
+                        'sub' => false,
+                        'icon' => 'flaticon-bar-graph-on-a-rectangle',
                         'default' => false,
                     ],
                     [
@@ -749,20 +749,6 @@ class AppServiceProvider extends ServiceProvider
                         'default' => false,
                     ],
                     [
-                        'name' => 'Your Emails',
-                        'link' => '/your-emails',
-                        'sub' => false,
-                        'icon' => 'flaticon-mail',
-                        'default' => false,
-                    ],
-                    [
-                        'name' => 'Balance History',
-                        'link' => '/balance-tracker',
-                        'sub' => false,
-                        'icon' => 'flaticon-bar-graph-on-a-rectangle',
-                        'default' => false,
-                    ],
-                    [
                         'name' => 'Your Report',
                         'link' => '/reports',
                         'sub' => false,
@@ -798,6 +784,20 @@ class AppServiceProvider extends ServiceProvider
                         'default' => false,
                     ],
                     [
+                        'name' => 'Emails History',
+                        'link' => '/your-emails',
+                        'sub' => false,
+                        'icon' => 'flaticon-mail',
+                        'default' => false,
+                    ],
+                    [
+                        'name' => 'Transaction History',
+                        'link' => '/transaction-tracker',
+                        'sub' => false,
+                        'icon' => 'flaticon-bar-graph-on-a-rectangle',
+                        'default' => false,
+                    ],
+                    [
                         'name' => '2nd<span>/</span>3rd Recharge',
                         'link' => '/all-recharge-data',
                         'sub' => false,
@@ -812,7 +812,7 @@ class AppServiceProvider extends ServiceProvider
                 //'email-tracker' => 'email-blast',
                 //'email-tracker' => 'email-blast',
                 'login-tracker' => 'email-tracker',
-                'balance-tracker' => 'email-tracker',
+                'transaction-tracker' => 'email-tracker',
                 //'send-email' => 'email-blast',
                 'sims/upload-all' => 'user-sims',
                 'find-sims' => 'user-sims',

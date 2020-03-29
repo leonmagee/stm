@@ -71,6 +71,7 @@
         <a href="/login-tracker/{{ $user->id }}" class="button is-primary">Login Tracker</a>
         <a href="/email-tracker/{{ $user->id }}" class="button is-primary">Email Tracker</a>
         @endif
+        <a href="/balance-history/{{ $user->id }}" class="button is-primary">Transactions</a>
         @if($is_admin)
         <a href="/bonus-credit/{{ $user->id }}" class="button is-primary">Bonus / Credit</a>
         <a href="/user-plan-values/{{ $user->id }}" class="button is-primary">Payment Override</a>

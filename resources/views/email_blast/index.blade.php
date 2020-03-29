@@ -8,7 +8,7 @@
 
   <div class="form-wrapper-inner">
 
-    <h3>Commission Ready or Custom Mass Email</h3>
+    <h3>Custom Email Blast</h3>
 
     <form method="POST" action="/email-blast" enctype="multipart/form-data">
 

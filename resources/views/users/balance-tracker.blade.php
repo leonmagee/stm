@@ -2,7 +2,7 @@
 
 @section('title')
 <div class="with-background">
-  Balance Change Tracker
+  Transaction Tracker
 </div>
 @endsection
 
@@ -16,7 +16,7 @@
       <th>User</th>
       <th>Admin</th>
       <th>Old Balance</th>
-      <th>Difference</th>
+      <th>Transaction</th>
       <th>New Balance</th>
       <th>Date</th>
       <th>Note</th>
@@ -44,7 +44,7 @@
 { "data": "previous_balance" },
 { "data": "difference" },
 { "data": "new_balance" },
-{ "data": "created_at" },
+{ "data": "created_at_new" },
 { "data": "note", "width":"23%" }
 ]
 });

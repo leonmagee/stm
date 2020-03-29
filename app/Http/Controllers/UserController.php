@@ -39,7 +39,7 @@ class UserController extends Controller
     /**
      * Track user balance changes
      */
-    public function balanceTracker()
+    public function transactionTracker()
     {
         if (\Auth::user()->isAdminManagerEmployee()) {
             return view('users.balance-tracker');

@@ -5,7 +5,7 @@
 
   <div class="form-wrapper-inner">
 
-    <h3>Your Emails</h3>
+    <h3>Emails History</h3>
 
     <div class="email-manager-wrap">
 

@@ -2,7 +2,7 @@
 
 @section('title')
 <div class="with-background">
-  Balance History
+  Transaction History
 </div>
 @endsection
 
@@ -11,8 +11,9 @@
 <table id="sims_table" class="stripe compact">
   <thead>
     <tr>
+      <th>ID</th>
       <th>Old Balance</th>
-      <th>Difference</th>
+      <th>Transaction</th>
       <th>New Balance</th>
       <th>Date</th>
       <th>Note</th>
@@ -31,12 +32,13 @@
 "processing": true,
 "serverSide": true,
 "ajax": "{!! route('api.balance.user') !!}",
-"order": [[ 3, "desc" ]],
+"order": [[ 0, "desc" ]],
 "columns": [
+  { "data": "id" },
 { "data": "previous_balance" },
 { "data": "difference" },
 { "data": "new_balance" },
-{ "data": "created_at" },
+{ "data": "created_at_new" },
 { "data": "note", "width":"23%" }
 ]
 });

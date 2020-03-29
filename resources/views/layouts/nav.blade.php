@@ -43,8 +43,8 @@
     }
   }
 
-  if($item['name'] == 'Balance History') {
-    if($path == 'balance-tracker') {
+  if($item['name'] == 'Transaction History') {
+    if($path == 'transaction-tracker') {
       $active = 'active';
     }
   }

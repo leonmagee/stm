@@ -31,7 +31,7 @@ class EmailBalance extends Mailable
         $this->current = $current;
         $this->note = $note;
         $this->date = $date;
-        $this->subject('STM Balance Update');
+        $this->subject('Transaction Balance Update');
         $this->callbacks[] = (function ($message) use ($user) {$message->getHeaders()->addTextHeader('user_id', $user->id);});
 
     }
