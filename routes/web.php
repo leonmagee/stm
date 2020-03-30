@@ -48,8 +48,13 @@ Route::group(['middleware' => 'App\Http\Middleware\LockOutUsersManagers'], funct
     Route::get('resend-email/{email}', 'EmailTrackerController@resend');
 });
 
+/**
+ * @todo restrict access here?
+ */
 Route::get('transaction-tracker', 'UserController@transactionTracker');
 Route::get('transaction-tracker/{user}', 'UserController@transactionTrackerShow');
+Route::get('transaction-change-credit/{user}', 'UserController@transactionTrackerAddCredit');
+Route::post('edit-transaction/{user}', 'UserController@changeUserBalance');
 Route::get('order-sims', 'OrderController@create');
 Route::post('order-sims', 'OrderController@store');
 

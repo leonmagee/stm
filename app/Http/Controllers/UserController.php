@@ -53,6 +53,11 @@ class UserController extends Controller
         return view('users.balance-tracker-show', compact('user'));
     }
 
+    public function transactionTrackerAddCredit(User $user)
+    {
+        return view('users.add-transaction', compact('user'));
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -641,15 +646,41 @@ class UserController extends Controller
 
     /**
      * Axios change user balance
+     * Use same method for both react and laravel forms
+     *
      */
-    public function changeUserBalance(request $request)
+    public function changeUserBalance(request $request, User $user = null)
     {
-        $user_id = intval($request->selectedUserEdit['id']);
-        $balance = floatval($request->newBalance);
-        $difference = $request->difference;
+
+        // process for non-react form
+        if (!$request->selectedUserEdit) {
+            $user_id = $user->id;
+            $old_balance = $user->balance ? $user->balance : 0;
+            if ($request->subtract_credit) {
+                $difference = abs($request->subtract_credit) * -1;
+                $balance = $old_balance + $difference;
+            } else if ($request->add_credit) {
+                $difference = abs($request->add_credit);
+                $balance = $old_balance + $difference;
+            } else {
+                return \Redirect::back()->withErrors(['Plese enter one Add or Subtract value.']);
+            }
+
+        }
+
+        // end non-react form
+
+        // react only
+        if ($request->selectedUserEdit) {
+            $user_id = intval($request->selectedUserEdit['id']);
+            $balance = floatval($request->newBalance);
+            $difference = $request->difference;
+            $user = User::find($user_id);
+            $old_balance = $user->balance ? $user->balance : 0;
+        }
+        // end react only
+
         $note = $request->note;
-        $user = User::find($user_id);
-        $old_balance = $user->balance ? $user->balance : 0;
         $user->balance = $balance;
         $user->save();
         $logged_in = \Auth()->user();
@@ -693,7 +724,15 @@ class UserController extends Controller
             }
         }
 
-        return $user;
+        if ($request->selectedUserEdit) {
+            // react
+            return $user;
+        } else {
+            // not react
+            session()->flash('message', 'User credit has been updated');
+            return redirect('/users/' . $user->id);
+        }
+
     }
 
     public function recharge($id)

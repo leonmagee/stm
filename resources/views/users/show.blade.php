@@ -42,6 +42,13 @@
       </div>
       @endif
 
+      @if($user->balance)
+      <div class="item credit-bonus flex-wrap">
+        <i class="fas fa-dollar-sign"></i>
+        <span>Credit: <span class="bonus-val">${{ number_format($user->balance, 2) }}</span></span>
+      </div>
+      @endif
+
       @if($user->address || $user->city || $user->state || $user->zip)
       <div class="item address-wrap flex-wrap">
         <i class="fas fa-map-marker-alt"></i>
@@ -73,7 +80,7 @@
         @endif
         <a href="/transaction-tracker/{{ $user->id }}" class="button is-primary">Transactions</a>
         @if($is_admin)
-        <a href="/transaction-change-credit/{{ $user->id }}" class="button is-primary">Change Credit</a>
+        <a href="/transaction-change-credit/{{ $user->id }}" class="button is-primary">Add Credit</a>
         <a href="/bonus-credit/{{ $user->id }}" class="button is-primary">Monthly Bonus</a>
         <a href="/user-plan-values/{{ $user->id }}" class="button is-primary">Payment Override</a>
         <a href="#" class="modal-open button is-danger">Delete User</a>

@@ -1,4 +1,9 @@
 .form-wrapper {
+    label {
+        span.label-green {
+            color: $color-green-text !important;
+        }
+    }
     // Settings | Uploads
     @media (min-width: $screen-md) {
         display: flex;

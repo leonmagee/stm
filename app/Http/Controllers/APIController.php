@@ -43,7 +43,7 @@ class APIController extends Controller
         return datatables($logs)->make(true);
     }
 
-    private static function processBalance($balance)
+    private static function standardizeBalance($balance)
     {
         foreach ($balance as $item) {
             if ($item->difference < 0) {
@@ -63,7 +63,7 @@ class APIController extends Controller
     {
         $balance = BalanceTracker::with(['user', 'admin_user'])->get();
 
-        $balance = self::processBalance($balance);
+        $balance = self::standardizeBalance($balance);
 
         return datatables($balance)->make(true);
     }
@@ -72,7 +72,7 @@ class APIController extends Controller
     {
         $balance = BalanceTracker::where('user_id', \Auth::user()->id)->with(['user', 'admin_user'])->get();
 
-        $balance = self::processBalance($balance);
+        $balance = self::standardizeBalance($balance);
 
         return datatables($balance)->make(true);
     }
@@ -82,7 +82,7 @@ class APIController extends Controller
         \Log::info('its sunday' . $user);
         $balance = BalanceTracker::where('user_id', $user->id)->with(['user', 'admin_user'])->get();
 
-        $balance = self::processBalance($balance);
+        $balance = self::standardizeBalance($balance);
 
         return datatables($balance)->make(true);
     }

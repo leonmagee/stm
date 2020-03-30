@@ -26,6 +26,14 @@ Search Results for <span>{{ $search }}</span>
     <div class="detail hide-mobile">
       {{ $user->phone }}
     </div>
+    <div class="divider hide-mobile"></div>
+    <div class="detail hide-mobile">
+      <a class="balance" href="transaction-change-credit/{{ $user->id }}">${{ number_format($user->balance, 2) }}</a>
+    </div>
+
+
+
+
   </div>
   @endforeach
 
