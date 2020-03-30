@@ -657,7 +657,11 @@ class UserController extends Controller
             $user_id = $user->id;
             $old_balance = $user->balance ? $user->balance : 0;
             if ($request->subtract_credit) {
-                $difference = abs($request->subtract_credit) * -1;
+                $credit_abs = $request->subtract_credit;
+                if ($credit_abs > $old_balance) {
+                    return \Redirect::back()->withErrors(['Subtraction must not exceed current value.']);
+                }
+                $difference = abs($credit_abs) * -1;
                 $balance = $old_balance + $difference;
             } else if ($request->add_credit) {
                 $difference = abs($request->add_credit);
