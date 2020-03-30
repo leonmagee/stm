@@ -8,15 +8,27 @@
 
       <div class="item company">{{ $user->company}}</div>
 
+      <div class="item role flex-wrap">
+        <i class="fas fa-sitemap"></i>
+        <span>{{ $role }}</span>
+      </div>
+
       <div class="item name flex-wrap">
         <i class="fas fa-user"></i>
         <span>{{ $user->name }}</span>
       </div>
 
-      <div class="item role flex-wrap">
-        <i class="fas fa-sitemap"></i>
-        <span>{{ $role }}</span>
+      @if($user->address || $user->city || $user->state || $user->zip)
+      <div class="item address-wrap flex-wrap">
+        <i class="fas fa-map-marker-alt"></i>
+        <div class="address-wrap-inner">
+          <div class="address">{{ $user->address }}</div>
+          <div class="city_state_zip">
+            {{ $user->city }} {{ $user->state }}, {{ $user->zip }}
+          </div>
+        </div>
       </div>
+      @endif
 
       <div class="item email flex-wrap">
         <i class="far fa-envelope"></i>
@@ -45,21 +57,10 @@
       @if($user->balance)
       <div class="item credit-bonus flex-wrap">
         <i class="fas fa-dollar-sign"></i>
-        <span>Credit: <span class="bonus-val">${{ number_format($user->balance, 2) }}</span></span>
+        <span>Available Credit: <span class="bonus-val">${{ number_format($user->balance, 2) }}</span></span>
       </div>
       @endif
 
-      @if($user->address || $user->city || $user->state || $user->zip)
-      <div class="item address-wrap flex-wrap">
-        <i class="fas fa-map-marker-alt"></i>
-        <div class="address-wrap-inner">
-          <div class="address">{{ $user->address }}</div>
-          <div class="city_state_zip">
-            {{ $user->city }} {{ $user->state }}, {{ $user->zip }}
-          </div>
-        </div>
-      </div>
-      @endif
 
     </div>
 

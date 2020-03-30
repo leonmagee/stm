@@ -371,7 +371,7 @@ export default class AllUsers extends Component {
               <span>{selectedUserEdit.company}</span> / <span>{selectedUserEdit.name}</span>
               </div>
               <div className="current-balance">
-                Current Balance: <span>${balance}</span>
+                <label>Available Credit: <span>${balance}</span></label>
               </div>
               <form action="" className="update-balance">
                 <div className="input-wrap">

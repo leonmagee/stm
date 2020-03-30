@@ -128,9 +128,11 @@
             margin: 7px 0 11px;
             border-top: 1px solid #eee;
             border-bottom: 1px solid #eee;
-            span {
-                color: $color-green-text;
+            label {
                 font-weight: bold;
+                span {
+                    color: $color-green-text;
+                }
             }
         }
         form.update-balance {
@@ -269,9 +271,12 @@
         padding-bottom: 0px;
         margin-bottom: 7px;
     }
-    .name span {
-        font-size: 1.8em;
-        //color: #555;
+    .name {
+        padding: 0;
+        span {
+            font-size: 1.8em;
+            //color: #555;
+        }
     }
     .role span {
         //color: $color-red;
