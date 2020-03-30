@@ -73,7 +73,7 @@
         @endif
         <a href="/transaction-tracker/{{ $user->id }}" class="button is-primary">Transactions</a>
         @if($is_admin)
-        <a href="/bonus-credit/{{ $user->id }}" class="button is-primary">Change Credit</a>
+        <a href="/transaction-change-credit/{{ $user->id }}" class="button is-primary">Change Credit</a>
         <a href="/bonus-credit/{{ $user->id }}" class="button is-primary">Monthly Bonus</a>
         <a href="/user-plan-values/{{ $user->id }}" class="button is-primary">Payment Override</a>
         <a href="#" class="modal-open button is-danger">Delete User</a>
