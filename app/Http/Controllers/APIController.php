@@ -7,6 +7,7 @@ use App\ReportType;
 use App\Sim;
 use App\SimMaster;
 use App\SimResidual;
+use App\User;
 use App\UserLoginLogout;
 use Illuminate\Support\Facades\DB;
 use Yajra\Datatables\Datatables;
@@ -70,6 +71,16 @@ class APIController extends Controller
     public function getBalanceChangesUser()
     {
         $balance = BalanceTracker::where('user_id', \Auth::user()->id)->with(['user', 'admin_user'])->get();
+
+        $balance = self::processBalance($balance);
+
+        return datatables($balance)->make(true);
+    }
+
+    public function getBalanceChangesShow(User $user)
+    {
+        \Log::info('its sunday' . $user);
+        $balance = BalanceTracker::where('user_id', $user->id)->with(['user', 'admin_user'])->get();
 
         $balance = self::processBalance($balance);
 

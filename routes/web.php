@@ -49,6 +49,7 @@ Route::group(['middleware' => 'App\Http\Middleware\LockOutUsersManagers'], funct
 });
 
 Route::get('transaction-tracker', 'UserController@transactionTracker');
+Route::get('transaction-tracker/{user}', 'UserController@transactionTrackerShow');
 Route::get('order-sims', 'OrderController@create');
 Route::post('order-sims', 'OrderController@store');
 
@@ -108,6 +109,7 @@ Route::get('/api/v1/sim_users', 'APIController@getSimUsers')->name('api.sim_user
 Route::get('/api/v1/sim_user/{id}', 'APIController@getSimUser')->name('api.sim_users.index_user');
 Route::get('/api/v1/logins', 'APIController@getLogins')->name('api.logins.index');
 Route::get('/api/v1/balance', 'APIController@getBalanceChanges')->name('api.balance.index');
+Route::get('/api/v1/balance-show/{user}', 'APIController@getBalanceChangesShow')->name('api.balance.show');
 Route::get('/api/v1/balance-user', 'APIController@getBalanceChangesUser')->name('api.balance.user');
 Route::get('/api/v1/logins-show/{id}', 'APIController@getLogin')->name('api.logins.show');
 

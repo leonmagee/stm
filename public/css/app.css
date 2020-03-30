@@ -17224,6 +17224,10 @@ body.stm-body .button-bar-wrap .button-bar a {
   -webkit-box-flex: 0;
       -ms-flex: 0 1 100%;
           flex: 0 1 100%;
+  padding-bottom: calc(0.375em - 1px);
+  padding-left: 0.75em;
+  padding-right: 0.75em;
+  padding-top: calc(0.4em - 1px);
 }
 
 @media (min-width: 980px) {

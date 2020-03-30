@@ -48,6 +48,11 @@ class UserController extends Controller
         }
     }
 
+    public function transactionTrackerShow(User $user)
+    {
+        return view('users.balance-tracker-show', compact('user'));
+    }
+
     /**
      * Display a listing of the resource.
      *
