@@ -54,13 +54,10 @@
       </div>
       @endif
 
-      @if($user->balance)
       <div class="item credit-bonus flex-wrap">
         <i class="fas fa-dollar-sign"></i>
         <span>Available Credit: <span class="bonus-val">${{ number_format($user->balance, 2) }}</span></span>
       </div>
-      @endif
-
 
     </div>
 
