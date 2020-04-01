@@ -16990,6 +16990,96 @@ label span.required {
   margin-left: 5px;
 }
 
+.form-wrapper .redeem-credit {
+  padding: 20px;
+}
+
+.form-wrapper .redeem-credit .balance {
+  border-bottom: 1px solid #dfdfdf;
+  margin-bottom: 25px;
+  padding-bottom: 3px;
+}
+
+.form-wrapper .redeem-credit .balance span {
+  font-weight: bold;
+  color: #05c290;
+}
+
+.form-wrapper .redeem-credit .credit-redeem-choices {
+  margin: 2px 0 5px;
+  padding: 0 2px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.form-wrapper .redeem-credit .credit-redeem-choices .item {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 1 49%;
+          flex: 0 1 49%;
+  margin-bottom: 1.2em;
+}
+
+.form-wrapper .redeem-credit .credit-redeem-choices .item img {
+  border-radius: 20px;
+  border: 5px solid #fafafa;
+}
+
+.form-wrapper .redeem-credit .credit-redeem-choices .item :hover {
+  cursor: pointer;
+}
+
+.form-wrapper .redeem-credit .credit-redeem-choices .item :hover img,
+.form-wrapper .redeem-credit .credit-redeem-choices .item.active img {
+  border-color: #ef476f;
+}
+
+.modal-account-details {
+  margin-bottom: 20px;
+  text-align: left;
+  padding: 0 10px;
+}
+
+.modal-account-details .item {
+  font-size: 1.3em;
+  font-weight: bold;
+  margin: 5px 0;
+}
+
+.modal-account-details .item.modal-payment-type span {
+  text-transform: uppercase;
+  color: #1b9aaa;
+}
+
+.modal-account-details .item.modal-account-id span {
+  color: #1b9aaa;
+}
+
+.modal-account-details .item.credit-to-redeem span {
+  color: #05c290;
+}
+
+.modal-account-details .warning-info {
+  color: #ef476f;
+  font-weight: bold;
+  background-color: #fef0f3;
+  padding: 10px 20px 15px;
+  border: 1px solid #eaeaea;
+  border-radius: 15px;
+  margin-top: 15px;
+}
+
+.modal-account-details .warning-info h2 {
+  font-weight: bold;
+  font-size: 1.7em;
+  text-transform: uppercase;
+}
+
 @media (min-width: 980px) {
   .stm-grid-wrap {
     display: grid;
@@ -17213,6 +17303,12 @@ body.stm-body .notification.is-success {
   text-shadow: 1px 1px #05d19b;
 }
 
+@media (min-width: 980px) {
+  body.stm-body .notification.is-half {
+    max-width: 48%;
+  }
+}
+
 body.stm-body .button-bar-wrap {
   padding: 10px 5px 0;
 }
@@ -17234,6 +17330,10 @@ body.stm-body .button-bar-wrap .button-bar a {
   padding-top: calc(0.4em - 1px);
 }
 
+body.stm-body .button-bar-wrap .button-bar.profile-only a {
+  font-size: 0.9em;
+}
+
 @media (min-width: 980px) {
   body.stm-body .button-bar-wrap .button-bar {
     padding: 10px 0 0;
@@ -17250,6 +17350,10 @@ body.stm-body .button-bar-wrap .button-bar a {
     -webkit-box-flex: 0;
         -ms-flex: 0 1 18%;
             flex: 0 1 18%;
+  }
+
+  body.stm-body .button-bar-wrap .button-bar.profile-only {
+    width: 75%;
   }
 }
 
@@ -18687,6 +18791,10 @@ table.dataTable thead .sorting_desc_disabled:after {
   .single-user-wrap {
     display: inline-block;
   }
+}
+
+.single-user-wrap.three-quarters {
+  min-width: 75%;
 }
 
 .single-user-wrap .flex-wrap {

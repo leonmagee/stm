@@ -83,6 +83,11 @@ body.stm-body {
             color: #fff;
             text-shadow: 1px 1px darken($color-green, 2%);
         }
+        &.is-half {
+            @media (min-width: $screen-md) {
+                max-width: 48%;
+            }
+        }
     }
 
     .button-bar-wrap {
@@ -101,16 +106,23 @@ body.stm-body {
                 padding-right: 0.75em;
                 padding-top: calc(0.4em - 1px);
             }
+            &.profile-only {
+                a {
+                    font-size: 0.9em;
+                }
+            }
 
             @media (min-width: $screen-md) {
                 padding: 10px 0 0;
                 display: flex;
                 flex-wrap: wrap;
-                //justify-content: space-between;
                 width: 50%;
                 a {
                     margin: 8px 1%;
                     flex: 0 1 18%;
+                }
+                &.profile-only {
+                    width: 75%;
                 }
             }
         }

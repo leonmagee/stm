@@ -30344,10 +30344,66 @@ __webpack_require__(174);
 __webpack_require__(175);
 
 /**
+ * Credit payment choices
+ */
+$('.form-wrap .credit-redeem-choices .item').click(function () {
+  var type_name = $(this).attr('name');
+  $('#redeem-credit input#type').val(type_name);
+  console.log('click working', type_name);
+  $(this).parent().find('.active').removeClass('active');
+  $(this).addClass('active');
+});
+
+$('.redeem-credit-modal').click(function () {
+
+  var balance = $('input#hidden-user-balance').val();
+
+  if (balance && balance > 0) {
+
+    // modal shouldn't trigger if it's not set...
+    var account = $('input#account_entry').val();
+    var type = $('#redeem-credit input#type').val();
+
+    var type_no_dash = type.replace('-', ' ');
+    $('.modal-account-id span').html(account);
+    $('.modal-payment-type span').html(type_no_dash);
+
+    $('input#account').val(account);
+    if (account && type) {
+      $('.modal#layout-modal').toggleClass('is-active');
+    } else if (type) {
+      var notification = '<div class="notification is-half is-danger"><button class="delete"></button><div>You must provide account information.</div></div>';
+      $('div#content').prepend(notification);
+      $('.notification .delete').click(function () {
+        $(this).parent().fadeOut();
+      });
+    } else if (account) {
+      var _notification = '<div class="notification is-half is-danger"><button class="delete"></button><div>You must choose a payment type.</div></div>';
+      $('div#content').prepend(_notification);
+      $('.notification .delete').click(function () {
+        $(this).parent().fadeOut();
+      });
+    } else {
+      var _notification2 = '<div class="notification is-half is-danger"><button class="delete"></button><div>You must choose a payment type and provide account information.</div></div>';
+      $('div#content').prepend(_notification2);
+      $('.notification .delete').click(function () {
+        $(this).parent().fadeOut();
+      });
+    }
+  } else {
+    var _notification3 = '<div class="notification is-half is-danger"><button class="delete"></button><div>You must have credit to proceed.</div></div>';
+    $('div#content').prepend(_notification3);
+    $('.notification .delete').click(function () {
+      $(this).parent().fadeOut();
+    });
+  }
+});
+
+/**
  * Fade out notification on click
  */
 $('.notification .delete').click(function () {
-    $(this).parent().fadeOut();
+  $(this).parent().fadeOut();
 });
 
 // $('form#order_sims_form input, form input[type="number"]').keydown(function (e) {
@@ -30362,77 +30418,77 @@ $('.notification .delete').click(function () {
  * Email Blast Toggle
  */
 $('#all-users-radio').click(function () {
-    //console.log('workzzzzzzzz');
-    $('#exclude-sites-wrap').addClass('active');
+  //console.log('workzzzzzzzz');
+  $('#exclude-sites-wrap').addClass('active');
 });
 
 $('.one-site-radio').click(function () {
-    //console.log('workzzzzzzzz');
-    $('#exclude-sites-wrap').removeClass('active');
+  //console.log('workzzzzzzzz');
+  $('#exclude-sites-wrap').removeClass('active');
 });
 
 /**
  * Modals
  */
 $('.modal-open, #layout-modal .modal-close, #layout-modal .modal-close-button').click(function () {
-    $('.modal#layout-modal').toggleClass('is-active');
+  $('.modal#layout-modal').toggleClass('is-active');
 });
 
 $('.modal-open-transfer-1, #layout-modal-transfer-1 .modal-close, #layout-modal-transfer-1 .modal-close-button').click(function () {
-    $('.modal#layout-modal-transfer-1').toggleClass('is-active');
+  $('.modal#layout-modal-transfer-1').toggleClass('is-active');
 });
 
 $('.modal-open-email-blast, .modal-email-close, .modal-close').click(function () {
-    $('#email-blast-modal').toggleClass('is-active');
+  $('#email-blast-modal').toggleClass('is-active');
 });
 
 $('.modal-open-transfer-2, #layout-modal-transfer-2 .modal-close, #layout-modal-transfer-2 .modal-close-button').click(function () {
-    $('.modal#layout-modal-transfer-2').toggleClass('is-active');
+  $('.modal#layout-modal-transfer-2').toggleClass('is-active');
 });
 
 $('.modal-open-exclude-users, #layout-modal-exclude-users .modal-close, #layout-modal-exclude-users .modal-close-button').click(function () {
-    $('.modal#layout-modal-exclude-users').toggleClass('is-active');
+  $('.modal#layout-modal-exclude-users').toggleClass('is-active');
 });
 
 /**
  * Modal for deleting note and email
  */
 $('.modal-delete-open, .modal-delete-close, .modal-delete-close-button').click(function () {
-    var itemId = $(this).attr('item_id');
-    $('.modal#delete-item-modal-' + itemId).toggleClass('is-active');
+  var itemId = $(this).attr('item_id');
+  $('.modal#delete-item-modal-' + itemId).toggleClass('is-active');
 });
 
 /**
  * Modal for resending email
  */
 $('.modal-resend-open, .modal-resend-close, .modal-resend-close-button').click(function () {
-    var itemId = $(this).attr('item_id');
-    $('.modal#resend-item-modal-' + itemId).toggleClass('is-active');
+  var itemId = $(this).attr('item_id');
+  $('.modal#resend-item-modal-' + itemId).toggleClass('is-active');
 });
 
 /**
  * Modal for deleting order
  */
 $('.modal-delete-open, .modal-delete-close, .modal-delete-close-button').click(function () {
-    var orderId = $(this).attr('order_id');
-    // console.log('note id', noteId);
-    $('.modal#delete-order-modal-' + orderId).toggleClass('is-active');
+  var orderId = $(this).attr('order_id');
+  // console.log('note id', noteId);
+  $('.modal#delete-order-modal-' + orderId).toggleClass('is-active');
 });
 
 $('.menu-modal-open, #menu-modal .menu-modal-close').click(function () {
-    $('.modal#menu-modal').toggleClass('is-active');
+  $('.modal#menu-modal').toggleClass('is-active');
 });
 
 $('#modal_delete_sims').click(function () {
-    console.log('click worked new');
-    $('#delete_sims_form').submit();
+  console.log('click worked new');
+  $('#delete_sims_form').submit();
 });
 
 /**
  * Toggle mobile menu
  */
 $('.mobile-menu a.has-menu').click(function () {
-    $(this).parent().toggleClass('active').find('ul').toggleClass('active');
+  $(this).parent().toggleClass('active').find('ul').toggleClass('active');
 });
 
 /**
@@ -30459,33 +30515,33 @@ $('.mobile-menu a.has-menu').click(function () {
  * This is linked to buttons that show the spinner prior to refreshing the page.
  */
 $('button.call-loader, ul.sidebar-menu li a[href="/reports"]').click(function () {
-    $('.stm-absolute-wrap#loader-wrap').css({ display: 'flex' });
+  $('.stm-absolute-wrap#loader-wrap').css({ display: 'flex' });
 });
 
 // loader for datatables processing
 
 $('#sims_table').on('processing.dt', function (e, settings, processing) {
-    if (processing === true) {
-        $('.stm-absolute-wrap#loader-wrap').css({ display: 'flex' });
-    } else {
-        $('.stm-absolute-wrap#loader-wrap').css({ display: 'none' });
-    }
+  if (processing === true) {
+    $('.stm-absolute-wrap#loader-wrap').css({ display: 'flex' });
+  } else {
+    $('.stm-absolute-wrap#loader-wrap').css({ display: 'none' });
+  }
 });
 
 /**
  * Add file name to inputs
  */
 $('.upload-file-js').on('change', function () {
-    if (this.files.length > 0) {
-        $(this).parent().find('.file-name').html(this.files[0].name);
-    }
+  if (this.files.length > 0) {
+    $(this).parent().find('.file-name').html(this.files[0].name);
+  }
 });
 
 /**
  * Note delete form
  */
 $('.delete-note-form i').click(function () {
-    $(this).parent().submit();
+  $(this).parent().submit();
 });
 
 // var data = {

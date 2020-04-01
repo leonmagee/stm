@@ -213,3 +213,97 @@ label {
         margin-left: 5px;
     }
 }
+
+.form-wrapper {
+    .redeem-credit {
+        padding: 20px;
+        .balance {
+            border-bottom: 1px solid #dfdfdf;
+            margin-bottom: 25px;
+            padding-bottom: 3px;
+            span {
+                font-weight: bold;
+                color: $color-green-text;
+            }
+        }
+        .credit-redeem-choices {
+            margin: 2px 0 5px;
+            padding: 0 2px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            .item {
+                flex: 0 1 49%;
+                margin-bottom: 1.2em;
+                img {
+                    border-radius: 20px;
+                    //border: 1px solid rgba(0, 0, 0, 0.1);
+                    border: 5px solid #fafafa;
+                }
+                &.zelle {
+                    img {
+                        //border-color: #6d11d4;
+                    }
+                }
+                &.cash-app {
+                    img {
+                        //border-color: #000;
+                    }
+                }
+                :hover {
+                    cursor: pointer;
+                }
+                :hover,
+                &.active {
+                    img {
+                        border-color: $color-red;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.modal-account-details {
+    margin-bottom: 20px;
+    text-align: left;
+    padding: 0 10px;
+    .item {
+        font-size: 1.3em;
+        font-weight: bold;
+        margin: 5px 0;
+        &.modal-payment-type {
+            span {
+                text-transform: uppercase;
+                color: $brand-primary;
+            }
+        }
+        &.modal-account-id {
+            span {
+                color: $brand-primary;
+            }
+        }
+        &.credit-to-redeem {
+            span {
+                color: $color-green-text;
+            }
+        }
+    }
+    .warning-info {
+        color: $color-red;
+        font-weight: bold;
+        background-color: lighten($color-red, 36%);
+        padding: 10px 20px 15px;
+        border: 1px solid #eaeaea;
+        border-radius: 15px;
+        margin-top: 15px;
+        h2 {
+            font-weight: bold;
+            font-size: 1.7em;
+            text-transform: uppercase;
+        }
+    }
+}
+// <div class="item credit-to-redeem">Credit to Redeem: <span></span></div>
+// <div class="item payment-type">Payment Type: <span></span></div>
+// <div class="item account-id">Ac

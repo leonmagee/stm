@@ -1090,4 +1090,17 @@ class UserController extends Controller
         return view('users.search-results', compact('users', 'search'));
     }
 
+    public function redeemCredit()
+    {
+        $user = \Auth::user();
+        return view('users.redeem-credit', compact('user'));
+    }
+
+    public function redeemCreditSubmit(Request $request)
+    {
+
+        dd($request);
+        //return \Redirect::back()->withErrors(['xxx']);
+    }
+
 }

@@ -637,6 +637,13 @@ class AppServiceProvider extends ServiceProvider
                         'default' => false,
                     ],
                     [
+                        'name' => 'Redeem Credit',
+                        'link' => '/redeem-credit',
+                        'sub' => false,
+                        'icon' => 'flaticon-security-on',
+                        'default' => false,
+                    ],
+                    [
                         'name' => 'Your Report',
                         'link' => '/reports',
                         'sub' => false,
@@ -746,6 +753,13 @@ class AppServiceProvider extends ServiceProvider
                         'link' => '/profile',
                         'sub' => false,
                         'icon' => 'flaticon-user',
+                        'default' => false,
+                    ],
+                    [
+                        'name' => 'Redeem Credit',
+                        'link' => '/redeem-credit',
+                        'sub' => false,
+                        'icon' => 'flaticon-security-on',
                         'default' => false,
                     ],
                     [

@@ -18,6 +18,74 @@ require('./components/AllUsersNotAdmin');
 
 require('./components/AllUsersAgents');
 
+
+/**
+ * Credit payment choices
+ */
+$('.form-wrap .credit-redeem-choices .item').click(function() {
+  const type_name = $(this).attr('name');
+  $('#redeem-credit input#type').val(type_name);
+  console.log('click working', type_name);
+  $(this).parent().find('.active').removeClass('active');
+  $(this).addClass('active');
+});
+
+$('.redeem-credit-modal').click(function() {
+
+  const balance = $('input#hidden-user-balance').val();
+
+  if(balance && balance > 0) {
+
+  // modal shouldn't trigger if it's not set...
+  const account = $('input#account_entry').val();
+  const type = $('#redeem-credit input#type').val();
+
+  const type_no_dash = type.replace('-', ' ');
+  $('.modal-account-id span').html(account);
+  $('.modal-payment-type span').html(type_no_dash);
+
+  $('input#account').val(account);
+  if(account && type) {
+  $('.modal#layout-modal').toggleClass('is-active');
+
+  } else if (type){
+    const notification = '<div class="notification is-half is-danger"><button class="delete"></button><div>You must provide account information.</div></div>';
+    $('div#content').prepend(notification);
+    $('.notification .delete').click(function () {
+      $(this)
+        .parent()
+        .fadeOut();
+    });
+  } else if (account) {
+    const notification = '<div class="notification is-half is-danger"><button class="delete"></button><div>You must choose a payment type.</div></div>';
+    $('div#content').prepend(notification);
+    $('.notification .delete').click(function () {
+      $(this)
+        .parent()
+        .fadeOut();
+    });
+  } else {
+    const notification = '<div class="notification is-half is-danger"><button class="delete"></button><div>You must choose a payment type and provide account information.</div></div>';
+    $('div#content').prepend(notification);
+    $('.notification .delete').click(function () {
+      $(this)
+        .parent()
+        .fadeOut();
+    });
+  }
+  } else {
+    const notification = '<div class="notification is-half is-danger"><button class="delete"></button><div>You must have credit to proceed.</div></div>';
+    $('div#content').prepend(notification);
+    $('.notification .delete').click(function () {
+      $(this)
+        .parent()
+        .fadeOut();
+    });
+  }
+
+});
+
+
 /**
  * Fade out notification on click
  */

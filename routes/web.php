@@ -57,6 +57,8 @@ Route::get('transaction-tracker', 'UserController@transactionTracker');
 Route::get('transaction-tracker/{user}', 'UserController@transactionTrackerShow');
 Route::get('order-sims', 'OrderController@create');
 Route::post('order-sims', 'OrderController@store');
+Route::get('redeem-credit', 'UserController@redeemCredit');
+Route::post('redeem-credit', 'UserController@redeemCreditSubmit');
 
 Route::group(['middleware' => 'App\Http\Middleware\LockOutUsers'], function () {
     Route::get('login-tracker', 'UserLoginLogoutController@index');

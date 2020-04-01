@@ -242,6 +242,9 @@
     white-space: nowrap;
     color: #555;
     min-width: 100%;
+    &.three-quarters {
+        min-width: 75%;
+    }
     .flex-wrap {
         display: flex;
         align-items: center;
