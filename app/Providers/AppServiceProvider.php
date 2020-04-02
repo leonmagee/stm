@@ -234,7 +234,7 @@ class AppServiceProvider extends ServiceProvider
                     'link' => '/login-tracker',
                 ],
                 [
-                    'name' => 'Transaction Tracker',
+                    'name' => 'Credit History',
                     'link' => '/transaction-tracker',
                 ],
                 // [
@@ -690,7 +690,7 @@ class AppServiceProvider extends ServiceProvider
                         'default' => false,
                     ],
                     [
-                        'name' => 'Transaction History',
+                        'name' => 'Credit History',
                         'link' => '/transaction-tracker',
                         'sub' => false,
                         'icon' => 'flaticon-bar-graph-on-a-rectangle',
@@ -816,7 +816,7 @@ class AppServiceProvider extends ServiceProvider
                         'default' => false,
                     ],
                     [
-                        'name' => 'Transaction History',
+                        'name' => 'Credit History',
                         'link' => '/transaction-tracker',
                         'sub' => false,
                         'icon' => 'flaticon-bar-graph-on-a-rectangle',
