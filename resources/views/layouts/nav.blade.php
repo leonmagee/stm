@@ -43,7 +43,7 @@
     }
   }
 
-  if($item['name'] == 'Transaction History') {
+  if($item['name'] == 'Credit History') {
     if($path == 'transaction-tracker') {
       $active = 'active';
     }
