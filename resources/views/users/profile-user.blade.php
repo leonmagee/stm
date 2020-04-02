@@ -63,8 +63,6 @@
   <div class="button-bar profile-only">
     <a href="/edit-profile" class="button is-primary">Edit Info</a>
     <a href="/change-profile-password" class="button is-primary">Change Password</a>
-    <a href="/user-sims" class="button is-primary">View Sims</a>
-    <a href="/reports" class="button is-primary">View Report</a>
     <a href="/redeem-credit" class="button is-primary">Redeem Credit</a>
   </div>
 </div>

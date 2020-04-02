@@ -641,13 +641,6 @@ class AppServiceProvider extends ServiceProvider
                         'default' => false,
                     ],
                     [
-                        'name' => 'Redeem Credit',
-                        'link' => '/redeem-credit',
-                        'sub' => false,
-                        'icon' => 'flaticon-security-on',
-                        'default' => false,
-                    ],
-                    [
                         'name' => 'Your Report',
                         'link' => '/reports',
                         'sub' => false,
@@ -680,6 +673,13 @@ class AppServiceProvider extends ServiceProvider
                         'link' => '/order-sims',
                         'sub' => false,
                         'icon' => 'flaticon-sim',
+                        'default' => false,
+                    ],
+                    [
+                        'name' => 'Redeem Credit',
+                        'link' => '/redeem-credit',
+                        'sub' => false,
+                        'icon' => 'flaticon-security-on',
                         'default' => false,
                     ],
                     [
@@ -767,13 +767,6 @@ class AppServiceProvider extends ServiceProvider
                         'default' => false,
                     ],
                     [
-                        'name' => 'Redeem Credit',
-                        'link' => '/redeem-credit',
-                        'sub' => false,
-                        'icon' => 'flaticon-security-on',
-                        'default' => false,
-                    ],
-                    [
                         'name' => 'Your Report',
                         'link' => '/reports',
                         'sub' => false,
@@ -806,6 +799,13 @@ class AppServiceProvider extends ServiceProvider
                         'link' => '/order-sims',
                         'sub' => false,
                         'icon' => 'flaticon-sim',
+                        'default' => false,
+                    ],
+                    [
+                        'name' => 'Redeem Credit',
+                        'link' => '/redeem-credit',
+                        'sub' => false,
+                        'icon' => 'flaticon-security-on',
                         'default' => false,
                     ],
                     [
