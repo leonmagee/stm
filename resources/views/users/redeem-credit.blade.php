@@ -15,7 +15,7 @@
     <div class="form-wrap redeem-credit">
 
       <div class="balance">
-        Your Current Credit: <span>${{ number_format($user->balance, 2) }}</span>
+        Your Available Credit: <span>${{ number_format($user->balance, 2) }}</span>
       </div>
       <label class="label">Choose Payout Method</label>
       <div class="credit-redeem-choices">
