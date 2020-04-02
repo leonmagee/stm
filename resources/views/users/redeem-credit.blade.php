@@ -2,9 +2,6 @@
 
 @section('content')
 
-{{-- make a different back for agents/dealers? --}}
-{{-- @include('mixins.user-back', ['user' => $user]) --}}
-
 @include('layouts.errors')
 
 <div class="form-wrapper">
@@ -33,6 +30,15 @@
         </div>
         <div class="item cash-app" name="cash-app">
           <img src="{{ URL::asset('img/cash-app.jpg') }}" />
+        </div>
+        <div class="item h2o" name="h2o-direct-portal">
+          <img src="{{ URL::asset('img/h2o.jpg') }}" />
+        </div>
+        <div class="item lyca" name="lyca-direct-portal">
+          <img src="{{ URL::asset('img/lyca.jpg') }}" />
+        </div>
+        <div class="item gs-posa" name="gs-posa-portal">
+          <img src="{{ URL::asset('img/gs-posa.jpg') }}" />
         </div>
       </div>
 
@@ -73,7 +79,7 @@
     <input type="hidden" id="user_id" name="user_id" value={{ $user->id }} />
     <div class="modal-account-details">
       <div class="item credit-to-redeem">Credit to Redeem: <span>${{ number_format($user->balance, 2) }}</span></div>
-      <div class="item modal-payment-type">Payment Type: <span></span></div>
+      <div class="item modal-payment-type">Payment Type Selected: <span></span></div>
       <div class="item modal-account-id">Account Identifier: <span></span></div>
       <div class="warning-info">
         <h2>Important</h2>

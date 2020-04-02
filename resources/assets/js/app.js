@@ -24,8 +24,18 @@ require('./components/AllUsersAgents');
  */
 $('.form-wrap .credit-redeem-choices .item').click(function() {
   const type_name = $(this).attr('name');
+  console.log(type_name);
+  if ((type_name === 'h2o-direct-portal') || (type_name === 'lyca-direct-portal') || (type_name === 'gs-posa-portal')) {
+    $('input#account_entry').val('N/A');
+  } else {
+    const account = $('input#account_entry').val();
+    if(account === 'N/A') {
+      $('input#account_entry').val('');
+    }
+  }
+
+
   $('#redeem-credit input#type').val(type_name);
-  console.log('click working', type_name);
   $(this).parent().find('.active').removeClass('active');
   $(this).addClass('active');
 });
@@ -40,7 +50,9 @@ $('.redeem-credit-modal').click(function() {
   const account = $('input#account_entry').val();
   const type = $('#redeem-credit input#type').val();
 
-  const type_no_dash = type.replace('-', ' ');
+
+
+  const type_no_dash = type.replace(/-/g, ' ');
   $('.modal-account-id span').html(account);
   $('.modal-payment-type span').html(type_no_dash);
 

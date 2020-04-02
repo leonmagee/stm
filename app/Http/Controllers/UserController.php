@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\BalanceTracker;
+use App\CreditTracker;
 use App\Helpers;
 use App\Mail\EmailBalance;
+use App\Mail\EmailCredit;
 use App\ReportType;
 use App\Settings;
 use App\Site;
@@ -56,6 +58,23 @@ class UserController extends Controller
     public function transactionTrackerAddCredit(User $user)
     {
         return view('users.add-transaction', compact('user'));
+    }
+
+    /**
+     * Track user credit cash out requests
+     */
+    public function creditTracker()
+    {
+        if (\Auth::user()->isAdminManagerEmployee()) {
+            return view('users.credit-tracker');
+        } else {
+            return view('users.credit-tracker-user');
+        }
+    }
+
+    public function creditTrackerShow(User $user)
+    {
+        return view('users.credit-tracker-show', compact('user'));
     }
 
     /**
@@ -717,7 +736,7 @@ class UserController extends Controller
         foreach ($admin_users as $admin) {
             if (!$admin->notes_email_disable) {
                 \Mail::to($admin)->send(new EmailBalance(
-                    $admin,
+                    $user,
                     $old_balance,
                     $difference,
                     $balance,
@@ -1098,9 +1117,51 @@ class UserController extends Controller
 
     public function redeemCreditSubmit(Request $request)
     {
+        // 1. Create credit tracker record
+        $user = \Auth::user();
+        $credit = $user->balance;
+        $type = $request->type;
+        $account_id = $request->account;
+        CreditTracker::create([
+            'user_id' => $user->id,
+            'credit' => $credit,
+            'type' => $type,
+            'account_id' => $account_id,
+        ]);
+        $email_type = str_replace('-', ' ', strtoupper($type));
 
-        dd($request);
-        //return \Redirect::back()->withErrors(['xxx']);
+        // 2. Set credit balance to 0
+        $user->balance = 0;
+        $user->save();
+
+        //public function __construct(User $user, $credit, $type, $account_id, $date)
+
+        // 3. Email user and admins
+        $date = \Carbon\Carbon::now()->format('F d, Y');
+        \Mail::to($user)->send(new EmailCredit(
+            $user,
+            $credit,
+            $email_type,
+            $account_id,
+            $date
+        ));
+        $admin_users = User::getAdminManageerEmployeeUsers();
+        foreach ($admin_users as $admin) {
+            if (!$admin->notes_email_disable) {
+                \Mail::to($admin)->send(new EmailCredit(
+                    $user,
+                    $credit,
+                    $email_type,
+                    $account_id,
+                    $date
+                ));
+
+            }
+        }
+
+        // 4. Send message and eturn back
+        session()->flash('message', 'Credit request has been processed. You will receive an email.');
+        return redirect('profile');
     }
 
 }

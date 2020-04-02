@@ -55,6 +55,8 @@ Route::group(['middleware' => 'App\Http\Middleware\LockOutUsersManagers'], funct
  */
 Route::get('transaction-tracker', 'UserController@transactionTracker');
 Route::get('transaction-tracker/{user}', 'UserController@transactionTrackerShow');
+Route::get('credit-tracker', 'UserController@creditTracker');
+Route::get('credit-tracker/{user}', 'UserController@creditTrackerShow');
 Route::get('order-sims', 'OrderController@create');
 Route::post('order-sims', 'OrderController@store');
 Route::get('redeem-credit', 'UserController@redeemCredit');
@@ -119,6 +121,9 @@ Route::get('/api/v1/balance', 'APIController@getBalanceChanges')->name('api.bala
 Route::get('/api/v1/balance-show/{user}', 'APIController@getBalanceChangesShow')->name('api.balance.show');
 Route::get('/api/v1/balance-user', 'APIController@getBalanceChangesUser')->name('api.balance.user');
 Route::get('/api/v1/logins-show/{id}', 'APIController@getLogin')->name('api.logins.show');
+Route::get('/api/v1/credit', 'APIController@getCreditRequests')->name('api.credit.index');
+Route::get('/api/v1/credit-show/{user}', 'APIController@getCreditRequestsShow')->name('api.credit.show');
+Route::get('/api/v1/credit-user', 'APIController@getCreditRequestsUser')->name('api.credit.user');
 
 //https: //stmmax.com/email-bounced
 
