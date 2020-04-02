@@ -732,7 +732,7 @@ class UserController extends Controller
             $note,
             $date
         ));
-        $admin_users = User::getAdminManageerEmployeeUsers();
+        $admin_users = User::getAdminUsers();
         foreach ($admin_users as $admin) {
             if (!$admin->notes_email_disable) {
                 \Mail::to($admin)->send(new EmailBalance(
@@ -1153,7 +1153,7 @@ class UserController extends Controller
             $account_id,
             $date
         ));
-        $admin_users = User::getAdminManageerEmployeeUsers();
+        $admin_users = User::getAdminUsers();
         foreach ($admin_users as $admin) {
             if (!$admin->notes_email_disable) {
                 \Mail::to($admin)->send(new EmailCredit(
