@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\BalanceTracker;
-use App\CreditTracker;
+//use App\CreditTracker;
 use App\Helpers;
 use App\Mail\EmailBalance;
 use App\Mail\EmailCredit;
@@ -63,19 +63,19 @@ class UserController extends Controller
     /**
      * Track user credit cash out requests
      */
-    public function creditTracker()
-    {
-        if (\Auth::user()->isAdminManagerEmployee()) {
-            return view('users.credit-tracker');
-        } else {
-            return view('users.credit-tracker-user');
-        }
-    }
+    // public function creditTracker()
+    // {
+    //     if (\Auth::user()->isAdminManagerEmployee()) {
+    //         return view('users.credit-tracker');
+    //     } else {
+    //         return view('users.credit-tracker-user');
+    //     }
+    // }
 
-    public function creditTrackerShow(User $user)
-    {
-        return view('users.credit-tracker-show', compact('user'));
-    }
+    // public function creditTrackerShow(User $user)
+    // {
+    //     return view('users.credit-tracker-show', compact('user'));
+    // }
 
     /**
      * Display a listing of the resource.
@@ -1122,13 +1122,21 @@ class UserController extends Controller
         $credit = $user->balance;
         $type = $request->type;
         $account_id = $request->account;
-        CreditTracker::create([
-            'user_id' => $user->id,
-            'credit' => $credit,
-            'type' => $type,
-            'account_id' => $account_id,
-        ]);
+        // BalanceTracker::create([
+        //     'user_id' => $user->id,
+        //     'credit' => $credit,
+        //     'type' => $type,
+        //     'account_id' => $account_id,
+        // ]);
         $email_type = str_replace('-', ' ', strtoupper($type));
+
+        BalanceTracker::create([
+            'user_id' => $user->id,
+            'previous_balance' => $credit,
+            'difference' => $credit * -1,
+            'new_balance' => 0,
+            'note' => $email_type . ' - ' . $account_id,
+        ]);
 
         // 2. Set credit balance to 0
         $user->balance = 0;

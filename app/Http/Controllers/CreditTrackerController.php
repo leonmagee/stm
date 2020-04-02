@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\CreditTracker;
 use Illuminate\Http\Request;
 
+dd('deprecated');
 class CreditTrackerController extends Controller
 {
     /**

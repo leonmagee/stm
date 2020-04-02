@@ -237,10 +237,10 @@ class AppServiceProvider extends ServiceProvider
                     'name' => 'Transaction Tracker',
                     'link' => '/transaction-tracker',
                 ],
-                [
-                    'name' => 'Credit Tracker',
-                    'link' => '/credit-tracker',
-                ],
+                // [
+                //     'name' => 'Credit Tracker',
+                //     'link' => '/credit-tracker',
+                // ],
             ];
 
             $emails_sub_manager = [
@@ -696,13 +696,13 @@ class AppServiceProvider extends ServiceProvider
                         'icon' => 'flaticon-bar-graph-on-a-rectangle',
                         'default' => false,
                     ],
-                    [
-                        'name' => 'Credit History',
-                        'link' => '/credit-tracker',
-                        'sub' => false,
-                        'icon' => 'flaticon-bar-chart',
-                        'default' => false,
-                    ],
+                    // [
+                    //     'name' => 'Credit History',
+                    //     'link' => '/credit-tracker',
+                    //     'sub' => false,
+                    //     'icon' => 'flaticon-bar-chart',
+                    //     'default' => false,
+                    // ],
                     [
                         'name' => '2nd<span>/</span>3rd Recharge',
                         'link' => '/all-recharge-data',
@@ -822,13 +822,13 @@ class AppServiceProvider extends ServiceProvider
                         'icon' => 'flaticon-bar-graph-on-a-rectangle',
                         'default' => false,
                     ],
-                    [
-                        'name' => 'Credit History',
-                        'link' => '/credit-tracker',
-                        'sub' => false,
-                        'icon' => 'flaticon-bar-chart',
-                        'default' => false,
-                    ],
+                    // [
+                    //     'name' => 'Credit History',
+                    //     'link' => '/credit-tracker',
+                    //     'sub' => false,
+                    //     'icon' => 'flaticon-bar-chart',
+                    //     'default' => false,
+                    // ],
                     [
                         'name' => '2nd<span>/</span>3rd Recharge',
                         'link' => '/all-recharge-data',
@@ -845,7 +845,7 @@ class AppServiceProvider extends ServiceProvider
                 //'email-tracker' => 'email-blast',
                 'login-tracker' => 'email-tracker',
                 'transaction-tracker' => 'email-tracker',
-                'credit-tracker' => 'email-tracker',
+                //'credit-tracker' => 'email-tracker',
                 //'send-email' => 'email-blast',
                 'sims/upload-all' => 'user-sims',
                 'find-sims' => 'user-sims',

@@ -43,6 +43,8 @@
       </div>
 
       <input type="hidden" id="hidden-user-balance" value="{{ $user->balance }}" />
+      <input type="hidden" id="hidden-user-company" value="{{ $user->company }}" />
+
       <div class="field">
         <label class="label" for="account">Account ID, Email Address, or Phone Number</label>
         <div class="control">

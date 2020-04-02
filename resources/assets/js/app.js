@@ -24,12 +24,12 @@ require('./components/AllUsersAgents');
  */
 $('.form-wrap .credit-redeem-choices .item').click(function() {
   const type_name = $(this).attr('name');
-  console.log(type_name);
+  const company = $('input#hidden-user-company').val();
   if ((type_name === 'h2o-direct-portal') || (type_name === 'lyca-direct-portal') || (type_name === 'gs-posa-portal')) {
-    $('input#account_entry').val('N/A');
+    $('input#account_entry').val(company);
   } else {
     const account = $('input#account_entry').val();
-    if(account === 'N/A') {
+    if (account === company) {
       $('input#account_entry').val('');
     }
   }

@@ -40,7 +40,7 @@
 { "data": "id" },
 { "data": "user.company" },
 { "data": "user.name" },
-{ "data": "admin_user.name" },
+{ "data": "admin_user.name", "defaultContent": "Cash Out" },
 { "data": "previous_balance" },
 { "data": "difference" },
 { "data": "new_balance" },

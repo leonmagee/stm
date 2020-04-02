@@ -2,7 +2,6 @@
 namespace App\Http\Controllers;
 
 use App\BalanceTracker;
-use App\CreditTracker;
 use App\Helpers;
 use App\ReportType;
 use App\Sim;
@@ -87,42 +86,42 @@ class APIController extends Controller
         return datatables($balance)->make(true);
     }
 
-    public static function standardizeCredit($credit)
-    {
-        foreach ($credit as $item) {
-            $item->created_at_new = $item->created_at->format('M d, Y');
-            $item->credit = '$' . number_format($item->credit, 2);
-            $item->type = str_replace('-', ' ', strtoupper($item->type));
-        }
-        return $credit;
-    }
+    // public static function standardizeCredit($credit)
+    // {
+    //     foreach ($credit as $item) {
+    //         $item->created_at_new = $item->created_at->format('M d, Y');
+    //         $item->credit = '$' . number_format($item->credit, 2);
+    //         $item->type = str_replace('-', ' ', strtoupper($item->type));
+    //     }
+    //     return $credit;
+    // }
 
-    public function getCreditRequests()
-    {
-        $credit_query = CreditTracker::with(['user'])->get();
+    // public function getCreditRequests()
+    // {
+    //     $credit_query = CreditTracker::with(['user'])->get();
 
-        $credit = self::standardizeCredit($credit_query);
+    //     $credit = self::standardizeCredit($credit_query);
 
-        return datatables($credit)->make(true);
-    }
+    //     return datatables($credit)->make(true);
+    // }
 
-    public function getCreditRequestsUser()
-    {
-        $credit_query = CreditTracker::where('user_id', \Auth::user()->id)->with(['user'])->get();
+    // public function getCreditRequestsUser()
+    // {
+    //     $credit_query = CreditTracker::where('user_id', \Auth::user()->id)->with(['user'])->get();
 
-        $credit = self::standardizeCredit($credit_query);
+    //     $credit = self::standardizeCredit($credit_query);
 
-        return datatables($credit)->make(true);
-    }
+    //     return datatables($credit)->make(true);
+    // }
 
-    public function getCreditRequestsShow(User $user)
-    {
-        $credit_query = CreditTracker::where('user_id', $user->id)->with(['user'])->get();
+    // public function getCreditRequestsShow(User $user)
+    // {
+    //     $credit_query = CreditTracker::where('user_id', $user->id)->with(['user'])->get();
 
-        $credit = self::standardizeCredit($credit_query);
+    //     $credit = self::standardizeCredit($credit_query);
 
-        return datatables($credit)->make(true);
-    }
+    //     return datatables($credit)->make(true);
+    // }
 
     public function getLogin($id)
     {
