@@ -40,6 +40,9 @@
         .detail {
             padding: 15px 5px;
             flex: 1;
+            &.balance {
+                color: $color-green-text;
+            }
             a {
                 &.balance {
                     min-width: 6em;

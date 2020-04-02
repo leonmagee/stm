@@ -18563,6 +18563,10 @@ table.dataTable thead .sorting_desc_disabled:after {
           flex: 1;
 }
 
+.allUsersList .allUsersItem .detail.balance {
+  color: #05c290;
+}
+
 .allUsersList .allUsersItem .detail a.balance {
   min-width: 6em;
   text-align: right;

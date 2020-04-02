@@ -27,6 +27,7 @@ export default class AllUsersAgents extends Component {
 
         const allUsers = users.map((item, key) => {
                 const linkUrl = `/dealer/${item.id}`;
+                const balance = item.balance ? '$' + item.balance.toFixed(2) : '$0.00';
                 return (
                     <div className="allUsersItem" key={key}>
                         <div className="divider" />
@@ -39,6 +40,8 @@ export default class AllUsersAgents extends Component {
                         <div className="detail hide-mobile">{item.email}</div>
                         <div className="divider hide-mobile" />
                         <div className="detail hide-mobile">{item.phone}</div>
+                        <div className="divider hide-mobile" />
+                        <div className="detail balance">{balance}</div>
                     </div>
                 );
         });

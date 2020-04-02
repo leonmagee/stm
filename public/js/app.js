@@ -108165,6 +108165,7 @@ var AllUsersNotAdmin = function (_Component) {
                         checkboxClass = 'fake-checkbox';
                     }
                     var linkUrl = '/users/' + item.id;
+                    var balance = item.balance ? '$' + item.balance.toFixed(2) : '$0.00';
                     return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                         'div',
                         { className: 'allUsersItem', key: key },
@@ -108195,6 +108196,12 @@ var AllUsersNotAdmin = function (_Component) {
                             'div',
                             { className: 'detail hide-mobile' },
                             item.phone
+                        ),
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div', { className: 'divider hide-mobile' }),
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                            'div',
+                            { className: 'detail balance' },
+                            balance
                         )
                     );
                 }
@@ -108397,6 +108404,7 @@ var AllUsersAgents = function (_Component) {
 
             var allUsers = users.map(function (item, key) {
                 var linkUrl = '/dealer/' + item.id;
+                var balance = item.balance ? '$' + item.balance.toFixed(2) : '$0.00';
                 return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                     'div',
                     { className: 'allUsersItem', key: key },
@@ -108427,6 +108435,12 @@ var AllUsersAgents = function (_Component) {
                         'div',
                         { className: 'detail hide-mobile' },
                         item.phone
+                    ),
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div', { className: 'divider hide-mobile' }),
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        'div',
+                        { className: 'detail balance' },
+                        balance
                     )
                 );
             });
