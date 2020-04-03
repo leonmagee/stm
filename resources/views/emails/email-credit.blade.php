@@ -1,10 +1,18 @@
 @component('mail::message')
 
+@if($admin)
+# Hello {{ $admin->name }}!
+
+<div class="note-wrap">
+  {{ $user->company }} has requested a credit cash out transfer to:
+</div>
+@else
 # Hello {{ $user->name }}!
 
 <div class="note-wrap">
   Thank you, your credit transfer request will be processed soon.
 </div>
+@endif
 
 <table class="table custom">
   <tr>

@@ -1,12 +1,16 @@
 @extends('layouts.layout')
 
+
 @section('title')
 <div class="with-background">
   Credit History
 </div>
 @endsection
 
+
 @section('content')
+
+@include('mixins.user-back', ['user' => $user])
 
 <table id="sims_table" class="stripe compact">
   <thead>
@@ -40,7 +44,7 @@
       { "data": "id" },
       { "data": "user.company" },
       { "data": "user.name" },
-      { "data": "admin_user.name" },
+      { "data": "admin_user.name", "defaultContent": "Cash Out" },
       { "data": "previous_balance" },
       { "data": "difference" },
       { "data": "new_balance" },

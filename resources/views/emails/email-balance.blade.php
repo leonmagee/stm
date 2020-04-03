@@ -1,10 +1,23 @@
 @component('mail::message')
 
+@if($admin)
+# Hello {{ $admin->name }}!
+
+<div class="note-wrap">
+  Credit Change for: {{ $user->company }}
+</div>
+<div class="note-wrap">
+  {{ $note }}
+</div>
+
+@else
 # Hello {{ $user->name }}!
 
 <div class="note-wrap">
   {{ $note }}
 </div>
+@endif
+
 
 <table class="table custom">
   <tr>

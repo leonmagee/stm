@@ -17,6 +17,7 @@ class EmailCredit extends Mailable
     public $type;
     public $account_id;
     public $date;
+    public $admin;
 
     /**
      * Create a new message instance.
@@ -30,6 +31,7 @@ class EmailCredit extends Mailable
         $this->type = $type;
         $this->account_id = $account_id;
         $this->date = $date;
+        $this->admin = $admin;
         $this->subject('Credit Cash Out Request');
         // $this->callbacks[] = (function ($message) use ($user) {$message->getHeaders()->addTextHeader('user_id', $user->id);});
         if ($admin) {

@@ -18,6 +18,7 @@ class EmailBalance extends Mailable
     public $current;
     public $note;
     public $date;
+    public $admin;
 
     /**
      * Create a new message instance.
@@ -32,6 +33,7 @@ class EmailBalance extends Mailable
         $this->current = $current;
         $this->note = $note;
         $this->date = $date;
+        $this->admin = $admin;
         $this->subject('Credit Balance Update');
         if ($admin) {
             $this->callbacks[] = (function ($message) {$message->getHeaders()->addTextHeader('X-No-Track', Str::random(10));});
