@@ -327,3 +327,7 @@ img {
 .customer-info .email {
     color: #1b9aaa;
 }
+
+img.email-header-logo {
+    max-width: 300px;
+}
