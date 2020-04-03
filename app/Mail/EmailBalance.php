@@ -6,6 +6,7 @@ use App\User;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Support\Str;
 
 class EmailBalance extends Mailable
 {
@@ -23,7 +24,7 @@ class EmailBalance extends Mailable
      *
      * @return void
      */
-    public function __construct(User $user, $previous, $difference, $current, $note, $date)
+    public function __construct(User $user, $previous, $difference, $current, $note, $date, $admin = false)
     {
         $this->user = $user;
         $this->previous = $previous;
@@ -32,8 +33,11 @@ class EmailBalance extends Mailable
         $this->note = $note;
         $this->date = $date;
         $this->subject('Transaction Balance Update');
-        $this->callbacks[] = (function ($message) use ($user) {$message->getHeaders()->addTextHeader('user_id', $user->id);});
-
+        if ($admin) {
+            $this->callbacks[] = (function ($message) {$message->getHeaders()->addTextHeader('X-No-Track', Str::random(10));});
+        } else {
+            $this->callbacks[] = (function ($message) use ($user) {$message->getHeaders()->addTextHeader('user_id', $user->id);});
+        }
     }
 
     /**

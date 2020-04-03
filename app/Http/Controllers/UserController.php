@@ -741,7 +741,8 @@ class UserController extends Controller
                     $difference,
                     $balance,
                     $note,
-                    $date
+                    $date,
+                    $admin
                 ));
 
             }
@@ -1161,7 +1162,8 @@ class UserController extends Controller
                     $credit,
                     $email_type,
                     $account_id,
-                    $date
+                    $date,
+                    $admin
                 ));
 
             }
