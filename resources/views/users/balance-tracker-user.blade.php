@@ -1,27 +1,31 @@
 @extends('layouts.layout')
 
-@section('title')
-<div class="with-background">
-  Credit History
-</div>
-@endsection
-
 @section('content')
 
-<table id="sims_table" class="stripe compact">
-  <thead>
-    <tr>
-      <th>ID</th>
-      <th>Old Balance</th>
-      <th>Transaction</th>
-      <th>New Balance</th>
-      <th>Date</th>
-      <th>Note</th>
-    </tr>
-  </thead>
-  <tbody>
-  </tbody>
-</table>
+<div class="form-wrapper">
+
+  <div class="form-wrapper-inner">
+
+    <h3>Credit History</h3>
+
+    <table id="sims_table" class="stripe compact">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Old Balance</th>
+          <th>Transaction</th>
+          <th>New Balance</th>
+          <th>Date</th>
+          <th>Note</th>
+        </tr>
+      </thead>
+      <tbody>
+      </tbody>
+    </table>
+
+  </div>
+
+</div>
 
 @endsection
 

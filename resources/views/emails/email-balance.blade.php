@@ -4,7 +4,7 @@
 # Hello {{ $admin->name }}!
 
 <div class="note-wrap">
-  Credit Change for: {{ $user->company }}
+  Credit Applied for: <strong>{{ $user->company }}</strong>
 </div>
 <div class="note-wrap">
   {{ $note }}

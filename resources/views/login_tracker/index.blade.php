@@ -1,26 +1,34 @@
 @extends('layouts.layout')
 
-@section('title')
+{{-- @section('title')
 <div class="with-background">
   Login Tracker
 </div>
-@endsection
+@endsection --}}
 
 @section('content')
 
-<table id="sims_table" class="stripe compact">
-  <thead>
-    <tr>
-      <th>Id</th>
-      <th>Company</th>
-      <th>User</th>
-      <th>Login Time</th>
-      <th>Logout Time</th>
-    </tr>
-  </thead>
-  <tbody>
-  </tbody>
-</table>
+<div class="form-wrapper">
+
+  <div class="form-wrapper-inner">
+
+    <h3>Login Tracker</h3>
+
+    <table id="sims_table" class="stripe compact">
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Company</th>
+          <th>User</th>
+          <th>Login Time</th>
+          <th>Logout Time</th>
+        </tr>
+      </thead>
+      <tbody>
+      </tbody>
+    </table>
+  </div>
+</div>
 
 @endsection
 

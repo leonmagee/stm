@@ -47,9 +47,13 @@ export default class AllUsersAgents extends Component {
         });
 
         return (
-            <div>
-            <h2 className="dealersCount">Total Dealers Assigned: <span>{count}</span></h2>
-            <div className="allUsersList">{allUsers}</div>
+            <div className="form-wrapper">
+              <div className="form-wrapper-inner">
+                <h3>Total Dealers Assigned: <span>{count}</span></h3>
+                <div className="padding-wrap">
+                  <div className="allUsersList">{allUsers}</div>
+                </div>
+              </div>
             </div>
         );
     }

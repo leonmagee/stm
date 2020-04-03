@@ -17392,6 +17392,10 @@ body.stm-body .banner-image-wrap img {
   padding-bottom: 10px;
 }
 
+.padding-wrap {
+  padding: 10px 20px;
+}
+
 .modal-box {
   background-color: #fff;
   text-align: center;
@@ -18147,6 +18151,7 @@ table.dataTable thead .sorting_desc_disabled:after {
   background-color: #fff;
   padding: 15px;
   border: 1px solid #ececec;
+  border-radius: 10px;
 }
 
 .dataTables_paginate.paging_simple_numbers {
@@ -18540,7 +18545,7 @@ table.dataTable thead .sorting_desc_disabled:after {
 
 .allUsersList .allUsersItem {
   background-color: #fcfcfc;
-  border: 1px solid #ddd;
+  border: 1px solid #e7e7e7;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -18586,6 +18591,10 @@ table.dataTable thead .sorting_desc_disabled:after {
   height: 60px;
   background-color: #eee;
   margin-right: 30px;
+}
+
+.allUsersList .allUsersItem .divider:first-child {
+  width: 0;
 }
 
 .fake-checkbox-wrap {

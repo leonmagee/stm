@@ -4,7 +4,7 @@
 # Hello {{ $admin->name }}!
 
 <div class="note-wrap">
-  {{ $user->company }} has requested a credit cash out transfer to:
+  <strong>{{ $user->company }}</strong> has requested a credit cash out transfer to:
 </div>
 @else
 # Hello {{ $user->name }}!

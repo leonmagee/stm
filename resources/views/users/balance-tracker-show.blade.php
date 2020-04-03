@@ -1,33 +1,42 @@
 @extends('layouts.layout')
 
 
-@section('title')
+{{-- @section('title')
 <div class="with-background">
   Credit History
 </div>
-@endsection
+@endsection --}}
 
 
 @section('content')
 
 @include('mixins.user-back', ['user' => $user])
 
-<table id="sims_table" class="stripe compact">
-  <thead>
-    <tr>
-      <th>Id</th>
-      <th>Company</th>
-      <th>Admin</th>
-      <th>Old Balance</th>
-      <th>Transaction</th>
-      <th>New Balance</th>
-      <th>Date</th>
-      <th>Note</th>
-    </tr>
-  </thead>
-  <tbody>
-  </tbody>
-</table>
+<div class="form-wrapper">
+
+  <div class="form-wrapper-inner">
+
+    <h3>Credit History</h3>
+
+    <table id="sims_table" class="stripe compact">
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Company</th>
+          <th>Admin</th>
+          <th>Old Balance</th>
+          <th>Transaction</th>
+          <th>New Balance</th>
+          <th>Date</th>
+          <th>Note</th>
+        </tr>
+      </thead>
+      <tbody>
+      </tbody>
+    </table>
+
+  </div>
+</div>
 
 @endsection
 
