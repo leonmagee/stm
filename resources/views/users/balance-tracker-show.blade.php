@@ -17,7 +17,6 @@
     <tr>
       <th>Id</th>
       <th>Company</th>
-      <th>User</th>
       <th>Admin</th>
       <th>Old Balance</th>
       <th>Transaction</th>
@@ -43,13 +42,12 @@
     "columns": [
       { "data": "id" },
       { "data": "user.company" },
-      { "data": "user.name" },
       { "data": "admin_user.name", "defaultContent": "Cash Out" },
       { "data": "previous_balance" },
       { "data": "difference" },
       { "data": "new_balance" },
       { "data": "created_at_new" },
-      { "data": "note", "width":"23%" }
+      { "data": "note", "width":"27%" }
     ]
 });
 
