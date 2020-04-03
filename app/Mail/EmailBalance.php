@@ -32,7 +32,7 @@ class EmailBalance extends Mailable
         $this->current = $current;
         $this->note = $note;
         $this->date = $date;
-        $this->subject('Transaction Balance Update');
+        $this->subject('Credit Balance Update');
         if ($admin) {
             $this->callbacks[] = (function ($message) {$message->getHeaders()->addTextHeader('X-No-Track', Str::random(10));});
         } else {
