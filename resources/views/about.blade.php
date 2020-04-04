@@ -4,8 +4,6 @@
 
 <div class="about-page">
 
-  About STM...
-
 
 </div>
 
