@@ -43,7 +43,7 @@
 { "data": "difference" },
 { "data": "new_balance" },
 { "data": "created_at_new" },
-{ "data": "note", "width":"23%" }
+{ "data": "note", "width":"33%" }
 ]
 });
 

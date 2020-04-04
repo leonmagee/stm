@@ -56,7 +56,7 @@
       { "data": "difference" },
       { "data": "new_balance" },
       { "data": "created_at_new" },
-      { "data": "note", "width":"27%" }
+      { "data": "note", "width":"33%" }
     ]
 });
 
