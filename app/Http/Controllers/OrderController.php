@@ -76,7 +76,9 @@ class OrderController extends Controller
         ]);
         $order->save();
 
-        $date = \Carbon\Carbon::now()->toDateTimeString();
+        //$date = \Carbon\Carbon::now()->toDateTimeString();
+        $date = \Carbon\Carbon::now()->format('F j, Y - g:i a');
+        //date("F j, Y, g:i a");
 
         /**
          * Send confirmation email

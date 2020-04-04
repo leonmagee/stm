@@ -317,7 +317,11 @@ img {
 /* balance change email */
 .note-wrap {
     font-size: 20px;
-    padding: 1px 0 23px;
+    padding: 1px 0 20px;
+}
+.date-wrap {
+    font-weight: bold;
+    margin-bottom: 13px;
 }
 .customer-info {
     font-size: 11px;
