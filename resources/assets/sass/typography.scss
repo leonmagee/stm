@@ -4,6 +4,8 @@ body.stm-body {
         font-size: 1em;
         margin: 0 0 13px 0;
         .with-background {
+            margin-top: 13px;
+            border-radius: 10px 10px 0 0;
             @include teal_background;
         }
 

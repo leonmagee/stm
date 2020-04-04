@@ -1,36 +1,47 @@
 @extends('layouts.layout')
 
-@section('title')
+{{-- @section('title')
 <div class="with-background">
   {{ $site_name }} Users
 </div>
-@endsection
+@endsection --}}
 
 @section('content')
 
-<div class="stm-grid-wrap users-wrap">
+<div class="form-wrapper">
 
-  @foreach( $users as $user )
+  <div class="form-wrapper-inner">
 
-  <a href="/users/{{ $user->id }}" class="single-grid-item user-wrap">
+    <h3>{{ $site_name }} Users</h3>
 
-    <div class="flex-item icon-wrap">
-      <i class="fas fa-user"></i>
+    <div class="padding-wrap tall">
+
+      <div class="stm-grid-wrap users-wrap">
+
+        @foreach( $users as $user )
+
+        <a href="/users/{{ $user->id }}" class="single-grid-item user-wrap">
+
+          <div class="flex-item icon-wrap">
+            <i class="fas fa-user"></i>
+          </div>
+
+          <div class="flex-item company-wrap">
+            <span>{{ $user->company }}</span>
+          </div>
+
+          <div class="flex-item name-phone-wrap">
+            <div class="name">{{ $user->name }}</div>
+            <div class="phone">{{ $user->phone }}</div>
+          </div>
+
+        </a>
+
+        @endforeach
+
+      </div>
     </div>
-
-    <div class="flex-item company-wrap">
-      <span>{{ $user->company }}</span>
-    </div>
-
-    <div class="flex-item name-phone-wrap">
-      <div class="name">{{ $user->name }}</div>
-      <div class="phone">{{ $user->phone }}</div>
-    </div>
-
-  </a>
-
-  @endforeach
-
+  </div>
 </div>
 
 

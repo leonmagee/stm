@@ -19,6 +19,7 @@
 // just a test edit
 
 Route::get('/', 'HomeController@index')->name('home');
+Route::get('/about', 'HomeController@about')->name('about');
 
 /**
  * Profile & Users Routes

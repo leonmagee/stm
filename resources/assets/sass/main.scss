@@ -171,6 +171,9 @@ body.stm-body {
 // new layout
 .padding-wrap {
     padding: 10px 20px;
+    &.tall {
+        padding: 20px;
+    }
 }
 // .padding-wrap-high {
 //     padding: 20px;

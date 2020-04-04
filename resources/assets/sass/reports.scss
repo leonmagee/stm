@@ -103,10 +103,11 @@
 .user-report-totals-final-count {
     @include teal_background;
     font-size: 0.8em;
-    margin-bottom: 20px;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
+    border-radius: 10px 10px 0 0;
+    margin-top: 13px;
 }
 
 .report-totals-wrap {

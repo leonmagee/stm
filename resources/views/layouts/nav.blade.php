@@ -71,7 +71,7 @@
 
   if($item['name'] == 'Users') {
 
-    $match_array = [
+    $match_array_users = [
       [
         'length' => 6,
         'match_array' => ['users/', 'edit-u', 'change']
@@ -100,9 +100,17 @@
         'length' => 17,
         'match_array' => ['user-plan-values/']
       ],
+      [
+        'length' => 20,
+        'match_array' => ['transaction-tracker/']
+      ],
+      [
+        'length' => 26,
+        'match_array' => ['transaction-change-credit/']
+      ],
     ];
 
-    foreach($match_array as $match) {
+    foreach($match_array_users as $match) {
       $sub_path = substr($path, 0, $match['length']);
           if(in_array($sub_path, $match['match_array'])) {
           $active = 'active';
@@ -113,7 +121,7 @@
 
   if($item['name'] == 'Sims') {
 
-  $match_array = [
+  $match_array_sims = [
   [
   'length' => 10,
   'match_array' => ['list-sims/']
@@ -124,7 +132,7 @@
   ],
   ];
 
-  foreach($match_array as $match) {
+  foreach($match_array_sims as $match) {
   $sub_path = substr($path, 0, $match['length']);
   if(in_array($sub_path, $match['match_array'])) {
   $active = 'active';

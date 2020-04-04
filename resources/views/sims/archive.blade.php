@@ -1,27 +1,35 @@
 @extends('layouts.layout')
 
-@section('title')
+{{-- @section('title')
 <div class="with-background">
   {{ $name }} Sims | {{ $current_site_date }}
 </div>
-@endsection
+@endsection --}}
 
 @section('content')
 
-<table id="sims_table" class="stripe compact">
+<div class="form-wrapper">
 
-  <thead>
-    <tr>
-      <th>Sim Number</th>
-      <th>Value</th>
-      <th>Activation Date</th>
-      <th>Mobile Number</th>
-    </tr>
-  </thead>
+  <div class="form-wrapper-inner">
 
-  <tbody>
-  </tbody>
-</table>
+    <h3>{{ $name }} Sims | {{ $current_site_date }}</h3>
+
+    <table id="sims_table" class="stripe compact">
+
+      <thead>
+        <tr>
+          <th>Sim Number</th>
+          <th>Value</th>
+          <th>Activation Date</th>
+          <th>Mobile Number</th>
+        </tr>
+      </thead>
+
+      <tbody>
+      </tbody>
+    </table>
+  </div>
+</div>
 
 @endsection
 

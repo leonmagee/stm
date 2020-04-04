@@ -841,12 +841,10 @@ class AppServiceProvider extends ServiceProvider
             }
 
             $match_array = [
-                //'email-tracker' => 'email-blast',
-                //'email-tracker' => 'email-blast',
+                'admins-managers' => 'all-users',
+                'register' => 'all-users',
                 'login-tracker' => 'email-tracker',
                 'transaction-tracker' => 'email-tracker',
-                //'credit-tracker' => 'email-tracker',
-                //'send-email' => 'email-blast',
                 'sims/upload-all' => 'user-sims',
                 'find-sims' => 'user-sims',
                 'transfer-sims' => 'user-sims',
@@ -857,8 +855,6 @@ class AppServiceProvider extends ServiceProvider
                 'add-report-type-residual' => 'settings',
                 'edit-profile' => 'settings',
                 'profile' => 'settings',
-                'admins-managers' => 'all-users',
-                'register' => 'all-users',
             ];
 
             //$view->with('menu', $menu_array);

@@ -54,6 +54,14 @@ class HomeController extends Controller
 
     }
 
+    /**
+     * About Us Page
+     */
+    public function about()
+    {
+        return view('about');
+    }
+
     public function outputLockedPage()
     {
         return view('locked');
