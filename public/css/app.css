@@ -19752,12 +19752,14 @@ body.stm-body.about .middle-content-wrap .about-page .about-gs-wireless {
 
 body.stm-body.about .middle-content-wrap .about-page .about-gs-wireless h1 {
   font-size: 1.3em;
+  margin-bottom: 2px;
   font-weight: 700;
 }
 
 body.stm-body.about .middle-content-wrap .about-page .about-gs-wireless h2 {
-  margin-top: 5px;
   font-size: 1.3em;
+  margin-top: 15px;
+  margin-bottom: 2px;
   font-weight: 700;
 }
 
