@@ -1,9 +1,13 @@
 body.stm-body.about {
     .middle-content-wrap {
-        background-color: #333;
+        background-color: #222;
         background-image: url(/img/about-us.jpg);
-        background-size: 100% 100%;
         background-repeat: no-repeat;
+        background-size: auto 100%;
+        background-position: center;
+        @media (min-width: $screen-md) {
+            background-size: 100% 100%;
+        }
         h1.title {
             display: none;
         }
