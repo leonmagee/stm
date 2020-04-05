@@ -2,11 +2,38 @@ body.stm-body.about {
     .middle-content-wrap {
         background-color: #333;
         background-image: url(/img/about-us.jpg);
-        //background-size: 100% cover contain;
         background-size: 100% 100%;
         background-repeat: no-repeat;
-        // .about-page {
-        //     background-color: blue;
-        // }
+        h1.title {
+            display: none;
+        }
+        .about-page {
+            .about-gs-wireless {
+                color: #fff;
+                font-size: 1em;
+                padding: 0 0 30px 0;
+                h1 {
+                    font-size: 2em;
+                    line-height: 1.3em;
+                    font-weight: 700;
+                }
+                h2 {
+                    margin-top: 5px;
+                    font-size: 1.3em;
+                    font-weight: 700;
+                }
+            }
+            .video-wrap {
+                display: flex;
+                justify-content: space-between;
+                .video-wrap-inner {
+                    //padding: 3px;
+                    background-color: #ccc;
+                    border: 5px solid #ccc;
+                    border-bottom: none;
+                    //max-width: 300px;
+                }
+            }
+        }
     }
 }
