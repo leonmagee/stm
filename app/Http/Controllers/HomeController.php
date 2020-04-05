@@ -62,13 +62,13 @@ class HomeController extends Controller
     {
         $url_1 = 'https://www.youtube.com/watch?v=k1kkJRcndIc&feature=emb_logo';
         $embed_1 = Embed::make($url_1)->parseUrl();
-        $embed_1->setAttribute(['width' => 400]);
+        $embed_1->setAttribute(['width' => 475]);
         $url_2 = 'https://www.youtube.com/watch?v=vWub9jwV-Lc&feature=emb_logo';
         $embed_2 = Embed::make($url_2)->parseUrl();
-        $embed_2->setAttribute(['width' => 400]);
+        $embed_2->setAttribute(['width' => 475]);
         $url_3 = 'https://www.youtube.com/watch?v=T8PMTYT_URA&feature=emb_logo';
         $embed_3 = Embed::make($url_3)->parseUrl();
-        $embed_3->setAttribute(['width' => 400]);
+        $embed_3->setAttribute(['width' => 475]);
 
         return view('about', compact('embed_1', 'embed_2', 'embed_3'));
     }

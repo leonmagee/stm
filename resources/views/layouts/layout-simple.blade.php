@@ -4,30 +4,30 @@
 
 @include('layouts.head')
 
-<body class='stm-body'>
+<body class='stm-body {{ $view_name }}'>
 
-	@include('layouts.header')
+  @include('layouts.header')
 
-	<div class="main-wrap">
+  <div class="main-wrap">
 
-		<div class="middle-content-wrap">
-			<h1 class="title">
-				@yield('title')
-			</h1>
+    <div class="middle-content-wrap">
+      <h1 class="title">
+        @yield('title')
+      </h1>
 
-			<div id="content">
+      <div id="content">
 
-				@include('layouts.alert')
+        @include('layouts.alert')
 
-				@yield('content')
+        @yield('content')
 
-			</div>
+      </div>
 
-		</div>
+    </div>
 
-	</div>
+  </div>
 
-	@include('layouts.footer')
+  @include('layouts.footer')
 
 </body>
 
