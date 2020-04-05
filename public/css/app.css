@@ -19774,6 +19774,8 @@ body.stm-body.about .middle-content-wrap .about-page .video-wrap {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
@@ -19783,5 +19785,6 @@ body.stm-body.about .middle-content-wrap .about-page .video-wrap .video-wrap-inn
   background-color: #ccc;
   border: 5px solid #ccc;
   border-bottom: none;
+  margin-bottom: 20px;
 }
 

@@ -25,12 +25,14 @@ body.stm-body.about {
             }
             .video-wrap {
                 display: flex;
+                flex-wrap: wrap;
                 justify-content: space-between;
                 .video-wrap-inner {
                     //padding: 3px;
                     background-color: #ccc;
                     border: 5px solid #ccc;
                     border-bottom: none;
+                    margin-bottom: 20px;
                     //max-width: 300px;
                 }
             }
