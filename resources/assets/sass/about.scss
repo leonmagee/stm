@@ -36,6 +36,7 @@ body.stm-body.about {
                 flex-wrap: wrap;
                 justify-content: space-between;
                 .video-wrap-inner {
+                    margin-bottom: 20px;
                     border: 1px solid #ddd;
                     border-bottom: none;
                     background: tomato;
@@ -48,10 +49,10 @@ body.stm-body.about {
         }
     }
     .about-img-wrap {
-        margin-top: 30px;
-        background: #222;
+        background: #395a94;
         img {
             width: 100%;
+            display: block;
         }
     }
 }
