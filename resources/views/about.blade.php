@@ -49,3 +49,11 @@
 </div>
 
 @endsection
+
+@section('bottom-content')
+
+<div class="about-img-wrap">
+  <img src="{{ URL::asset('img/about-us.jpg') }}" />
+</div>
+
+@endsection

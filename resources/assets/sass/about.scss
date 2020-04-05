@@ -1,24 +1,25 @@
 body.stm-body.about {
     .middle-content-wrap {
-        background-color: #222;
-        background-image: url(/img/about-us.jpg);
-        background-repeat: no-repeat;
-        background-size: auto 100%;
-        background-position: center;
-        @media (min-width: $screen-md) {
-            background-size: 100% 100%;
-        }
+        //background-color: #222;
+        //background-image: url(/img/about-us.jpg);
+        //background-repeat: no-repeat;
+        //background-size: auto 100%;
+        //background-position: center;
+        // @media (min-width: $screen-md) {
+        //     background-size: 100% 100%;
+        // }
         h1.title {
             display: none;
         }
         .about-page {
             .about-gs-wireless {
-                color: #fff;
+                //color: #fff;
                 font-size: 1em;
                 padding: 0 0 30px 0;
                 h1 {
-                    font-size: 2em;
-                    line-height: 1.3em;
+                    //font-size: 2em;
+                    font-size: 1.3em;
+                    //line-height: 1.3em;
                     font-weight: 700;
                 }
                 h2 {
@@ -27,19 +28,30 @@ body.stm-body.about {
                     font-weight: 700;
                 }
             }
+            // youtube iframe margin fix
+            // iframe: display block
+            // fix 1px extra bottom margin with bg color and no bottom border
             .video-wrap {
                 display: flex;
                 flex-wrap: wrap;
                 justify-content: space-between;
                 .video-wrap-inner {
-                    //padding: 3px;
-                    background-color: #ccc;
-                    border: 5px solid #ccc;
+                    border: 1px solid #ddd;
                     border-bottom: none;
-                    margin-bottom: 20px;
-                    //max-width: 300px;
+                    background: tomato;
+                    iframe {
+                        background-color: #ddd;
+                        display: block;
+                    }
                 }
             }
+        }
+    }
+    .about-img-wrap {
+        margin-top: 30px;
+        background: #222;
+        img {
+            width: 100%;
         }
     }
 }

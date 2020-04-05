@@ -27,6 +27,8 @@
 
   </div>
 
+  @yield('bottom-content')
+
   @include('layouts.footer')
 
 </body>
