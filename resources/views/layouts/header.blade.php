@@ -2,7 +2,8 @@
 
   <div class="logo-wrap">
     <a href="/">
-      <img src="{{ URL::asset('img/stm_logo_white.png') }}" />
+      {{-- <img src="{{ URL::asset('img/stm_logo_white.png') }}" /> --}}
+      <img src="{{ URL::asset('img/gs-stm-logo.png') }}" />
     </a>
     @if (Auth::check())
     <a class="menu-toggle menu-modal-open"><i class="fas fa-bars"></i></a>
