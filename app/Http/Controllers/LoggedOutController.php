@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\ContactEmailNew;
 use App\Mail\ContactEmailNewResponse;
 use App\User;
 use Illuminate\Http\Request;
