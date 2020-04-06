@@ -266,6 +266,8 @@ Route::get('your-emails', 'EmailTrackerController@your_emails');
 
 Route::get('contact', 'EmailBlastController@contact');
 Route::post('contact', 'EmailBlastController@contact_submit');
+Route::get('contact-us', 'LoggedOutController@contact');
+Route::post('contact-us', 'LoggedOutController@contact_submit');
 
 /**
  * Closed Route

@@ -79,6 +79,7 @@ body.stm-body {
     //notifications / alerts
     .notification {
         font-weight: 700;
+        border-radius: 10px;
         &.is-success {
             color: #fff;
             text-shadow: 1px 1px darken($color-green, 2%);

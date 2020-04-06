@@ -17298,6 +17298,7 @@ body.stm-body button.disabled:hover {
 
 body.stm-body .notification {
   font-weight: 700;
+  border-radius: 10px;
 }
 
 body.stm-body .notification.is-success {
