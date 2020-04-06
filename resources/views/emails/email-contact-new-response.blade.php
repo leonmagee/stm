@@ -1,7 +1,6 @@
 @component('mail::message')
 
-{{-- # Hello {{ $admin->name }}! --}}
-# Hello!
+# Hello {{ $name }}!
 
 <div class="note-wrap">
   {{ $text }}

@@ -17,25 +17,29 @@
         {{ csrf_field() }}
 
         <div class="form-wrap-flex">
-          <div class="field full padding-bottom">
-            <h4>Please submit this form or call us at <strong>619-795-9200</strong></h4>
+
+          <div class="field fourth">
+            <div class="control">
+              <label class="label">Full Name<span class="required">*</span></label>
+              <input class="input" type="text" name="name" value="{{ old('name') }}" />
+            </div>
           </div>
 
-          <div class="field">
+          <div class="field fourth">
             <div class="control">
               <label class="label">Business Name<span class="required">*</span></label>
               <input class="input" type="text" name="business" value="{{ old('business') }}" />
             </div>
           </div>
 
-          <div class="field">
+          <div class="field fourth">
             <div class="control">
               <label class="label">Email Address<span class="required">*</span></label>
               <input class="input" type="email" name="email" value="{{ old('email') }}" />
             </div>
           </div>
 
-          <div class="field">
+          <div class="field fourth">
             <div class="control">
               <label class="label">Phone Number<span class="required">*</span></label>
               <input class="input" type="text" name="phone" value="{{ old('phone') }}" />
@@ -43,7 +47,7 @@
           </div>
 
           <div class="field full padding-bottom">
-            <label class="label">Your Message<span class="required">*</span></label>
+            <label class="label">Comment<span class="required">*</span></label>
             <div class="control">
               <textarea class="textarea" name="message">{{ old('message') }}</textarea>
             </div>

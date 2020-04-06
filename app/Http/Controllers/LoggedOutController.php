@@ -41,6 +41,7 @@ class LoggedOutController extends Controller
     {
 
         $this->validate($request, [
+            'name' => 'required',
             'business' => 'required',
             'email' => 'required',
             'phone' => 'required',
@@ -55,6 +56,7 @@ class LoggedOutController extends Controller
             if (!$admin->contact_email_disable) {
                 \Mail::to($admin)->send(new ContactEmailNew(
                     $admin,
+                    $request->name,
                     $request->business,
                     $request->email,
                     $request->phone,
@@ -66,6 +68,7 @@ class LoggedOutController extends Controller
         // 3. confirmation email
         \Mail::to($request->email)->send(new ContactEmailNewResponse(
             'Thank you for contacting us. One of our professional staff will get in touch with you as soon as possible.',
+            $request->name,
             'Thank You - GS Wireless'
         ));
 

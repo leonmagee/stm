@@ -17,6 +17,7 @@ class ContactEmailNewResponse extends Mailable
     // public $phone;
     // public $message;
     // public $date;
+    public $name;
     public $text;
 
     /**
@@ -25,7 +26,7 @@ class ContactEmailNewResponse extends Mailable
      * @return void
      */
     //public function __construct(User $admin, $business, $email, $phone, $message)
-    public function __construct($text, $subject)
+    public function __construct($text, $name, $subject)
     {
         // $this->admin = $admin;
         // $this->business = $business;
@@ -34,6 +35,7 @@ class ContactEmailNewResponse extends Mailable
         // $this->message = $message;
         // $date = \Carbon\Carbon::now()->format('F j, Y');
         // $this->date = $date;
+        $this->name = $name;
         $this->text = $text;
         $this->subject = $subject;
         $this->callbacks[] = (function ($message) {$message->getHeaders()->addTextHeader('X-No-Track', Str::random(10));});
