@@ -1,30 +1,39 @@
 @extends('layouts.layout')
 
-@section('title')
+{{-- @section('title')
 <div class="with-background">
   Logins for {{ $user->company . ' - ' . $user->name }}
 </div>
-@endsection
+@endsection --}}
 
 @section('content')
 @include('mixins.user-back', ['user' => $user])
-@if($data)
-<table id="sims_table" class="stripe compact">
-  <thead>
-    <tr>
-      <th>Id</th>
-      <th>Company</th>
-      <th>User</th>
-      <th>Login Time</th>
-      <th>Logout Time</th>
-    </tr>
-  </thead>
-  <tbody>
-  </tbody>
-</table>
-@else
-<div>No login data for this user.</div>
-@endif
+
+<div class="form-wrapper">
+
+  <div class="form-wrapper-inner">
+
+    <h3>Logins for {{ $user->company . ' - ' . $user->name }}</h3>
+    @if($data)
+    <table id="sims_table" class="stripe compact">
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Company</th>
+          <th>User</th>
+          <th>Login Time</th>
+          <th>Logout Time</th>
+        </tr>
+      </thead>
+      <tbody>
+      </tbody>
+    </table>
+    @else
+    <div>No login data for this user.</div>
+    @endif
+
+  </div>
+</div>
 
 @endsection
 

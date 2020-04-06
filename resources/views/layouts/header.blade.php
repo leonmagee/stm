@@ -430,7 +430,62 @@
 						<span class="text">Contact</span>
 					</a>
 				</p>
-			</div> --}}
+      </div> --}}
+      @else
+      {{-- menu not logged in --}}
+      <div class="large-menu">
+        <div class="field has-addons">
+          <p class="control">
+            <a href="/about" class="button about">
+              <span class="icon is-small">
+                <i class="fas fa-calendar"></i>
+              </span>
+              <span class="text">About</span>
+            </a>
+          </p>
+          <p class="control">
+            <a href="/contact-us" class="button contact">
+              <span class="icon is-small">
+                <i class="fas fa-user"></i>
+              </span>
+              <span class="text">Contact</span>
+            </a>
+          </p>
+          {{-- <p class="control">
+            <a class="button links not-link">
+              <span class="icon is-small">
+                <i class="fas fa-calendar"></i>
+              </span>
+              <span class="text">Links</span>
+            </a>
+          </p> --}}
+        </div>
+      </div>
+
+      <div class="mobile-menu">
+        <div class="field has-addons">
+          <p class="control">
+            <a href="/about" class="button date add-radius">
+              <span class="icon is-small">
+                <i class="fas fa-calendar"></i>
+              </span>
+              <span class="text">About</span>
+            </a>
+          </p>
+        </div>
+        <div class="field has-addons">
+          <p class="control">
+            <a href="/contact-us" class="button date add-radius">
+              <span class="icon is-small">
+                <i class="fas fa-calendar"></i>
+              </span>
+              <span class="text">Contact</span>
+            </a>
+          </p>
+        </div>
+
+
+      </div>
       @endif
     </div>
   </div>

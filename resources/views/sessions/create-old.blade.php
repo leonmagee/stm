@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div class="form-wrapper center">
+<div class="form-wrapper">
 
   <div class="homepage-third">
 
@@ -46,6 +46,30 @@
       </form>
 
     </div>
+    <a class="homepage-link h2o" href="https://www.h2odirectnow.com" target="_blank">
+      <span>Login to H2O Direct</span>
+      <img src="https://res.cloudinary.com/dabvi4jmx/image/upload/v1580272755/stm/logo-h2o.png" />
+    </a>
+    <a class="homepage-link lyca" href="http://www.gswmax.com" target="_blank">
+      <span>Login to Lyca Direct</span>
+      <img src="https://res.cloudinary.com/dabvi4jmx/image/upload/v1580272755/stm/logo-lyca.png" />
+    </a>
+    <a class="homepage-link eco" href="https://portal.ecomobile.com" target="_blank">
+      <span>Login to Eco Direct</span>
+      <img src="https://res.cloudinary.com/dabvi4jmx/image/upload/v1580357592/stm/logo-eco3.png" />
+    </a>
+  </div>
+
+  <div class="form-wrapper-inner image-1 banner-image-wrap">
+    <a href="https://mygsaccessories.com" target="_blank">
+      <img src="{{ $banner_2 }}" />
+    </a>
+  </div>
+
+  <div class="form-wrapper-inner image-2 banner-image-wrap">
+    <a href="https://mygswireless.com" target="_blank">
+      <img src="{{ $banner_1 }}" />
+    </a>
   </div>
 
 </div>

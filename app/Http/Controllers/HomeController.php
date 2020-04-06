@@ -54,6 +54,11 @@ class HomeController extends Controller
 
     }
 
+    public function commission()
+    {
+        return view('commission');
+    }
+
     public function outputLockedPage()
     {
         return view('locked');

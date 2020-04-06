@@ -151,52 +151,53 @@
         }
     }
     .homepage-third {
+        // no images currently
         @media (min-width: $screen-md) {
             max-width: 31%;
             order: 1;
         }
         flex: 1;
 
-        a.homepage-link {
-            display: block;
-            margin-bottom: 30px;
-            border-radius: 10px;
-            background: $brand-primary;
-            color: #fff;
-            box-shadow: 1px 1px rgba(0, 0, 0, 0.1);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            //text-align: center;
-            padding: 7px 15px 7px 20px;
-            padding: 0 15px 0 20px;
-            height: 5em;
-            font-size: 1.2em;
-            font-weight: bold;
-            &.h2o {
-                background: #fbe84e;
-                color: #111;
-            }
-            &.lyca {
-                //background: #2f6eb5;
-                background: #ddd;
-                color: #111;
-            }
-            &.eco {
-                //background: #53b6e0;
-                background: #57b8e3;
-            }
-            &:hover {
-                opacity: 0.9;
-                //color: #fff;
-                //background-color: $brand-primary;
-            }
-            img {
-                //max-width: em;
-                max-height: 3.6em;
-                max-width: 50%;
-            }
-        }
+        // a.homepage-link {
+        //     display: block;
+        //     margin-bottom: 30px;
+        //     border-radius: 10px;
+        //     background: $brand-primary;
+        //     color: #fff;
+        //     box-shadow: 1px 1px rgba(0, 0, 0, 0.1);
+        //     display: flex;
+        //     justify-content: space-between;
+        //     align-items: center;
+        //     //text-align: center;
+        //     padding: 7px 15px 7px 20px;
+        //     padding: 0 15px 0 20px;
+        //     height: 5em;
+        //     font-size: 1.2em;
+        //     font-weight: bold;
+        //     &.h2o {
+        //         background: #fbe84e;
+        //         color: #111;
+        //     }
+        //     &.lyca {
+        //         //background: #2f6eb5;
+        //         background: #ddd;
+        //         color: #111;
+        //     }
+        //     &.eco {
+        //         //background: #53b6e0;
+        //         background: #57b8e3;
+        //     }
+        //     &:hover {
+        //         opacity: 0.9;
+        //         //color: #fff;
+        //         //background-color: $brand-primary;
+        //     }
+        //     img {
+        //         //max-width: em;
+        //         max-height: 3.6em;
+        //         max-width: 50%;
+        //     }
+        // }
     }
 }
 

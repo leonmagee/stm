@@ -19,7 +19,8 @@
 // just a test edit
 
 Route::get('/', 'HomeController@index')->name('home');
-Route::get('/about', 'LoggedOutController@about')->name('about');
+Route::get('about', 'LoggedOutController@about')->name('about');
+Route::get('commission', 'HomeController@commission')->name('commission');
 
 /**
  * Profile & Users Routes
