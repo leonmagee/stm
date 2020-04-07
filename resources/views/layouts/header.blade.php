@@ -412,6 +412,12 @@
       {{-- menu not logged in --}}
 
       <div class="large-menu-logged-out">
+        <li class="item login">
+          <a class="item-a" href="/">
+            <i class="fas fa-key"></i>
+            <span class="text">Login</span>
+          </a>
+        </li>
         <li class="item about">
           <a class="item-a" href="/about">
             <i class="fas fa-users"></i>

@@ -1,12 +1,122 @@
 .commission-wrap {
-    //background-color: tomato;
-    .tabs {
+    .tabs.is-toggle {
         li {
             a {
+                font-weight: bold;
                 i {
                     margin-right: 7px;
                 }
             }
+            &.is-active {
+                a {
+                    background-color: $brand-primary;
+                }
+            }
+        }
+    }
+    .tabs-content {
+        .tab-item {
+            display: none;
+            &.active {
+                display: block;
+            }
+        }
+    }
+}
+
+.com-bar {
+    width: 100%;
+    background-color: #ddd;
+    color: #222;
+    display: flex;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 2em;
+    .com-bar__item {
+        //border-right: 1px solid #aaa;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        &.com-bar__item--padding {
+            padding: 1em 1.5em;
+        }
+        img {
+            max-width: 150px;
+        }
+        // &:first-child,
+        // &:last-child {
+        //     border-right: none;
+        // }
+        &.com-bar__item--yellow {
+            background-color: $color-yellow;
+        }
+    }
+}
+
+.com-ul {
+    //padding-left: 1em;
+    .com-ul__li {
+        display: flex;
+        align-items: center;
+        i {
+            font-size: 0.5em;
+            color: #888;
+            margin-right: 1em;
+        }
+        //list-style-type: disc;
+    }
+}
+
+.com-spiff {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    .com-spiff__item {
+        flex: 1;
+        white-space: nowrap;
+        background-color: $brand-primary;
+        padding: 5px 10px;
+        color: #fff;
+        font-weight: 700;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-shadow: 1px 1px rgba(0, 0, 0, 0.1);
+        &:first-child {
+            background: lighten($brand-primary, 5%);
+        }
+        &:last-child {
+            background: darken($brand-primary, 5%);
+        }
+    }
+}
+
+.com-text {
+    height: 100%;
+    padding: 15px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    &.com-text--border {
+        border-right: 1px solid #ccc;
+    }
+    .com-text__item {
+        font-size: 1.2em;
+        text-transform: uppercase;
+        white-space: nowrap;
+        &.com-text__item--percent {
+            font-weight: 700;
+            font-size: 2.4em;
+        }
+        &.com-text__item--cash {
+            font-weight: 700;
+            font-size: 5em;
+        }
+        &.com-text__item--bottom {
+            font-weight: 700;
+            color: $color-red;
+            font-size: 1.1em;
         }
     }
 }

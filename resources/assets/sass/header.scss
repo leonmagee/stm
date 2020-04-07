@@ -276,6 +276,8 @@ body.stm-body {
                 color: #555;
                 font-weight: bold;
                 border-right: 1px solid #ccc;
+                text-transform: uppercase;
+                font-size: 15px;
                 i {
                     margin-right: 7px;
                 }
@@ -306,7 +308,7 @@ body.stm-body {
                     padding: 10px 20px;
                     border: 1px solid #ccc;
                     right: 3px;
-                    top: 1.8em;
+                    top: 1.6em;
                     flex-direction: column;
                     a {
                         white-space: nowrap;

@@ -30355,6 +30355,17 @@ __webpack_require__(175);
 // });
 
 /**
+ * Commission Tabs
+ */
+$('#commission-tabs li').click(function () {
+  $(this).parent().find('.is-active').removeClass('is-active');
+  $(this).addClass('is-active');
+  var tab = $(this).attr('tab');
+  $('.tabs-content .tab-item.active').removeClass('active');
+  $('.tabs-content .tab-item#' + tab).addClass('active');
+});
+
+/**
  * Credit payment choices
  */
 $('.form-wrap .credit-redeem-choices .item').click(function () {
