@@ -19897,11 +19897,16 @@ body.stm-body.about .about-img-wrap img {
 }
 
 .com-bar .com-bar__item img {
-  max-width: 150px;
+  max-width: 115px;
 }
 
 .com-bar .com-bar__item.com-bar__item--yellow {
   background-color: #ffc43d;
+}
+
+.com-bar .com-bar__value {
+  font-size: 6em;
+  font-weight: 700;
 }
 
 .com-ul .com-ul__li {
@@ -19982,24 +19987,26 @@ body.stm-body.about .about-img-wrap img {
 }
 
 .com-text .com-text__item {
-  font-size: 1.2em;
+  font-size: 1.1em;
   text-transform: uppercase;
   white-space: nowrap;
 }
 
-.com-text .com-text__item.com-text__item--percent {
+.com-text .com-text__item.com-text__item--value {
   font-weight: 700;
-  font-size: 2.4em;
+  font-size: 5.3em;
+  color: #333;
 }
 
-.com-text .com-text__item.com-text__item--cash {
+.com-text .com-text__item.com-text__item--percent {
   font-weight: 700;
-  font-size: 5em;
+  font-size: 2.2em;
 }
 
 .com-text .com-text__item.com-text__item--bottom {
   font-weight: 700;
   color: #ef476f;
-  font-size: 1.1em;
+  font-size: 1em;
+  height: 25px;
 }
 

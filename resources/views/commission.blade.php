@@ -13,12 +13,16 @@
 
   <div class="tabs-content">
     <div class="tab-item active" id="tab-1">
-
-
-
       <div class="com-bar">
         <div class="com-bar__item com-bar__item--yellow com-bar__img com-bar__item--padding">
           <img src="{{ URL::asset('img/h2o-wireless.png') }}" />
+        </div>
+        <div class="com-bar__item">
+          <div class="com-text com-text--border">
+            <div class="com-text__item com-text__item--value">
+              $30
+            </div>
+          </div>
         </div>
         <div class="com-bar__item com-bar__item--padding">
           <ul class="com-ul">
@@ -67,8 +71,10 @@
             <div class="com-text__item">
               Total Commission
             </div>
-            <div class="com-text__item com-text__item--cash">
+            <div class="com-text__item com-text__item--percent">
               $18
+            </div>
+            <div class="com-text__item com-text__item--bottom">
             </div>
           </div>
         </div>
@@ -78,6 +84,13 @@
         <div class="com-bar__item com-bar__item--yellow com-bar__img com-bar__item--padding">
           <img src="{{ URL::asset('img/h2o-wireless.png') }}" />
         </div>
+        <div class="com-bar__item">
+          <div class="com-text com-text--border">
+            <div class="com-text__item com-text__item--value">
+              $40
+            </div>
+          </div>
+        </div>
         <div class="com-bar__item com-bar__item--padding">
           <ul class="com-ul">
             <li class="com-ul__li"><i class="fas fa-circle"></i>Unlimited Talk & Text Nationwide</li>
@@ -85,11 +98,7 @@
               thereafter)</li>
             <li class="com-ul__li"><i class="fas fa-circle"></i>Unlimited International Talk to 50+ Countries</li>
             <li class="com-ul__li"><i class="fas fa-circle"></i>$10 International Talk Credit</li>
-            <li class="com-ul__li"><i class="fas fa-circle"></i>Unlimited Talk & Text Nationwide</li>
-            <li class="com-ul__li"><i class="fas fa-circle"></i>1GS of 4G LTE Data (unlimited at up to 128 kbps speed
-              thereafter)</li>
-            <li class="com-ul__li"><i class="fas fa-circle"></i>Unlimited International Talk to 50+ Countries</li>
-            <li class="com-ul__li"><i class="fas fa-circle"></i>$10 International Talk Credit</li>
+            thereafter)</li>
           </ul>
         </div>
         <div class="com-bar__item">
@@ -130,8 +139,10 @@
             <div class="com-text__item">
               Total Commission
             </div>
-            <div class="com-text__item com-text__item--cash">
+            <div class="com-text__item com-text__item--percent">
               $18
+            </div>
+            <div class="com-text__item com-text__item--bottom">
             </div>
           </div>
         </div>
