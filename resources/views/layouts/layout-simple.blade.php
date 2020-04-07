@@ -12,6 +12,8 @@
 
   @include('layouts.header')
 
+  @include('layouts.nav-mobile-logged-out')
+
   <div class="main-wrap">
 
     <div class="middle-content-wrap">

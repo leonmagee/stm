@@ -30344,6 +30344,17 @@ __webpack_require__(174);
 __webpack_require__(175);
 
 /**
+ * Not logged in menu hover
+ */
+//console.log('ok.... new');
+
+// $('#menu-direct-button').hover(function() {
+//   $('#menu-direct-links').css("display","flex");
+// }, function () {
+//   $('#menu-direct-links').css("display", "none");
+// });
+
+/**
  * Credit payment choices
  */
 $('.form-wrap .credit-redeem-choices .item').click(function () {

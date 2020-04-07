@@ -5,9 +5,9 @@
       {{-- <img src="{{ URL::asset('img/stm_logo_white.png') }}" /> --}}
       <img src="{{ URL::asset('img/gs-stm-logo.png') }}" />
     </a>
-    @if (Auth::check())
+    {{-- @if (Auth::check()) --}}
     <a class="menu-toggle menu-modal-open"><i class="fas fa-bars"></i></a>
-    @endif
+    {{-- @endif --}}
   </div>
 
   <div class="header-area">
@@ -15,8 +15,6 @@
       @if (Auth::check())
 
       @if($logged_in_user->isAdmin())
-
-
 
       <div class="large-menu">
         <div class="search-wrap">
@@ -410,82 +408,36 @@
 
       @endif
 
-
-
-      {{-- 			@else
-			<div class="field has-addons">
-				<p class="control">
-					<a class="button login" href="/login">
-						<span class="icon is-small">
-							<i class="fas fa-user-check"></i>
-						</span>
-						<span class="text">Log In</span>
-					</a>
-				</p>
-				<p class="control">
-					<a class="button contact" href="/contact">
-						<span class="icon is-small">
-							<i class="fas fa-question-circle"></i>
-						</span>
-						<span class="text">Contact</span>
-					</a>
-				</p>
-      </div> --}}
       @else
       {{-- menu not logged in --}}
-      <div class="large-menu">
-        <div class="field has-addons">
-          <p class="control">
-            <a href="/about" class="button about">
-              <span class="icon is-small">
-                <i class="fas fa-calendar"></i>
-              </span>
-              <span class="text">About</span>
-            </a>
-          </p>
-          <p class="control">
-            <a href="/contact-us" class="button contact">
-              <span class="icon is-small">
-                <i class="fas fa-user"></i>
-              </span>
-              <span class="text">Contact</span>
-            </a>
-          </p>
-          {{-- <p class="control">
-            <a class="button links not-link">
-              <span class="icon is-small">
-                <i class="fas fa-calendar"></i>
-              </span>
-              <span class="text">Links</span>
-            </a>
-          </p> --}}
-        </div>
-      </div>
 
-      <div class="mobile-menu">
-        <div class="field has-addons">
-          <p class="control">
-            <a href="/about" class="button date add-radius">
-              <span class="icon is-small">
-                <i class="fas fa-calendar"></i>
-              </span>
-              <span class="text">About</span>
-            </a>
-          </p>
-        </div>
-        <div class="field has-addons">
-          <p class="control">
-            <a href="/contact-us" class="button date add-radius">
-              <span class="icon is-small">
-                <i class="fas fa-calendar"></i>
-              </span>
-              <span class="text">Contact</span>
-            </a>
-          </p>
-        </div>
-
+      <div class="large-menu-logged-out">
+        <li class="item about">
+          <a class="item-a" href="/about">
+            <i class="fas fa-users"></i>
+            <span class="text">About</span>
+          </a>
+        </li>
+        <li class="item contact">
+          <a class="item-a" href="/contact-us">
+            <i class="fas fa-envelope"></i>
+            <span class="text">Contact</span>
+          </a>
+        </li>
+        <li class="item links">
+          <a class="item-a">
+            <i class="fas fa-link"></i>
+            <span class="text">Links</span>
+          </a>
+          <div class="links-sub-menu" id="menu-direct-links">
+            <a href="https://h2odirectnow.com" target="_blank">H2O Direct</a>
+            <a href="https://pos.gswmax.com" target="_blank">Lyca Direct</a>
+            <a href="https://gsposa.instapayportal.com/login" target="_blank">GS Posa</a>
+          </div>
+        </li>
 
       </div>
+
       @endif
     </div>
   </div>

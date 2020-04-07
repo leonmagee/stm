@@ -18,6 +18,16 @@ require('./components/AllUsersNotAdmin');
 
 require('./components/AllUsersAgents');
 
+/**
+ * Not logged in menu hover
+ */
+//console.log('ok.... new');
+
+// $('#menu-direct-button').hover(function() {
+//   $('#menu-direct-links').css("display","flex");
+// }, function () {
+//   $('#menu-direct-links').css("display", "none");
+// });
 
 /**
  * Credit payment choices

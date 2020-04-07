@@ -31,6 +31,44 @@ class AppServiceProvider extends ServiceProvider
             view()->share('view_name', $name);
         });
 
+        view()->composer(['layouts.nav-mobile-logged-out'], function ($view) {
+
+            $menu_array = [
+                [
+                    "name" => "About",
+                    "link" => "/about",
+                    "sub" => false,
+                    "default" => false,
+                ],
+                [
+                    "name" => "Contact",
+                    "link" => "/contact-us",
+                    "sub" => false,
+                    "default" => false,
+                ],
+                [
+                    "name" => "H2O Direct",
+                    "link" => "https://h2odirectnow.com",
+                    "sub" => false,
+                    "default" => false,
+                ],
+                [
+                    "name" => "Lyca Direct",
+                    "link" => "https://pos.gswmax.com",
+                    "sub" => false,
+                    "default" => false,
+                ],
+                [
+                    "name" => "GS Posa",
+                    "link" => "https://gsposa.instapayportal.com/login",
+                    "sub" => false,
+                    "default" => false,
+                ],
+            ];
+            $view->with(['menu' => $menu_array]);
+
+        });
+
         view()->composer(['layouts.nav', 'layouts.nav-mobile'], function ($view) {
 
             $path = \Request::path();
