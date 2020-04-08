@@ -29,21 +29,32 @@
     background-color: #ddd;
     color: #222;
     display: flex;
+    flex-wrap: wrap;
     border-radius: 4px;
     overflow: hidden;
     margin-bottom: 2em;
+    @media (min-width: $screen-lg) {
+        flex-wrap: nowrap;
+    }
     .com-bar__item {
+        width: 100%;
+        @media (min-width: $screen-lg) {
+            width: auto;
+        }
         display: flex;
         justify-content: center;
         align-items: center;
         &.com-bar__item--padding {
-            padding: 1em 1.5em;
+            padding: 1em 1.4em;
         }
         img {
             max-width: 115px;
         }
-        &.com-bar__item--yellow {
+        &.com-bar__item--h2o {
             background-color: $color-yellow;
+        }
+        &.com-bar__item--lyca {
+            background-color: #ccc;
         }
     }
     .com-bar__value {
@@ -67,8 +78,13 @@
 
 .com-spiff {
     height: 100%;
+    width: 100%;
     display: flex;
     flex-direction: column;
+    @media (min-width: $screen-lg) {
+        width: auto;
+    }
+
     .com-spiff__item {
         flex: 1;
         white-space: nowrap;
@@ -91,13 +107,21 @@
 
 .com-text {
     height: 100%;
-    padding: 3px 20px;
+    width: 100%;
+    padding: 7px 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    @media (min-width: $screen-lg) {
+        padding: 3px 20px;
+        width: auto;
+    }
     &.com-text--border {
-        border-right: 1px solid #ccc;
+        border-bottom: 1px solid #ccc;
+        @media (min-width: $screen-lg) {
+            border-right: 1px solid #ccc;
+        }
     }
     .com-text__item {
         font-size: 0.9em;

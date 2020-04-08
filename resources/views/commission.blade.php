@@ -16,8 +16,8 @@
 
       @foreach($h2o_plans as $plan)
       <div class="com-bar">
-        <div class="com-bar__item com-bar__item--yellow com-bar__img com-bar__item--padding">
-          <img src="{{ URL::asset('img/h2o-wireless.png') }}" />
+        <div class="com-bar__item com-bar__item--h2o com-bar__img com-bar__item--padding">
+          <img class="h2o" src="{{ URL::asset('img/h2o-wireless.png') }}" />
         </div>
         <div class="com-bar__item">
           <div class="com-text com-text--border">
@@ -96,7 +96,88 @@
 
     </div>
     <div class="tab-item" id="tab-2">
-      Tab 2 content
+
+      @foreach($lyca_plans as $plan)
+      <div class="com-bar">
+        <div class="com-bar__item com-bar__item--lyca com-bar__img com-bar__item--padding">
+          <img class="lyca" src="{{ URL::asset('img/lyca-mobile.png') }}" />
+        </div>
+        <div class="com-bar__item">
+          <div class="com-text com-text--border">
+            <div class="com-text__item com-text__item--value">
+              <span>$</span>{{ $plan['value'] }}
+            </div>
+          </div>
+        </div>
+        <div class="com-bar__item com-bar__item--padding">
+          <ul class="com-ul">
+            @foreach( $plan['text'] as $text)
+            <li class="com-ul__li"><i class="fas fa-circle"></i>{{ $text }}</li>
+            @endforeach
+          </ul>
+        </div>
+        <div class="com-bar__item">
+          <div class="com-spiff">
+            <div class="com-spiff__item">1st Spiff ${{ $plan['spiff'][0] }}</div>
+            <div class="com-spiff__item">2nd Spiff ${{ $plan['spiff'][1] }}</div>
+            <div class="com-spiff__item">3rd Spiff ${{ $plan['spiff'][2] }}</div>
+          </div>
+        </div>
+        <div class="com-bar__item">
+          <div class="com-text com-text--border">
+            <div class="com-text__item">
+              RTR Margin
+            </div>
+            <div class="com-text__item com-text__item--percent">
+              {{ $plan['rtr']['percent'] }}%
+            </div>
+            <div class="com-text__item com-text__item--bottom">
+              {{ $plan['rtr']['description'] }}
+            </div>
+          </div>
+        </div>
+        <div class="com-bar__item">
+          <div class="com-text com-text--border">
+            <div class="com-text__item">
+              Life Residual
+            </div>
+            <div class="com-text__item com-text__item--percent">
+              {{ $plan['life']['percent'] }}%
+            </div>
+            <div class="com-text__item com-text__item--bottom">
+              {{ $plan['life']['description'] }}
+            </div>
+          </div>
+        </div>
+        <div class="com-bar__item">
+          <div class="com-text com-text--border">
+            <div class="com-text__item">
+              Port In Spiff
+            </div>
+            <div class="com-text__item com-text__item--percent">
+              <span>$</span>{{ $plan['port-in']['value'] }}
+            </div>
+            <div class="com-text__item com-text__item--bottom">
+              {{ $plan['port-in']['description'] }}
+            </div>
+          </div>
+        </div>
+        <div class="com-bar__item">
+          <div class="com-text">
+            <div class="com-text__item">
+              Total Commission
+            </div>
+            <div class="com-text__item com-text__item--percent">
+              <span>$</span>{{ $plan['total'] }}
+            </div>
+            <div class="com-text__item com-text__item--bottom">
+            </div>
+          </div>
+        </div>
+      </div>
+      @endforeach
+
+
     </div>
   </div>
 

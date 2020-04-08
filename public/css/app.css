@@ -19875,12 +19875,22 @@ body.stm-body.about .about-img-wrap img {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
   border-radius: 4px;
   overflow: hidden;
   margin-bottom: 2em;
 }
 
+@media (min-width: 1200px) {
+  .com-bar {
+    -ms-flex-wrap: nowrap;
+        flex-wrap: nowrap;
+  }
+}
+
 .com-bar .com-bar__item {
+  width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -19892,16 +19902,26 @@ body.stm-body.about .about-img-wrap img {
           align-items: center;
 }
 
+@media (min-width: 1200px) {
+  .com-bar .com-bar__item {
+    width: auto;
+  }
+}
+
 .com-bar .com-bar__item.com-bar__item--padding {
-  padding: 1em 1.5em;
+  padding: 1em 1.4em;
 }
 
 .com-bar .com-bar__item img {
   max-width: 115px;
 }
 
-.com-bar .com-bar__item.com-bar__item--yellow {
+.com-bar .com-bar__item.com-bar__item--h2o {
   background-color: #ffc43d;
+}
+
+.com-bar .com-bar__item.com-bar__item--lyca {
+  background-color: #ccc;
 }
 
 .com-bar .com-bar__value {
@@ -19927,6 +19947,7 @@ body.stm-body.about .about-img-wrap img {
 
 .com-spiff {
   height: 100%;
+  width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -19934,6 +19955,12 @@ body.stm-body.about .about-img-wrap img {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+}
+
+@media (min-width: 1200px) {
+  .com-spiff {
+    width: auto;
+  }
 }
 
 .com-spiff .com-spiff__item {
@@ -19967,7 +19994,8 @@ body.stm-body.about .about-img-wrap img {
 
 .com-text {
   height: 100%;
-  padding: 3px 20px;
+  width: 100%;
+  padding: 7px 20px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -19983,8 +20011,21 @@ body.stm-body.about .about-img-wrap img {
           justify-content: center;
 }
 
+@media (min-width: 1200px) {
+  .com-text {
+    padding: 3px 20px;
+    width: auto;
+  }
+}
+
 .com-text.com-text--border {
-  border-right: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+}
+
+@media (min-width: 1200px) {
+  .com-text.com-text--border {
+    border-right: 1px solid #ccc;
+  }
 }
 
 .com-text .com-text__item {

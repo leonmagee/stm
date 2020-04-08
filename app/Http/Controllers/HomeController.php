@@ -174,7 +174,184 @@ class HomeController extends Controller
             ],
         ];
 
-        return view('commission', compact('h2o_plans'));
+        $lyca_plans = [
+            [
+                //$19    $9    $4    $3    $3
+                'value' => 19,
+                'text' => [
+                    'UnlimitedNationwide Talk, Text and Data',
+                    'Unlimited 1GBData at up to 4G LTE',
+                    'UnlimitedInternational Talk & Text to 75+ Countries',
+                    'Pricebreakdown: Data= $7.62; Talk/Text= $11.38',
+                ],
+                'spiff' => [9, 4, 3],
+                'rtr' => [
+                    'percent' => 8,
+                    'description' => 'Top Up',
+                ],
+                'life' => [
+                    'percent' => 1,
+                    'description' => '2 Year',
+                ],
+                'port-in' => [
+                    'value' => 3,
+                    'description' => 'Extra',
+                ],
+                'total' => 16,
+            ],
+            [
+                //$23    $9    $9    $9    $3
+                'value' => 23,
+                'text' => [
+                    'UnlimitedNationwide Talk & Text',
+                    'UnlimitedData with 2GB at up to 4G LTE',
+                    'UnlimitedInternational Talk & Text to 75+ Countries',
+                    '$1.50 Bonus International Credit',
+                    'breakdown: Data= $15.07; Talk/Text= $7.93',
+                ],
+                'spiff' => [9, 9, 9],
+                'rtr' => [
+                    'percent' => 8,
+                    'description' => 'Top Up',
+                ],
+                'life' => [
+                    'percent' => 1,
+                    'description' => '2 Year',
+                ],
+                'port-in' => [
+                    'value' => 3,
+                    'description' => 'Extra',
+                ],
+                'total' => 27,
+            ],
+            [
+                //$29    $16    $14    $13    $10
+                'value' => 29,
+                'text' => [
+                    'UnlimitedNationwide Talk & Text',
+                    'UnlimitedData with 5GB at up to 4G LTE',
+                    'UnlimitedInternational Talk & Text to 75+ Countries',
+                    '$2.50 Bonus International Credit',
+                    'Bonus International Minutes',
+                    'Pricebreakdown: Data= $21.31; Talk/Text= $7.69',
+                    'New Customers, buy 6 months & get free Samsung Galaxy A10s phone!',
+                ],
+                'spiff' => [16, 14, 13],
+                'rtr' => [
+                    'percent' => 8,
+                    'description' => 'Top Up',
+                ],
+                'life' => [
+                    'percent' => 1,
+                    'description' => '2 Year',
+                ],
+                'port-in' => [
+                    'value' => 10,
+                    'description' => 'Extra',
+                ],
+                'total' => 43,
+            ],
+            [
+                //$35    $15    $11    $3    $13
+                'value' => 35,
+                'text' => [
+                    'UnlimitedNationwide Talk & Text',
+                    'UnlimitedData with 7GB at up to 4G LTE',
+                    'UnlimitedInternational Talk & Text to 75+ Countries',
+                    'Pricebreakdown: Data= $28.86; Talk/Text= $6.14',
+                ],
+                'spiff' => [15, 11, 3],
+                'rtr' => [
+                    'percent' => 8,
+                    'description' => 'Top Up',
+                ],
+                'life' => [
+                    'percent' => 1,
+                    'description' => '2 Year',
+                ],
+                'port-in' => [
+                    'value' => 13,
+                    'description' => 'Extra',
+                ],
+                'total' => 29,
+            ],
+            [
+                //$39    $15    $13    $8    $13
+                'value' => 39,
+                'text' => [
+                    'UnlimitedNationwide Talk and Text',
+                    'UnlimitedData with 15GB at up to 4G LTE',
+                    'UnlimitedInternational Talk & text to 75+ Countries',
+                    '$10 Bonus International Credit',
+                    'breakdown: Data= $31.05; Talk/Text= $7.95',
+                ],
+                'spiff' => [15, 13, 8],
+                'rtr' => [
+                    'percent' => 8,
+                    'description' => 'Top Up',
+                ],
+                'life' => [
+                    'percent' => 1,
+                    'description' => '2 Year',
+                ],
+                'port-in' => [
+                    'value' => 13,
+                    'description' => 'Extra',
+                ],
+                'total' => 36,
+            ],
+            [
+                // $45    $15    $13    $18    $13
+                'value' => 45,
+                'text' => [
+                    'UnlimitedNationwide Talk & Text',
+                    'UnlimitedData with 10 GB at up to 4G LTE',
+                    'UnlimitedInternational Talk & Text to 75+ Countries',
+                    'Pricebreakdown: Data= $40.50; Talk/Text= $4.50',
+                ],
+                'spiff' => [15, 13, 18],
+                'rtr' => [
+                    'percent' => 8,
+                    'description' => 'Top Up',
+                ],
+                'life' => [
+                    'percent' => 1,
+                    'description' => '2 Year',
+                ],
+                'port-in' => [
+                    'value' => 13,
+                    'description' => 'Extra',
+                ],
+                'total' => 46,
+            ],
+            [
+                //$50    $15    $13    $18    $18
+                'value' => 50,
+                'text' => [
+                    'UnlimitedNationwide Talk & text',
+                    'UnlimitedNationwide Data at up to 4G LTE',
+                    'UnlimitedInternational Talk & Text to 75+ Countries',
+                    '500Bangladesh Minutes',
+                    'breakdown: Data= $41.34; Talk/Text= $8.66',
+                ],
+                'spiff' => [15, 13, 18],
+                'rtr' => [
+                    'percent' => 8,
+                    'description' => 'Top Up',
+                ],
+                'life' => [
+                    'percent' => 1,
+                    'description' => '2 Year',
+                ],
+                'port-in' => [
+                    'value' => 18,
+                    'description' => 'Extra',
+                ],
+                'total' => 46,
+            ],
+        ];
+
+        return view('commission', compact('h2o_plans', 'lyca_plans'));
     }
 
     public function outputLockedPage()
