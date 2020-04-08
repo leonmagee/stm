@@ -33,7 +33,7 @@
             @endforeach
           </ul>
         </div>
-        <div class="com-bar__item">
+        <div class="com-bar__item com-bar__item--spiff">
           <div class="com-spiff">
             <div class="com-spiff__item">1st Spiff ${{ $plan['spiff'][0] }}</div>
             <div class="com-spiff__item">2nd Spiff ${{ $plan['spiff'][1] }}</div>
@@ -116,7 +116,7 @@
             @endforeach
           </ul>
         </div>
-        <div class="com-bar__item">
+        <div class="com-bar__item com-bar__item--spiff">
           <div class="com-spiff">
             <div class="com-spiff__item">1st Spiff ${{ $plan['spiff'][0] }}</div>
             <div class="com-spiff__item">2nd Spiff ${{ $plan['spiff'][1] }}</div>
