@@ -56,7 +56,105 @@ class HomeController extends Controller
 
     public function commission()
     {
-        return view('commission');
+        $h2o_plans = [
+            [
+                'value' => 20,
+                'text' => [
+                    'Unlimited Talk & Text Nationwide',
+                    '1GB of 4G LTE Data (unlimited at up to 128 kbps speed thereafter)',
+                    'Unlimited International Talk to 50+ Countries',
+                    '$10 International Talk Credit',
+                ],
+                'spiff' => [10, 10, 10],
+                'rtr' => [
+                    'percent' => 6,
+                    'description' => 'Top Up',
+                ],
+                'life' => [
+                    'percent' => 3,
+                    'description' => '2 Year',
+                ],
+                'total' => 30,
+            ],
+            [
+                'value' => 30,
+                'text' => [
+                    'Unlimited Talk & Text Nationwide',
+                    '5GB of 4G LTE Data (unlimited at up to 128 kbps speed thereafter)',
+                    'Unlimited International Talk to 50+ Countries',
+                    '$10 International Talk Credit',
+                ],
+                'spiff' => [20, 15, 10],
+                'rtr' => [
+                    'percent' => 6,
+                    'description' => 'Top Up',
+                ],
+                'life' => [
+                    'percent' => 3,
+                    'description' => '2 Year',
+                ],
+                'total' => 45,
+            ],
+            [
+                'value' => 40,
+                'text' => [
+                    'Unlimited Talk & Text Nationwide',
+                    '10GB of 4G LTE Data (unlimited at up to 128 kbps speed thereafter)',
+                    'Unlimited International Talk to 50+ Countries',
+                    '$20 International Talk Credit',
+                ],
+                'spiff' => [40, 20, 20],
+                'rtr' => [
+                    'percent' => 6,
+                    'description' => 'Top Up',
+                ],
+                'life' => [
+                    'percent' => 3,
+                    'description' => '2 Year',
+                ],
+                'total' => 80,
+            ],
+            [
+                'value' => 50,
+                'text' => [
+                    'Unlimited Talk & Text Nationwide',
+                    '15GB of 4G LTE Data (unlimited at up to 128 kbps speed thereafter)',
+                    'Unlimited International Talk to 50+ Countries',
+                    '$20 International Talk Credit',
+                ],
+                'spiff' => [50, 25, 25],
+                'rtr' => [
+                    'percent' => 6,
+                    'description' => 'Top Up',
+                ],
+                'life' => [
+                    'percent' => 3,
+                    'description' => '2 Year',
+                ],
+                'total' => 100,
+            ],
+            [
+                'value' => 60,
+                'text' => [
+                    'Unlimited Talk & Text Nationwide',
+                    'Unlimited 4G LTE Data with Hotspot feature (up to 30GB, unlimited at up to 128 kbps speed thereafter)',
+                    'Unlimited International Talk to 50+ Countries',
+                    '$20 International Talk Credit',
+                ],
+                'spiff' => [60, 30, 30],
+                'rtr' => [
+                    'percent' => 6,
+                    'description' => 'Top Up',
+                ],
+                'life' => [
+                    'percent' => 3,
+                    'description' => '2 Year',
+                ],
+                'total' => 120,
+            ],
+        ];
+
+        return view('commission', compact('h2o_plans'));
     }
 
     public function outputLockedPage()

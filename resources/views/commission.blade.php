@@ -13,6 +13,8 @@
 
   <div class="tabs-content">
     <div class="tab-item active" id="tab-1">
+
+      @foreach($h2o_plans as $plan)
       <div class="com-bar">
         <div class="com-bar__item com-bar__item--yellow com-bar__img com-bar__item--padding">
           <img src="{{ URL::asset('img/h2o-wireless.png') }}" />
@@ -20,24 +22,22 @@
         <div class="com-bar__item">
           <div class="com-text com-text--border">
             <div class="com-text__item com-text__item--value">
-              $30
+              <span>$</span>{{ $plan['value'] }}
             </div>
           </div>
         </div>
         <div class="com-bar__item com-bar__item--padding">
           <ul class="com-ul">
-            <li class="com-ul__li"><i class="fas fa-circle"></i>Unlimited Talk & Text Nationwide</li>
-            <li class="com-ul__li"><i class="fas fa-circle"></i>1GS of 4G LTE Data (unlimited at up to 128 kbps speed
-              thereafter)</li>
-            <li class="com-ul__li"><i class="fas fa-circle"></i>Unlimited International Talk to 50+ Countries</li>
-            <li class="com-ul__li"><i class="fas fa-circle"></i>$10 International Talk Credit</li>
+            @foreach( $plan['text'] as $text)
+            <li class="com-ul__li"><i class="fas fa-circle"></i>{{ $text }}</li>
+            @endforeach
           </ul>
         </div>
         <div class="com-bar__item">
           <div class="com-spiff">
-            <div class="com-spiff__item">1st Spiff $10</div>
-            <div class="com-spiff__item">2nd Spiff $20</div>
-            <div class="com-spiff__item">3rd Spiff $30</div>
+            <div class="com-spiff__item">1st Spiff ${{ $plan['spiff'][0] }}</div>
+            <div class="com-spiff__item">2nd Spiff ${{ $plan['spiff'][1] }}</div>
+            <div class="com-spiff__item">3rd Spiff ${{ $plan['spiff'][2] }}</div>
           </div>
         </div>
         <div class="com-bar__item">
@@ -46,10 +46,10 @@
               RTR Margin
             </div>
             <div class="com-text__item com-text__item--percent">
-              6%
+              {{ $plan['rtr']['percent'] }}%
             </div>
             <div class="com-text__item com-text__item--bottom">
-              Top Up
+              {{ $plan['rtr']['description'] }}
             </div>
           </div>
         </div>
@@ -59,10 +59,10 @@
               Life Residual
             </div>
             <div class="com-text__item com-text__item--percent">
-              3%
+              {{ $plan['life']['percent'] }}%
             </div>
             <div class="com-text__item com-text__item--bottom">
-              2 year
+              {{ $plan['life']['description'] }}
             </div>
           </div>
         </div>
@@ -72,85 +72,14 @@
               Total Commission
             </div>
             <div class="com-text__item com-text__item--percent">
-              $18
+              <span>$</span>{{ $plan['total'] }}
             </div>
             <div class="com-text__item com-text__item--bottom">
             </div>
           </div>
         </div>
       </div>
-
-      <div class="com-bar">
-        <div class="com-bar__item com-bar__item--yellow com-bar__img com-bar__item--padding">
-          <img src="{{ URL::asset('img/h2o-wireless.png') }}" />
-        </div>
-        <div class="com-bar__item">
-          <div class="com-text com-text--border">
-            <div class="com-text__item com-text__item--value">
-              $40
-            </div>
-          </div>
-        </div>
-        <div class="com-bar__item com-bar__item--padding">
-          <ul class="com-ul">
-            <li class="com-ul__li"><i class="fas fa-circle"></i>Unlimited Talk & Text Nationwide</li>
-            <li class="com-ul__li"><i class="fas fa-circle"></i>1GS of 4G LTE Data (unlimited at up to 128 kbps speed
-              thereafter)</li>
-            <li class="com-ul__li"><i class="fas fa-circle"></i>Unlimited International Talk to 50+ Countries</li>
-            <li class="com-ul__li"><i class="fas fa-circle"></i>$10 International Talk Credit</li>
-            thereafter)</li>
-          </ul>
-        </div>
-        <div class="com-bar__item">
-          <div class="com-spiff">
-            <div class="com-spiff__item">1st Spiff $10</div>
-            <div class="com-spiff__item">2nd Spiff $20</div>
-            <div class="com-spiff__item">3rd Spiff $30</div>
-          </div>
-        </div>
-        <div class="com-bar__item">
-          <div class="com-text com-text--border">
-            <div class="com-text__item">
-              RTR Margin
-            </div>
-            <div class="com-text__item com-text__item--percent">
-              6%
-            </div>
-            <div class="com-text__item com-text__item--bottom">
-              Top Up
-            </div>
-          </div>
-        </div>
-        <div class="com-bar__item">
-          <div class="com-text com-text--border">
-            <div class="com-text__item">
-              Life Residual
-            </div>
-            <div class="com-text__item com-text__item--percent">
-              3%
-            </div>
-            <div class="com-text__item com-text__item--bottom">
-              2 year
-            </div>
-          </div>
-        </div>
-        <div class="com-bar__item">
-          <div class="com-text">
-            <div class="com-text__item">
-              Total Commission
-            </div>
-            <div class="com-text__item com-text__item--percent">
-              $18
-            </div>
-            <div class="com-text__item com-text__item--bottom">
-            </div>
-          </div>
-        </div>
-      </div>
-
-
-
-
+      @endforeach
 
     </div>
     <div class="tab-item" id="tab-2">

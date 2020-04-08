@@ -19916,6 +19916,7 @@ body.stm-body.about .about-img-wrap img {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  font-size: 0.8em;
 }
 
 .com-ul .com-ul__li i {
@@ -19966,7 +19967,7 @@ body.stm-body.about .about-img-wrap img {
 
 .com-text {
   height: 100%;
-  padding: 15px 20px;
+  padding: 3px 20px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -19996,11 +19997,33 @@ body.stm-body.about .about-img-wrap img {
   font-weight: 700;
   font-size: 5.3em;
   color: #333;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.com-text .com-text__item.com-text__item--value span {
+  font-size: 0.8em;
+  color: #444;
 }
 
 .com-text .com-text__item.com-text__item--percent {
   font-weight: 700;
-  font-size: 2.2em;
+  font-size: 2.4em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.com-text .com-text__item.com-text__item--percent span {
+  font-size: 0.8em;
+  color: #444;
 }
 
 .com-text .com-text__item.com-text__item--bottom {
