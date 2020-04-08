@@ -183,7 +183,6 @@ class HomeController extends Controller
                     'UnlimitedNationwide Talk, Text and Data',
                     'Unlimited 1GBData at up to 4G LTE',
                     'UnlimitedInternational Talk & Text to 75+ Countries',
-                    'Pricebreakdown: Data= $7.62; Talk/Text= $11.38',
                 ],
                 'spiff' => [9, 4, 3],
                 'rtr' => [
@@ -208,7 +207,6 @@ class HomeController extends Controller
                     'UnlimitedData with 2GB at up to 4G LTE',
                     'UnlimitedInternational Talk & Text to 75+ Countries',
                     '$1.50 Bonus International Credit',
-                    'breakdown: Data= $15.07; Talk/Text= $7.93',
                 ],
                 'spiff' => [9, 9, 9],
                 'rtr' => [
@@ -233,9 +231,6 @@ class HomeController extends Controller
                     'UnlimitedData with 5GB at up to 4G LTE',
                     'UnlimitedInternational Talk & Text to 75+ Countries',
                     '$2.50 Bonus International Credit',
-                    'Bonus International Minutes',
-                    'Pricebreakdown: Data= $21.31; Talk/Text= $7.69',
-                    'New Customers, buy 6 months & get free Samsung Galaxy A10s phone!',
                 ],
                 'spiff' => [16, 14, 13],
                 'rtr' => [
@@ -259,7 +254,6 @@ class HomeController extends Controller
                     'UnlimitedNationwide Talk & Text',
                     'UnlimitedData with 7GB at up to 4G LTE',
                     'UnlimitedInternational Talk & Text to 75+ Countries',
-                    'Pricebreakdown: Data= $28.86; Talk/Text= $6.14',
                 ],
                 'spiff' => [15, 11, 3],
                 'rtr' => [
@@ -284,7 +278,6 @@ class HomeController extends Controller
                     'UnlimitedData with 15GB at up to 4G LTE',
                     'UnlimitedInternational Talk & text to 75+ Countries',
                     '$10 Bonus International Credit',
-                    'breakdown: Data= $31.05; Talk/Text= $7.95',
                 ],
                 'spiff' => [15, 13, 8],
                 'rtr' => [
@@ -308,7 +301,6 @@ class HomeController extends Controller
                     'UnlimitedNationwide Talk & Text',
                     'UnlimitedData with 10 GB at up to 4G LTE',
                     'UnlimitedInternational Talk & Text to 75+ Countries',
-                    'Pricebreakdown: Data= $40.50; Talk/Text= $4.50',
                 ],
                 'spiff' => [15, 13, 18],
                 'rtr' => [
@@ -332,8 +324,6 @@ class HomeController extends Controller
                     'UnlimitedNationwide Talk & text',
                     'UnlimitedNationwide Data at up to 4G LTE',
                     'UnlimitedInternational Talk & Text to 75+ Countries',
-                    '500Bangladesh Minutes',
-                    'breakdown: Data= $41.34; Talk/Text= $8.66',
                 ],
                 'spiff' => [15, 13, 18],
                 'rtr' => [
