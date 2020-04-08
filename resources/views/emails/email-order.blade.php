@@ -7,7 +7,7 @@
 </div>
 
 <div class="note-wrap">
-  A new Sims / POS order has been requested for <strong>{{ $user->company }}</strong>.
+  Sims / POS Order Placed: <strong>{{ $user->company }}</strong>.
 </div>
 
 <table class="table custom">
