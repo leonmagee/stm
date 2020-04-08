@@ -100,12 +100,12 @@
         border-right: 1px solid #ccc;
     }
     .com-text__item {
-        font-size: 1.1em;
+        font-size: 0.9em;
         text-transform: uppercase;
         white-space: nowrap;
         &.com-text__item--value {
             font-weight: 700;
-            font-size: 5.3em;
+            font-size: 5.5em;
             color: #333;
             display: flex;
             align-items: center;
@@ -116,7 +116,7 @@
         }
         &.com-text__item--percent {
             font-weight: 700;
-            font-size: 2.4em;
+            font-size: 2.7em;
             display: flex;
             align-items: center;
             span {
