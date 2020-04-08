@@ -153,7 +153,8 @@ class HomeController extends Controller
                 'value' => 60,
                 'text' => [
                     'Unlimited Talk & Text Nationwide',
-                    'Unlimited 4G LTE Data with Hotspot feature (up to 30GB, unlimited at up to 128 kbps speed thereafter)',
+                    'Unlimited 4G LTE Data (unlimited at up to 128 kbps speed thereafter)',
+                    'Feature up to 30GB Hotspot',
                     'Unlimited International Talk to 50+ Countries',
                     '$20 International Talk Credit',
                 ],
