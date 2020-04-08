@@ -180,9 +180,9 @@ class HomeController extends Controller
                 //$19    $9    $4    $3    $3
                 'value' => 19,
                 'text' => [
-                    'UnlimitedNationwide Talk, Text and Data',
+                    'Unlimited Nationwide Talk, Text and Data',
                     'Unlimited 1GBData at up to 4G LTE',
-                    'UnlimitedInternational Talk & Text to 75+ Countries',
+                    'Unlimited International Talk & Text to 75+ Countries',
                 ],
                 'spiff' => [9, 4, 3],
                 'rtr' => [
@@ -203,9 +203,9 @@ class HomeController extends Controller
                 //$23    $9    $9    $9    $3
                 'value' => 23,
                 'text' => [
-                    'UnlimitedNationwide Talk & Text',
-                    'UnlimitedData with 2GB at up to 4G LTE',
-                    'UnlimitedInternational Talk & Text to 75+ Countries',
+                    'Unlimited Nationwide Talk & Text',
+                    'Unlimited Data with 2GB at up to 4G LTE',
+                    'Unlimited International Talk & Text to 75+ Countries',
                     '$1.50 Bonus International Credit',
                 ],
                 'spiff' => [9, 9, 9],
@@ -227,9 +227,9 @@ class HomeController extends Controller
                 //$29    $16    $14    $13    $10
                 'value' => 29,
                 'text' => [
-                    'UnlimitedNationwide Talk & Text',
-                    'UnlimitedData with 5GB at up to 4G LTE',
-                    'UnlimitedInternational Talk & Text to 75+ Countries',
+                    'Unlimited Nationwide Talk & Text',
+                    'Unlimited Data with 5GB at up to 4G LTE',
+                    'Unlimited International Talk & Text to 75+ Countries',
                     '$2.50 Bonus International Credit',
                 ],
                 'spiff' => [16, 14, 13],
@@ -251,9 +251,9 @@ class HomeController extends Controller
                 //$35    $15    $11    $3    $13
                 'value' => 35,
                 'text' => [
-                    'UnlimitedNationwide Talk & Text',
-                    'UnlimitedData with 7GB at up to 4G LTE',
-                    'UnlimitedInternational Talk & Text to 75+ Countries',
+                    'Unlimited Nationwide Talk & Text',
+                    'Unlimited Data with 7GB at up to 4G LTE',
+                    'Unlimited International Talk & Text to 75+ Countries',
                 ],
                 'spiff' => [15, 11, 3],
                 'rtr' => [
@@ -274,9 +274,9 @@ class HomeController extends Controller
                 //$39    $15    $13    $8    $13
                 'value' => 39,
                 'text' => [
-                    'UnlimitedNationwide Talk and Text',
-                    'UnlimitedData with 15GB at up to 4G LTE',
-                    'UnlimitedInternational Talk & text to 75+ Countries',
+                    'Unlimited Nationwide Talk and Text',
+                    'Unlimited Data with 15GB at up to 4G LTE',
+                    'Unlimited International Talk & text to 75+ Countries',
                     '$10 Bonus International Credit',
                 ],
                 'spiff' => [15, 13, 8],
@@ -298,9 +298,9 @@ class HomeController extends Controller
                 // $45    $15    $13    $18    $13
                 'value' => 45,
                 'text' => [
-                    'UnlimitedNationwide Talk & Text',
-                    'UnlimitedData with 10 GB at up to 4G LTE',
-                    'UnlimitedInternational Talk & Text to 75+ Countries',
+                    'Unlimited Nationwide Talk & Text',
+                    'Unlimited Data with 10 GB at up to 4G LTE',
+                    'Unlimited International Talk & Text to 75+ Countries',
                 ],
                 'spiff' => [15, 13, 18],
                 'rtr' => [
@@ -321,9 +321,9 @@ class HomeController extends Controller
                 //$50    $15    $13    $18    $18
                 'value' => 50,
                 'text' => [
-                    'UnlimitedNationwide Talk & text',
-                    'UnlimitedNationwide Data at up to 4G LTE',
-                    'UnlimitedInternational Talk & Text to 75+ Countries',
+                    'Unlimited Nationwide Talk & text',
+                    'Unlimited Nationwide Data at up to 4G LTE',
+                    'Unlimited International Talk & Text to 75+ Countries',
                 ],
                 'spiff' => [15, 13, 18],
                 'rtr' => [
