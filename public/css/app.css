@@ -20070,7 +20070,14 @@ body.stm-body.about .about-img-wrap img {
 .com-text .com-text__item.com-text__item--bottom {
   font-weight: 700;
   color: #ef476f;
-  font-size: 1em;
+  font-size: 0.9em;
+  height: 25px;
+}
+
+.com-text .com-text__item.com-text__item--extra {
+  font-weight: 700;
+  color: #ef476f;
+  font-size: 1.1em;
   height: 25px;
 }
 

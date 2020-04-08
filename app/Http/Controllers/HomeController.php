@@ -75,7 +75,7 @@ class HomeController extends Controller
                     'description' => '2 Year',
                 ],
                 'port-in' => [
-                    'value' => 10,
+                    'value' => 0,
                     'description' => 'Extra',
                 ],
                 'total' => 30,
@@ -98,7 +98,7 @@ class HomeController extends Controller
                     'description' => '2 Year',
                 ],
                 'port-in' => [
-                    'value' => 10,
+                    'value' => 0,
                     'description' => 'Extra',
                 ],
                 'total' => 45,
@@ -121,7 +121,7 @@ class HomeController extends Controller
                     'description' => '2 Year',
                 ],
                 'port-in' => [
-                    'value' => 10,
+                    'value' => 0,
                     'description' => 'Extra',
                 ],
                 'total' => 80,
@@ -144,7 +144,7 @@ class HomeController extends Controller
                     'description' => '2 Year',
                 ],
                 'port-in' => [
-                    'value' => 10,
+                    'value' => 0,
                     'description' => 'Extra',
                 ],
                 'total' => 100,
@@ -168,7 +168,7 @@ class HomeController extends Controller
                     'description' => '2 Year',
                 ],
                 'port-in' => [
-                    'value' => 10,
+                    'value' => 0,
                     'description' => 'Extra',
                 ],
                 'total' => 120,

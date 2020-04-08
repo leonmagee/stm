@@ -46,7 +46,7 @@
               RTR Margin
             </div>
             <div class="com-text__item com-text__item--percent">
-              {{ $plan['rtr']['percent'] }}%
+              {{ $plan['rtr']['percent'] }}<span>%</span>
             </div>
             <div class="com-text__item com-text__item--bottom">
               {{ $plan['rtr']['description'] }}
@@ -59,7 +59,7 @@
               Life Residual
             </div>
             <div class="com-text__item com-text__item--percent">
-              {{ $plan['life']['percent'] }}%
+              {{ $plan['life']['percent'] }}<span>%</span>
             </div>
             <div class="com-text__item com-text__item--bottom">
               {{ $plan['life']['description'] }}
@@ -69,25 +69,25 @@
         <div class="com-bar__item">
           <div class="com-text com-text--border">
             <div class="com-text__item">
-              Port In Spiff
-            </div>
-            <div class="com-text__item com-text__item--percent">
-              <span>$</span>{{ $plan['port-in']['value'] }}
-            </div>
-            <div class="com-text__item com-text__item--bottom">
-              {{ $plan['port-in']['description'] }}
-            </div>
-          </div>
-        </div>
-        <div class="com-bar__item">
-          <div class="com-text">
-            <div class="com-text__item">
               Total Commission
             </div>
             <div class="com-text__item com-text__item--percent">
               <span>$</span>{{ $plan['total'] }}
             </div>
             <div class="com-text__item com-text__item--bottom">
+            </div>
+          </div>
+        </div>
+        <div class="com-bar__item">
+          <div class="com-text">
+            <div class="com-text__item">
+              Port In Spiff
+            </div>
+            <div class="com-text__item com-text__item--percent">
+              <span>$</span>{{ $plan['port-in']['value'] }}
+            </div>
+            <div class="com-text__item com-text__item--extra">
+              {{ $plan['port-in']['description'] }}
             </div>
           </div>
         </div>
@@ -129,7 +129,7 @@
               RTR Margin
             </div>
             <div class="com-text__item com-text__item--percent">
-              {{ $plan['rtr']['percent'] }}%
+              {{ $plan['rtr']['percent'] }}<span>%</span>
             </div>
             <div class="com-text__item com-text__item--bottom">
               {{ $plan['rtr']['description'] }}
@@ -142,7 +142,7 @@
               Life Residual
             </div>
             <div class="com-text__item com-text__item--percent">
-              {{ $plan['life']['percent'] }}%
+              {{ $plan['life']['percent'] }}<span>%</span>
             </div>
             <div class="com-text__item com-text__item--bottom">
               {{ $plan['life']['description'] }}
@@ -152,25 +152,25 @@
         <div class="com-bar__item">
           <div class="com-text com-text--border">
             <div class="com-text__item">
-              Port In Spiff
-            </div>
-            <div class="com-text__item com-text__item--percent">
-              <span>$</span>{{ $plan['port-in']['value'] }}
-            </div>
-            <div class="com-text__item com-text__item--bottom">
-              {{ $plan['port-in']['description'] }}
-            </div>
-          </div>
-        </div>
-        <div class="com-bar__item">
-          <div class="com-text">
-            <div class="com-text__item">
               Total Commission
             </div>
             <div class="com-text__item com-text__item--percent">
               <span>$</span>{{ $plan['total'] }}
             </div>
             <div class="com-text__item com-text__item--bottom">
+            </div>
+          </div>
+        </div>
+        <div class="com-bar__item">
+          <div class="com-text">
+            <div class="com-text__item">
+              Port In Spiff
+            </div>
+            <div class="com-text__item com-text__item--percent">
+              <span>$</span>{{ $plan['port-in']['value'] }}
+            </div>
+            <div class="com-text__item com-text__item--extra">
+              {{ $plan['port-in']['description'] }}
             </div>
           </div>
         </div>

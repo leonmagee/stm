@@ -151,7 +151,13 @@
         &.com-text__item--bottom {
             font-weight: 700;
             color: $color-red;
-            font-size: 1em;
+            font-size: 0.9em;
+            height: 25px;
+        }
+        &.com-text__item--extra {
+            font-weight: 700;
+            color: $color-red;
+            font-size: 1.1em;
             height: 25px;
         }
     }
