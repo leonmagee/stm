@@ -347,6 +347,13 @@ class AppServiceProvider extends ServiceProvider
                         'default' => false,
                     ],
                     [
+                        'name' => 'Charts',
+                        'link' => '/charts',
+                        'sub' => false,
+                        'icon' => 'flaticon-analytics',
+                        'default' => false,
+                    ],
+                    [
                         'name' => 'Notes',
                         'link' => '/notes',
                         'sub' => false,
@@ -437,13 +444,6 @@ class AppServiceProvider extends ServiceProvider
                         'icon' => 'flaticon-charging-battery',
                         'default' => false,
                     ],
-                    [
-                        'name' => 'Charts',
-                        'link' => '/charts',
-                        'sub' => false,
-                        'icon' => 'flaticon-analytics',
-                        'default' => false,
-                    ],
                 ];
 
             } elseif ($user->isManager()) {
@@ -454,6 +454,13 @@ class AppServiceProvider extends ServiceProvider
                         'link' => '/',
                         'sub' => false,
                         'icon' => 'flaticon-home',
+                        'default' => false,
+                    ],
+                    [
+                        'name' => 'Charts',
+                        'link' => '/charts',
+                        'sub' => false,
+                        'icon' => 'flaticon-analytics',
                         'default' => false,
                     ],
                     [
@@ -554,13 +561,6 @@ class AppServiceProvider extends ServiceProvider
                         'icon' => 'flaticon-charging-battery',
                         'default' => false,
                     ],
-                    [
-                        'name' => 'Charts',
-                        'link' => '/charts',
-                        'sub' => false,
-                        'icon' => 'flaticon-analytics',
-                        'default' => false,
-                    ],
                 ];
 
             } elseif ($user->isEmployee()) {
@@ -573,13 +573,13 @@ class AppServiceProvider extends ServiceProvider
                         'icon' => 'flaticon-home',
                         'default' => false,
                     ],
-                    // [
-                    //     'name' => 'Your Profile',
-                    //     'link' => '/profile',
-                    //     'sub' => false,
-                    //     'icon' => 'flaticon-user',
-                    //     'default' => false,
-                    // ],
+                    [
+                        'name' => 'Charts',
+                        'link' => '/charts',
+                        'sub' => false,
+                        'icon' => 'flaticon-analytics',
+                        'default' => false,
+                    ],
                     [
                         'name' => 'Notes',
                         'link' => '/notes',
@@ -671,13 +671,6 @@ class AppServiceProvider extends ServiceProvider
                         'icon' => 'flaticon-charging-battery',
                         'default' => false,
                     ],
-                    [
-                        'name' => 'Charts',
-                        'link' => '/charts',
-                        'sub' => false,
-                        'icon' => 'flaticon-analytics',
-                        'default' => false,
-                    ],
                 ];
 
             } elseif ($agents = $user->master_agent_site) {
@@ -690,6 +683,13 @@ class AppServiceProvider extends ServiceProvider
                         'link' => '/',
                         'sub' => false,
                         'icon' => 'flaticon-home',
+                        'default' => false,
+                    ],
+                    [
+                        'name' => 'Charts',
+                        'link' => '/charts',
+                        'sub' => false,
+                        'icon' => 'flaticon-analytics',
                         'default' => false,
                     ],
                     [
@@ -755,13 +755,6 @@ class AppServiceProvider extends ServiceProvider
                         'icon' => 'flaticon-bar-graph-on-a-rectangle',
                         'default' => false,
                     ],
-                    // [
-                    //     'name' => 'Credit History',
-                    //     'link' => '/credit-tracker',
-                    //     'sub' => false,
-                    //     'icon' => 'flaticon-bar-chart',
-                    //     'default' => false,
-                    // ],
                     [
                         'name' => '2nd<span>/</span>3rd Recharge',
                         'link' => '/all-recharge-data',
@@ -804,13 +797,6 @@ class AppServiceProvider extends ServiceProvider
                         'icon' => 'flaticon-charging-battery',
                         'default' => false,
                     ],
-                    [
-                        'name' => 'Charts',
-                        'link' => '/charts',
-                        'sub' => false,
-                        'icon' => 'flaticon-analytics',
-                        'default' => false,
-                    ],
                 ];
 
             } else {
@@ -823,6 +809,13 @@ class AppServiceProvider extends ServiceProvider
                         'link' => '/',
                         'sub' => false,
                         'icon' => 'flaticon-home',
+                        'default' => false,
+                    ],
+                    [
+                        'name' => 'Charts',
+                        'link' => '/charts',
+                        'sub' => false,
+                        'icon' => 'flaticon-analytics',
                         'default' => false,
                     ],
                     [
@@ -888,25 +881,11 @@ class AppServiceProvider extends ServiceProvider
                         'icon' => 'flaticon-bar-graph-on-a-rectangle',
                         'default' => false,
                     ],
-                    // [
-                    //     'name' => 'Credit History',
-                    //     'link' => '/credit-tracker',
-                    //     'sub' => false,
-                    //     'icon' => 'flaticon-bar-chart',
-                    //     'default' => false,
-                    // ],
                     [
                         'name' => '2nd<span>/</span>3rd Recharge',
                         'link' => '/all-recharge-data',
                         'sub' => false,
                         'icon' => 'flaticon-electric-plug',
-                        'default' => false,
-                    ],
-                    [
-                        'name' => 'Charts',
-                        'link' => '/charts',
-                        'sub' => false,
-                        'icon' => 'flaticon-analytics',
                         'default' => false,
                     ],
                 ];
