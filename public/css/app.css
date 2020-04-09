@@ -17041,6 +17041,28 @@ label span.required {
   text-transform: uppercase;
 }
 
+body.stm-body .ql-toolbar {
+  border-color: #dbdbdb;
+  border-radius: 4px 4px 0 0;
+}
+
+body.stm-body .quill-wrap {
+  border-color: #dbdbdb !important;
+  border-radius: 0 0 4px 4px;
+}
+
+body.stm-body textarea.quill_text {
+  display: none;
+}
+
+body.stm-body .quill-wrap {
+  min-height: 160px;
+}
+
+body.stm-body .quill-wrap strong {
+  font-weight: 600;
+}
+
 @media (min-width: 980px) {
   .stm-grid-wrap {
     display: grid;

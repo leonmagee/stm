@@ -309,6 +309,22 @@ label {
     }
 }
 
-// <div class="item credit-to-redeem">Credit to Redeem: <span></span></div>
-// <div class="item payment-type">Payment Type: <span></span></div>
-// <div class="item account-id">Ac
+body.stm-body {
+    .ql-toolbar {
+        border-color: #dbdbdb;
+        border-radius: 4px 4px 0 0;
+    }
+    .quill-wrap {
+        border-color: #dbdbdb !important;
+        border-radius: 0 0 4px 4px;
+    }
+    textarea.quill_text {
+        display: none;
+    }
+    .quill-wrap {
+        min-height: 160px;
+        strong {
+            font-weight: 600;
+        }
+    }
+}

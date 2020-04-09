@@ -19,15 +19,14 @@ require('./components/AllUsersNotAdmin');
 require('./components/AllUsersAgents');
 
 /**
- * Not logged in menu hover
+ * Quill Submit
  */
-//console.log('ok.... new');
-
-// $('#menu-direct-button').hover(function() {
-//   $('#menu-direct-links').css("display","flex");
-// }, function () {
-//   $('#menu-direct-links').css("display", "none");
-// });
+$("#email-blast-form").on("submit", function(e) {
+    e.preventDefault();
+    var quill_text = $("#quill_editor .ql-editor").html();
+    $("#quill_text").val(quill_text);
+    $(this)[0].submit();
+});
 
 /**
  * Commission Tabs

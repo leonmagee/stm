@@ -10,7 +10,7 @@
 
     <h3>Custom Email Blast</h3>
 
-    <form method="POST" action="/email-blast" enctype="multipart/form-data">
+    <form method="POST" action="/email-blast" id="email-blast-form" enctype="multipart/form-data">
 
       <div class="form-wrap">
 
@@ -135,8 +135,18 @@
               <input class="input" name="subject" />
             </div>
             <label class="label">Email Text<span class="required">*</span></label>
-            <div class="control">
+            {{-- <div class="control">
               <textarea class="textarea" name="message"></textarea>
+            </div> --}}
+            <div class="control">
+              {{-- <div id="quill_editor-add-new" class="quill-wrap">
+                {!! old('content') !!}
+              </div>
+              <textarea name="content" class="quill_text"></textarea> --}}
+              <div id="quill_editor" class="quill-wrap">
+                {{-- {{ old('message') }} --}}
+              </div>
+              <textarea name="message" id="quill_text" class="quill_text"></textarea>
             </div>
           </div>
         </div>
@@ -175,5 +185,25 @@
   </div>
 
 </div>
+
+@endsection
+
+@section('page-script')
+<script src="https://cdn.quilljs.com/1.0.0/quill.js"></script>
+<script>
+  var quill_settings = {
+    modules: {
+    toolbar: [
+    [{ header: [1, 2, 3, 4, false] }],
+    ['bold', 'italic', 'underline'],
+    [{ align: '' }, { align: 'center' }, { align: 'right' }, { align: 'justify' }]
+    ]
+    },
+    placeholder: 'Enter Your Text...',
+    theme: 'snow'
+    };
+    new Quill('#quill_editor', quill_settings);
+    //new Quill("#quill_editor-add-new", quill_settings);
+</script>
 
 @endsection
