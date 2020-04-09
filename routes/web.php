@@ -18,9 +18,11 @@
 // use App\Mail\EmailBlast;
 // just a test edit
 
-Route::get('/', 'HomeController@index')->name('home');
+//Route::get('/', 'HomeController@index')->name('home');
+Route::get('/', 'HomeController@commission')->name('home');
 Route::get('about', 'LoggedOutController@about')->name('about');
-Route::get('commission', 'HomeController@commission')->name('commission');
+//Route::get('commission', 'HomeController@commission')->name('commission');
+Route::get('/charts', 'HomeController@index')->name('charts');
 
 /**
  * Profile & Users Routes
