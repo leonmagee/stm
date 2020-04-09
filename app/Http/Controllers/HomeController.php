@@ -191,7 +191,7 @@ class HomeController extends Controller
                 ],
                 'life' => [
                     'percent' => 1,
-                    'description' => '2 Year',
+                    'description' => '1 Year',
                 ],
                 'port-in' => [
                     'value' => 3,
@@ -215,7 +215,7 @@ class HomeController extends Controller
                 ],
                 'life' => [
                     'percent' => 1,
-                    'description' => '2 Year',
+                    'description' => '1 Year',
                 ],
                 'port-in' => [
                     'value' => 3,
@@ -239,7 +239,7 @@ class HomeController extends Controller
                 ],
                 'life' => [
                     'percent' => 1,
-                    'description' => '2 Year',
+                    'description' => '1 Year',
                 ],
                 'port-in' => [
                     'value' => 10,
@@ -262,7 +262,7 @@ class HomeController extends Controller
                 ],
                 'life' => [
                     'percent' => 1,
-                    'description' => '2 Year',
+                    'description' => '1 Year',
                 ],
                 'port-in' => [
                     'value' => 13,
@@ -286,7 +286,7 @@ class HomeController extends Controller
                 ],
                 'life' => [
                     'percent' => 1,
-                    'description' => '2 Year',
+                    'description' => '1 Year',
                 ],
                 'port-in' => [
                     'value' => 13,
@@ -309,7 +309,7 @@ class HomeController extends Controller
                 ],
                 'life' => [
                     'percent' => 1,
-                    'description' => '2 Year',
+                    'description' => '1 Year',
                 ],
                 'port-in' => [
                     'value' => 13,
@@ -332,7 +332,7 @@ class HomeController extends Controller
                 ],
                 'life' => [
                     'percent' => 1,
-                    'description' => '2 Year',
+                    'description' => '1 Year',
                 ],
                 'port-in' => [
                     'value' => 18,
