@@ -2,17 +2,33 @@
 
 # Hello {{ $user->name }}!
 
-A new note has been added:<br /><br />
-<strong>{{ $note }}</strong><br /><br />
-<strong style="font-size: 1.3em">{{ $agent->company }}</strong><br />
-<strong>{{ $agent->name }}</strong><br />
-<strong>{{ $agent->address }}</strong><br />
-<strong>{{ $agent->city }}, {{ $agent->state }} {{ $agent->zip }}</strong><br />
-<span style="color: #1b9aaa">{{ $agent->email }}</span><br />
-<strong>{{ $agent->phone }}</strong><br /><br />
+<div>
+  A new note has been added:
+</div>
+<div class="note-wrap">
+  {{ $note }}
+</div>
 
-Author: <strong>{{ $author }}</strong><br /><br />
-Date: <strong>{{ $date }}</strong>
+<table class="table custom">
+  <tr>
+    <th>Author</th>
+    <th>Agent / Dealer</th>
+    <th>Date</th>
+  </tr>
+  <tr>
+    <td>{{ $author }}</td>
+    <td>{{ $agent->company }}</td>
+    <td>{{ $date }}</td>
+  </tr>
+</table>
+
+<div class="customer-info">
+  <div>{{ $agent->company . ' / ' . $agent->name }}</div>
+  <div>{{ $agent->address }}</div>
+  <div>{{ $agent->city }}, {{ $agent->state }} {{ $agent->zip }}</div>
+  <div class="email">{{ $agent->email }}</div>
+  <div>{{ $agent->phone }}</div>
+</div>
 
 @component('mail::button', ['url' => 'https://stmmax.com'])
 Login to Sim Track Manager

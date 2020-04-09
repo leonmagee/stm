@@ -53,7 +53,7 @@ class NoteController extends Controller
         $note->text = $request->note;
         $note->user_id = $user->id;
         $note->author = $current_user->name;
-        $date = \Carbon\Carbon::now()->toDateTimeString();
+        $date = \Carbon\Carbon::now()->format('F j, Y - g:i a');
         $note->save();
 
         $admin_users = User::getAdminManageerEmployeeUsers();
