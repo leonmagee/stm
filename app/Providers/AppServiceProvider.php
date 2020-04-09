@@ -437,6 +437,13 @@ class AppServiceProvider extends ServiceProvider
                         'icon' => 'flaticon-charging-battery',
                         'default' => false,
                     ],
+                    [
+                        'name' => 'Charts',
+                        'link' => '/charts',
+                        'sub' => false,
+                        'icon' => 'flaticon-analytics',
+                        'default' => false,
+                    ],
                 ];
 
             } elseif ($user->isManager()) {
@@ -547,6 +554,13 @@ class AppServiceProvider extends ServiceProvider
                         'icon' => 'flaticon-charging-battery',
                         'default' => false,
                     ],
+                    [
+                        'name' => 'Charts',
+                        'link' => '/charts',
+                        'sub' => false,
+                        'icon' => 'flaticon-analytics',
+                        'default' => false,
+                    ],
                 ];
 
             } elseif ($user->isEmployee()) {
@@ -655,6 +669,13 @@ class AppServiceProvider extends ServiceProvider
                         'link' => '/3rd-recharge-data',
                         'sub' => false,
                         'icon' => 'flaticon-charging-battery',
+                        'default' => false,
+                    ],
+                    [
+                        'name' => 'Charts',
+                        'link' => '/charts',
+                        'sub' => false,
+                        'icon' => 'flaticon-analytics',
                         'default' => false,
                     ],
                 ];
@@ -783,6 +804,13 @@ class AppServiceProvider extends ServiceProvider
                         'icon' => 'flaticon-charging-battery',
                         'default' => false,
                     ],
+                    [
+                        'name' => 'Charts',
+                        'link' => '/charts',
+                        'sub' => false,
+                        'icon' => 'flaticon-analytics',
+                        'default' => false,
+                    ],
                 ];
 
             } else {
@@ -872,6 +900,13 @@ class AppServiceProvider extends ServiceProvider
                         'link' => '/all-recharge-data',
                         'sub' => false,
                         'icon' => 'flaticon-electric-plug',
+                        'default' => false,
+                    ],
+                    [
+                        'name' => 'Charts',
+                        'link' => '/charts',
+                        'sub' => false,
+                        'icon' => 'flaticon-analytics',
                         'default' => false,
                     ],
                 ];
