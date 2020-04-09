@@ -19930,6 +19930,10 @@ body.stm-body.about .about-img-wrap img {
           flex: 1 0 10%;
 }
 
+.com-bar .com-bar__item.com-bar__item--total {
+  background-color: #06dba3;
+}
+
 .com-bar .com-bar__value {
   font-size: 6em;
   font-weight: 700;
@@ -20078,6 +20082,20 @@ body.stm-body.about .about-img-wrap img {
   font-weight: 700;
   color: #ef476f;
   font-size: 1.1em;
-  height: 25px;
+}
+
+.com-text .com-text__item.com-text__item--white {
+  color: #fff;
+  font-weight: 700;
+  text-shadow: 1px 1px rgba(0, 0, 0, 0.05);
+}
+
+.com-text .com-text__item.com-text__item--white.com-text__item--percent {
+  font-size: 4em;
+  line-height: 1.2em;
+}
+
+.com-text .com-text__item.com-text__item--white span {
+  color: #fafafa;
 }
 

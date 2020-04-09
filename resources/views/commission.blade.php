@@ -66,15 +66,13 @@
             </div>
           </div>
         </div>
-        <div class="com-bar__item">
+        <div class="com-bar__item com-bar__item--total">
           <div class="com-text com-text--border">
-            <div class="com-text__item">
+            <div class="com-text__item com-text__item--white">
               Total Commission
             </div>
-            <div class="com-text__item com-text__item--percent">
+            <div class="com-text__item com-text__item--percent com-text__item--white">
               <span>$</span>{{ $plan['total'] }}
-            </div>
-            <div class="com-text__item com-text__item--bottom">
             </div>
           </div>
         </div>
@@ -149,15 +147,13 @@
             </div>
           </div>
         </div>
-        <div class="com-bar__item">
+        <div class="com-bar__item com-bar__item--total">
           <div class="com-text com-text--border">
-            <div class="com-text__item">
+            <div class="com-text__item com-text__item--white">
               Total Commission
             </div>
-            <div class="com-text__item com-text__item--percent">
+            <div class="com-text__item com-text__item--percent com-text__item--white">
               <span>$</span>{{ $plan['total'] }}
-            </div>
-            <div class="com-text__item com-text__item--bottom">
             </div>
           </div>
         </div>
