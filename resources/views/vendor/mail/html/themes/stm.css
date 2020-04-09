@@ -315,6 +315,9 @@ img {
 }
 
 /* balance change email */
+.bottom-padding {
+    padding-bottom: 7px;
+}
 .note-wrap {
     font-size: 20px;
     padding: 1px 0 20px;

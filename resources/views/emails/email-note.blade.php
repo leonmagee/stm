@@ -2,7 +2,7 @@
 
 # Hello {{ $user->name }}!
 
-<div>
+<div class="bottom-padding">
   A new note has been added:
 </div>
 <div class="note-wrap">
