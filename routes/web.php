@@ -25,6 +25,12 @@ Route::get('about', 'LoggedOutController@about')->name('about');
 Route::get('/charts', 'HomeController@index')->name('charts');
 
 /**
+ * Plans (commission)
+ */
+Route::get('plan/edit/{plan}', 'PlansController@edit');
+Route::post('update-plan/{plan}', 'PlansController@update');
+
+/**
  * Profile & Users Routes
  */
 Route::get('profile', 'UserController@profile');

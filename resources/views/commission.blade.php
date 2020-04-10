@@ -22,22 +22,37 @@
         <div class="com-bar__item">
           <div class="com-text com-text--border">
             <div class="com-text__item com-text__item--value">
-              <span>$</span>{{ $plan['value'] }}
+              <span>$</span>{{ $plan->value }}
             </div>
           </div>
         </div>
         <div class="com-bar__item com-bar__item--padding">
           <ul class="com-ul">
-            @foreach( $plan['text'] as $text)
-            <li class="com-ul__li"><i class="fas fa-circle"></i>{{ $text }}</li>
-            @endforeach
+            @if($plan->feature_1)
+            <li class="com-ul__li"><i class="fas fa-circle"></i>{{ $plan->feature_1 }}</li>
+            @endif
+            @if($plan->feature_2)
+            <li class="com-ul__li"><i class="fas fa-circle"></i>{{ $plan->feature_2 }}</li>
+            @endif
+            @if($plan->feature_3)
+            <li class="com-ul__li"><i class="fas fa-circle"></i>{{ $plan->feature_3 }}</li>
+            @endif
+            @if($plan->feature_4)
+            <li class="com-ul__li"><i class="fas fa-circle"></i>{{ $plan->feature_4 }}</li>
+            @endif
+            @if($plan->feature_5)
+            <li class="com-ul__li"><i class="fas fa-circle"></i>{{ $plan->feature_5 }}</li>
+            @endif
+            @if($plan->feature_6)
+            <li class="com-ul__li"><i class="fas fa-circle"></i>{{ $plan->feature_6 }}</li>
+            @endif
           </ul>
         </div>
         <div class="com-bar__item com-bar__item--spiff">
           <div class="com-spiff">
-            <div class="com-spiff__item">1st Spiff ${{ $plan['spiff'][0] }}</div>
-            <div class="com-spiff__item">2nd Spiff ${{ $plan['spiff'][1] }}</div>
-            <div class="com-spiff__item">3rd Spiff ${{ $plan['spiff'][2] }}</div>
+            <div class="com-spiff__item">1st Spiff ${{ $plan->spiff_1 }}</div>
+            <div class="com-spiff__item">2nd Spiff ${{ $plan->spiff_2 }}</div>
+            <div class="com-spiff__item">3rd Spiff ${{ $plan->spiff_3 }}</div>
           </div>
         </div>
         <div class="com-bar__item">
@@ -46,10 +61,10 @@
               RTR Margin
             </div>
             <div class="com-text__item com-text__item--percent">
-              {{ $plan['rtr']['percent'] }}<span>%</span>
+              {{ $plan->rtr }}<span>%</span>
             </div>
             <div class="com-text__item com-text__item--bottom">
-              {{ $plan['rtr']['description'] }}
+              {{ $plan->rtr_d }}
             </div>
           </div>
         </div>
@@ -59,10 +74,10 @@
               Life Residual
             </div>
             <div class="com-text__item com-text__item--percent">
-              {{ $plan['life']['percent'] }}<span>%</span>
+              {{ $plan->life }}<span>%</span>
             </div>
             <div class="com-text__item com-text__item--bottom">
-              {{ $plan['life']['description'] }}
+              {{ $plan->life_d }}
             </div>
           </div>
         </div>
@@ -72,7 +87,7 @@
               Total Commission
             </div>
             <div class="com-text__item com-text__item--percent com-text__item--white">
-              <span>$</span>{{ $plan['total'] }}
+              <span>$</span>{{ ($plan->spiff_1 + $plan->spiff_2 + $plan->spiff_3) }}
             </div>
           </div>
         </div>
@@ -82,16 +97,22 @@
               Port In Spiff
             </div>
             <div class="com-text__item com-text__item--percent">
-              <span>$</span>{{ $plan['port-in']['value'] }}
+              <span>$</span>{{ $plan->port ? $plan->port : 0 }}
             </div>
             <div class="com-text__item com-text__item--extra">
-              {{ $plan['port-in']['description'] }}
+              Extra
             </div>
           </div>
         </div>
+        @if(Auth::user()->isAdmin())
+        <div class="com-bar__item">
+          <div class="admin-slide">
+            <a href="/plan/edit/{{ $plan->id }}"><i class="fas fa-pen"></i></a>
+          </div>
+        </div>
+        @endif
       </div>
       @endforeach
-
     </div>
     <div class="tab-item" id="tab-2">
 
@@ -103,22 +124,37 @@
         <div class="com-bar__item">
           <div class="com-text com-text--border">
             <div class="com-text__item com-text__item--value">
-              <span>$</span>{{ $plan['value'] }}
+              <span>$</span>{{ $plan->value }}
             </div>
           </div>
         </div>
         <div class="com-bar__item com-bar__item--padding">
           <ul class="com-ul">
-            @foreach( $plan['text'] as $text)
-            <li class="com-ul__li"><i class="fas fa-circle"></i>{{ $text }}</li>
-            @endforeach
+            @if($plan->feature_1)
+            <li class="com-ul__li"><i class="fas fa-circle"></i>{{ $plan->feature_1 }}</li>
+            @endif
+            @if($plan->feature_2)
+            <li class="com-ul__li"><i class="fas fa-circle"></i>{{ $plan->feature_2 }}</li>
+            @endif
+            @if($plan->feature_3)
+            <li class="com-ul__li"><i class="fas fa-circle"></i>{{ $plan->feature_3 }}</li>
+            @endif
+            @if($plan->feature_4)
+            <li class="com-ul__li"><i class="fas fa-circle"></i>{{ $plan->feature_4 }}</li>
+            @endif
+            @if($plan->feature_5)
+            <li class="com-ul__li"><i class="fas fa-circle"></i>{{ $plan->feature_5 }}</li>
+            @endif
+            @if($plan->feature_6)
+            <li class="com-ul__li"><i class="fas fa-circle"></i>{{ $plan->feature_6 }}</li>
+            @endif
           </ul>
         </div>
         <div class="com-bar__item com-bar__item--spiff">
           <div class="com-spiff">
-            <div class="com-spiff__item">1st Spiff ${{ $plan['spiff'][0] }}</div>
-            <div class="com-spiff__item">2nd Spiff ${{ $plan['spiff'][1] }}</div>
-            <div class="com-spiff__item">3rd Spiff ${{ $plan['spiff'][2] }}</div>
+            <div class="com-spiff__item">1st Spiff ${{ $plan->spiff_1 }}</div>
+            <div class="com-spiff__item">2nd Spiff ${{ $plan->spiff_2 }}</div>
+            <div class="com-spiff__item">3rd Spiff ${{ $plan->spiff_3 }}</div>
           </div>
         </div>
         <div class="com-bar__item">
@@ -127,10 +163,10 @@
               RTR Margin
             </div>
             <div class="com-text__item com-text__item--percent">
-              {{ $plan['rtr']['percent'] }}<span>%</span>
+              {{ $plan->rtr }}<span>%</span>
             </div>
             <div class="com-text__item com-text__item--bottom">
-              {{ $plan['rtr']['description'] }}
+              {{ $plan->rtr_d }}
             </div>
           </div>
         </div>
@@ -140,10 +176,10 @@
               Life Residual
             </div>
             <div class="com-text__item com-text__item--percent">
-              {{ $plan['life']['percent'] }}<span>%</span>
+              {{ $plan->life }}<span>%</span>
             </div>
             <div class="com-text__item com-text__item--bottom">
-              {{ $plan['life']['description'] }}
+              {{ $plan->life_d }}
             </div>
           </div>
         </div>
@@ -153,7 +189,7 @@
               Total Commission
             </div>
             <div class="com-text__item com-text__item--percent com-text__item--white">
-              <span>$</span>{{ $plan['total'] }}
+              <span>$</span>{{ ($plan->spiff_1 + $plan->spiff_2 + $plan->spiff_3) }}
             </div>
           </div>
         </div>
@@ -163,17 +199,22 @@
               Port In Spiff
             </div>
             <div class="com-text__item com-text__item--percent">
-              <span>$</span>{{ $plan['port-in']['value'] }}
+              <span>$</span>{{ $plan->port ? $plan->port : 0 }}
             </div>
             <div class="com-text__item com-text__item--extra">
-              {{ $plan['port-in']['description'] }}
+              Extra
             </div>
           </div>
         </div>
+        @if(Auth::user()->isAdmin())
+        <div class="com-bar__item">
+          <div class="admin-slide">
+            <a href="/plan/edit/{{ $plan->id }}"><i class="fas fa-pen"></i></a>
+          </div>
+        </div>
+        @endif
       </div>
       @endforeach
-
-
     </div>
   </div>
 

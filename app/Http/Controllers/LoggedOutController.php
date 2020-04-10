@@ -59,8 +59,6 @@ class LoggedOutController extends Controller
     public function contact_submit(Request $request)
     {
 
-        //dd($request);
-
         $this->validate($request, [
             'name' => 'required',
             'business' => 'required',

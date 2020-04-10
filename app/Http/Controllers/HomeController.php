@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Carrier;
 use App\Helpers;
+use App\Plan;
 use App\ReportType;
 use App\Settings;
 use App\Sim;
@@ -56,291 +57,295 @@ class HomeController extends Controller
 
     public function commission()
     {
-        $h2o_plans = [
-            [
-                'value' => 20,
-                'text' => [
-                    'Unlimited Talk & Text Nationwide',
-                    '1GB of 4G LTE Data (unlimited at up to 128 kbps speed thereafter)',
-                    'Unlimited International Talk to 50+ Countries',
-                    '$10 International Talk Credit',
-                ],
-                'spiff' => [10, 10, 10],
-                'rtr' => [
-                    'percent' => 6,
-                    'description' => 'Top Up',
-                ],
-                'life' => [
-                    'percent' => 3,
-                    'description' => '2 Year',
-                ],
-                'port-in' => [
-                    'value' => 0,
-                    'description' => 'Extra',
-                ],
-                'total' => 30,
-            ],
-            [
-                'value' => 30,
-                'text' => [
-                    'Unlimited Talk & Text Nationwide',
-                    '5GB of 4G LTE Data (unlimited at up to 128 kbps speed thereafter)',
-                    'Unlimited International Talk to 50+ Countries',
-                    '$10 International Talk Credit',
-                ],
-                'spiff' => [20, 15, 10],
-                'rtr' => [
-                    'percent' => 6,
-                    'description' => 'Top Up',
-                ],
-                'life' => [
-                    'percent' => 3,
-                    'description' => '2 Year',
-                ],
-                'port-in' => [
-                    'value' => 0,
-                    'description' => 'Extra',
-                ],
-                'total' => 45,
-            ],
-            [
-                'value' => 40,
-                'text' => [
-                    'Unlimited Talk & Text Nationwide',
-                    '10GB of 4G LTE Data (unlimited at up to 128 kbps speed thereafter)',
-                    'Unlimited International Talk to 50+ Countries',
-                    '$20 International Talk Credit',
-                ],
-                'spiff' => [40, 20, 20],
-                'rtr' => [
-                    'percent' => 6,
-                    'description' => 'Top Up',
-                ],
-                'life' => [
-                    'percent' => 3,
-                    'description' => '2 Year',
-                ],
-                'port-in' => [
-                    'value' => 0,
-                    'description' => 'Extra',
-                ],
-                'total' => 80,
-            ],
-            [
-                'value' => 50,
-                'text' => [
-                    'Unlimited Talk & Text Nationwide',
-                    '15GB of 4G LTE Data (unlimited at up to 128 kbps speed thereafter)',
-                    'Unlimited International Talk to 50+ Countries',
-                    '$20 International Talk Credit',
-                ],
-                'spiff' => [50, 25, 25],
-                'rtr' => [
-                    'percent' => 6,
-                    'description' => 'Top Up',
-                ],
-                'life' => [
-                    'percent' => 3,
-                    'description' => '2 Year',
-                ],
-                'port-in' => [
-                    'value' => 0,
-                    'description' => 'Extra',
-                ],
-                'total' => 100,
-            ],
-            [
-                'value' => 60,
-                'text' => [
-                    'Unlimited Talk & Text Nationwide',
-                    'Unlimited 4G LTE Data (unlimited at up to 128 kbps speed thereafter)',
-                    'Feature up to 30GB Hotspot',
-                    'Unlimited International Talk to 50+ Countries',
-                    '$20 International Talk Credit',
-                ],
-                'spiff' => [60, 30, 30],
-                'rtr' => [
-                    'percent' => 6,
-                    'description' => 'Top Up',
-                ],
-                'life' => [
-                    'percent' => 3,
-                    'description' => '2 Year',
-                ],
-                'port-in' => [
-                    'value' => 0,
-                    'description' => 'Extra',
-                ],
-                'total' => 120,
-            ],
-        ];
 
-        $lyca_plans = [
-            [
-                //$19    $9    $4    $3    $3
-                'value' => 19,
-                'text' => [
-                    'Unlimited Nationwide Talk, Text and Data',
-                    'Unlimited 1GBData at up to 4G LTE',
-                    'Unlimited International Talk & Text to 75+ Countries',
-                ],
-                'spiff' => [9, 4, 3],
-                'rtr' => [
-                    'percent' => 8,
-                    'description' => 'Top Up',
-                ],
-                'life' => [
-                    'percent' => 1,
-                    'description' => '1 Year',
-                ],
-                'port-in' => [
-                    'value' => 3,
-                    'description' => 'Extra',
-                ],
-                'total' => 16,
-            ],
-            [
-                //$23    $9    $9    $9    $3
-                'value' => 23,
-                'text' => [
-                    'Unlimited Nationwide Talk & Text',
-                    'Unlimited Data with 2GB at up to 4G LTE',
-                    'Unlimited International Talk & Text to 75+ Countries',
-                    '$1.50 Bonus International Credit',
-                ],
-                'spiff' => [9, 9, 9],
-                'rtr' => [
-                    'percent' => 8,
-                    'description' => 'Top Up',
-                ],
-                'life' => [
-                    'percent' => 1,
-                    'description' => '1 Year',
-                ],
-                'port-in' => [
-                    'value' => 3,
-                    'description' => 'Extra',
-                ],
-                'total' => 27,
-            ],
-            [
-                //$29    $16    $14    $13    $10
-                'value' => 29,
-                'text' => [
-                    'Unlimited Nationwide Talk & Text',
-                    'Unlimited Data with 5GB at up to 4G LTE',
-                    'Unlimited International Talk & Text to 75+ Countries',
-                    '$2.50 Bonus International Credit',
-                ],
-                'spiff' => [16, 14, 13],
-                'rtr' => [
-                    'percent' => 8,
-                    'description' => 'Top Up',
-                ],
-                'life' => [
-                    'percent' => 1,
-                    'description' => '1 Year',
-                ],
-                'port-in' => [
-                    'value' => 10,
-                    'description' => 'Extra',
-                ],
-                'total' => 43,
-            ],
-            [
-                //$35    $15    $11    $3    $13
-                'value' => 35,
-                'text' => [
-                    'Unlimited Nationwide Talk & Text',
-                    'Unlimited Data with 7GB at up to 4G LTE',
-                    'Unlimited International Talk & Text to 75+ Countries',
-                ],
-                'spiff' => [15, 11, 3],
-                'rtr' => [
-                    'percent' => 8,
-                    'description' => 'Top Up',
-                ],
-                'life' => [
-                    'percent' => 1,
-                    'description' => '1 Year',
-                ],
-                'port-in' => [
-                    'value' => 13,
-                    'description' => 'Extra',
-                ],
-                'total' => 29,
-            ],
-            [
-                //$39    $15    $13    $8    $13
-                'value' => 39,
-                'text' => [
-                    'Unlimited Nationwide Talk and Text',
-                    'Unlimited Data with 15GB at up to 4G LTE',
-                    'Unlimited International Talk & text to 75+ Countries',
-                    '$10 Bonus International Credit',
-                ],
-                'spiff' => [15, 13, 8],
-                'rtr' => [
-                    'percent' => 8,
-                    'description' => 'Top Up',
-                ],
-                'life' => [
-                    'percent' => 1,
-                    'description' => '1 Year',
-                ],
-                'port-in' => [
-                    'value' => 13,
-                    'description' => 'Extra',
-                ],
-                'total' => 36,
-            ],
-            [
-                // $45    $15    $13    $18    $13
-                'value' => 45,
-                'text' => [
-                    'Unlimited Nationwide Talk & Text',
-                    'Unlimited Data with 10 GB at up to 4G LTE',
-                    'Unlimited International Talk & Text to 75+ Countries',
-                ],
-                'spiff' => [15, 13, 18],
-                'rtr' => [
-                    'percent' => 8,
-                    'description' => 'Top Up',
-                ],
-                'life' => [
-                    'percent' => 1,
-                    'description' => '1 Year',
-                ],
-                'port-in' => [
-                    'value' => 13,
-                    'description' => 'Extra',
-                ],
-                'total' => 46,
-            ],
-            [
-                //$50    $15    $13    $18    $18
-                'value' => 50,
-                'text' => [
-                    'Unlimited Nationwide Talk & text',
-                    'Unlimited Nationwide Data at up to 4G LTE',
-                    'Unlimited International Talk & Text to 75+ Countries',
-                ],
-                'spiff' => [15, 13, 18],
-                'rtr' => [
-                    'percent' => 8,
-                    'description' => 'Top Up',
-                ],
-                'life' => [
-                    'percent' => 1,
-                    'description' => '1 Year',
-                ],
-                'port-in' => [
-                    'value' => 18,
-                    'description' => 'Extra',
-                ],
-                'total' => 46,
-            ],
-        ];
+        $h2o_plans = Plan::where('carrier_id', 1)->get();
+        $lyca_plans = Plan::where('carrier_id', 2)->get();
+
+        // $h2o_plans = [
+        //     [
+        //         'value' => 20,
+        //         'text' => [
+        //             'Unlimited Talk & Text Nationwide',
+        //             '1GB of 4G LTE Data (unlimited at up to 128 kbps speed thereafter)',
+        //             'Unlimited International Talk to 50+ Countries',
+        //             '$10 International Talk Credit',
+        //         ],
+        //         'spiff' => [10, 10, 10],
+        //         'rtr' => [
+        //             'percent' => 6,
+        //             'description' => 'Top Up',
+        //         ],
+        //         'life' => [
+        //             'percent' => 3,
+        //             'description' => '2 Year',
+        //         ],
+        //         'port-in' => [
+        //             'value' => 0,
+        //             'description' => 'Extra',
+        //         ],
+        //         'total' => 30,
+        //     ],
+        //     [
+        //         'value' => 30,
+        //         'text' => [
+        //             'Unlimited Talk & Text Nationwide',
+        //             '5GB of 4G LTE Data (unlimited at up to 128 kbps speed thereafter)',
+        //             'Unlimited International Talk to 50+ Countries',
+        //             '$10 International Talk Credit',
+        //         ],
+        //         'spiff' => [20, 15, 10],
+        //         'rtr' => [
+        //             'percent' => 6,
+        //             'description' => 'Top Up',
+        //         ],
+        //         'life' => [
+        //             'percent' => 3,
+        //             'description' => '2 Year',
+        //         ],
+        //         'port-in' => [
+        //             'value' => 0,
+        //             'description' => 'Extra',
+        //         ],
+        //         'total' => 45,
+        //     ],
+        //     [
+        //         'value' => 40,
+        //         'text' => [
+        //             'Unlimited Talk & Text Nationwide',
+        //             '10GB of 4G LTE Data (unlimited at up to 128 kbps speed thereafter)',
+        //             'Unlimited International Talk to 50+ Countries',
+        //             '$20 International Talk Credit',
+        //         ],
+        //         'spiff' => [40, 20, 20],
+        //         'rtr' => [
+        //             'percent' => 6,
+        //             'description' => 'Top Up',
+        //         ],
+        //         'life' => [
+        //             'percent' => 3,
+        //             'description' => '2 Year',
+        //         ],
+        //         'port-in' => [
+        //             'value' => 0,
+        //             'description' => 'Extra',
+        //         ],
+        //         'total' => 80,
+        //     ],
+        //     [
+        //         'value' => 50,
+        //         'text' => [
+        //             'Unlimited Talk & Text Nationwide',
+        //             '15GB of 4G LTE Data (unlimited at up to 128 kbps speed thereafter)',
+        //             'Unlimited International Talk to 50+ Countries',
+        //             '$20 International Talk Credit',
+        //         ],
+        //         'spiff' => [50, 25, 25],
+        //         'rtr' => [
+        //             'percent' => 6,
+        //             'description' => 'Top Up',
+        //         ],
+        //         'life' => [
+        //             'percent' => 3,
+        //             'description' => '2 Year',
+        //         ],
+        //         'port-in' => [
+        //             'value' => 0,
+        //             'description' => 'Extra',
+        //         ],
+        //         'total' => 100,
+        //     ],
+        //     [
+        //         'value' => 60,
+        //         'text' => [
+        //             'Unlimited Talk & Text Nationwide',
+        //             'Unlimited 4G LTE Data (unlimited at up to 128 kbps speed thereafter)',
+        //             'Feature up to 30GB Hotspot',
+        //             'Unlimited International Talk to 50+ Countries',
+        //             '$20 International Talk Credit',
+        //         ],
+        //         'spiff' => [60, 30, 30],
+        //         'rtr' => [
+        //             'percent' => 6,
+        //             'description' => 'Top Up',
+        //         ],
+        //         'life' => [
+        //             'percent' => 3,
+        //             'description' => '2 Year',
+        //         ],
+        //         'port-in' => [
+        //             'value' => 0,
+        //             'description' => 'Extra',
+        //         ],
+        //         'total' => 120,
+        //     ],
+        // ];
+
+        // $lyca_plans = [
+        //     [
+        //         //$19    $9    $4    $3    $3
+        //         'value' => 19,
+        //         'text' => [
+        //             'Unlimited Nationwide Talk, Text and Data',
+        //             'Unlimited 1GBData at up to 4G LTE',
+        //             'Unlimited International Talk & Text to 75+ Countries',
+        //         ],
+        //         'spiff' => [9, 4, 3],
+        //         'rtr' => [
+        //             'percent' => 8,
+        //             'description' => 'Top Up',
+        //         ],
+        //         'life' => [
+        //             'percent' => 1,
+        //             'description' => '1 Year',
+        //         ],
+        //         'port-in' => [
+        //             'value' => 3,
+        //             'description' => 'Extra',
+        //         ],
+        //         'total' => 16,
+        //     ],
+        //     [
+        //         //$23    $9    $9    $9    $3
+        //         'value' => 23,
+        //         'text' => [
+        //             'Unlimited Nationwide Talk & Text',
+        //             'Unlimited Data with 2GB at up to 4G LTE',
+        //             'Unlimited International Talk & Text to 75+ Countries',
+        //             '$1.50 Bonus International Credit',
+        //         ],
+        //         'spiff' => [9, 9, 9],
+        //         'rtr' => [
+        //             'percent' => 8,
+        //             'description' => 'Top Up',
+        //         ],
+        //         'life' => [
+        //             'percent' => 1,
+        //             'description' => '1 Year',
+        //         ],
+        //         'port-in' => [
+        //             'value' => 3,
+        //             'description' => 'Extra',
+        //         ],
+        //         'total' => 27,
+        //     ],
+        //     [
+        //         //$29    $16    $14    $13    $10
+        //         'value' => 29,
+        //         'text' => [
+        //             'Unlimited Nationwide Talk & Text',
+        //             'Unlimited Data with 5GB at up to 4G LTE',
+        //             'Unlimited International Talk & Text to 75+ Countries',
+        //             '$2.50 Bonus International Credit',
+        //         ],
+        //         'spiff' => [16, 14, 13],
+        //         'rtr' => [
+        //             'percent' => 8,
+        //             'description' => 'Top Up',
+        //         ],
+        //         'life' => [
+        //             'percent' => 1,
+        //             'description' => '1 Year',
+        //         ],
+        //         'port-in' => [
+        //             'value' => 10,
+        //             'description' => 'Extra',
+        //         ],
+        //         'total' => 43,
+        //     ],
+        //     [
+        //         //$35    $15    $11    $3    $13
+        //         'value' => 35,
+        //         'text' => [
+        //             'Unlimited Nationwide Talk & Text',
+        //             'Unlimited Data with 7GB at up to 4G LTE',
+        //             'Unlimited International Talk & Text to 75+ Countries',
+        //         ],
+        //         'spiff' => [15, 11, 3],
+        //         'rtr' => [
+        //             'percent' => 8,
+        //             'description' => 'Top Up',
+        //         ],
+        //         'life' => [
+        //             'percent' => 1,
+        //             'description' => '1 Year',
+        //         ],
+        //         'port-in' => [
+        //             'value' => 13,
+        //             'description' => 'Extra',
+        //         ],
+        //         'total' => 29,
+        //     ],
+        //     [
+        //         //$39    $15    $13    $8    $13
+        //         'value' => 39,
+        //         'text' => [
+        //             'Unlimited Nationwide Talk and Text',
+        //             'Unlimited Data with 15GB at up to 4G LTE',
+        //             'Unlimited International Talk & text to 75+ Countries',
+        //             '$10 Bonus International Credit',
+        //         ],
+        //         'spiff' => [15, 13, 8],
+        //         'rtr' => [
+        //             'percent' => 8,
+        //             'description' => 'Top Up',
+        //         ],
+        //         'life' => [
+        //             'percent' => 1,
+        //             'description' => '1 Year',
+        //         ],
+        //         'port-in' => [
+        //             'value' => 13,
+        //             'description' => 'Extra',
+        //         ],
+        //         'total' => 36,
+        //     ],
+        //     [
+        //         // $45    $15    $13    $18    $13
+        //         'value' => 45,
+        //         'text' => [
+        //             'Unlimited Nationwide Talk & Text',
+        //             'Unlimited Data with 10 GB at up to 4G LTE',
+        //             'Unlimited International Talk & Text to 75+ Countries',
+        //         ],
+        //         'spiff' => [15, 13, 18],
+        //         'rtr' => [
+        //             'percent' => 8,
+        //             'description' => 'Top Up',
+        //         ],
+        //         'life' => [
+        //             'percent' => 1,
+        //             'description' => '1 Year',
+        //         ],
+        //         'port-in' => [
+        //             'value' => 13,
+        //             'description' => 'Extra',
+        //         ],
+        //         'total' => 46,
+        //     ],
+        //     [
+        //         //$50    $15    $13    $18    $18
+        //         'value' => 50,
+        //         'text' => [
+        //             'Unlimited Nationwide Talk & text',
+        //             'Unlimited Nationwide Data at up to 4G LTE',
+        //             'Unlimited International Talk & Text to 75+ Countries',
+        //         ],
+        //         'spiff' => [15, 13, 18],
+        //         'rtr' => [
+        //             'percent' => 8,
+        //             'description' => 'Top Up',
+        //         ],
+        //         'life' => [
+        //             'percent' => 1,
+        //             'description' => '1 Year',
+        //         ],
+        //         'port-in' => [
+        //             'value' => 18,
+        //             'description' => 'Extra',
+        //         ],
+        //         'total' => 46,
+        //     ],
+        // ];
 
         return view('commission', compact('h2o_plans', 'lyca_plans'));
     }
