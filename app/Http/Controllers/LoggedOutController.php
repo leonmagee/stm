@@ -59,13 +59,26 @@ class LoggedOutController extends Controller
     public function contact_submit(Request $request)
     {
 
+        //dd($request);
+
         $this->validate($request, [
             'name' => 'required',
             'business' => 'required',
             'email' => 'required',
             'phone' => 'required',
             'message' => 'required',
+            'g-recaptcha-response' => 'required',
+        ], [
+            'g-recaptcha-response.required' => 'You mush check the reCAPTCHA box.',
         ]);
+
+//         $this->validate($request, [
+        //     'subject' => 'required',
+        //     'message' => 'required',
+        //     'cc_manual_email' => 'email|nullable',
+        // ], [
+        //     'cc_manual_email.email' => 'Must be a valid email address.',
+        // ]);
 
         // 1. get all admin users
         $admin_users = User::getAdminManageerEmployeeUsers();
