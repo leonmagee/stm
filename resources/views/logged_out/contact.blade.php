@@ -76,14 +76,6 @@
 @endsection
 
 @section('page-script')
-
-<script type="text/javascript">
-  var onloadCallback = function() {
-          grecaptcha.render('recaptcha-button', {
-            'sitekey' : '{{ env("RECAPTCHA_KEY") }}'
-          });
-        };
-</script>
 <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit" async defer>
 </script>
 @endsection
