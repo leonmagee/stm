@@ -89,7 +89,7 @@ class PlansController extends Controller
             'value' => $request->value,
         ]);
 
-        session()->flash('message', 'Plan has been updtaed');
+        session()->flash('message', 'Plan Data Has Been Updated.');
 
         return redirect('/');
 
