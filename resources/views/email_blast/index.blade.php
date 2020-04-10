@@ -135,17 +135,8 @@
               <input class="input" name="subject" />
             </div>
             <label class="label">Email Text<span class="required">*</span></label>
-            {{-- <div class="control">
-              <textarea class="textarea" name="message"></textarea>
-            </div> --}}
             <div class="control">
-              {{-- <div id="quill_editor-add-new" class="quill-wrap">
-                {!! old('content') !!}
-              </div>
-              <textarea name="content" class="quill_text"></textarea> --}}
-              <div id="quill_editor" class="quill-wrap">
-                {{-- {{ old('message') }} --}}
-              </div>
+              <div id="quill_editor" class="quill-wrap"></div>
               <textarea name="message" id="quill_text" class="quill_text"></textarea>
             </div>
           </div>

@@ -39,6 +39,15 @@
         //display: flex;
         //align-items: center;
         //min-height: 300px;
+        .date-title-line {
+            font-weight: 700;
+            color: #444;
+            font-size: 1.5em;
+            padding: 0 0 5px 10px;
+            i {
+                margin-right: 5px;
+            }
+        }
         .title-line {
             font-weight: 700;
             padding: 5px 11px;

@@ -200,7 +200,6 @@ Route::get('reports', 'ReportsController@index');
 Route::get('dealer-reports', 'ReportsController@dealer_reports');
 Route::get('dealer-2nd-recharge', 'ReportsController@dealer_2nd_recharge');
 Route::get('dealer-3rd-recharge', 'ReportsController@dealer_3rd_recharge');
-Route::get('reports/{user}', 'ReportsController@show');
 Route::get('recharge-data', 'ReportsController@recharge');
 Route::get('3rd-recharge-data', 'ReportsController@third_recharge');
 Route::get('all-recharge-data', 'ReportsController@all_recharge');
@@ -208,6 +207,7 @@ Route::post('get-csv-report/{id}', 'ReportsController@download_csv');
 Route::post('get-csv-report-archive/{id}', 'ReportsController@download_csv_archive');
 
 Route::group(['middleware' => 'App\Http\Middleware\LockOutUsers'], function () {
+    Route::get('reports/{user}', 'ReportsController@show');
     Route::post('save-archive', 'ReportsController@save_archive');
     Route::get('report-totals', 'ReportsController@totals');
 });

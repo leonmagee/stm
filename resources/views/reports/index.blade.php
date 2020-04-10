@@ -27,6 +27,12 @@
 
   <div class="report-wrap">
 
+    @if(!Auth::user()->isAdminManagerEmployee())
+    <div class="date-title-line">
+      <i class="fas fa-calendar"></i>
+      <span class="date">{{ $current_site_date }}</span>
+    </div>
+    @endif
     <div class="title-line">
       <i class="fas fa-user-tie"></i>
       <span class="company">{{ $item->user_company }}</span>

@@ -7,6 +7,18 @@
     padding: 10px;
     border-bottom: 1px solid #000;
 
+    .available-credit {
+        color: #fff;
+        padding-right: 1em;
+        text-shadow: 1px 1px rgba(0, 0, 0, 0.2);
+        font-weight: 700;
+        margin-bottom: 0;
+        span {
+            color: $color-green;
+            padding-left: 0.3em;
+        }
+    }
+
     .logo-wrap {
         //padding: 10px;
         //margin-left: 50px;
@@ -93,8 +105,9 @@
         }
         @media (min-width: $screen-md) {
             .large-menu {
-                display: block;
+                //display: block;
                 display: flex;
+                align-items: center;
                 .search-wrap {
                     background-color: white;
                     margin-right: 25px;
