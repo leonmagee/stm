@@ -54,7 +54,7 @@
           </div>
 
           <div class="field padding-bottom">
-            <div id="recaptcha-button"></div>
+            <div class="g-recaptcha" data-sitekey="{{ env('RECAPTCHA_KEY') }}"></div>
           </div>
 
         </div>
@@ -75,7 +75,7 @@
 
 @endsection
 
-@section('page-script')
+{{-- @section('page-script')
 <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit" async defer>
 </script>
-@endsection
+@endsection --}}
