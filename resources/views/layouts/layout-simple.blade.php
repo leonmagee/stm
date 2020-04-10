@@ -41,6 +41,8 @@
 
 @include('layouts.scripts')
 
+@yield('page-script')
+
 </body>
 
 </html>

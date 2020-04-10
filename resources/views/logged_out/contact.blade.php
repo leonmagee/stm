@@ -46,12 +46,17 @@
             </div>
           </div>
 
-          <div class="field full padding-bottom">
+          <div class="field full">
             <label class="label">Comment<span class="required">*</span></label>
             <div class="control">
               <textarea class="textarea" name="message">{{ old('message') }}</textarea>
             </div>
           </div>
+
+          <div class="field padding-bottom">
+            <div id="recaptcha-button"></div>
+          </div>
+
         </div>
 
         <div class="field flex-margin">
@@ -68,4 +73,17 @@
 
 </div>
 
+@endsection
+
+@section('page-script')
+
+<script type="text/javascript">
+  var onloadCallback = function() {
+          grecaptcha.render('recaptcha-button', {
+            'sitekey' : '{{ env("RECAPTCHA_KEY") }}'
+          });
+        };
+</script>
+<script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit" async defer>
+</script>
 @endsection
