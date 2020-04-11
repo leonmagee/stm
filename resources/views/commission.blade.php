@@ -4,11 +4,17 @@
 
 <div class="commission-wrap">
 
-  <div class="tabs is-toggle" id="commission-tabs">
-    <ul>
-      <li class="is-active" tab="tab-1"><a><i class="fas fa-wifi"></i>H2O Wireless</a></li>
-      <li tab="tab-2"><a><i class="fas fa-wifi"></i>Lyca Mobile</a></li>
-    </ul>
+  <div class="commission-header">
+    <div class="tabs is-toggle" id="commission-tabs">
+      <ul>
+        <li class="is-active" tab="tab-1"><a><i class="fas fa-wifi"></i>H2O Wireless</a></li>
+        <li tab="tab-2"><a><i class="fas fa-wifi"></i>Lyca Mobile</a></li>
+      </ul>
+    </div>
+
+    <div class="commission-header__link">
+      <a href="/charts" class="button"><i class="fi flaticon-analytics"></i>Charts</a>
+    </div>
   </div>
 
   <div class="tabs-content">

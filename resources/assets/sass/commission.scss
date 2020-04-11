@@ -1,4 +1,15 @@
 .commission-wrap {
+    .commission-header {
+        display: flex;
+        justify-content: space-between;
+        .commission-header__link {
+            a {
+                i {
+                    margin-right: 7px;
+                }
+            }
+        }
+    }
     .tabs.is-toggle {
         li {
             a {

@@ -19914,6 +19914,19 @@ body.stm-body.about .about-img-wrap img {
   display: block;
 }
 
+.commission-wrap .commission-header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.commission-wrap .commission-header .commission-header__link a i {
+  margin-right: 7px;
+}
+
 .commission-wrap .tabs.is-toggle li a {
   font-weight: bold;
 }
