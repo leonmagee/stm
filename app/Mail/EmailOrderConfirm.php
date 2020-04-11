@@ -26,7 +26,7 @@ class EmailOrderConfirm extends Mailable
         $this->user = $user;
         $this->sims = $sims;
         $this->date = $date;
-        $this->subject('New Sims / POS Order');
+        $this->subject('Sims Order');
         $this->callbacks[] = (function ($message) {$message->getHeaders()->addTextHeader('X-No-Track', Str::random(10));});
     }
 
