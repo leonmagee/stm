@@ -19,9 +19,9 @@
         <div class="form-wrap-flex">
 
           <div class="field fifth">
-            <label class="label" for="state">Carrier</label>
+            <label class="label" for="carrier">Carrier</label>
             <div class="select">
-              <select name="state" id="state">
+              <select name="carrier_id" id="carrier">
                 @foreach ($carriers as $carrier)
                 <option @if ($plan->carrier_id == $carrier->id )
                   selected="selected"
