@@ -44,7 +44,6 @@
   <div class="button-bar">
     <a href="/edit-profile" class="button is-primary">Edit Profile</a>
     <a href="/change-profile-password" class="button is-primary">Change Password</a>
-    <a href="/login-tracker/{{ $user->id }}" class="button is-primary">Login Tracker</a>
   </div>
 </div>
 

@@ -14,7 +14,7 @@
 
         @foreach( $users as $user )
 
-        <a href="/users/{{ $user->id }}" class="single-grid-item user-wrap">
+        <a href="/users-admins/{{ $user->id }}" class="single-grid-item user-wrap">
 
           <div class="flex-item icon-wrap">
             <i class="fas fa-user"></i>

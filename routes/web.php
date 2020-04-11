@@ -87,6 +87,10 @@ Route::group(['middleware' => 'App\Http\Middleware\LockOutUsers'], function () {
     Route::get('search-user', 'UserController@search_page');
 });
 
+Route::group(['middleware' => 'App\Http\Middleware\LockOutUsersManagers'], function () {
+    Route::get('users-admins/{user}', 'UserController@show_admin');
+});
+
 // *** LOCK OUT non 'master' users
 Route::get('your-dealers', 'UserController@your_dealers');
 Route::get('dealer/{user}', 'UserController@show_dealer');

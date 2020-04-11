@@ -29,7 +29,7 @@
       </tbody>
     </table>
     @else
-    <div>No login data for this user.</div>
+    <div class="add-padding">No login data for this user.</div>
     @endif
 
   </div>

@@ -141,10 +141,10 @@ class UserController extends Controller
      */
     public function admin_managers()
     {
-        $site_name = 'Admin & Manager';
+        $site_name = 'Admin, Manager & Employee';
         $managers_array = [1, 2, 6];
-        $users = User::whereIn('role_id', $managers_array)->get();
-        return view('users.index', compact('users', 'site_name'));
+        $users = User::whereIn('role_id', $managers_array)->whereNotIn('id', [\Auth::user()->id])->get();
+        return view('users.index-admins-managers', compact('users', 'site_name'));
     }
 
     /**
@@ -236,10 +236,8 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        //dd($user->id);
         $recharge_data_array = $this->recharge($user->id);
         $third_recharge_data_array = $this->third_recharge($user->id);
-        //dd($data);
         $bonus_credit = UserCreditBonus::where([
             'user_id' => $user->id,
             'date' => Helpers::current_date(),
@@ -260,19 +258,33 @@ class UserController extends Controller
 
         $role = $user->role->id;
 
-        //dd($user->role->name);
+        if ($role === 1) {
+            $role = 'Admin';
+        } else {
+            $role = $user->role->name;
+        }
+
+        $notes = $user->notes;
+        return view('users.show', compact('user', 'notes', 'role', 'bonus', 'credit', 'is_admin', 'recharge_data_array', 'third_recharge_data_array'));
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show_admin(User $user)
+    {
+        $role = $user->role->id;
 
         if ($role === 1) {
             $role = 'Admin';
         } else {
-            //$role = Site::find($role)->name;
             $role = $user->role->name;
         }
 
-        //$notes = json_decode($user->notes);
-        $notes = $user->notes;
-        //dd($notes);
-        return view('users.show', compact('user', 'notes', 'role', 'bonus', 'credit', 'is_admin', 'recharge_data_array', 'third_recharge_data_array'));
+        return view('users.show-admin-manager', compact('user', 'role'));
     }
 
     /**
