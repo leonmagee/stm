@@ -27,8 +27,10 @@ Route::get('/charts', 'HomeController@index')->name('charts');
 /**
  * Plans (commission)
  */
-Route::get('plan/edit/{plan}', 'PlansController@edit');
-Route::post('update-plan/{plan}', 'PlansController@update');
+Route::group(['middleware' => 'App\Http\Middleware\LockOutUsersManagers'], function () {
+    Route::get('plan/edit/{plan}', 'PlansController@edit');
+    Route::post('update-plan/{plan}', 'PlansController@update');
+});
 
 /**
  * Profile & Users Routes
