@@ -17606,6 +17606,14 @@ body.stm-body .banner-image-wrap img {
             align-items: center;
   }
 
+  .header-wrap .header-area .large-menu i {
+    font-size: 1em;
+  }
+
+  .header-wrap .header-area .large-menu i.fi {
+    font-size: 1.05em;
+  }
+
   .header-wrap .header-area .large-menu .search-wrap {
     background-color: white;
     margin-right: 25px;

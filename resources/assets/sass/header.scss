@@ -108,6 +108,16 @@
                 //display: block;
                 display: flex;
                 align-items: center;
+                i {
+                    font-size: 1em;
+                    &.fas {
+                        // font awesome
+                    }
+                    &.fi {
+                        // flat icon
+                        font-size: 1.05em;
+                    }
+                }
                 .search-wrap {
                     background-color: white;
                     margin-right: 25px;
