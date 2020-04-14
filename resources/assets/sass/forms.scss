@@ -55,7 +55,6 @@
             .form-wrap {
                 display: flex;
                 flex-direction: column;
-                //justify-content: space-between;
                 height: 100%;
                 padding: 20px;
 
@@ -268,6 +267,16 @@ label {
                     }
                 }
             }
+        }
+    }
+}
+
+.modal-form-wrapper {
+    text-align: left;
+    .modal-buttons {
+        padding-top: 10px;
+        button {
+            margin-left: 0 !important;
         }
     }
 }

@@ -17006,6 +17006,18 @@ label span.required {
   border-color: #ef476f;
 }
 
+.modal-form-wrapper {
+  text-align: left;
+}
+
+.modal-form-wrapper .modal-buttons {
+  padding-top: 10px;
+}
+
+.modal-form-wrapper .modal-buttons button {
+  margin-left: 0 !important;
+}
+
 .modal-account-details {
   margin-bottom: 20px;
   text-align: left;
@@ -18335,6 +18347,36 @@ table.dataTable thead .sorting_desc_disabled:after {
 
 #sims_table_processing {
   display: none !important;
+}
+
+table.dataTable tr td span {
+  color: #fafafa;
+  font-weight: bold;
+  display: block;
+  padding: 1px 7px;
+}
+
+table.dataTable tr td span.added {
+  background-color: #1b9aaa;
+}
+
+table.dataTable tr td a.credit-link {
+  color: #fafafa !important;
+  color: blue;
+  display: block;
+  padding: 1px 7px;
+}
+
+table.dataTable tr td a.credit-link.pending {
+  background-color: #ef476f;
+}
+
+table.dataTable tr td a.credit-link.completed {
+  background-color: #06dba3;
+}
+
+table.dataTable tr td a.credit-link:hover {
+  text-decoration: none !important;
 }
 
 .users-wrap a.user-wrap .flex-item.company-wrap {

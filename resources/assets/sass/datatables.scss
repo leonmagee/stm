@@ -165,3 +165,34 @@ table.dataTable thead .sorting_desc_disabled:after {
 #sims_table_processing {
     display: none !important;
 }
+
+table.dataTable {
+    tr {
+        td {
+            span {
+                color: #fafafa;
+                font-weight: bold;
+                display: block;
+                padding: 1px 7px;
+                &.added {
+                    background-color: $brand-primary;
+                }
+            }
+            a.credit-link {
+                color: #fafafa !important;
+                color: blue;
+                display: block;
+                padding: 1px 7px;
+                &.pending {
+                    background-color: $color-red;
+                }
+                &.completed {
+                    background-color: $color-green;
+                }
+                &:hover {
+                    text-decoration: none !important;
+                }
+            }
+        }
+    }
+}

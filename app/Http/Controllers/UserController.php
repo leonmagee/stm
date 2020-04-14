@@ -60,6 +60,20 @@ class UserController extends Controller
         return view('users.add-transaction', compact('user'));
     }
 
+    public function creditComplete(Request $request)
+    {
+        // credit_id user_id note
+        $record = BalanceTracker::find($request->credit_id);
+        $record->note = $request->note;
+        $record->status = $request->status;
+        $record->save();
+
+        session()->flash('message', 'Credit Status Has Been Udpated.');
+        return redirect('transaction-tracker');
+        //dd($record);
+        //dd($request);
+    }
+
     /**
      * Track user credit cash out requests
      */
@@ -1148,6 +1162,7 @@ class UserController extends Controller
             'previous_balance' => $credit,
             'difference' => $credit * -1,
             'new_balance' => 0,
+            'status' => 2,
             'note' => $email_type . ' - ' . $account_id,
         ]);
 

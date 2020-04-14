@@ -60,6 +60,7 @@ Route::group(['middleware' => 'App\Http\Middleware\LockOutUsersManagers'], funct
     Route::get('resend-email/{email}', 'EmailTrackerController@resend');
     Route::get('transaction-change-credit/{user}', 'UserController@transactionTrackerAddCredit');
     Route::post('edit-transaction/{user}', 'UserController@changeUserBalance');
+    Route::post('credit-complete', 'UserController@creditComplete');
 });
 
 /**
