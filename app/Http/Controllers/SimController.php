@@ -275,7 +275,7 @@ class SimController extends Controller
 
     public function complete_single_upload($data_array, Request $request, $filePath = false)
     {
-
+        $data_array = array_map('trim', $data_array);
         array_unique($data_array);
 
         $duplicate_sims = [];
@@ -284,6 +284,8 @@ class SimController extends Controller
         $user_id = $request->user_id;
 
         $carrier_id = $request->carrier_id;
+
+        //dd($data_array);
 
         foreach ($data_array as $data) {
 
