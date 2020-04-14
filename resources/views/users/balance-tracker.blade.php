@@ -66,7 +66,7 @@
 { "data": "difference" },
 { "data": "new_balance" },
 { "data": "created_at_new" },
-{ "data": "note", "width":"33%" },
+{ "data": "note", "width":"30%" },
 //{ "data": "status_final", "className":"status_final" },
 { "data": "status",
     "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
@@ -116,7 +116,7 @@ $('#sims_table').on( 'draw.dt', function () {
         </div>
       </div>
       <div class="modal-buttons">
-        <button class="button is-primary call-loader" type="submit">Finalize Transaction</button>
+        <button class="button is-primary call-loader" type="submit">Update</button>
         <a href="#" class="modal-close-button button is-danger">Cancel</a>
       </div>
     </div>
