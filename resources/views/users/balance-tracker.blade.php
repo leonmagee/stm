@@ -20,9 +20,9 @@
           <th>Id</th>
           <th>Company</th>
           <th>Admin</th>
-          <th>Old Balance</th>
+          <th>Previous</th>
           <th>Transaction</th>
-          <th>New Balance</th>
+          <th>Current</th>
           <th>Date</th>
           <th>Note</th>
           <th>Status</th>
