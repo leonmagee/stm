@@ -116,7 +116,7 @@ $('#sims_table').on( 'draw.dt', function () {
         </div>
       </div>
       <div class="modal-buttons">
-        <button class="button is-primary call-loader" type="submit">Update</button>
+        <button class="button is-primary call-loader" type="submit">Update Status</button>
         <a href="#" class="modal-close-button button is-danger">Cancel</a>
       </div>
     </div>
