@@ -174,8 +174,10 @@ table.dataTable {
                 font-weight: bold;
                 display: block;
                 padding: 1px 7px;
+                text-shadow: 1px 1px rgba(0, 0, 0, 0.05);
                 &.added {
-                    background-color: $brand-primary;
+                    //background-color: $brand-primary;
+                    background-color: darken($brand-fifth, 5%);
                 }
                 &.pending {
                     background-color: $color-red;
@@ -185,6 +187,7 @@ table.dataTable {
                 }
             }
             a.credit-link {
+                text-shadow: 1px 1px rgba(0, 0, 0, 0.1);
                 color: #fafafa !important;
                 color: blue;
                 display: block;

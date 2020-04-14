@@ -69,7 +69,8 @@ class UserController extends Controller
         $record->save();
 
         session()->flash('message', 'Credit Status Has Been Udpated.');
-        return redirect('transaction-tracker');
+        //return redirect('transaction-tracker');
+        return \Redirect::back();
         //dd($record);
         //dd($request);
     }

@@ -18354,10 +18354,11 @@ table.dataTable tr td span {
   font-weight: bold;
   display: block;
   padding: 1px 7px;
+  text-shadow: 1px 1px rgba(0, 0, 0, 0.05);
 }
 
 table.dataTable tr td span.added {
-  background-color: #1b9aaa;
+  background-color: #38e1ff;
 }
 
 table.dataTable tr td span.pending {
@@ -18369,6 +18370,7 @@ table.dataTable tr td span.completed {
 }
 
 table.dataTable tr td a.credit-link {
+  text-shadow: 1px 1px rgba(0, 0, 0, 0.1);
   color: #fafafa !important;
   color: blue;
   display: block;

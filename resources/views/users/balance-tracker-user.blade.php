@@ -44,7 +44,7 @@
 { "data": "difference" },
 { "data": "new_balance" },
 { "data": "created_at_new" },
-{ "data": "note", "width":"33%" },
+{ "data": "note", "width":"45%" },
 { "data": "status", "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
   if(oData.status == 2) {
     $(nTd).html("<span class='pending'>Pending</span>");
