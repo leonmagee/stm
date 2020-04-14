@@ -78,7 +78,7 @@
         $(nTd).html("<span class='added'>Added</span>");
       }
     }
-    }, // <a href="#" class="modal-open button is-danger">Delete Report Type</a>
+  }
 ]
 // "initComplete": function() {
 //   afterLoadjQuery();

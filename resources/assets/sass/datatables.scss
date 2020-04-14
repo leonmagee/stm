@@ -177,6 +177,12 @@ table.dataTable {
                 &.added {
                     background-color: $brand-primary;
                 }
+                &.pending {
+                    background-color: $color-red;
+                }
+                &.completed {
+                    background-color: $color-green;
+                }
             }
             a.credit-link {
                 color: #fafafa !important;

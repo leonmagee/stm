@@ -18360,6 +18360,14 @@ table.dataTable tr td span.added {
   background-color: #1b9aaa;
 }
 
+table.dataTable tr td span.pending {
+  background-color: #ef476f;
+}
+
+table.dataTable tr td span.completed {
+  background-color: #06dba3;
+}
+
 table.dataTable tr td a.credit-link {
   color: #fafafa !important;
   color: blue;
