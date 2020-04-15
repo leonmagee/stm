@@ -200,6 +200,11 @@
     position: absolute;
     top: 0;
     right: 0;
+    flex-direction: column;
+    justify-content: space-around;
+    // a .fas.fa-trash {
+    //     color: red;
+    // }
 }
 .com-bar:hover {
     .admin-slide {

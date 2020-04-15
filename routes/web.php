@@ -30,6 +30,9 @@ Route::get('/charts', 'HomeController@index')->name('charts');
 Route::group(['middleware' => 'App\Http\Middleware\LockOutUsersManagers'], function () {
     Route::get('plan/edit/{plan}', 'PlansController@edit');
     Route::post('update-plan/{plan}', 'PlansController@update');
+    Route::get('plan/create', 'PlansController@create');
+    Route::post('plan/create', 'PlansController@store');
+    Route::get('plan/destroy/{plan}', 'PlansController@destroy');
 });
 
 /**

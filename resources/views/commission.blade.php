@@ -13,6 +13,9 @@
     </div>
 
     <div class="commission-header__link">
+      @if(Auth::user()->isAdmin())
+      <a href="/plan/create" class="button"><i class="fas fa-plus-circle"></i>Add New Plan</a>
+      @endif
       <a href="/charts" class="button"><i class="fi flaticon-analytics"></i>Charts</a>
     </div>
   </div>
@@ -114,6 +117,7 @@
         <div class="com-bar__item">
           <div class="admin-slide">
             <a href="/plan/edit/{{ $plan->id }}"><i class="fas fa-pen"></i></a>
+            {{-- <a href="/plan/edit/{{ $plan->id }}"><i class="fas fa-trash"></i></a> --}}
           </div>
         </div>
         @endif

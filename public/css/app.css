@@ -16690,6 +16690,14 @@ label.panel-block:hover {
   padding: 3rem 1.5rem 6rem;
 }
 
+.margin-left {
+  margin-left: 13px;
+}
+
+.margin-right {
+  margin-right: 13px;
+}
+
 body.stm-body h1.title {
   text-align: center;
   font-size: 1em;
@@ -20243,6 +20251,12 @@ body.stm-body.about .about-img-wrap img {
   position: absolute;
   top: 0;
   right: 0;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
 }
 
 .com-bar:hover .admin-slide {

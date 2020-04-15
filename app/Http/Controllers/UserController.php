@@ -62,35 +62,13 @@ class UserController extends Controller
 
     public function creditComplete(Request $request)
     {
-        // credit_id user_id note
         $record = BalanceTracker::find($request->credit_id);
         $record->note = $request->note;
         $record->status = $request->status;
         $record->save();
-
         session()->flash('message', 'Credit Status Has Been Udpated.');
-        //return redirect('transaction-tracker');
         return \Redirect::back();
-        //dd($record);
-        //dd($request);
     }
-
-    /**
-     * Track user credit cash out requests
-     */
-    // public function creditTracker()
-    // {
-    //     if (\Auth::user()->isAdminManagerEmployee()) {
-    //         return view('users.credit-tracker');
-    //     } else {
-    //         return view('users.credit-tracker-user');
-    //     }
-    // }
-
-    // public function creditTrackerShow(User $user)
-    // {
-    //     return view('users.credit-tracker-show', compact('user'));
-    // }
 
     /**
      * Display a listing of the resource.
