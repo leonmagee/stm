@@ -166,6 +166,10 @@ class AppServiceProvider extends ServiceProvider
                     'name' => 'Add New Residual',
                     'link' => '/add-report-type-residual',
                 ],
+                [
+                    'name' => 'Add New Plan',
+                    'link' => '/plan/create',
+                ],
             ];
 
             $sims_sub = [
