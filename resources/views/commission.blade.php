@@ -13,9 +13,9 @@
     </div>
 
     <div class="commission-header__link">
-      @if(Auth::user()->isAdmin())
+      {{-- @if(Auth::user()->isAdmin())
       <a href="/plan/create" class="button margin-right"><i class="fas fa-plus-circle"></i>Add New Plan</a>
-      @endif
+      @endif --}}
       <a href="/charts" class="button"><i class="fi flaticon-analytics"></i>Charts</a>
     </div>
   </div>
