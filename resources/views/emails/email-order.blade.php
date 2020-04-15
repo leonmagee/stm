@@ -7,7 +7,7 @@
 </div>
 
 <div class="note-wrap">
-  Sims / POS Order Placed: <strong>{{ $user->company }}</strong>.
+  Sims Order Placed: <strong>{{ $user->company }}</strong>.
 </div>
 
 <table class="table custom">

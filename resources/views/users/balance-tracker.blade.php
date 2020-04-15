@@ -71,9 +71,17 @@
 { "data": "status",
     "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
       if(oData.status == 2) {
+        @if(Auth::user()->isAdmin())
         $(nTd).html("<a class='credit-link pending modal-open' current_note='"+oData.note+"' credit_id='"+oData.id+"' user_id='"+oData.user_id+"'>Pending</a>");
+        @else
+        $(nTd).html("<span class='pending'>Pending</span>");
+        @endif
       } else if(oData.status == 3) {
+        @if(Auth::user()->isAdmin())
         $(nTd).html("<a class='credit-link completed modal-open' current_note='"+oData.note+"' credit_id='"+oData.id+"' user_id='"+oData.user_id+"'>Completed</a>");
+        @else
+        $(nTd).html("<span class='completed'>Completed</span>");
+        @endif
       } else {
         $(nTd).html("<span class='added'>Added</span>");
       }

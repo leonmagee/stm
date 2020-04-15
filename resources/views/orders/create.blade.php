@@ -1,9 +1,5 @@
 @extends('layouts.layout')
 
-{{-- @section('title')
-Order Sims / POS
-@endsection --}}
-
 @section('content')
 
 @include('layouts.errors')

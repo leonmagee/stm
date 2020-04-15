@@ -7,7 +7,7 @@
 </div>
 
 <div class="note-wrap">
-  Your Sims / POS order has been processed.
+  Your Sims order has been processed.
 </div>
 
 <table class="table custom">

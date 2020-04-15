@@ -731,20 +731,6 @@ class AppServiceProvider extends ServiceProvider
                         'icon' => 'flaticon-zoom-1',
                         'default' => false,
                     ],
-                    // [
-                    //     'name' => 'Order Sims / POS',
-                    //     'link' => '/order-sims',
-                    //     'sub' => false,
-                    //     'icon' => 'flaticon-sim',
-                    //     'default' => false,
-                    // ],
-                    // [
-                    //     'name' => 'Redeem Credit',
-                    //     'link' => '/redeem-credit',
-                    //     'sub' => false,
-                    //     'icon' => 'flaticon-security-on',
-                    //     'default' => false,
-                    // ],
                     [
                         'name' => 'Emails History',
                         'link' => '/your-emails',
@@ -857,20 +843,6 @@ class AppServiceProvider extends ServiceProvider
                         'icon' => 'flaticon-zoom-1',
                         'default' => false,
                     ],
-                    // [
-                    //     'name' => 'Order Sims / POS',
-                    //     'link' => '/order-sims',
-                    //     'sub' => false,
-                    //     'icon' => 'flaticon-sim',
-                    //     'default' => false,
-                    // ],
-                    // [
-                    //     'name' => 'Redeem Credit',
-                    //     'link' => '/redeem-credit',
-                    //     'sub' => false,
-                    //     'icon' => 'flaticon-security-on',
-                    //     'default' => false,
-                    // ],
                     [
                         'name' => 'Emails History',
                         'link' => '/your-emails',
