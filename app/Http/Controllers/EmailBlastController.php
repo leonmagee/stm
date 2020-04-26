@@ -33,6 +33,16 @@ class EmailBlastController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function email_user(User $user)
+    {
+        return view('email_blast.email_user', compact('user'));
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function contact()
     {
         return view('email_blast.contact');
@@ -54,7 +64,6 @@ class EmailBlastController extends Controller
      */
     public function email(Request $request)
     {
-
         /**
          * Add required fields here?
          */
@@ -190,7 +199,8 @@ class EmailBlastController extends Controller
 
         }
 
-        return redirect('email-blast');
+        //return redirect('email-blast');
+        return \Redirect::back();
     }
 
     /**

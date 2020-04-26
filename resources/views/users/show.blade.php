@@ -81,6 +81,7 @@
         <a href="/transaction-change-credit/{{ $user->id }}" class="button is-primary">Add Credit</a>
         <a href="/bonus-credit/{{ $user->id }}" class="button is-primary">Monthly Bonus</a>
         <a href="/user-plan-values/{{ $user->id }}" class="button is-primary">Payment Override</a>
+        <a href="/email-user/{{ $user->id }}" class="button is-primary">Email User</a>
         <a href="#" class="modal-open button is-danger">Delete User</a>
         @endif
       </div>
