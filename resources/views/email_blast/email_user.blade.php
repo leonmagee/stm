@@ -83,7 +83,7 @@
 
         <div class="field flex-margin">
           <div class="control">
-            <a class="button is-primary modal-open-email-blast">Email Selected Users</a>
+            <a class="button is-primary modal-open-email-blast">Send Email</a>
           </div>
         </div>
 
@@ -99,7 +99,7 @@
 
             <h4 class="title">Are You Sure?</h4>
 
-            <button class="button is-danger call-loader" type="submit">Email Selected Users</button>
+            <button class="button is-danger call-loader" type="submit">Send Email</button>
 
             <a class="modal-email-close button is-primary">Cancel</a>
           </div>
