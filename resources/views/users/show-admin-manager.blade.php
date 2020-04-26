@@ -24,7 +24,7 @@
         <div class="address-wrap-inner">
           <div class="address">{{ $user->address }}</div>
           <div class="city_state_zip">
-            {{ $user->city }} {{ $user->state }}, {{ $user->zip }}
+            {{ $user->city }}, {{ $user->state }} {{ $user->zip }}
           </div>
         </div>
       </div>
