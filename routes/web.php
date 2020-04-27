@@ -272,11 +272,11 @@ Route::post('password/reset', 'Auth\ResetPasswordController@reset')->name('passw
  */
 Route::group(['middleware' => 'App\Http\Middleware\LockOutUsersManagers'], function () {
     Route::get('email-blast', 'EmailBlastController@index');
-    Route::post('email-blast', 'EmailBlastController@email');
-    Route::get('email-user/{user}', 'EmailBlastController@email_user');
 });
 
 Route::group(['middleware' => 'App\Http\Middleware\LockOutUsers'], function () {
+    Route::post('email-blast', 'EmailBlastController@email');
+    Route::get('email-user/{user}', 'EmailBlastController@email_user');
     Route::get('send-email', 'EmailBlastController@index_send_email');
     Route::post('send-email', 'EmailBlastController@send_email');
     Route::get('email-tracker/{user}', 'EmailTrackerController@index_one_user');
