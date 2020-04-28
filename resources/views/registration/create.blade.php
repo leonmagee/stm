@@ -28,7 +28,8 @@
           <div class="field">
             <label class="label" for="email">Email</label>
             <div class="control">
-              <input class="input" type="email" id="email" name="email" autocomplete="false" />
+              <input class="input" type="email" id="email" name="email" readonly
+                onfocus="this.removeAttribute('readonly');" />
             </div>
           </div>
 
@@ -93,7 +94,8 @@
           <div class="field">
             <label class="label" for="password">Password</label>
             <div class="control">
-              <input class="input" type="password" id="password" name="password" autocomplete="false" />
+              <input class="input" type="password" id="password" name="password" readonly
+                onfocus="this.removeAttribute('readonly');" />
             </div>
           </div>
 
