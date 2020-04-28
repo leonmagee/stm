@@ -28,7 +28,7 @@
           <div class="field">
             <label class="label" for="email">Email</label>
             <div class="control">
-              <input class="input" type="email" id="email" name="email" autocomplete="none" />
+              <input class="input" type="email" id="email" name="email" autocomplete="false" />
             </div>
           </div>
 
@@ -93,7 +93,7 @@
           <div class="field">
             <label class="label" for="password">Password</label>
             <div class="control">
-              <input class="input" type="password" id="password" name="password" autocomplete="none" />
+              <input class="input" type="password" id="password" name="password" autocomplete="false" />
             </div>
           </div>
 
