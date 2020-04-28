@@ -99,7 +99,8 @@ body.stm-body {
 
             a {
                 margin: 5px;
-                font-size: 0.65em;
+                //font-size: 0.65em;
+                font-size: 0.8em;
                 display: block;
                 flex: 0 1 100%;
                 padding-bottom: calc(0.375em - 1px);
@@ -120,7 +121,7 @@ body.stm-body {
                 width: 50%;
                 a {
                     margin: 8px 1%;
-                    flex: 0 1 18%;
+                    flex: 0 1 23%;
                 }
                 &.profile-only {
                     width: 75%;
