@@ -141,6 +141,8 @@ Route::get('/api/v1/balance', 'APIController@getBalanceChanges')->name('api.bala
 Route::get('/api/v1/balance-show/{user}', 'APIController@getBalanceChangesShow')->name('api.balance.show');
 Route::get('/api/v1/balance-user', 'APIController@getBalanceChangesUser')->name('api.balance.user');
 Route::get('/api/v1/logins-show/{id}', 'APIController@getLogin')->name('api.logins.show');
+Route::get('/api/v1/invoices', 'APIController@getInvoices')->name('api.invoice.index');
+
 //Route::get('/api/v1/credit', 'APIController@getCreditRequests')->name('api.credit.index');
 //Route::get('/api/v1/credit-show/{user}', 'APIController@getCreditRequestsShow')->name('api.credit.show');
 //Route::get('/api/v1/credit-user', 'APIController@getCreditRequestsUser')->name('api.credit.user');
@@ -288,6 +290,14 @@ Route::get('contact', 'EmailBlastController@contact');
 Route::post('contact', 'EmailBlastController@contact_submit');
 Route::get('contact-us', 'LoggedOutController@contact');
 Route::post('contact-us', 'LoggedOutController@contact_submit');
+
+/**
+ * Invoice Routes
+ */
+Route::group(['middleware' => 'App\Http\Middleware\LockOutUsersManagers'], function () {
+    Route::get('invoices', 'InvoiceController@index');
+    Route::get('new-invoice', 'InvoiceController@create');
+});
 
 /**
  * Closed Route

@@ -3,6 +3,7 @@ namespace App\Http\Controllers;
 
 use App\BalanceTracker;
 use App\Helpers;
+use App\Invoice;
 use App\ReportType;
 use App\Sim;
 use App\SimMaster;
@@ -84,6 +85,19 @@ class APIController extends Controller
         $balance = self::standardizeBalance($balance);
 
         return datatables($balance)->make(true);
+    }
+
+    public function getInvoices()
+    {
+        $invoices = Invoice::all();
+        foreach ($invoices as $item) {
+            $item->due_date_new = \Carbon\Carbon::parse($item->due_date)->format('M d, Y');
+            $item->invoice_date = $item->created_at->format('M d, Y');
+            $item->company = $item->user->company;
+            $item->user_name = $item->user->name;
+        }
+
+        return datatables($invoices)->make(true);
     }
 
     // public static function standardizeCredit($credit)

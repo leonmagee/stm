@@ -311,6 +311,17 @@ class AppServiceProvider extends ServiceProvider
                 ],
             ];
 
+            $invoice_sub = [
+                [
+                    'name' => 'All Invoices',
+                    'link' => '/invoices',
+                ],
+                [
+                    'name' => 'New Invoice',
+                    'link' => '/new-invoice',
+                ],
+            ];
+
             $settings = Settings::first();
 
             $site = $settings->get_site_object()->name;
@@ -448,6 +459,13 @@ class AppServiceProvider extends ServiceProvider
                         'icon' => 'flaticon-charging-battery',
                         'default' => false,
                     ],
+                    // [
+                    //     'name' => 'Invoice',
+                    //     'link' => false,
+                    //     'sub' => $invoice_sub,
+                    //     'icon' => 'flaticon-mail-2',
+                    //     'default' => '/invoices',
+                    // ],
                 ];
 
             } elseif ($user->isManager()) {
