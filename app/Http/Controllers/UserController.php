@@ -737,7 +737,7 @@ class UserController extends Controller
             $note,
             $date
         ));
-        $admin_users = User::getAdminUsers();
+        $admin_users = User::getAdminManageerUsers();
         foreach ($admin_users as $admin) {
             if (!$admin->notes_email_disable) {
                 \Mail::to($admin)->send(new EmailBalance(
