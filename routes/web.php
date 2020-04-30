@@ -298,6 +298,8 @@ Route::group(['middleware' => 'App\Http\Middleware\LockOutUsersManagers'], funct
     Route::get('invoices', 'InvoiceController@index');
     Route::get('new-invoice', 'InvoiceController@create');
     Route::post('new-invoice', 'InvoiceController@store');
+    Route::get('invoices/{invoice}', 'InvoiceController@show');
+    Route::post('new-invoice-item', 'InvoiceItemController@store');
 });
 
 /**

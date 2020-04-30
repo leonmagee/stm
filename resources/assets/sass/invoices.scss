@@ -1,0 +1,49 @@
+.stm_inv {
+    padding: 1.3em 1.2em;
+    .stm_inv__header--flex {
+        display: flex;
+        div {
+            flex: 0 1 12%;
+            border: 1px solid #ddd;
+            padding: 5px 10px;
+            &:not(:first-child) {
+                border-left: none;
+            }
+        }
+        &:not(:first-child) {
+            div {
+                border-top: none;
+            }
+        }
+    }
+    .stm_inv__header {
+        .stm_inv__header--label {
+            color: #555;
+            font-weight: 600;
+        }
+        .stm_inv__header--item {
+            color: #222;
+            font-weight: 600;
+            font-size: 1.2em;
+        }
+    }
+    .stm_inv__items {
+        background: tomato;
+    }
+    .stm_inv__form {
+        padding: 1em;
+        border: 1px solid #ddd;
+        margin-top: 2em;
+        .stm_inv__form--flex {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5em;
+            .field {
+                flex: 0 1 10%;
+                &:last-child {
+                    flex: 0 1 77%;
+                }
+            }
+        }
+    }
+}

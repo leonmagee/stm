@@ -13,6 +13,7 @@
           <th>Id</th>
           <th>Company</th>
           <th>Name</th>
+          <th>Invoice Title</th>
           <th>Due Date</th>
           <th>Invoice Date</th>
           <th></th>
@@ -38,6 +39,7 @@
 { "data": "id" },
 { "data": "company" },
 { "data": "user_name" },
+{ "data": "title" },
 { "data": "due_date_new" },
 { "data": "invoice_date" },
 { "data": "id", "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {

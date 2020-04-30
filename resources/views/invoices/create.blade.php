@@ -19,23 +19,21 @@
         <div class="form-wrap-flex">
 
           <div class="field">
-            <label class="label" for="role_id">Agent / Dealer<span class="required">*</span></label>
+            <label class="label" for="user_id">Agent / Dealer<span class="required">*</span></label>
             <div class="select">
-              <select name="role_id" id="role_id">
+              <select name="user_id" id="user_id">
                 @foreach ($users as $user)
                 <option value="{{ $user->id }}">{{ $user->company }}</option>
                 @endforeach
               </select>
             </div>
           </div>
-
           <div class="field">
             <label class="label" for="due_date">Due Date<span class="required">*</span></label>
             <div class="control">
               <input class="input" type="text" id="due_date" name="due_date" autocomplete="off" />
             </div>
           </div>
-
           <div class="field">
             <label class="label" for="title">Title</label>
             <div class="control">
@@ -43,7 +41,6 @@
             </div>
           </div>
         </div>
-
         <div class="field flex-margin">
           <div class="control">
             <button class="button is-primary" type="submit">Save Invoice</button>

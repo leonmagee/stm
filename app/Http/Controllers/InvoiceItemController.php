@@ -35,7 +35,21 @@ class InvoiceItemController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'invoice_id' => 'required',
+            'quantity' => 'required',
+            'cost' => 'required',
+            'description' => 'required',
+        ]);
+
+        InvoiceItem::create([
+            'invoice_id' => $request->invoice_id,
+            'quantity' => $request->quantity,
+            'cost' => $request->cost,
+            'description' => $request->description,
+        ]);
+
+        return \Redirect::back();
     }
 
     /**

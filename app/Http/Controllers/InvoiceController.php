@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Invoice;
+use App\InvoiceItem;
 use App\User;
 use Illuminate\Http\Request;
 
@@ -15,9 +16,7 @@ class InvoiceController extends Controller
      */
     public function index()
     {
-        $invoices = Invoice::all();
-        //dd($invoices);
-        return view('invoices.index', compact('invoices'));
+        return view('invoices.index');
     }
 
     /**
@@ -39,7 +38,19 @@ class InvoiceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'user_id' => 'required',
+            'due_date' => 'required',
+        ]);
+        $due_date = \Carbon\Carbon::parse($request->due_date)->format('Y-m-d');
+        $title = $request->title ? $request->title : 'Invoice';
+        Invoice::create([
+            'user_id' => $request->user_id,
+            'due_date' => $due_date,
+            'title' => $title,
+        ]);
+        session()->flash('message', 'New Invoice Added');
+        return redirect('invoices');
     }
 
     /**
@@ -50,7 +61,8 @@ class InvoiceController extends Controller
      */
     public function show(Invoice $invoice)
     {
-        //
+        $items = InvoiceItem::where('invoice_id', $invoice->id)->get();
+        return view('invoices.show', compact('invoice', 'items'));
     }
 
     /**

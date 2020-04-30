@@ -30353,7 +30353,6 @@ jQuery("#due_date").datetimepicker({
   timepicker: false,
   format: "M d, Y"
 });
-console.log('this is working here...');
 
 /**
  * Quill Submit
