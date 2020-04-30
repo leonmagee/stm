@@ -12,11 +12,24 @@ require('chart.js');
 
 require('axios');
 
+require('./jquery.datetimepicker.full');
+
 require('./components/AllUsers');
 
 require('./components/AllUsersNotAdmin');
 
 require('./components/AllUsersAgents');
+
+
+/**
+ * Date Time Picker
+ */
+jQuery.datetimepicker.setLocale("en");
+jQuery("#due_date").datetimepicker({
+    timepicker: false,
+    format: "M d, Y"
+});
+console.log('this is working here...');
 
 /**
  * Quill Submit

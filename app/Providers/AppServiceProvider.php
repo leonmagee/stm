@@ -459,13 +459,13 @@ class AppServiceProvider extends ServiceProvider
                         'icon' => 'flaticon-charging-battery',
                         'default' => false,
                     ],
-                    // [
-                    //     'name' => 'Invoice',
-                    //     'link' => false,
-                    //     'sub' => $invoice_sub,
-                    //     'icon' => 'flaticon-mail-2',
-                    //     'default' => '/invoices',
-                    // ],
+                    [
+                        'name' => 'Invoice',
+                        'link' => false,
+                        'sub' => $invoice_sub,
+                        'icon' => 'flaticon-mail-2',
+                        'default' => '/invoices',
+                    ],
                 ];
 
             } elseif ($user->isManager()) {

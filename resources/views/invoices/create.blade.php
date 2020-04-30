@@ -19,98 +19,34 @@
         <div class="form-wrap-flex">
 
           <div class="field">
-            <label class="label" for="name">Name</label>
-            <div class="control">
-              <input class="input" type="text" id="name" name="name" />
-            </div>
-          </div>
-
-          <div class="field">
-            <label class="label" for="email">Email</label>
-            <div class="control">
-              <input class="input" type="email" id="email" name="email" readonly
-                onfocus="this.removeAttribute('readonly');" />
-            </div>
-          </div>
-
-          <div class="field">
-            <label class="label" for="company">Company</label>
-            <div class="control">
-              <input class="input" type="text" id="company" name="company" />
-            </div>
-          </div>
-
-          <div class="field">
-            <label class="label" for="role_id">Site</label>
+            <label class="label" for="role_id">Agent / Dealer<span class="required">*</span></label>
             <div class="select">
               <select name="role_id" id="role_id">
-                @foreach ($sites_array as $site)
-                <option value="{{ $site['role'] }}" @if ($current_site_id==$site['site']) selected="selected" @endif>
-                  {{ $site['name'] }}</option>
+                @foreach ($users as $user)
+                <option value="{{ $user->id }}">{{ $user->company }}</option>
                 @endforeach
               </select>
             </div>
           </div>
 
           <div class="field">
-            <label class="label" for="phone">Phone Number</label>
+            <label class="label" for="due_date">Due Date<span class="required">*</span></label>
             <div class="control">
-              <input class="input" type="number" id="phone" name="phone" />
+              <input class="input" type="text" id="due_date" name="due_date" autocomplete="off" />
             </div>
           </div>
 
           <div class="field">
-            <label class="label" for="address">Address</label>
+            <label class="label" for="title">Title</label>
             <div class="control">
-              <input class="input" type="text" id="address" name="address" />
+              <input class="input" type="text" id="title" name="title" placeholder="INVOICE" />
             </div>
           </div>
-
-          <div class="field">
-            <label class="label" for="city">City</label>
-            <div class="control">
-              <input class="input" type="text" id="city" name="city" />
-            </div>
-          </div>
-
-          <div class="field">
-            <label class="label" for="state">State</label>
-            <div class="select">
-              <select name="state" id="state">
-                @foreach ($states as $state)
-                <option value="{{ $state }}">{{ $state }}</option>
-                @endforeach
-              </select>
-            </div>
-          </div>
-
-          <div class="field">
-            <label class="label" for="zip">Zip</label>
-            <div class="control">
-              <input class="input" type="text" id="zip" name="zip" />
-            </div>
-          </div>
-
-          <div class="field">
-            <label class="label" for="password">Password</label>
-            <div class="control">
-              <input class="input" type="password" id="password" name="password" readonly
-                onfocus="this.removeAttribute('readonly');" />
-            </div>
-          </div>
-
-          <div class="field last-item">
-            <label class="label" for="password_2">Password Confirm</label>
-            <div class="control">
-              <input class="input" type="password" id="password_2" name="password_confirmation" />
-            </div>
-          </div>
-
         </div>
 
         <div class="field flex-margin">
           <div class="control">
-            <button class="button is-primary" type="submit">Register</button>
+            <button class="button is-primary" type="submit">Save Invoice</button>
           </div>
         </div>
 
