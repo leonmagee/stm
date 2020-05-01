@@ -93,7 +93,7 @@
       </form>
       <form action="" method="POST" class="stm_imv__finalize">
         <input type="hidden" name="invoice_id" value="{{ $invoice->id }}" />
-        <button class="button is-danger" type="submit">Finalize Invoice</button>
+        <button disabled class="button is-danger" type="submit">Finalize Invoice</button>
         <a class="button is-primary" href="/invoices/edit/{{ $invoice->id }}">Edit</a>
       </form>
     </div>
