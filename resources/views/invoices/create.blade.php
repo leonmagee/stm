@@ -31,13 +31,27 @@
           <div class="field">
             <label class="label" for="due_date">Due Date<span class="required">*</span></label>
             <div class="control">
-              <input class="input" type="text" id="due_date" name="due_date" autocomplete="off" />
+              <input class="input" type="text" id="due_date" name="due_date" autocomplete="off"
+                value="{{ old('due_date') }}" />
             </div>
           </div>
           <div class="field">
             <label class="label" for="title">Title</label>
             <div class="control">
-              <input class="input" type="text" id="title" name="title" placeholder="INVOICE" />
+              <input class="input" type="text" id="title" name="title" placeholder="INVOICE"
+                value="{{ old('title') }}" />
+            </div>
+          </div>
+          <div class="field half">
+            <label class="label" for="message">Message</label>
+            <div class="control">
+              <textarea class="textarea" name="message" id="message">{{ old('message') }}</textarea>
+            </div>
+          </div>
+          <div class="field half">
+            <label class="label" for="note">Note</label>
+            <div class="control">
+              <textarea class="textarea" name="note" id="note">{{ old('note') }}</textarea>
             </div>
           </div>
         </div>

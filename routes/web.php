@@ -303,6 +303,7 @@ Route::group(['middleware' => 'App\Http\Middleware\LockOutUsersManagers'], funct
     Route::get('invoices/edit/{invoice}', 'InvoiceController@edit');
     Route::post('update-invoice/{invoice}', 'InvoiceController@update');
     Route::get('invoice-item/delete/{item}', 'InvoiceItemController@destroy');
+    Route::post('invoice/finalize/{invoice}', 'InvoiceController@finalize');
 });
 
 /**

@@ -5,7 +5,7 @@
         div {
             flex: 1 1 12%;
             border: 1px solid #ddd;
-            padding: 5px 10px;
+            padding: 8px 15px;
             &.stm_inv__flex--60 {
                 flex: 1 1 60%;
             }
@@ -29,11 +29,13 @@
     }
     .stm_inv__header {
         .stm_inv__header--label {
-            color: #555;
+            color: #777;
             font-weight: 600;
+            font-size: 0.9em;
         }
         .stm_inv__header--item {
-            color: darken($color-green, 11%);
+            color: #222;
+            //color: darken($color-green, 11%);
             font-weight: 600;
             font-size: 1.1em;
         }

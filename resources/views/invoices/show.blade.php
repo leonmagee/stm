@@ -28,6 +28,17 @@
         </div>
       </div>
 
+      <div class="stm_inv__header margin-top-2">
+        <div class="stm_inv__flex">
+          <div class="stm_inv__header--label">Message</div>
+          <div class="stm_inv__header--label">Note</div>
+        </div>
+        <div class="stm_inv__flex">
+          <div class="stm_inv__header--item">{{ $invoice->message }}</div>
+          <div class="stm_inv__header--item">{{ $invoice->note }}</div>
+        </div>
+      </div>
+
       <div class="stm_inv__items">
         <div class="stm_inv__flex">
           <div class="stm_inv__item--label">Quantity</div>
@@ -91,9 +102,9 @@
           </div>
       </div>
       </form>
-      <form action="" method="POST" class="stm_imv__finalize">
-        <input type="hidden" name="invoice_id" value="{{ $invoice->id }}" />
-        <button disabled class="button is-danger" type="submit">Finalize Invoice</button>
+      <form action="/invoice/finalize/{{ $invoice->id }}" method="POST" class="stm_imv__finalize">
+        @csrf
+        <button class="button is-danger call-loader" type="submit">Finalize Invoice</button>
         <a class="button is-primary" href="/invoices/edit/{{ $invoice->id }}">Edit</a>
       </form>
     </div>

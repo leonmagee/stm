@@ -45,6 +45,18 @@
                 placeholder="INVOICE" />
             </div>
           </div>
+          <div class="field half">
+            <label class="label" for="message">Message</label>
+            <div class="control">
+              <textarea class="textarea" name="message" id="message">{{ $invoice->message }}</textarea>
+            </div>
+          </div>
+          <div class="field half">
+            <label class="label" for="note">Note</label>
+            <div class="control">
+              <textarea class="textarea" name="note" id="note">{{ $invoice->note }}</textarea>
+            </div>
+          </div>
         </div>
         <div class="field flex-margin">
           <div class="control">

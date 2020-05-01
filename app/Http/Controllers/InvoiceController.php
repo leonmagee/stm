@@ -41,6 +41,7 @@ class InvoiceController extends Controller
         $request->validate([
             'user_id' => 'required',
             'due_date' => 'required',
+            //'message' => 'required',
         ]);
         $due_date = \Carbon\Carbon::parse($request->due_date)->format('Y-m-d');
         $title = $request->title ? $request->title : 'Invoice';
@@ -48,6 +49,8 @@ class InvoiceController extends Controller
             'user_id' => $request->user_id,
             'due_date' => $due_date,
             'title' => $title,
+            'message' => $request->message,
+            'note' => $request->note,
         ]);
         session()->flash('message', 'New Invoice Added');
         return redirect('invoices');
@@ -101,6 +104,8 @@ class InvoiceController extends Controller
             'user_id' => $request->user_id,
             'due_date' => $due_date,
             'title' => $title,
+            'message' => $request->message,
+            'note' => $request->note,
         ]);
         session()->flash('message', 'Invoice Updated');
         return redirect('invoices/' . $invoice->id);
@@ -116,5 +121,19 @@ class InvoiceController extends Controller
     public function destroy(Invoice $invoice)
     {
         //
+    }
+
+    /**
+     * Update status to pending and email user
+     *
+     * @param  \App\Invoice  $invoice
+     * @return \Illuminate\Http\Response
+     */
+    public function finalize(Invoice $invoice)
+    {
+        dd($invoice);
+        $users = User::getAgentsDealers();
+        $invoice->due_date = \Carbon\Carbon::parse($invoice->due_date)->format('M d, Y');
+        return view('invoices.edit', compact('invoice', 'users'));
     }
 }
