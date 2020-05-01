@@ -26,7 +26,7 @@ class InvoiceController extends Controller
      */
     public function create()
     {
-        $users = User::all();
+        $users = User::getAgentsDealers();
         return view('invoices.create', compact('users'));
     }
 
@@ -62,7 +62,11 @@ class InvoiceController extends Controller
     public function show(Invoice $invoice)
     {
         $items = InvoiceItem::where('invoice_id', $invoice->id)->get();
-        return view('invoices.show', compact('invoice', 'items'));
+        $total = 0;
+        foreach ($items as $item) {
+            $total += ($item->cost * $item->quantity);
+        }
+        return view('invoices.show', compact('invoice', 'items', 'total'));
     }
 
     /**
@@ -73,7 +77,9 @@ class InvoiceController extends Controller
      */
     public function edit(Invoice $invoice)
     {
-        //
+        $users = User::getAgentsDealers();
+        $invoice->due_date = \Carbon\Carbon::parse($invoice->due_date)->format('M d, Y');
+        return view('invoices.edit', compact('invoice', 'users'));
     }
 
     /**
@@ -85,7 +91,20 @@ class InvoiceController extends Controller
      */
     public function update(Request $request, Invoice $invoice)
     {
-        //
+        $request->validate([
+            'user_id' => 'required',
+            'due_date' => 'required',
+        ]);
+        $due_date = \Carbon\Carbon::parse($request->due_date)->format('Y-m-d');
+        $title = $request->title ? $request->title : 'Invoice';
+        $invoice->update([
+            'user_id' => $request->user_id,
+            'due_date' => $due_date,
+            'title' => $title,
+        ]);
+        session()->flash('message', 'Invoice Updated');
+        return redirect('invoices/' . $invoice->id);
+
     }
 
     /**

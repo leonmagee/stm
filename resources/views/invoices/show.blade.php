@@ -12,13 +12,15 @@
 
     <div class="stm_inv">
       <div class="stm_inv__header">
-        <div class="stm_inv__header--flex">
+        <div class="stm_inv__flex">
+          <div class="stm_inv__header--label">Invoice Number</div>
           <div class="stm_inv__header--label">Invoice Title</div>
           <div class="stm_inv__header--label">Company</div>
           <div class="stm_inv__header--label">Agent / Dealer</div>
           <div class="stm_inv__header--label">Due Date</div>
         </div>
-        <div class="stm_inv__header--flex">
+        <div class="stm_inv__flex">
+          <div class="stm_inv__header--item">#{{ $invoice->id }}</div>
           <div class="stm_inv__header--item">{{ $invoice->title }}</div>
           <div class="stm_inv__header--item">{{ $invoice->user->company }}</div>
           <div class="stm_inv__header--item">{{ $invoice->user->name }}</div>
@@ -27,11 +29,28 @@
       </div>
 
       <div class="stm_inv__items">
+        <div class="stm_inv__flex">
+          <div class="stm_inv__item--label">Quantity</div>
+          <div class="stm_inv__item--label">Cost</div>
+          <div class="stm_inv__item--label stm_inv__flex--60">Description</div>
+          <div class="stm_inv__item--label stm_inv__flex--delete"></div>
+        </div>
         @foreach($items as $item)
-        <div class="stm_inv__items--item">
-          {{ $item->description }}
+        <div class="stm_inv__flex">
+          <div class="stm_inv__item--item">{{ $item->quantity }}</div>
+          <div class="stm_inv__item--item">${{ number_format($item->cost, 2) }}</div>
+          <div class="stm_inv__item--item stm_inv__flex--60">{{ $item->description }}</div>
+          <div class="stm_inv__item--item stm_inv__flex--delete">
+            <a href="/invoice-item/delete/{{ $item->id }}">
+              <i class="fas fa-trash-alt"></i>
+            </a>
+          </div>
         </div>
         @endforeach
+      </div>
+
+      <div class="stm_inv__total">
+        Total: <span>${{ number_format($total, 2) }}</span>
       </div>
 
       <div class="stm_inv__form">
@@ -70,10 +89,13 @@
               <button class="button is-primary" type="submit">Add Line Item</button>
             </div>
           </div>
-
       </div>
       </form>
-
+      <form action="" method="POST" class="stm_imv__finalize">
+        <input type="hidden" name="invoice_id" value="{{ $invoice->id }}" />
+        <button class="button is-danger" type="submit">Finalize Invoice</button>
+        <a class="button is-primary" href="/invoices/edit/{{ $invoice->id }}">Edit</a>
+      </form>
     </div>
 
 

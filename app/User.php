@@ -86,6 +86,13 @@ class User extends Authenticatable
         return $users;
     }
 
+    public static function getAgentsDealers()
+    {
+        $users_array = [1, 2, 6];
+        $users = self::whereNotIn('role_id', $users_array)->get();
+        return $users;
+    }
+
     public function isManager()
     {
         if ($this->role->id === 2) {

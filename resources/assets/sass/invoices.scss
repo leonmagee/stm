@@ -1,11 +1,22 @@
 .stm_inv {
     padding: 1.3em 1.2em;
-    .stm_inv__header--flex {
+    .stm_inv__flex {
         display: flex;
         div {
-            flex: 0 1 12%;
+            flex: 1 1 12%;
             border: 1px solid #ddd;
             padding: 5px 10px;
+            &.stm_inv__flex--60 {
+                flex: 1 1 60%;
+            }
+            &.stm_inv__flex--delete {
+                flex: 1 1 3%;
+                display: flex;
+                justify-content: center;
+                a {
+                    color: $color-red;
+                }
+            }
             &:not(:first-child) {
                 border-left: none;
             }
@@ -22,13 +33,33 @@
             font-weight: 600;
         }
         .stm_inv__header--item {
-            color: #222;
+            color: darken($color-green, 11%);
             font-weight: 600;
-            font-size: 1.2em;
+            font-size: 1.1em;
         }
     }
     .stm_inv__items {
-        background: tomato;
+        margin-top: 2em;
+        .stm_inv__item--label {
+            color: #555;
+            font-weight: 600;
+        }
+        .stm_inv__item--item {
+            color: darken($color-green, 11%);
+            font-weight: 600;
+            font-size: 1.1em;
+        }
+    }
+    .stm_inv__total {
+        border: 1px solid #ddd;
+        padding: 5px 15px;
+        font-size: 1.2em;
+        font-weight: 600;
+        margin-top: 2em;
+        display: inline-block;
+        span {
+            color: $color-red;
+        }
     }
     .stm_inv__form {
         padding: 1em;
@@ -44,6 +75,12 @@
                     flex: 0 1 77%;
                 }
             }
+        }
+    }
+    .stm_imv__finalize {
+        margin-top: 1em;
+        a {
+            margin-left: 1em;
         }
     }
 }

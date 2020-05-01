@@ -92,8 +92,10 @@ class InvoiceItemController extends Controller
      * @param  \App\InvoiceItem  $invoiceItem
      * @return \Illuminate\Http\Response
      */
-    public function destroy(InvoiceItem $invoiceItem)
+    public function destroy(InvoiceItem $item)
     {
-        //
+        $item->delete();
+        session()->flash('message', 'Line Item Removed');
+        return \Redirect::back();
     }
 }
