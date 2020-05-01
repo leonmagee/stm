@@ -72,7 +72,7 @@
             <div class="field">
               <label class="label" for="cost">Cost</label>
               <div class="control">
-                <input class="input" type="number" min="0" id="cost" name="cost" />
+                <input class="input" type="number" min="0" id="cost" name="cost" step="any" />
               </div>
             </div>
 
