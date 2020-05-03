@@ -180,7 +180,7 @@ table.dataTable {
                     background-color: darken($brand-fifth, 5%);
                 }
                 &.new {
-                    background-color: $primary;
+                    background-color: darken($brand-fifth, 13%);
                 }
                 &.pending {
                     background-color: $color-red;
