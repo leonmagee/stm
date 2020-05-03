@@ -313,11 +313,12 @@
     }
     .address-wrap {
         font-size: 1.2em;
+        // .address {
+        //     //font-size: 1.5em;
+        //     //color: #555;
+        // }
+        .city_state_zip,
         .address {
-            //font-size: 1.5em;
-            //color: #555;
-        }
-        .city_state_zip {
             font-size: 0.8em;
             color: #666;
         }

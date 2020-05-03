@@ -19066,7 +19066,8 @@ table.dataTable tr td .invoice-view {
   font-size: 1.2em;
 }
 
-.single-user-wrap .address-wrap .city_state_zip {
+.single-user-wrap .address-wrap .city_state_zip,
+.single-user-wrap .address-wrap .address {
   font-size: 0.8em;
   color: #666;
 }
