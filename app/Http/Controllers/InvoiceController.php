@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Invoice;
-use App\InvoiceItem;
+use App\Mail\InvoiceEmail;
 use App\User;
 use Illuminate\Http\Request;
 
@@ -44,11 +44,13 @@ class InvoiceController extends Controller
             //'message' => 'required',
         ]);
         $due_date = \Carbon\Carbon::parse($request->due_date)->format('Y-m-d');
-        $title = $request->title ? $request->title : 'Invoice';
+        //$title = $request->title ? $request->title : 'Invoice';
         Invoice::create([
             'user_id' => $request->user_id,
             'due_date' => $due_date,
-            'title' => $title,
+            //'title' => $title,
+            'status' => $request->status,
+            'discount' => $request->discount,
             'message' => $request->message,
             'note' => $request->note,
         ]);
@@ -64,12 +66,11 @@ class InvoiceController extends Controller
      */
     public function show(Invoice $invoice)
     {
-        $items = InvoiceItem::where('invoice_id', $invoice->id)->get();
         $total = 0;
-        foreach ($items as $item) {
+        foreach ($invoice->items as $item) {
             $total += ($item->cost * $item->quantity);
         }
-        return view('invoices.show', compact('invoice', 'items', 'total'));
+        return view('invoices.show', compact('invoice', 'total'));
     }
 
     /**
@@ -99,17 +100,17 @@ class InvoiceController extends Controller
             'due_date' => 'required',
         ]);
         $due_date = \Carbon\Carbon::parse($request->due_date)->format('Y-m-d');
-        $title = $request->title ? $request->title : 'Invoice';
+        //$title = $request->title ? $request->title : 'Invoice';
         $invoice->update([
             'user_id' => $request->user_id,
             'due_date' => $due_date,
-            'title' => $title,
+            'status' => $request->status,
+            'discount' => $request->discount,
             'message' => $request->message,
             'note' => $request->note,
         ]);
         session()->flash('message', 'Invoice Updated');
         return redirect('invoices/' . $invoice->id);
-
     }
 
     /**
@@ -131,9 +132,24 @@ class InvoiceController extends Controller
      */
     public function finalize(Invoice $invoice)
     {
-        dd($invoice);
-        $users = User::getAgentsDealers();
-        $invoice->due_date = \Carbon\Carbon::parse($invoice->due_date)->format('M d, Y');
-        return view('invoices.edit', compact('invoice', 'users'));
+        // 1. send email
+        $user = $invoice->user;
+        $total = 0;
+        foreach ($invoice->items as $item) {
+            $total += ($item->cost * $item->quantity);
+        }
+        $discount = 50;
+        \Mail::to($user)->send(new InvoiceEmail(
+            $user,
+            $invoice,
+            $total,
+            $discount
+        ));
+        // 2. update status
+        $invoice->status = 2;
+        $invoice->save();
+        // 3. return redirect
+        session()->flash('message', 'Email Sent & Status Updated.');
+        return \Redirect::back();
     }
 }

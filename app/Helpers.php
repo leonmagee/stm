@@ -6,6 +6,18 @@ use App\Settings;
 
 class Helpers
 {
+    public static function status($id)
+    {
+        if ($id == 2) {
+            return 'Pending';
+        } elseif ($id == 3) {
+            return 'Paid';
+        } elseif ($id == 4) {
+            return 'Cancelled';
+        } else {
+            return 'New';
+        }
+    }
 
     public static function get_date_name($date)
     {

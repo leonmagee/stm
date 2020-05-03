@@ -179,11 +179,17 @@ table.dataTable {
                     //background-color: $brand-primary;
                     background-color: darken($brand-fifth, 5%);
                 }
+                &.new {
+                    background-color: $primary;
+                }
                 &.pending {
                     background-color: $color-red;
                 }
                 &.completed {
                     background-color: $color-green;
+                }
+                &.cancelled {
+                    background-color: #111;
                 }
             }
             a.credit-link {
@@ -201,6 +207,9 @@ table.dataTable {
                 &:hover {
                     text-decoration: none !important;
                 }
+            }
+            .invoice-view {
+                padding-left: 10px;
             }
         }
     }

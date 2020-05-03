@@ -245,7 +245,30 @@ class AppServiceProvider extends ServiceProvider
                     'name' => 'User Reports',
                     'link' => '/reports',
                 ],
+                [
+                    'name' => '2nd Recharge',
+                    'link' => '/recharge-data',
+                ],
+                [
+                    'name' => '3rd Recharge',
+                    'link' => '/3rd-recharge-data',
+                ],
             ];
+
+            //[
+            //     'name' => '2nd Recharge',
+            //     'link' => '/recharge-data',
+            //     'sub' => false,
+            //     'icon' => 'flaticon-electric-plug',
+            //     'default' => false,
+            // ],
+            // [
+            //     'name' => '3rd Recharge',
+            //     'link' => '/3rd-recharge-data',
+            //     'sub' => false,
+            //     'icon' => 'flaticon-charging-battery',
+            //     'default' => false,
+            // ],
 
             // $emails_sub = [
             //     [
@@ -390,6 +413,13 @@ class AppServiceProvider extends ServiceProvider
                         'default' => false,
                     ],
                     [
+                        'name' => 'Invoice',
+                        'link' => false,
+                        'sub' => $invoice_sub,
+                        'icon' => 'flaticon-mail-2',
+                        'default' => '/invoices',
+                    ],
+                    [
                         'name' => 'History Trackers',
                         'link' => false,
                         'sub' => $trackers_sub,
@@ -445,27 +475,20 @@ class AppServiceProvider extends ServiceProvider
                         'icon' => 'flaticon-group',
                         'default' => '/all-users',
                     ],
-                    [
-                        'name' => '2nd Recharge',
-                        'link' => '/recharge-data',
-                        'sub' => false,
-                        'icon' => 'flaticon-electric-plug',
-                        'default' => false,
-                    ],
-                    [
-                        'name' => '3rd Recharge',
-                        'link' => '/3rd-recharge-data',
-                        'sub' => false,
-                        'icon' => 'flaticon-charging-battery',
-                        'default' => false,
-                    ],
-                    [
-                        'name' => 'Invoice',
-                        'link' => false,
-                        'sub' => $invoice_sub,
-                        'icon' => 'flaticon-mail-2',
-                        'default' => '/invoices',
-                    ],
+                    // [
+                    //     'name' => '2nd Recharge',
+                    //     'link' => '/recharge-data',
+                    //     'sub' => false,
+                    //     'icon' => 'flaticon-electric-plug',
+                    //     'default' => false,
+                    // ],
+                    // [
+                    //     'name' => '3rd Recharge',
+                    //     'link' => '/3rd-recharge-data',
+                    //     'sub' => false,
+                    //     'icon' => 'flaticon-charging-battery',
+                    //     'default' => false,
+                    // ],
                 ];
 
             } elseif ($user->isManager()) {
@@ -569,20 +592,20 @@ class AppServiceProvider extends ServiceProvider
                         'icon' => 'flaticon-group',
                         'default' => false,
                     ],
-                    [
-                        'name' => '2nd Recharge',
-                        'link' => '/recharge-data',
-                        'sub' => false,
-                        'icon' => 'flaticon-electric-plug',
-                        'default' => false,
-                    ],
-                    [
-                        'name' => '3rd Recharge',
-                        'link' => '/3rd-recharge-data',
-                        'sub' => false,
-                        'icon' => 'flaticon-charging-battery',
-                        'default' => false,
-                    ],
+                    // [
+                    //     'name' => '2nd Recharge',
+                    //     'link' => '/recharge-data',
+                    //     'sub' => false,
+                    //     'icon' => 'flaticon-electric-plug',
+                    //     'default' => false,
+                    // ],
+                    // [
+                    //     'name' => '3rd Recharge',
+                    //     'link' => '/3rd-recharge-data',
+                    //     'sub' => false,
+                    //     'icon' => 'flaticon-charging-battery',
+                    //     'default' => false,
+                    // ],
                 ];
 
             } elseif ($user->isEmployee()) {
@@ -679,20 +702,20 @@ class AppServiceProvider extends ServiceProvider
                         'icon' => 'flaticon-group',
                         'default' => false,
                     ],
-                    [
-                        'name' => '2nd Recharge',
-                        'link' => '/recharge-data',
-                        'sub' => false,
-                        'icon' => 'flaticon-electric-plug',
-                        'default' => false,
-                    ],
-                    [
-                        'name' => '3rd Recharge',
-                        'link' => '/3rd-recharge-data',
-                        'sub' => false,
-                        'icon' => 'flaticon-charging-battery',
-                        'default' => false,
-                    ],
+                    // [
+                    //     'name' => '2nd Recharge',
+                    //     'link' => '/recharge-data',
+                    //     'sub' => false,
+                    //     'icon' => 'flaticon-electric-plug',
+                    //     'default' => false,
+                    // ],
+                    // [
+                    //     'name' => '3rd Recharge',
+                    //     'link' => '/3rd-recharge-data',
+                    //     'sub' => false,
+                    //     'icon' => 'flaticon-charging-battery',
+                    //     'default' => false,
+                    // ],
                 ];
 
             } elseif ($agents = $user->master_agent_site) {
@@ -896,6 +919,8 @@ class AppServiceProvider extends ServiceProvider
                 'transfer-sims' => 'user-sims',
                 'delete-sims' => 'user-sims',
                 'reports' => 'report-totals',
+                'recharge-data' => 'report-totals',
+                '3rd-recharge-data' => 'report-totals',
                 'site-settings' => 'settings',
                 'add-report-type-spiff' => 'settings',
                 'add-report-type-residual' => 'settings',

@@ -18,7 +18,7 @@
 
         <div class="form-wrap-flex">
 
-          <div class="field">
+          <div class="field fourth">
             <label class="label" for="user_id">Agent / Dealer<span class="required">*</span></label>
             <div class="select">
               <select name="user_id" id="user_id">
@@ -28,18 +28,28 @@
               </select>
             </div>
           </div>
-          <div class="field">
+          <div class="field fourth">
             <label class="label" for="due_date">Due Date<span class="required">*</span></label>
             <div class="control">
               <input class="input" type="text" id="due_date" name="due_date" autocomplete="off"
                 value="{{ old('due_date') }}" />
             </div>
           </div>
-          <div class="field">
-            <label class="label" for="title">Title</label>
+          <div class="field fourth">
+            <label class="label" for="status">Status<span class="required">*</span></label>
+            <div class="select">
+              <select name="status" id="status">
+                <option value="1">New</option>
+                <option value="2">Pending</option>
+                <option value="3">Paid</option>
+                <option value="4">Cancelled</option>
+              </select>
+            </div>
+          </div>
+          <div class="field fourth">
+            <label class="label" for="discount">Discount</label>
             <div class="control">
-              <input class="input" type="text" id="title" name="title" placeholder="INVOICE"
-                value="{{ old('title') }}" />
+              <input class="input" type="number" min="0" id="discount" name="discount" value="{{ old('discount') }}" />
             </div>
           </div>
           <div class="field half">

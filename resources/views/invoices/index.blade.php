@@ -10,12 +10,12 @@
     <table id="sims_table" class="stripe compact">
       <thead>
         <tr>
-          <th>Id</th>
+          <th>Invoice #</th>
           <th>Company</th>
           <th>Name</th>
-          <th>Invoice Title</th>
-          <th>Due Date</th>
           <th>Invoice Date</th>
+          <th>Due Date</th>
+          <th>Status</th>
           <th></th>
         </tr>
       </thead>
@@ -39,11 +39,24 @@
 { "data": "id" },
 { "data": "company" },
 { "data": "user_name" },
-{ "data": "title" },
-{ "data": "due_date_new" },
 { "data": "invoice_date" },
+{ "data": "due_date_new" },
+{ "data": "status",
+"fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
+if(oData.status == 1) {
+$(nTd).html("<span class='new'>New</span>");
+}
+else if(oData.status == 2) {
+$(nTd).html("<span class='pending'>Pending</span>");
+} else if(oData.status == 3) {
+$(nTd).html("<span class='completed'>Paid</span>");
+} else if(oData.status == 4) {
+$(nTd).html("<span class='cancelled'>Cancelled</span>");
+}
+}
+},
 { "data": "id", "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
-$(nTd).html("<a href='/invoices/" + oData.id + "'>View</a>");
+$(nTd).html("<a class='invoice-view' href='/invoices/" + oData.id + "'>View</a>");
 }
 }
 ]

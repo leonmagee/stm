@@ -17173,7 +17173,7 @@ body.stm-body .quill-wrap strong {
 }
 
 .stm-absolute-wrap {
-  position: absolute;
+  position: fixed;
   z-index: 10000;
   width: 100%;
   height: 100%;
@@ -18377,12 +18377,20 @@ table.dataTable tr td span.added {
   background-color: #38e1ff;
 }
 
+table.dataTable tr td span.new {
+  background-color: #1b9aaa;
+}
+
 table.dataTable tr td span.pending {
   background-color: #ef476f;
 }
 
 table.dataTable tr td span.completed {
   background-color: #06dba3;
+}
+
+table.dataTable tr td span.cancelled {
+  background-color: #111;
 }
 
 table.dataTable tr td a.credit-link {
@@ -18403,6 +18411,10 @@ table.dataTable tr td a.credit-link.completed {
 
 table.dataTable tr td a.credit-link:hover {
   text-decoration: none !important;
+}
+
+table.dataTable tr td .invoice-view {
+  padding-left: 10px;
 }
 
 .users-wrap a.user-wrap .flex-item.company-wrap {
@@ -20390,7 +20402,7 @@ body.stm-body.about .about-img-wrap img {
 }
 
 .stm_inv .stm_imv__finalize {
-  margin-top: 1em;
+  margin-top: 2.5em;
 }
 
 .stm_inv .stm_imv__finalize a {
