@@ -19,6 +19,17 @@ class Helpers
         }
     }
 
+    public static function invoice_item($id)
+    {
+        if ($id == 2) {
+            return 'Service';
+        } elseif ($id == 3) {
+            return 'Discount';
+        } else {
+            return 'Product';
+        }
+    }
+
     public static function get_date_name($date)
     {
         $month_array = [

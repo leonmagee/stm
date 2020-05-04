@@ -28,7 +28,7 @@ class InvoiceEmail extends Mailable
         $this->invoice = $invoice;
         $this->total = $total;
         $this->discount = $discount;
-        $this->subject('Invoice - GS Wireless');
+        $this->subject('INVOICE #' . $invoice->id);
     }
 
     /**

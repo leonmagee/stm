@@ -48,6 +48,7 @@
 
     <div class="stm_inv__items">
       <div class="stm_inv__flex">
+        <div class="stm_inv__item--label">Item</div>
         <div class="stm_inv__item--label">Quantity</div>
         <div class="stm_inv__item--label">Cost</div>
         <div class="stm_inv__item--label stm_inv__flex--60">Description</div>
@@ -55,6 +56,7 @@
       </div>
       @foreach($invoice->items as $item)
       <div class="stm_inv__flex">
+        <div class="stm_inv__item--item">{{ \App\Helpers::invoice_item($item->item) }}</div>
         <div class="stm_inv__item--item">{{ $item->quantity }}</div>
         <div class="stm_inv__item--item">${{ number_format($item->cost, 2) }}</div>
         <div class="stm_inv__item--item stm_inv__flex--60">{{ $item->description }}</div>
@@ -92,6 +94,17 @@
       <div class="stm_inv__form--flex">
 
         <input type="hidden" name="invoice_id" value="{{ $invoice->id }}" />
+
+        <div class="field">
+          <label class="label" for="item">Item</label>
+          <div class="select">
+            <select name="item" id="item">
+              <option value="1">Product</option>
+              <option value="2">Service</option>
+              <option value="3">Discount</option>
+            </select>
+          </div>
+        </div>
 
         <div class="field">
           <label class="label" for="quantity">Quantity</label>

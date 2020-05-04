@@ -37,6 +37,7 @@ class InvoiceItemController extends Controller
     {
         $request->validate([
             'invoice_id' => 'required',
+            'item' => 'required',
             'quantity' => 'required',
             'cost' => 'required',
             'description' => 'required',
@@ -44,6 +45,7 @@ class InvoiceItemController extends Controller
 
         InvoiceItem::create([
             'invoice_id' => $request->invoice_id,
+            'item' => $request->item,
             'quantity' => $request->quantity,
             'cost' => $request->cost,
             'description' => $request->description,

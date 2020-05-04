@@ -20300,7 +20300,7 @@ body.stm-body.about .about-img-wrap img {
   -webkit-box-flex: 1;
       -ms-flex: 1 1 12%;
           flex: 1 1 12%;
-  border: 1px solid #ddd;
+  border: 1px solid #ccc;
   padding: 8px 15px;
 }
 
@@ -20312,8 +20312,8 @@ body.stm-body.about .about-img-wrap img {
 
 .stm_inv .stm_inv__flex div.stm_inv__flex--delete {
   -webkit-box-flex: 1;
-      -ms-flex: 1 1 3%;
-          flex: 1 1 3%;
+      -ms-flex: 1 1 4%;
+          flex: 1 1 4%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -20358,11 +20358,11 @@ body.stm-body.about .about-img-wrap img {
 .stm_inv .stm_inv__items .stm_inv__item--item {
   color: #04a47a;
   font-weight: 600;
-  font-size: 1.1em;
+  font-size: 0.9em;
 }
 
 .stm_inv .stm_inv__total {
-  border: 1px solid #ddd;
+  border: 1px solid #ccc;
   padding: 5px 15px;
   font-size: 1.2em;
   font-weight: 600;
@@ -20376,7 +20376,7 @@ body.stm-body.about .about-img-wrap img {
 
 .stm_inv .stm_inv__form {
   padding: 1em;
-  border: 1px solid #ddd;
+  border: 1px solid #ccc;
   margin-top: 2em;
 }
 
@@ -20391,15 +20391,24 @@ body.stm-body.about .about-img-wrap img {
 }
 
 .stm_inv .stm_inv__form .stm_inv__form--flex .field {
+  margin-right: 1em;
   -webkit-box-flex: 0;
       -ms-flex: 0 1 10%;
           flex: 0 1 10%;
 }
 
+.stm_inv .stm_inv__form .stm_inv__form--flex .field .select {
+  width: 100%;
+}
+
+.stm_inv .stm_inv__form .stm_inv__form--flex .field .select select {
+  width: 100%;
+}
+
 .stm_inv .stm_inv__form .stm_inv__form--flex .field:last-child {
-  -webkit-box-flex: 0;
-      -ms-flex: 0 1 77%;
-          flex: 0 1 77%;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
 }
 
 .stm_inv .stm_imv__finalize {

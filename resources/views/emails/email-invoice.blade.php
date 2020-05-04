@@ -43,7 +43,7 @@ Hello {{ $user->name }}, pleae remit the following invoice. Thank You!
       </tr>
       @foreach($invoice->items as $item)
       <tr>
-        <td>Product</td>
+        <td>{{ \App\Helpers::invoice_item($item->item) }}</td>
         <td>{{ $item->description }}</td>
         <td>${{ number_format($item->cost, 2) }}</td>
         <td>{{ $item->quantity }}</td>
