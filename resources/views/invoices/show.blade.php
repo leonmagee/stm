@@ -136,10 +136,11 @@
 
 <div class="stm_imv__finalize">
   @if($invoice->status < 3) <a href="#" class="modal-open button is-danger">Finalize Invoice</a>
+    <a class="button is-primary" href="/invoices/edit/{{ $invoice->id }}">Edit</a>
     @else
     <a disabled class="button is-danger">Finalize Invoice</a>
+    <a disabled class="button is-primary">Edit</a>
     @endif
-    <a class="button is-primary" href="/invoices/edit/{{ $invoice->id }}">Edit</a>
 </div>
 
 </div>
