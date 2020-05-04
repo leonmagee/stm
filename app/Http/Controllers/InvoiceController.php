@@ -78,7 +78,9 @@ class InvoiceController extends Controller
                 $subtotal += ($item->cost * $item->quantity);
             }
         }
-        return view('invoices.show', compact('invoice', 'total', 'subtotal', 'discount'));
+        $users = User::orderBy('company')->get();
+
+        return view('invoices.show', compact('invoice', 'total', 'subtotal', 'discount', 'users'));
     }
 
     /**
@@ -138,8 +140,15 @@ class InvoiceController extends Controller
      * @param  \App\Invoice  $invoice
      * @return \Illuminate\Http\Response
      */
-    public function finalize(Invoice $invoice)
+    public function finalize(Invoice $invoice, Request $request)
     {
+        $cc_user = User::find($request->cc_user_1);
+        if ($cc_user) {
+            $email_1 = $cc_user->email;
+        } else {
+            $email_1 = false;
+        }
+        $email_2 = $request->cc_user_2;
         // 1. send email
         $user = $invoice->user;
         $total = 0;
@@ -162,6 +171,25 @@ class InvoiceController extends Controller
             $discount,
             $total
         ));
+        if ($email_1) {
+            \Mail::to($email_1)->send(new InvoiceEmail(
+                $user,
+                $invoice,
+                $subtotal,
+                $discount,
+                $total
+            ));
+        }
+        if ($email_2) {
+            \Mail::to($email_2)->send(new InvoiceEmail(
+                $user,
+                $invoice,
+                $subtotal,
+                $discount,
+                $total
+            ));
+        }
+
         // 2. update status
         $invoice->status = 2;
         $invoice->save();

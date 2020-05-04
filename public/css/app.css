@@ -20431,6 +20431,18 @@ body.stm-body.about .about-img-wrap img {
   margin-left: 1em;
 }
 
+.invoice-modal-flex .field {
+  margin-bottom: 1.5em;
+}
+
+.invoice-modal-flex .field .select {
+  width: 100%;
+}
+
+.invoice-modal-flex .field .select select {
+  width: 100%;
+}
+
 .xdsoft_datetimepicker {
   -webkit-box-shadow: 0 5px 15px -5px rgba(0, 0, 0, 0.506);
           box-shadow: 0 5px 15px -5px rgba(0, 0, 0, 0.506);

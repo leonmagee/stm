@@ -102,3 +102,15 @@
         }
     }
 }
+
+.invoice-modal-flex {
+    .field {
+        margin-bottom: 1.5em;
+        .select {
+            width: 100%;
+            select {
+                width: 100%;
+            }
+        }
+    }
+}
