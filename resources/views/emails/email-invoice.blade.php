@@ -42,28 +42,18 @@ Hello {{ $user->name }}, pleae remit the following invoice. Thank You!
         <th>Cost</th>
       </tr>
       @foreach($invoice->items as $item)
-      <tr>
+      <tr class="item-{{ $item->item }}">
         <td>{{ \App\Helpers::invoice_item($item->item) }}</td>
         <td>{{ $item->description }}</td>
         <td>${{ number_format($item->cost, 2) }}</td>
         <td>{{ $item->quantity }}</td>
-        <td>${{ number_format(($item->cost * $item->quantity), 2) }}</td>
+        <td>@if($item->item ==
+          3)-@endif${{ number_format(($item->cost * $item->quantity), 2) }}</td>
       </tr>
       @endforeach
     </table>
 
   </div>{{-- invoice-wrap__middle --}}
-
-  {{-- <table class="table custom margin-top">
-    <tr>
-      <th>Total Due</th>
-      <th>Due Date</th>
-    </tr>
-    <tr>
-      <td class="bold red">${{ number_format($total, 2) }}</td>
-  <td>{{ \Carbon\Carbon::parse($invoice->due_date)->format('M d, Y') }}</td>
-  </tr>
-  </table> --}}
 
   <div class="invoice-wrap__footer">
     <div class="invoice-wrap__footer--note">
@@ -72,7 +62,7 @@ Hello {{ $user->name }}, pleae remit the following invoice. Thank You!
     <div class="invoice-wrap__footer--totals">
       <div class="item">
         <div>Subtotal</div>
-        <div>${{ number_format($total, 2) }}</div>
+        <div>${{ number_format($subtotal, 2) }}</div>
       </div>
       <div class="item discount">
         <div>Discount</div>
@@ -80,7 +70,7 @@ Hello {{ $user->name }}, pleae remit the following invoice. Thank You!
       </div>
       <div class="item final">
         <div>Balance Due</div>
-        <div>${{ number_format(($total - $discount), 2) }}</div>
+        <div>${{ number_format(($total), 2) }}</div>
       </div>
     </div>
   </div>

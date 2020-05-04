@@ -407,6 +407,10 @@ img.email-header-logo {
     font-size: 0.9em;
 }
 
+.invoice-wrap .table.custom tr.item-3 td {
+    color: #ef476f;
+}
+
 .invoice-wrap .table.custom tr.header-row {
     background-color: #1b9aaa;
 }

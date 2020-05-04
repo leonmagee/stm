@@ -67,10 +67,18 @@ class InvoiceController extends Controller
     public function show(Invoice $invoice)
     {
         $total = 0;
+        $discount = 0;
+        $subtotal = 0;
         foreach ($invoice->items as $item) {
-            $total += ($item->cost * $item->quantity);
+            if ($item->item == 3) {
+                $total -= ($item->cost * $item->quantity);
+                $discount += ($item->cost * $item->quantity);
+            } else {
+                $total += ($item->cost * $item->quantity);
+                $subtotal += ($item->cost * $item->quantity);
+            }
         }
-        return view('invoices.show', compact('invoice', 'total'));
+        return view('invoices.show', compact('invoice', 'total', 'subtotal', 'discount'));
     }
 
     /**
@@ -135,15 +143,24 @@ class InvoiceController extends Controller
         // 1. send email
         $user = $invoice->user;
         $total = 0;
+        $discount = 0;
+        $subtotal = 0;
         foreach ($invoice->items as $item) {
-            $total += ($item->cost * $item->quantity);
+            if ($item->item == 3) {
+                $total -= ($item->cost * $item->quantity);
+                $discount += ($item->cost * $item->quantity);
+            } else {
+                $total += ($item->cost * $item->quantity);
+                $subtotal += ($item->cost * $item->quantity);
+            }
         }
-        $discount = 50;
+
         \Mail::to($user)->send(new InvoiceEmail(
             $user,
             $invoice,
-            $total,
-            $discount
+            $subtotal,
+            $discount,
+            $total
         ));
         // 2. update status
         $invoice->status = 2;

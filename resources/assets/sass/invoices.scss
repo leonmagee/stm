@@ -26,6 +26,11 @@
                 border-top: none;
             }
         }
+        &.stm_inv__flex-3 {
+            .stm_inv__item--item {
+                color: $color-red;
+            }
+        }
     }
     .stm_inv__header {
         .stm_inv__header--label {
@@ -34,14 +39,17 @@
             font-size: 0.9em;
         }
         .stm_inv__header--item {
-            color: #222;
+            color: #333;
             //color: darken($color-green, 11%);
             font-weight: 600;
-            font-size: 1.1em;
+            font-size: 0.9em;
+            &.stm_inv__header--item-red {
+                color: $color-red;
+            }
         }
     }
     .stm_inv__items {
-        margin-top: 2em;
+        margin-top: 1.5em;
         .stm_inv__item--label {
             color: #555;
             font-weight: 600;
@@ -57,7 +65,7 @@
         padding: 5px 15px;
         font-size: 1.2em;
         font-weight: 600;
-        margin-top: 2em;
+        margin-top: 1.5em;
         display: inline-block;
         span {
             color: $color-red;
@@ -66,7 +74,7 @@
     .stm_inv__form {
         padding: 1em;
         border: 1px solid #ccc;
-        margin-top: 2em;
+        margin-top: 1.5em;
         .stm_inv__form--flex {
             display: flex;
             justify-content: space-between;

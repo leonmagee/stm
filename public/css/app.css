@@ -16702,6 +16702,10 @@ label.panel-block:hover {
   margin-top: 1em;
 }
 
+.margin-top-1-5 {
+  margin-top: 1.5em;
+}
+
 .margin-top-2 {
   margin-top: 2em;
 }
@@ -20334,6 +20338,10 @@ body.stm-body.about .about-img-wrap img {
   border-top: none;
 }
 
+.stm_inv .stm_inv__flex.stm_inv__flex-3 .stm_inv__item--item {
+  color: #ef476f;
+}
+
 .stm_inv .stm_inv__header .stm_inv__header--label {
   color: #777;
   font-weight: 600;
@@ -20341,13 +20349,17 @@ body.stm-body.about .about-img-wrap img {
 }
 
 .stm_inv .stm_inv__header .stm_inv__header--item {
-  color: #222;
+  color: #333;
   font-weight: 600;
-  font-size: 1.1em;
+  font-size: 0.9em;
+}
+
+.stm_inv .stm_inv__header .stm_inv__header--item.stm_inv__header--item-red {
+  color: #ef476f;
 }
 
 .stm_inv .stm_inv__items {
-  margin-top: 2em;
+  margin-top: 1.5em;
 }
 
 .stm_inv .stm_inv__items .stm_inv__item--label {
@@ -20366,7 +20378,7 @@ body.stm-body.about .about-img-wrap img {
   padding: 5px 15px;
   font-size: 1.2em;
   font-weight: 600;
-  margin-top: 2em;
+  margin-top: 1.5em;
   display: inline-block;
 }
 
@@ -20377,7 +20389,7 @@ body.stm-body.about .about-img-wrap img {
 .stm_inv .stm_inv__form {
   padding: 1em;
   border: 1px solid #ccc;
-  margin-top: 2em;
+  margin-top: 1.5em;
 }
 
 .stm_inv .stm_inv__form .stm_inv__form--flex {
