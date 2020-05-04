@@ -80,6 +80,8 @@
         @if($is_admin)
         <a href="/transaction-change-credit/{{ $user->id }}" class="button is-primary">Add Credit</a>
         <a href="/bonus-credit/{{ $user->id }}" class="button is-primary">Monthly Bonus</a>
+        <a href="/invoices/user/{{ $user->id }}" class="button is-primary">Invoices</a>
+        <a href="/new-invoice/{{ $user->id }}" class="button is-primary">New Invoice</a>
         <a href="/user-plan-values/{{ $user->id }}" class="button is-primary">Payment Override</a>
         @endif
         @if(\Auth::user()->isAdminManager())

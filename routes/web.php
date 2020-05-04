@@ -142,6 +142,7 @@ Route::get('/api/v1/balance-show/{user}', 'APIController@getBalanceChangesShow')
 Route::get('/api/v1/balance-user', 'APIController@getBalanceChangesUser')->name('api.balance.user');
 Route::get('/api/v1/logins-show/{id}', 'APIController@getLogin')->name('api.logins.show');
 Route::get('/api/v1/invoices', 'APIController@getInvoices')->name('api.invoice.index');
+Route::get('/api/v1/invoices/{id}', 'APIController@getInvoicesUser')->name('api.invoice.index_user');
 
 //Route::get('/api/v1/credit', 'APIController@getCreditRequests')->name('api.credit.index');
 //Route::get('/api/v1/credit-show/{user}', 'APIController@getCreditRequestsShow')->name('api.credit.show');
@@ -296,7 +297,9 @@ Route::post('contact-us', 'LoggedOutController@contact_submit');
  */
 Route::group(['middleware' => 'App\Http\Middleware\LockOutUsersManagers'], function () {
     Route::get('invoices', 'InvoiceController@index');
+    Route::get('invoices/user/{user}', 'InvoiceController@index_user');
     Route::get('new-invoice', 'InvoiceController@create');
+    Route::get('new-invoice/{user}', 'InvoiceController@create_user');
     Route::post('new-invoice', 'InvoiceController@store');
     Route::get('invoices/{invoice}', 'InvoiceController@show');
     Route::post('new-invoice-item', 'InvoiceItemController@store');
