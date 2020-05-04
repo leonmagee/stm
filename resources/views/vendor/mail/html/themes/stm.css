@@ -368,7 +368,7 @@ img.email-header-logo {
 .invoice-wrap .invoice-wrap__details {
     display: flex;
     /* justify-content: space-between; */
-    align-items: flex-end;
+    /* align-items: flex-end; */
     padding: 10px 13px;
 }
 .invoice-wrap .invoice-wrap__details .address-block {
@@ -380,6 +380,7 @@ img.email-header-logo {
 }
 .invoice-wrap .invoice-wrap__details .invoice-number-wrap {
     font-size: 0.9em;
+    padding-top: 15px;
     margin-left: auto;
 }
 .invoice-wrap .invoice-wrap__details .invoice-number-wrap span {
