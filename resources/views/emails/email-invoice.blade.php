@@ -9,6 +9,7 @@ Hello {{ $user->name }}, pleae remit the following invoice. Thank You!
       <div>GS Wireless, Inc.</div>
       <div>750 B Street Suite 2840</div>
       <div>San Diego, CA 92101</div>
+      <div>gs-wireless@att.net</div>
       <div>619-795-9200</div>
     </div>
     <div class="invoice-title">
@@ -61,15 +62,15 @@ Hello {{ $user->name }}, pleae remit the following invoice. Thank You!
     </div>
     <div class="invoice-wrap__footer--totals">
       <div class="item">
-        <div>Subtotal</div>
+        <div class="label">Subtotal</div>
         <div>${{ number_format($subtotal, 2) }}</div>
       </div>
       <div class="item discount">
-        <div>Discount</div>
+        <div class="label">Discount</div>
         <div>-${{ number_format($discount, 2) }}</div>
       </div>
       <div class="item final">
-        <div>Balance Due</div>
+        <div class="label">Balance Due</div>
         <div>${{ number_format(($total), 2) }}</div>
       </div>
     </div>

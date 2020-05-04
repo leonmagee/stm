@@ -345,13 +345,16 @@ img.email-header-logo {
 }
 .invoice-wrap .invoice-wrap__header {
     display: flex;
-    justify-content: space-between;
+    /* justify-content: space-between; */
     margin-bottom: 2em;
 }
 .invoice-wrap .invoice-wrap__header .address-block {
     font-weight: bold;
     font-size: 0.8em;
     padding: 13px;
+}
+.invoice-wrap .invoice-wrap__header .invoice-title {
+    margin-left: auto;
 }
 .invoice-wrap .invoice-wrap__header .invoice-title span {
     border-bottom: 1px solid #ddd;
@@ -364,7 +367,7 @@ img.email-header-logo {
 }
 .invoice-wrap .invoice-wrap__details {
     display: flex;
-    justify-content: space-between;
+    /* justify-content: space-between; */
     align-items: flex-end;
     padding: 10px 13px;
 }
@@ -377,6 +380,7 @@ img.email-header-logo {
 }
 .invoice-wrap .invoice-wrap__details .invoice-number-wrap {
     font-size: 0.9em;
+    margin-left: auto;
 }
 .invoice-wrap .invoice-wrap__details .invoice-number-wrap span {
     font-weight: bold;
@@ -429,21 +433,27 @@ img.email-header-logo {
     border-top: 1px solid #ddd;
 }
 .invoice-wrap__footer .invoice-wrap__footer--note {
-    flex: 0 1 65%;
+    /* flex: 0 1 65%; */
+    width: 67%;
     border-right: 1px solid #ddd;
     padding: 10px 12px;
     font-weight: bold;
     font-size: 0.8em;
 }
 .invoice-wrap__footer .invoice-wrap__footer--totals {
-    flex: 0 1 35%;
+    /* flex: 0 1 35%; */
+    width: 33%;
+    white-space: nowrap;
 }
 .invoice-wrap__footer .invoice-wrap__footer--totals .item {
     display: flex;
     font-size: 0.9em;
-    justify-content: space-between;
+    /* justify-content: space-between; */
     border-bottom: 1px solid #ddd;
     padding: 7px 9px;
+}
+.invoice-wrap__footer .invoice-wrap__footer--totals .item .label {
+    margin-right: auto;
 }
 .invoice-wrap__footer .invoice-wrap__footer--totals .item.discount {
     color: #ef476f;
