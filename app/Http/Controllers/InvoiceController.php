@@ -61,13 +61,15 @@ class InvoiceController extends Controller
         $request->validate([
             'user_id' => 'required',
             'due_date' => 'required',
+        ], [
+            'user_id.required' => 'The User field is required.',
+            'due_date.required' => 'The Due Date field is required.',
         ]);
         $due_date = \Carbon\Carbon::parse($request->due_date)->format('Y-m-d');
         Invoice::create([
             'user_id' => $request->user_id,
             'due_date' => $due_date,
-            'status' => $request->status,
-            'current_balance' => $request->current_balance,
+            'status' => 1,
             'message' => $request->message,
             'note' => $request->note,
         ]);
@@ -95,7 +97,6 @@ class InvoiceController extends Controller
                 $subtotal += ($item->cost * $item->quantity);
             }
         }
-        $total = $total - $invoice->current_balance;
         $users = User::orderBy('company')->get();
 
         return view('invoices.show', compact('invoice', 'total', 'subtotal', 'discount', 'users'));
@@ -133,7 +134,6 @@ class InvoiceController extends Controller
             'user_id' => $request->user_id,
             'due_date' => $due_date,
             'status' => $request->status,
-            'current_balance' => $request->current_balance,
             'message' => $request->message,
             'note' => $request->note,
         ]);
@@ -181,7 +181,6 @@ class InvoiceController extends Controller
                 $subtotal += ($item->cost * $item->quantity);
             }
         }
-        $total = $total - $invoice->current_balance;
 
         \Mail::to($user)->send(new InvoiceEmail(
             $user,

@@ -69,10 +69,6 @@ Hello {{ $user->name }}, pleae remit the following invoice. Thank You!
         <div class="label">Discount</div>
         <div>-${{ number_format($discount, 2) }}</div>
       </div>
-      <div class="item discount">
-        <div class="label">Already Paid</div>
-        <div>-${{ number_format($invoice->current_balance, 2) }}</div>
-      </div>
       <div class="item final">
         <div class="label">Balance Due</div>
         <div>${{ number_format(($total), 2) }}</div>

@@ -340,7 +340,7 @@ class AppServiceProvider extends ServiceProvider
                     'link' => '/invoices',
                 ],
                 [
-                    'name' => 'New Invoice',
+                    'name' => 'Create Invoice',
                     'link' => '/new-invoice',
                 ],
             ];

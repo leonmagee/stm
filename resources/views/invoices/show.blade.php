@@ -18,7 +18,6 @@
           <div class="stm_inv__header--label">Agent / Dealer</div>
           <div class="stm_inv__header--label">Invoice Date</div>
           <div class="stm_inv__header--label">Due Date</div>
-          <div class="stm_inv__header--label">Already Paid</div>
           <div class="stm_inv__header--label">Status</div>
         </div>
         <div class="stm_inv__flex">
@@ -27,7 +26,6 @@
           <div class="stm_inv__header--item">{{ $invoice->user->name }}</div>
           <div class="stm_inv__header--item">{{ $invoice->created_at->format('M d, Y') }}</div>
           <div class="stm_inv__header--item">{{ \Carbon\Carbon::parse($invoice->due_date)->format('M d, Y') }}</div>
-          <div class="stm_inv__header--item">${{ number_format($invoice->current_balance, 2) }}</div>
           <div class="stm_inv__header--item">{{ \App\Helpers::status($invoice->status) }}</div>
         </div>
       </div>
@@ -76,14 +74,11 @@
     <div class="stm_inv__flex">
       <div class="stm_inv__header--label">Total</div>
       <div class="stm_inv__header--label">Discount</div>
-      <div class="stm_inv__header--label">Already Paid</div>
       <div class="stm_inv__header--label">Amount Due</div>
     </div>
     <div class="stm_inv__flex">
       <div class="stm_inv__header--item">${{ number_format($subtotal, 2) }}</div>
       <div class="stm_inv__header--item stm_inv__header--item-red">-${{ number_format($discount, 2) }}</div>
-      <div class="stm_inv__header--item stm_inv__header--item-red">-${{ number_format($invoice->current_balance, 2) }}
-      </div>
       <div class="stm_inv__header--item">${{ number_format(($total), 2) }}</div>
     </div>
   </div>

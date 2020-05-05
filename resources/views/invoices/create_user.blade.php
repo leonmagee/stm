@@ -8,7 +8,7 @@
 
   <div class="form-wrapper-inner">
 
-    <h3>Create New Invoice for {{ $user->company }} - {{ $user->name }}</h3>
+    <h3>Create an Invoice for {{ $user->company }} - {{ $user->name }}</h3>
 
     <form method="POST" action="/new-invoice">
 
@@ -19,29 +19,11 @@
         <div class="form-wrap-flex">
 
           <input type="hidden" name="user_id" value="{{ $user->id }}" />
-          <div class="field">
+          <div class="field full">
             <label class="label" for="due_date">Due Date<span class="required">*</span></label>
             <div class="control">
               <input class="input" type="text" id="due_date" name="due_date" autocomplete="off"
                 value="{{ old('due_date') }}" />
-            </div>
-          </div>
-          <div class="field">
-            <label class="label" for="status">Status<span class="required">*</span></label>
-            <div class="select">
-              <select name="status" id="status">
-                <option value="1">New</option>
-                <option value="2">Pending</option>
-                <option value="3">Paid</option>
-                <option value="4">Cancelled</option>
-              </select>
-            </div>
-          </div>
-          <div class="field">
-            <label class="label" for="current_balance">Already Paid</label>
-            <div class="control">
-              <input class="input" type="number" min="0" id="current_balance" name="current_balance"
-                value="{{ old('current_balance') }}" />
             </div>
           </div>
           <div class="field half">
