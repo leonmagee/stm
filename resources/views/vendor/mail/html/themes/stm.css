@@ -135,10 +135,10 @@ img {
     background-color: #ffffff;
     margin: 0 auto;
     padding: 0;
-    width: 720px;
+    width: 870px;
     -premailer-cellpadding: 0;
     -premailer-cellspacing: 0;
-    -premailer-width: 720px;
+    -premailer-width: 870px;
 }
 
 /* Subcopy */
@@ -358,6 +358,7 @@ img.email-header-logo {
 }
 .invoice-wrap .invoice-wrap__header .invoice-title span {
     border-bottom: 1px solid #ddd;
+    background-color: #f3f3f3;
     border-left: 1px solid #ddd;
     padding: 7px 9px 5px;
     display: block;
@@ -424,9 +425,17 @@ img.email-header-logo {
     border-color: #1b9aaa;
     font-size: 0.9em;
     color: #fff;
+    white-space: nowrap;
 }
 .invoice-wrap .table.custom tr.header-row th:last-child {
     /**border: #1b9aaa; **/
+}
+
+.invoice-wrap .table.custom tr .desc-column {
+    width: 52%;
+}
+.invoice-wrap .table.custom tr .item {
+    white-space: nowrap;
 }
 
 .invoice-wrap__footer {
@@ -449,7 +458,6 @@ img.email-header-logo {
 .invoice-wrap__footer .invoice-wrap__footer--totals .item {
     display: flex;
     font-size: 0.9em;
-    /* justify-content: space-between; */
     border-bottom: 1px solid #ddd;
     padding: 7px 9px;
 }
@@ -460,9 +468,10 @@ img.email-header-logo {
     color: #ef476f;
 }
 .invoice-wrap__footer .invoice-wrap__footer--totals .item.final {
-    background-color: #eee;
+    background-color: #f3f3f3;
     font-weight: bold;
     color: #111;
+    border-bottom: none;
 }
 .bottom-thanks {
     margin-top: 20px;

@@ -167,6 +167,7 @@ class InvoiceController extends Controller
             $email_1 = false;
         }
         $email_2 = $request->cc_user_2;
+
         // 1. send email
         $user = $invoice->user;
         $total = 0;

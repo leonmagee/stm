@@ -20344,13 +20344,12 @@ body.stm-body.about .about-img-wrap img {
 
 .stm_inv .stm_inv__header .stm_inv__header--label {
   color: #777;
-  font-weight: 600;
+  background-color: #f1f1f1;
   font-size: 0.9em;
 }
 
 .stm_inv .stm_inv__header .stm_inv__header--item {
   color: #333;
-  font-weight: 600;
   font-size: 0.9em;
 }
 
@@ -20363,13 +20362,11 @@ body.stm-body.about .about-img-wrap img {
 }
 
 .stm_inv .stm_inv__items .stm_inv__item--label {
+  background-color: #f1f1f1;
   color: #555;
-  font-weight: 600;
 }
 
 .stm_inv .stm_inv__items .stm_inv__item--item {
-  color: #04a47a;
-  font-weight: 600;
   font-size: 0.9em;
 }
 
@@ -20402,6 +20399,11 @@ body.stm-body.about .about-img-wrap img {
   margin-bottom: 0.5em;
 }
 
+.stm_inv .stm_inv__form .stm_inv__form--flex label {
+  font-weight: normal;
+  color: #111;
+}
+
 .stm_inv .stm_inv__form .stm_inv__form--flex .field {
   margin-right: 1em;
   -webkit-box-flex: 0;
@@ -20417,7 +20419,7 @@ body.stm-body.about .about-img-wrap img {
   width: 100%;
 }
 
-.stm_inv .stm_inv__form .stm_inv__form--flex .field:last-child {
+.stm_inv .stm_inv__form .stm_inv__form--flex .field.description {
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;

@@ -27,13 +27,13 @@
             </div>
           </div>
           <div class="field half">
-            <label class="label" for="message">Message</label>
+            <label class="label" for="message">Invoice Message</label>
             <div class="control">
               <textarea class="textarea" name="message" id="message">{{ old('message') }}</textarea>
             </div>
           </div>
           <div class="field half">
-            <label class="label" for="note">Note</label>
+            <label class="label" for="note">Our Note</label>
             <div class="control">
               <textarea class="textarea" name="note" id="note">{{ old('note') }}</textarea>
             </div>

@@ -35,13 +35,14 @@
     .stm_inv__header {
         .stm_inv__header--label {
             color: #777;
-            font-weight: 600;
+            background-color: #f1f1f1;
+            //font-weight: 600;
             font-size: 0.9em;
         }
         .stm_inv__header--item {
             color: #333;
             //color: darken($color-green, 11%);
-            font-weight: 600;
+            //font-weight: 600;
             font-size: 0.9em;
             &.stm_inv__header--item-red {
                 color: $color-red;
@@ -51,12 +52,13 @@
     .stm_inv__items {
         margin-top: 1.5em;
         .stm_inv__item--label {
+            background-color: #f1f1f1;
             color: #555;
-            font-weight: 600;
+            //font-weight: 600;
         }
         .stm_inv__item--item {
-            color: darken($color-green, 11%);
-            font-weight: 600;
+            //color: darken($color-green, 11%);
+            //font-weight: 600;
             font-size: 0.9em;
         }
     }
@@ -79,6 +81,10 @@
             display: flex;
             justify-content: space-between;
             margin-bottom: 0.5em;
+            label {
+                font-weight: normal;
+                color: #111;
+            }
             .field {
                 margin-right: 1em;
                 flex: 0 1 10%;
@@ -89,7 +95,7 @@
                         width: 100%;
                     }
                 }
-                &:last-child {
+                &.description {
                     flex: 1;
                 }
             }

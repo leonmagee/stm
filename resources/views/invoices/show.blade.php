@@ -15,7 +15,7 @@
         <div class="stm_inv__flex">
           <div class="stm_inv__header--label">Invoice Number</div>
           <div class="stm_inv__header--label">Company</div>
-          <div class="stm_inv__header--label">Agent / Dealer</div>
+          <div class="stm_inv__header--label">User</div>
           <div class="stm_inv__header--label">Invoice Date</div>
           <div class="stm_inv__header--label">Due Date</div>
           <div class="stm_inv__header--label">Status</div>
@@ -44,10 +44,10 @@
       <div class="stm_inv__items">
         <div class="stm_inv__flex">
           <div class="stm_inv__item--label">Item</div>
+          <div class="stm_inv__item--label stm_inv__flex--60">Description</div>
           <div class="stm_inv__item--label">Quantity</div>
           <div class="stm_inv__item--label">Cost</div>
           <div class="stm_inv__item--label">Total</div>
-          <div class="stm_inv__item--label stm_inv__flex--60">Description</div>
           @if($invoice->status < 3) <div class="stm_inv__item--label stm_inv__flex--delete">
         </div>
         @endif
@@ -55,11 +55,11 @@
       @foreach($invoice->items as $item)
       <div class="stm_inv__flex stm_inv__flex-{{ $item->item }}">
         <div class="stm_inv__item--item">{{ \App\Helpers::invoice_item($item->item) }}</div>
+        <div class="stm_inv__item--item stm_inv__flex--60">{{ $item->description }}</div>
         <div class="stm_inv__item--item">{{ $item->quantity }}</div>
         <div class="stm_inv__item--item">${{ number_format($item->cost, 2) }}</div>
         <div class="stm_inv__item--item">@if($item->item ==
           3)-@endif${{ number_format(($item->cost * $item->quantity), 2) }}</div>
-        <div class="stm_inv__item--item stm_inv__flex--60">{{ $item->description }}</div>
         @if($invoice->status < 3) <div class="stm_inv__item--item stm_inv__flex--delete">
           <a href="/invoice-item/delete/{{ $item->id }}">
             <i class="fas fa-trash-alt"></i>
@@ -97,28 +97,24 @@
             </select>
           </div>
         </div>
-
+        <div class="field description">
+          <label class="label" for="description">Description</label>
+          <div class="control">
+            <input class="input" type="text" id="description" name="description" />
+          </div>
+        </div>
         <div class="field">
           <label class="label" for="quantity">Quantity</label>
           <div class="control">
             <input class="input" type="number" min="0" id="quantity" name="quantity" />
           </div>
         </div>
-
         <div class="field">
           <label class="label" for="cost">Cost</label>
           <div class="control">
             <input class="input" type="number" min="0" id="cost" name="cost" step="any" />
           </div>
         </div>
-
-        <div class="field">
-          <label class="label" for="description">Description</label>
-          <div class="control">
-            <input class="input" type="text" id="description" name="description" />
-          </div>
-        </div>
-
       </div>
       <div class="field flex-margin">
         <div class="control">

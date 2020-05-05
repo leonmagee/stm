@@ -31,21 +31,19 @@ Hello {{ $user->name }}, pleae remit the following invoice. Thank You!
       <div><span>Due Date:</span>{{ \Carbon\Carbon::parse($invoice->due_date)->format('M d, Y') }}</div>
     </div>
   </div>
-
   <div class="invoice-wrap__middle">
-
     <table class="table custom">
       <tr class="header-row">
         <th>Item</th>
-        <th>Description</th>
+        <th class="desc-column">Description</th>
         <th>Unit Price</th>
         <th>Quantity</th>
         <th>Cost</th>
       </tr>
       @foreach($invoice->items as $item)
       <tr class="item-{{ $item->item }}">
-        <td>{{ \App\Helpers::invoice_item($item->item) }}</td>
-        <td>{{ $item->description }}</td>
+        <td class="item">{{ \App\Helpers::invoice_item($item->item) }}</td>
+        <td class="desc-column">{{ $item->description }}</td>
         <td>${{ number_format($item->cost, 2) }}</td>
         <td>{{ $item->quantity }}</td>
         <td>@if($item->item ==
