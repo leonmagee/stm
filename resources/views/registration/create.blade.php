@@ -14,7 +14,7 @@
 
       <div class="form-wrap">
 
-        @csfr
+        @csrf
 
         <div class="form-wrap-flex">
 
