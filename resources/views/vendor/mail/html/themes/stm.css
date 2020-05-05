@@ -352,6 +352,7 @@ img.email-header-logo {
     font-weight: bold;
     font-size: 0.8em;
     padding: 13px;
+    color: #777;
 }
 .invoice-wrap .invoice-wrap__header .invoice-title {
     margin-left: auto;
@@ -375,6 +376,7 @@ img.email-header-logo {
 .invoice-wrap .invoice-wrap__details .address-block {
     font-weight: bold;
     font-size: 0.8em;
+    color: #777;
 }
 .invoice-wrap .invoice-wrap__details .address-block .top {
     color: #111;
