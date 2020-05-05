@@ -26,7 +26,9 @@
           <div class="stm_inv__header--item">{{ $invoice->user->name }}</div>
           <div class="stm_inv__header--item">{{ $invoice->created_at->format('M d, Y') }}</div>
           <div class="stm_inv__header--item">{{ \Carbon\Carbon::parse($invoice->due_date)->format('M d, Y') }}</div>
-          <div class="stm_inv__header--item">{{ \App\Helpers::status($invoice->status) }}</div>
+          <div class="stm_inv__header--item stm_inv__header--item-status-{{ $invoice->status }}">
+            {{ \App\Helpers::status($invoice->status) }}
+          </div>
         </div>
       </div>
 
