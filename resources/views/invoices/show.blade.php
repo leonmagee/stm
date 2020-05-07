@@ -128,11 +128,11 @@
 @endif
 
 <div class="stm_imv__finalize">
-  @if($invoice->status < 3) <a href="#" class="modal-open button is-danger">Finalize Invoice</a>
-    <a class="button is-primary" href="/invoices/edit/{{ $invoice->id }}">Edit</a>
+  @if($invoice->status < 3) <a href="#" class="modal-open button is-danger">Send Invoice</a>
+    <a class="button is-primary" href="/invoices/edit/{{ $invoice->id }}">Finalize Invoice</a>
     @else
-    <a disabled class="button is-danger">Finalize Invoice</a>
-    <a disabled class="button is-primary">Edit</a>
+    <a disabled class="button is-danger">Send Invoice</a>
+    <a disabled class="button is-primary">Finalize Invoice</a>
     @endif
 </div>
 
@@ -170,7 +170,7 @@
       </div>
     </div>
   </div>
-  <button class="button is-danger call-loader" type="submit">Finalize Invoice</button>
+  <button class="button is-danger call-loader" type="submit">Send Invoice</button>
   <a href="#" class="modal-close-button button is-primary">Cancel</a>
 </form>
 
