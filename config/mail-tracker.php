@@ -14,7 +14,7 @@ return [
     /**
      * Optionally expire old emails, set to 0 to keep forever.
      */
-    'expire-days' => 90,
+    'expire-days' => 365,
 
     /**
      * Where should the pingback URL route be?
