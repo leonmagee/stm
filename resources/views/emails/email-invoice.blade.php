@@ -64,7 +64,7 @@ Hello {{ $user->name }}, pleae remit the following invoice. Thank You!
         <div>${{ number_format($subtotal, 2) }}</div>
       </div>
       <div class="item discount">
-        <div class="label">Discount</div>
+        <div class="label">Total Discount</div>
         <div>-${{ number_format($discount, 2) }}</div>
       </div>
       <div class="item final">

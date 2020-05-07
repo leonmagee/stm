@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Mail\NewUser;
-use App\Role;
 use App\Settings;
 use App\Site;
 use App\User;
@@ -72,12 +71,6 @@ class RegistrationController extends Controller
 
     public function store(Request $request)
     {
-
-        /**
-         * validate the form
-         * @todo should address info be required?
-         */
-
         $this->validate(request(), [
             'name' => 'required',
             'email' => 'required|email|unique:users',
@@ -87,12 +80,10 @@ class RegistrationController extends Controller
             'city' => 'required',
             'state' => 'required',
             'zip' => 'required',
-            //'role_id' => 'required|gt:2',
             'role_id' => 'required',
             'password' => 'required|confirmed|min:8',
         ]);
 
-        // create and save new user
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
@@ -104,26 +95,15 @@ class RegistrationController extends Controller
             'zip' => $request->zip,
             'role_id' => $request->role_id,
             'password' => bcrypt($request->password),
-            //'password' => Hash::make($request->user_password)
-            //'password' => $request->user_password
         ]);
 
-        /**
-         * @todo I need to make an entry here in user roles...
-         */
-
-        /**
-         * Update this email to include branding and reflect that a user account was created.
-         * Mandate strong password...
-         * @todo this will currently not work on the server - prob because of mail driver in .env?
-         */
         \Mail::to($user)->send(new NewUser($user, $request->password));
 
-        // log in new user
-        //auth()->login($user);
-        return $user->id;
+        $admins = User::getAdminManageerEmployeeUsers();
+        foreach ($admins as $admin) {
+            \Mail::to($admin)->send(new NewUser($user, $request->password));
+        }
 
-        // this doesn't happen as ajax is being used?
-        //return redirect('users/' . $user->id);
+        return $user->id;
     }
 }
