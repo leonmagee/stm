@@ -22,6 +22,8 @@
   </tr>
 </table>
 
+@include('emails.user-info',['user' => $user])
+
 @component('mail::button', ['url' => 'https://stmmax.com'])
 Go to Sim Track Manager
 @endcomponent

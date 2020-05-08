@@ -22,13 +22,7 @@
   </tr>
 </table>
 
-<div class="customer-info">
-  <div>{{ $agent->company . ' / ' . $agent->name }}</div>
-  <div>{{ $agent->address }}</div>
-  <div>{{ $agent->city }}, {{ $agent->state }} {{ $agent->zip }}</div>
-  <div class="email">{{ $agent->email }}</div>
-  <div>{{ $agent->phone }}</div>
-</div>
+@include('emails.user-info',['user' => $user])
 
 @component('mail::button', ['url' => 'https://stmmax.com'])
 Login to Sim Track Manager

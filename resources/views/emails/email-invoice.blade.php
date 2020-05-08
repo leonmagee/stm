@@ -85,19 +85,6 @@ Hello {{ $user->name }}, please remit payment to:
   <div>Sincerely,</div>
   <div class="margin-top">GS Wireless, Inc.</div>
 </div>
-{{-- <div>750 B Street Suite 2840</div>
-<div>San Diego, CA 92101</div>
-<div>619-795-9200</div>
-<div><a href="http://mygswireless.com">http://mygswireless.com</a></div>
-<div><a href="http://mygsaccessories.com">http://mygsaccessories.com</a></div> --}}
-
-{{-- <div class="customer-info">
-  <div>{{ $user->company . ' / ' . $user->name }}</div>
-<div>{{ $user->address }}</div>
-<div>{{ $user->city }}, {{ $user->state }} {{ $user->zip }}</div>
-<div class="email">{{ $user->email }}</div>
-<div>{{ $user->phone }}</div>
-</div> --}}
 
 @component('mail::button', ['url' => 'https://stmmax.com'])
 Login to Sim Track Manager
