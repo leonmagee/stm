@@ -190,8 +190,9 @@ class InvoiceController extends Controller
             $discount,
             $total,
             false,
-            $user, // for tracking
+            $user
         ));
+
         if ($email_1) {
             \Mail::to($email_1)->send(new InvoiceEmail(
                 $user,
