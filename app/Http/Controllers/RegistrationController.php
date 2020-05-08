@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Mail\NewUser;
+use App\Mail\NewUserAdmin;
 use App\Settings;
 use App\Site;
 use App\User;
@@ -100,8 +101,9 @@ class RegistrationController extends Controller
         \Mail::to($user)->send(new NewUser($user, $request->password));
 
         $admins = User::getAdminManageerEmployeeUsers();
+        $author = \Auth::user();
         foreach ($admins as $admin) {
-            \Mail::to($admin)->send(new NewUser($user, $request->password));
+            \Mail::to($admin)->send(new NewUserAdmin($user, $author, $admin));
         }
 
         return $user->id;

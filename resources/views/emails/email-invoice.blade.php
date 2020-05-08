@@ -1,6 +1,6 @@
 @component('mail::message')
 
-Hello {{ $user->name }}, pleae remit payment to:
+Hello {{ $user->name }}, please remit payment to:
 <div>Zelle: <strong>gs-wireless@att.net</strong></div>
 <div>PayPal: <strong>gs-wireless@att.net</strong></strong>
   (send to friends and family to avoid 3% charge)</div>
