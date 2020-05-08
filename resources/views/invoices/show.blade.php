@@ -31,18 +31,6 @@
           </div>
         </div>
       </div>
-
-      <div class="stm_inv__header margin-top-1-5">
-        <div class="stm_inv__flex">
-          <div class="stm_inv__header--label">Message</div>
-          <div class="stm_inv__header--label">Note</div>
-        </div>
-        <div class="stm_inv__flex">
-          <div class="stm_inv__header--item">{{ $invoice->message }}</div>
-          <div class="stm_inv__header--item">{{ $invoice->note }}</div>
-        </div>
-      </div>
-
       <div class="stm_inv__items">
         <div class="stm_inv__flex">
           <div class="stm_inv__item--label">Item</div>
@@ -82,6 +70,16 @@
       <div class="stm_inv__header--item">${{ number_format($subtotal, 2) }}</div>
       <div class="stm_inv__header--item stm_inv__header--item-red">-${{ number_format($discount, 2) }}</div>
       <div class="stm_inv__header--item">${{ number_format(($total), 2) }}</div>
+    </div>
+  </div>
+  <div class="stm_inv__header margin-top-1-5">
+    <div class="stm_inv__flex">
+      <div class="stm_inv__header--label">Message</div>
+      <div class="stm_inv__header--label">Note</div>
+    </div>
+    <div class="stm_inv__flex">
+      <div class="stm_inv__header--item">{{ $invoice->message }}</div>
+      <div class="stm_inv__header--item">{{ $invoice->note }}</div>
     </div>
   </div>
   @if($invoice->status < 3) <div class="stm_inv__form">
