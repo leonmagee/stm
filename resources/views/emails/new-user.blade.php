@@ -2,18 +2,23 @@
 
 # Hello {{ $user->name }}
 
-You are now signed up to Sim Track Manager!
+<strong>Congratulations! Your account was creatd on STM. Now you can start ordering your FREE sim cards and
+  POS.</strong>
 
 ## Your Login Info
 
-<table class="table custom">
+<table class="table custom vertical">
   <tr>
     <th>Username</th>
-    <th>Password</th>
+    <td>{{ $user->email }}</td>
   </tr>
   <tr>
-    <td>{{ $user->email }}</td>
+    <th>Password</th>
     <td>{{ $password }}</td>
+  </tr>
+  <tr>
+    <th>Date Signed Up</th>
+    <td>{{ $user->created_at->format('M d, Y, g:i a') }}</td>
   </tr>
 </table>
 

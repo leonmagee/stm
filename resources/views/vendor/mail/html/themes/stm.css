@@ -216,6 +216,23 @@ img {
     border-top: none;
 }
 
+.table.custom.vertical th,
+.table.custom.vertical td {
+    border: 1px solid #e3e3e3;
+    border-right: none;
+    border-bottom: none;
+}
+.table.custom.vertical td:last-child {
+    border-right: 1px solid #e3e3e3;
+}
+.table.custom.vertical tr:last-child th,
+.table.custom.vertical tr:last-child td {
+    border-bottom: 1px solid #e3e3e3;
+}
+.table.custom.vertical td {
+    border-top: 1px solid #e3e3e3;
+}
+
 .content-cell {
     padding: 35px;
 }
