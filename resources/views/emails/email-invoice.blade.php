@@ -1,6 +1,11 @@
 @component('mail::message')
 
-Hello {{ $user->name }}, pleae remit the following invoice. Thank You!
+Hello {{ $user->name }}, pleae remit payment to:
+<div>Zelle: <strong>gs-wireless@att.net</strong></div>
+<div>PayPal: <strong>gs-wireless@att.net</strong></strong>
+  (send to friends and family to avoid 3% charge)</div>
+<div>Venmo: <strong>@GS-Wireless</strong></div>
+<div class="margin-bottom-20">CashApp: <strong>$GSWireless</strong></div>
 
 <div class="invoice-wrap">
 

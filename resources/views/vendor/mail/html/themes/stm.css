@@ -350,7 +350,7 @@ img.email-header-logo {
 }
 .invoice-wrap .invoice-wrap__header .address-block {
     font-weight: bold;
-    font-size: 0.8em;
+    font-size: 0.9em;
     padding: 13px;
     color: #777;
 }
@@ -375,14 +375,14 @@ img.email-header-logo {
 }
 .invoice-wrap .invoice-wrap__details .address-block {
     font-weight: bold;
-    font-size: 0.8em;
+    font-size: 0.9em;
     color: #777;
 }
 .invoice-wrap .invoice-wrap__details .address-block .top {
     color: #111;
 }
 .invoice-wrap .invoice-wrap__details .invoice-number-wrap {
-    font-size: 0.9em;
+    font-size: 1em;
     padding-top: 15px;
     margin-left: auto;
 }
@@ -412,7 +412,7 @@ img.email-header-logo {
 }
 
 .invoice-wrap .table.custom tr td {
-    font-size: 0.9em;
+    font-size: 1em;
 }
 
 .invoice-wrap .table.custom tr.item-3 td {
@@ -450,7 +450,7 @@ img.email-header-logo {
     border-right: 1px solid #ddd;
     padding: 10px 12px;
     font-weight: bold;
-    font-size: 0.8em;
+    font-size: 0.9em;
 }
 .invoice-wrap__footer .invoice-wrap__footer--totals {
     /* flex: 0 1 35%; */
@@ -459,7 +459,7 @@ img.email-header-logo {
 }
 .invoice-wrap__footer .invoice-wrap__footer--totals .item {
     display: flex;
-    font-size: 0.9em;
+    font-size: 1em;
     border-bottom: 1px solid #ddd;
     padding: 7px 9px;
 }
@@ -477,4 +477,11 @@ img.email-header-logo {
 }
 .bottom-thanks {
     margin-top: 20px;
+}
+.margin-bottom-15 {
+    margin-bottom: 15px;
+}
+
+.margin-bottom-20 {
+    margin-bottom: 20px;
 }
