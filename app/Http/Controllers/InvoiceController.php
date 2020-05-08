@@ -162,7 +162,7 @@ class InvoiceController extends Controller
     {
         $cc_user = User::find($request->cc_user_1);
         if ($cc_user) {
-            $email_1 = $cc_user->email;
+            $email_1 = $cc_user;
         } else {
             $email_1 = false;
         }
@@ -188,7 +188,9 @@ class InvoiceController extends Controller
             $invoice,
             $subtotal,
             $discount,
-            $total
+            $total,
+            false,
+            $user, // for tracking
         ));
         if ($email_1) {
             \Mail::to($email_1)->send(new InvoiceEmail(
@@ -196,7 +198,9 @@ class InvoiceController extends Controller
                 $invoice,
                 $subtotal,
                 $discount,
-                $total
+                $total,
+                false,
+                $email_1
             ));
         }
         if ($email_2) {
@@ -205,7 +209,9 @@ class InvoiceController extends Controller
                 $invoice,
                 $subtotal,
                 $discount,
-                $total
+                $total,
+                false,
+                false
             ));
         }
 

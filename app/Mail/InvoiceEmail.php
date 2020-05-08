@@ -23,7 +23,7 @@ class InvoiceEmail extends Mailable
      *
      * @return void
      */
-    public function __construct(User $user, Invoice $invoice, $subtotal, $discount, $total)
+    public function __construct(User $user, Invoice $invoice, $subtotal, $discount, $total, $admin, $recipient)
     {
         $this->user = $user;
         $this->invoice = $invoice;
@@ -31,6 +31,14 @@ class InvoiceEmail extends Mailable
         $this->discount = $discount;
         $this->total = $total;
         $this->subject('INVOICE #' . $invoice->id);
+        if ($admin) {
+            $this->callbacks[] = (function ($message) {$message->getHeaders()->addTextHeader('X-No-Track', Str::random(10));});
+        } else {
+            if ($recipient) {
+                $this->callbacks[] = (function ($message) use ($recipient) {$message->getHeaders()->addTextHeader('user_id', $recipient->id);});
+            }
+        }
+
     }
 
     /**
