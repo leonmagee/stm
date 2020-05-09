@@ -2,8 +2,11 @@
 
 # Hello {{ $user->name }}
 
-<strong>Congratulations! Your account was created on STM. Now you can start ordering your FREE sim cards and
-  POS.</strong>
+<div class="margin-bottom-25">
+  <strong>Congratulations! Your account has been created successfully. Now you can enjoy the
+    benefits and start ordering
+    your FREE sim cards and POS.</strong>
+</div>
 
 ## Your Login Info
 
