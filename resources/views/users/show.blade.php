@@ -93,9 +93,6 @@
       </div>
     </div>
 
-
-
-
     @if(!$user->isAdminManagerEmployee())
 
     <div class="reports-wrap">

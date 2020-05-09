@@ -51,9 +51,29 @@
         <div class="stm_inv__item--item">@if($item->item ==
           3)-@endif${{ number_format(($item->cost * $item->quantity), 2) }}</div>
         @if($invoice->status < 3) <div class="stm_inv__item--item stm_inv__flex--delete">
-          <a href="/invoice-item/delete/{{ $item->id }}">
+          <a class="modal-delete-open" item_id={{ $item->id }}>
             <i class="fas fa-trash-alt"></i>
           </a>
+      </div>
+
+      <div class="modal" id="delete-item-modal-{{ $item->id }}">
+
+        <div class="modal-background"></div>
+
+        <div class="modal-content">
+
+          <div class="modal-box">
+
+            <h4 class="title">Are You Sure?</h4>
+
+            <a href="/invoice-item/delete/{{ $item->id }}" class="button is-danger">Delete Item</a>
+            <a class="modal-delete-close-button button is-primary" item_id={{ $item->id }}>Cancel</a>
+          </div>
+
+        </div>
+
+        <button class="modal-delete-close is-large" aria-label="close" item_id={{ $item->id }}></button>
+
       </div>
       @endif
     </div>
