@@ -69,9 +69,32 @@
                 </div>
               </div>
             </div>
-            <label class="label">Email Subject<span class="required">*</span></label>
-            <div class="control email-blast-wrap-bottom">
-              <input class="input" name="subject" />
+            <div class="columns">
+              <div class="column is-one-third">
+                <label class="label">Email Subject<span class="required">*</span></label>
+                <div class="control">
+                  <input class="input" name="subject" />
+                </div>
+              </div>
+              <div class="column is-one-third">
+                <label class="label" for="cc_just_one_user">BCC User</label>
+                <div class="control email-blast-cc-item">
+                  <div class="select">
+                    <select name="cc_just_one_user">
+                      <option value="0">---</option>
+                      @foreach($users as $user)
+                      <option value="{{ $user->id }}">{{ $user->company }} - {{ $user->name }}</option>
+                      @endforeach
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <div class="column is-one-third">
+                <label class="label" for="cc_manual_email">BCC Another User</label>
+                <div class="control email-blast-cc-item">
+                  <input class="input" type="text" name="cc_manual_email" placeholder="Email Address" />
+                </div>
+              </div>
             </div>
             <label class="label">Email Text<span class="required">*</span></label>
             <div class="control">

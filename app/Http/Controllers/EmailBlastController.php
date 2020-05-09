@@ -35,7 +35,8 @@ class EmailBlastController extends Controller
      */
     public function email_user(User $user)
     {
-        return view('email_blast.email_user', compact('user'));
+        $users = User::orderBy('company')->get();
+        return view('email_blast.email_user', compact('user', 'users'));
     }
 
     /**
