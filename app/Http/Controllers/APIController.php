@@ -95,6 +95,22 @@ class APIController extends Controller
             $item->invoice_date = $item->created_at->format('M d, Y');
             $item->company = $item->user->company;
             $item->user_name = $item->user->name;
+
+            $total = 0;
+            $discount = 0;
+            $subtotal = 0;
+            foreach ($item->items as $item_new) {
+                if ($item_new->item == 3) {
+                    $total -= ($item_new->cost * $item_new->quantity);
+                    $discount += ($item_new->cost * $item_new->quantity);
+                } else {
+                    $total += ($item_new->cost * $item_new->quantity);
+                    $subtotal += ($item_new->cost * $item_new->quantity);
+                }
+            }
+
+            $item->total = '$' . number_format($total, 2);
+
         }
 
         return datatables($invoices)->make(true);
@@ -108,6 +124,21 @@ class APIController extends Controller
             $item->invoice_date = $item->created_at->format('M d, Y');
             $item->company = $item->user->company;
             $item->user_name = $item->user->name;
+            $total = 0;
+            $discount = 0;
+            $subtotal = 0;
+            foreach ($item->items as $item_new) {
+                if ($item_new->item == 3) {
+                    $total -= ($item_new->cost * $item_new->quantity);
+                    $discount += ($item_new->cost * $item_new->quantity);
+                } else {
+                    $total += ($item_new->cost * $item_new->quantity);
+                    $subtotal += ($item_new->cost * $item_new->quantity);
+                }
+            }
+
+            $item->total = '$' . number_format($total, 2);
+
         }
 
         return datatables($invoices)->make(true);

@@ -13,6 +13,7 @@
           <th>Invoice #</th>
           <th>Invoice Date</th>
           <th>Due Date</th>
+          <th>Amount Due</th>
           <th>Status</th>
           <th></th>
         </tr>
@@ -37,6 +38,11 @@
 { "data": "id" },
 { "data": "invoice_date" },
 { "data": "due_date_new" },
+{ "data": "total",
+"fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
+$(nTd).html("<span class='total-due'>" + oData.total + "</span>");
+}
+},
 { "data": "status",
 "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
 if(oData.status == 1) {
