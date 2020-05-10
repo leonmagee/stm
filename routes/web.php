@@ -301,13 +301,16 @@ Route::group(['middleware' => 'App\Http\Middleware\LockOutUsersManagers'], funct
     Route::get('new-invoice', 'InvoiceController@create');
     Route::get('new-invoice/{user}', 'InvoiceController@create_user');
     Route::post('new-invoice', 'InvoiceController@store');
-    Route::get('invoices/{invoice}', 'InvoiceController@show');
     Route::post('new-invoice-item', 'InvoiceItemController@store');
     Route::get('invoices/edit/{invoice}', 'InvoiceController@edit');
     Route::post('update-invoice/{invoice}', 'InvoiceController@update');
     Route::get('invoice-item/delete/{item}', 'InvoiceItemController@destroy');
     Route::post('invoice/finalize/{invoice}', 'InvoiceController@finalize');
 });
+
+Route::get('invoices/{invoice}', 'InvoiceController@show');
+Route::get('your-invoices', 'InvoiceController@your_invoices');
+Route::post('invoice/finalize_user/{invoice}', 'InvoiceController@finalize_user');
 
 /**
  * Closed Route

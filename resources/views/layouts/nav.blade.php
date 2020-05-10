@@ -141,6 +141,24 @@
 
   }
 
+  if(($item['name'] == 'Invoices') || ($item['name'] == 'Your Invoices')) {
+
+  $match_array_sims = [
+  [
+  'length' => 9,
+  'match_array' => ['invoices/']
+  ],
+  ];
+
+  foreach($match_array_sims as $match) {
+  $sub_path = substr($path, 0, $match['length']);
+  if(in_array($sub_path, $match['match_array'])) {
+  $active = 'active';
+  }
+  }
+
+  }
+
   //
 
   // if($item['name'] == 'Users') {

@@ -38,7 +38,7 @@
     .stm_inv__header {
         .stm_inv__header--label {
             color: #333;
-            background-color: #f1f1f1;
+            background-color: $invoice-header;
             //font-weight: 600;
             font-size: 1.05em;
         }
@@ -75,7 +75,7 @@
     .stm_inv__items {
         margin-top: 1.5em;
         .stm_inv__item--label {
-            background-color: #f1f1f1;
+            background-color: $invoice-header;
             color: #333;
             font-size: 1.05em;
             //font-weight: 600;

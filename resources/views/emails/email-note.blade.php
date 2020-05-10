@@ -22,7 +22,7 @@
   </tr>
 </table>
 
-@include('emails.user-info',['user' => $user])
+@include('emails.user-info',['user' => $agent])
 
 @component('mail::button', ['url' => 'https://stmmax.com'])
 Login to Sim Track Manager

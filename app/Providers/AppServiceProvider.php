@@ -413,7 +413,7 @@ class AppServiceProvider extends ServiceProvider
                         'default' => false,
                     ],
                     [
-                        'name' => 'Invoice',
+                        'name' => 'Invoices',
                         'link' => false,
                         'sub' => $invoice_sub,
                         'icon' => 'flaticon-mail-2',
@@ -530,6 +530,13 @@ class AppServiceProvider extends ServiceProvider
                         'default' => false,
                     ],
                     [
+                        'name' => 'Invoices',
+                        'link' => '/invoices',
+                        'sub' => false,
+                        'icon' => 'flaticon-mail-2',
+                        'default' => false,
+                    ],
+                    [
                         'name' => 'History Trackers',
                         'link' => false,
                         'sub' => $trackers_sub,
@@ -625,6 +632,13 @@ class AppServiceProvider extends ServiceProvider
                     //     'icon' => 'flaticon-analytics',
                     //     'default' => false,
                     // ],
+                    [
+                        'name' => 'Invoices',
+                        'link' => '/invoices',
+                        'sub' => false,
+                        'icon' => 'flaticon-mail-2',
+                        'default' => false,
+                    ],
                     [
                         'name' => 'Notes',
                         'link' => '/notes',
@@ -780,6 +794,13 @@ class AppServiceProvider extends ServiceProvider
                         'default' => false,
                     ],
                     [
+                        'name' => 'Your Invoices',
+                        'link' => '/your-invoices',
+                        'sub' => false,
+                        'icon' => 'flaticon-mail-2',
+                        'default' => false,
+                    ],
+                    [
                         'name' => 'Credit History',
                         'link' => '/transaction-tracker',
                         'sub' => false,
@@ -889,6 +910,13 @@ class AppServiceProvider extends ServiceProvider
                         'link' => '/your-emails',
                         'sub' => false,
                         'icon' => 'flaticon-mail',
+                        'default' => false,
+                    ],
+                    [
+                        'name' => 'Your Invoices',
+                        'link' => '/your-invoices',
+                        'sub' => false,
+                        'icon' => 'flaticon-mail-2',
                         'default' => false,
                     ],
                     [

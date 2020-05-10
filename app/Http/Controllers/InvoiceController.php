@@ -30,6 +30,17 @@ class InvoiceController extends Controller
     }
 
     /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function your_invoices()
+    {
+        $user = \Auth::user();
+        return view('invoices.index_user', compact('user'));
+    }
+
+    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
@@ -97,9 +108,21 @@ class InvoiceController extends Controller
                 $subtotal += ($item->cost * $item->quantity);
             }
         }
-        $users = User::orderBy('company')->get();
 
-        return view('invoices.show', compact('invoice', 'total', 'subtotal', 'discount', 'users'));
+        $logged_in = \Auth::user();
+        if ($logged_in->isAdminManagerEmployee()) {
+
+            $users = User::orderBy('company')->get();
+
+            return view('invoices.show', compact('invoice', 'total', 'subtotal', 'discount', 'users'));
+
+        } else {
+            if ($logged_in->id != $invoice->user_id) {
+                return redirect('/');
+            } else {
+                return view('invoices.show-user', compact('invoice', 'total', 'subtotal', 'discount'));
+            }
+        }
     }
 
     /**
@@ -216,11 +239,52 @@ class InvoiceController extends Controller
             ));
         }
 
-        // 2. update status
-        $invoice->status = 2;
+        // 2. update status (if set to new)
+        if ($invoice->status == 1) {
+            $invoice->status = 2;
+        }
         $invoice->save();
         // 3. return redirect
         session()->flash('message', 'Email Sent & Status Updated.');
+        return \Redirect::back();
+    }
+
+    /**
+     * Update status to pending and email user
+     *
+     * @param  \App\Invoice  $invoice
+     * @return \Illuminate\Http\Response
+     */
+    public function finalize_user(Invoice $invoice)
+    {
+        dd('user finalize');
+        // 1. send email
+        $user = $invoice->user;
+        $total = 0;
+        $discount = 0;
+        $subtotal = 0;
+        foreach ($invoice->items as $item) {
+            if ($item->item == 3) {
+                $total -= ($item->cost * $item->quantity);
+                $discount += ($item->cost * $item->quantity);
+            } else {
+                $total += ($item->cost * $item->quantity);
+                $subtotal += ($item->cost * $item->quantity);
+            }
+        }
+
+        \Mail::to($user)->send(new InvoiceEmail(
+            $user,
+            $invoice,
+            $subtotal,
+            $discount,
+            $total,
+            false,
+            $user
+        ));
+
+        // 2. return redirect
+        session()->flash('message', 'Email Has Been Sent.');
         return \Redirect::back();
     }
 }
