@@ -20466,11 +20466,7 @@ body.stm-body.about .about-img-wrap img {
 }
 
 .stm_inv .stm_imv__finalize {
-  margin-top: 2.5em;
-}
-
-.stm_inv .stm_imv__finalize a {
-  margin-left: 1em;
+  margin: 1.5em 0 0.2em;
 }
 
 .invoice-modal-flex .field {

@@ -257,7 +257,6 @@ class InvoiceController extends Controller
      */
     public function finalize_user(Invoice $invoice)
     {
-        dd('user finalize');
         // 1. send email
         $user = $invoice->user;
         $total = 0;
@@ -284,7 +283,7 @@ class InvoiceController extends Controller
         ));
 
         // 2. return redirect
-        session()->flash('message', 'Email Has Been Sent.');
+        session()->flash('message', 'Invoice Email Has Been Sent.');
         return \Redirect::back();
     }
 }
