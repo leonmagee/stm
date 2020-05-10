@@ -633,13 +633,6 @@ class AppServiceProvider extends ServiceProvider
                     //     'default' => false,
                     // ],
                     [
-                        'name' => 'Invoices',
-                        'link' => '/invoices',
-                        'sub' => false,
-                        'icon' => 'flaticon-mail-2',
-                        'default' => false,
-                    ],
-                    [
                         'name' => 'Notes',
                         'link' => '/notes',
                         'sub' => false,
@@ -651,6 +644,13 @@ class AppServiceProvider extends ServiceProvider
                         'link' => '/orders',
                         'sub' => false,
                         'icon' => 'flaticon-sim',
+                        'default' => false,
+                    ],
+                    [
+                        'name' => 'Invoices',
+                        'link' => '/invoices',
+                        'sub' => false,
+                        'icon' => 'flaticon-mail-2',
                         'default' => false,
                     ],
                     [

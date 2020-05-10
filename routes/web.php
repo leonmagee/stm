@@ -295,8 +295,10 @@ Route::post('contact-us', 'LoggedOutController@contact_submit');
 /**
  * Invoice Routes
  */
-Route::group(['middleware' => 'App\Http\Middleware\LockOutUsersManagers'], function () {
+Route::group(['middleware' => 'App\Http\Middleware\LockOutUsers'], function () {
     Route::get('invoices', 'InvoiceController@index');
+});
+Route::group(['middleware' => 'App\Http\Middleware\LockOutUsersManagers'], function () {
     Route::get('invoices/user/{user}', 'InvoiceController@index_user');
     Route::get('new-invoice', 'InvoiceController@create');
     Route::get('new-invoice/{user}', 'InvoiceController@create_user');

@@ -38,124 +38,128 @@
           <div class="stm_inv__item--label">Quantity</div>
           <div class="stm_inv__item--label">Cost</div>
           <div class="stm_inv__item--label">Total</div>
-          @if($invoice->status < 3) <div class="stm_inv__item--label stm_inv__flex--delete">
+          @if(($invoice->status < 3) && (\Auth::user()->isAdmin())) <div
+              class="stm_inv__item--label stm_inv__flex--delete">
+            </div>
+            @endif
+        </div>
+        @foreach($invoice->items as $item)
+        <div class="stm_inv__flex stm_inv__flex-{{ $item->item }}">
+          <div class="stm_inv__item--item">{{ \App\Helpers::invoice_item($item->item) }}</div>
+          <div class="stm_inv__item--item stm_inv__flex--60">{{ $item->description }}</div>
+          <div class="stm_inv__item--item">{{ $item->quantity }}</div>
+          <div class="stm_inv__item--item">${{ number_format($item->cost, 2) }}</div>
+          <div class="stm_inv__item--item">@if($item->item ==
+            3)-@endif${{ number_format(($item->cost * $item->quantity), 2) }}</div>
+          @if(($invoice->status < 3) && (\Auth::user()->isAdmin())) <div
+              class="stm_inv__item--item stm_inv__flex--delete">
+              <a class="modal-delete-open" item_id={{ $item->id }}>
+                <i class="fas fa-trash-alt"></i>
+              </a>
+            </div>
+
+            <div class="modal" id="delete-item-modal-{{ $item->id }}">
+
+              <div class="modal-background"></div>
+
+              <div class="modal-content">
+
+                <div class="modal-box">
+
+                  <h4 class="title">Are You Sure?</h4>
+
+                  <a href="/invoice-item/delete/{{ $item->id }}" class="button is-danger">Delete Item</a>
+                  <a class="modal-delete-close-button button is-primary" item_id={{ $item->id }}>Cancel</a>
+                </div>
+
+              </div>
+
+              <button class="modal-delete-close is-large" aria-label="close" item_id={{ $item->id }}></button>
+
+            </div>
+            @endif
+        </div>
+        @endforeach
+      </div>
+
+      <div class="stm_inv__header margin-top-1-5">
+        <div class="stm_inv__flex">
+          <div class="stm_inv__header--label">Total</div>
+          <div class="stm_inv__header--label">Total Discount</div>
+          <div class="stm_inv__header--label">Amount Due</div>
+        </div>
+        <div class="stm_inv__flex">
+          <div class="stm_inv__header--item">${{ number_format($subtotal, 2) }}</div>
+          <div class="stm_inv__header--item stm_inv__header--item-red">-${{ number_format($discount, 2) }}</div>
+          <div class="stm_inv__header--item">${{ number_format(($total), 2) }}</div>
+        </div>
+      </div>
+      <div class="stm_inv__header margin-top-1-5">
+        <div class="stm_inv__flex">
+          <div class="stm_inv__header--label">Message</div>
+          <div class="stm_inv__header--label">Note</div>
+        </div>
+        <div class="stm_inv__flex">
+          <div class="stm_inv__header--item">{{ $invoice->message }}</div>
+          <div class="stm_inv__header--item">{{ $invoice->note }}</div>
+        </div>
+      </div>
+      @if(($invoice->status < 3) && (\Auth::user()->isAdmin())) <div class="stm_inv__form">
+          <form method="POST" action="/new-invoice-item">
+            @csrf
+            <div class="stm_inv__form--flex">
+              <input type="hidden" name="invoice_id" value="{{ $invoice->id }}" />
+              <div class="field">
+                <label class="label" for="item">Item</label>
+                <div class="select">
+                  <select name="item" id="item">
+                    <option value="1">Product</option>
+                    <option value="2">Service</option>
+                    <option value="3">Discount</option>
+                  </select>
+                </div>
+              </div>
+              <div class="field description">
+                <label class="label" for="description">Description</label>
+                <div class="control">
+                  <input class="input" type="text" id="description" name="description" />
+                </div>
+              </div>
+              <div class="field">
+                <label class="label" for="quantity">Quantity</label>
+                <div class="control">
+                  <input class="input" type="number" min="0" id="quantity" name="quantity" />
+                </div>
+              </div>
+              <div class="field">
+                <label class="label" for="cost">Cost</label>
+                <div class="control">
+                  <input class="input" type="number" min="0" id="cost" name="cost" step="any" />
+                </div>
+              </div>
+            </div>
+            <div class="field flex-margin">
+              <div class="control">
+                <button class="button is-primary" type="submit">Add Line Item</button>
+              </div>
+            </div>
+          </form>
         </div>
         @endif
-      </div>
-      @foreach($invoice->items as $item)
-      <div class="stm_inv__flex stm_inv__flex-{{ $item->item }}">
-        <div class="stm_inv__item--item">{{ \App\Helpers::invoice_item($item->item) }}</div>
-        <div class="stm_inv__item--item stm_inv__flex--60">{{ $item->description }}</div>
-        <div class="stm_inv__item--item">{{ $item->quantity }}</div>
-        <div class="stm_inv__item--item">${{ number_format($item->cost, 2) }}</div>
-        <div class="stm_inv__item--item">@if($item->item ==
-          3)-@endif${{ number_format(($item->cost * $item->quantity), 2) }}</div>
-        @if($invoice->status < 3) <div class="stm_inv__item--item stm_inv__flex--delete">
-          <a class="modal-delete-open" item_id={{ $item->id }}>
-            <i class="fas fa-trash-alt"></i>
-          </a>
-      </div>
 
-      <div class="modal" id="delete-item-modal-{{ $item->id }}">
-
-        <div class="modal-background"></div>
-
-        <div class="modal-content">
-
-          <div class="modal-box">
-
-            <h4 class="title">Are You Sure?</h4>
-
-            <a href="/invoice-item/delete/{{ $item->id }}" class="button is-danger">Delete Item</a>
-            <a class="modal-delete-close-button button is-primary" item_id={{ $item->id }}>Cancel</a>
-          </div>
-
+        @if(\Auth::user()->isAdmin())
+        <div class="stm_imv__finalize">
+          @if($invoice->status < 3) <a href="#" class="modal-open button is-danger">Send Invoice</a>
+            <a class="button is-primary" href="/invoices/edit/{{ $invoice->id }}">Finalize Invoice</a>
+            @else
+            <a disabled class="button is-danger">Send Invoice</a>
+            <a disabled class="button is-primary">Finalize Invoice</a>
+            @endif
         </div>
+        @endif
 
-        <button class="modal-delete-close is-large" aria-label="close" item_id={{ $item->id }}></button>
-
-      </div>
-      @endif
-    </div>
-    @endforeach
-  </div>
-
-  <div class="stm_inv__header margin-top-1-5">
-    <div class="stm_inv__flex">
-      <div class="stm_inv__header--label">Total</div>
-      <div class="stm_inv__header--label">Total Discount</div>
-      <div class="stm_inv__header--label">Amount Due</div>
-    </div>
-    <div class="stm_inv__flex">
-      <div class="stm_inv__header--item">${{ number_format($subtotal, 2) }}</div>
-      <div class="stm_inv__header--item stm_inv__header--item-red">-${{ number_format($discount, 2) }}</div>
-      <div class="stm_inv__header--item">${{ number_format(($total), 2) }}</div>
     </div>
   </div>
-  <div class="stm_inv__header margin-top-1-5">
-    <div class="stm_inv__flex">
-      <div class="stm_inv__header--label">Message</div>
-      <div class="stm_inv__header--label">Note</div>
-    </div>
-    <div class="stm_inv__flex">
-      <div class="stm_inv__header--item">{{ $invoice->message }}</div>
-      <div class="stm_inv__header--item">{{ $invoice->note }}</div>
-    </div>
-  </div>
-  @if($invoice->status < 3) <div class="stm_inv__form">
-    <form method="POST" action="/new-invoice-item">
-      @csrf
-      <div class="stm_inv__form--flex">
-        <input type="hidden" name="invoice_id" value="{{ $invoice->id }}" />
-        <div class="field">
-          <label class="label" for="item">Item</label>
-          <div class="select">
-            <select name="item" id="item">
-              <option value="1">Product</option>
-              <option value="2">Service</option>
-              <option value="3">Discount</option>
-            </select>
-          </div>
-        </div>
-        <div class="field description">
-          <label class="label" for="description">Description</label>
-          <div class="control">
-            <input class="input" type="text" id="description" name="description" />
-          </div>
-        </div>
-        <div class="field">
-          <label class="label" for="quantity">Quantity</label>
-          <div class="control">
-            <input class="input" type="number" min="0" id="quantity" name="quantity" />
-          </div>
-        </div>
-        <div class="field">
-          <label class="label" for="cost">Cost</label>
-          <div class="control">
-            <input class="input" type="number" min="0" id="cost" name="cost" step="any" />
-          </div>
-        </div>
-      </div>
-      <div class="field flex-margin">
-        <div class="control">
-          <button class="button is-primary" type="submit">Add Line Item</button>
-        </div>
-      </div>
-    </form>
-</div>
-@endif
-
-<div class="stm_imv__finalize">
-  @if($invoice->status < 3) <a href="#" class="modal-open button is-danger">Send Invoice</a>
-    <a class="button is-primary" href="/invoices/edit/{{ $invoice->id }}">Finalize Invoice</a>
-    @else
-    <a disabled class="button is-danger">Send Invoice</a>
-    <a disabled class="button is-primary">Finalize Invoice</a>
-    @endif
-</div>
-
-</div>
-</div>
 
 </div>
 
