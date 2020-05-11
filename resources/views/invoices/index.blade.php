@@ -40,11 +40,12 @@
 { "data": "company" },
 { "data": "user_name" },
 { "data": "invoice_date" },
-{ "data": "total",
-"fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
-$(nTd).html("<span class='total-due'>" + oData.total + "</span>");
-}
-},
+{ "data": "total" },
+// { "data": "total",
+// "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
+// $(nTd).html("<span class='total-due'>" + oData.total + "</span>");
+// }
+// },
 { "data": "status",
 "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
 if(oData.status == 1) {
