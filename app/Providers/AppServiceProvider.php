@@ -787,14 +787,14 @@ class AppServiceProvider extends ServiceProvider
                         'default' => false,
                     ],
                     [
-                        'name' => 'Emails History',
+                        'name' => 'Email History',
                         'link' => '/your-emails',
                         'sub' => false,
                         'icon' => 'flaticon-mail',
                         'default' => false,
                     ],
                     [
-                        'name' => 'Your Invoices',
+                        'name' => 'Invoice History',
                         'link' => '/your-invoices',
                         'sub' => false,
                         'icon' => 'flaticon-mail-2',
@@ -906,14 +906,14 @@ class AppServiceProvider extends ServiceProvider
                         'default' => false,
                     ],
                     [
-                        'name' => 'Emails History',
+                        'name' => 'Email History',
                         'link' => '/your-emails',
                         'sub' => false,
                         'icon' => 'flaticon-mail',
                         'default' => false,
                     ],
                     [
-                        'name' => 'Your Invoices',
+                        'name' => 'Invoice History',
                         'link' => '/your-invoices',
                         'sub' => false,
                         'icon' => 'flaticon-mail-2',

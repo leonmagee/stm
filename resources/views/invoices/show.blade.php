@@ -149,14 +149,14 @@
 
         @if(\Auth::user()->isAdmin())
         <div class="stm_imv__finalize">
-          @if($invoice->status < 4) <a href="#" class="modal-open button is-danger">Send Invoice</a>
+          @if($invoice->status < 4) <a href="#" class="modal-open button is-danger">Email Invoice</a>
             @if($invoice->status < 3) <a class="button is-primary" href="/invoices/edit/{{ $invoice->id }}">Finalize
               Invoice</a>
               @else
               <a disabled class="button is-primary">Finalize Invoice</a>
               @endif
               @else
-              <a disabled class="button is-danger">Send Invoice</a>
+              <a disabled class="button is-danger">Email Invoice</a>
               <a disabled class="button is-primary">Finalize Invoice</a>
               @endif
         </div>
@@ -196,7 +196,7 @@
       </div>
     </div>
   </div>
-  <button class="button is-danger call-loader" type="submit">Send Invoice</button>
+  <button class="button is-danger call-loader" type="submit">Email Invoice</button>
   <a href="#" class="modal-close-button button is-primary">Cancel</a>
 </form>
 

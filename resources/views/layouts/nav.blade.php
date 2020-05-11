@@ -141,7 +141,7 @@
 
   }
 
-  if(($item['name'] == 'Invoices') || ($item['name'] == 'Your Invoices')) {
+  if(($item['name'] == 'Invoices') || ($item['name'] == 'Invoice History')) {
 
   $match_array_sims = [
   [

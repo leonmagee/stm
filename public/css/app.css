@@ -20474,6 +20474,10 @@ body.stm-body.about .about-img-wrap img {
   margin: 1.5em 0 0.2em;
 }
 
+.stm_inv .stm_imv__finalize a {
+  margin-right: 1em;
+}
+
 .invoice-modal-flex .field {
   margin-bottom: 1.5em;
 }

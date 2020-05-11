@@ -67,7 +67,7 @@
         </div>
       </div>
       <div class="stm_imv__finalize">
-        <a href="#" class="modal-open button is-danger">Send Invoice Email</a>
+        <a href="#" class="modal-open button is-danger">Email Invoice</a>
       </div>
     </div>
   </div>
@@ -82,7 +82,7 @@
 
 <form action="/invoice/finalize_user/{{ $invoice->id }}" method="POST" class="stm_imv__finalize">
   @csrf
-  <button class="button is-danger call-loader" type="submit">Send Invoice</button>
+  <button class="button is-danger call-loader" type="submit">Email Invoice</button>
   <a href="#" class="modal-close-button button is-primary">Cancel</a>
 </form>
 
