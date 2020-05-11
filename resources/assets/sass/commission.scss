@@ -50,6 +50,7 @@
     }
     .com-bar__item {
         width: 100%;
+        border-bottom: 1px solid #ccc;
         @media (min-width: $screen-lg) {
             width: auto;
         }
@@ -70,9 +71,14 @@
         }
         &.com-bar__item--spiff {
             flex: 1 0 10%;
+            border-bottom: none;
         }
         &.com-bar__item--total {
             background-color: $color-green;
+            border-bottom: none;
+        }
+        &:last-child {
+            border-right: 1px solid #ccc;
         }
     }
     .com-bar__value {
@@ -133,7 +139,7 @@
         width: auto;
     }
     &.com-text--border {
-        border-bottom: 1px solid #ccc;
+        //border-bottom: 1px solid #ccc;
         @media (min-width: $screen-lg) {
             border-right: 1px solid #ccc;
         }
