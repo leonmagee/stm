@@ -276,13 +276,13 @@ export default class AllUsers extends Component {
                             <a href={linkUrl}>{item.company}</a>
                         </div>
                         <div className="divider" />
-                        <div className="detail">{item.name}</div>
+                        <div className="detail name">{item.name}</div>
                         <div className="divider hide-mobile" />
-                        <div className="detail hide-mobile">{item.email}</div>
+                        <div className="detail hide-mobile email">{item.email}</div>
                         <div className="divider hide-mobile" />
-                        <div className="detail hide-mobile">{item.phone}</div>
+                        <div className="detail hide-mobile phone">{item.phone}</div>
                         <div className="divider hide-mobile" />
-                        <div className="detail">
+                        <div className="detail balance">
                           <a className="balance" onClick={() => this.openModal(item.id)}>{balance}</a>
                         </div>
                     </div>

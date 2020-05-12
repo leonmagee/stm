@@ -35,11 +35,11 @@ export default class AllUsersAgents extends Component {
                             <a href={linkUrl}>{item.company}</a>
                         </div>
                         <div className="divider" />
-                        <div className="detail">{item.name}</div>
+                        <div className="detail name">{item.name}</div>
                         <div className="divider hide-mobile" />
-                        <div className="detail hide-mobile">{item.email}</div>
+                        <div className="detail email hide-mobile">{item.email}</div>
                         <div className="divider hide-mobile" />
-                        <div className="detail hide-mobile">{item.phone}</div>
+                        <div className="detail phone hide-mobile">{item.phone}</div>
                         <div className="divider hide-mobile" />
                         <div className="detail balance">{balance}</div>
                     </div>

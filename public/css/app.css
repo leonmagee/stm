@@ -18766,15 +18766,39 @@ table.dataTable tr td .invoice-view {
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
+  font-size: 0.9em;
 }
 
 .allUsersList .allUsersItem .detail.balance {
   color: #05c290;
 }
 
+.allUsersList .allUsersItem .detail.name {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 1 15%;
+          flex: 0 1 15%;
+}
+
+.allUsersList .allUsersItem .detail.email {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 1 23%;
+          flex: 0 1 23%;
+}
+
+.allUsersList .allUsersItem .detail.phone {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 1 10%;
+          flex: 0 1 10%;
+}
+
+.allUsersList .allUsersItem .detail.balance {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 1 6%;
+          flex: 0 1 6%;
+}
+
 .allUsersList .allUsersItem .detail a.balance {
   min-width: 6em;
-  text-align: right;
   display: inline-block;
   color: #05c290;
 }

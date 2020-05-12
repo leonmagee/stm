@@ -40,13 +40,26 @@
         .detail {
             padding: 15px 5px;
             flex: 1;
+            font-size: 0.9em;
             &.balance {
                 color: $color-green-text;
+            }
+            &.name {
+                flex: 0 1 15%;
+            }
+            &.email {
+                flex: 0 1 23%;
+            }
+            &.phone {
+                flex: 0 1 10%;
+            }
+            &.balance {
+                flex: 0 1 6%;
             }
             a {
                 &.balance {
                     min-width: 6em;
-                    text-align: right;
+                    //text-align: right;
                     display: inline-block;
                     color: $color-green-text;
                 }

@@ -86367,25 +86367,25 @@ var AllUsers = function (_Component) {
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div', { className: 'divider' }),
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                             'div',
-                            { className: 'detail' },
+                            { className: 'detail name' },
                             item.name
                         ),
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div', { className: 'divider hide-mobile' }),
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                             'div',
-                            { className: 'detail hide-mobile' },
+                            { className: 'detail hide-mobile email' },
                             item.email
                         ),
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div', { className: 'divider hide-mobile' }),
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                             'div',
-                            { className: 'detail hide-mobile' },
+                            { className: 'detail hide-mobile phone' },
                             item.phone
                         ),
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div', { className: 'divider hide-mobile' }),
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                             'div',
-                            { className: 'detail' },
+                            { className: 'detail balance' },
                             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                                 'a',
                                 { className: 'balance', onClick: function onClick() {
@@ -111198,19 +111198,19 @@ var AllUsersNotAdmin = function (_Component) {
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div', { className: 'divider' }),
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                             'div',
-                            { className: 'detail' },
+                            { className: 'detail name' },
                             item.name
                         ),
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div', { className: 'divider hide-mobile' }),
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                             'div',
-                            { className: 'detail hide-mobile' },
+                            { className: 'detail email hide-mobile' },
                             item.email
                         ),
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div', { className: 'divider hide-mobile' }),
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                             'div',
-                            { className: 'detail hide-mobile' },
+                            { className: 'detail phone hide-mobile' },
                             item.phone
                         ),
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div', { className: 'divider hide-mobile' }),
@@ -111437,19 +111437,19 @@ var AllUsersAgents = function (_Component) {
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div', { className: 'divider' }),
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                         'div',
-                        { className: 'detail' },
+                        { className: 'detail name' },
                         item.name
                     ),
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div', { className: 'divider hide-mobile' }),
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                         'div',
-                        { className: 'detail hide-mobile' },
+                        { className: 'detail email hide-mobile' },
                         item.email
                     ),
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div', { className: 'divider hide-mobile' }),
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                         'div',
-                        { className: 'detail hide-mobile' },
+                        { className: 'detail phone hide-mobile' },
                         item.phone
                     ),
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div', { className: 'divider hide-mobile' }),
