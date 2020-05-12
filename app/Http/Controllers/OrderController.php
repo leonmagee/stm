@@ -90,9 +90,9 @@ class OrderController extends Controller
         ));
 
         /**
-         * Admin email
+         * Admin and manager email
          */
-        $admin_users = User::getAdminUsers();
+        $admin_users = User::getAdminManageerUsers();
         //dd($admin_users);
         //$admin_users = User::whereIn('id', [1, 2])->get();
         foreach ($admin_users as $admin) {
