@@ -429,7 +429,12 @@ img.email-header-logo {
 }
 
 .invoice-wrap .table.custom tr td {
-    font-size: 1em;
+    font-size: 0.9em;
+}
+
+.invoice-wrap .table.custom tr td.total,
+.invoice-wrap .table.custom tr td.cost {
+    white-space: nowrap;
 }
 
 .invoice-wrap .table.custom tr.item-3 td {

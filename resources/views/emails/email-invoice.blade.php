@@ -49,9 +49,9 @@ Hello {{ $user->name }}, please remit payment to:
       <tr class="item-{{ $item->item }}">
         <td class="item">{{ \App\Helpers::invoice_item($item->item) }}</td>
         <td class="desc-column">{{ $item->description }}</td>
-        <td>${{ number_format($item->cost, 2) }}</td>
+        <td class="cost">${{ number_format($item->cost, 2) }}</td>
         <td>{{ $item->quantity }}</td>
-        <td>@if($item->item ==
+        <td class="total">@if($item->item ==
           3)-@endif${{ number_format(($item->cost * $item->quantity), 2) }}</td>
       </tr>
       @endforeach
