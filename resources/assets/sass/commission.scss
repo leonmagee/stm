@@ -67,7 +67,14 @@
             background-color: $color-yellow;
         }
         &.com-bar__item--lyca {
-            background-color: #ccc;
+            //background-color: #ccc;
+            background-color: #2f6eb5;
+            // background: rgb(39, 90, 140);
+            // background: linear-gradient(
+            //     180deg,
+            //     rgba(39, 90, 140, 1) 0%,
+            //     rgba(86, 175, 92, 1) 100%
+            // );
         }
         &.com-bar__item--spiff {
             flex: 1 0 10%;

@@ -129,7 +129,7 @@
       @foreach($lyca_plans as $plan)
       <div class="com-bar">
         <div class="com-bar__item com-bar__item--lyca com-bar__img com-bar__item--padding">
-          <img class="lyca" src="{{ URL::asset('img/lyca-mobile.png') }}" />
+          <img class="lyca" src="{{ URL::asset('img/lyca-mobile-white.png') }}" />
         </div>
         <div class="com-bar__item">
           <div class="com-text com-text--border">
