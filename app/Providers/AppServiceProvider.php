@@ -475,6 +475,13 @@ class AppServiceProvider extends ServiceProvider
                         'icon' => 'flaticon-group',
                         'default' => '/all-users',
                     ],
+                    [
+                        'name' => 'Products',
+                        'link' => 'products',
+                        'sub' => false,
+                        'icon' => 'flaticon-wifi',
+                        'default' => false,
+                    ],
                     // [
                     //     'name' => '2nd Recharge',
                     //     'link' => '/recharge-data',

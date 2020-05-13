@@ -20517,6 +20517,22 @@ body.stm-body.about .about-img-wrap img {
   width: 100%;
 }
 
+.products {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.products .products__item {
+  border: 2px solid #bbb;
+  padding: 1em;
+  border-radius: 10px;
+  font-size: 1.2em;
+}
+
 .xdsoft_datetimepicker {
   -webkit-box-shadow: 0 5px 15px -5px rgba(0, 0, 0, 0.506);
           box-shadow: 0 5px 15px -5px rgba(0, 0, 0, 0.506);

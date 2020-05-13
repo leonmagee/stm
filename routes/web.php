@@ -24,6 +24,10 @@ Route::get('about', 'LoggedOutController@about')->name('about');
 //Route::get('commission', 'HomeController@commission')->name('commission');
 Route::get('/charts', 'HomeController@index')->name('charts');
 
+Route::group(['middleware' => 'App\Http\Middleware\LockOutUsersManagers'], function () {
+    Route::get('products', 'ProductController@index');
+});
+
 /**
  * Plans (commission)
  */

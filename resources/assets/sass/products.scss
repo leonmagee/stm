@@ -1,0 +1,10 @@
+.products {
+    display: flex;
+    justify-content: space-between;
+    .products__item {
+        border: 2px solid #bbb;
+        padding: 1em;
+        border-radius: 10px;
+        font-size: 1.2em;
+    }
+}
