@@ -4,7 +4,13 @@
 
 <div class="products">
   @foreach($products as $product)
-  <div class="products__item">{{ $product->name }}</div>
+  <div class="product">
+    <div class="product__image"><i class="far fa-image"></i></div>
+    <div class="product__title">{{ $product->name }}</div>
+    <div class="product__cost">${{ number_format($product->cost, 2) }}</div>
+
+
+  </div>
   @endforeach
 </div>
 

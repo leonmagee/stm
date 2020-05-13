@@ -221,6 +221,19 @@ class InvoiceController extends Controller
             $user
         ));
 
+        $admins = User::getAdminManageerUsers();
+        foreach ($admins as $admin) {
+            \Mail::to($admin)->send(new InvoiceEmail(
+                $user,
+                $invoice,
+                $subtotal,
+                $discount,
+                $total,
+                false,
+                $admin
+            ));
+        }
+
         if ($email_1) {
             \Mail::to($email_1)->send(new InvoiceEmail(
                 $user,
