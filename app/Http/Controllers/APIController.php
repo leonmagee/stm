@@ -47,7 +47,7 @@ class APIController extends Controller
 
     public function getNotes()
     {
-        $notes = Note::orderBy('created_at', 'DESC')->get();
+        $notes = Note::orderBy('created_at', 'DESC')->with('user')->get();
         foreach ($notes as $note) {
             if ($note->user) {
                 $user = $note->user->company . ' - ' . $note->user->name;

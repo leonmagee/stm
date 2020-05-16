@@ -11,6 +11,7 @@
     <table id="sims_table" class="stripe compact">
       <thead>
         <tr>
+          <th>Id</th>
           <th>Company</th>
           <th>Note</th>
           <th>Author</th>
@@ -34,6 +35,7 @@
 "ajax": "{!! route('api.notes.index') !!}",
 "order": [[ 0, "desc" ]],
 "columns": [
+{ "data": "id" },
 { "data": "user_name" },
 { "data": "text" },
 { "data": "author" },
