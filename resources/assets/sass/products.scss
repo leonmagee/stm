@@ -1,11 +1,14 @@
+// grid
 .products {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-around;
     .product {
         flex: 0 1 20%;
     }
 }
 
+// product
 .product {
     border: 2px solid #bbb;
     border-radius: 10px;
@@ -21,13 +24,23 @@
     .product__image {
         height: 200px;
         width: 100%;
-        background-color: #ddd;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        i {
-            color: #999;
-            font-size: 3em;
+        &.product__image--url {
+            background-color: #fff;
+            text-align: center;
+            padding: 5px 0;
+            img {
+                max-height: 190px;
+            }
+        }
+        &.product__image--default {
+            background-color: #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            i {
+                color: #999;
+                font-size: 3em;
+            }
         }
     }
     .product__cost {

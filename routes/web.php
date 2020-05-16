@@ -26,6 +26,11 @@ Route::get('/charts', 'HomeController@index')->name('charts');
 
 Route::group(['middleware' => 'App\Http\Middleware\LockOutUsersManagers'], function () {
     Route::get('products', 'ProductController@index');
+    Route::get('products/{product}', 'ProductController@show');
+    Route::get('product-new', 'ProductController@create');
+    Route::post('product-new', 'ProductController@store');
+    Route::get('products/edit/{product}', 'ProductController@edit');
+    Route::post('products/edit/{product}', 'ProductController@update');
 });
 
 /**
@@ -85,7 +90,8 @@ Route::post('redeem-credit', 'UserController@redeemCreditSubmit');
 Route::group(['middleware' => 'App\Http\Middleware\LockOutUsers'], function () {
     Route::get('login-tracker', 'UserLoginLogoutController@index');
     Route::get('login-tracker/{user}', 'UserLoginLogoutController@show');
-    Route::get('notes', 'NoteController@index');
+    //Route::get('notes', 'NoteController@index');
+    Route::get('notes', 'NoteController@index_new');
     Route::get('orders', 'OrderController@index');
     Route::get('users/{user}', 'UserController@show');
     Route::post('add-note/{user}', 'NoteController@store');
@@ -141,6 +147,7 @@ Route::get('/api/v1/sims_archive/{id}', 'APIController@getSimsArchive')->name('a
 Route::get('/api/v1/sim_users', 'APIController@getSimUsers')->name('api.sim_users.index');
 Route::get('/api/v1/sim_user/{id}', 'APIController@getSimUser')->name('api.sim_users.index_user');
 Route::get('/api/v1/logins', 'APIController@getLogins')->name('api.logins.index');
+Route::get('/api/v1/notes', 'APIController@getNotes')->name('api.notes.index');
 Route::get('/api/v1/balance', 'APIController@getBalanceChanges')->name('api.balance.index');
 Route::get('/api/v1/balance-show/{user}', 'APIController@getBalanceChangesShow')->name('api.balance.show');
 Route::get('/api/v1/balance-user', 'APIController@getBalanceChangesUser')->name('api.balance.user');

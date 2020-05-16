@@ -341,3 +341,30 @@ body.stm-body {
         }
     }
 }
+
+.product-categories-checkboxes {
+    .control {
+        display: flex;
+        flex-wrap: wrap;
+        //justify-content: space-around;
+        .category-item {
+            border-radius: 7px;
+            padding: 0.1em 0.8em 0.2em 0.7em;
+            display: flex;
+            align-items: center;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            margin: 0 1em 1em 0;
+            label {
+                line-height: 2em;
+                margin: 0;
+                padding-top: 0.1em;
+                @include no_select;
+            }
+            input {
+                font-size: 2em;
+                margin-right: 0.2em;
+            }
+        }
+    }
+}

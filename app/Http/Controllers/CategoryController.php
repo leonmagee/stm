@@ -2,16 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\User;
-use App\UserLoginLogout;
+use App\Category;
 use Illuminate\Http\Request;
 
-class UserLoginLogoutController extends Controller
+class CategoryController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
     /**
      * Display a listing of the resource.
      *
@@ -19,8 +14,7 @@ class UserLoginLogoutController extends Controller
      */
     public function index()
     {
-        //$logs = UserLoginLogout::orderBy('id', 'DESC')->get();
-        return view('login_tracker.index');
+        //
     }
 
     /**
@@ -47,26 +41,21 @@ class UserLoginLogoutController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\UserLoginLogout  $userLoginLogout
+     * @param  \App\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function show(User $user)
+    public function show(Category $category)
     {
-        $logs = UserLoginLogout::where('user_id', $user->id)->get();
-        $data = true;
-        if ($logs->isEmpty()) {
-            $data = false;
-        }
-        return view('login_tracker.show', compact('user', 'data'));
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\UserLoginLogout  $userLoginLogout
+     * @param  \App\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function edit(UserLoginLogout $userLoginLogout)
+    public function edit(Category $category)
     {
         //
     }
@@ -75,10 +64,10 @@ class UserLoginLogoutController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\UserLoginLogout  $userLoginLogout
+     * @param  \App\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, UserLoginLogout $userLoginLogout)
+    public function update(Request $request, Category $category)
     {
         //
     }
@@ -86,10 +75,10 @@ class UserLoginLogoutController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\UserLoginLogout  $userLoginLogout
+     * @param  \App\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function destroy(UserLoginLogout $userLoginLogout)
+    public function destroy(Category $category)
     {
         //
     }

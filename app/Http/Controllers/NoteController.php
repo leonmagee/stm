@@ -26,6 +26,17 @@ class NoteController extends Controller
     }
 
     /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index_new()
+    {
+        //$notes = Note::orderBy('created_at', 'DESC')->get();
+        return view('notes.index-datatables');
+    }
+
+    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response

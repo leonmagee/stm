@@ -345,6 +345,17 @@ class AppServiceProvider extends ServiceProvider
                 ],
             ];
 
+            $products_sub = [
+                [
+                    'name' => 'Products',
+                    'link' => '/products',
+                ],
+                [
+                    'name' => 'Create Product',
+                    'link' => '/product-new',
+                ],
+            ];
+
             $settings = Settings::first();
 
             $site = $settings->get_site_object()->name;
@@ -477,10 +488,10 @@ class AppServiceProvider extends ServiceProvider
                     ],
                     // [
                     //     'name' => 'Products',
-                    //     'link' => 'products',
-                    //     'sub' => false,
+                    //     'link' => false,
+                    //     'sub' => $products_sub,
                     //     'icon' => 'flaticon-wifi',
-                    //     'default' => false,
+                    //     'default' => '/products',
                     // ],
                     // [
                     //     'name' => '2nd Recharge',

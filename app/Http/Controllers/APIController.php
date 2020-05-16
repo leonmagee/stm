@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\BalanceTracker;
 use App\Helpers;
 use App\Invoice;
+use App\Note;
 use App\ReportType;
 use App\Sim;
 use App\SimMaster;
@@ -42,6 +43,21 @@ class APIController extends Controller
         $logs = UserLoginLogout::with('user')->get();
 
         return datatables($logs)->make(true);
+    }
+
+    public function getNotes()
+    {
+        $notes = Note::orderBy('created_at', 'DESC')->get();
+        foreach ($notes as $note) {
+            if ($note->user) {
+                $user = $note->user->company . ' - ' . $note->user->name;
+                $note->user_name = $user;
+            } else {
+                $note->user_name = '';
+            }
+            $note->date = $note->created_at->format('m/d/Y');
+        }
+        return datatables($notes)->make(true);
     }
 
     private static function standardizeBalance($balance)
