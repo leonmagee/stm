@@ -229,7 +229,7 @@ class InvoiceController extends Controller
                 $subtotal,
                 $discount,
                 $total,
-                false,
+                true,
                 $admin
             ));
         }
@@ -296,7 +296,7 @@ class InvoiceController extends Controller
             $subtotal,
             $discount,
             $total,
-            false,
+            true,
             $user
         ));
 
