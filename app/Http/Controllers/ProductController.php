@@ -55,13 +55,16 @@ class ProductController extends Controller
         $image_upload = $request->file('upload-image');
         $image_path = $image_upload->getRealPath();
 
-        $image_url = Cloudder::upload($image_path);
-        dd($image_url);
+        $cloudinaryWrapper = Cloudder::upload($image_path);
+        $result = $cloudinaryWrapper->getResult();
+        $url = $result['secure_url'];
+
         //\Cloudder::upload($filename, $publicId, array $options, array $tags);
         $product = Product::create([
             'name' => $request->name,
             'cost' => $request->cost,
             'discount' => $request->discount,
+            'img_url' => $url,
         ]);
         $categories = Category::all();
         foreach ($categories as $cat) {

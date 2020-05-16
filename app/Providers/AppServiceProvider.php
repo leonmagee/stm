@@ -486,13 +486,13 @@ class AppServiceProvider extends ServiceProvider
                         'icon' => 'flaticon-group',
                         'default' => '/all-users',
                     ],
-                    // [
-                    //     'name' => 'Products',
-                    //     'link' => false,
-                    //     'sub' => $products_sub,
-                    //     'icon' => 'flaticon-wifi',
-                    //     'default' => '/products',
-                    // ],
+                    [
+                        'name' => 'Products',
+                        'link' => false,
+                        'sub' => $products_sub,
+                        'icon' => 'flaticon-wifi',
+                        'default' => '/products',
+                    ],
                     // [
                     //     'name' => '2nd Recharge',
                     //     'link' => '/recharge-data',
