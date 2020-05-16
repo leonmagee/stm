@@ -55,11 +55,11 @@ class ProductController extends Controller
         $image_upload = $request->file('upload-image');
         $image_path = $image_upload->getRealPath();
 
-        $cloudinaryWrapper = Cloudder::upload($image_path);
+        //Cloudder::upload($filename, $publicId, array $options, array $tags);
+        $cloudinaryWrapper = Cloudder::upload($image_path, null, ['folder' => 'STM']);
         $result = $cloudinaryWrapper->getResult();
         $url = $result['secure_url'];
 
-        //\Cloudder::upload($filename, $publicId, array $options, array $tags);
         $product = Product::create([
             'name' => $request->name,
             'cost' => $request->cost,

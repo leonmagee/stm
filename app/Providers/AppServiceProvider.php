@@ -25,9 +25,6 @@ class AppServiceProvider extends ServiceProvider
     {
         view()->composer('*', function ($view) {
             $name = str_replace('.', '-', $view->getName());
-            // if ($name == 'auth.login') {
-            //     $name = 'login_template';
-            // }
             view()->share('view_name', $name);
         });
 
@@ -75,12 +72,6 @@ class AppServiceProvider extends ServiceProvider
 
             $report_types = ReportType::query()->orderBy('order_index')->get();
 
-            $monthly_sims_sub = [
-                // [
-                //     'name' => 'All Sims',
-                //     'link' => '/sims'
-                // ]
-            ];
             foreach ($report_types as $report_type) {
 
                 $monthly_sims_sub[] = [
@@ -89,10 +80,6 @@ class AppServiceProvider extends ServiceProvider
                 ];
 
             }
-            // $monthly_sims_sub[] = [
-            //     'name' => 'Add Sim',
-            //     'link' => '/sims/create'
-            // ];
 
             $report_types_sub = [
                 [
@@ -107,17 +94,6 @@ class AppServiceProvider extends ServiceProvider
                     'link' => '/report-types/' . $report_type->id,
                 ];
             }
-
-            // $users_sub = [
-            //     [
-            //         'name' => 'Site Users',
-            //         'link' => '/users',
-            //     ],
-            //     [
-            //         'name' => 'Add New User',
-            //         'link' => '/register',
-            //     ],
-            // ];
 
             $user_sims_sub = [
                 [
@@ -154,10 +130,6 @@ class AppServiceProvider extends ServiceProvider
                     'name' => 'Site Settings',
                     'link' => '/site-settings',
                 ],
-                // [
-                //     'name' => 'Carriers',
-                //     'link' => '/carriers',
-                // ],
                 [
                     'name' => 'Add New Spiff',
                     'link' => '/add-report-type-spiff',
@@ -255,40 +227,6 @@ class AppServiceProvider extends ServiceProvider
                 ],
             ];
 
-            //[
-            //     'name' => '2nd Recharge',
-            //     'link' => '/recharge-data',
-            //     'sub' => false,
-            //     'icon' => 'flaticon-electric-plug',
-            //     'default' => false,
-            // ],
-            // [
-            //     'name' => '3rd Recharge',
-            //     'link' => '/3rd-recharge-data',
-            //     'sub' => false,
-            //     'icon' => 'flaticon-charging-battery',
-            //     'default' => false,
-            // ],
-
-            // $emails_sub = [
-            //     [
-            //         'name' => 'Email Blast',
-            //         'link' => '/email-blast',
-            //     ],
-            //     [
-            //         'name' => 'Email Tracker',
-            //         'link' => '/email-tracker',
-            //     ],
-            //     [
-            //         'name' => 'Login Tracker',
-            //         'link' => '/login-tracker',
-            //     ],
-            //     [
-            //         'name' => 'Transaction Tracker',
-            //         'link' => '/transaction-tracker',
-            //     ],
-            // ];
-
             $trackers_sub = [
                 [
                     'name' => 'Email Tracker',
@@ -302,10 +240,6 @@ class AppServiceProvider extends ServiceProvider
                     'name' => 'Credit History',
                     'link' => '/transaction-tracker',
                 ],
-                // [
-                //     'name' => 'Credit Tracker',
-                //     'link' => '/credit-tracker',
-                // ],
             ];
 
             $emails_sub_manager = [
@@ -360,33 +294,10 @@ class AppServiceProvider extends ServiceProvider
 
             $site = $settings->get_site_object()->name;
 
-            // $uploads_sub = [
-            //     [
-            //         'name' => 'Upload to All Users',
-            //         'link' => '/sims/upload-all',
-            //     ],
-            //     [
-            //         'name' => 'Upload to ' . $site . ' Only',
-            //         'link' => '/sims/upload',
-            //     ],
-            // ];
-
-            // $recharge_data = [
-            //     [
-            //         'name' => '2nd Recharge Data',
-            //         'link' => '/recharge-data'
-            //     ],
-            //     [
-            //         'name' => '3rd Recharge Data',
-            //         'link' => '/3rd-recharge-data'
-            //     ]
-            // ];
-
             $user = \Auth::user();
 
             if ($user->isAdmin()) {
 
-                // complete menu
                 $menu_array = [
                     [
                         'name' => 'Homepage',
@@ -395,13 +306,6 @@ class AppServiceProvider extends ServiceProvider
                         'icon' => 'flaticon-home',
                         'default' => false,
                     ],
-                    // [
-                    //     'name' => 'Charts',
-                    //     'link' => '/charts',
-                    //     'sub' => false,
-                    //     'icon' => 'flaticon-analytics',
-                    //     'default' => false,
-                    // ],
                     [
                         'name' => 'Notes',
                         'link' => '/notes',
@@ -486,26 +390,12 @@ class AppServiceProvider extends ServiceProvider
                         'icon' => 'flaticon-group',
                         'default' => '/all-users',
                     ],
-                    [
-                        'name' => 'Products',
-                        'link' => false,
-                        'sub' => $products_sub,
-                        'icon' => 'flaticon-wifi',
-                        'default' => '/products',
-                    ],
                     // [
-                    //     'name' => '2nd Recharge',
-                    //     'link' => '/recharge-data',
-                    //     'sub' => false,
-                    //     'icon' => 'flaticon-electric-plug',
-                    //     'default' => false,
-                    // ],
-                    // [
-                    //     'name' => '3rd Recharge',
-                    //     'link' => '/3rd-recharge-data',
-                    //     'sub' => false,
-                    //     'icon' => 'flaticon-charging-battery',
-                    //     'default' => false,
+                    //     'name' => 'Products',
+                    //     'link' => false,
+                    //     'sub' => $products_sub,
+                    //     'icon' => 'flaticon-wifi',
+                    //     'default' => '/products',
                     // ],
                 ];
 
@@ -519,13 +409,6 @@ class AppServiceProvider extends ServiceProvider
                         'icon' => 'flaticon-home',
                         'default' => false,
                     ],
-                    // [
-                    //     'name' => 'Charts',
-                    //     'link' => '/charts',
-                    //     'sub' => false,
-                    //     'icon' => 'flaticon-analytics',
-                    //     'default' => false,
-                    // ],
                     [
                         'name' => 'Notes',
                         'link' => '/notes',
@@ -582,20 +465,6 @@ class AppServiceProvider extends ServiceProvider
                         'icon' => 'flaticon-growth',
                         'default' => '/report-totals',
                     ],
-                    // [
-                    //     'name' => 'Report Totals',
-                    //     'link' => '/report-totals',
-                    //     'sub' => false,
-                    //     'icon' => 'flaticon-growth',
-                    //     'default' => false,
-                    // ],
-                    // [
-                    //     'name' => 'User Reports',
-                    //     'link' => '/reports',
-                    //     'sub' => false,
-                    //     'icon' => 'flaticon-bar-chart',
-                    //     'default' => false,
-                    // ],
                     [
                         'name' => 'Archives',
                         'link' => '/archives',
@@ -617,20 +486,6 @@ class AppServiceProvider extends ServiceProvider
                         'icon' => 'flaticon-group',
                         'default' => false,
                     ],
-                    // [
-                    //     'name' => '2nd Recharge',
-                    //     'link' => '/recharge-data',
-                    //     'sub' => false,
-                    //     'icon' => 'flaticon-electric-plug',
-                    //     'default' => false,
-                    // ],
-                    // [
-                    //     'name' => '3rd Recharge',
-                    //     'link' => '/3rd-recharge-data',
-                    //     'sub' => false,
-                    //     'icon' => 'flaticon-charging-battery',
-                    //     'default' => false,
-                    // ],
                 ];
 
             } elseif ($user->isEmployee()) {
@@ -643,13 +498,6 @@ class AppServiceProvider extends ServiceProvider
                         'icon' => 'flaticon-home',
                         'default' => false,
                     ],
-                    // [
-                    //     'name' => 'Charts',
-                    //     'link' => '/charts',
-                    //     'sub' => false,
-                    //     'icon' => 'flaticon-analytics',
-                    //     'default' => false,
-                    // ],
                     [
                         'name' => 'Notes',
                         'link' => '/notes',
@@ -699,20 +547,6 @@ class AppServiceProvider extends ServiceProvider
                         'icon' => 'flaticon-growth',
                         'default' => '/report-totals',
                     ],
-                    // [
-                    //     'name' => 'Report Totals',
-                    //     'link' => '/report-totals',
-                    //     'sub' => false,
-                    //     'icon' => 'flaticon-growth',
-                    //     'default' => false,
-                    // ],
-                    // [
-                    //     'name' => 'User Reports',
-                    //     'link' => '/reports',
-                    //     'sub' => false,
-                    //     'icon' => 'flaticon-bar-chart',
-                    //     'default' => false,
-                    // ],
                     [
                         'name' => 'Archives',
                         'link' => '/archives',
@@ -734,20 +568,6 @@ class AppServiceProvider extends ServiceProvider
                         'icon' => 'flaticon-group',
                         'default' => false,
                     ],
-                    // [
-                    //     'name' => '2nd Recharge',
-                    //     'link' => '/recharge-data',
-                    //     'sub' => false,
-                    //     'icon' => 'flaticon-electric-plug',
-                    //     'default' => false,
-                    // ],
-                    // [
-                    //     'name' => '3rd Recharge',
-                    //     'link' => '/3rd-recharge-data',
-                    //     'sub' => false,
-                    //     'icon' => 'flaticon-charging-battery',
-                    //     'default' => false,
-                    // ],
                 ];
 
             } elseif ($agents = $user->master_agent_site) {
@@ -762,13 +582,6 @@ class AppServiceProvider extends ServiceProvider
                         'icon' => 'flaticon-home',
                         'default' => false,
                     ],
-                    // [
-                    //     'name' => 'Charts',
-                    //     'link' => '/charts',
-                    //     'sub' => false,
-                    //     'icon' => 'flaticon-analytics',
-                    //     'default' => false,
-                    // ],
                     [
                         'name' => 'Your Profile',
                         'link' => '/profile',
@@ -881,13 +694,6 @@ class AppServiceProvider extends ServiceProvider
                         'icon' => 'flaticon-home',
                         'default' => false,
                     ],
-                    // [
-                    //     'name' => 'Charts',
-                    //     'link' => '/charts',
-                    //     'sub' => false,
-                    //     'icon' => 'flaticon-analytics',
-                    //     'default' => false,
-                    // ],
                     [
                         'name' => 'Your Profile',
                         'link' => '/profile',
@@ -974,7 +780,6 @@ class AppServiceProvider extends ServiceProvider
                 'profile' => 'settings',
             ];
 
-            //$view->with('menu', $menu_array);
             $view->with(['menu' => $menu_array, 'path' => $path, 'match_array' => $match_array]);
         });
 
@@ -997,7 +802,6 @@ class AppServiceProvider extends ServiceProvider
                 ->with('company', $settings->company)
                 ->with('mode', $settings->mode)
                 ->with('site', $site);
-            //->with('site', $settings->site->name);
         });
 
         view()->composer(['users.edit', 'users.edit_profile', 'registration.create'], function ($view) {

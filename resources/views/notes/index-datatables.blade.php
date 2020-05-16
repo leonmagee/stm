@@ -36,7 +36,10 @@
 "order": [[ 0, "desc" ]],
 "columns": [
 { "data": "id" },
-{ "data": "user_name" },
+{ "data": "user_name", "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
+$(nTd).html("<a href='/users/" + oData.user.id + "'>" + oData.user_name + "</a>");
+}
+},
 { "data": "text" },
 { "data": "author" },
 { "data": "date" }
