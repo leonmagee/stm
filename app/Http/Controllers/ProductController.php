@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Category;
 use App\Product;
 use App\ProductCategories;
+use App\SubCategory;
 use Cloudder;
 use Illuminate\Http\Request;
 
@@ -34,7 +35,8 @@ class ProductController extends Controller
     public function create()
     {
         $categories = Category::all();
-        return view('products.create', compact('categories'));
+        $sub_categories = SubCategory::all();
+        return view('products.create', compact('categories', 'sub_categories'));
     }
 
     /**

@@ -56,10 +56,6 @@
             </div>
           </div>
 
-
-
-
-
           <div class="field full product-categories-checkboxes">
             <label class="label">Categories<span class="required">*</span></label>
             <div class="control">
@@ -71,6 +67,19 @@
               @endforeach
             </div>
           </div>
+
+          <div class="field full product-categories-checkboxes">
+            <label class="label">Sub Categories<span class="required">*</span></label>
+            <div class="control">
+              @foreach($sub_categories as $category)
+              <div class="category-item">
+                <input type="checkbox" id="category-{{ $category->id }}" name="category-{{ $category->id }}" />
+                <label class="label" for="category-{{ $category->id }}">{{ $category->name }}</label>
+              </div>
+              @endforeach
+            </div>
+          </div>
+
         </div>
         <div class="field flex-margin">
           <div class="control">

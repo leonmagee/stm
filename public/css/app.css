@@ -16710,6 +16710,14 @@ label.panel-block:hover {
   margin-top: 2em;
 }
 
+.nowrap {
+  white-space: nowrap;
+}
+
+.padding-right-10 {
+  padding-right: 10px;
+}
+
 body.stm-body h1.title {
   text-align: center;
   font-size: 1em;

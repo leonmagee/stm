@@ -50,7 +50,7 @@ class APIController extends Controller
         $notes = Note::orderBy('created_at', 'DESC')->with('user')->get();
         foreach ($notes as $note) {
             if ($note->user) {
-                $user = $note->user->company . ' - ' . $note->user->name;
+                $user = $note->user->company;
                 $note->user_name = $user;
             } else {
                 $note->user_name = '';

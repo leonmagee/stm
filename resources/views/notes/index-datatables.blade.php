@@ -37,7 +37,7 @@
 "columns": [
 { "data": "id" },
 { "data": "user_name", "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
-$(nTd).html("<a href='/users/" + oData.user.id + "'>" + oData.user_name + "</a>");
+$(nTd).html("<a class='nowrap padding-right-10' href='/users/" + oData.user.id + "'>" + oData.user_name + "</a>");
 }
 },
 { "data": "text" },
