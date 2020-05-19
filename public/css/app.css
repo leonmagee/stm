@@ -20638,6 +20638,54 @@ body.stm-body.about .about-img-wrap img {
   padding: 1em;
 }
 
+.form-wrapper-inner .form-wrap .form-wrap-flex.form-wrap-flex-products-top .field.name {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+.form-wrapper-inner .form-wrap .form-wrap-flex.form-wrap-flex-products-top .field.cost {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 1 10%;
+          flex: 0 1 10%;
+}
+
+.form-wrapper-inner .form-wrap .form-wrap-flex.form-wrap-flex-products-top .field.discount {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 1 10%;
+          flex: 0 1 10%;
+}
+
+.form-wrapper-inner .form-wrap .form-wrap-flex.form-wrap-flex-image-attributes {
+  max-width: 70%;
+}
+
+.sub-category-area {
+  display: none;
+  border-top: 1px solid #e7e7e7;
+  padding-top: 0.5em !important;
+}
+
+.sub-category-area.active {
+  display: block;
+}
+
+#repeater-field-wrap p.control {
+  width: 100%;
+}
+
+#repeater-field-wrap .field.has-addons {
+  margin: 0;
+}
+
+#repeater-field-wrap button {
+  border-radius: 0 4px 4px 0;
+}
+
+#repeater-field-wrap .entry.input-group {
+  margin-bottom: 10px;
+}
+
 .xdsoft_datetimepicker {
   -webkit-box-shadow: 0 5px 15px -5px rgba(0, 0, 0, 0.506);
           box-shadow: 0 5px 15px -5px rgba(0, 0, 0, 0.506);

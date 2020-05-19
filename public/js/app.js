@@ -30346,6 +30346,15 @@ __webpack_require__(176);
 __webpack_require__(177);
 
 /**
+ * Categories Toggle
+ */
+$('.category-area input').click(function () {
+  var id = $(this).attr('cat_num');
+  $('.sub-category-' + id).toggleClass('active');
+  // console.log('clicking', id);
+});
+
+/**
  * Date Time Picker
  */
 jQuery.datetimepicker.setLocale("en");
@@ -30438,6 +30447,28 @@ $('.redeem-credit-modal').click(function () {
       $(this).parent().fadeOut();
     });
   }
+});
+
+/**
+ * Repeater Field
+ */
+$(document).on('click', '.add-attribute', function (e) {
+  e.preventDefault();
+
+  var nameVal = $(this).parents('.entry:first').find('input.name').val();
+  var creditVal = $(this).parents('.entry:first').find('input.credit').val();
+
+  if (nameVal !== '' && creditVal !== '') {
+    var controlForm = $('#repeater-field-wrap:first'),
+        currentEntry = $(this).parents('.entry:first'),
+        newEntry = $(currentEntry.clone()).appendTo(controlForm);
+    newEntry.find('input').val('');
+    controlForm.find('.entry:not(:last) .add-attribute').removeClass('btn-info add-attribute').addClass('btn-danger remove-attribute').find('i').removeClass('fa-plus').addClass('fa-times');
+  }
+}).on('click', '.remove-attribute', function (e) {
+  e.preventDefault();
+  $(this).parents('.entry:first').remove();
+  return false;
 });
 
 /**

@@ -1,0 +1,19 @@
+.form-wrapper-inner {
+    .form-wrap {
+        .form-wrap-flex.form-wrap-flex-products-top {
+            .field.name {
+                flex: 1;
+            }
+            .field.cost {
+                flex: 0 1 10%;
+            }
+            .field.discount {
+                flex: 0 1 10%;
+            }
+        }
+        .form-wrap-flex.form-wrap-flex-image-attributes {
+            //background: tomato;
+            max-width: 70%;
+        }
+    }
+}

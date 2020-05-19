@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Category;
 use App\Product;
+use App\ProductAttribute;
 use App\ProductCategories;
+use App\ProductSubCategories;
 use App\SubCategory;
 use Cloudder;
 use Illuminate\Http\Request;
@@ -35,8 +37,8 @@ class ProductController extends Controller
     public function create()
     {
         $categories = Category::all();
-        $sub_categories = SubCategory::all();
-        return view('products.create', compact('categories', 'sub_categories'));
+        //$sub_categories = SubCategory::all();
+        return view('products.create', compact('categories'));
     }
 
     /**
@@ -55,12 +57,15 @@ class ProductController extends Controller
             'cost.required' => 'Please enter a Cost.',
         ]);
         $image_upload = $request->file('upload-image');
-        $image_path = $image_upload->getRealPath();
-
-        //Cloudder::upload($filename, $publicId, array $options, array $tags);
-        $cloudinaryWrapper = Cloudder::upload($image_path, null, ['folder' => 'STM']);
-        $result = $cloudinaryWrapper->getResult();
-        $url = $result['secure_url'];
+        if ($image_upload) {
+            $image_path = $image_upload->getRealPath();
+            //Cloudder::upload($filename, $publicId, array $options, array $tags);
+            $cloudinaryWrapper = Cloudder::upload($image_path, null, ['folder' => 'STM']);
+            $result = $cloudinaryWrapper->getResult();
+            $url = $result['secure_url'];
+        } else {
+            $url = '';
+        }
 
         $product = Product::create([
             'name' => $request->name,
@@ -68,16 +73,39 @@ class ProductController extends Controller
             'discount' => $request->discount,
             'img_url' => $url,
         ]);
+
+        foreach ($request->attribute_names as $attribute) {
+            ProductAttribute::create([
+                'product_id' => $product->id,
+                'text' => $attribute,
+            ]);
+        }
+        $cats_array = [];
         $categories = Category::all();
         foreach ($categories as $cat) {
             $key = 'category-' . $cat->id;
             if ($request->$key) {
+                $cats_array[] = $cat->id;
                 ProductCategories::create([
                     'product_id' => $product->id,
                     'category_id' => $cat->id,
                 ]);
             }
         }
+        $sub_categories = SubCategory::all();
+        foreach ($sub_categories as $sub_cat) {
+            $key = 'sub-category-' . $sub_cat->id;
+            if ($request->$key) {
+                $sub_category = SubCategory::find($sub_cat->id);
+                if (in_array($sub_category->category_id, $cats_array)) {
+                    ProductSubCategories::create([
+                        'product_id' => $product->id,
+                        'sub_category_id' => $sub_cat->id,
+                    ]);
+                }
+            }
+        }
+
         session()->flash('message', 'A New Product was Created.');
         return redirect('products');
     }
