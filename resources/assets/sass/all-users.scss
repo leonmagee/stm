@@ -190,6 +190,7 @@
     align-items: center;
     button {
         margin-right: 15px;
+        font-size: 0.8em;
         &:focus {
             outline: none;
         }
@@ -199,9 +200,14 @@
             }
         }
     }
+    select {
+        font-size: 0.8em;
+    }
 
     div.select {
         margin-right: 15px;
+        display: flex;
+        align-items: center;
     }
     .changeSiteForm {
         display: flex;
