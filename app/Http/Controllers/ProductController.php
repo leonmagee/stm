@@ -134,7 +134,12 @@ class ProductController extends Controller
         foreach ($product->categories as $cat) {
             $selected_cats[] = $cat->category_id;
         }
-        return view('products.edit', compact('product', 'categories', 'selected_cats'));
+        $selected_sub_cats = [];
+        foreach ($product->sub_categories as $cat) {
+            $selected_sub_cats[] = $cat->sub_category_id;
+        }
+
+        return view('products.edit', compact('product', 'categories', 'selected_cats', 'selected_sub_cats'));
     }
 
     /**
@@ -153,16 +158,40 @@ class ProductController extends Controller
             'name.required' => 'Please enter a Name.',
             'cost.required' => 'Please enter a Cost.',
         ]);
+
+        $image_upload = $request->file('upload-image');
+        if ($image_upload) {
+            $image_path = $image_upload->getRealPath();
+            $cloudinaryWrapper = Cloudder::upload($image_path, null, ['folder' => 'STM']);
+            $result = $cloudinaryWrapper->getResult();
+            $url = $result['secure_url'];
+        } else {
+            $url = '';
+        }
+
         $product->update([
             'name' => $request->name,
             'cost' => $request->cost,
             'discount' => $request->discount,
+            'img_url' => $url,
         ]);
+
+        // 1. delete all existing attributes... then recreate
+        foreach ($request->attribute_names as $attribute) {
+            ProductAttribute::create([
+                'product_id' => $product->id,
+                'text' => $attribute,
+            ]);
+        }
+
         $categories = Category::all();
+        $cats_array = [];
+
         foreach ($categories as $cat) {
             $key = 'category-' . $cat->id;
             $existing = ProductCategories::where(['product_id' => $product->id, 'category_id' => $cat->id])->first();
             if ($request->$key) {
+                $cats_array[] = $cat->id;
                 if (!$existing) {
                     ProductCategories::create([
                         'product_id' => $product->id,
@@ -173,9 +202,32 @@ class ProductController extends Controller
                 if ($existing) {
                     $existing->delete();
                 }
-                // remove if not selected
             }
         }
+
+        $sub_categories = SubCategory::all();
+        foreach ($sub_categories as $sub_cat) {
+            $key = 'sub-category-' . $sub_cat->id;
+            $existing = ProductSubCategories::where(['product_id' => $product->id, 'sub_category_id' => $sub_cat->id])->first();
+
+            if ($request->$key) {
+                if (!$existing) {
+                    $sub_category = SubCategory::find($sub_cat->id);
+                    if (in_array($sub_category->category_id, $cats_array)) {
+                        ProductSubCategories::create([
+                            'product_id' => $product->id,
+                            'sub_category_id' => $sub_cat->id,
+                        ]);
+                    }
+                }
+            } else {
+                if ($existing) {
+                    $existing->delete();
+                }
+
+            }
+        }
+
         session()->flash('message', 'Product Has Been Updated.');
         return redirect('products');
     }

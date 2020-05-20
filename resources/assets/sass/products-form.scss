@@ -1,5 +1,8 @@
 .form-wrapper-inner {
     .form-wrap {
+        // .form-wrap-flex {
+        //     justify-content: center !important;
+        // }
         .form-wrap-flex.form-wrap-flex-products-top {
             .field.name {
                 flex: 1;
@@ -15,5 +18,38 @@
             //background: tomato;
             max-width: 70%;
         }
+    }
+}
+
+// categories form
+.sub-category-area {
+    display: none;
+    border-top: 1px solid #e7e7e7;
+    padding-top: 0.5em !important;
+    // padding: 0.6em 1em 0 !important;
+    // background-color: #fafafa;
+    // border: 1px solid #ddd;
+    // border-radius: 10px;
+    &.active {
+        display: block;
+        //margin-bottom: 1em;
+    }
+}
+
+.image-attributes-flex {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 1% 0 0.5%;
+    .flex-left {
+        flex: 0 1 70%;
+    }
+    .flex-right {
+        //flex: 0 1 28%;
+    }
+    img#output {
+        width: 300px;
+        height: 300px;
+        background-color: #eee;
+        border: 1px solid #ddd;
     }
 }

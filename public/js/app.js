@@ -30450,6 +30450,18 @@ $('.redeem-credit-modal').click(function () {
 });
 
 /**
+ * Image Preview
+ */
+//onchange = "loadFile(event)"
+$('input#product_upload_image').change(function () {
+  var output = document.getElementById('output');
+  output.src = URL.createObjectURL(event.target.files[0]);
+  output.onload = function () {
+    URL.revokeObjectURL(output.src); // free memory
+  };
+});
+
+/**
  * Repeater Field
  */
 $(document).on('click', '.add-attribute', function (e) {
@@ -30463,7 +30475,7 @@ $(document).on('click', '.add-attribute', function (e) {
         currentEntry = $(this).parents('.entry:first'),
         newEntry = $(currentEntry.clone()).appendTo(controlForm);
     newEntry.find('input').val('');
-    controlForm.find('.entry:not(:last) .add-attribute').removeClass('btn-info add-attribute').addClass('btn-danger remove-attribute').find('i').removeClass('fa-plus').addClass('fa-times');
+    controlForm.find('.entry:not(:last) .add-attribute').removeClass('is-primary add-attribute').addClass('is-danger remove-attribute').find('i').removeClass('fa-plus').addClass('fa-times');
   }
 }).on('click', '.remove-attribute', function (e) {
   e.preventDefault();
@@ -30591,11 +30603,17 @@ $('button.call-loader, ul.sidebar-menu li a[href="/reports"]').click(function ()
 });
 
 // loader for datatables processing
-
 $('#sims_table').on('processing.dt', function (e, settings, processing) {
   if (processing === true) {
     $('.stm-absolute-wrap#loader-wrap').css({ display: 'flex' });
   } else {
+    $('.stm-absolute-wrap#loader-wrap').css({ display: 'none' });
+  }
+});
+
+// hide loader on input validation fail
+$('form input').on('invalid', function (event) {
+  if (event.type === 'invalid') {
     $('.stm-absolute-wrap#loader-wrap').css({ display: 'none' });
   }
 });
