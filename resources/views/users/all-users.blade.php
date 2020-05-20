@@ -8,5 +8,4 @@
 @else
 <div id="allUsersAgents" users='{{ $users }}'></div>
 @endif
-<script src="js/app.js"></script>
 @endsection

@@ -20,6 +20,8 @@ require('./components/AllUsersNotAdmin');
 
 require('./components/AllUsersAgents');
 
+require('./components/Products');
+
 /**
  * Categories Toggle
  */

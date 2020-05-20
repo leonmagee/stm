@@ -165,6 +165,8 @@ class ProductController extends Controller
             $cloudinaryWrapper = Cloudder::upload($image_path, null, ['folder' => 'STM']);
             $result = $cloudinaryWrapper->getResult();
             $url = $result['secure_url'];
+        } elseif ($request->img_url) {
+            $url = $request->img_url;
         } else {
             $url = '';
         }
@@ -176,12 +178,17 @@ class ProductController extends Controller
             'img_url' => $url,
         ]);
 
-        // 1. delete all existing attributes... then recreate
+        // 1. Delete existing attriubtes for product
+        ProductAttribute::where('product_id', $product->id)->delete();
+
+        // 2. Create new attributes
         foreach ($request->attribute_names as $attribute) {
-            ProductAttribute::create([
-                'product_id' => $product->id,
-                'text' => $attribute,
-            ]);
+            if ($attribute) {
+                ProductAttribute::create([
+                    'product_id' => $product->id,
+                    'text' => $attribute,
+                ]);
+            }
         }
 
         $categories = Category::all();
