@@ -26,7 +26,7 @@
       @foreach($h2o_plans as $plan)
       <div class="com-bar">
         <div class="com-bar__item com-bar__item--h2o com-bar__img com-bar__item--padding">
-          <img class="h2o" src="{{ URL::asset('img/h2o-wireless.png') }}" />
+          <img class="h2o" src="{{ URL::asset('img/h2o-logo-square.png') }}" />
         </div>
         <div class="com-bar__item">
           <div class="com-text com-text--border">
