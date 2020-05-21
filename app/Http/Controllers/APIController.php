@@ -48,12 +48,13 @@ class APIController extends Controller
     public function getNotes()
     {
         $notes = Note::orderBy('created_at', 'DESC')->with('user')->get();
-        foreach ($notes as $note) {
+        foreach ($notes as $key => $note) {
             if ($note->user) {
                 $user = $note->user->company;
                 $note->user_name = $user;
             } else {
-                $note->user_name = '';
+                // remove ones without users
+                unset($notes[$key]);
             }
             $note->date = $note->created_at->format('m/d/Y');
         }
