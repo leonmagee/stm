@@ -10,16 +10,19 @@
 
 // product
 .product {
-    border: 2px solid #bbb;
+    //border: 2px solid #bbb;
     border-radius: 10px;
     font-size: 1.2em;
     overflow: hidden;
-    &:hover {
-        cursor: pointer;
-        opacity: 0.7;
-    }
+    background-color: #fafafa;
+    // &:hover {
+    //     cursor: pointer;
+    //     opacity: 0.7;
+    // }
     .product__title {
-        padding: 1em;
+        padding: 0.4em 1em 0;
+        color: #333;
+        font-weight: 600;
     }
     .product__image {
         height: 200px;
@@ -44,6 +47,45 @@
         }
     }
     .product__cost {
+        padding: 0.2em 1em;
+        margin: 0.1em 0;
+        font-size: 1.1em;
+        color: $primary;
+        border-top: 1px solid #eee;
+        border-bottom: 1px solid #eee;
+        font-weight: 600;
+    }
+    .product__footer {
+        display: flex;
+        padding: 0 1em 0.4em;
+        justify-content: space-between;
+        a {
+            font-size: 0.8em;
+            color: $color-red;
+            font-weight: 600;
+        }
+    }
+    .product__attributes {
         padding: 1em;
+        .product__attributes--item {
+            margin: 0.4em 0;
+            i {
+                margin-right: 0.5em;
+            }
+        }
+    }
+    .product__categories {
+        padding: 1em;
+        .product__categories--item {
+            margin: 0.4em 0;
+            i {
+                margin-right: 0.5em;
+            }
+        }
+    }
+    .product__sub_categories {
+        padding-left: 2em;
+        font-size: 0.8em;
+        color: #555;
     }
 }

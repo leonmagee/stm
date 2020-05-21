@@ -26,6 +26,9 @@ class ProductController extends Controller
     public function index()
     {
         $products = Product::all();
+        foreach ($products as $product) {
+            $product->cost_format = number_format($product->cost, 2);
+        }
         return view('products.index', compact('products'));
     }
 

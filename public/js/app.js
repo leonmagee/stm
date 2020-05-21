@@ -111623,15 +111623,54 @@ var Products = function (_Component) {
     key: 'render',
     value: function render() {
       var products = this.state.products.map(function (product, index) {
+        var img_div = '';
+        if (product.img_url) {
+          img_div = __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'div',
+            { className: 'product__image product__image--url' },
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('img', { src: product.img_url })
+          );
+        } else {
+          img_div = __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'div',
+            { className: 'product__image product__image--default' },
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', { className: 'far fa-image' })
+          );
+        }
         return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
           'div',
-          { key: index },
-          product.name
+          { key: index, className: 'product' },
+          img_div,
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'div',
+            { className: 'product__title' },
+            product.name
+          ),
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'div',
+            { className: 'product__cost' },
+            '$',
+            product.cost_format
+          ),
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'div',
+            { className: 'product__footer' },
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+              'a',
+              { href: "/products/" + product.id },
+              'View'
+            ),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+              'a',
+              null,
+              'Add To Cart'
+            )
+          )
         );
       });
       return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
         'div',
-        { className: 'container' },
+        { className: 'products' },
         products
       );
     }

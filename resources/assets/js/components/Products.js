@@ -11,9 +11,26 @@ export default class Products extends Component {
 
     render() {
         const products = this.state.products.map( (product, index) => {
-          return <div key={index}>{product.name}</div>
+          let img_div = '';
+          if(product.img_url) {
+            img_div = <div className="product__image product__image--url"><img src={product.img_url} /></div>
+          } else {
+            img_div = <div className="product__image product__image--default"><i className="far fa-image"></i></div>
+          }
+          return (
+            <div key={index} className="product">
+              {img_div}
+              <div className="product__title">{product.name}</div>
+              <div className="product__cost">${product.cost_format}</div>
+              <div className="product__footer">
+                <a href={"/products/" + product.id}>View</a>
+                {/* <a href={"/products/edit/" + product.id}>Edit</a> */}
+                <a>Add To Cart</a>
+              </div>
+            </div>
+          )
         })
-        return <div className="container">{products}</div>;
+        return <div className="products">{products}</div>;
     }
 }
 
