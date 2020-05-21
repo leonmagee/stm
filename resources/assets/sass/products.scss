@@ -2,9 +2,10 @@
 .products {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
+    //justify-content: space-around;
     .product {
-        flex: 0 1 20%;
+        flex: 0 1 18%;
+        margin: 1%;
     }
 }
 

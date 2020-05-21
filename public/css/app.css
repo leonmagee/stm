@@ -20586,14 +20586,13 @@ body.stm-body.about .about-img-wrap img {
   display: flex;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
 }
 
 .products .product {
   -webkit-box-flex: 0;
-      -ms-flex: 0 1 20%;
-          flex: 0 1 20%;
+      -ms-flex: 0 1 18%;
+          flex: 0 1 18%;
+  margin: 1%;
 }
 
 .product {
