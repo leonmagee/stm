@@ -1,4 +1,8 @@
-// grid
+// grid wrap for products and menu
+.products-outer {
+    display: flex;
+}
+// grid wrap for products
 .products {
     display: flex;
     flex-wrap: wrap;
@@ -7,6 +11,26 @@
         flex: 0 1 18%;
         margin: 1%;
     }
+}
+
+.product-cats {
+    height: 300px;
+    width: 15%;
+    background-color: #333;
+    border: 1px solid #fff;
+    padding: 0.8em 1em;
+    display: none;
+}
+
+.product-cat {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.2em 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    font-weight: 400;
+    font-size: 0.9em;
+    color: #fcfcfc;
 }
 
 // product
@@ -24,6 +48,11 @@
         padding: 0.4em 1em 0;
         color: #333;
         font-weight: 600;
+    }
+    .product__description {
+        padding: 1em;
+        .product__description--text {
+        }
     }
     .product__image {
         height: 200px;

@@ -40,6 +40,14 @@
           </div>
         </div>
 
+        <div class="form-wrap-flex form-wrap-flex-products-top">
+          <div class="field description">
+            <label class="label" for="description">Product Description</label>
+            <div class="control">
+              <textarea class="textarea" id="description" name="description">{{ old('description') }}</textarea>
+            </div>
+          </div>
+        </div>
 
         <div class="image-attributes-flex">
 

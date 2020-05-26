@@ -29,7 +29,8 @@ class ProductController extends Controller
         foreach ($products as $product) {
             $product->cost_format = number_format($product->cost, 2);
         }
-        return view('products.index', compact('products'));
+        $categories = Category::all();
+        return view('products.index', compact('categories', 'products'));
     }
 
     /**
@@ -74,6 +75,7 @@ class ProductController extends Controller
             'name' => $request->name,
             'cost' => $request->cost,
             'discount' => $request->discount,
+            'description' => $request->description,
             'img_url' => $url,
         ]);
 
@@ -163,6 +165,7 @@ class ProductController extends Controller
         ]);
 
         $image_upload = $request->file('upload-image');
+
         if ($image_upload) {
             $image_path = $image_upload->getRealPath();
             $cloudinaryWrapper = Cloudder::upload($image_path, null, ['folder' => 'STM']);
@@ -173,11 +176,13 @@ class ProductController extends Controller
         } else {
             $url = '';
         }
+        //dd($url);
 
         $product->update([
             'name' => $request->name,
             'cost' => $request->cost,
             'discount' => $request->discount,
+            'description' => $request->description,
             'img_url' => $url,
         ]);
 

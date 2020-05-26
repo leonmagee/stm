@@ -5,12 +5,34 @@ export default class Products extends Component {
     constructor(props) {
         super(props);
         this.state = {
-          products: JSON.parse(props.products)
+          products: JSON.parse(props.products),
+          productsDisplay: JSON.parse(props.products),
+          categories: JSON.parse(props.categories),
+          catsChecked: [],
+          subCatsChecked: []
         }
     }
 
+    catClick(id) {
+     console.log('cat has been clicked' + id);
+     const { catsChecked } = this.state;
+     const catsCheckedNew = [...catsChecked, id];
+     this.setState({
+       catsChecked: catsCheckedNew
+     })
+    }
+
     render() {
-        const products = this.state.products.map( (product, index) => {
+      const { categories, catsChecked, products } = this.state;
+
+        const catsBlock = categories.map( (category, i) => {
+          let icon = <i className="far fa-square"></i>;
+          return <div key={i} onClick={() => this.catClick(category.id)} className="product-cat"><span>{category.name}</span>{icon}</div>
+        })
+
+      const menu = <div className="product-cats">{catsBlock}</div>;
+
+        const productsBlock = products.map( (product, i) => {
           let img_div = '';
           if(product.img_url) {
             img_div = <div className="product__image product__image--url"><img src={product.img_url} /></div>
@@ -18,7 +40,7 @@ export default class Products extends Component {
             img_div = <div className="product__image product__image--default"><i className="far fa-image"></i></div>
           }
           return (
-            <div key={index} className="product">
+            <div key={i} className="product">
               {img_div}
               <div className="product__title">{product.name}</div>
               <div className="product__cost">${product.cost_format}</div>
@@ -30,14 +52,18 @@ export default class Products extends Component {
             </div>
           )
         })
-        return <div className="products">{products}</div>;
+        return <div className="products-outer">
+            {menu}
+            <div className="products">{productsBlock}</div>
+          </div>;
     }
 }
 
 if (document.getElementById('products')) {
   const products = document.getElementById('products').getAttribute('products');
+  const categories = document.getElementById('products').getAttribute('categories');
     ReactDOM.render(
-      <Products products={products} />,
+      <Products products={products} categories={categories}/>,
       document.getElementById('products')
     );
 }

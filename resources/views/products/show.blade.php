@@ -16,6 +16,12 @@
     <div class="product__attributes--item"><i class="far fa-dot-circle"></i>{{ $attribute->text }}</div>
     @endforeach
   </div>
+  <div class="product__description">
+    <label class="label">Description</label>
+    <div class="product__description--text">
+      {{ $product->description }}
+    </div>
+  </div>
   <div class="product__categories">
     <label class="label">Categories</label>
     @foreach($product->categories as $category)
