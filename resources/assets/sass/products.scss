@@ -118,13 +118,16 @@
             border-top: 1px solid #eee;
 
             a {
-                font-size: 1.2em;
+                font-size: 1.1em;
                 font-weight: 600;
                 &.product__footer--view {
-                    color: darken($primary, 7%);
+                    color: darken($info, 2%);
                 }
                 &.product__footer--cart {
-                    color: darken($green, 2%);
+                    color: darken($green, 3%);
+                }
+                &:hover {
+                    opacity: 0.8;
                 }
             }
         }

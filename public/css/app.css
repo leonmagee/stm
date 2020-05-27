@@ -20748,16 +20748,20 @@ body.stm-body.about .about-img-wrap img {
 }
 
 .products-outer .product .product__footer a {
-  font-size: 1.2em;
+  font-size: 1.1em;
   font-weight: 600;
 }
 
 .products-outer .product .product__footer a.product__footer--view {
-  color: #167e8b;
+  color: #1798ee;
 }
 
 .products-outer .product .product__footer a.product__footer--cart {
-  color: #05d19b;
+  color: #05cc98;
+}
+
+.products-outer .product .product__footer a:hover {
+  opacity: 0.8;
 }
 
 .products-outer .product .product__categories {
