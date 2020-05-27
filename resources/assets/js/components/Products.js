@@ -153,12 +153,13 @@ export default class Products extends Component {
             <div key={i} className="product">
               {img_div}
               <div className="product__title">{product.name}</div>
-              <div className="product__cost">${product.cost_format}</div>
+              {/* <div className="product__cost">${product.cost_format}</div> */}
               <div className="product__attributes">{attributes}</div>
               <div className="product__footer">
-                <a className="product__footer--view" href={"/products/" + product.id}><i className="fas fa-eye"></i></a>
+                {/* <a className="product__footer--view" href={"/products/" + product.id}><i className="fas fa-eye"></i></a> */}
+                <a className="product__footer--view" href={"/products/" + product.id}>${product.cost_format}</a>
                 {/* <a href={"/products/edit/" + product.id}>Edit</a> */}
-                <a className="product__footer--cart"><i className="fas fa-cart-plus"></i></a>
+                <a className="product__footer--cart" data-tooltip="Add To Cart"><i className="fas fa-cart-plus"></i></a>
               </div>
             </div>
           )
