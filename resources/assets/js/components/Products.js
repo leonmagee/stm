@@ -52,7 +52,15 @@ export default class Products extends Component {
                 }
               }
               else if (catsChecked.includes(cat)) {
+                let has_current = false;
+                subCatsChecked.map(sub => {
+                  if (sub_cat_match[sub] === cat) {
+                    has_current = true;
+                  }
+                })
+                if (!has_current) {
                 match = true;
+                }
               }
             } else if (catsChecked.includes(cat)) {
               match = true;

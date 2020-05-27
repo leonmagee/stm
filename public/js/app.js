@@ -111640,7 +111640,15 @@ var Products = function (_Component) {
                   });
                 }
               } else if (catsChecked.includes(cat)) {
-                match = true;
+                var has_current = false;
+                subCatsChecked.map(function (sub) {
+                  if (sub_cat_match[sub] === cat) {
+                    has_current = true;
+                  }
+                });
+                if (!has_current) {
+                  match = true;
+                }
               }
             } else if (catsChecked.includes(cat)) {
               match = true;
