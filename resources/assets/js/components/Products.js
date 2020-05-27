@@ -139,21 +139,26 @@ export default class Products extends Component {
       const menu = <div className="product-cats">{catsBlock}</div>;
 
         const productsBlock = productsDisplay.map( (product, i) => {
+          console.log(product);
           let img_div = '';
           if(product.img_url) {
             img_div = <div className="product__image product__image--url"><img src={product.img_url} /></div>
           } else {
             img_div = <div className="product__image product__image--default"><i className="far fa-image"></i></div>
           }
+          const attributes = product.attributes_array.map((attribute, k) => {
+            return <div className="product__attributes--item" key={k}><i className="fas fa-circle"></i><span>{attribute}</span></div>;
+          })
           return (
             <div key={i} className="product">
               {img_div}
               <div className="product__title">{product.name}</div>
               <div className="product__cost">${product.cost_format}</div>
+              <div className="product__attributes">{attributes}</div>
               <div className="product__footer">
-                <a href={"/products/" + product.id}>View</a>
+                <a className="product__footer--view" href={"/products/" + product.id}><i className="fas fa-eye"></i></a>
                 {/* <a href={"/products/edit/" + product.id}>Edit</a> */}
-                <a>Add To Cart</a>
+                <a className="product__footer--cart"><i className="fas fa-cart-plus"></i></a>
               </div>
             </div>
           )

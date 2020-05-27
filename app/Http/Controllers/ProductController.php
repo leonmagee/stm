@@ -41,6 +41,13 @@ class ProductController extends Controller
                 $sub_cat_array[$sub_cat->sub_category->category->id][] = $sub_cat->sub_category_id;
             }
             $product->sub_cat_array = $sub_cat_array;
+            $attributes_array = [];
+            foreach ($product->attributes as $attribute) {
+                if (count($attributes_array) < 4) {
+                    $attributes_array[] = $attribute->text;
+                }
+            }
+            $product->attributes_array = $attributes_array;
         }
         $sub_cat_match = [];
         $sub_cats = SubCategory::all();

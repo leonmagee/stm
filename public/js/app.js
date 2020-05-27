@@ -111772,6 +111772,7 @@ var Products = function (_Component) {
       );
 
       var productsBlock = productsDisplay.map(function (product, i) {
+        console.log(product);
         var img_div = '';
         if (product.img_url) {
           img_div = __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
@@ -111786,6 +111787,18 @@ var Products = function (_Component) {
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', { className: 'far fa-image' })
           );
         }
+        var attributes = product.attributes_array.map(function (attribute, k) {
+          return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'div',
+            { className: 'product__attributes--item', key: k },
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', { className: 'fas fa-circle' }),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+              'span',
+              null,
+              attribute
+            )
+          );
+        });
         return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
           'div',
           { key: i, className: 'product' },
@@ -111803,16 +111816,21 @@ var Products = function (_Component) {
           ),
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
             'div',
+            { className: 'product__attributes' },
+            attributes
+          ),
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'div',
             { className: 'product__footer' },
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
               'a',
-              { href: "/products/" + product.id },
-              'View'
+              { className: 'product__footer--view', href: "/products/" + product.id },
+              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', { className: 'fas fa-eye' })
             ),
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
               'a',
-              null,
-              'Add To Cart'
+              { className: 'product__footer--cart' },
+              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', { className: 'fas fa-cart-plus' })
             )
           )
         );
