@@ -25,12 +25,35 @@ class ProductController extends Controller
      */
     public function index()
     {
+        //$products = Product::with('categories')->get();
         $products = Product::all();
         foreach ($products as $product) {
             $product->cost_format = number_format($product->cost, 2);
+            // add cat array
+            $cat_array = [];
+            foreach ($product->categories as $cat) {
+                $cat_array[] = $cat->category_id;
+            }
+            $product->cat_array = $cat_array;
+            // add sub cat array
+            $sub_cat_array = [];
+            foreach ($product->sub_categories as $sub_cat) {
+                $sub_cat_array[$sub_cat->sub_category->category->id][] = $sub_cat->sub_category_id;
+            }
+            $product->sub_cat_array = $sub_cat_array;
         }
-        $categories = Category::all();
-        return view('products.index', compact('categories', 'products'));
+        $sub_cat_match = [];
+        $sub_cats = SubCategory::all();
+        $sub_cats_array = [];
+        foreach ($sub_cats as $sub_cat) {
+            $sub_cat_match[$sub_cat->id] = $sub_cat->category_id;
+            $sub_cats_array[] = $sub_cat->id;
+        }
+        $sub_cat_match = json_encode($sub_cat_match);
+        $sub_cats_array = json_encode($sub_cats_array);
+
+        $categories = Category::with('sub_categories')->get();
+        return view('products.index', compact('categories', 'products', 'sub_cat_match', 'sub_cats_array'));
     }
 
     /**

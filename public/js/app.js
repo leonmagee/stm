@@ -111589,6 +111589,8 @@ var Products = function (_Component) {
       products: JSON.parse(props.products),
       productsDisplay: JSON.parse(props.products),
       categories: JSON.parse(props.categories),
+      sub_cat_match: JSON.parse(props.sub_cat_match),
+      sub_cats_array: JSON.parse(props.sub_cats_array),
       catsChecked: [],
       subCatsChecked: []
     };
@@ -111596,14 +111598,105 @@ var Products = function (_Component) {
   }
 
   _createClass(Products, [{
+    key: 'updateProducts',
+    value: function updateProducts() {
+      var _state = this.state,
+          products = _state.products,
+          catsChecked = _state.catsChecked,
+          subCatsChecked = _state.subCatsChecked,
+          sub_cat_match = _state.sub_cat_match,
+          sub_cats_array = _state.sub_cats_array;
+
+      var productsUpdated = [];
+      if (catsChecked.length) {
+        productsUpdated = products.filter(function (product) {
+          var match = false;
+          product.cat_array.map(function (cat) {
+            if (subCatsChecked.length) {
+              var sub_cats = product.sub_cat_array[cat];
+              if (sub_cats) {
+                if (sub_cats.length) {
+                  //let sub_cats_array = [2,3,4,6,7,8,9];
+                  sub_cats_array.map(function (sub) {
+                    sub_cats.map(function (sub_inner) {
+                      if (subCatsChecked.includes(sub_inner)) {
+                        match = true;
+                      }
+                    });
+                    if (sub_cat_match[sub] !== cat) {
+                      if (catsChecked.includes(cat)) {
+
+                        var has_current_sub = false;
+                        subCatsChecked.map(function (sub_inner) {
+                          if (sub_cat_match[sub_inner] === cat) {
+                            has_current_sub = true;
+                          }
+                        });
+                        if (!has_current_sub) {
+                          match = true;
+                        }
+                      }
+                    }
+                  });
+                }
+              } else if (catsChecked.includes(cat)) {
+                match = true;
+              }
+            } else if (catsChecked.includes(cat)) {
+              match = true;
+            }
+          });
+          if (match) {
+            return true;
+          } else {
+            return false;
+          }
+        });
+      } else {
+        productsUpdated = products;
+      }
+      this.setState({
+        productsDisplay: productsUpdated
+      });
+    }
+  }, {
     key: 'catClick',
     value: function catClick(id) {
-      console.log('cat has been clicked' + id);
-      var catsChecked = this.state.catsChecked;
+      var _state2 = this.state,
+          catsChecked = _state2.catsChecked,
+          subCatsChecked = _state2.subCatsChecked;
 
-      var catsCheckedNew = [].concat(_toConsumableArray(catsChecked), [id]);
+      var catsCheckedNew = [];
+      if (catsChecked.includes(id)) {
+        var catIndex = catsChecked.indexOf(id);
+        catsChecked.splice(catIndex, 1);
+        catsCheckedNew = catsChecked;
+      } else {
+        catsCheckedNew = [].concat(_toConsumableArray(catsChecked), [id]);
+      }
       this.setState({
         catsChecked: catsCheckedNew
+      }, function () {
+        this.updateProducts();
+      });
+    }
+  }, {
+    key: 'subCatClick',
+    value: function subCatClick(id) {
+      var subCatsChecked = this.state.subCatsChecked;
+
+      var subCatsCheckedNew = [];
+      if (subCatsChecked.includes(id)) {
+        var catIndex = subCatsChecked.indexOf(id);
+        subCatsChecked.splice(catIndex, 1);
+        subCatsCheckedNew = subCatsChecked;
+      } else {
+        subCatsCheckedNew = [].concat(_toConsumableArray(subCatsChecked), [id]);
+      }
+      this.setState({
+        subCatsChecked: subCatsCheckedNew
+      }, function () {
+        this.updateProducts();
       });
     }
   }, {
@@ -111611,25 +111704,56 @@ var Products = function (_Component) {
     value: function render() {
       var _this2 = this;
 
-      var _state = this.state,
-          categories = _state.categories,
-          catsChecked = _state.catsChecked,
-          products = _state.products;
+      var _state3 = this.state,
+          categories = _state3.categories,
+          catsChecked = _state3.catsChecked,
+          productsDisplay = _state3.productsDisplay,
+          subCatsChecked = _state3.subCatsChecked;
 
 
       var catsBlock = categories.map(function (category, i) {
         var icon = __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', { className: 'far fa-square' });
+        if (catsChecked.includes(category.id)) {
+          icon = __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', { className: 'fas fa-check-square' });
+        }
+        var subCats = __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div', null);
+        if (catsChecked.includes(category.id)) {
+          subCats = category.sub_categories.map(function (subCat, j) {
+            var subIcon = __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', { className: 'far fa-square' });
+            if (subCatsChecked.includes(subCat.id)) {
+              subIcon = __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', { className: 'fas fa-check-square' });
+            }
+            var keyName = 'sub-' + j;
+            return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+              'div',
+              { key: keyName, onClick: function onClick() {
+                  return _this2.subCatClick(subCat.id);
+                }, className: 'product-cat product-cat--sub' },
+              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                'span',
+                null,
+                subCat.name
+              ),
+              subIcon
+            );
+          });
+        }
         return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
           'div',
-          { key: i, onClick: function onClick() {
-              return _this2.catClick(category.id);
-            }, className: 'product-cat' },
+          { key: i },
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-            'span',
-            null,
-            category.name
+            'div',
+            { onClick: function onClick() {
+                return _this2.catClick(category.id);
+              }, className: 'product-cat' },
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+              'span',
+              null,
+              category.name
+            ),
+            icon
           ),
-          icon
+          subCats
         );
       });
 
@@ -111639,7 +111763,7 @@ var Products = function (_Component) {
         catsBlock
       );
 
-      var productsBlock = products.map(function (product, i) {
+      var productsBlock = productsDisplay.map(function (product, i) {
         var img_div = '';
         if (product.img_url) {
           img_div = __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
@@ -111707,7 +111831,9 @@ var Products = function (_Component) {
 if (document.getElementById('products')) {
   var products = document.getElementById('products').getAttribute('products');
   var categories = document.getElementById('products').getAttribute('categories');
-  __WEBPACK_IMPORTED_MODULE_1_react_dom___default.a.render(__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(Products, { products: products, categories: categories }), document.getElementById('products'));
+  var sub_cat_match = document.getElementById('products').getAttribute('sub_cat_match');
+  var sub_cats_array = document.getElementById('products').getAttribute('sub_cats_array');
+  __WEBPACK_IMPORTED_MODULE_1_react_dom___default.a.render(__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(Products, { products: products, categories: categories, sub_cat_match: sub_cat_match, sub_cats_array: sub_cats_array }), document.getElementById('products'));
 }
 
 /***/ }),

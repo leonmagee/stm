@@ -8,31 +8,129 @@ export default class Products extends Component {
           products: JSON.parse(props.products),
           productsDisplay: JSON.parse(props.products),
           categories: JSON.parse(props.categories),
+          sub_cat_match: JSON.parse(props.sub_cat_match),
+          sub_cats_array: JSON.parse(props.sub_cats_array),
           catsChecked: [],
           subCatsChecked: []
         }
     }
 
-    catClick(id) {
-     console.log('cat has been clicked' + id);
-     const { catsChecked } = this.state;
-     const catsCheckedNew = [...catsChecked, id];
-     this.setState({
-       catsChecked: catsCheckedNew
-     })
+    updateProducts() {
+      const { products, catsChecked, subCatsChecked, sub_cat_match, sub_cats_array } = this.state;
+      let productsUpdated = [];
+      if (catsChecked.length) {
+        productsUpdated = products.filter( product => {
+          let match = false;
+          product.cat_array.map(cat => {
+            if(subCatsChecked.length) {
+              let sub_cats = product.sub_cat_array[cat];
+              if (sub_cats) {
+                if(sub_cats.length) {
+                  //let sub_cats_array = [2,3,4,6,7,8,9];
+                  sub_cats_array.map(sub => {
+                    sub_cats.map(sub_inner => {
+                        if (subCatsChecked.includes(sub_inner)) {
+                          match = true;
+                        }
+                    })
+                    if (sub_cat_match[sub] !== cat) {
+                      if (catsChecked.includes(cat)) {
+
+                        let has_current_sub = false;
+                        subCatsChecked.map(sub_inner => {
+                          if (sub_cat_match[sub_inner] === cat) {
+                            has_current_sub = true;
+                          }
+                        })
+                        if(!has_current_sub) {
+                        match = true;
+                        }
+                      }
+                    }
+                  })
+
+                }
+              }
+              else if (catsChecked.includes(cat)) {
+                match = true;
+              }
+            } else if (catsChecked.includes(cat)) {
+              match = true;
+            }
+          })
+          if(match) {
+            return true;
+          } else {
+            return false;
+          }
+        })
+      } else {
+        productsUpdated = products;
+      }
+      this.setState({
+        productsDisplay: productsUpdated,
+      })
     }
 
+    catClick(id) {
+      const { catsChecked, subCatsChecked } = this.state;
+      let catsCheckedNew = [];
+      if (catsChecked.includes(id)) {
+        const catIndex = catsChecked.indexOf(id);
+        catsChecked.splice(catIndex, 1);
+        catsCheckedNew = catsChecked;
+      } else {
+        catsCheckedNew = [...catsChecked, id];
+      }
+      this.setState({
+        catsChecked: catsCheckedNew
+      }, function() {
+        this.updateProducts()
+      })
+    }
+
+  subCatClick(id) {
+    const { subCatsChecked } = this.state;
+    let subCatsCheckedNew = [];
+    if (subCatsChecked.includes(id)) {
+      const catIndex = subCatsChecked.indexOf(id);
+      subCatsChecked.splice(catIndex, 1);
+      subCatsCheckedNew = subCatsChecked;
+    } else {
+      subCatsCheckedNew = [...subCatsChecked, id];
+    }
+    this.setState({
+      subCatsChecked: subCatsCheckedNew
+    }, function () {
+      this.updateProducts()
+    })
+  }
+
     render() {
-      const { categories, catsChecked, products } = this.state;
+      const { categories, catsChecked, productsDisplay, subCatsChecked } = this.state;
 
         const catsBlock = categories.map( (category, i) => {
           let icon = <i className="far fa-square"></i>;
-          return <div key={i} onClick={() => this.catClick(category.id)} className="product-cat"><span>{category.name}</span>{icon}</div>
+          if(catsChecked.includes(category.id)) {
+            icon = <i className="fas fa-check-square"></i>;
+          }
+          let subCats = <div></div>;
+          if (catsChecked.includes(category.id)) {
+          subCats = category.sub_categories.map( (subCat, j) => {
+            let subIcon = <i className="far fa-square"></i>;
+            if (subCatsChecked.includes(subCat.id)) {
+              subIcon = <i className="fas fa-check-square"></i>;
+            }
+            const keyName = 'sub-' + j;
+            return <div key={keyName} onClick={() => this.subCatClick(subCat.id)} className="product-cat product-cat--sub"><span>{subCat.name}</span>{subIcon}</div>
+          })
+          }
+          return <div key={i}><div onClick={() => this.catClick(category.id)} className="product-cat"><span>{category.name}</span>{icon}</div>{subCats}</div>
         })
 
       const menu = <div className="product-cats">{catsBlock}</div>;
 
-        const productsBlock = products.map( (product, i) => {
+        const productsBlock = productsDisplay.map( (product, i) => {
           let img_div = '';
           if(product.img_url) {
             img_div = <div className="product__image product__image--url"><img src={product.img_url} /></div>
@@ -62,8 +160,10 @@ export default class Products extends Component {
 if (document.getElementById('products')) {
   const products = document.getElementById('products').getAttribute('products');
   const categories = document.getElementById('products').getAttribute('categories');
+  const sub_cat_match = document.getElementById('products').getAttribute('sub_cat_match');
+  const sub_cats_array = document.getElementById('products').getAttribute('sub_cats_array');
     ReactDOM.render(
-      <Products products={products} categories={categories}/>,
+      <Products products={products} categories={categories} sub_cat_match={sub_cat_match} sub_cats_array={sub_cats_array}/>,
       document.getElementById('products')
     );
 }
