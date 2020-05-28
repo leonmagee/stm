@@ -12,6 +12,8 @@ require('chart.js');
 
 require('axios');
 
+require('bulma-tooltip');
+
 require('./jquery.datetimepicker.full');
 
 require('./components/AllUsers');

@@ -28,6 +28,7 @@
     },
     "dependencies": {
         "axios": "^0.18",
+        "bulma-tooltip": "^3.0.2",
         "chart.js": "^2.7.2",
         "datatables.net": "^1.10.19",
         "jquery-datetimepicker": "^2.5.21",
