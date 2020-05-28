@@ -28,6 +28,10 @@ class ProductController extends Controller
         //$products = Product::with('categories')->get();
         $products = Product::all();
         foreach ($products as $product) {
+            $new_url = cl_image_tag($product->img_url,
+                array("width" => 500, "height" => 500, "cloud_name" => "www-stmmax-com"));
+
+            $product->img_url = $new_url;
             $orig_cost = number_format($product->cost, 2);
             if ($product->discount) {
                 $product->orig_price = $orig_cost;

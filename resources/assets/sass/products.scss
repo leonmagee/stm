@@ -70,9 +70,9 @@
     // product thumbnail
     .product {
         font-size: 1.2em;
-        //overflow: hidden;
         background-color: #fafafa;
         box-shadow: 1px 1px rgba(0, 0, 0, 0.075);
+        overflow: hidden;
         .product__title {
             padding: 0.4em 1.2em 0.4em;
             color: #111;
@@ -83,6 +83,9 @@
             text-overflow: ellipsis;
             border-top: 1px solid #eee;
             border-bottom: 1px solid #eee;
+            //max-width: 80%;
+            //width: 80%;
+            //display: block;
         }
         .product__image {
             height: 220px;
@@ -146,6 +149,7 @@
         a.product__link {
             color: #4a4a4a;
             display: block;
+            overflow: hidden;
             &:hover {
                 opacity: 0.8;
             }

@@ -20683,6 +20683,7 @@ body.stm-body.about .about-img-wrap img {
   background-color: #fafafa;
   -webkit-box-shadow: 1px 1px rgba(0, 0, 0, 0.075);
           box-shadow: 1px 1px rgba(0, 0, 0, 0.075);
+  overflow: hidden;
 }
 
 .products-outer .product .product__title {
@@ -20777,6 +20778,7 @@ body.stm-body.about .about-img-wrap img {
 .products-outer .product a.product__link {
   color: #4a4a4a;
   display: block;
+  overflow: hidden;
 }
 
 .products-outer .product a.product__link:hover {
