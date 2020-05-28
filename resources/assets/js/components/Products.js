@@ -151,13 +151,15 @@ export default class Products extends Component {
           })
           return (
             <div key={i} className="product">
+                <a className="product__link" href={"/products/" + product.id}>
               {img_div}
               <div className="product__title">{product.name}</div>
               {/* <div className="product__cost">${product.cost_format}</div> */}
               <div className="product__attributes">{attributes}</div>
+              </a>
               <div className="product__footer">
                 {/* <a className="product__footer--view" href={"/products/" + product.id}><i className="fas fa-eye"></i></a> */}
-                <a className="product__footer--view" href={"/products/" + product.id}>${product.cost_format}</a>
+                <div className="product__footer--cost">${product.cost_format}</div>
                 {/* <a href={"/products/edit/" + product.id}>Edit</a> */}
                 <a className="product__footer--cart" data-tooltip="Add To Cart"><i className="fas fa-cart-plus"></i></a>
               </div>
@@ -166,7 +168,9 @@ export default class Products extends Component {
         })
         return <div className="products-outer">
             {menu}
+            <div className="products-inner-wrap">
             <div className="products">{productsBlock}</div>
+            </div>
           </div>;
     }
 }

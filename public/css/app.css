@@ -17348,6 +17348,12 @@ body.stm-body .main-wrap .middle-content-wrap {
   }
 }
 
+body.stm-body .main-wrap .middle-content-wrap-no-padding {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
 body.stm-body a {
   color: #1b9aaa;
 }
@@ -20580,10 +20586,22 @@ body.stm-body.about .about-img-wrap img {
   width: 100%;
 }
 
+.products-react {
+  height: 100%;
+}
+
 .products-outer {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  height: 100%;
+  background: #ededed;
+}
+
+.products-outer .products-inner-wrap {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
 }
 
 .products-outer .products {
@@ -20592,22 +20610,21 @@ body.stm-body.about .about-img-wrap img {
   display: flex;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  width: 84%;
+  width: 100%;
+  padding: 0 0.5em;
 }
 
 .products-outer .products .product {
   -webkit-box-flex: 0;
       -ms-flex: 0 1 22%;
           flex: 0 1 22%;
-  margin: 0 1.5% 1.5%;
+  margin: 1.5% 1.5% 1.5%;
 }
 
 .products-outer .product-cats {
-  width: 16%;
-  background-color: #333;
-  border: 1px solid #fff;
+  width: 18%;
+  background-color: #2d2d2d;
   padding: 0.6em 1em;
-  margin-right: 1em;
 }
 
 .products-outer .product-cat {
@@ -20666,6 +20683,7 @@ body.stm-body.about .about-img-wrap img {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  border-top: 1px solid #eee;
   border-bottom: 1px solid #eee;
 }
 
@@ -20737,6 +20755,10 @@ body.stm-body.about .about-img-wrap img {
   color: #aaa;
 }
 
+.products-outer .product a.product__link {
+  color: #4a4a4a;
+}
+
 .products-outer .product .product__footer {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -20758,19 +20780,27 @@ body.stm-body.about .about-img-wrap img {
   font-size: 0.9em;
 }
 
-.products-outer .product .product__footer a.product__footer--view {
-  -webkit-box-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
-  background: #05c290;
-}
-
 .products-outer .product .product__footer a.product__footer--cart {
   background: #111;
 }
 
 .products-outer .product .product__footer a:hover {
   opacity: 0.9;
+}
+
+.products-outer .product .product__footer .product__footer--cost {
+  padding: 0.3em 1em 0.4em;
+  font-weight: 600;
+  color: #fff;
+  font-size: 0.9em;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  background: #05c290;
+}
+
+.products-outer .product .product__footer.product__footer--cart {
+  background: #111;
 }
 
 .products-outer .product .product__categories {

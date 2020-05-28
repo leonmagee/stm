@@ -111802,23 +111802,27 @@ var Products = function (_Component) {
         return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
           'div',
           { key: i, className: 'product' },
-          img_div,
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-            'div',
-            { className: 'product__title' },
-            product.name
-          ),
-          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-            'div',
-            { className: 'product__attributes' },
-            attributes
+            'a',
+            { className: 'product__link', href: "/products/" + product.id },
+            img_div,
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+              'div',
+              { className: 'product__title' },
+              product.name
+            ),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+              'div',
+              { className: 'product__attributes' },
+              attributes
+            )
           ),
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
             'div',
             { className: 'product__footer' },
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-              'a',
-              { className: 'product__footer--view', href: "/products/" + product.id },
+              'div',
+              { className: 'product__footer--cost' },
               '$',
               product.cost_format
             ),
@@ -111836,8 +111840,12 @@ var Products = function (_Component) {
         menu,
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
           'div',
-          { className: 'products' },
-          productsBlock
+          { className: 'products-inner-wrap' },
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'div',
+            { className: 'products' },
+            productsBlock
+          )
         )
       );
     }

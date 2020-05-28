@@ -1,25 +1,33 @@
 // grid wrap for products and menu
+.products-react {
+    height: 100%;
+}
 .products-outer {
     display: flex;
+    height: 100%;
+    background: #ededed;
+    .products-inner-wrap {
+        flex: 1;
+    }
 
     // grid wrap for products
     .products {
         display: flex;
         flex-wrap: wrap;
-        width: 84%;
+        width: 100%;
+        padding: 0 0.5em;
         .product {
             flex: 0 1 22%;
-            margin: 0 1.5% 1.5%;
+            margin: 1.5% 1.5% 1.5%;
         }
     }
 
     .product-cats {
-        //height: 300px;
-        width: 16%;
-        background-color: #333;
-        border: 1px solid #fff;
+        //height: 100%;
+        width: 18%;
+        background-color: #2d2d2d;
+        //border: 1px solid #fff;
         padding: 0.6em 1em;
-        margin-right: 1em;
     }
 
     .product-cat {
@@ -50,6 +58,8 @@
         overflow: hidden;
         background-color: #fafafa;
         box-shadow: 1px 1px rgba(0, 0, 0, 0.075);
+        //height: auto;
+        //display: inline;
         .product__title {
             padding: 0.4em 1.2em 0.4em;
             color: #111;
@@ -58,6 +68,7 @@
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
+            border-top: 1px solid #eee;
             border-bottom: 1px solid #eee;
             //min-height: 3.7em;
             //height: 3.7em;
@@ -112,6 +123,9 @@
                 }
             }
         }
+        a.product__link {
+            color: #4a4a4a;
+        }
         .product__footer {
             display: flex;
             justify-content: space-between;
@@ -120,25 +134,27 @@
             background: darken($green, 5%);
 
             a {
-                //flex: 1;
                 padding: 0.3em 1em 0.4em;
-                //font-size: 1.1em;
                 font-weight: 600;
                 color: #fff;
                 font-size: 0.9em;
-                &.product__footer--view {
-                    //color: darken($info, 2%);
-                    flex: 1;
-                    background: darken($green, 5%);
-                }
                 &.product__footer--cart {
                     background: #111;
-                    //text-align: right;
-                    //color: darken($green, 3%);
                 }
                 &:hover {
                     opacity: 0.9;
                 }
+            }
+            .product__footer--cost {
+                padding: 0.3em 1em 0.4em;
+                font-weight: 600;
+                color: #fff;
+                font-size: 0.9em;
+                flex: 1;
+                background: darken($green, 5%);
+            }
+            &.product__footer--cart {
+                background: #111;
             }
         }
         // .product__attributes {
