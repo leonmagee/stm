@@ -31,7 +31,7 @@ class ProductController extends Controller
             $orig_cost = number_format($product->cost, 2);
             if ($product->discount) {
                 $product->orig_price = $orig_cost;
-                $product->cost_format = number_format($product->cost - ($product->cost * (1 / $product->discount)), 2);
+                $product->cost_format = number_format($product->cost - ($product->cost * ($product->discount / 100)), 2);
 
             } else {
                 $product->orig_price = null;
