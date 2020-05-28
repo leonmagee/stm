@@ -34,9 +34,9 @@
             </div>
           </div>
           <div class="field discount">
-            <label class="label" for="discount">Discount</label>
+            <label class="label" for="discount">Discount %</label>
             <div class="control">
-              <input class="input" type="number" min="0" step="0.01" id="discount" name="discount" autocomplete="off"
+              <input class="input" type="number" min="0" id="discount" name="discount" autocomplete="off"
                 value="{{ $product->discount }}" />
             </div>
           </div>

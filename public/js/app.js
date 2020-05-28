@@ -111774,17 +111774,35 @@ var Products = function (_Component) {
       var productsBlock = productsDisplay.map(function (product, i) {
         console.log(product);
         var img_div = '';
+        var discount = '';
+        var orig_price = '';
+        if (product.discount) {
+          discount = __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'div',
+            { className: 'product__discount' },
+            product.discount,
+            '% Off'
+          );
+          orig_price = __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'span',
+            { className: 'product__footer--orig_price' },
+            '$',
+            product.orig_price
+          );
+        }
         if (product.img_url) {
           img_div = __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
             'div',
             { className: 'product__image product__image--url' },
-            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('img', { src: product.img_url })
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('img', { src: product.img_url }),
+            discount
           );
         } else {
           img_div = __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
             'div',
             { className: 'product__image product__image--default' },
-            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', { className: 'far fa-image' })
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', { className: 'far fa-image' }),
+            discount
           );
         }
         var attributes = product.attributes_array.map(function (attribute, k) {
@@ -111824,7 +111842,8 @@ var Products = function (_Component) {
               'div',
               { className: 'product__footer--cost' },
               '$',
-              product.cost_format
+              product.cost_format,
+              orig_price
             ),
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
               'a',

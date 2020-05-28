@@ -141,10 +141,16 @@ export default class Products extends Component {
         const productsBlock = productsDisplay.map( (product, i) => {
           console.log(product);
           let img_div = '';
+          let discount = '';
+          let orig_price = '';
+          if(product.discount) {
+            discount = <div className="product__discount">{product.discount}% Off</div>
+            orig_price = <span className="product__footer--orig_price">${product.orig_price}</span>
+          }
           if(product.img_url) {
-            img_div = <div className="product__image product__image--url"><img src={product.img_url} /></div>
+            img_div = <div className="product__image product__image--url"><img src={product.img_url} />{discount}</div>
           } else {
-            img_div = <div className="product__image product__image--default"><i className="far fa-image"></i></div>
+            img_div = <div className="product__image product__image--default"><i className="far fa-image"></i>{discount}</div>
           }
           const attributes = product.attributes_array.map((attribute, k) => {
             return <div className="product__attributes--item" key={k}><i className="fas fa-circle"></i><span>{attribute}</span></div>;
@@ -159,7 +165,7 @@ export default class Products extends Component {
               </a>
               <div className="product__footer">
                 {/* <a className="product__footer--view" href={"/products/" + product.id}><i className="fas fa-eye"></i></a> */}
-                <div className="product__footer--cost">${product.cost_format}</div>
+                <div className="product__footer--cost">${product.cost_format}{orig_price}</div>
                 {/* <a href={"/products/edit/" + product.id}>Edit</a> */}
                 <a className="product__footer--cart" data-tooltip="Add To Cart"><i className="fas fa-cart-plus"></i></a>
               </div>
