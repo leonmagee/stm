@@ -139,7 +139,6 @@ export default class Products extends Component {
       const menu = <div className="product-cats">{catsBlock}</div>;
 
         const productsBlock = productsDisplay.map( (product, i) => {
-          console.log(product);
           let img_div = '';
           let discount = '';
           let orig_price = '';
@@ -167,7 +166,8 @@ export default class Products extends Component {
                 {/* <a className="product__footer--view" href={"/products/" + product.id}><i className="fas fa-eye"></i></a> */}
                 <div className="product__footer--cost">${product.cost_format}{orig_price}</div>
                 {/* <a href={"/products/edit/" + product.id}>Edit</a> */}
-                <a className="product__footer--cart" data-tooltip="Add To Cart"><i className="fas fa-cart-plus"></i></a>
+                <a className="product__footer--right product__footer--right-favorite" data-tooltip="Add To Favorites"><i className="fas fa-heart"></i></a>
+                <a className="product__footer--right product__footer--right-cart" data-tooltip="Add To Cart"><i className="fas fa-cart-plus"></i></a>
               </div>
             </div>
           )

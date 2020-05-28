@@ -111772,7 +111772,6 @@ var Products = function (_Component) {
       );
 
       var productsBlock = productsDisplay.map(function (product, i) {
-        console.log(product);
         var img_div = '';
         var discount = '';
         var orig_price = '';
@@ -111847,7 +111846,12 @@ var Products = function (_Component) {
             ),
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
               'a',
-              { className: 'product__footer--cart', 'data-tooltip': 'Add To Cart' },
+              { className: 'product__footer--right product__footer--right-favorite', 'data-tooltip': 'Add To Favorites' },
+              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', { className: 'fas fa-heart' })
+            ),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+              'a',
+              { className: 'product__footer--right product__footer--right-cart', 'data-tooltip': 'Add To Cart' },
               __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', { className: 'fas fa-cart-plus' })
             )
           )

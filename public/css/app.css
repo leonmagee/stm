@@ -20798,26 +20798,11 @@ body.stm-body.about .about-img-wrap img {
   background: #05c290;
 }
 
-.products-outer .product .product__footer a {
-  padding: 0.3em 1em 0.4em;
-  font-weight: 600;
-  color: #fff;
-  font-size: 0.9em;
-}
-
-.products-outer .product .product__footer a.product__footer--cart {
-  background: #111;
-}
-
-.products-outer .product .product__footer a:hover {
-  opacity: 0.9;
-}
-
 .products-outer .product .product__footer .product__footer--cost {
   padding: 0.3em 1em 0.4em;
   font-weight: 600;
   color: #fff;
-  font-size: 0.9em;
+  font-size: 0.8em;
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
@@ -20830,16 +20815,50 @@ body.stm-body.about .about-img-wrap img {
           align-items: center;
 }
 
+.products-outer .product .product__footer a {
+  padding: 0 0.5em;
+  font-weight: 600;
+  color: #fff;
+  font-size: 0.9em;
+  -webkit-box-flex: 0;
+      -ms-flex: 0 1 15%;
+          flex: 0 1 15%;
+  height: 2em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.products-outer .product .product__footer a.product__footer--right {
+  background-color: #444;
+  color: #fff;
+  text-shadow: 1px 1px #333;
+}
+
+.products-outer .product .product__footer a.product__footer--right.product__footer--right-favorite i {
+  font-size: 0.9em;
+}
+
+.products-outer .product .product__footer a.product__footer--right.product__footer--right-cart {
+  border-left: 1px solid #333;
+}
+
+.products-outer .product .product__footer a:hover {
+  opacity: 0.95;
+}
+
 .products-outer .product .product__footer .product__footer--orig_price {
   font-size: 0.9em;
   margin-left: 0.6em;
   padding-top: 0.1em;
   opacity: 0.7;
   text-decoration: line-through;
-}
-
-.products-outer .product .product__footer.product__footer--cart {
-  background: #111;
 }
 
 .form-wrapper-inner .form-wrap .form-wrap-flex.form-wrap-flex-products-top .field.name {

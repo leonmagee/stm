@@ -157,27 +157,47 @@
             border-top: 1px solid #eee;
             background: darken($green, 5%);
 
-            a {
-                padding: 0.3em 1em 0.4em;
-                font-weight: 600;
-                color: #fff;
-                font-size: 0.9em;
-                &.product__footer--cart {
-                    background: #111;
-                }
-                &:hover {
-                    opacity: 0.9;
-                }
-            }
             .product__footer--cost {
                 padding: 0.3em 1em 0.4em;
                 font-weight: 600;
                 color: #fff;
-                font-size: 0.9em;
+                font-size: 0.8em;
                 flex: 1;
                 background: darken($green, 5%);
                 display: flex;
                 align-items: center;
+            }
+
+            a {
+                padding: 0 0.5em;
+                font-weight: 600;
+                color: #fff;
+                font-size: 0.9em;
+                flex: 0 1 15%;
+                height: 2em;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                // &.product__footer--cart {
+                //     background: #111;
+                // }
+                &.product__footer--right {
+                    //width: 10%;
+                    background-color: #444;
+                    color: #fff;
+                    text-shadow: 1px 1px #333;
+                    &.product__footer--right-favorite {
+                        i {
+                            font-size: 0.9em;
+                        }
+                    }
+                    &.product__footer--right-cart {
+                        border-left: 1px solid #333;
+                    }
+                }
+                &:hover {
+                    opacity: 0.95;
+                }
             }
             .product__footer--orig_price {
                 font-size: 0.9em;
@@ -185,9 +205,6 @@
                 padding-top: 0.1em;
                 opacity: 0.7;
                 text-decoration: line-through;
-            }
-            &.product__footer--cart {
-                background: #111;
             }
         }
     }
