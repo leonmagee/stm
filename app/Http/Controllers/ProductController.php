@@ -28,10 +28,12 @@ class ProductController extends Controller
         //$products = Product::with('categories')->get();
         $products = Product::all();
         foreach ($products as $product) {
-            $new_url = cl_image_tag($product->img_url,
-                array("width" => 500, "height" => 500, "cloud_name" => "www-stmmax-com"));
-
-            $product->img_url = $new_url;
+            if ($product->img_url) {
+                $match = null;
+                preg_match('(\/STM\/.*)', $product->img_url, $match);
+                $new_url = cloudinary_url($match[0], ["transformation" => ["width" => 600, "height" => 600, "crop" => "fill"], "cloud_name" => "www-stmmax-com", "secure" => "true"]);
+                $product->img_url = $new_url;
+            }
             $orig_cost = number_format($product->cost, 2);
             if ($product->discount) {
                 $product->orig_price = $orig_cost;

@@ -327,7 +327,7 @@
               <span class="icon is-small">
                 <i class="fi flaticon-sim"></i>
               </span>
-              <span class="text">Order Sims</span>
+              <span class="text">Order Free Sims</span>
             </a>
           </p>
           <p class="control">
