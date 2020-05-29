@@ -115,6 +115,7 @@
             right: 0;
             bottom: 0;
             background-color: $color-red;
+            background-color: $color-green;
             text-shadow: 1px 1px rgba(0, 0, 0, 0.1);
             color: #fff;
             font-weight: 600;
@@ -168,6 +169,7 @@
                 font-size: 0.8em;
                 flex: 1;
                 background: darken($green, 5%);
+                background: $gs-blue;
                 display: flex;
                 align-items: center;
             }
@@ -188,6 +190,7 @@
                 &.product__footer--right {
                     //width: 10%;
                     background-color: #444;
+                    background-color: $gs-red;
                     color: #fff;
                     text-shadow: 1px 1px #333;
                     &.product__footer--right-favorite {

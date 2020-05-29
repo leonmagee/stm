@@ -20737,6 +20737,7 @@ body.stm-body.about .about-img-wrap img {
   right: 0;
   bottom: 0;
   background-color: #ef476f;
+  background-color: #06dba3;
   text-shadow: 1px 1px rgba(0, 0, 0, 0.1);
   color: #fff;
   font-weight: 600;
@@ -20808,6 +20809,7 @@ body.stm-body.about .about-img-wrap img {
       -ms-flex: 1;
           flex: 1;
   background: #05c290;
+  background: #204e9b;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -20838,6 +20840,7 @@ body.stm-body.about .about-img-wrap img {
 
 .products-outer .product .product__footer a.product__footer--right {
   background-color: #444;
+  background-color: #751f1c;
   color: #fff;
   text-shadow: 1px 1px #333;
 }
