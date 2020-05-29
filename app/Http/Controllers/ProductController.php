@@ -31,7 +31,7 @@ class ProductController extends Controller
             if ($product->img_url) {
                 $match = null;
                 preg_match('(\/STM\/.*)', $product->img_url, $match);
-                $new_url = cloudinary_url($match[0], ["transformation" => ["width" => 600, "height" => 600], "cloud_name" => "www-stmmax-com", "secure" => "true"]);
+                $new_url = cloudinary_url($match[0], ["transformation" => ["width" => 600, "height" => 600, "crop" => "fit"], "cloud_name" => "www-stmmax-com", "secure" => "true"]);
                 $product->img_url = $new_url;
             }
             $orig_cost = number_format($product->cost, 2);
