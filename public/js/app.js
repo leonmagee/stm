@@ -111767,6 +111767,34 @@ var Products = function (_Component) {
         );
       });
 
+      var catsList = categories.map(function (category, i) {
+        var icon = __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', { className: 'far fa-square' });
+        if (catsChecked.includes(category.id)) {
+          icon = __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', { className: 'fas fa-check-square' });
+        }
+        var subCats = __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div', null);
+
+        return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          'div',
+          { key: i },
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'div',
+            {
+              onClick: function onClick() {
+                return _this2.catClick(category.id);
+              },
+              className: 'product-cat'
+            },
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+              'span',
+              null,
+              category.name
+            ),
+            icon
+          )
+        );
+      });
+
       var menu = __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
         'div',
         { className: 'product-cats' },
@@ -111859,6 +111887,15 @@ var Products = function (_Component) {
           )
         );
       });
+      var header = __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        'div',
+        { className: 'products-header-wrap' },
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          'div',
+          { className: 'products-header' },
+          catsList
+        )
+      );
       return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
         'div',
         { className: 'products-outer' },
@@ -111866,6 +111903,7 @@ var Products = function (_Component) {
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
           'div',
           { className: 'products-inner-wrap' },
+          header,
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
             'div',
             { className: 'products' },

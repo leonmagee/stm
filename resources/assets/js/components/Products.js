@@ -136,6 +136,26 @@ export default class Products extends Component {
           return <div key={i}><div onClick={() => this.catClick(category.id)} className="product-cat"><span>{category.name}</span>{icon}</div>{subCats}</div>
         })
 
+        const catsList = categories.map((category, i) => {
+            let icon = <i className="far fa-square"></i>;
+            if (catsChecked.includes(category.id)) {
+                icon = <i className="fas fa-check-square"></i>;
+            }
+            let subCats = <div></div>;
+
+            return (
+                <div key={i}>
+                    <div
+                        onClick={() => this.catClick(category.id)}
+                        className="product-cat"
+                    >
+                        <span>{category.name}</span>
+                        {icon}
+                    </div>
+                </div>
+            );
+        });
+
       const menu = <div className="product-cats">{catsBlock}</div>;
 
         const productsBlock = productsDisplay.map( (product, i) => {
@@ -172,9 +192,11 @@ export default class Products extends Component {
             </div>
           )
         })
+        const header = <div className="products-header-wrap"><div className="products-header">{catsList}</div></div>
         return <div className="products-outer">
             {menu}
             <div className="products-inner-wrap">
+              {header}
             <div className="products">{productsBlock}</div>
             </div>
           </div>;

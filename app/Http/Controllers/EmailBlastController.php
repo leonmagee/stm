@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Mail\ContactEmail;
+use App\Mail\ContactEmailNewResponse;
 use App\Mail\EmailBlast;
 use App\Site;
 use App\User;
@@ -318,10 +319,15 @@ class EmailBlastController extends Controller
         }
 
         // 3. confirmation email
-        \Mail::to($user)->send(new EmailBlast(
-            $user,
+        // \Mail::to($user)->send(new EmailBlast(
+        //     $user,
+        //     'Thank you for contacting us. One of our professional staff will get in touch with you as soon as possible.',
+        //     'STM Contact'
+        // ));
+        \Mail::to($user)->send(new ContactEmailNewResponse(
             'Thank you for contacting us. One of our professional staff will get in touch with you as soon as possible.',
-            'STM Contact'
+            $user->name,
+            'Thank You - GS Wireless'
         ));
 
         session()->flash('message', 'Thank you ' . $user->name . '! We will get in touch as soon as possible.');

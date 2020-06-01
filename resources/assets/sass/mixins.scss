@@ -79,3 +79,8 @@
     ); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eeeeee', endColorstr='#f3f3f3',GradientType=1 ); /* IE6-9 */
 }
+
+@mixin product_style {
+    background-color: #fafafa;
+    box-shadow: 1px 1px rgba(0, 0, 0, 0.075);
+}
