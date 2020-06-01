@@ -27,13 +27,14 @@
     }
 
     .products-header-wrap {
+        display: none;
         .products-header {
             @include product_style;
         }
     }
 
     .product-cats {
-        //display: none;
+        display: none;
         //height: 100%;
         width: 17%;
         //background-color: #2d2d2d;
@@ -121,16 +122,20 @@
         }
         .product__discount {
             position: absolute;
-            right: 0;
-            bottom: 0;
-            background-color: $color-red;
-            //background-color: $color-green;
+            transform: rotate(-45deg);
+            -webkit-transform: rotate(-45deg);
+            width: 200px;
+            top: 25px;
+            left: -50px;
+            text-align: center;
+            line-height: 35px;
+            letter-spacing: 1px;
+            background: $color-red;
             text-shadow: 1px 1px rgba(0, 0, 0, 0.1);
             color: #fff;
             font-weight: 600;
             font-size: 0.8em;
-            padding: 0.15em 0.7em 0.13em 0.5em;
-            //border-radius: 5px 0 0 0;
+            box-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
         }
         // .product__cost {
         //     padding: 0.2em 1em;
