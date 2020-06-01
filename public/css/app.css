@@ -20602,7 +20602,7 @@ body.stm-body.about .about-img-wrap img {
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
-  padding: 2%;
+  padding: 1%;
 }
 
 .products-outer .products {
@@ -20612,16 +20612,13 @@ body.stm-body.about .about-img-wrap img {
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
   width: 100%;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
 }
 
 .products-outer .products .product {
   -webkit-box-flex: 0;
       -ms-flex: 0 1 18%;
           flex: 0 1 18%;
-  margin: 2% 0 0;
+  margin: 2% 1% 0;
 }
 
 .products-outer .products-header-wrap {
