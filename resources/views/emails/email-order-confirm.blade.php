@@ -7,7 +7,7 @@
 </div>
 
 <div class="note-wrap">
-  Your Sims order has been processed.
+  Your Sims order has been processed and will be shipped to the address below.
 </div>
 
 <table class="table custom">
@@ -22,6 +22,8 @@
   </tr>
   @endforeach
 </table>
+
+@include('emails.user-info',['user' => $user])
 
 @component('mail::button', ['url' => 'https://stmmax.com'])
 Login to Sim Track Manager
