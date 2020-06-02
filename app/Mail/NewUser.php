@@ -23,7 +23,7 @@ class NewUser extends Mailable
     {
         $this->user = $user;
         $this->password = $password;
-        $this->subject('Welcome to Sim Track Manager');
+        $this->subject('Welcome To GS Wireless');
         //$this->callbacks[] = (function ($message) {$message->getHeaders()->addTextHeader('X-No-Track', Str::random(10));});
         $this->callbacks[] = (function ($message) use ($user) {$message->getHeaders()->addTextHeader('user_id', $user->id);});
 
