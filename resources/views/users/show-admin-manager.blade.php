@@ -148,7 +148,7 @@
       @foreach($notes as $note)
       <div class="note">
         <div class="note-header">
-          <span class="date">{{ $note->created_at->format('m/d/Y') }}</span>
+          <span class="date">{{ $note->created_at->format('m/d/Y g:ia') }}</span>
           <span class="user">{{ $note->author }}</span>
           <span class="icon">
             @if(Auth()->user()->isAdmin())

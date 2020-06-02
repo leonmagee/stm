@@ -22,6 +22,8 @@
         .product {
             flex: 0 1 18%;
             margin: 2% 1% 0;
+            width: 100%;
+            max-width: 100%;
             //margin: 1.5% 1.5% 1.5%;
         }
     }
@@ -81,18 +83,26 @@
     // product thumbnail
     .product {
         font-size: 1.2em;
+        position: relative;
         @include product_style;
         overflow: hidden;
         .product__title {
+            //background: red;
+            //display: block;
+            //position: relative;
             padding: 0.4em 1.2em 0.4em;
             color: #111;
             font-weight: 600;
             font-size: 0.7em;
             white-space: nowrap;
             overflow: hidden;
+            width: 100%;
+            max-width: 100%;
             text-overflow: ellipsis;
             border-top: 1px solid #eee;
             border-bottom: 1px solid #eee;
+            //max-width: 18%;
+            //width: 30%;
             //max-width: 80%;
             //width: 80%;
             //display: block;
@@ -165,6 +175,11 @@
             color: #4a4a4a;
             display: block;
             overflow: hidden;
+            position: relative;
+            width: 100%;
+            max-width: 100%;
+            //width: inherit;
+            //max-width: inherit;
             &:hover {
                 opacity: 0.8;
             }
@@ -230,5 +245,10 @@
                 text-decoration: line-through;
             }
         }
+    }
+    [data-tooltip]:not(.is-disabled)::before,
+    [data-tooltip]:not(.is-loading)::before,
+    [data-tooltip]:not([disabled])::before {
+        left: -50%;
     }
 }

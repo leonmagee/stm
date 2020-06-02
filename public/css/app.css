@@ -18661,6 +18661,7 @@ table.dataTable tr td .invoice-view {
 }
 
 .users-flex-wrap .notes-wrap .notes-list-wrap .note .note-body {
+  font-weight: normal;
   color: #333;
   padding: 10px;
 }
@@ -20619,6 +20620,8 @@ body.stm-body.about .about-img-wrap img {
       -ms-flex: 0 1 18%;
           flex: 0 1 18%;
   margin: 2% 1% 0;
+  width: 100%;
+  max-width: 100%;
 }
 
 .products-outer .products-header-wrap {
@@ -20691,6 +20694,7 @@ body.stm-body.about .about-img-wrap img {
 
 .products-outer .product {
   font-size: 1.2em;
+  position: relative;
   background-color: #fafafa;
   -webkit-box-shadow: 1px 1px rgba(0, 0, 0, 0.075);
           box-shadow: 1px 1px rgba(0, 0, 0, 0.075);
@@ -20704,6 +20708,8 @@ body.stm-body.about .about-img-wrap img {
   font-size: 0.7em;
   white-space: nowrap;
   overflow: hidden;
+  width: 100%;
+  max-width: 100%;
   text-overflow: ellipsis;
   border-top: 1px solid #eee;
   border-bottom: 1px solid #eee;
@@ -20787,6 +20793,9 @@ body.stm-body.about .about-img-wrap img {
   color: #4a4a4a;
   display: block;
   overflow: hidden;
+  position: relative;
+  width: 100%;
+  max-width: 100%;
 }
 
 .products-outer .product a.product__link:hover {
@@ -20870,6 +20879,12 @@ body.stm-body.about .about-img-wrap img {
   padding-top: 0.1em;
   opacity: 0.7;
   text-decoration: line-through;
+}
+
+.products-outer [data-tooltip]:not(.is-disabled)::before,
+.products-outer [data-tooltip]:not(.is-loading)::before,
+.products-outer [data-tooltip]:not([disabled])::before {
+  left: -50%;
 }
 
 .form-wrapper-inner .form-wrap .form-wrap-flex.form-wrap-flex-products-top .field.name {
