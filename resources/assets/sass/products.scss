@@ -38,6 +38,10 @@
             .products-header__left {
                 display: flex;
                 align-items: center;
+                @include no_select;
+                &:hover {
+                    cursor: pointer;
+                }
                 i {
                     margin-right: 0.7em;
                     font-size: 1.2em;
@@ -63,16 +67,47 @@
     }
 
     .product-cats {
-        display: none;
+        //display: none;
         //height: 100%;
-        width: 17%;
-        //background-color: #2d2d2d;
-        //background-color: #dfdfdf;
+        position: absolute;
+        z-index: 100000;
+        top: 10em;
+        left: 1.5em;
+        width: 15%;
+        min-height: 30em;
+        border-radius: 1em;
+        box-shadow: 2px 2px rgba(0, 0, 0, 0.1);
+        display: flex;
+        flex-direction: column;
+        //bac5emround-color: #2d2d2d;
+        //back5emound-color: #dfdf1f;
         background-color: #fcfcfc;
-        border-right: 1px solid #e3e3e3;
+        //border-right: 1px solid #e3e3e3;
         //border: 1px solid #fff;
         //padding: 0.6em 1.1em;
         padding: 0.6em 0.7em;
+        .product-cats__header {
+            text-align: center;
+            font-weight: 600;
+            padding: 0 0 0.5em;
+            font-size: 1.2em;
+            //border-bottom: 1px solid #eee;
+        }
+        .product-cats__body {
+            flex: 1;
+        }
+        .product-cats__footer {
+            display: flex;
+            justify-content: flex-end;
+            padding: 0.2em;
+            i {
+                font-size: 1.2em;
+                color: $red;
+                &:hover {
+                    cursor: pointer;
+                }
+            }
+        }
     }
 
     .product-cat {
@@ -82,7 +117,8 @@
         padding: 0.5em 0.3em;
         //border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         //border-bottom: 1px solid rgba(0, 0, 0, 0.3);
-        border-bottom: 1px dotted #ccc;
+        //border-bottom: 1px dotted #ccc;
+        border-top: 1px solid #eaeaea;
         font-weight: 400;
         font-size: 0.9em;
         font-weight: 600;

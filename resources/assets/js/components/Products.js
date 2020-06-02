@@ -5,14 +5,22 @@ export default class Products extends Component {
     constructor(props) {
         super(props);
         this.state = {
-          products: JSON.parse(props.products),
-          productsDisplay: JSON.parse(props.products),
-          categories: JSON.parse(props.categories),
-          sub_cat_match: JSON.parse(props.sub_cat_match),
-          sub_cats_array: JSON.parse(props.sub_cats_array),
-          catsChecked: [],
-          subCatsChecked: []
-        }
+            products: JSON.parse(props.products),
+            productsDisplay: JSON.parse(props.products),
+            categories: JSON.parse(props.categories),
+            sub_cat_match: JSON.parse(props.sub_cat_match),
+            sub_cats_array: JSON.parse(props.sub_cats_array),
+            catsChecked: [],
+            subCatsChecked: [],
+            catsToggle: false
+        };
+    }
+
+    toggleCats() {
+      const { catsToggle } = this.state;
+      this.setState({
+          catsToggle: !catsToggle
+      });
     }
 
     updateProducts() {
@@ -115,7 +123,7 @@ export default class Products extends Component {
   }
 
     render() {
-      const { categories, catsChecked, productsDisplay, subCatsChecked } = this.state;
+      const { categories, catsChecked, productsDisplay, subCatsChecked, catsToggle } = this.state;
 
         const catsBlock = categories.map( (category, i) => {
           let icon = <i className="far fa-square"></i>;
@@ -154,7 +162,17 @@ export default class Products extends Component {
             );
         });
 
-      const menu = <div className="product-cats">{catsBlock}</div>;
+      const menu = (
+          <div className="product-cats">
+              <div className="product-cats__header">Categories</div>
+              <div className="product-cats__body">
+              {catsBlock}
+              </div>
+              <div className="product-cats__footer">
+                  <i className="fas fa-times" onClick={() => this.toggleCats()}></i>
+              </div>
+          </div>
+      );
 
         const productsBlock = productsDisplay.map( (product, i) => {
           let img_div = '';
@@ -206,20 +224,27 @@ export default class Products extends Component {
         const header = (
             <div className="products-header-wrap">
                 <div className="products-header">
-                    <div className="products-header__left">
-                        <i className="fas fa-sliders-h"></i>Advanced Filters
+                    <div
+                        className="products-header__left"
+                        onClick={() => this.toggleCats()}
+                    >
+                        <i className="fas fa-sliders-h"></i>All Categories
                     </div>
                     <div className="products-header__right">{catsList}</div>
                 </div>
             </div>
         );
-        return <div className="products-outer">
-            {menu}
-            <div className="products-inner-wrap">
-              {header}
-            <div className="products">{productsBlock}</div>
+
+        const menuToggled = catsToggle ? menu : '';
+        return (
+            <div className="products-outer">
+                {menuToggled}
+                <div className="products-inner-wrap">
+                    {header}
+                    <div className="products">{productsBlock}</div>
+                </div>
             </div>
-          </div>;
+        );
     }
 }
 

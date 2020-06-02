@@ -111594,12 +111594,22 @@ var Products = function (_Component) {
       sub_cat_match: JSON.parse(props.sub_cat_match),
       sub_cats_array: JSON.parse(props.sub_cats_array),
       catsChecked: [],
-      subCatsChecked: []
+      subCatsChecked: [],
+      catsToggle: false
     };
     return _this;
   }
 
   _createClass(Products, [{
+    key: 'toggleCats',
+    value: function toggleCats() {
+      var catsToggle = this.state.catsToggle;
+
+      this.setState({
+        catsToggle: !catsToggle
+      });
+    }
+  }, {
     key: 'updateProducts',
     value: function updateProducts() {
       var _state = this.state,
@@ -111718,7 +111728,8 @@ var Products = function (_Component) {
           categories = _state3.categories,
           catsChecked = _state3.catsChecked,
           productsDisplay = _state3.productsDisplay,
-          subCatsChecked = _state3.subCatsChecked;
+          subCatsChecked = _state3.subCatsChecked,
+          catsToggle = _state3.catsToggle;
 
 
       var catsBlock = categories.map(function (category, i) {
@@ -111792,7 +111803,23 @@ var Products = function (_Component) {
       var menu = __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
         'div',
         { className: 'product-cats' },
-        catsBlock
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          'div',
+          { className: 'product-cats__header' },
+          'Categories'
+        ),
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          'div',
+          { className: 'product-cats__body' },
+          catsBlock
+        ),
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          'div',
+          { className: 'product-cats__footer' },
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', { className: 'fas fa-times', onClick: function onClick() {
+              return _this2.toggleCats();
+            } })
+        )
       );
 
       var productsBlock = productsDisplay.map(function (product, i) {
@@ -111895,9 +111922,14 @@ var Products = function (_Component) {
           { className: 'products-header' },
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
             'div',
-            { className: 'products-header__left' },
+            {
+              className: 'products-header__left',
+              onClick: function onClick() {
+                return _this2.toggleCats();
+              }
+            },
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', { className: 'fas fa-sliders-h' }),
-            'Advanced Filters'
+            'All Categories'
           ),
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
             'div',
@@ -111906,10 +111938,12 @@ var Products = function (_Component) {
           )
         )
       );
+
+      var menuToggled = catsToggle ? menu : '';
       return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
         'div',
         { className: 'products-outer' },
-        menu,
+        menuToggled,
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
           'div',
           { className: 'products-inner-wrap' },
