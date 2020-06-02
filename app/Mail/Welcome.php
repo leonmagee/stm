@@ -20,7 +20,6 @@ class Welcome extends Mailable
      */
     public function __construct(User $user)
     {
-
         $this->user = $user;
         //$this->callbacks[] = (function ($message) {$message->getHeaders()->addTextHeader('X-No-Track', Str::random(10));});
         $this->callbacks[] = (function ($message) use ($user) {$message->getHeaders()->addTextHeader('user_id', $user->id);});

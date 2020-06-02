@@ -6,7 +6,6 @@ use App\User;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
-use Illuminate\Support\Str;
 
 class NewUser extends Mailable
 {
@@ -25,7 +24,9 @@ class NewUser extends Mailable
         $this->user = $user;
         $this->password = $password;
         $this->subject('Welcome to Sim Track Manager');
-        $this->callbacks[] = (function ($message) {$message->getHeaders()->addTextHeader('X-No-Track', Str::random(10));});
+        //$this->callbacks[] = (function ($message) {$message->getHeaders()->addTextHeader('X-No-Track', Str::random(10));});
+        $this->callbacks[] = (function ($message) use ($user) {$message->getHeaders()->addTextHeader('user_id', $user->id);});
+
     }
 
     /**
