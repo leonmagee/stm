@@ -111768,29 +111768,23 @@ var Products = function (_Component) {
       });
 
       var catsList = categories.map(function (category, i) {
-        var icon = __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', { className: 'far fa-square' });
+        var buttonClass = "button is-default is-small";
         if (catsChecked.includes(category.id)) {
-          icon = __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', { className: 'fas fa-check-square' });
+          buttonClass = "button is-primary is-small";
         }
-        var subCats = __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div', null);
 
         return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
           'div',
           { key: i },
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-            'div',
+            'button',
             {
               onClick: function onClick() {
                 return _this2.catClick(category.id);
               },
-              className: 'product-cat'
+              className: buttonClass
             },
-            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-              'span',
-              null,
-              category.name
-            ),
-            icon
+            category.name
           )
         );
       });
@@ -111899,7 +111893,17 @@ var Products = function (_Component) {
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
           'div',
           { className: 'products-header' },
-          catsList
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'div',
+            { className: 'products-header__left' },
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', { className: 'fas fa-sliders-h' }),
+            'Advanced Filters'
+          ),
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'div',
+            { className: 'products-header__right' },
+            catsList
+          )
         )
       );
       return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(

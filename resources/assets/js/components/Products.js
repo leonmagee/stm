@@ -137,21 +137,19 @@ export default class Products extends Component {
         })
 
         const catsList = categories.map((category, i) => {
-            let icon = <i className="far fa-square"></i>;
+            let buttonClass = "button is-default is-small";
             if (catsChecked.includes(category.id)) {
-                icon = <i className="fas fa-check-square"></i>;
+              buttonClass = "button is-primary is-small";
             }
-            let subCats = <div></div>;
 
             return (
                 <div key={i}>
-                    <div
+                    <button
                         onClick={() => this.catClick(category.id)}
-                        className="product-cat"
+                        className={buttonClass}
                     >
-                        <span>{category.name}</span>
-                        {icon}
-                    </div>
+                        {category.name}
+                    </button>
                 </div>
             );
         });
@@ -205,7 +203,16 @@ export default class Products extends Component {
               </div>
           );
         })
-        const header = <div className="products-header-wrap"><div className="products-header">{catsList}</div></div>
+        const header = (
+            <div className="products-header-wrap">
+                <div className="products-header">
+                    <div className="products-header__left">
+                        <i className="fas fa-sliders-h"></i>Advanced Filters
+                    </div>
+                    <div className="products-header__right">{catsList}</div>
+                </div>
+            </div>
+        );
         return <div className="products-outer">
             {menu}
             <div className="products-inner-wrap">
