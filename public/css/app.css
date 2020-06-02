@@ -20677,6 +20677,7 @@ body.stm-body.about .about-img-wrap img {
 }
 
 .products-outer .product-cats {
+  display: none;
   width: 17%;
   background-color: #fcfcfc;
   border-right: 1px solid #e3e3e3;
@@ -20866,7 +20867,7 @@ body.stm-body.about .about-img-wrap img {
       -ms-flex: 1;
           flex: 1;
   background: #05c290;
-  background: #52638a;
+  background: #1d4e89;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
