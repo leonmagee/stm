@@ -252,7 +252,9 @@
             justify-content: space-between;
             align-items: center;
             border-top: 1px solid #eee;
-            background: darken($green, 5%);
+            background: $product-blue;
+            //background: darken($green, 5%);
+            //background: red;
 
             .product__footer--cost {
                 padding: 0.3em 1em 0.4em;
@@ -260,8 +262,7 @@
                 color: #fff;
                 font-size: 0.8em;
                 flex: 1;
-                background: darken($green, 5%);
-                background: $product-blue;
+                //background: darken($green, 5%);
                 //background: $gs-blue;
                 display: flex;
                 align-items: center;
