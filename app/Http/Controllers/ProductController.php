@@ -169,6 +169,25 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
+        if ($product->img_url) {
+            $match = null;
+            preg_match('(\/STM\/.*)', $product->img_url, $match);
+            $new_url = cloudinary_url($match[0], ["transformation" => ["width" => 800, "height" => 800, "crop" => "fit"], "cloud_name" => "www-stmmax-com", "secure" => "true"]);
+            $product->img_url = $new_url;
+            $new_url_small = cloudinary_url($match[0], ["transformation" => ["width" => 300, "height" => 300, "crop" => "fit"], "cloud_name" => "www-stmmax-com", "secure" => "true"]);
+            $product->img_url_small = $new_url_small;
+        }
+
+        $orig_cost = number_format($product->cost, 2);
+        if ($product->discount) {
+            $product->orig_price = $orig_cost;
+            $product->cost = number_format($product->cost - ($product->cost * ($product->discount / 100)), 2);
+
+        } else {
+            $product->orig_price = null;
+            $product->cost = $orig_cost;
+        }
+
         return view('products.show', compact('product'));
     }
 
