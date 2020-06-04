@@ -21026,6 +21026,7 @@ body.stm-body.about .about-img-wrap img {
 
 .product-single .product-single__image img {
   border: 1px solid rgba(0, 0, 0, 0.04);
+  padding: 1em;
 }
 
 .product-single .product-single__image .product-single__image--stack {
@@ -21056,9 +21057,11 @@ body.stm-body.about .about-img-wrap img {
 }
 
 .product-single .product-details .product-details__title {
-  font-size: 3em;
+  font-size: 2.5em;
   font-weight: 600;
   line-height: 1.7em;
+  padding-bottom: 0.1em;
+  white-space: nowrap;
 }
 
 .product-single .product-details .product-details__cost {
