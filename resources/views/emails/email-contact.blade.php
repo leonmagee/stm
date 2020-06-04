@@ -4,15 +4,12 @@
 
 STM Contact form submission.
 
-<strong style="font-size: 1.3em">{{ $user->company }}</strong><br />
-<strong>{{ $user->name }}</strong><br />
-<strong>{{ $user->address }}</strong><br />
-<strong>{{ $user->city }}, {{ $user->state }} {{ $user->zip }}</strong><br />
-<span style="color: #1b9aaa">{{ $user->email }}</span><br />
-<strong>{{ $user->phone }}</strong><br /><br />
+<div class="note-wrap">
+  <strong>Message:</strong>
+  {{ $message }}
+</div>
 
-<strong>Message:</strong>
-{{ $message }}
+@include('emails.user-info',['user' => $user])
 
 @component('mail::button', ['url' => 'https://stmmax.com'])
 Login to Sim Track Manager
