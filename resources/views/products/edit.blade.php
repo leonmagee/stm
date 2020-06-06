@@ -10,7 +10,7 @@
 
     <h3>Edit Product</h3>
 
-    <form method="POST" action="/products/edit/{{ $product->id }}" enctype="multipart/form-data">
+    <form method="POST" action="/products/edit/{{ $product->id }}" enctype="multipart/form-data" id="product-form">
 
       <div class="form-wrap">
 
@@ -46,7 +46,8 @@
           <div class="field description">
             <label class="label" for="description">Product Description</label>
             <div class="control">
-              <textarea class="textarea" id="description" name="description">{{ $product->description }}</textarea>
+              <div id="quill_editor" class="quill-wrap">{!! $product->description !!}</div>
+              <textarea class="textarea quill_text" id="description" name="description"></textarea>
             </div>
           </div>
         </div>
@@ -178,5 +179,26 @@
   </div>
 
 </div>
+
+@endsection
+
+@section('page-script')
+<script src="https://cdn.quilljs.com/1.0.0/quill.js"></script>
+<script>
+  var quill_settings = {
+    modules: {
+    toolbar: [
+    [{ header: [1, 2, 3, 4, false] }],
+    ['bold', 'italic', 'underline', 'strike'],
+    [{ align: '' }, { align: 'center' }, { align: 'right' }, { align: 'justify' }],
+    [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+    ]
+    },
+    placeholder: 'Enter Your Text...',
+    theme: 'snow'
+    };
+    new Quill('#quill_editor', quill_settings);
+    //new Quill("#quill_editor-add-new", quill_settings);
+</script>
 
 @endsection

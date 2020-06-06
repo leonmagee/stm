@@ -30379,9 +30379,10 @@ $("#email-blast-form").on("submit", function (e) {
 
 $("#product-form").on("submit", function (e) {
   e.preventDefault();
-  console.log('this works');
+  console.log('this works new....');
   var quill_text = $("#quill_editor .ql-editor").html();
-  $("#description").val(quill_text);
+  $("textarea#description").val(quill_text);
+  console.log(quill_text);
   $(this)[0].submit();
 });
 
