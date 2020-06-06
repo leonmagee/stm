@@ -10,7 +10,7 @@
 
     <h3>Create a Product</h3>
 
-    <form method="POST" action="/product-new" enctype="multipart/form-data">
+    <form method="POST" action="/product-new" enctype="multipart/form-data" id="product-form">
 
       <div class="form-wrap">
 
@@ -44,7 +44,27 @@
           <div class="field description">
             <label class="label" for="description">Product Description</label>
             <div class="control">
-              <textarea class="textarea" id="description" name="description">{{ old('description') }}</textarea>
+              <div id="quill_editor" class="quill-wrap"></div>
+              <textarea class="textarea quill_text" id="description"
+                name="description">{{ old('description') }}</textarea>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-wrap-flex form-wrap-flex-products-top">
+          <div class="field description">
+            <label class="label" for="details">Product Details</label>
+            <div class="control">
+              <textarea class="textarea" id="details" name="details">{{ old('details') }}</textarea>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-wrap-flex form-wrap-flex-products-top">
+          <div class="field description">
+            <label class="label" for="more_details">More Details</label>
+            <div class="control">
+              <textarea class="textarea" id="more_details" name="more_details">{{ old('more_details') }}</textarea>
             </div>
           </div>
         </div>
@@ -139,5 +159,26 @@
   </div>
 
 </div>
+
+@endsection
+
+@section('page-script')
+<script src="https://cdn.quilljs.com/1.0.0/quill.js"></script>
+<script>
+  var quill_settings = {
+    modules: {
+    toolbar: [
+    [{ header: [1, 2, 3, 4, false] }],
+    ['bold', 'italic', 'underline', 'strike'],
+    [{ align: '' }, { align: 'center' }, { align: 'right' }, { align: 'justify' }],
+    [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+    ]
+    },
+    placeholder: 'Enter Your Text...',
+    theme: 'snow'
+    };
+    new Quill('#quill_editor', quill_settings);
+    //new Quill("#quill_editor-add-new", quill_settings);
+</script>
 
 @endsection

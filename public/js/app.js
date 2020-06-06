@@ -30377,10 +30377,29 @@ $("#email-blast-form").on("submit", function (e) {
   $(this)[0].submit();
 });
 
+$("#product-form").on("submit", function (e) {
+  e.preventDefault();
+  console.log('this works');
+  var quill_text = $("#quill_editor .ql-editor").html();
+  $("#description").val(quill_text);
+  $(this)[0].submit();
+});
+
 /**
  * Commission Tabs
  */
 $('#commission-tabs li').click(function () {
+  $(this).parent().find('.is-active').removeClass('is-active');
+  $(this).addClass('is-active');
+  var tab = $(this).attr('tab');
+  $('.tabs-content .tab-item.active').removeClass('active');
+  $('.tabs-content .tab-item#' + tab).addClass('active');
+});
+
+/**
+ * Product Tabs
+ */
+$('#product-tabs li').click(function () {
   $(this).parent().find('.is-active').removeClass('is-active');
   $(this).addClass('is-active');
   var tab = $(this).attr('tab');

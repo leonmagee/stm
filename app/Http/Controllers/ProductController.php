@@ -248,6 +248,8 @@ class ProductController extends Controller
             'cost' => $request->cost,
             'discount' => $request->discount,
             'description' => $request->description,
+            'details' => $request->details,
+            'more_details' => $request->more_details,
             'img_url' => $url,
         ]);
 
@@ -309,7 +311,7 @@ class ProductController extends Controller
         }
 
         session()->flash('message', 'Product Has Been Updated.');
-        return redirect('products');
+        return redirect('products/' . $product->id);
     }
 
     /**

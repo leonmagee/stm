@@ -51,6 +51,24 @@
           </div>
         </div>
 
+        <div class="form-wrap-flex form-wrap-flex-products-top">
+          <div class="field description">
+            <label class="label" for="details">Product Details</label>
+            <div class="control">
+              <textarea class="textarea" id="details" name="details">{{ $product->details }}</textarea>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-wrap-flex form-wrap-flex-products-top">
+          <div class="field description">
+            <label class="label" for="more_details">More Details</label>
+            <div class="control">
+              <textarea class="textarea" id="more_details" name="more_details">{{ $product->more_details }}</textarea>
+            </div>
+          </div>
+        </div>
+
         <div class="image-attributes-flex">
 
           <div class="flex-left">
