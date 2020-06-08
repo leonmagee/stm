@@ -120,6 +120,8 @@ class ProductController extends Controller
             'cost' => $request->cost,
             'discount' => $request->discount,
             'description' => $request->description,
+            'details' => self::img_replace($request->details),
+            'more_details' => self::img_replace($request->more_details),
             'img_url' => $url,
         ]);
 
@@ -248,8 +250,8 @@ class ProductController extends Controller
             'cost' => $request->cost,
             'discount' => $request->discount,
             'description' => $request->description,
-            'details' => $request->details,
-            'more_details' => $request->more_details,
+            'details' => self::img_replace($request->details),
+            'more_details' => self::img_replace($request->more_details),
             'img_url' => $url,
         ]);
 
@@ -323,6 +325,16 @@ class ProductController extends Controller
     public function destroy(Product $product)
     {
         //
+    }
+
+    /**
+     * Replace image with icon
+     */
+    public static function img_replace($content)
+    {
+        $pattern = '/<img[^>]*>/i';
+        $replacement = '<i class="fas fa-check"></i>';
+        return preg_replace($pattern, $replacement, $content);
     }
 
     // public function cloudinary_upload($file)

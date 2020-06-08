@@ -42,7 +42,9 @@
       </div>
     </div>
     @else
-    <div class="product-details__cost">${{ $product->cost }}</div>
+    <div class="product-details__flex-space-wrap">
+      <div class="product-details__cost">${{ $product->cost }}</div>
+    </div>
     @endif
     <div class="product-details__description">
       {!! $product->description !!}
@@ -51,8 +53,8 @@
     <div class="product-details__tabs tabs is-toggle" id="product-tabs">
       <ul>
         <li class="is-active" tab="tab-1"><a>Product Details</a></li>
-        <li tab="tab-2"><a>Product Info</a></li>
-        <li tab="tab-3"><a>More Details</a></li>
+        <li tab="tab-2"><a>More Details</a></li>
+        <li tab="tab-3"><a>Product Info</a></li>
       </ul>
     </div>
 
@@ -65,6 +67,12 @@
       </div>
 
       <div class="tab-item" id="tab-2">
+        <div class="product-details__details">
+          {!! $product->more_details !!}
+        </div>
+      </div>
+
+      <div class="tab-item" id="tab-3">
         <div class="product-details__info">
           <div class="product-details__flex-wrap">
             <div class="product-details__attributes">
@@ -89,11 +97,7 @@
         </div>
       </div>
 
-      <div class="tab-item" id="tab-3">
-        <div class="product-details__more">
-          {!! $product->more_details !!}
-        </div>
-      </div>
+
     </div>
 
     <div class="product-details__edit">

@@ -141,9 +141,9 @@
         .product-details__info {
             padding: 0.7em 1em;
         }
-        .product-details__more {
-            padding: 1em;
-        }
+        // .product-details__more {
+        //     padding: 1em;
+        // }
         .product-details__tabs-content {
             background-color: #fefefe;
             border: 1px solid #e2e2e2;
@@ -153,6 +153,7 @@
             border-radius: 4px;
             table {
                 //margin: 0;
+                width: 100%;
                 background: transparent;
                 //border-top: solid 1px rgb(219, 219, 219);
                 //border-bottom: solid 1px rgb(219, 219, 219);
@@ -160,6 +161,10 @@
                     &:nth-child(odd) {
                         background-color: #fafafa;
                     }
+                }
+                i {
+                    color: darken($green, 10%);
+                    margin-right: 0.3em;
                 }
             }
         }
