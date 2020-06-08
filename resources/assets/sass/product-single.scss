@@ -108,6 +108,7 @@
         }
         .product-details__description {
             //padding: 1em 0 0.5em;
+            margin-top: 0.5em;
             @include product_bg;
 
             ul {
