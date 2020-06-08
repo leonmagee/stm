@@ -84,3 +84,10 @@
     background-color: #fafafa;
     box-shadow: 1px 1px rgba(0, 0, 0, 0.075);
 }
+
+@mixin product_bg {
+    background-color: #f7f7f7;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 0.6em 0.8em;
+}

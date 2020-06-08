@@ -29,75 +29,76 @@
     @if($product->discount)
     <div class="product-details__flex-space-wrap">
       <div class="product-details__cost">${{ $product->cost }}<span
-          class="product-details__cost--orig"><span>${{ $product->orig_price }}</span> ({{ $product->discount }}%
-          Off)</span></div>
+          class="product-details__cost--orig"><span>${{ $product->orig_price }}</span></div>
+      <div class="product-details__discount">
+        <div class="product-details__discount--inner"><i class="fas fa-tag"></i>{{ $product->discount }}% Off
+        </div>
+      </div>
       <div class="product-details__cart">
         <div class="product-details__quantity">
           <i class="fas fa-minus-circle"></i>1<i class="fas fa-plus-circle"></i>
         </div>
         <button class="add-to-cart"><i class="fas fa-cart-plus"></i>Add To Cart</button>
       </div>
-      {{-- <div class="product-details__discount"><i class="fas fa-tag"></i>{{ $product->discount }}% Off
-    </div> --}}
-  </div>
-  @else
-  <div class="product-details__cost">${{ $product->cost }}</div>
-  @endif
-  <div class="product-details__description">
-    {!! $product->description !!}
-  </div>
-
-  <div class="product-details__tabs tabs is-toggle" id="product-tabs">
-    <ul>
-      <li class="is-active" tab="tab-1"><a>Product Details</a></li>
-      <li tab="tab-2"><a>Product Info</a></li>
-      <li tab="tab-3"><a>More Details</a></li>
-    </ul>
-  </div>
-
-  <div class="product-details__tabs-content tabs-content">
-
-    <div class="tab-item active" id="tab-1">
-      <div class="product-details__details">
-        {!! $product->details !!}
-      </div>
+    </div>
+    @else
+    <div class="product-details__cost">${{ $product->cost }}</div>
+    @endif
+    <div class="product-details__description">
+      {!! $product->description !!}
     </div>
 
-    <div class="tab-item" id="tab-2">
-      <div class="product-details__info">
-        <div class="product-details__flex-wrap">
-          <div class="product-details__attributes">
-            <label class="label">Attributes</label>
-            @foreach($product->attributes as $attribute)
-            <div class="product-details__attribute"><i class="fas fa-circle"></i>{{ $attribute->text }}</div>
-            @endforeach
-          </div>
-          <div class="product-details__categories">
-            <label class="label">Categories</label>
-            @foreach($product->categories as $category)
-            <div class="product-details__category"><i class="fas fa-check"></i>{{ $category->category->name }}</div>
-            @foreach($product->sub_categories as $sub_category)
-            @if($category->category->id == $sub_category->sub_category->category_id)
-            <div class="product-details__category"><i class="fas fa-check"></i>{{ $sub_category->sub_category->name }}
+    <div class="product-details__tabs tabs is-toggle" id="product-tabs">
+      <ul>
+        <li class="is-active" tab="tab-1"><a>Product Details</a></li>
+        <li tab="tab-2"><a>Product Info</a></li>
+        <li tab="tab-3"><a>More Details</a></li>
+      </ul>
+    </div>
+
+    <div class="product-details__tabs-content tabs-content">
+
+      <div class="tab-item active" id="tab-1">
+        <div class="product-details__details">
+          {!! $product->details !!}
+        </div>
+      </div>
+
+      <div class="tab-item" id="tab-2">
+        <div class="product-details__info">
+          <div class="product-details__flex-wrap">
+            <div class="product-details__attributes">
+              <label class="label">Attributes</label>
+              @foreach($product->attributes as $attribute)
+              <div class="product-details__attribute"><i class="fas fa-circle"></i>{{ $attribute->text }}</div>
+              @endforeach
             </div>
-            @endif
-            @endforeach
-            @endforeach
+            <div class="product-details__categories">
+              <label class="label">Categories</label>
+              @foreach($product->categories as $category)
+              <div class="product-details__category"><i class="fas fa-check"></i>{{ $category->category->name }}</div>
+              @foreach($product->sub_categories as $sub_category)
+              @if($category->category->id == $sub_category->sub_category->category_id)
+              <div class="product-details__category"><i class="fas fa-check"></i>{{ $sub_category->sub_category->name }}
+              </div>
+              @endif
+              @endforeach
+              @endforeach
+            </div>
           </div>
+        </div>
+      </div>
+
+      <div class="tab-item" id="tab-3">
+        <div class="product-details__more">
+          {!! $product->more_details !!}
         </div>
       </div>
     </div>
 
-    <div class="tab-item" id="tab-3">
-      <div class="product-details__more">
-        {!! $product->more_details !!}
-      </div>
+    <div class="product-details__edit">
+      <a href="/products/edit/{{ $product->id }}">Edit</a>
     </div>
   </div>
-
-  <div class="product-details__edit">
-    <a href="/products/edit/{{ $product->id }}">Edit</a>
-  </div>
-</div>
 </div>
 @endsection

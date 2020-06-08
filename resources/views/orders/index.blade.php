@@ -32,6 +32,9 @@
       <div>
         <span>{{ $order->created_at->format('m/d/Y') }}</span>
       </div>
+      <div>
+        <span>{{ $order->created_at->format('g:ia') }}</span>
+      </div>
     </div>
     @if(\Auth()->user()->isAdmin())
     <div class="flex-item notes-icon-wrap border-left">

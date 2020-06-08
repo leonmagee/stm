@@ -21087,7 +21087,7 @@ body.stm-body.about .about-img-wrap img {
 
 .product-single .product-details .product-details__cost {
   color: #05c290;
-  font-size: 3em;
+  font-size: 2.7em;
   font-weight: 600;
   line-height: 0.8em;
   display: -webkit-box;
@@ -21127,25 +21127,42 @@ body.stm-body.about .about-img-wrap img {
 }
 
 .product-single .product-details .product-details__discount {
-  background: #ff2e58;
-  color: #fff;
-  text-shadow: 1px 1px rgba(0, 0, 0, 0.1);
-  padding: 0.3em 0.7em;
-  border-radius: 0.3em;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  font-size: 1.3em;
+  margin-left: 0.4em;
+}
+
+.product-single .product-details .product-details__discount .product-details__discount--inner {
+  background: #ff2e58;
+  color: #fff;
+  text-shadow: 1px 1px rgba(0, 0, 0, 0.1);
+  padding: 0.3em 0.7em;
+  border-radius: 4px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 1.1em;
   font-weight: 600;
   text-transform: uppercase;
 }
 
-.product-single .product-details .product-details__discount i {
+.product-single .product-details .product-details__discount .product-details__discount--inner i {
   margin-right: 0.5em;
   padding-top: 0.2em;
+}
+
+.product-single .product-details .product-details__description {
+  background-color: #f7f7f7;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 0.6em 0.8em;
 }
 
 .product-single .product-details .product-details__description ul {
@@ -21169,7 +21186,7 @@ body.stm-body.about .about-img-wrap img {
 }
 
 .product-single .product-details .product-details__flex-space-wrap {
-  padding-bottom: 0.9em;
+  padding-bottom: 0.3em;
 }
 
 @media (min-width: 980px) {
@@ -21177,9 +21194,6 @@ body.stm-body.about .about-img-wrap img {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    -webkit-box-pack: justify;
-        -ms-flex-pack: justify;
-            justify-content: space-between;
   }
 }
 
@@ -21258,6 +21272,7 @@ body.stm-body.about .about-img-wrap img {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  margin-left: auto;
   background-color: #f7f7f7;
   border: 1px solid #ddd;
   border-radius: 4px;
