@@ -106,6 +106,17 @@
                 }
             }
         }
+        .product-details__details {
+            .row {
+                display: flex;
+                div {
+                    flex: 0 1 50%;
+                    &:nth-child(2) {
+                        border-left: 1px solid #ddd;
+                    }
+                }
+            }
+        }
         .product-details__description {
             //padding: 1em 0 0.5em;
             margin-top: 0.5em;

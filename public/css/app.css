@@ -21158,6 +21158,22 @@ body.stm-body.about .about-img-wrap img {
   padding-top: 0.2em;
 }
 
+.product-single .product-details .product-details__details .row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.product-single .product-details .product-details__details .row div {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 1 50%;
+          flex: 0 1 50%;
+}
+
+.product-single .product-details .product-details__details .row div:nth-child(2) {
+  border-left: 1px solid #ddd;
+}
+
 .product-single .product-details .product-details__description {
   margin-top: 0.5em;
   background-color: #f7f7f7;
