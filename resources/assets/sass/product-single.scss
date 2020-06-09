@@ -174,8 +174,13 @@
                     }
                 }
                 i {
-                    color: darken($green, 10%);
                     margin-right: 0.3em;
+                    &.fa-check {
+                        color: darken($green, 10%);
+                    }
+                    &.fa-times {
+                        color: darken($red, 5%);
+                    }
                 }
             }
         }

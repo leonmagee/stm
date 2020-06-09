@@ -332,9 +332,12 @@ class ProductController extends Controller
      */
     public static function img_replace($content)
     {
-        $pattern = '/<img[^>]*>/i';
+        $pattern = '/<img alt="YES[^>]*>/i';
         $replacement = '<i class="fas fa-check"></i>';
-        return preg_replace($pattern, $replacement, $content);
+        $updated = preg_replace($pattern, $replacement, $content);
+        $pattern = '/<img alt="NO[^>]*>/i';
+        $replacement = '<i class="fas fa-times"></i>';
+        return preg_replace($pattern, $replacement, $updated);
     }
 
     // public function cloudinary_upload($file)

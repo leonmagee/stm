@@ -21240,8 +21240,15 @@ body.stm-body.about .about-img-wrap img {
 }
 
 .product-single .product-details .product-details__tabs-content table i {
-  color: #04a97e;
   margin-right: 0.3em;
+}
+
+.product-single .product-details .product-details__tabs-content table i.fa-check {
+  color: #04a97e;
+}
+
+.product-single .product-details .product-details__tabs-content table i.fa-times {
+  color: #ff1f4b;
 }
 
 .product-single .product-details .product-details__attributes {
