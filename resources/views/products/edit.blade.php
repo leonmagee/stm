@@ -16,8 +16,6 @@
 
         @csrf
 
-        <input type="hidden" name="img_url" value="{{ $product->img_url }}" />
-
         <div class="form-wrap-flex form-wrap-flex-products-top">
           <div class="field name">
             <label class="label" for="name">Product Name<span class="required">*</span></label>
@@ -70,115 +68,113 @@
           </div>
         </div>
 
-        <div class="image-attributes-flex">
-
-          <div class="flex-left">
-            <div class="form-wrap-flex form-wrap-flex-image-attributes">
-              <div class="field">
-                <label class="label" for="product_upload_image">Image</label>
-                <div class="control">
-                  <div class="file">
-                    <label class="file-label">
-                      <input class="file-input" type="file" id="product_upload_image" name="upload-image"
-                        accept="image/*">
-                      <span class="file-cta">
-                        <span class="file-icon">
-                          <i class="fas fa-upload"></i>
-                        </span>
-                        <span class="file-label">
-                          Choose a file…
-                        </span>
-                      </span>
-                    </label>
-                  </div>
-                </div>
+        <div class="form-wrap-flex form-wrap-flex-images">
+          @for($i = 1; $i <= (1 + $num_images); ++$i) <div class="field fifth">
+            <label class="label" for="product_upload_image_{{ $i }}">Image {{ $i }}</label>
+            <div class="control">
+              <div class="file">
+                <label class="file-label">
+                  <input type="hidden" name="img_url_{{ $i }}" value="{{ $product->{'img_url_' . $i} }}" />
+                  <input class="file-input" type="file" id="product_upload_image_{{ $i }}" name="upload-image-{{ $i }}"
+                    accept="image/*">
+                  <span class="file-cta">
+                    <span class="file-icon">
+                      <i class="fas fa-upload"></i>
+                    </span>
+                    <span class="file-label">
+                      Choose a file…
+                    </span>
+                  </span>
+                </label>
               </div>
+              <div class="preview-image">
+                @if($product->{"img_url_" . $i})
+                <div class="preview-image__image">
+                  <img id="output_{{ $i }}" src={{ $product->{"img_url_" . $i} }} />
+                </div>
+                @else
+                <div class="preview-image__image hide_img output_{{ $i }}">
+                  <img id="output_{{ $i }}" />
+                </div>
+                <div class="preview-image__default preview-image__default_{{ $i }}"><i class="far fa-image"></i></div>
+                @endif
+              </div>
+            </div>
+        </div>
+        @endfor
+      </div>
 
-              <div class="field full">
-                <label class="label" for="">Attributes</label>
-                <div id="repeater-field-wrap">
-                  @foreach($product->attributes as $attribute)
-                  <div class="entry input-group">
-                    <div class="field has-addons">
-                      <input type="text" class="input name" name="attribute_names[]" placeholder="Particpant Name"
-                        value="{{ $attribute->text }}">
-                      <div class="input-group-append">
-                        <button class="button is-danger remove-attribute" type="button"><i
-                            class="fas fa-times"></i></button>
-                      </div>
-                    </div>
-                  </div>
-                  @endforeach
-                  <div class="entry input-group">
-                    <div class="field has-addons">
-                      <input type="text" class="input name" name="attribute_names[]" placeholder="Attribute">
-                      <div class="input-group-append">
-                        <button class="button is-primary add-attribute" type="button"><i
-                            class="fas fa-plus"></i></button>
-                      </div>
-                    </div>
-                  </div>
+      <div class="form-wrap-flex form-wrap-flex-attributes">
+        <div class="field full">
+          <label class="label" for="">Attributes</label>
+          <div id="repeater-field-wrap">
+            @foreach($product->attributes as $attribute)
+            <div class="entry input-group">
+              <div class="field has-addons">
+                <input type="text" class="input name" name="attribute_names[]" placeholder="Particpant Name"
+                  value="{{ $attribute->text }}">
+                <div class="input-group-append">
+                  <button class="button is-danger remove-attribute" type="button"><i class="fas fa-times"></i></button>
                 </div>
               </div>
             </div>
-          </div>
-          <div class="flex-right">
-            <div class="field full">
-              <label class="label">Image Preview</label>
-              @if($product->img_url)
-              <img id="output" src={{ $product->img_url }} />
-              @else
-              <img id="output" />
-              @endif
+            @endforeach
+            <div class="entry input-group">
+              <div class="field has-addons">
+                <input type="text" class="input name" name="attribute_names[]" placeholder="Attribute">
+                <div class="input-group-append">
+                  <button class="button is-primary add-attribute" type="button"><i class="fas fa-plus"></i></button>
+                </div>
+              </div>
             </div>
           </div>
         </div>
+      </div>
 
-        <div class="form-wrap-flex form-wrap-flex-categories">
-          <div class="field full product-categories-checkboxes category-area">
-            <label class="label">Categories</label>
-            <div class="control">
-              @foreach($categories as $category)
-              <div class="category-item">
-                <input type="checkbox" cat_num="{{ $category->id }}" id="category-{{ $category->id }}"
-                  name="category-{{ $category->id }}" @if(in_array($category->id, $selected_cats)) checked @endif />
-                <label class="label" for="category-{{ $category->id }}">{{ $category->name }}</label>
-              </div>
-              @endforeach
-            </div>
-          </div>
-
-          @foreach($categories as $category)
-          <div
-            class="@if (in_array($category->id, $selected_cats)) active @endif field full product-categories-checkboxes sub-category-area sub-category-{{ $category->id }}">
-            <label class="label">{{ $category->name }} Sub Categories</label>
-            <div class="control">
-              @foreach($category->sub_categories as $sub_category)
-              <div class="category-item">
-                <input type="checkbox" id="sub-category-{{ $sub_category->id }}"
-                  name="sub-category-{{ $sub_category->id }}" @if(in_array($sub_category->id, $selected_sub_cats))
-                checked
-                @endif/>
-                <label class="label" for="sub-category-{{ $sub_category->id }}">{{ $sub_category->name }}</label>
-              </div>
-              @endforeach
-            </div>
-          </div>
-          @endforeach
-
-        </div>
-        <div class="field flex-margin">
+      <div class="form-wrap-flex form-wrap-flex-categories">
+        <div class="field product-categories-checkboxes category-area">
+          <label class="label">Categories</label>
           <div class="control">
-            <button class="button is-primary call-loader" type="submit">Update Product</button>
+            @foreach($categories as $category)
+            <div class="category-item">
+              <input type="checkbox" cat_num="{{ $category->id }}" id="category-{{ $category->id }}"
+                name="category-{{ $category->id }}" @if(in_array($category->id, $selected_cats)) checked @endif />
+              <label class="label" for="category-{{ $category->id }}">{{ $category->name }}</label>
+            </div>
+            @endforeach
           </div>
         </div>
+
+        @foreach($categories as $category)
+        <div
+          class="@if (in_array($category->id, $selected_cats)) active @endif field full product-categories-checkboxes sub-category-area sub-category-{{ $category->id }}">
+          <label class="label">{{ $category->name }} Sub Categories</label>
+          <div class="control">
+            @foreach($category->sub_categories as $sub_category)
+            <div class="category-item">
+              <input type="checkbox" id="sub-category-{{ $sub_category->id }}"
+                name="sub-category-{{ $sub_category->id }}" @if(in_array($sub_category->id, $selected_sub_cats))
+              checked
+              @endif/>
+              <label class="label" for="sub-category-{{ $sub_category->id }}">{{ $sub_category->name }}</label>
+            </div>
+            @endforeach
+          </div>
+        </div>
+        @endforeach
 
       </div>
-    </form>
+      <div class="field flex-margin">
+        <div class="control">
+          <button class="button is-primary call-loader" type="submit">Update Product</button>
+        </div>
+      </div>
 
   </div>
-
+  </form>
 </div>
+</div>
+
 
 @endsection
 

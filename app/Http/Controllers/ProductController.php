@@ -13,9 +13,12 @@ use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
+    public $secondary_images;
+
     public function __construct()
     {
         $this->middleware('auth');
+        $this->secondary_images = 4;
     }
 
     /**
@@ -177,7 +180,18 @@ class ProductController extends Controller
             $new_url = cloudinary_url($match[0], ["transformation" => ["width" => 800, "height" => 800, "crop" => "fit"], "cloud_name" => "www-stmmax-com", "secure" => "true"]);
             $product->img_url = $new_url;
             $new_url_small = cloudinary_url($match[0], ["transformation" => ["width" => 300, "height" => 300, "crop" => "fit"], "cloud_name" => "www-stmmax-com", "secure" => "true"]);
-            $product->img_url_small = $new_url_small;
+            $product->img_url_small_1 = $new_url_small;
+        }
+
+        for ($i = 1; $i <= (1 + $this->secondary_images); $i++) {
+            if ($product->{"img_url_" . $i}) {
+                $match = null;
+                preg_match('(\/STM\/.*)', $product->{"img_url_" . $i}, $match);
+                $new_url = cloudinary_url($match[0], ["transformation" => ["width" => 800, "height" => 800, "crop" => "fit"], "cloud_name" => "www-stmmax-com", "secure" => "true"]);
+                $product->{"img_url_" . $i} = $new_url;
+                $new_url_small = cloudinary_url($match[0], ["transformation" => ["width" => 300, "height" => 300, "crop" => "fit"], "cloud_name" => "www-stmmax-com", "secure" => "true"]);
+                $product->{"img_url_small_" . $i} = $new_url_small;
+            }
         }
 
         $orig_cost = number_format($product->cost, 2);
@@ -189,8 +203,9 @@ class ProductController extends Controller
             $product->orig_price = null;
             $product->cost = $orig_cost;
         }
+        $num_images = $this->secondary_images;
 
-        return view('products.show', compact('product'));
+        return view('products.show', compact('product', 'num_images'));
     }
 
     /**
@@ -211,7 +226,9 @@ class ProductController extends Controller
             $selected_sub_cats[] = $cat->sub_category_id;
         }
 
-        return view('products.edit', compact('product', 'categories', 'selected_cats', 'selected_sub_cats'));
+        $num_images = $this->secondary_images;
+
+        return view('products.edit', compact('product', 'categories', 'selected_cats', 'selected_sub_cats', 'num_images'));
     }
 
     /**
@@ -223,6 +240,7 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
+        //dd($request);
         $request->validate([
             'name' => 'required',
             'cost' => 'required',
@@ -233,16 +251,32 @@ class ProductController extends Controller
 
         $image_upload = $request->file('upload-image');
 
-        if ($image_upload) {
-            $image_path = $image_upload->getRealPath();
-            $cloudinaryWrapper = Cloudder::upload($image_path, null, ['folder' => 'STM']);
-            $result = $cloudinaryWrapper->getResult();
-            $url = $result['secure_url'];
-        } elseif ($request->img_url) {
-            $url = $request->img_url;
-        } else {
-            $url = '';
+        // if ($image_upload) {
+        //     $image_path = $image_upload->getRealPath();
+        //     $cloudinaryWrapper = Cloudder::upload($image_path, null, ['folder' => 'STM']);
+        //     $result = $cloudinaryWrapper->getResult();
+        //     $url = $result['secure_url'];
+        // } elseif ($request->img_url) {
+        //     $url = $request->img_url;
+        // } else {
+        //     $url = '';
+        // }
+
+        for ($i = 1; $i <= (1 + $this->secondary_images); $i++) {
+            ${"image_upload_" . $i} = $request->file('upload-image-' . $i);
+            if (${"image_upload_" . $i}) {
+                $image_path = ${"image_upload_" . $i}->getRealPath();
+                $cloudinaryWrapper = Cloudder::upload($image_path, null, ['folder' => 'STM']);
+                $result = $cloudinaryWrapper->getResult();
+                ${"url_" . $i} = $result['secure_url'];
+            } elseif ($request->{"img_url_" . $i}) {
+                ${"url_" . $i} = $request->{"img_url_" . $i};
+            } else {
+                ${"url_" . $i} = '';
+            }
+
         }
+
         //dd($url);
 
         $product->update([
@@ -252,7 +286,11 @@ class ProductController extends Controller
             'description' => $request->description,
             'details' => self::img_replace($request->details),
             'more_details' => self::img_replace($request->more_details),
-            'img_url' => $url,
+            'img_url_1' => $url_1,
+            'img_url_2' => $url_2,
+            'img_url_3' => $url_3,
+            'img_url_4' => $url_4,
+            'img_url_5' => $url_5,
         ]);
 
         // 1. Delete existing attriubtes for product

@@ -182,8 +182,8 @@ export default class Products extends Component {
             discount = <div className="product__discount">{product.discount}% Off</div>
             orig_price = <span className="product__footer--orig_price">${product.orig_price}</span>
           }
-          if(product.img_url) {
-            img_div = <div className="product__image product__image--url"><img src={product.img_url} />{discount}</div>
+          if(product.img_url_1) {
+            img_div = <div className="product__image product__image--url"><img src={product.img_url_1} />{discount}</div>
           } else {
             img_div = <div className="product__image product__image--default"><i className="far fa-image"></i>{discount}</div>
           }

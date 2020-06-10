@@ -19,6 +19,42 @@
             max-width: 70%;
         }
     }
+    // .form-wrap-flex-images {
+    //     display: flex;
+    //     .field {
+    //         img {
+    //             max-width: 2em;
+    //         }
+    //     }
+    // }
+    .preview-image {
+        margin-top: 1em;
+        .preview-image__image {
+            background: #fff;
+            border: 1px solid #ddd;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 1em;
+            img {
+                height: 13em;
+            }
+            &.hide_img {
+                display: none;
+            }
+        }
+        .preview-image__default {
+            background-color: #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 15em;
+            i {
+                color: #999;
+                font-size: 7em;
+            }
+        }
+    }
 }
 
 // categories form
@@ -35,16 +71,18 @@
     display: flex;
     justify-content: space-between;
     padding: 0 1% 0 0.5%;
-    .flex-left {
-        flex: 0 1 70%;
-    }
-    .flex-right {
-        //flex: 0 1 28%;
-    }
+    // .flex-left {
+    //     flex: 0 1 70%;
+    // }
+    // .flex-right {
+    //     //flex: 0 1 28%;
+    // }
     img#output {
-        width: 300px;
-        height: 300px;
-        background-color: #eee;
-        border: 1px solid #ddd;
+        max-width: 8em;
+        @include product_border;
+        //height: 300px;
+        background-color: #fff;
+        padding: 1em;
+        //border: 1px solid #ddd;
     }
 }

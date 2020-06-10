@@ -4,21 +4,20 @@
 
 <div class="product-single">
   <div class="product-single__images">
-    @if($product->img_url)
-    <div class="product-single__images--url"><img src="{{ $product->img_url }}" /></div>
+    @if($product->img_url_1)
+    <div class="product-single__images--url">
+      @for($i = 1; $i
+      <= (1 + $num_images); ++$i) <img class="{{ ($i == 1) ? 'active' : 'hidden' }} img_url_{{ $i }}" class="active"
+        src="{{ $product->{'img_url_' . $i } }}" />
+      @endfor
+    </div>
     <div class="product-single__images--row">
-      <div class="product-single__images--item">
-        <img src="{{ $product->img_url_small }}" />
-      </div>
-      <div class="product-single__images--item">
-        <img src="{{ $product->img_url_small }}" />
-      </div>
-      <div class="product-single__images--item">
-        <img src="{{ $product->img_url_small }}" />
-      </div>
-      <div class="product-single__images--item">
-        <img src="{{ $product->img_url_small }}" />
-      </div>
+      @for($i = 1; $i <= (1 + $num_images); ++$i) @if($product->{"img_url_small_" . $i })
+        <div class="product-single__images--item product-single__images--item_{{ $i }}" image_id="{{ $i }}">
+          <img src="{{ $product->{"img_url_small_" . $i } }}" />
+        </div>
+        @endif
+        @endfor
     </div>
     @else
     <div class="product-single__images--default"><i class="far fa-image"></i></div>
