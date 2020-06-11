@@ -3902,6 +3902,13 @@ jquery-datetimepicker@^2.5.21:
   resolved "https://registry.yarnpkg.com/jquery-mousewheel/-/jquery-mousewheel-3.1.13.tgz#06f0335f16e353a695e7206bf50503cb523a6ee5"
   integrity sha1-BvAzXxbjU6aV5yBr9QUDy1I6buU=
 
+jquery-zoom@^1.7.21:
+  version "1.7.21"
+  resolved "https://registry.yarnpkg.com/jquery-zoom/-/jquery-zoom-1.7.21.tgz#9c8cbb40cefaeba288e9dd05a67e5f0f8dcec4f3"
+  integrity sha512-C3aDEt0c4TkPrOPqIs5VAOwBMgitf1I7jEakO15G3QfxdVEivBvUlkiCjfcGQM+FyXdvshpbiEJKDbEdPz2/pw==
+  dependencies:
+    jquery ">=1.7"
+
 "jquery@>= 1.7.2":
   version "3.5.0"
   resolved "https://registry.yarnpkg.com/jquery/-/jquery-3.5.0.tgz#9980b97d9e4194611c36530e7dc46a58d7340fc9"

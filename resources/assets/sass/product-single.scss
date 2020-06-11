@@ -22,16 +22,18 @@
         }
         .product-single__images--row {
             display: flex;
+            justify-content: center;
             .product-single__images--item {
                 //border: 1px solid rgba(0, 0, 0, 0.04);
                 @include product_border;
-                padding: 1em;
+                padding: 0.7em;
                 background-color: #fff;
-                margin: 0.8em 0.7em 0.8em 0;
+                margin: 0.8em 0.4em 0.8em 0.4em;
                 display: flex;
                 align-items: center;
                 img {
-                    max-width: 3.5em;
+                    max-width: 3.3em;
+                    max-height: 5em;
                 }
                 &:hover {
                     border-color: lighten($brand-primary, 5%);
