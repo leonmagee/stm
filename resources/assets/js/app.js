@@ -29,7 +29,7 @@ require('./components/Products');
 /**
  * JQuery Zoom
  */
-const number_images = 5;
+const number_images = 6;
 for(var i = 1; i < (number_images + 1); ++i) {
     this['img_src_' + i] = $(".product-single__images--url-item_" + i)
         .find("img")
@@ -233,6 +233,16 @@ $("input#product_upload_image_5").change(function() {
     var output = document.getElementById("output_5");
     $("div.preview-image__image.output_5").removeClass("hide_img");
     $("div.preview-image__default_5").hide();
+    output.src = URL.createObjectURL(event.target.files[0]);
+    output.onload = function() {
+        URL.revokeObjectURL(output.src); // free memory
+    };
+});
+
+$("input#product_upload_image_6").change(function() {
+    var output = document.getElementById("output_6");
+    $("div.preview-image__image.output_6").removeClass("hide_img");
+    $("div.preview-image__default_6").hide();
     output.src = URL.createObjectURL(event.target.files[0]);
     output.onload = function() {
         URL.revokeObjectURL(output.src); // free memory

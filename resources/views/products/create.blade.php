@@ -91,7 +91,7 @@
           </div> --}}
 
         <div class="form-wrap-flex form-wrap-flex-images">
-          @for($i = 1; $i <= (1 + $num_images); ++$i) <div class="field fifth">
+          @for($i = 1; $i <= (1 + $num_images); ++$i) <div class="field sixth">
             <label class="label" for="product_upload_image_{{ $i }}">Image {{ $i }}</label>
             <div class="control">
               <div class="file">

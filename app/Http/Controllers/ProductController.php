@@ -18,7 +18,8 @@ class ProductController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-        $this->secondary_images = 3;
+        $this->secondary_images = 5;
+        $this->tab_images = 8;
     }
 
     /**
@@ -148,6 +149,8 @@ class ProductController extends Controller
             'img_url_2' => $url_2,
             'img_url_3' => $url_3,
             'img_url_4' => $url_4,
+            'img_url_5' => $url_5,
+            'img_url_6' => $url_6,
         ]);
 
         foreach ($request->attribute_names as $attribute) {
@@ -312,7 +315,8 @@ class ProductController extends Controller
             'img_url_2' => $url_2,
             'img_url_3' => $url_3,
             'img_url_4' => $url_4,
-            //'img_url_5' => $url_5,
+            'img_url_5' => $url_5,
+            'img_url_6' => $url_6,
         ]);
 
         // 1. Delete existing attriubtes for product

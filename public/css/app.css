@@ -16893,6 +16893,12 @@ body.stm-body h1.title span {
     margin-left: 1%;
   }
 
+  .form-wrapper .form-wrapper-inner form .form-wrap .form-wrap-flex .field.sixth {
+    -webkit-box-flex: 0;
+        -ms-flex: 0 1 14.66%;
+            flex: 0 1 14.66%;
+  }
+
   .form-wrapper .form-wrapper-inner form .form-wrap .form-wrap-flex .field.fifth {
     -webkit-box-flex: 0;
         -ms-flex: 0 1 18%;
@@ -16927,7 +16933,7 @@ body.stm-body h1.title span {
 }
 
 .form-wrapper .form-wrapper-inner form .form-wrap .form-wrap-flex .email-blast-wrap-top label {
-  font-size: 1.2em;
+  font-size: 1.1em;
   font-weight: bold;
   margin-right: 20px;
 }

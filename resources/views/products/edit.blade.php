@@ -69,7 +69,7 @@
         </div>
 
         <div class="form-wrap-flex form-wrap-flex-images">
-          @for($i = 1; $i <= (1 + $num_images); ++$i) <div class="field fifth">
+          @for($i = 1; $i <= (1 + $num_images); ++$i) <div class="field sixth">
             <label class="label" for="product_upload_image_{{ $i }}">Image {{ $i }}</label>
             <div class="control">
               <div class="file">
@@ -132,7 +132,7 @@
       </div>
 
       <div class="form-wrap-flex form-wrap-flex-categories">
-        <div class="field product-categories-checkboxes category-area">
+        <div class="field full product-categories-checkboxes category-area">
           <label class="label">Categories</label>
           <div class="control">
             @foreach($categories as $category)

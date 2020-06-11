@@ -56,7 +56,7 @@
     <ul>
       <li class="is-active" tab="tab-1"><a>Product Details</a></li>
       <li tab="tab-2"><a>More Details</a></li>
-      <li tab="tab-3"><a>Product Info</a></li>
+      <li tab="tab-3"><a>Product Images</a></li>
     </ul>
   </div>
 
