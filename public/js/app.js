@@ -30355,7 +30355,6 @@ __webpack_require__(178);
 $('.category-area input').click(function () {
   var id = $(this).attr('cat_num');
   $('.sub-category-' + id).toggleClass('active');
-  // console.log('clicking', id);
 });
 
 /**
@@ -30379,10 +30378,8 @@ $("#email-blast-form").on("submit", function (e) {
 
 $("#product-form").on("submit", function (e) {
   e.preventDefault();
-  console.log('this works new....');
   var quill_text = $("#quill_editor .ql-editor").html();
   $("textarea#description").val(quill_text);
-  console.log(quill_text);
   $(this)[0].submit();
 });
 
@@ -30480,9 +30477,6 @@ $(".product-single__images--item").hover(function () {
   var image_id = $(this).attr('image_id');
   $(".product-single__images--url .active").removeClass('active').addClass('hidden');
   $(".product-single__images--url .hidden.img_url_" + image_id).removeClass("hidden").addClass("active");
-
-  console.log('working', image_id);
-  //$("image_id");
 });
 
 /**
@@ -30579,12 +30573,10 @@ $('.notification .delete').click(function () {
  * Email Blast Toggle
  */
 $('#all-users-radio').click(function () {
-  //console.log('workzzzzzzzz');
   $('#exclude-sites-wrap').addClass('active');
 });
 
 $('.one-site-radio').click(function () {
-  //console.log('workzzzzzzzz');
   $('#exclude-sites-wrap').removeClass('active');
 });
 
@@ -30632,7 +30624,6 @@ $('.modal-resend-open, .modal-resend-close, .modal-resend-close-button').click(f
  */
 $('.modal-delete-open, .modal-delete-close, .modal-delete-close-button').click(function () {
   var orderId = $(this).attr('order_id');
-  // console.log('note id', noteId);
   $('.modal#delete-order-modal-' + orderId).toggleClass('is-active');
 });
 
@@ -30641,7 +30632,6 @@ $('.menu-modal-open, #menu-modal .menu-modal-close').click(function () {
 });
 
 $('#modal_delete_sims').click(function () {
-  console.log('click worked new');
   $('#delete_sims_form').submit();
 });
 
@@ -30758,7 +30748,6 @@ $('.delete-note-form i').click(function () {
 //     el: '#app'
 // });
 
-// console.log('app.js is loading');
 
 // $('#jquery-test.title').css({'color':'cornflowerblue'});
 

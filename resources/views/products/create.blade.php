@@ -69,53 +69,42 @@
           </div>
         </div>
 
-        <div class="image-attributes-flex">
 
-          <div class="flex-left">
-            <div class="form-wrap-flex form-wrap-flex-image-attributes">
-              <div class="field">
-                <label class="label" for="product_upload_image">Image</label>
-                <div class="control">
-                  <div class="file">
-                    <label class="file-label">
-                      <input class="file-input" type="file" id="product_upload_image" name="upload-image"
-                        accept="image/*">
-                      <span class="file-cta">
-                        <span class="file-icon">
-                          <i class="fas fa-upload"></i>
-                        </span>
-                        <span class="file-label">
-                          Choose a file…
-                        </span>
-                      </span>
-                    </label>
-                  </div>
-                </div>
-              </div>
-
-              <div class="field full">
-                <label class="label" for="">Attributes</label>
-                <div id="repeater-field-wrap">
-                  <div class="entry input-group">
-                    <div class="field has-addons">
-                      <input type="text" class="input name" name="attribute_names[]" placeholder="Attribute">
-                      <div class="input-group-append">
-                        <button class="button is-primary add-attribute" type="button"><i
-                            class="fas fa-plus"></i></button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+        <div class="form-wrap-flex form-wrap-flex-image-attributes">
+          <div class="field">
+            <label class="label" for="product_upload_image">Image</label>
+            <div class="control">
+              <div class="file">
+                <label class="file-label">
+                  <input class="file-input" type="file" id="product_upload_image" name="upload-image" accept="image/*">
+                  <span class="file-cta">
+                    <span class="file-icon">
+                      <i class="fas fa-upload"></i>
+                    </span>
+                    <span class="file-label">
+                      Choose a file…
+                    </span>
+                  </span>
+                </label>
               </div>
             </div>
           </div>
-          <div class="flex-right">
-            <div class="field full">
-              <label class="label">Image Preview</label>
-              <img id="output" />
+
+          <div class="field full">
+            <label class="label" for="">Attributes</label>
+            <div id="repeater-field-wrap">
+              <div class="entry input-group">
+                <div class="field has-addons">
+                  <input type="text" class="input name" name="attribute_names[]" placeholder="Attribute">
+                  <div class="input-group-append">
+                    <button class="button is-primary add-attribute" type="button"><i class="fas fa-plus"></i></button>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
+
 
         <div class="form-wrap-flex form-wrap-flex-categories">
           <div class="field full product-categories-checkboxes category-area">

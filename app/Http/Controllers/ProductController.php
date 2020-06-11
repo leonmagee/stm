@@ -18,7 +18,7 @@ class ProductController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-        $this->secondary_images = 4;
+        $this->secondary_images = 3;
     }
 
     /**
