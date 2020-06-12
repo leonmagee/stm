@@ -21254,6 +21254,7 @@ body.stm-body.about .about-img-wrap img {
 .product-single .product-details .product-single__images--url-tab-item img {
   background: #fff;
   border-radius: 4px;
+  width: 100%;
 }
 
 .product-single .product-details .product-details__info {
