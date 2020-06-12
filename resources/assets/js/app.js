@@ -76,8 +76,14 @@ for (let i = 1; i <= tab_number_images; ++i) {
     });
 }
 
-
-
+/**
+ * Zoom Icon Dissapear
+ */
+$(".product-single__images--url").hover(function() {
+  $(".product-single__images--url-icon").hide();
+}, function() {
+  $(".product-single__images--url-icon").show();
+});
 
 /**
  * Categories Toggle

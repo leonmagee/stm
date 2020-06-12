@@ -21030,6 +21030,15 @@ body.stm-body.about .about-img-wrap img {
   padding: 1em;
   background-color: #fff;
   text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.product-single .product-single__images .product-single__images--url .product-single__images--url-icon {
+  position: absolute;
+  top: 0.55em;
+  left: 0.7em;
+  z-index: 100000;
 }
 
 .product-single .product-single__images .product-single__images--url img {
@@ -21222,6 +21231,13 @@ body.stm-body.about .about-img-wrap img {
   padding-left: 1.3em;
 }
 
+.product-single .product-details .product-details__images img {
+  background: #fff;
+  border-radius: 4px;
+  width: 100%;
+  margin-bottom: 1em;
+}
+
 @media (min-width: 980px) {
   .product-single .product-details .product-details__flex-wrap {
     display: -webkit-box;
@@ -21245,16 +21261,6 @@ body.stm-body.about .about-img-wrap img {
 .product-single .product-details .product-details__tabs {
   margin-top: 1.5em;
   margin-bottom: 1em;
-}
-
-.product-single .product-details .product-single__images--url-tab-item {
-  margin-bottom: 1em;
-}
-
-.product-single .product-details .product-single__images--url-tab-item img {
-  background: #fff;
-  border-radius: 4px;
-  width: 100%;
 }
 
 .product-single .product-details .product-details__info {
@@ -21287,46 +21293,6 @@ body.stm-body.about .about-img-wrap img {
 
 .product-single .product-details .product-details__tabs-content table i.fa-times {
   color: #ff1f4b;
-}
-
-.product-single .product-details .product-details__attributes {
-  padding: 0.5em;
-}
-
-.product-single .product-details .product-details__attributes .product-details__attribute {
-  color: #4a4a4a;
-  font-size: 16px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
-.product-single .product-details .product-details__attributes .product-details__attribute i {
-  color: #06dba3;
-  margin-right: 0.7em;
-  font-size: 0.45em;
-}
-
-.product-single .product-details .product-details__categories {
-  padding: 0.5em;
-}
-
-@media (min-width: 980px) {
-  .product-single .product-details .product-details__categories {
-    margin-left: 1em;
-    margin-top: 0.2em;
-    padding-left: 1em;
-    border-left: 1px solid #ddd;
-  }
-}
-
-.product-single .product-details .product-details__categories .product-details__category i {
-  color: #06dba3;
-  margin-right: 0.6em;
-  font-size: 0.9em;
 }
 
 .product-single .product-details .product-details__cart {

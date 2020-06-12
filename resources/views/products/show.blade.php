@@ -6,6 +6,7 @@
   <div class="product-single__images">
     @if($product->img_url_1)
     <div class="product-single__images--url">
+      <div class="product-single__images--url-icon"><i class="fas fa-search-plus"></i></div>
       @for($i = 1; $i
       <= $num_images; ++$i) <div class="product-single__images--url-item product-single__images--url-item_{{ $i }}">
         <img class="{{ ($i == 1) ? 'active' : 'hidden' }} img_url_{{ $i }}" class="active"
@@ -74,18 +75,11 @@
     </div>
 
     <div class="tab-item" id="tab-3">
-      <div class="product-details__images_tabs">
-
-        <div class="product-single__images--url-tab">
-          @for($i = 1; $i<= $num_tab_images; ++$i) <div
-            class="product-single__images--url-tab-item product-single__images--url-tab-item_{{ $i }}">
-            <img src="{{ $product->{'tab_img_url_' . $i } }}" />
-        </div>
-        @endfor
+      <div class="product-details__images">
+        @for($i = 1; $i<= $num_tab_images; ++$i) <div class="product-details__images--item">
+          <img src="{{ $product->{'tab_img_url_' . $i } }}" />
       </div>
-
-
-
+      @endfor
     </div>
   </div>
 

@@ -30410,6 +30410,15 @@ for (var _i2 = 1; _i2 <= tab_number_images; ++_i2) {
 }
 
 /**
+ * Zoom Icon Dissapear
+ */
+$(".product-single__images--url").hover(function () {
+  $(".product-single__images--url-icon").hide();
+}, function () {
+  $(".product-single__images--url-icon").show();
+});
+
+/**
  * Categories Toggle
  */
 $('.category-area input').click(function () {
