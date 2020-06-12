@@ -121,7 +121,12 @@
             }
         }
         .product-details__details {
+            padding: 1em;
+            > table {
+                margin: -1em;
+            }
             .row {
+                margin: -1em;
                 @media (min-width: $screen-sm) {
                     display: flex;
                 }
