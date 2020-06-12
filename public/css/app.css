@@ -21034,13 +21034,6 @@ body.stm-body.about .about-img-wrap img {
   overflow: hidden;
 }
 
-.product-single .product-single__images .product-single__images--url .product-single__images--url-icon {
-  position: absolute;
-  top: 0.55em;
-  left: 0.7em;
-  z-index: 100000;
-}
-
 .product-single .product-single__images .product-single__images--url img {
   height: 30em;
 }
@@ -21117,13 +21110,16 @@ body.stm-body.about .about-img-wrap img {
 .product-single .product-details .product-details__title {
   font-size: 2.5em;
   font-weight: 600;
-  line-height: 1.2em;
+  line-height: 1.1em;
   padding-bottom: 0.2em;
   white-space: nowrap;
+  border-bottom: 1px solid #dfdfdf;
+  margin-bottom: 0.3em;
 }
 
 .product-single .product-details .product-details__cost {
   color: #05c290;
+  color: #0077b6;
   font-size: 2.7em;
   font-weight: 600;
   line-height: 0.8em;
@@ -21195,10 +21191,12 @@ body.stm-body.about .about-img-wrap img {
   padding-top: 0.2em;
 }
 
-.product-single .product-details .product-details__details .row {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
+@media (min-width: 768px) {
+  .product-single .product-details .product-details__details .row {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
 }
 
 .product-single .product-details .product-details__details .row div {
@@ -21311,10 +21309,12 @@ body.stm-body.about .about-img-wrap img {
 
 .product-single .product-details .product-details__cart .product-details__quantity {
   margin-right: 1em;
+  font-weight: 600;
 }
 
 .product-single .product-details .product-details__cart .product-details__quantity i {
-  color: #188694;
+  color: #008eda;
+  color: #888;
   margin: 0 0.2em;
 }
 
@@ -21331,7 +21331,7 @@ body.stm-body.about .about-img-wrap img {
   border: none;
   color: #fefefe;
   text-shadow: 1px 1px rgba(0, 0, 0, 0.02);
-  background: #05cc98;
+  background: #0077b6;
   font-weight: 600;
   padding: 0.4em 0.7em 0.4em 0.6em;
   text-transform: uppercase;
@@ -21350,6 +21350,7 @@ body.stm-body.about .about-img-wrap img {
 .product-single .tabs.is-toggle li a {
   font-weight: bold;
   color: #167e8b;
+  color: #0077b6;
   font-size: 0.8em;
 }
 
@@ -21360,8 +21361,8 @@ body.stm-body.about .about-img-wrap img {
 .product-single .tabs.is-toggle li.is-active a {
   color: #fff;
   text-shadow: 1px 1px rgba(0, 0, 0, 0.05);
-  background-color: #198e9d;
-  border-color: #198e9d;
+  background-color: #0077b6;
+  border-color: #0077b6;
 }
 
 .product-single .tabs-content .tab-item {

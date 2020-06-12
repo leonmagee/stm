@@ -6,7 +6,6 @@
   <div class="product-single__images">
     @if($product->img_url_1)
     <div class="product-single__images--url">
-      <div class="product-single__images--url-icon"><i class="fas fa-search-plus"></i></div>
       @for($i = 1; $i
       <= $num_images; ++$i) <div class="product-single__images--url-item product-single__images--url-item_{{ $i }}">
         <img class="{{ ($i == 1) ? 'active' : 'hidden' }} img_url_{{ $i }}" class="active"

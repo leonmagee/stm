@@ -13,16 +13,6 @@
             text-align: center;
             position: relative;
             overflow: hidden;
-            .product-single__images--url-icon {
-                position: absolute;
-                top: 0.55em;
-                left: 0.7em;
-                //padding: 0.3em;
-                //border-radius: 0.2em;
-                //background-color: rgba(255, 255, 255, 1);
-                //color: #000;
-                z-index: 100000;
-            }
             img {
                 height: 30em;
                 &.hidden {
@@ -76,12 +66,15 @@
         .product-details__title {
             font-size: 2.5em;
             font-weight: 600;
-            line-height: 1.2em;
+            line-height: 1.1em;
             padding-bottom: 0.2em;
             white-space: nowrap;
+            border-bottom: 1px solid #dfdfdf;
+            margin-bottom: 0.3em;
         }
         .product-details__cost {
             color: darken($green, 5%);
+            color: $product-blue;
             font-size: 2.7em;
             font-weight: 600;
             line-height: 0.8em;
@@ -129,7 +122,9 @@
         }
         .product-details__details {
             .row {
-                display: flex;
+                @media (min-width: $screen-sm) {
+                    display: flex;
+                }
                 div {
                     flex: 0 1 50%;
                     &:nth-child(2) {
@@ -243,8 +238,11 @@
             @include product_bg;
             .product-details__quantity {
                 margin-right: 1em;
+                font-weight: 600;
                 i {
-                    color: darken($brand-primary, 5%);
+                    //color: darken($brand-primary, 5%);
+                    color: lighten($product-blue, 7%);
+                    color: #888;
                     margin: 0 0.2em;
                     &:hover {
                         cursor: pointer;
@@ -260,7 +258,8 @@
                 border: none;
                 color: #fefefe;
                 text-shadow: 1px 1px rgba(0, 0, 0, 0.02);
-                background: darken($green, 3%);
+                //background: darken($green, 3%);
+                background: $product-blue;
                 font-weight: 600;
                 padding: 0.4em 0.7em 0.4em 0.6em;
                 text-transform: uppercase;
@@ -280,6 +279,7 @@
             a {
                 font-weight: bold;
                 color: darken($product-tabs, 4%);
+                color: $product-blue;
                 font-size: 0.8em;
                 i {
                     margin-right: 7px;
@@ -289,8 +289,10 @@
                 a {
                     color: #fff;
                     text-shadow: 1px 1px rgba(0, 0, 0, 0.05);
-                    background-color: $product-tabs;
-                    border-color: $product-tabs;
+                    //background-color: $product-tabs;
+                    background-color: $product-blue;
+                    //border-color: $product-tabs;
+                    border-color: $product-blue;
                 }
             }
         }
