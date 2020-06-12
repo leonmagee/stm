@@ -27,10 +27,15 @@ require('./components/AllUsersAgents');
 require('./components/Products');
 
 /**
- * JQuery Zoom
+ * Set Defaults
  */
 const number_images = 6;
-for(var i = 1; i < (number_images + 1); ++i) {
+const tab_number_images = 8;
+
+/**
+ * JQuery Zoom
+ */
+for(let i = 1; i < (number_images + 1); ++i) {
     this['img_src_' + i] = $(".product-single__images--url-item_" + i)
         .find("img")
         .attr("src");
@@ -38,6 +43,41 @@ for(var i = 1; i < (number_images + 1); ++i) {
         url: this["img_src_" + i]
     });
 }
+
+/**
+ * Image Preview
+ */
+for(let i = 1; i <= number_images + 1; ++i) {
+  $('input#product_upload_image_' + i).change(function() {
+    let id_name = "output_" + i;
+    let output = document.getElementById(id_name);
+    $("div.preview-image__image.output_" + i).removeClass("hide_img");
+    $("div.preview-image__default_" + i).hide();
+    output.src = URL.createObjectURL(event.target.files[0]);
+    output.onload = function () {
+      URL.revokeObjectURL(output.src) // free memory
+    }
+  });
+}
+
+/**
+ * Image Preview Tabs
+ */
+for (let i = 1; i <= tab_number_images; ++i) {
+    $("input#tab_product_upload_image_" + i).change(function() {
+        let id_name = "tab_output_" + i;
+        let output = document.getElementById(id_name);
+        $("div.preview-image__image.tab_output_" + i).removeClass("hide_img");
+        $("div.preview-image__default_tab_" + i).hide();
+        output.src = URL.createObjectURL(event.target.files[0]);
+        output.onload = function() {
+            URL.revokeObjectURL(output.src); // free memory
+        };
+    });
+}
+
+
+
 
 /**
  * Categories Toggle
@@ -185,70 +225,6 @@ $(".product-single__images--item").hover(function() {
       .removeClass("hidden")
       .addClass("active");
 });
-
-/**
- * Image Preview
- */
-$('input#product_upload_image_1').change(function() {
-  var output = document.getElementById('output_1');
-  $("div.preview-image__image.output_1").removeClass("hide_img");
-  $("div.preview-image__default_1").hide();
-  output.src = URL.createObjectURL(event.target.files[0]);
-  output.onload = function () {
-    URL.revokeObjectURL(output.src) // free memory
-  }
-});
-
-$("input#product_upload_image_2").change(function() {
-    var output = document.getElementById("output_2");
-    $("div.preview-image__image.output_2").removeClass("hide_img");
-    $("div.preview-image__default_2").hide();
-    output.src = URL.createObjectURL(event.target.files[0]);
-    output.onload = function() {
-        URL.revokeObjectURL(output.src); // free memory
-    };
-});
-
-$("input#product_upload_image_3").change(function() {
-    var output = document.getElementById("output_3");
-    $("div.preview-image__image.output_3").removeClass("hide_img");
-    $("div.preview-image__default_3").hide();
-    output.src = URL.createObjectURL(event.target.files[0]);
-    output.onload = function() {
-        URL.revokeObjectURL(output.src); // free memory
-    };
-});
-
-$("input#product_upload_image_4").change(function() {
-    var output = document.getElementById("output_4");
-    $("div.preview-image__image.output_4").removeClass("hide_img");
-    $("div.preview-image__default_4").hide();
-    output.src = URL.createObjectURL(event.target.files[0]);
-    output.onload = function() {
-        URL.revokeObjectURL(output.src); // free memory
-    };
-});
-
-$("input#product_upload_image_5").change(function() {
-    var output = document.getElementById("output_5");
-    $("div.preview-image__image.output_5").removeClass("hide_img");
-    $("div.preview-image__default_5").hide();
-    output.src = URL.createObjectURL(event.target.files[0]);
-    output.onload = function() {
-        URL.revokeObjectURL(output.src); // free memory
-    };
-});
-
-$("input#product_upload_image_6").change(function() {
-    var output = document.getElementById("output_6");
-    $("div.preview-image__image.output_6").removeClass("hide_img");
-    $("div.preview-image__default_6").hide();
-    output.src = URL.createObjectURL(event.target.files[0]);
-    output.onload = function() {
-        URL.revokeObjectURL(output.src); // free memory
-    };
-});
-
 
 /**
  * Repeater Field

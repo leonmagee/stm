@@ -20,6 +20,7 @@
                 }
             }
         }
+
         .product-single__images--row {
             display: flex;
             justify-content: center;
@@ -163,6 +164,13 @@
             margin-bottom: 1em;
             //background-color: red;
         }
+        .product-single__images--url-tab-item {
+            margin-bottom: 1em;
+            img {
+                background: #fff;
+                border-radius: 4px;
+            }
+        }
         .product-details__info {
             padding: 0.7em 1em;
         }
@@ -170,12 +178,14 @@
         //     padding: 1em;
         // }
         .product-details__tabs-content {
-            background-color: #fefefe;
-            border: 1px solid #e2e2e2;
-            //padding: 0.5em 1em;
-            //padding: 0;
-            overflow: hidden;
-            border-radius: 4px;
+            .tab-item.background {
+                background-color: #fefefe;
+                border: 1px solid #e2e2e2;
+                //padding: 0.5em 1em;
+                //padding: 0;
+                overflow: hidden;
+                border-radius: 4px;
+            }
             table {
                 //margin: 0;
                 width: 100%;

@@ -18,8 +18,9 @@ class ProductController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-        $this->secondary_images = 5;
-        $this->tab_images = 8;
+        $this->secondary_images = 5; // deprecated
+        $this->num_images = 6;
+        $this->num_tab_images = 8;
     }
 
     /**
@@ -208,7 +209,7 @@ class ProductController extends Controller
         //     $product->img_url_small_1 = $new_url_small;
         // }
 
-        for ($i = 1; $i <= (1 + $this->secondary_images); $i++) {
+        for ($i = 1; $i <= $this->num_images; $i++) {
             if ($product->{"img_url_" . $i}) {
                 $match = null;
                 preg_match('(\/STM\/.*)', $product->{"img_url_" . $i}, $match);
@@ -216,6 +217,17 @@ class ProductController extends Controller
                 $product->{"img_url_" . $i} = $new_url;
                 $new_url_small = cloudinary_url($match[0], ["transformation" => ["width" => 300, "height" => 300, "crop" => "fit"], "cloud_name" => "www-stmmax-com", "secure" => "true"]);
                 $product->{"img_url_small_" . $i} = $new_url_small;
+            }
+        }
+
+        for ($i = 1; $i <= $this->num_tab_images; $i++) {
+            if ($product->{"tab_img_url_" . $i}) {
+                $match = null;
+                preg_match('(\/STM\/.*)', $product->{"tab_img_url_" . $i}, $match);
+                $new_url = cloudinary_url($match[0], ["transformation" => ["width" => 800, "height" => 800, "crop" => "fit"], "cloud_name" => "www-stmmax-com", "secure" => "true"]);
+                $product->{"tab_img_url_" . $i} = $new_url;
+                // $new_url_small = cloudinary_url($match[0], ["transformation" => ["width" => 300, "height" => 300, "crop" => "fit"], "cloud_name" => "www-stmmax-com", "secure" => "true"]);
+                // $product->{"img_url_small_" . $i} = $new_url_small;
             }
         }
 
@@ -228,9 +240,10 @@ class ProductController extends Controller
             $product->orig_price = null;
             $product->cost = $orig_cost;
         }
-        $num_images = $this->secondary_images;
+        $num_images = $this->num_images;
+        $num_tab_images = $this->num_tab_images;
 
-        return view('products.show', compact('product', 'num_images'));
+        return view('products.show', compact('product', 'num_images', 'num_tab_images'));
     }
 
     /**
@@ -252,8 +265,9 @@ class ProductController extends Controller
         }
 
         $num_images = $this->secondary_images;
+        $tab_images = $this->num_tab_images;
 
-        return view('products.edit', compact('product', 'categories', 'selected_cats', 'selected_sub_cats', 'num_images'));
+        return view('products.edit', compact('product', 'categories', 'selected_cats', 'selected_sub_cats', 'num_images', 'tab_images'));
     }
 
     /**
@@ -299,10 +313,21 @@ class ProductController extends Controller
             } else {
                 ${"url_" . $i} = '';
             }
-
         }
 
-        //dd($url);
+        for ($i = 1; $i <= (1 + $this->num_tab_images); $i++) {
+            ${"image_upload_" . $i} = $request->file('tab-upload-image-' . $i);
+            if (${"image_upload_" . $i}) {
+                $image_path = ${"image_upload_" . $i}->getRealPath();
+                $cloudinaryWrapper = Cloudder::upload($image_path, null, ['folder' => 'STM']);
+                $result = $cloudinaryWrapper->getResult();
+                ${"tab_url_" . $i} = $result['secure_url'];
+            } elseif ($request->{"tab_img_url_" . $i}) {
+                ${"tab_url_" . $i} = $request->{"tab_img_url_" . $i};
+            } else {
+                ${"tab_url_" . $i} = '';
+            }
+        }
 
         $product->update([
             'name' => $request->name,
@@ -317,6 +342,14 @@ class ProductController extends Controller
             'img_url_4' => $url_4,
             'img_url_5' => $url_5,
             'img_url_6' => $url_6,
+            'tab_img_url_1' => $tab_url_1,
+            'tab_img_url_2' => $tab_url_2,
+            'tab_img_url_3' => $tab_url_3,
+            'tab_img_url_4' => $tab_url_4,
+            'tab_img_url_5' => $tab_url_5,
+            'tab_img_url_6' => $tab_url_6,
+            'tab_img_url_7' => $tab_url_7,
+            'tab_img_url_8' => $tab_url_8,
         ]);
 
         // 1. Delete existing attriubtes for product

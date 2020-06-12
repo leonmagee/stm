@@ -21247,11 +21247,20 @@ body.stm-body.about .about-img-wrap img {
   margin-bottom: 1em;
 }
 
+.product-single .product-details .product-single__images--url-tab-item {
+  margin-bottom: 1em;
+}
+
+.product-single .product-details .product-single__images--url-tab-item img {
+  background: #fff;
+  border-radius: 4px;
+}
+
 .product-single .product-details .product-details__info {
   padding: 0.7em 1em;
 }
 
-.product-single .product-details .product-details__tabs-content {
+.product-single .product-details .product-details__tabs-content .tab-item.background {
   background-color: #fefefe;
   border: 1px solid #e2e2e2;
   overflow: hidden;

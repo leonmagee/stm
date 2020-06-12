@@ -7,14 +7,15 @@
     @if($product->img_url_1)
     <div class="product-single__images--url">
       @for($i = 1; $i
-      <= $num_images; ++$i) <div class="product-single__images--url-item product-single__images--url-item_{{ $i }}">
+      <= (1 + $num_images); ++$i) <div
+        class="product-single__images--url-item product-single__images--url-item_{{ $i }}">
         <img class="{{ ($i == 1) ? 'active' : 'hidden' }} img_url_{{ $i }}" class="active"
           src="{{ $product->{'img_url_' . $i } }}" />
     </div>
     @endfor
   </div>
   <div class="product-single__images--row">
-    @for($i = 1; $i <= $num_images; ++$i) @if($product->{"img_url_small_" . $i })
+    @for($i = 1; $i <= (1 + $num_images); ++$i) @if($product->{"img_url_small_" . $i })
       <div class="product-single__images--item product-single__images--item_{{ $i }}" image_id="{{ $i }}">
         <img src="{{ $product->{"img_url_small_" . $i } }}" />
       </div>
@@ -61,40 +62,49 @@
 
   <div class="product-details__tabs-content tabs-content">
 
-    <div class="tab-item active background" id="tab-1">
+    <div class="tab-item active" id="tab-1">
       <div class="product-details__details">
         {!! $product->details !!}
       </div>
     </div>
 
-    <div class="tab-item background" id="tab-2">
+    <div class="tab-item" id="tab-2">
       <div class="product-details__details">
         {!! $product->more_details !!}
       </div>
     </div>
 
     <div class="tab-item" id="tab-3">
-      <div class="product-details__images_tabs">
-
-        <div class="product-single__images--url-tab">
-          @for($i = 1; $i<= $num_tab_images; ++$i) <div
-            class="product-single__images--url-tab-item product-single__images--url-tab-item_{{ $i }}">
-            <img src="{{ $product->{'tab_img_url_' . $i } }}" />
+      <div class="product-details__info">
+        <div class="product-details__flex-wrap">
+          <div class="product-details__attributes">
+            <label class="label">Attributes</label>
+            @foreach($product->attributes as $attribute)
+            <div class="product-details__attribute"><i class="fas fa-circle"></i>{{ $attribute->text }}</div>
+            @endforeach
+          </div>
+          <div class="product-details__categories">
+            <label class="label">Categories</label>
+            @foreach($product->categories as $category)
+            <div class="product-details__category"><i class="fas fa-check"></i>{{ $category->category->name }}</div>
+            @foreach($product->sub_categories as $sub_category)
+            @if($category->category->id == $sub_category->sub_category->category_id)
+            <div class="product-details__category"><i class="fas fa-check"></i>{{ $sub_category->sub_category->name }}
+            </div>
+            @endif
+            @endforeach
+            @endforeach
+          </div>
         </div>
-        @endfor
       </div>
-
-
-
     </div>
+
+
   </div>
 
-
-</div>
-
-<div class="product-details__edit">
-  <a href="/products/edit/{{ $product->id }}">Edit</a>
-</div>
+  <div class="product-details__edit">
+    <a href="/products/edit/{{ $product->id }}">Edit</a>
+  </div>
 </div>
 </div>
 @endsection
