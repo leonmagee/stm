@@ -53,9 +53,9 @@
 
   <div class="product-details__tabs tabs is-toggle" id="product-tabs">
     <ul>
-      <li class="is-active" tab="tab-1"><a>Product Details</a></li>
-      <li tab="tab-2"><a>More Details</a></li>
-      <li tab="tab-3"><a>Product Images</a></li>
+      <li class="is-active" tab="tab-1"><a>Product Specifications</a></li>
+      <li tab="tab-2"><a>More Specifications</a></li>
+      <li tab="tab-3"><a>Product Images & Videos</a></li>
     </ul>
   </div>
 
