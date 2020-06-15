@@ -6,7 +6,7 @@
   <title>STM</title>
   <link rel="shortcut icon" href="{{{ asset('img/stm-favicon.png') }}}">
   <link href="https://cdn.quilljs.com/1.0.0/quill.snow.css" rel="stylesheet">
-  <link rel="stylesheet" href="/css/app.css?ver=1.1.156">
+  <link rel="stylesheet" href="/css/app.css?ver=1.1.157">
   <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css">
   <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css">
   <script src="https://www.google.com/recaptcha/api.js" async defer></script>
