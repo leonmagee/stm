@@ -20858,6 +20858,7 @@ body.stm-body.about .about-img-wrap img {
 
 .products-outer .product .product__image.product__image--url img {
   max-height: 200px;
+  margin: 0 auto;
 }
 
 .products-outer .product .product__image.product__image--default {
