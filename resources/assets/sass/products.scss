@@ -183,6 +183,8 @@
             height: 220px;
             width: 100%;
             position: relative;
+            display: flex;
+            align-items: center;
             &.product__image--url {
                 background-color: #fff;
                 text-align: center;
@@ -261,7 +263,7 @@
             justify-content: space-between;
             align-items: center;
             border-top: 1px solid #eee;
-            background: $product-blue;
+            background: lighten($product-blue, 8%);
             //background: darken($green, 5%);
             //background: red;
 
@@ -292,7 +294,7 @@
                 // }
                 &.product__footer--right {
                     //width: 10%;
-                    background-color: #444;
+                    //background-color: #444;
                     //background-color: $gs-red;
                     background-color: $product-dark;
                     color: #fff;

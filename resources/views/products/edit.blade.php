@@ -68,7 +68,7 @@
           </div>
         </div>
 
-        <div class="form-wrap-flex form-wrap-flex-images">
+        <div class="form-wrap-flex form-wrap-flex-images" id="preview_images">
           @for($i = 1; $i <= (1 + $num_images); ++$i) <div class="field sixth">
             <label class="label" for="product_upload_image_{{ $i }}">Image {{ $i }}</label>
             <div class="control">
@@ -76,7 +76,7 @@
                 <label class="file-label">
                   <input type="hidden" name="img_url_{{ $i }}" value="{{ $product->{'img_url_' . $i} }}" />
                   <input class="file-input" type="file" id="product_upload_image_{{ $i }}" name="upload-image-{{ $i }}"
-                    accept="image/*">
+                    accept="image/*,video/*">
                   <span class="file-cta">
                     <span class="file-icon">
                       <i class="fas fa-upload"></i>
@@ -88,9 +88,18 @@
                 </label>
               </div>
               <div class="preview-image">
-                @if($product->{"img_url_" . $i})
-                <div class="preview-image__image">
+                @if($product->{"img_url_" . $i} && (strpos($product->{"img_url_" . $i}, 'video') !== false))
+                <div class="preview-image__image hide_img output_{{ $i }}">
+                  <img id="output_{{ $i }}" />
+                </div>
+                <div class="preview-image__default preview-image__default_{{ $i }} video"><i class="far fa-image"></i>
+                </div>
+                @elseif($product->{"img_url_" . $i})
+                <div class="preview-image__image output_{{ $i }}">
                   <img id="output_{{ $i }}" src={{ $product->{"img_url_" . $i} }} />
+                  <i class="remove fas fa-times-circle" img_id="{{ $i }}"></i>
+                </div>
+                <div class="preview-image__default preview-image__default_{{ $i }} hide"><i class="far fa-image"></i>
                 </div>
                 @else
                 <div class="preview-image__image hide_img output_{{ $i }}">
@@ -104,7 +113,7 @@
         @endfor
       </div>
 
-      <div class="form-wrap-flex form-wrap-flex-images">
+      <div class="form-wrap-flex form-wrap-flex-images" id="tab_preview_images">
         @for($i = 1; $i <= $tab_images; ++$i) <div class="field half">
           <label class="label" for="product_upload_image_{{ $i }}">Tab Image {{ $i }}</label>
           <div class="control">

@@ -8,8 +8,16 @@
     <div class="product-single__images--url">
       @for($i = 1; $i
       <= $num_images; ++$i) <div class="product-single__images--url-item product-single__images--url-item_{{ $i }}">
-        <img class="{{ ($i == 1) ? 'active' : 'hidden' }} img_url_{{ $i }}" class="active"
-          src="{{ $product->{'img_url_' . $i } }}" />
+        @if(strpos($product->{"img_url_" . $i}, 'video') !== false)
+        <div class="video-wrap {{ ($i == 1) ? 'active' : 'hidden' }} img_url_{{ $i }}">
+          <video controls>
+            <source src="{{ $product->{'img_url_' . $i } }}" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+        @else
+        <img class="{{ ($i == 1) ? 'active' : 'hidden' }} img_url_{{ $i }}" src="{{ $product->{'img_url_' . $i } }}" />
+        @endif
     </div>
     @endfor
   </div>

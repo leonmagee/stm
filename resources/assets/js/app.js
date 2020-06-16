@@ -33,6 +33,19 @@ const number_images = 6;
 const tab_number_images = 8;
 
 /**
+ * Image hover switch
+ */
+$(".product-single__images--item").hover(function() {
+  var image_id = $(this).attr('image_id');
+  $(".product-single__images--url .active")
+      .removeClass('active')
+      .addClass('hidden');
+  $(".product-single__images--url .hidden.img_url_" + image_id)
+      .removeClass("hidden")
+      .addClass("active");
+});
+
+/**
  * JQuery Zoom
  */
 for(let i = 1; i < (number_images + 1); ++i) {
@@ -45,20 +58,40 @@ for(let i = 1; i < (number_images + 1); ++i) {
 }
 
 /**
- * Image Preview
+ * Edit View Image Preview
  */
 for(let i = 1; i <= number_images + 1; ++i) {
   $('input#product_upload_image_' + i).change(function() {
     let id_name = "output_" + i;
     let output = document.getElementById(id_name);
-    $("div.preview-image__image.output_" + i).removeClass("hide_img");
-    $("div.preview-image__default_" + i).hide();
-    output.src = URL.createObjectURL(event.target.files[0]);
-    output.onload = function () {
-      URL.revokeObjectURL(output.src) // free memory
+    let file = event.target.files[0];
+    if(file.type.includes('video')) {
+      $("div.preview-image__image.output_" + i).addClass("hide_img");
+      $("div.preview-image__default_" + i).addClass('video').removeClass('hide');
+      //$("div.preview-image__default_" + i + " i").removeClass('far fa-image').addClass('far fa-play-circle');
+      // far fa-image
+      // <i class="fab fa-youtube"></i>
+    } else {
+      $("div.preview-image__image.output_" + i).removeClass("hide_img");
+      $("div.preview-image__default_" + i).addClass('hide');
+      output.src = URL.createObjectURL(file);
+      output.onload = function () {
+        URL.revokeObjectURL(output.src) // free memory
+      }
     }
   });
 }
+
+/**
+ * Edit View Image Preview Remove
+ */
+$('.preview-image__image i.remove').click(function() {
+  let img_id = $(this).attr('img_id');
+  $("div.preview-image__image.output_" + img_id).addClass("hide_img");
+  $("div.preview-image__default_" + img_id).removeClass("hide");
+  $("#preview_images input[name='img_url_" + img_id + "']").val('');
+  console.log('id is?', img_id);
+});
 
 /**
  * Image Preview Tabs
@@ -217,19 +250,6 @@ $('.redeem-credit-modal').click(function() {
     });
   }
 
-});
-
-/**
- * Image hover switch
- */
-$(".product-single__images--item").hover(function() {
-  var image_id = $(this).attr('image_id');
-  $(".product-single__images--url .active")
-      .removeClass('active')
-      .addClass('hidden');
-  $(".product-single__images--url .hidden.img_url_" + image_id)
-      .removeClass("hidden")
-      .addClass("active");
 });
 
 /**

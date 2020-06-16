@@ -33,11 +33,15 @@ class ProductController extends Controller
         //$products = Product::with('categories')->get();
         $products = Product::all();
         foreach ($products as $product) {
-            if ($product->img_url) {
-                $match = null;
-                preg_match('(\/STM\/.*)', $product->img_url, $match);
-                $new_url = cloudinary_url($match[0], ["transformation" => ["width" => 600, "height" => 600, "crop" => "fit"], "cloud_name" => "www-stmmax-com", "secure" => "true"]);
-                $product->img_url = $new_url;
+            if ($image_url = $product->img_url_1) {
+                if (strpos($image_url, 'video') !== false) {
+                    $product->img_url_1 = str_replace('mp4', 'jpeg', $image_url);
+                } else {
+                    $match = null;
+                    preg_match('(\/STM\/.*)', $image_url, $match);
+                    $new_url = cloudinary_url($match[0], ["transformation" => ["width" => 600, "height" => 600, "crop" => "fit"], "cloud_name" => "www-stmmax-com", "secure" => "true"]);
+                    $product->img_url_1 = $new_url;
+                }
             }
             $orig_cost = number_format($product->cost, 2);
             if ($product->discount) {
@@ -210,13 +214,18 @@ class ProductController extends Controller
         // }
 
         for ($i = 1; $i <= $this->num_images; $i++) {
-            if ($product->{"img_url_" . $i}) {
-                $match = null;
-                preg_match('(\/STM\/.*)', $product->{"img_url_" . $i}, $match);
-                $new_url = cloudinary_url($match[0], ["transformation" => ["width" => 800, "height" => 800, "crop" => "fit"], "cloud_name" => "www-stmmax-com", "secure" => "true"]);
-                $product->{"img_url_" . $i} = $new_url;
-                $new_url_small = cloudinary_url($match[0], ["transformation" => ["width" => 300, "height" => 300, "crop" => "fit"], "cloud_name" => "www-stmmax-com", "secure" => "true"]);
-                $product->{"img_url_small_" . $i} = $new_url_small;
+            if ($resource = $product->{"img_url_" . $i}) {
+                if (strpos($resource, 'video') !== false) {
+                    $new_url_small = str_replace('mp4', 'jpeg', $resource);
+                    $product->{"img_url_small_" . $i} = $new_url_small;
+                } else {
+                    $match = null;
+                    preg_match('(\/STM\/.*)', $resource, $match);
+                    $new_url = cloudinary_url($match[0], ["transformation" => ["width" => 800, "height" => 800, "crop" => "fit"], "cloud_name" => "www-stmmax-com", "secure" => "true"]);
+                    $product->{"img_url_" . $i} = $new_url;
+                    $new_url_small = cloudinary_url($match[0], ["transformation" => ["width" => 300, "height" => 300, "crop" => "fit"], "cloud_name" => "www-stmmax-com", "secure" => "true"]);
+                    $product->{"img_url_small_" . $i} = $new_url_small;
+                }
             }
         }
 
@@ -303,9 +312,15 @@ class ProductController extends Controller
 
         for ($i = 1; $i <= (1 + $this->secondary_images); $i++) {
             ${"image_upload_" . $i} = $request->file('upload-image-' . $i);
+            //dd(${"image_upload_" . $i}->getMimeType());
             if (${"image_upload_" . $i}) {
                 $image_path = ${"image_upload_" . $i}->getRealPath();
-                $cloudinaryWrapper = Cloudder::upload($image_path, null, ['folder' => 'STM']);
+                $mime_type = ${"image_upload_" . $i}->getMimeType();
+                if (strpos($mime_type, 'video') !== false) {
+                    $cloudinaryWrapper = Cloudder::uploadVideo($image_path, null, ['folder' => 'STM']);
+                } else {
+                    $cloudinaryWrapper = Cloudder::upload($image_path, null, ['folder' => 'STM']);
+                }
                 $result = $cloudinaryWrapper->getResult();
                 ${"url_" . $i} = $result['secure_url'];
             } elseif ($request->{"img_url_" . $i}) {
