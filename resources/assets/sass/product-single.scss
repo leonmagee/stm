@@ -94,7 +94,8 @@
         }
         .product-details__cost {
             //color: darken($green, 5%);
-            color: lighten($product-blue, 8%);
+            //color: lighten($product-blue, 8%);
+            color: darken($green, 2%);
             font-size: 2.7em;
             font-weight: 600;
             line-height: 0.8em;
@@ -266,7 +267,7 @@
                 font-weight: 600;
                 i {
                     //color: darken($brand-primary, 5%);
-                    color: lighten($product-blue, 7%);
+                    //color: lighten($product-blue, 7%);
                     color: #888;
                     margin: 0 0.2em;
                     &:hover {
@@ -284,7 +285,8 @@
                 color: #fefefe;
                 text-shadow: 1px 1px rgba(0, 0, 0, 0.02);
                 //background: darken($green, 3%);
-                background: lighten($product-blue, 10%);
+                //background: lighten($product-blue, 10%);
+                background: $green;
                 font-weight: 600;
                 padding: 0.4em 0.7em 0.4em 0.6em;
                 text-transform: uppercase;
