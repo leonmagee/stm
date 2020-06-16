@@ -42,17 +42,17 @@
                 padding: 0.3em;
                 background-color: #fff;
                 margin: 0.8em 0.4em 0.8em 0.4em;
-                display: flex;
-                align-items: center;
-                max-width: 4em;
-                max-height: 4em;
-                overflow: hidden;
+                // display: flex;
+                // align-items: center;
+                // max-width: 4em;
+                // max-height: 4em;
+                //overflow: hidden;
                 img {
                     height: 100%;
-                    width: auto;
+                    //width: auto;
                     display: block;
-                    //max-width: 3.3em;
-                    //max-height: 4em;
+                    max-width: 6em;
+                    max-height: 4em;
                     //height: 3em;
                 }
                 &:hover {

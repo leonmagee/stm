@@ -21081,21 +21081,13 @@ body.stm-body.about .about-img-wrap img {
   padding: 0.3em;
   background-color: #fff;
   margin: 0.8em 0.4em 0.8em 0.4em;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  max-width: 4em;
-  max-height: 4em;
-  overflow: hidden;
 }
 
 .product-single .product-single__images .product-single__images--row .product-single__images--item img {
   height: 100%;
-  width: auto;
   display: block;
+  max-width: 6em;
+  max-height: 4em;
 }
 
 .product-single .product-single__images .product-single__images--row .product-single__images--item:hover {
