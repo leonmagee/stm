@@ -305,8 +305,8 @@
         li {
             a {
                 font-weight: bold;
-                color: darken($product-tabs, 4%);
-                color: $product-blue;
+                //color: darken($product-tabs, 4%);
+                color: lighten($product-blue, 5%);
                 font-size: 0.8em;
                 i {
                     margin-right: 7px;
@@ -317,9 +317,11 @@
                     color: #fff;
                     text-shadow: 1px 1px rgba(0, 0, 0, 0.05);
                     //background-color: $product-tabs;
-                    background-color: $product-blue;
+                    //background-color: $product-blue;
+                    background-color: lighten($product-blue, 8%);
                     //border-color: $product-tabs;
-                    border-color: $product-blue;
+                    //border-color: $product-blue;
+                    border-color: lighten($product-blue, 8%);
                 }
             }
         }

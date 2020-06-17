@@ -21379,8 +21379,7 @@ body.stm-body.about .about-img-wrap img {
 
 .product-single .tabs.is-toggle li a {
   font-weight: bold;
-  color: #167e8b;
-  color: #0077b6;
+  color: #0088d0;
   font-size: 0.8em;
 }
 
@@ -21391,8 +21390,8 @@ body.stm-body.about .about-img-wrap img {
 .product-single .tabs.is-toggle li.is-active a {
   color: #fff;
   text-shadow: 1px 1px rgba(0, 0, 0, 0.05);
-  background-color: #0077b6;
-  border-color: #0077b6;
+  background-color: #0092df;
+  border-color: #0092df;
 }
 
 .product-single .tabs-content .tab-item {
