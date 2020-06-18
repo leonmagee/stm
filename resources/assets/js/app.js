@@ -30,7 +30,7 @@ require('./components/Products');
  * Set Defaults
  */
 const number_images = 6;
-const tab_number_videos = 2;
+const tab_number_videos = 1;
 const tab_number_images = 8;
 
 /**

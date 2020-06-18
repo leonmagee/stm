@@ -21,7 +21,7 @@ class ProductController extends Controller
         $this->secondary_images = 5; // deprecated
         $this->num_images = 6;
         $this->num_tab_images = 8;
-        $this->num_tab_videos = 2;
+        $this->num_tab_videos = 1;
     }
 
     /**
@@ -305,12 +305,12 @@ class ProductController extends Controller
             ${"image_upload_" . $i} = $request->file('upload-image-' . $i);
             if (${"image_upload_" . $i}) {
                 $image_path = ${"image_upload_" . $i}->getRealPath();
-                $mime_type = ${"image_upload_" . $i}->getMimeType();
-                if (strpos($mime_type, 'video') !== false) {
-                    $cloudinaryWrapper = Cloudder::uploadVideo($image_path, null, ['folder' => 'STM']);
-                } else {
-                    $cloudinaryWrapper = Cloudder::upload($image_path, null, ['folder' => 'STM']);
-                }
+                // $mime_type = ${"image_upload_" . $i}->getMimeType();
+                // if (strpos($mime_type, 'video') !== false) {
+                //     $cloudinaryWrapper = Cloudder::uploadVideo($image_path, null, ['folder' => 'STM']);
+                // } else {
+                $cloudinaryWrapper = Cloudder::upload($image_path, null, ['folder' => 'STM']);
+                //}
                 $result = $cloudinaryWrapper->getResult();
                 ${"url_" . $i} = $result['secure_url'];
             } elseif ($request->{"img_url_" . $i}) {
@@ -324,7 +324,7 @@ class ProductController extends Controller
             ${"video_upload_" . $i} = $request->file('tab-upload-video-' . $i);
             if (${"video_upload_" . $i}) {
                 $video_path = ${"video_upload_" . $i}->getRealPath();
-                $cloudinaryWrapper = Cloudder::uploadVideo($video_path, null, ['folder' => 'STM']);
+                $cloudinaryWrapper = Cloudder::uploadVideo($video_path, null, ['folder' => 'STM', 'timeout' => 300]);
                 $result = $cloudinaryWrapper->getResult();
                 ${"tab_url_video_" . $i} = $result['secure_url'];
             } elseif ($request->{"tab_video_url_" . $i}) {
