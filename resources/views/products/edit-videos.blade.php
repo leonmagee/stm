@@ -68,7 +68,6 @@
           </div>
         </div>
 
-        {{-- main images --}}
         <div class="form-wrap-flex form-wrap-flex-images" id="preview_images">
           @for($i = 1; $i <= (1 + $num_images); ++$i) <div class="field sixth">
             <label class="label" for="product_upload_image_{{ $i }}">Image {{ $i }}</label>
@@ -77,7 +76,7 @@
                 <label class="file-label">
                   <input type="hidden" name="img_url_{{ $i }}" value="{{ $product->{'img_url_' . $i} }}" />
                   <input class="file-input" type="file" id="product_upload_image_{{ $i }}" name="upload-image-{{ $i }}"
-                    accept="image/*">
+                    accept="image/*,video/*">
                   <span class="file-cta">
                     <span class="file-icon">
                       <i class="fas fa-upload"></i>
@@ -89,7 +88,13 @@
                 </label>
               </div>
               <div class="preview-image">
-                @if($product->{"img_url_" . $i})
+                @if($product->{"img_url_" . $i} && (strpos($product->{"img_url_" . $i}, 'video') !== false))
+                <div class="preview-image__image hide_img output_{{ $i }}">
+                  <img id="output_{{ $i }}" />
+                </div>
+                <div class="preview-image__default preview-image__default_{{ $i }} video"><i class="far fa-image"></i>
+                </div>
+                @elseif($product->{"img_url_" . $i})
                 <div class="preview-image__image output_{{ $i }}">
                   <img id="output_{{ $i }}" src={{ $product->{"img_url_" . $i} }} />
                   <i class="remove fas fa-times-circle" img_id="{{ $i }}"></i>
@@ -108,16 +113,15 @@
         @endfor
       </div>
 
-      {{-- tab videos --}}
-      <div class="form-wrap-flex form-wrap-flex-images" id="tab_preview_videos">
-        @for($i = 1; $i <= $tab_videos; ++$i) <div class="field half">
-          <label class="label" for="product_upload_video_{{ $i }}">Tab Video {{ $i }}</label>
+      <div class="form-wrap-flex form-wrap-flex-images" id="tab_preview_images">
+        @for($i = 1; $i <= $tab_images; ++$i) <div class="field half">
+          <label class="label" for="product_upload_image_{{ $i }}">Tab Image {{ $i }}</label>
           <div class="control">
             <div class="file">
               <label class="file-label">
-                <input type="hidden" name="tab_video_url_{{ $i }}" value="{{ $product->{'tab_video_url_' . $i} }}" />
-                <input class="file-input" type="file" id="tab_product_upload_video_{{ $i }}"
-                  name="tab-upload-video-{{ $i }}" accept="video/*">
+                <input type="hidden" name="tab_img_url_{{ $i }}" value="{{ $product->{'tab_img_url_' . $i} }}" />
+                <input class="file-input" type="file" id="tab_product_upload_image_{{ $i }}"
+                  name="tab-upload-image-{{ $i }}" accept="image/*">
                 <span class="file-cta">
                   <span class="file-icon">
                     <i class="fas fa-upload"></i>
@@ -129,23 +133,15 @@
               </label>
             </div>
             <div class="preview-image">
-              @if($product->{"tab_video_url_" . $i})
-              <div class="preview-image__image output_{{ $i }}">
-                {{-- <img id="tab_output_{{ $i }}" src={{ $product->{"tab_video_url_" . $i} }} /> --}}
-                <video controls>
-                  <source src="{{ $product->{'tab_video_url_' . $i } }}" type="video/mp4">
-                  Your browser does not support the video tag.
-                </video>
-                <i class="remove-video fas fa-times-circle" img_id="{{ $i }}"></i>
-              </div>
-              <div
-                class="preview-image__default preview-image__default--video preview-image__default_tab_{{ $i }} hide"><i
-                  class="far fa-play-circle"></i>
+              @if($product->{"tab_img_url_" . $i})
+              <div class="preview-image__image">
+                <img id="tab_output_{{ $i }}" src={{ $product->{"tab_img_url_" . $i} }} />
               </div>
               @else
-              <div class="preview-image__default preview-image__default--video preview-image__default_tab_{{ $i }}"><i
-                  class="far fa-play-circle"></i>
+              <div class="preview-image__image hide_img tab_output_{{ $i }}">
+                <img id="tab_output_{{ $i }}" />
               </div>
+              <div class="preview-image__default preview-image__default_tab_{{ $i }}"><i class="far fa-image"></i></div>
               @endif
             </div>
           </div>
@@ -153,112 +149,71 @@
       @endfor
   </div>
 
-  {{-- tab images --}}
-  <div class="form-wrap-flex form-wrap-flex-images" id="tab_preview_images">
-    @for($i = 1; $i <= $tab_images; ++$i) <div class="field half">
-      <label class="label" for="product_upload_image_{{ $i }}">Tab Image {{ $i }}</label>
+  <div class="form-wrap-flex form-wrap-flex-attributes">
+    <div class="field full">
+      <label class="label" for="">Attributes</label>
+      <div id="repeater-field-wrap">
+        @foreach($product->attributes as $attribute)
+        <div class="entry input-group">
+          <div class="field has-addons">
+            <input type="text" class="input name" name="attribute_names[]" placeholder="Particpant Name"
+              value="{{ $attribute->text }}">
+            <div class="input-group-append">
+              <button class="button is-danger remove-attribute" type="button"><i class="fas fa-times"></i></button>
+            </div>
+          </div>
+        </div>
+        @endforeach
+        <div class="entry input-group">
+          <div class="field has-addons">
+            <input type="text" class="input name" name="attribute_names[]" placeholder="Attribute">
+            <div class="input-group-append">
+              <button class="button is-primary add-attribute" type="button"><i class="fas fa-plus"></i></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-wrap-flex form-wrap-flex-categories">
+    <div class="field full product-categories-checkboxes category-area">
+      <label class="label">Categories</label>
       <div class="control">
-        <div class="file">
-          <label class="file-label">
-            <input type="hidden" name="tab_img_url_{{ $i }}" value="{{ $product->{'tab_img_url_' . $i} }}" />
-            <input class="file-input" type="file" id="tab_product_upload_image_{{ $i }}"
-              name="tab-upload-image-{{ $i }}" accept="image/*">
-            <span class="file-cta">
-              <span class="file-icon">
-                <i class="fas fa-upload"></i>
-              </span>
-              <span class="file-label">
-                Choose a file…
-              </span>
-            </span>
-          </label>
+        @foreach($categories as $category)
+        <div class="category-item">
+          <input type="checkbox" cat_num="{{ $category->id }}" id="category-{{ $category->id }}"
+            name="category-{{ $category->id }}" @if(in_array($category->id, $selected_cats)) checked @endif />
+          <label class="label" for="category-{{ $category->id }}">{{ $category->name }}</label>
         </div>
-        <div class="preview-image">
-          @if($product->{"tab_img_url_" . $i})
-          <div class="preview-image__image output_{{ $i }}">
-            <img id="tab_output_{{ $i }}" src={{ $product->{"tab_img_url_" . $i} }} />
-            <i class="remove-tab fas fa-times-circle" img_id="{{ $i }}"></i>
-          </div>
-          <div class="preview-image__default preview-image__default_{{ $i }} hide"><i class="far fa-image"></i>
-          </div>
-          @else
-          <div class="preview-image__image hide_img tab_output_{{ $i }}">
-            <img id="tab_output_{{ $i }}" />
-          </div>
-          <div class="preview-image__default preview-image__default_tab_{{ $i }}"><i class="far fa-image"></i></div>
-          @endif
-        </div>
-      </div>
-  </div>
-  @endfor
-</div>
-
-{{-- attributes --}}
-<div class="form-wrap-flex form-wrap-flex-attributes">
-  <div class="field full">
-    <label class="label" for="">Attributes</label>
-    <div id="repeater-field-wrap">
-      @foreach($product->attributes as $attribute)
-      <div class="entry input-group">
-        <div class="field has-addons">
-          <input type="text" class="input name" name="attribute_names[]" placeholder="Particpant Name"
-            value="{{ $attribute->text }}">
-          <div class="input-group-append">
-            <button class="button is-danger remove-attribute" type="button"><i class="fas fa-times"></i></button>
-          </div>
-        </div>
-      </div>
-      @endforeach
-      <div class="entry input-group">
-        <div class="field has-addons">
-          <input type="text" class="input name" name="attribute_names[]" placeholder="Attribute">
-          <div class="input-group-append">
-            <button class="button is-primary add-attribute" type="button"><i class="fas fa-plus"></i></button>
-          </div>
-        </div>
+        @endforeach
       </div>
     </div>
-  </div>
-</div>
 
-<div class="form-wrap-flex form-wrap-flex-categories">
-  <div class="field full product-categories-checkboxes category-area">
-    <label class="label">Categories</label>
+    @foreach($categories as $category)
+    <div
+      class="@if (in_array($category->id, $selected_cats)) active @endif field full product-categories-checkboxes sub-category-area sub-category-{{ $category->id }}">
+      <label class="label">{{ $category->name }} Sub Categories</label>
+      <div class="control">
+        @foreach($category->sub_categories as $sub_category)
+        <div class="category-item">
+          <input type="checkbox" id="sub-category-{{ $sub_category->id }}" name="sub-category-{{ $sub_category->id }}"
+            @if(in_array($sub_category->id, $selected_sub_cats))
+          checked
+          @endif/>
+          <label class="label" for="sub-category-{{ $sub_category->id }}">{{ $sub_category->name }}</label>
+        </div>
+        @endforeach
+      </div>
+    </div>
+    @endforeach
+
+  </div>
+  <div class="field flex-margin">
     <div class="control">
-      @foreach($categories as $category)
-      <div class="category-item">
-        <input type="checkbox" cat_num="{{ $category->id }}" id="category-{{ $category->id }}"
-          name="category-{{ $category->id }}" @if(in_array($category->id, $selected_cats)) checked @endif />
-        <label class="label" for="category-{{ $category->id }}">{{ $category->name }}</label>
-      </div>
-      @endforeach
+      <button class="button is-primary call-loader" type="submit">Update Product</button>
     </div>
   </div>
-
-  @foreach($categories as $category)
-  <div
-    class="@if (in_array($category->id, $selected_cats)) active @endif field full product-categories-checkboxes sub-category-area sub-category-{{ $category->id }}">
-    <label class="label">{{ $category->name }} Sub Categories</label>
-    <div class="control">
-      @foreach($category->sub_categories as $sub_category)
-      <div class="category-item">
-        <input type="checkbox" id="sub-category-{{ $sub_category->id }}" name="sub-category-{{ $sub_category->id }}"
-          @if(in_array($sub_category->id, $selected_sub_cats))
-        checked
-        @endif/>
-        <label class="label" for="sub-category-{{ $sub_category->id }}">{{ $sub_category->name }}</label>
-      </div>
-      @endforeach
-    </div>
-  </div>
-  @endforeach
-
-</div>
-<div class="field flex-margin">
-  <div class="control">
-    <button class="button is-primary call-loader" type="submit">Update Product</button>
-  </div>
-</div>
 
 </div>
 </form>

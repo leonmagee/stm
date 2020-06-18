@@ -30,6 +30,7 @@ require('./components/Products');
  * Set Defaults
  */
 const number_images = 6;
+const tab_number_videos = 2;
 const tab_number_images = 8;
 
 /**
@@ -58,56 +59,97 @@ for(let i = 1; i < (number_images + 1); ++i) {
 }
 
 /**
- * Edit View Image Preview
+ * Main Image Preview (edit page)
  */
 for(let i = 1; i <= number_images + 1; ++i) {
   $('input#product_upload_image_' + i).change(function() {
     let id_name = "output_" + i;
     let output = document.getElementById(id_name);
     let file = event.target.files[0];
-    if(file.type.includes('video')) {
-      $("div.preview-image__image.output_" + i).addClass("hide_img");
-      $("div.preview-image__default_" + i).addClass('video').removeClass('hide');
-      //$("div.preview-image__default_" + i + " i").removeClass('far fa-image').addClass('far fa-play-circle');
-      // far fa-image
-      // <i class="fab fa-youtube"></i>
-    } else {
       $("div.preview-image__image.output_" + i).removeClass("hide_img");
       $("div.preview-image__default_" + i).addClass('hide');
       output.src = URL.createObjectURL(file);
       output.onload = function () {
         URL.revokeObjectURL(output.src) // free memory
       }
-    }
   });
 }
 
 /**
- * Edit View Image Preview Remove
+ * Main Image Preview Remove (edit page)
  */
 $('.preview-image__image i.remove').click(function() {
   let img_id = $(this).attr('img_id');
   $("div.preview-image__image.output_" + img_id).addClass("hide_img");
   $("div.preview-image__default_" + img_id).removeClass("hide");
   $("#preview_images input[name='img_url_" + img_id + "']").val('');
-  console.log('id is?', img_id);
 });
 
+
+
 /**
- * Image Preview Tabs
+ * Video Preview Tabs
+ */
+for (let i = 1; i <= tab_number_videos; ++i) {
+    $("#tab_preview_videos input#tab_product_upload_video_" + i).change(
+        function() {
+            $(
+                "#tab_preview_videos .preview-image__default--video.preview-image__default_tab_" +
+                    i
+            ).addClass("video");
+        }
+    );
+}
+
+/**
+ * Tab Video Preview Remove (edit page)
+ */
+$("#tab_preview_videos .preview-image__image i.remove-video").click(function() {
+    let img_id = $(this).attr("img_id");
+    $("#tab_preview_videos .preview-image__image.output_" + img_id).addClass(
+        "hide_img"
+    );
+    $("#tab_preview_videos .preview-image__default_tab_" + img_id).removeClass(
+        "hide"
+    );
+    $("#tab_preview_videos input[name='tab_video_url_" + img_id + "']").val("");
+});
+
+
+/**
+ * Tab Image Preview (edit page)
  */
 for (let i = 1; i <= tab_number_images; ++i) {
-    $("input#tab_product_upload_image_" + i).change(function() {
-        let id_name = "tab_output_" + i;
-        let output = document.getElementById(id_name);
-        $("div.preview-image__image.tab_output_" + i).removeClass("hide_img");
-        $("div.preview-image__default_tab_" + i).hide();
-        output.src = URL.createObjectURL(event.target.files[0]);
-        output.onload = function() {
-            URL.revokeObjectURL(output.src); // free memory
-        };
-    });
+    $("#tab_preview_images input#tab_product_upload_image_" + i).change(
+        function() {
+            let id_name = "tab_output_" + i;
+            let output = document.getElementById(id_name);
+            $(
+                "#tab_preview_images .preview-image__image.tab_output_" + i
+            ).removeClass("hide_img");
+            $("#tab_preview_images .preview-image__default_tab_" + i).hide();
+            output.src = URL.createObjectURL(event.target.files[0]);
+            output.onload = function() {
+                URL.revokeObjectURL(output.src); // free memory
+            };
+        }
+    );
 }
+
+/**
+ * Tab Image Preview Remove (edit page)
+ */
+$("#tab_preview_images .preview-image__image i.remove-tab").click(function() {
+    let img_id = $(this).attr("img_id");
+    console.log("remove tab image", img_id);
+    $("#tab_preview_images .preview-image__image.output_" + img_id).addClass(
+        "hide_img"
+    );
+    $("#tab_preview_images .preview-image__default_" + img_id).removeClass(
+        "hide"
+    );
+    $("#tab_preview_images input[name='tab_img_url_" + img_id + "']").val("");
+});
 
 /**
  * Zoom Icon Dissapear

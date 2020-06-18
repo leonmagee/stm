@@ -83,19 +83,30 @@
 
     <div class="tab-item" id="tab-3">
       <div class="product-details__images">
-        @for($i = 1; $i<= $num_tab_images; ++$i) <div class="product-details__images--item">
-          <img src="{{ $product->{'tab_img_url_' . $i } }}" />
+        @for($i = 1; $i<= $num_tab_videos; ++$i) @if($product->{'tab_video_url_' . $i })
+          <div class="product-details__images--item">
+            <video controls>
+              <source src="{{ $product->{'tab_video_url_' . $i } }}" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          </div>
+          @endif
+          @endfor
+          @for($i = 1; $i<= $num_tab_images; ++$i) @if($product->{'tab_img_url_' . $i })
+            <div class="product-details__images--item">
+              <img src="{{ $product->{'tab_img_url_' . $i } }}" />
+            </div>
+            @endif
+            @endfor
       </div>
-      @endfor
     </div>
+
+
   </div>
 
-
-</div>
-
-<div class="product-details__edit">
-  <a href="/products/edit/{{ $product->id }}">Edit</a>
-</div>
+  <div class="product-details__edit">
+    <a href="/products/edit/{{ $product->id }}">Edit</a>
+  </div>
 </div>
 </div>
 @endsection

@@ -21,6 +21,7 @@ class ProductController extends Controller
         $this->secondary_images = 5; // deprecated
         $this->num_images = 6;
         $this->num_tab_images = 8;
+        $this->num_tab_videos = 2;
     }
 
     /**
@@ -251,8 +252,9 @@ class ProductController extends Controller
         }
         $num_images = $this->num_images;
         $num_tab_images = $this->num_tab_images;
+        $num_tab_videos = $this->num_tab_videos;
 
-        return view('products.show', compact('product', 'num_images', 'num_tab_images'));
+        return view('products.show', compact('product', 'num_images', 'num_tab_images', 'num_tab_videos'));
     }
 
     /**
@@ -275,8 +277,9 @@ class ProductController extends Controller
 
         $num_images = $this->secondary_images;
         $tab_images = $this->num_tab_images;
+        $tab_videos = $this->num_tab_videos;
 
-        return view('products.edit', compact('product', 'categories', 'selected_cats', 'selected_sub_cats', 'num_images', 'tab_images'));
+        return view('products.edit', compact('product', 'categories', 'selected_cats', 'selected_sub_cats', 'num_images', 'tab_images', 'tab_videos'));
     }
 
     /**
@@ -288,7 +291,6 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        //dd($request);
         $request->validate([
             'name' => 'required',
             'cost' => 'required',
@@ -297,22 +299,10 @@ class ProductController extends Controller
             'cost.required' => 'Please enter a Cost.',
         ]);
 
-        $image_upload = $request->file('upload-image');
-
-        // if ($image_upload) {
-        //     $image_path = $image_upload->getRealPath();
-        //     $cloudinaryWrapper = Cloudder::upload($image_path, null, ['folder' => 'STM']);
-        //     $result = $cloudinaryWrapper->getResult();
-        //     $url = $result['secure_url'];
-        // } elseif ($request->img_url) {
-        //     $url = $request->img_url;
-        // } else {
-        //     $url = '';
-        // }
+        //$image_upload = $request->file('upload-image');
 
         for ($i = 1; $i <= (1 + $this->secondary_images); $i++) {
             ${"image_upload_" . $i} = $request->file('upload-image-' . $i);
-            //dd(${"image_upload_" . $i}->getMimeType());
             if (${"image_upload_" . $i}) {
                 $image_path = ${"image_upload_" . $i}->getRealPath();
                 $mime_type = ${"image_upload_" . $i}->getMimeType();
@@ -327,6 +317,20 @@ class ProductController extends Controller
                 ${"url_" . $i} = $request->{"img_url_" . $i};
             } else {
                 ${"url_" . $i} = '';
+            }
+        }
+
+        for ($i = 1; $i <= (1 + $this->num_tab_videos); $i++) {
+            ${"video_upload_" . $i} = $request->file('tab-upload-video-' . $i);
+            if (${"video_upload_" . $i}) {
+                $video_path = ${"video_upload_" . $i}->getRealPath();
+                $cloudinaryWrapper = Cloudder::uploadVideo($video_path, null, ['folder' => 'STM']);
+                $result = $cloudinaryWrapper->getResult();
+                ${"tab_url_video_" . $i} = $result['secure_url'];
+            } elseif ($request->{"tab_video_url_" . $i}) {
+                ${"tab_url_video_" . $i} = $request->{"tab_video_url_" . $i};
+            } else {
+                ${"tab_url_video_" . $i} = '';
             }
         }
 
@@ -357,6 +361,8 @@ class ProductController extends Controller
             'img_url_4' => $url_4,
             'img_url_5' => $url_5,
             'img_url_6' => $url_6,
+            'tab_video_url_1' => $tab_url_video_1,
+            'tab_video_url_2' => $tab_url_video_2,
             'tab_img_url_1' => $tab_url_1,
             'tab_img_url_2' => $tab_url_2,
             'tab_img_url_3' => $tab_url_3,

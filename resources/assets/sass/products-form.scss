@@ -43,7 +43,9 @@
             &.hide_img {
                 display: none;
             }
-            i.remove {
+            i.remove,
+            i.remove-tab,
+            i.remove-video {
                 color: darken($red, 5%);
                 position: absolute;
                 top: 0.3em;
@@ -57,7 +59,9 @@
                 }
             }
             &:hover {
-                i.remove {
+                i.remove,
+                i.remove-tab,
+                i.remove-video {
                     display: block;
                 }
             }
@@ -68,6 +72,9 @@
             align-items: center;
             justify-content: center;
             height: 15em;
+            &.preview-image__default--video {
+                min-height: 23.2em;
+            }
             i {
                 color: #999;
                 font-size: 7em;
@@ -76,9 +83,9 @@
                 background-color: lighten($product-blue, 54%);
                 i {
                     color: lighten($product-blue, 10%);
-                    &:before {
-                        content: "\F144";
-                    }
+                    // &:before {
+                    //     content: "\F144";
+                    // }
                 }
             }
             &.hide {
