@@ -350,6 +350,12 @@ Route::get('closed', function () {
 //     })->name('laravel-tester');
 // });
 
+Route::group(['middleware' => 'App\Http\Middleware\LockOutUsersManagers'], function () {
+    Route::get('debug-test', function () {
+        phpinfo();
+    });
+});
+
 // Route::post('send_test_email', function() {
 
 //     $user_leon = User::find(1);
