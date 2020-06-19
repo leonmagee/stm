@@ -20,8 +20,8 @@ class ProductController extends Controller
         $this->middleware('auth');
         $this->secondary_images = 5; // deprecated
         $this->num_images = 6;
-        $this->num_tab_images = 8;
         $this->num_tab_videos = 2;
+        $this->num_tab_images = 8;
     }
 
     /**
@@ -96,8 +96,9 @@ class ProductController extends Controller
     {
         $categories = Category::all();
         $num_images = $this->secondary_images;
-        //$sub_categories = SubCategory::all();
-        return view('products.create', compact('categories', 'num_images'));
+        $tab_videos = $this->num_tab_videos;
+        $tab_images = $this->num_tab_images;
+        return view('products.create', compact('categories', 'num_images', 'tab_videos', 'tab_images'));
     }
 
     /**
@@ -115,16 +116,6 @@ class ProductController extends Controller
             'name.required' => 'Please enter a Name.',
             'cost.required' => 'Please enter a Cost.',
         ]);
-        // $image_upload = $request->file('upload-image');
-        // if ($image_upload) {
-        //     $image_path = $image_upload->getRealPath();
-        //     //Cloudder::upload($filename, $publicId, array $options, array $tags);
-        //     $cloudinaryWrapper = Cloudder::upload($image_path, null, ['folder' => 'STM']);
-        //     $result = $cloudinaryWrapper->getResult();
-        //     $url = $result['secure_url'];
-        // } else {
-        //     $url = '';
-        // }
 
         for ($i = 1; $i <= (1 + $this->secondary_images); $i++) {
             ${"image_upload_" . $i} = $request->file('upload-image-' . $i);
@@ -133,14 +124,37 @@ class ProductController extends Controller
                 $cloudinaryWrapper = Cloudder::upload($image_path, null, ['folder' => 'STM']);
                 $result = $cloudinaryWrapper->getResult();
                 ${"url_" . $i} = $result['secure_url'];
-            }
-            // elseif ($request->{"img_url_" . $i}) {
-            //     ${"url_" . $i} = $request->{"img_url_" . $i};
-            // }
-            else {
+            } else {
                 ${"url_" . $i} = '';
             }
+        }
 
+        for ($i = 1; $i <= (1 + $this->num_tab_videos); $i++) {
+            ${"video_upload_" . $i} = $request->file('tab-upload-video-' . $i);
+            if (${"video_upload_" . $i}) {
+                $video_path = ${"video_upload_" . $i}->getRealPath();
+                $cloudinaryWrapper = Cloudder::uploadVideo($video_path, null, ['folder' => 'STM', 'timeout' => 300]);
+                $result = $cloudinaryWrapper->getResult();
+                ${"tab_url_video_" . $i} = $result['secure_url'];
+            } elseif ($request->{"tab_video_url_" . $i}) {
+                ${"tab_url_video_" . $i} = $request->{"tab_video_url_" . $i};
+            } else {
+                ${"tab_url_video_" . $i} = '';
+            }
+        }
+
+        for ($i = 1; $i <= (1 + $this->num_tab_images); $i++) {
+            ${"image_upload_" . $i} = $request->file('tab-upload-image-' . $i);
+            if (${"image_upload_" . $i}) {
+                $image_path = ${"image_upload_" . $i}->getRealPath();
+                $cloudinaryWrapper = Cloudder::upload($image_path, null, ['folder' => 'STM']);
+                $result = $cloudinaryWrapper->getResult();
+                ${"tab_url_" . $i} = $result['secure_url'];
+            } elseif ($request->{"tab_img_url_" . $i}) {
+                ${"tab_url_" . $i} = $request->{"tab_img_url_" . $i};
+            } else {
+                ${"tab_url_" . $i} = '';
+            }
         }
 
         $product = Product::create([
@@ -150,13 +164,22 @@ class ProductController extends Controller
             'description' => $request->description,
             'details' => self::img_replace($request->details),
             'more_details' => self::img_replace($request->more_details),
-            //'img_url' => $url,
             'img_url_1' => $url_1,
             'img_url_2' => $url_2,
             'img_url_3' => $url_3,
             'img_url_4' => $url_4,
             'img_url_5' => $url_5,
             'img_url_6' => $url_6,
+            'tab_video_url_1' => $tab_url_video_1,
+            'tab_video_url_2' => $tab_url_video_2,
+            'tab_img_url_1' => $tab_url_1,
+            'tab_img_url_2' => $tab_url_2,
+            'tab_img_url_3' => $tab_url_3,
+            'tab_img_url_4' => $tab_url_4,
+            'tab_img_url_5' => $tab_url_5,
+            'tab_img_url_6' => $tab_url_6,
+            'tab_img_url_7' => $tab_url_7,
+            'tab_img_url_8' => $tab_url_8,
         ]);
 
         foreach ($request->attribute_names as $attribute) {
@@ -299,18 +322,13 @@ class ProductController extends Controller
             'cost.required' => 'Please enter a Cost.',
         ]);
 
-        //$image_upload = $request->file('upload-image');
-
         for ($i = 1; $i <= (1 + $this->secondary_images); $i++) {
             ${"image_upload_" . $i} = $request->file('upload-image-' . $i);
             if (${"image_upload_" . $i}) {
                 $image_path = ${"image_upload_" . $i}->getRealPath();
                 // $mime_type = ${"image_upload_" . $i}->getMimeType();
-                // if (strpos($mime_type, 'video') !== false) {
-                //     $cloudinaryWrapper = Cloudder::uploadVideo($image_path, null, ['folder' => 'STM']);
-                // } else {
+                // if (strpos($mime_type, 'video') !== false) {}
                 $cloudinaryWrapper = Cloudder::upload($image_path, null, ['folder' => 'STM']);
-                //}
                 $result = $cloudinaryWrapper->getResult();
                 ${"url_" . $i} = $result['secure_url'];
             } elseif ($request->{"img_url_" . $i}) {
