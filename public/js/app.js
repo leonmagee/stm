@@ -30355,7 +30355,7 @@ __webpack_require__(178);
  * Set Defaults
  */
 var number_images = 6;
-var tab_number_videos = 1;
+var tab_number_videos = 2;
 var tab_number_images = 8;
 
 /**

@@ -351,10 +351,15 @@ Route::get('closed', function () {
 // });
 
 Route::group(['middleware' => 'App\Http\Middleware\LockOutUsersManagers'], function () {
-    Route::get('debug-test', function () {
+    Route::get('phpinfo', function () {
         phpinfo();
     });
 });
+/**
+ * To make changes...
+ * sudo service php7.2-fpm restart
+ *
+ */
 
 // Route::post('send_test_email', function() {
 

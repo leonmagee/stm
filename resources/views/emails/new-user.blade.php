@@ -3,7 +3,7 @@
 # Hello {{ $user->name }}
 
 <div class="margin-bottom-35">
-  <strong>Congratulations! Your account has been created successfully. Now you can enjoy the
+  <strong>Congratulations! Your account has been created successfully. Now you can enjoy all the
     benefits and start ordering
     your FREE sim cards and POS.</strong>
 </div>

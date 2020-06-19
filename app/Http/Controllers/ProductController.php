@@ -21,7 +21,7 @@ class ProductController extends Controller
         $this->secondary_images = 5; // deprecated
         $this->num_images = 6;
         $this->num_tab_images = 8;
-        $this->num_tab_videos = 1;
+        $this->num_tab_videos = 2;
     }
 
     /**
