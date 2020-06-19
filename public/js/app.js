@@ -30764,6 +30764,35 @@ $('.delete-note-form i').click(function () {
     $(this).parent().submit();
 });
 
+/**
+ * Scroll to top
+ */
+$(".scroll-up-link").click(function () {
+    $('html, body').animate({ scrollTop: 0 }, 'slow');
+});
+$(window).bind('scroll', function () {
+    if ($(this).scrollTop() > 1) {
+        $(".scroll-up-link").fadeIn();
+    } else {
+        $(".scroll-up-link").stop().fadeOut();
+    }
+});
+
+// $(window).bind("scroll", function() {
+//     if ($(this).scrollTop() > 520) {
+//         $("#subOverlay").fadeIn();
+//     } else {
+//         $("#subOverlay")
+//             .stop()
+//             .fadeOut();
+//     }
+// });
+
+// $("a[href='#top']").click(function() {
+//     $("html, body").animate({ scrollTop: 0 }, "slow");
+//     return false;
+// });
+
 // var data = {
 // 	labels: ['January', 'February', 'March'],
 // 	datasets: [

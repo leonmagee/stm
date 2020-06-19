@@ -109,4 +109,5 @@
   </div>
 </div>
 </div>
+@include('layouts.scroll-up')
 @endsection

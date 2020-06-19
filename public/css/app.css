@@ -17490,6 +17490,24 @@ body.stm-body .add-padding {
   padding: 20px;
 }
 
+.scroll-up-link {
+  position: fixed;
+  right: 0.9em;
+  bottom: 0.9em;
+  opacity: 0.8;
+  display: none;
+}
+
+.scroll-up-link i {
+  font-size: 2.7em;
+  color: #1b9aaa;
+}
+
+.scroll-up-link:hover {
+  opacity: 1;
+  cursor: pointer;
+}
+
 .modal-box {
   background-color: #fff;
   text-align: center;

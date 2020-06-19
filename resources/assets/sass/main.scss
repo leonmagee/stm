@@ -186,3 +186,19 @@ body.stm-body {
 // .padding-wrap-high {
 //     padding: 20px;
 // }
+
+.scroll-up-link {
+    position: fixed;
+    right: 0.9em;
+    bottom: 0.9em;
+    opacity: 0.8;
+    display: none;
+    i {
+        font-size: 2.7em;
+        color: $brand-primary;
+    }
+    &:hover {
+        opacity: 1;
+        cursor: pointer;
+    }
+}
