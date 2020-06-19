@@ -30382,12 +30382,12 @@ for (var i = 1; i < number_images + 1; ++i) {
  */
 
 var _loop = function _loop(_i) {
-    $('input#product_upload_image_' + _i).change(function () {
+    $("#preview_images input#product_upload_image_" + _i).change(function () {
         var id_name = "output_" + _i;
         var output = document.getElementById(id_name);
         var file = event.target.files[0];
-        $("div.preview-image__image.output_" + _i).removeClass("hide_img");
-        $("div.preview-image__default_" + _i).addClass('hide');
+        $("#preview_images .preview-image__image.output_" + _i).removeClass("hide_img");
+        $("#preview_images .preview-image__default_" + _i).addClass("hide");
         output.src = URL.createObjectURL(file);
         output.onload = function () {
             URL.revokeObjectURL(output.src); // free memory
@@ -30402,11 +30402,11 @@ for (var _i = 1; _i <= number_images + 1; ++_i) {
 /**
  * Main Image Preview Remove (edit page)
  */
-$('.preview-image__image i.remove').click(function () {
-    var img_id = $(this).attr('img_id');
-    $("div.preview-image__image.output_" + img_id).addClass("hide_img");
-    $("div.preview-image__default_" + img_id).removeClass("hide");
-    $("#preview_images input[name='img_url_" + img_id + "']").val('');
+$("#preview_images .preview-image__image i.remove").click(function () {
+    var img_id = $(this).attr("img_id");
+    $("#preview_images .preview-image__image.output_" + img_id).addClass("hide_img");
+    $("#preview_images .preview-image__default_" + img_id).removeClass("hide");
+    $("#preview_images input[name='img_url_" + img_id + "']").val("");
 });
 
 /**
