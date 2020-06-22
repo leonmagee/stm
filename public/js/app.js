@@ -30505,6 +30505,9 @@ $("#product-form").on("submit", function (e) {
     e.preventDefault();
     var quill_text = $("#quill_editor .ql-editor").html();
     $("textarea#description").val(quill_text);
+    // clear last input value for repeater field
+    $("#repeater-field-wrap .entry:last input").val('');
+    // submit form
     $(this)[0].submit();
 });
 
@@ -30596,20 +30599,22 @@ $('.redeem-credit-modal').click(function () {
 });
 
 /**
- * Repeater Field
+ * Repeater Field for Attributes
  */
 $(document).on('click', '.add-attribute', function (e) {
     e.preventDefault();
 
-    var nameVal = $(this).parents('.entry:first').find('input.name').val();
-    var creditVal = $(this).parents('.entry:first').find('input.credit').val();
+    var attribute = $(this).parents('.entry:first').find('input.name').val();
+    //var creditVal = $(this).parents('.entry:first').find('input.credit').val();
+    var matches = $("#repeater-field-wrap .entry.input-group").length;
+    //console.log('number of matches...', matches);
 
-    if (nameVal !== '' && creditVal !== '') {
-        var controlForm = $('#repeater-field-wrap:first'),
-            currentEntry = $(this).parents('.entry:first'),
+    if (attribute !== "" && matches <= 4) {
+        var controlForm = $("#repeater-field-wrap:first"),
+            currentEntry = $(this).parents(".entry:first"),
             newEntry = $(currentEntry.clone()).appendTo(controlForm);
-        newEntry.find('input').val('');
-        controlForm.find('.entry:not(:last) .add-attribute').removeClass('is-primary add-attribute').addClass('is-danger remove-attribute').find('i').removeClass('fa-plus').addClass('fa-times');
+        newEntry.find("input").val("");
+        controlForm.find(".entry:not(:last) .add-attribute").removeClass("is-primary add-attribute").addClass("is-danger remove-attribute").find("i").removeClass("fa-plus").addClass("fa-times");
     }
 }).on('click', '.remove-attribute', function (e) {
     e.preventDefault();

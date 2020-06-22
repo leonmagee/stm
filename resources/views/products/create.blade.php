@@ -25,7 +25,7 @@
             </div>
           </div>
           <div class="field cost">
-            <label class="label" for="cost">Cost<span class="required">*</span></label>
+            <label class="label" for="cost">Price<span class="required">*</span></label>
             <div class="control">
               <input class="input" type="number" min="0" step="0.01" id="cost" name="cost" autocomplete="off"
                 value="{{ old('cost') }}" required />
@@ -36,6 +36,23 @@
             <div class="control">
               <input class="input" type="number" min="0" id="discount" name="discount" autocomplete="off"
                 value="{{ old('discount') }}" />
+            </div>
+          </div>
+        </div>
+
+        <div class="form-wrap-flex form-wrap-flex-attributes">
+
+          <div class="field full">
+            <label class="label" for="">Attributes (4 max)</label>
+            <div id="repeater-field-wrap">
+              <div class="entry input-group">
+                <div class="field has-addons">
+                  <input type="text" class="input name" name="attribute_names[]" placeholder="Attribute">
+                  <div class="input-group-append">
+                    <button class="button is-primary add-attribute" type="button"><i class="fas fa-plus"></i></button>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -51,20 +68,25 @@
           </div>
         </div>
 
-        <div class="form-wrap-flex form-wrap-flex-products-top">
-          <div class="field description">
-            <label class="label" for="details">Product Details</label>
-            <div class="control">
-              <textarea class="textarea" id="details" name="details">{{ old('details') }}</textarea>
+        <div class="columns">
+          <div class="column">
+            <div class="form-wrap-flex form-wrap-flex-products-top">
+              <div class="field description">
+                <label class="label" for="details">Product Specifications</label>
+                <div class="control">
+                  <textarea class="textarea" id="details" name="details">{{ old('details') }}</textarea>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-
-        <div class="form-wrap-flex form-wrap-flex-products-top">
-          <div class="field description">
-            <label class="label" for="more_details">More Details</label>
-            <div class="control">
-              <textarea class="textarea" id="more_details" name="more_details">{{ old('more_details') }}</textarea>
+          <div class="column">
+            <div class="form-wrap-flex form-wrap-flex-products-top">
+              <div class="field description">
+                <label class="label" for="more_details">More Specifications</label>
+                <div class="control">
+                  <textarea class="textarea" id="more_details" name="more_details">{{ old('more_details') }}</textarea>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -159,22 +181,7 @@
 </div>
 
 
-<div class="form-wrap-flex form-wrap-flex-attributes">
 
-  <div class="field full">
-    <label class="label" for="">Attributes</label>
-    <div id="repeater-field-wrap">
-      <div class="entry input-group">
-        <div class="field has-addons">
-          <input type="text" class="input name" name="attribute_names[]" placeholder="Attribute">
-          <div class="input-group-append">
-            <button class="button is-primary add-attribute" type="button"><i class="fas fa-plus"></i></button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
 
 
 <div class="form-wrap-flex form-wrap-flex-categories">

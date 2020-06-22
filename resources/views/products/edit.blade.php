@@ -25,7 +25,7 @@
             </div>
           </div>
           <div class="field cost">
-            <label class="label" for="cost">Cost<span class="required">*</span></label>
+            <label class="label" for="cost">Price<span class="required">*</span></label>
             <div class="control">
               <input class="input" type="number" min="0" step="0.01" id="cost" name="cost" autocomplete="off"
                 value="{{ $product->cost }}" required />
@@ -40,6 +40,35 @@
           </div>
         </div>
 
+        {{-- attributes --}}
+        <div class="form-wrap-flex form-wrap-flex-attributes">
+          <div class="field full">
+            <label class="label" for="">Attributes (4 max)</label>
+            <div id="repeater-field-wrap">
+              @foreach($product->attributes as $attribute)
+              <div class="entry input-group">
+                <div class="field has-addons">
+                  <input type="text" class="input name" name="attribute_names[]" placeholder="Particpant Name"
+                    value="{{ $attribute->text }}">
+                  <div class="input-group-append">
+                    <button class="button is-danger remove-attribute" type="button"><i
+                        class="fas fa-times"></i></button>
+                  </div>
+                </div>
+              </div>
+              @endforeach
+              <div class="entry input-group">
+                <div class="field has-addons">
+                  <input type="text" class="input name" name="attribute_names[]" placeholder="Attribute">
+                  <div class="input-group-append">
+                    <button class="button is-primary add-attribute" type="button"><i class="fas fa-plus"></i></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <div class="form-wrap-flex form-wrap-flex-products-top">
           <div class="field description">
             <label class="label" for="description">Product Description</label>
@@ -50,20 +79,26 @@
           </div>
         </div>
 
-        <div class="form-wrap-flex form-wrap-flex-products-top">
-          <div class="field description">
-            <label class="label" for="details">Product Details</label>
-            <div class="control">
-              <textarea class="textarea" id="details" name="details">{{ $product->details }}</textarea>
+        <div class="columns">
+          <div class="column">
+            <div class="form-wrap-flex form-wrap-flex-products-top">
+              <div class="field description">
+                <label class="label" for="details">Product Specifications</label>
+                <div class="control">
+                  <textarea class="textarea" id="details" name="details">{{ $product->details }}</textarea>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-
-        <div class="form-wrap-flex form-wrap-flex-products-top">
-          <div class="field description">
-            <label class="label" for="more_details">More Details</label>
-            <div class="control">
-              <textarea class="textarea" id="more_details" name="more_details">{{ $product->more_details }}</textarea>
+          <div class="column">
+            <div class="form-wrap-flex form-wrap-flex-products-top">
+              <div class="field description">
+                <label class="label" for="more_details">More Specifications</label>
+                <div class="control">
+                  <textarea class="textarea" id="more_details"
+                    name="more_details">{{ $product->more_details }}</textarea>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -191,34 +226,6 @@
       </div>
   </div>
   @endfor
-</div>
-
-{{-- attributes --}}
-<div class="form-wrap-flex form-wrap-flex-attributes">
-  <div class="field full">
-    <label class="label" for="">Attributes</label>
-    <div id="repeater-field-wrap">
-      @foreach($product->attributes as $attribute)
-      <div class="entry input-group">
-        <div class="field has-addons">
-          <input type="text" class="input name" name="attribute_names[]" placeholder="Particpant Name"
-            value="{{ $attribute->text }}">
-          <div class="input-group-append">
-            <button class="button is-danger remove-attribute" type="button"><i class="fas fa-times"></i></button>
-          </div>
-        </div>
-      </div>
-      @endforeach
-      <div class="entry input-group">
-        <div class="field has-addons">
-          <input type="text" class="input name" name="attribute_names[]" placeholder="Attribute">
-          <div class="input-group-append">
-            <button class="button is-primary add-attribute" type="button"><i class="fas fa-plus"></i></button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
 </div>
 
 <div class="form-wrap-flex form-wrap-flex-categories">
