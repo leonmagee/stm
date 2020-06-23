@@ -93,7 +93,7 @@
           <div class="column">
             <div class="form-wrap-flex form-wrap-flex-products-top">
               <div class="field description">
-                <label class="label" for="more_details">More Specifications</label>
+                <label class="label" for="more_details">Product Parameters</label>
                 <div class="control">
                   <textarea class="textarea" id="more_details"
                     name="more_details">{{ $product->more_details }}</textarea>

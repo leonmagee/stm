@@ -61,27 +61,15 @@
 
   <div class="product-details__tabs tabs is-toggle" id="product-tabs">
     <ul>
-      <li class="is-active" tab="tab-1"><a>Product Specifications</a></li>
-      <li tab="tab-2"><a>More Specifications</a></li>
-      <li tab="tab-3"><a>Product Images & Videos</a></li>
+      <li class="is-active" tab="tab-1"><a>Product Images & Videos</a></li>
+      <li tab="tab-2"><a>Product Specifications</a></li>
+      <li tab="tab-3"><a>Product Parameters</a></li>
     </ul>
   </div>
 
   <div class="product-details__tabs-content tabs-content">
 
-    <div class="tab-item active background" id="tab-1">
-      <div class="product-details__details">
-        {!! $product->details !!}
-      </div>
-    </div>
-
-    <div class="tab-item background" id="tab-2">
-      <div class="product-details__details">
-        {!! $product->more_details !!}
-      </div>
-    </div>
-
-    <div class="tab-item" id="tab-3">
+    <div class="tab-item active" id="tab-1">
       <div class="product-details__images">
         @for($i = 1; $i<= $num_tab_videos; ++$i) @if($product->{'tab_video_url_' . $i })
           <div class="product-details__images--item">
@@ -98,6 +86,18 @@
             </div>
             @endif
             @endfor
+      </div>
+    </div>
+
+    <div class="tab-item background" id="tab-2">
+      <div class="product-details__details">
+        {!! $product->details !!}
+      </div>
+    </div>
+
+    <div class="tab-item background" id="tab-3">
+      <div class="product-details__details">
+        {!! $product->more_details !!}
       </div>
     </div>
 
