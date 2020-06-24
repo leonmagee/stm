@@ -274,7 +274,11 @@ class ProductController extends Controller
             foreach ($ratings as $rating) {
                 $stars_total += $rating->stars;
             }
-            $rating_calc = ($stars_total / $ratings->count());
+            if ($count = $ratings->count()) {
+                $rating_calc = ($stars_total / $count);
+            } else {
+                $rating_calc = 0;
+            }
             $product->rating = $rating_calc;
         }
 
