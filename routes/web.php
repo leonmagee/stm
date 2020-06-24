@@ -73,6 +73,7 @@ Route::group(['middleware' => 'App\Http\Middleware\LockOutUsersManagers'], funct
     Route::get('transaction-change-credit/{user}', 'UserController@transactionTrackerAddCredit');
     Route::post('edit-transaction/{user}', 'UserController@changeUserBalance');
     Route::post('credit-complete', 'UserController@creditComplete');
+    Route::post('update-user-rating', 'ProductRatingController@store');
 });
 
 /**

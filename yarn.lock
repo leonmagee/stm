@@ -78,6 +78,13 @@
   version "5.2.0"
   resolved "https://registry.yarnpkg.com/@fortawesome/fontawesome-free/-/fontawesome-free-5.2.0.tgz#50cd9856774351c56c0b1b0db4efe122d7913e58"
 
+"@rateyo/jquery@^3.0.0-alpha.2":
+  version "3.0.0-alpha.2"
+  resolved "https://registry.yarnpkg.com/@rateyo/jquery/-/jquery-3.0.0-alpha.2.tgz#b3a1968a5cc027f6cffe4277a39e94a831abd513"
+  integrity sha512-SQDl+J+KP4Cm+3IuxnWza6IWOLO/q9nbQyMKx159AW187Mbio8z9CmYMH9hL/e5r3UuKfNCFSHo/ReKRZCjHCA==
+  dependencies:
+    rateyo "^3.0.0-alpha.1"
+
 abbrev@1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/abbrev/-/abbrev-1.1.1.tgz#f8f2c887ad10bf67f634f005b6987fed3179aac8"
@@ -5755,6 +5762,11 @@ range-parser@^1.0.3, range-parser@~1.2.1:
 range-parser@~1.2.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/range-parser/-/range-parser-1.2.0.tgz#f49be6b487894ddc40dcc94a322f611092e00d5e"
+
+rateyo@^3.0.0-alpha.1:
+  version "3.0.0-alpha.2"
+  resolved "https://registry.yarnpkg.com/rateyo/-/rateyo-3.0.0-alpha.2.tgz#b9ec3e5194198ddf8352e972bf50e601a698f7ee"
+  integrity sha512-2SQnLpo0j1aWa5na28mpPjT73YNpt7Z58W5MqahqTAs0KmPdbjlbrFctDHd2NyaZfBiQoRFpK92ZzOm4NX92SQ==
 
 raw-body@2.4.0:
   version "2.4.0"

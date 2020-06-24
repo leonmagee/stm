@@ -27,6 +27,7 @@
         "sass-loader": "^7.1.0"
     },
     "dependencies": {
+        "@rateyo/jquery": "^3.0.0-alpha.2",
         "axios": "^0.18",
         "bulma-tooltip": "^3.0.2",
         "chart.js": "^2.7.2",

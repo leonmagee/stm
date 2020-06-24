@@ -14,6 +14,10 @@
 // not sure how this was working before with this commented out
 @import "../../../public/fonts/vendor/flat-icon/_flaticon.scss";
 
+// using cdn for dataTables becuase it includes some images
+//@import "../vendor/datatables/jquery.dataTables.css";
+//@import "../vendor/datatables/responsive.dataTables.css";
+
 //@import "~bulma/css/bulma.min.css";
 
 @import "variables";
@@ -34,6 +38,10 @@
 @import "~bulma/sass/components/_all";
 @import "~bulma/sass/grid/_all";
 @import "~bulma/sass/layout/_all";
+
+@import "~rateyo/lib/cjs/rateyo.min.css";
+
+@import "~quill/dist/quill.snow.css";
 
 //@import "~bulma/bulma.sass";
 

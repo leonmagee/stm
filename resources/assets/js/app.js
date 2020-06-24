@@ -16,6 +16,8 @@ require('bulma-tooltip');
 
 require('jquery-zoom');
 
+require("@rateyo/jquery/lib/cjs/jquery.rateyo.js");
+
 require('./jquery.datetimepicker.full');
 
 require('./components/AllUsers');
@@ -25,6 +27,52 @@ require('./components/AllUsersNotAdmin');
 require('./components/AllUsersAgents');
 
 require('./components/Products');
+
+/**
+ * Star Ratings
+ */
+  // $("#rateYo").rateYo({
+  //     starWidth: "40px"
+  // });
+  // $("#rateYo").rateYo({
+  //   starWidth: "50px"
+  // });
+
+let rating = $("#rateYo").attr('rating');
+  $("#rateYo").rateYo({
+    rating: rating,
+    fullStar: true,
+    starWidth: "27px",
+    spacing: "2px",
+    ratedFill: "#D5BE48",
+  }).on("rateyo.set", function(e, data) {
+    var rating = data.rating;
+    var user_id = $(this).attr('user_id');
+    var product_id = $(this).attr('product_id');
+    console.log('rating?', rating, user_id, product_id);
+    $(this).next().text(rating);
+
+
+    axios({
+      method: 'post',
+      url: '/update-user-rating',
+      data: {
+        stars: rating,
+        user_id,
+        product_id,
+      }
+    }).then(response => {
+        console.log(response);
+    });
+  });
+
+// $("#rateYo").rateYo()
+//   .on("rateyo.change", function (e, data) {
+
+//     var rating = data.rating;
+//     $(this).next().text(rating);
+//   });
+
 
 /**
  * Set Defaults

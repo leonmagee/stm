@@ -6,6 +6,7 @@ use App\Category;
 use App\Product;
 use App\ProductAttribute;
 use App\ProductCategories;
+use App\ProductRating;
 use App\ProductSubCategories;
 use App\SubCategory;
 use Cloudder;
@@ -228,15 +229,6 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        // if ($product->img_url) {
-        //     $match = null;
-        //     preg_match('(\/STM\/.*)', $product->img_url, $match);
-        //     $new_url = cloudinary_url($match[0], ["transformation" => ["width" => 800, "height" => 800, "crop" => "fit"], "cloud_name" => "www-stmmax-com", "secure" => "true"]);
-        //     $product->img_url = $new_url;
-        //     $new_url_small = cloudinary_url($match[0], ["transformation" => ["width" => 300, "height" => 300, "crop" => "fit"], "cloud_name" => "www-stmmax-com", "secure" => "true"]);
-        //     $product->img_url_small_1 = $new_url_small;
-        // }
-
         for ($i = 1; $i <= $this->num_images; $i++) {
             if ($resource = $product->{"img_url_" . $i}) {
                 if (strpos($resource, 'video') !== false) {
@@ -259,8 +251,6 @@ class ProductController extends Controller
                 preg_match('(\/STM\/.*)', $product->{"tab_img_url_" . $i}, $match);
                 $new_url = cloudinary_url($match[0], ["transformation" => ["width" => 800, "height" => 800, "crop" => "fit"], "cloud_name" => "www-stmmax-com", "secure" => "true"]);
                 $product->{"tab_img_url_" . $i} = $new_url;
-                // $new_url_small = cloudinary_url($match[0], ["transformation" => ["width" => 300, "height" => 300, "crop" => "fit"], "cloud_name" => "www-stmmax-com", "secure" => "true"]);
-                // $product->{"img_url_small_" . $i} = $new_url_small;
             }
         }
 
@@ -273,6 +263,21 @@ class ProductController extends Controller
             $product->orig_price = null;
             $product->cost = $orig_cost;
         }
+
+        $user_id = \Auth::user()->id;
+        $user_rating = ProductRating::where(['user_id' => $user_id, 'product_id' => $product->id])->first();
+        if ($user_rating) {
+            $product->rating = $user_rating->stars;
+        } else {
+            $ratings = ProductRating::where('product_id', $product->id)->get();
+            $stars_total = 0;
+            foreach ($ratings as $rating) {
+                $stars_total += $rating->stars;
+            }
+            $rating_calc = ($stars_total / $ratings->count());
+            $product->rating = $rating_calc;
+        }
+
         $num_images = $this->num_images;
         $num_tab_images = $this->num_tab_images;
         $num_tab_videos = $this->num_tab_videos;
