@@ -32,18 +32,14 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //$products = Product::with('categories')->get();
         $products = Product::all();
         foreach ($products as $product) {
             if ($image_url = $product->img_url_1) {
-                if (strpos($image_url, 'video') !== false) {
-                    $product->img_url_1 = str_replace('mp4', 'jpeg', $image_url);
-                } else {
-                    $match = null;
-                    preg_match('(\/STM\/.*)', $image_url, $match);
-                    $new_url = cloudinary_url($match[0], ["transformation" => ["width" => 600, "height" => 600, "crop" => "fit"], "cloud_name" => "www-stmmax-com", "secure" => "true"]);
-                    $product->img_url_1 = $new_url;
-                }
+                $match = null;
+                preg_match('(\/STM\/.*)', $image_url, $match);
+                $new_url = cloudinary_url($match[0], ["transformation" => ["width" => 600, "height" => 600, "crop" => "fit"], "cloud_name" => "www-stmmax-com", "secure" => "true"]);
+                $product->img_url_1 = $new_url;
+
             }
             $orig_cost = number_format($product->cost, 2);
             if ($product->discount) {
@@ -86,6 +82,52 @@ class ProductController extends Controller
 
         $categories = Category::with('sub_categories')->get();
         return view('products.index', compact('categories', 'products', 'sub_cat_match', 'sub_cats_array'));
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index_carousel()
+    {
+        $products = Product::all();
+        foreach ($products as $product) {
+            if ($image_url = $product->img_url_1) {
+                $match = null;
+                preg_match('(\/STM\/.*)', $image_url, $match);
+                $new_url = cloudinary_url($match[0], ["transformation" => ["width" => 600, "height" => 600, "crop" => "fit"], "cloud_name" => "www-stmmax-com", "secure" => "true"]);
+                $product->img_url_1 = $new_url;
+            }
+            $orig_cost = number_format($product->cost, 2);
+            if ($product->discount) {
+                $product->orig_price = $orig_cost;
+                $product->cost_format = number_format($product->cost - ($product->cost * ($product->discount / 100)), 2);
+
+            } else {
+                $product->orig_price = null;
+                $product->cost_format = $orig_cost;
+            }
+            $attributes_array = [];
+            foreach ($product->attributes as $attribute) {
+                if (count($attributes_array) < 4) {
+                    $attributes_array[] = $attribute->text;
+                }
+            }
+            $product->attributes_array = $attributes_array;
+        }
+        $sub_cat_match = [];
+        $sub_cats = SubCategory::all();
+        $sub_cats_array = [];
+        foreach ($sub_cats as $sub_cat) {
+            $sub_cat_match[$sub_cat->id] = $sub_cat->category_id;
+            $sub_cats_array[] = $sub_cat->id;
+        }
+        $sub_cat_match = json_encode($sub_cat_match);
+        $sub_cats_array = json_encode($sub_cats_array);
+
+        $categories = Category::with('sub_categories')->get();
+        return view('products.index-carousel', compact('categories', 'products', 'sub_cat_match', 'sub_cats_array'));
     }
 
     /**
@@ -469,7 +511,19 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        //
+        // 1. delete from product_categories
+        $cats_delete = ProductCategories::where('product_id', $product->id)->delete();
+        // 2. delete from product_sub_categories
+        $sub_cats_delete = ProductSubCategories::where('product_id', $product->id)->delete();
+        // 3. delete from product_ratings
+        $ratings_delete = ProductRating::where('product_id', $product->id)->delete();
+        // 4. delete from product_attributes
+        $attributes_delete = ProductAttribute::where('product_id', $product->id)->delete();
+        // 5. finally, delete product
+        $product->delete();
+        // 6 flash and redirect
+        session()->flash('message', 'Product Deleted');
+        return redirect('/products');
     }
 
     /**

@@ -28,6 +28,8 @@ require('./components/AllUsersAgents');
 
 require('./components/Products');
 
+require('./components/ProductsCarousel');
+
 /**
  * Star Ratings
  */

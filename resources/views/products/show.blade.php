@@ -109,7 +109,8 @@
   </div>
 
   <div class="product-details__edit">
-    <a href="/products/edit/{{ $product->id }}">Edit</a>
+    <a href="/products/edit/{{ $product->id }}">Edit</a> / <a class="delete-product"
+      href="/products/delete/{{ $product->id }}">Delete</a>
   </div>
 </div>
 </div>

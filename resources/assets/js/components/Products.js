@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
+import ProductList from './products/ProductList';
 
 export default class Products extends Component {
     constructor(props) {
@@ -34,7 +35,6 @@ export default class Products extends Component {
               let sub_cats = product.sub_cat_array[cat];
               if (sub_cats) {
                 if(sub_cats.length) {
-                  //let sub_cats_array = [2,3,4,6,7,8,9];
                   sub_cats_array.map(sub => {
                     sub_cats.map(sub_inner => {
                         if (subCatsChecked.includes(sub_inner)) {
@@ -174,53 +174,6 @@ export default class Products extends Component {
           </div>
       );
 
-        const productsBlock = productsDisplay.map( (product, i) => {
-          let img_div = '';
-          let discount = '';
-          let orig_price = '';
-          if(product.discount) {
-            discount = <div className="product__discount">{product.discount}% Off</div>
-            orig_price = <span className="product__footer--orig_price">${product.orig_price}</span>
-          }
-          if(product.img_url_1) {
-            img_div = <div className="product__image product__image--url"><img src={product.img_url_1} />{discount}</div>
-          } else {
-            img_div = <div className="product__image product__image--default"><i className="far fa-image"></i>{discount}</div>
-          }
-          const attributes = product.attributes_array.map((attribute, k) => {
-            return <div className="product__attributes--item" key={k}><i className="fas fa-circle"></i><span>{attribute}</span></div>;
-          })
-          return (
-              <div key={i} className="product">
-                  <a className="product__link" href={"/products/" + product.id}>
-                      {img_div}
-                      <div className="product__title">{product.name}</div>
-                      {/* <div className="product__cost">${product.cost_format}</div> */}
-                      <div className="product__attributes">{attributes}</div>
-                  </a>
-                  <div className="product__footer">
-                      {/* <a className="product__footer--view" href={"/products/" + product.id}><i className="fas fa-eye"></i></a> */}
-                      <div className="product__footer--cost">
-                          ${product.cost_format}
-                          {orig_price}
-                      </div>
-                      {/* <a href={"/products/edit/" + product.id}>Edit</a> */}
-                      <a
-                          className="product__footer--right product__footer--right-favorite"
-                          data-tooltip="Add To Favorites"
-                      >
-                          <i className="fas fa-heart"></i>
-                      </a>
-                      <a
-                          className="product__footer--right product__footer--right-cart"
-                          data-tooltip="Add To Cart"
-                      >
-                          <i className="fas fa-cart-plus"></i>
-                      </a>
-                  </div>
-              </div>
-          );
-        })
         const header = (
             <div className="products-header-wrap">
                 <div className="products-header">
@@ -241,7 +194,7 @@ export default class Products extends Component {
                 {menuToggled}
                 <div className="products-inner-wrap">
                     {header}
-                    <div className="products">{productsBlock}</div>
+                    <ProductList products={productsDisplay} />
                 </div>
             </div>
         );

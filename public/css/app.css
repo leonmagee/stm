@@ -22395,10 +22395,15 @@ body.stm-body.about .about-img-wrap img {
   border-radius: 4px;
   padding: 0.6em 0.8em;
   margin-top: 1em;
+  color: #bbb;
 }
 
 .product-single .product-details__edit a {
   font-weight: bold;
+}
+
+.product-single .product-details__edit a.delete-product {
+  color: #ff3860;
 }
 
 .form-wrapper-inner .form-wrap .form-wrap-flex.form-wrap-flex-products-top .field.name {
