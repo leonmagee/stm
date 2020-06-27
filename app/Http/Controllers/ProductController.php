@@ -89,7 +89,7 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index_carousel()
+    private static function product_data()
     {
         $products = Product::all();
         foreach ($products as $product) {
@@ -116,18 +116,13 @@ class ProductController extends Controller
             }
             $product->attributes_array = $attributes_array;
         }
-        $sub_cat_match = [];
-        $sub_cats = SubCategory::all();
-        $sub_cats_array = [];
-        foreach ($sub_cats as $sub_cat) {
-            $sub_cat_match[$sub_cat->id] = $sub_cat->category_id;
-            $sub_cats_array[] = $sub_cat->id;
-        }
-        $sub_cat_match = json_encode($sub_cat_match);
-        $sub_cats_array = json_encode($sub_cats_array);
+        return $products;
 
-        $categories = Category::with('sub_categories')->get();
-        return view('products.index-carousel', compact('categories', 'products', 'sub_cat_match', 'sub_cats_array'));
+    }
+    public function index_carousel()
+    {
+        $products = self::product_data();
+        return view('products.index-carousel', compact('products'));
     }
 
     /**
@@ -328,7 +323,9 @@ class ProductController extends Controller
         $num_tab_images = $this->num_tab_images;
         $num_tab_videos = $this->num_tab_videos;
 
-        return view('products.show', compact('product', 'num_images', 'num_tab_images', 'num_tab_videos'));
+        $products = $products = self::product_data();
+
+        return view('products.show', compact('product', 'products', 'num_images', 'num_tab_images', 'num_tab_videos'));
     }
 
     /**

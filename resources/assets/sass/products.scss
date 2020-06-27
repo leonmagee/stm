@@ -3,6 +3,16 @@
     height: 100%;
 }
 // grid wrap for products and menu
+.product-single__carousel {
+    h2 {
+        margin-top: 1em;
+        padding-bottom: 0.1em;
+        margin-bottom: 0.2em;
+        font-size: 1.5em;
+        font-weight: 600;
+        border-bottom: 1px solid #e5e5e5;
+    }
+}
 .products-outer {
     display: flex;
     height: 100%;
@@ -10,6 +20,40 @@
     .products-inner-wrap {
         flex: 1;
         padding: 1%;
+    }
+    &.products-outer--carousel {
+        background: transparent;
+        display: flex;
+        align-items: center;
+        i.products-nav {
+            font-size: 2em;
+            color: rgba(0, 0, 0, 0.2);
+            &:hover {
+                color: rgba(0, 0, 0, 0.3);
+                cursor: pointer;
+            }
+        }
+        .products-inner-wrap {
+            //flex: 0;
+            padding: 1%;
+            .products {
+                .product {
+                    flex: 1 1 0;
+                    @media (min-width: $screen-md) {
+                        margin: 2% 2% 0;
+                    }
+
+                    .product__image {
+                        height: 130px;
+                        &.product__image--url {
+                            img {
+                                max-height: 120px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
 
     // grid wrap for products

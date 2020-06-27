@@ -48,12 +48,12 @@ export default class ProductsCarousel extends Component {
       }
 
       return (
-          <div className="products-outer">
+          <div className="products-outer products-outer--carousel">
+              <i onClick={() => this.scroll(-1)} className="fas fa-chevron-circle-left products-nav"></i>
               <div className="products-inner-wrap">
-                  <ProductList products={productsDisplay} />
-                  <button onClick={() => this.scroll(-1)}>Scroll Left</button>
-                  <button onClick={() => this.scroll(1)}>Scroll Right</button>
+                  <ProductList products={productsDisplay} display="carousel" />
               </div>
+              <i onClick={() => this.scroll(1)} className="fas fa-chevron-circle-right products-nav"></i>
           </div>
       );
     }

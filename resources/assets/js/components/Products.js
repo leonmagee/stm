@@ -194,7 +194,7 @@ export default class Products extends Component {
                 {menuToggled}
                 <div className="products-inner-wrap">
                     {header}
-                    <ProductList products={productsDisplay} />
+                    <ProductList products={productsDisplay} display="basic" />
                 </div>
             </div>
         );
