@@ -33,7 +33,7 @@
   <div class="product-single__images--default"><i class="far fa-image"></i></div>
   @endif
   <div class="product-single__carousel">
-    <h2>Other Products</h2>
+    <h2>More Products You May Also Like</h2>
     <div id="products-carousel" class="products-react-carousel" products='{{ $products }}'></div>
   </div>
 </div>
