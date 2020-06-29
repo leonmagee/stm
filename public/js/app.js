@@ -30369,7 +30369,7 @@ $('.rate_yo_thumbnail').each(function () {
     var rating = $(this).attr('rating');
     $(this).rateYo({
         rating: rating,
-        fullStar: true,
+        readOnly: true,
         starWidth: "17px",
         spacing: "2px",
         ratedFill: "#D5BE48"
@@ -30387,7 +30387,7 @@ $("#rateYo").rateYo({
     var rating = data.rating;
     var user_id = $(this).attr('user_id');
     var product_id = $(this).attr('product_id');
-    console.log('rating?', rating, user_id, product_id);
+    //console.log('rating?', rating, user_id, product_id);
     $(this).next().text(rating);
 
     axios({
@@ -30399,7 +30399,7 @@ $("#rateYo").rateYo({
             product_id: product_id
         }
     }).then(function (response) {
-        console.log(response);
+        //console.log(response);
     });
 });
 
@@ -111878,7 +111878,8 @@ var Products = function (_Component) {
           catsChecked = _state3.catsChecked,
           productsDisplay = _state3.productsDisplay,
           subCatsChecked = _state3.subCatsChecked,
-          catsToggle = _state3.catsToggle;
+          catsToggle = _state3.catsToggle,
+          user_id = _state3.user_id;
 
 
       var catsBlock = categories.map(function (category, i) {
@@ -112005,7 +112006,7 @@ var Products = function (_Component) {
           'div',
           { className: 'products-inner-wrap' },
           header,
-          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__products_ProductList__["a" /* default */], { products: productsDisplay, display: 'basic' })
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__products_ProductList__["a" /* default */], { products: productsDisplay, display: 'basic', user_id: user_id })
         )
       );
     }
@@ -114378,7 +114379,8 @@ var Product = function (_Component) {
           attributes = _props.attributes,
           price = _props.price,
           orig_price = _props.orig_price,
-          rating = _props.rating;
+          rating = _props.rating,
+          user_id = _props.user_id;
 
 
       return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
@@ -114393,7 +114395,7 @@ var Product = function (_Component) {
             { className: 'product__title' },
             name
           ),
-          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div', { className: 'product__rating rate_yo_thumbnail', rating: rating }),
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div', { className: 'product__rating rate_yo_thumbnail', rating: rating, id: id, user_id: user_id }),
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__Attributes__["a" /* default */], { attributes: attributes })
         ),
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
@@ -114461,7 +114463,8 @@ var ProductList = function (_Component) {
     value: function render() {
       var _props = this.props,
           products = _props.products,
-          display = _props.display;
+          display = _props.display,
+          user_id = _props.user_id;
 
       var productsBlock = products.map(function (product, i) {
         if (display === 'basic') {
@@ -114474,7 +114477,8 @@ var ProductList = function (_Component) {
             attributes: product.attributes_array,
             price: product.cost_format,
             orig_price: product.orig_price,
-            rating: product.rating
+            rating: product.rating,
+            user_id: user_id
           });
         } else {
           return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__ProductSmall__["a" /* default */], {

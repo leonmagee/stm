@@ -44,7 +44,7 @@ $('.rate_yo_thumbnail').each(function() {
   let rating = $(this).attr('rating');
   $(this).rateYo({
     rating: rating,
-    fullStar: true,
+    readOnly: true,
     starWidth: "17px",
     spacing: "2px",
     ratedFill: "#D5BE48",
@@ -62,7 +62,7 @@ let rating = $("#rateYo").attr('rating');
     var rating = data.rating;
     var user_id = $(this).attr('user_id');
     var product_id = $(this).attr('product_id');
-    console.log('rating?', rating, user_id, product_id);
+    //console.log('rating?', rating, user_id, product_id);
     $(this).next().text(rating);
 
     axios({
@@ -74,7 +74,7 @@ let rating = $("#rateYo").attr('rating');
         product_id,
       }
     }).then(response => {
-        console.log(response);
+        //console.log(response);
     });
   });
 

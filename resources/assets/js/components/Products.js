@@ -123,7 +123,7 @@ export default class Products extends Component {
   }
 
     render() {
-      const { categories, catsChecked, productsDisplay, subCatsChecked, catsToggle } = this.state;
+      const { categories, catsChecked, productsDisplay, subCatsChecked, catsToggle, user_id } = this.state;
 
         const catsBlock = categories.map( (category, i) => {
           let icon = <i className="far fa-square"></i>;
@@ -194,7 +194,7 @@ export default class Products extends Component {
                 {menuToggled}
                 <div className="products-inner-wrap">
                     {header}
-                    <ProductList products={productsDisplay} display="basic" />
+                    <ProductList products={productsDisplay} display="basic" user_id={user_id} />
                 </div>
             </div>
         );
@@ -207,7 +207,7 @@ if (document.getElementById('products')) {
   const sub_cat_match = document.getElementById('products').getAttribute('sub_cat_match');
   const sub_cats_array = document.getElementById('products').getAttribute('sub_cats_array');
     ReactDOM.render(
-      <Products products={products} categories={categories} sub_cat_match={sub_cat_match} sub_cats_array={sub_cats_array}/>,
+      <Products products={products} categories={categories} sub_cat_match={sub_cat_match} sub_cats_array={sub_cats_array} />,
       document.getElementById('products')
     );
 }
