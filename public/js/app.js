@@ -114392,10 +114392,14 @@ var Product = function (_Component) {
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__ImageDiv__["a" /* default */], { img_url: img_url, discount: discount }),
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
             'div',
+            { className: 'product__rating' },
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div', { className: 'rate_yo_thumbnail', rating: rating, id: id, user_id: user_id })
+          ),
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'div',
             { className: 'product__title' },
             name
           ),
-          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div', { className: 'product__rating rate_yo_thumbnail', rating: rating, id: id, user_id: user_id }),
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__Attributes__["a" /* default */], { attributes: attributes })
         ),
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(

@@ -13,8 +13,10 @@ export default class Product extends Component {
       <div className="product">
         <a className="product__link" href={"/products/" + id}>
           <ImageDiv img_url={img_url} discount={discount} />
+          <div className="product__rating">
+            <div className="rate_yo_thumbnail" rating={rating} id={id} user_id={user_id}></div>
+          </div>
           <div className="product__title">{name}</div>
-          <div className="product__rating rate_yo_thumbnail" rating={rating} id={id} user_id={user_id}></div>
           <Attributes attributes={attributes} />
         </a>
         <div className="product__footer">

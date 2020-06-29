@@ -203,13 +203,19 @@
         @include product_style;
         overflow: hidden;
         .product__rating {
-            padding: 0.4em 1.2em 0em;
+            padding: 0.3em 1.2em 0.4em;
+            border-top: 1px solid #f2f2f2;
+            border-bottom: 1px solid #f0f0f0;
+            //width: 100%;
+            //max-width: 100%;
+            display: flex;
+            justify-content: center;
         }
         .product__title {
             //background: red;
             //display: block;
             //position: relative;
-            padding: 0.4em 1.2em 0.4em;
+            padding: 0.4em 1.2em 0em;
             color: #111;
             font-weight: 600;
             font-size: 0.7em;
@@ -218,8 +224,6 @@
             width: 100%;
             max-width: 100%;
             text-overflow: ellipsis;
-            border-top: 1px solid #eee;
-            border-bottom: 1px solid #eee;
             //max-width: 18%;
             //width: 30%;
             //max-width: 80%;

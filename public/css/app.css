@@ -21851,11 +21851,19 @@ body.stm-body.about .about-img-wrap img {
 }
 
 .products-outer .product .product__rating {
-  padding: 0.4em 1.2em 0em;
+  padding: 0.3em 1.2em 0.4em;
+  border-top: 1px solid #f2f2f2;
+  border-bottom: 1px solid #f0f0f0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .products-outer .product .product__title {
-  padding: 0.4em 1.2em 0.4em;
+  padding: 0.4em 1.2em 0em;
   color: #111;
   font-weight: 600;
   font-size: 0.7em;
@@ -21864,8 +21872,6 @@ body.stm-body.about .about-img-wrap img {
   width: 100%;
   max-width: 100%;
   text-overflow: ellipsis;
-  border-top: 1px solid #eee;
-  border-bottom: 1px solid #eee;
 }
 
 .products-outer .product .product__image {
