@@ -21850,6 +21850,10 @@ body.stm-body.about .about-img-wrap img {
   overflow: hidden;
 }
 
+.products-outer .product .product__rating {
+  padding: 0.4em 1.2em 0em;
+}
+
 .products-outer .product .product__title {
   padding: 0.4em 1.2em 0.4em;
   color: #111;

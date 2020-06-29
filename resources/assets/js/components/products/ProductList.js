@@ -18,6 +18,7 @@ export default class ProductList extends Component {
           attributes={product.attributes_array}
           price={product.cost_format}
           orig_price={product.orig_price}
+          rating={product.rating}
         />
       );
       } else {

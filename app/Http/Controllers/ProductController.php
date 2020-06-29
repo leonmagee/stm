@@ -33,6 +33,7 @@ class ProductController extends Controller
     public function index()
     {
         $products = Product::all();
+        $user_id = \Auth::user()->id;
         foreach ($products as $product) {
             if ($image_url = $product->img_url_1) {
                 $match = null;
@@ -69,6 +70,25 @@ class ProductController extends Controller
                 }
             }
             $product->attributes_array = $attributes_array;
+
+            // rating
+            $user_rating = ProductRating::where(['user_id' => $user_id, 'product_id' => $product->id])->first();
+            if ($user_rating) {
+                $product->rating = $user_rating->stars;
+            } else {
+                $ratings = ProductRating::where('product_id', $product->id)->get();
+                $stars_total = 0;
+                foreach ($ratings as $rating) {
+                    $stars_total += $rating->stars;
+                }
+                if ($count = $ratings->count()) {
+                    $rating_calc = ($stars_total / $count);
+                } else {
+                    $rating_calc = 0;
+                }
+                $product->rating = $rating_calc;
+            }
+
         }
         $sub_cat_match = [];
         $sub_cats = SubCategory::all();

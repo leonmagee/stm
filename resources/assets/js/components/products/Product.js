@@ -7,13 +7,14 @@ export default class Product extends Component {
 
   render() {
 
-    const { id, img_url, discount, name, attributes, price, orig_price } = this.props;
+    const { id, img_url, discount, name, attributes, price, orig_price, rating } = this.props;
 
     return (
       <div className="product">
         <a className="product__link" href={"/products/" + id}>
           <ImageDiv img_url={img_url} discount={discount} />
           <div className="product__title">{name}</div>
+          <div className="product__rating rate_yo_thumbnail" rating={rating}></div>
           <Attributes attributes={attributes} />
         </a>
         <div className="product__footer">

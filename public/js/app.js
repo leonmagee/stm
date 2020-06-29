@@ -30365,6 +30365,17 @@ __webpack_require__(219);
 //   starWidth: "50px"
 // });
 
+$('.rate_yo_thumbnail').each(function () {
+    var rating = $(this).attr('rating');
+    $(this).rateYo({
+        rating: rating,
+        fullStar: true,
+        starWidth: "17px",
+        spacing: "2px",
+        ratedFill: "#D5BE48"
+    });
+});
+
 var rating = $("#rateYo").attr('rating');
 $("#rateYo").rateYo({
     rating: rating,
@@ -114366,7 +114377,8 @@ var Product = function (_Component) {
           name = _props.name,
           attributes = _props.attributes,
           price = _props.price,
-          orig_price = _props.orig_price;
+          orig_price = _props.orig_price,
+          rating = _props.rating;
 
 
       return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
@@ -114381,6 +114393,7 @@ var Product = function (_Component) {
             { className: 'product__title' },
             name
           ),
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div', { className: 'product__rating rate_yo_thumbnail', rating: rating }),
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__Attributes__["a" /* default */], { attributes: attributes })
         ),
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
@@ -114460,7 +114473,8 @@ var ProductList = function (_Component) {
             name: product.name,
             attributes: product.attributes_array,
             price: product.cost_format,
-            orig_price: product.orig_price
+            orig_price: product.orig_price,
+            rating: product.rating
           });
         } else {
           return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__ProductSmall__["a" /* default */], {

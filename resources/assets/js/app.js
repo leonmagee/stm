@@ -40,6 +40,17 @@ require('./components/ProductsCarousel');
   //   starWidth: "50px"
   // });
 
+$('.rate_yo_thumbnail').each(function() {
+  let rating = $(this).attr('rating');
+  $(this).rateYo({
+    rating: rating,
+    fullStar: true,
+    starWidth: "17px",
+    spacing: "2px",
+    ratedFill: "#D5BE48",
+  });
+});
+
 let rating = $("#rateYo").attr('rating');
   $("#rateYo").rateYo({
     rating: rating,
@@ -53,7 +64,6 @@ let rating = $("#rateYo").attr('rating');
     var product_id = $(this).attr('product_id');
     console.log('rating?', rating, user_id, product_id);
     $(this).next().text(rating);
-
 
     axios({
       method: 'post',
