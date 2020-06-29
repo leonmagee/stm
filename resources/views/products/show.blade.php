@@ -113,12 +113,21 @@
   </div>
 
   <div class="product-details__edit">
-    <a href="/products/edit/{{ $product->id }}">Edit</a> / <a class="delete-product"
-      href="/products/delete/{{ $product->id }}">Delete</a>
+    <a href="/products/edit/{{ $product->id }}">Edit</a> / <a class="delete-product modal-open" href="#">Delete</a>
   </div>
 </div>
 </div>
 
 @include('layouts.scroll-up')
+
+@endsection
+
+@section('modal')
+
+<h3 class="title">Are You Sure?</h3>
+
+<a class="button is-danger call-loader" href="/products/delete/{{ $product->id }}">Delete Product</a>
+<a href="#" class="modal-close-button button is-primary">Cancel</a>
+
 
 @endsection
