@@ -21638,6 +21638,14 @@ body.stm-body.about .about-img-wrap img {
   max-height: 120px;
 }
 
+.products-outer.products-outer--carousel .products-inner-wrap .product__attributes .product__attributes--item {
+  font-size: 0.57em;
+}
+
+.products-outer.products-outer--carousel .products-inner-wrap .product__attributes .product__attributes--item i {
+  font-size: 0.48em;
+}
+
 .products-outer .products {
   padding: 1em;
 }

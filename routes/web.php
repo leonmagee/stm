@@ -27,7 +27,7 @@ Route::get('/charts', 'HomeController@index')->name('charts');
 Route::group(['middleware' => 'App\Http\Middleware\LockOutUsersManagers'], function () {
     Route::get('products', 'ProductController@index');
     Route::get('products-list', 'ProductController@list');
-    Route::get('products-carousel', 'ProductController@index_carousel');
+    //Route::get('products-carousel', 'ProductController@index_carousel');
     Route::get('products/{product}', 'ProductController@show');
     Route::get('product-new', 'ProductController@create');
     Route::post('product-new', 'ProductController@store');

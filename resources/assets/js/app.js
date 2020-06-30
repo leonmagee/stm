@@ -41,6 +41,7 @@ require('./components/ProductsCarousel');
   // });
 
 $('.rate_yo_thumbnail').each(function() {
+  //console.log('this is firing...');
   let rating = $(this).attr('rating');
   $(this).rateYo({
     rating: rating,

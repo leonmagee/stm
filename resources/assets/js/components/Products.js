@@ -123,7 +123,7 @@ export default class Products extends Component {
   }
 
     render() {
-      const { categories, catsChecked, productsDisplay, subCatsChecked, catsToggle, user_id } = this.state;
+      const { categories, catsChecked, productsDisplay, subCatsChecked, catsToggle } = this.state;
 
         const catsBlock = categories.map( (category, i) => {
           let icon = <i className="far fa-square"></i>;
@@ -194,7 +194,7 @@ export default class Products extends Component {
                 {menuToggled}
                 <div className="products-inner-wrap">
                     {header}
-                    <ProductList products={productsDisplay} display="basic" user_id={user_id} />
+                    <ProductList products={productsDisplay} display="basic" />
                 </div>
             </div>
         );

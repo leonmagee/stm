@@ -30366,6 +30366,7 @@ __webpack_require__(219);
 // });
 
 $('.rate_yo_thumbnail').each(function () {
+    //console.log('this is firing...');
     var rating = $(this).attr('rating');
     $(this).rateYo({
         rating: rating,
@@ -111878,8 +111879,7 @@ var Products = function (_Component) {
           catsChecked = _state3.catsChecked,
           productsDisplay = _state3.productsDisplay,
           subCatsChecked = _state3.subCatsChecked,
-          catsToggle = _state3.catsToggle,
-          user_id = _state3.user_id;
+          catsToggle = _state3.catsToggle;
 
 
       var catsBlock = categories.map(function (category, i) {
@@ -112006,7 +112006,7 @@ var Products = function (_Component) {
           'div',
           { className: 'products-inner-wrap' },
           header,
-          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__products_ProductList__["a" /* default */], { products: productsDisplay, display: 'basic', user_id: user_id })
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__products_ProductList__["a" /* default */], { products: productsDisplay, display: 'basic' })
         )
       );
     }
@@ -114493,7 +114493,9 @@ var ProductList = function (_Component) {
             name: product.name,
             attributes: product.attributes_array,
             price: product.cost_format,
-            orig_price: product.orig_price
+            orig_price: product.orig_price,
+            rating: product.rating,
+            user_id: user_id
           });
         }
       });
@@ -114633,8 +114635,9 @@ if (document.getElementById('products-carousel')) {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Price__ = __webpack_require__(216);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ImageDiv__ = __webpack_require__(214);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Attributes__ = __webpack_require__(215);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Price__ = __webpack_require__(216);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ImageDiv__ = __webpack_require__(214);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -114644,7 +114647,7 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 
-//import Attributes from './Attributes';
+
 
 
 
@@ -114667,21 +114670,34 @@ var ProductSmall = function (_Component) {
           name = _props.name,
           attributes = _props.attributes,
           price = _props.price,
-          orig_price = _props.orig_price;
+          orig_price = _props.orig_price,
+          rating = _props.rating,
+          user_id = _props.user_id;
 
-
+      console.log('small', id, user_id, rating);
       return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
         'div',
         { className: 'product product--small' },
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
           'a',
           { className: 'product__link', href: "/products/" + id },
-          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__ImageDiv__["a" /* default */], { img_url: img_url, discount: discount }),
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__ImageDiv__["a" /* default */], { img_url: img_url, discount: discount }),
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'div',
+            { className: 'product__rating' },
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div', { className: 'rate_yo_thumbnail', rating: rating, id: id, user_id: user_id })
+          ),
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
             'div',
             { className: 'product__title' },
             name
-          )
+          ),
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__Attributes__["a" /* default */], { attributes: attributes })
+        ),
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          'div',
+          { className: 'product__footer' },
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__Price__["a" /* default */], { price: price, orig_price: orig_price, discount: discount })
         )
       );
     }

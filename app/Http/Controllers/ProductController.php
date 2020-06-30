@@ -27,13 +27,73 @@ class ProductController extends Controller
 
     /**
      * Display a listing of the resource.
+     * @todo this is just for the carousel right now. Extend to make other methods more DRY.
+     * @return \Illuminate\Http\Response
+     */
+    private static function product_data()
+    {
+        //$products = Product::all();
+        $user_id = \Auth::user()->id;
+
+        $products = Product::where('archived', 0)->get();
+
+        foreach ($products as $product) {
+            if ($image_url = $product->img_url_1) {
+                $match = null;
+                preg_match('(\/STM\/.*)', $image_url, $match);
+                $new_url = cloudinary_url($match[0], ["transformation" => ["width" => 400, "height" => 400, "crop" => "fit"], "cloud_name" => "www-stmmax-com", "secure" => "true"]);
+                $product->img_url_1 = $new_url;
+            }
+            $orig_cost = number_format($product->cost, 2);
+            if ($product->discount) {
+                $product->orig_price = $orig_cost;
+                $product->cost_format = number_format($product->cost - ($product->cost * ($product->discount / 100)), 2);
+
+            } else {
+                $product->orig_price = null;
+                $product->cost_format = $orig_cost;
+            }
+            $attributes_array = [];
+            foreach ($product->attributes as $attribute) {
+                if (count($attributes_array) < 4) {
+                    $attributes_array[] = $attribute->text;
+                }
+            }
+            $product->attributes_array = $attributes_array;
+
+            // rating
+            $user_rating = ProductRating::where(['user_id' => $user_id, 'product_id' => $product->id])->first();
+            if ($user_rating) {
+                $product->rating = $user_rating->stars;
+            } else {
+                $ratings = ProductRating::where('product_id', $product->id)->get();
+                $stars_total = 0;
+                foreach ($ratings as $rating) {
+                    $stars_total += $rating->stars;
+                }
+                if ($count = $ratings->count()) {
+                    $rating_calc = ($stars_total / $count);
+                } else {
+                    $rating_calc = 0;
+                }
+                $product->rating = $rating_calc;
+            }
+
+        }
+        return $products;
+
+    }
+
+    /**
+     * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        $products = Product::where('archived', 0)->get();
         $user_id = \Auth::user()->id;
+        //$products = self::product_data();
+        $products = Product::where('archived', 0)->get();
         foreach ($products as $product) {
             if ($image_url = $product->img_url_1) {
                 $match = null;
@@ -114,46 +174,11 @@ class ProductController extends Controller
         return view('products.list');
     }
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    private static function product_data()
-    {
-        $products = Product::all();
-        foreach ($products as $product) {
-            if ($image_url = $product->img_url_1) {
-                $match = null;
-                preg_match('(\/STM\/.*)', $image_url, $match);
-                $new_url = cloudinary_url($match[0], ["transformation" => ["width" => 600, "height" => 600, "crop" => "fit"], "cloud_name" => "www-stmmax-com", "secure" => "true"]);
-                $product->img_url_1 = $new_url;
-            }
-            $orig_cost = number_format($product->cost, 2);
-            if ($product->discount) {
-                $product->orig_price = $orig_cost;
-                $product->cost_format = number_format($product->cost - ($product->cost * ($product->discount / 100)), 2);
-
-            } else {
-                $product->orig_price = null;
-                $product->cost_format = $orig_cost;
-            }
-            $attributes_array = [];
-            foreach ($product->attributes as $attribute) {
-                if (count($attributes_array) < 4) {
-                    $attributes_array[] = $attribute->text;
-                }
-            }
-            $product->attributes_array = $attributes_array;
-        }
-        return $products;
-
-    }
-    public function index_carousel()
-    {
-        $products = self::product_data();
-        return view('products.index-carousel', compact('products'));
-    }
+    // public function index_carousel()
+    // {
+    //     $products = self::product_data();
+    //     return view('products.index-carousel', compact('products'));
+    // }
 
     /**
      * Show the form for creating a new resource.
