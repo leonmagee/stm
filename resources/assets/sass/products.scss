@@ -29,6 +29,12 @@
         i.products-nav {
             font-size: 2em;
             color: rgba(0, 0, 0, 0.2);
+            &.fa-chevron-circle-left {
+                margin-left: -0.3em;
+            }
+            &.fa-chevron-circle-right {
+                margin-right: -0.3em;
+            }
             &:hover {
                 color: rgba(0, 0, 0, 0.3);
                 cursor: pointer;
@@ -41,7 +47,7 @@
                 .product {
                     flex: 1 1 0;
                     @media (min-width: $screen-md) {
-                        margin: 2% 2% 0;
+                        margin: 2% 1.3% 0;
                     }
 
                     .product__image {
@@ -70,6 +76,11 @@
                         //margin-right: 0.7em;
                         //color: #aaa;
                     }
+                }
+            }
+            .product__footer {
+                .product__footer--cost {
+                    font-size: 0.7em;
                 }
             }
         }
