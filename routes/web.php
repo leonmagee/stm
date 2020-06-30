@@ -26,6 +26,7 @@ Route::get('/charts', 'HomeController@index')->name('charts');
 
 Route::group(['middleware' => 'App\Http\Middleware\LockOutUsersManagers'], function () {
     Route::get('products', 'ProductController@index');
+    Route::get('products-list', 'ProductController@list');
     Route::get('products-carousel', 'ProductController@index_carousel');
     Route::get('products/{product}', 'ProductController@show');
     Route::get('product-new', 'ProductController@create');
@@ -150,6 +151,7 @@ Route::get('/api/v1/sims_archive/{id}', 'APIController@getSimsArchive')->name('a
 Route::get('/api/v1/sim_users', 'APIController@getSimUsers')->name('api.sim_users.index');
 Route::get('/api/v1/sim_user/{id}', 'APIController@getSimUser')->name('api.sim_users.index_user');
 Route::get('/api/v1/logins', 'APIController@getLogins')->name('api.logins.index');
+Route::get('/api/v1/products', 'APIController@getProducts')->name('api.products.index');
 Route::get('/api/v1/notes', 'APIController@getNotes')->name('api.notes.index');
 Route::get('/api/v1/balance', 'APIController@getBalanceChanges')->name('api.balance.index');
 Route::get('/api/v1/balance-show/{user}', 'APIController@getBalanceChangesShow')->name('api.balance.show');

@@ -105,6 +105,16 @@ class ProductController extends Controller
     }
 
     /**
+     * Display a listing of the resource
+     *
+     * @return \Illuminate\Http\Response
+     */
+    function list() {
+        $products = Product::all();
+        return view('products.list');
+    }
+
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response

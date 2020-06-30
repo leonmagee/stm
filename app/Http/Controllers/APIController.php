@@ -5,6 +5,7 @@ use App\BalanceTracker;
 use App\Helpers;
 use App\Invoice;
 use App\Note;
+use App\Product;
 use App\ReportType;
 use App\Sim;
 use App\SimMaster;
@@ -43,6 +44,13 @@ class APIController extends Controller
         $logs = UserLoginLogout::with('user')->get();
 
         return datatables($logs)->make(true);
+    }
+
+    public function getProducts()
+    {
+        $products = Product::all();
+
+        return datatables($products)->make(true);
     }
 
     public function getNotes()
