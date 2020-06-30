@@ -213,6 +213,23 @@
   @endforeach
 
 </div>
+
+<div class="form-wrap-flex form-wrap-flex-archives">
+  <div class="field">
+    <label class="label" for="name">Archived Status<span class="required">*</span></label>
+    <div class="control">
+      <label class="radio">
+        <input type="radio" name="archived" value="1" checked>
+        Archived
+      </label>
+      <label class="radio">
+        <input type="radio" name="archived" value="0">
+        Live
+      </label>
+    </div>
+  </div>
+</div>
+
 <div class="field flex-margin">
   <div class="control">
     <button class="button is-primary call-loader" type="submit">Save Product</button>

@@ -21872,6 +21872,7 @@ body.stm-body.about .about-img-wrap img {
   width: 100%;
   max-width: 100%;
   text-overflow: ellipsis;
+  text-align: center;
 }
 
 .products-outer .product .product__image {
@@ -22496,6 +22497,10 @@ body.stm-body.about .about-img-wrap img {
 
 .form-wrapper-inner .form-wrap .form-wrap-flex.form-wrap-flex-image-attributes {
   max-width: 70%;
+}
+
+.form-wrapper-inner .form-wrap .form-wrap-flex-archives {
+  padding-bottom: 1.5em;
 }
 
 .form-wrapper-inner .preview-image {

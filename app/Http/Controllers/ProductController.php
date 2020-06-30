@@ -32,7 +32,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::all();
+        $products = Product::where('archived', 0)->get();
         $user_id = \Auth::user()->id;
         foreach ($products as $product) {
             if ($image_url = $product->img_url_1) {
@@ -170,6 +170,7 @@ class ProductController extends Controller
         $request->validate([
             'name' => 'required',
             'cost' => 'required',
+            'archived' => 'required',
         ], [
             'name.required' => 'Please enter a Name.',
             'cost.required' => 'Please enter a Cost.',
@@ -222,6 +223,7 @@ class ProductController extends Controller
             'description' => $request->description,
             'details' => self::img_replace($request->details),
             'more_details' => self::img_replace($request->more_details),
+            'archived' => $request->archived,
             'img_url_1' => $url_1,
             'img_url_2' => $url_2,
             'img_url_3' => $url_3,
@@ -385,6 +387,7 @@ class ProductController extends Controller
         $request->validate([
             'name' => 'required',
             'cost' => 'required',
+            'archived' => 'required',
         ], [
             'name.required' => 'Please enter a Name.',
             'cost.required' => 'Please enter a Cost.',
@@ -441,6 +444,7 @@ class ProductController extends Controller
             'description' => $request->description,
             'details' => self::img_replace($request->details),
             'more_details' => self::img_replace($request->more_details),
+            'archived' => $request->archived,
             'img_url_1' => $url_1,
             'img_url_2' => $url_2,
             'img_url_3' => $url_3,
