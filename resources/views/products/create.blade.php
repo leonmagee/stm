@@ -219,12 +219,12 @@
     <label class="label" for="name">Archived Status<span class="required">*</span></label>
     <div class="control">
       <label class="radio">
-        <input type="radio" name="archived" value="1" checked>
-        Archived
+        <input type="radio" name="archived" value="0" checked>
+        Live
       </label>
       <label class="radio">
-        <input type="radio" name="archived" value="0">
-        Live
+        <input type="radio" name="archived" value="1">
+        Archived
       </label>
     </div>
   </div>
