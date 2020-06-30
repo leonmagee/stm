@@ -15,6 +15,7 @@
           <th>Name</th>
           <th>Status</th>
           <th></th>
+          <th></th>
         </tr>
       </thead>
       <tbody>
@@ -44,6 +45,10 @@ $(nTd).html("<span class='completed'>Live</span>");
 else if(oData.archived == 1) {
 $(nTd).html("<span class='pending'>Archived</span>");
 }
+}
+},
+{ "data": "id", "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
+$(nTd).html("<a class='invoice-view' href='/products/edit/" + oData.id + "'>Edit</a>");
 }
 },
 { "data": "id", "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
