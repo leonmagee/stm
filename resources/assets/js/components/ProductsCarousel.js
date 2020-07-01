@@ -8,7 +8,7 @@ export default class ProductsCarousel extends Component {
         this.state = {
             products: JSON.parse(props.products),
             i: 0,
-            num: 3,
+            num: 2,
         };
     }
 

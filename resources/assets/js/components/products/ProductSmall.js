@@ -20,6 +20,18 @@ export default class ProductSmall extends Component {
         </a>
         <div className="product__footer">
           <Price price={price} orig_price={orig_price} discount={discount} />
+          <a
+            className="product__footer--right product__footer--right-favorite"
+            data-tooltip="Add To Favorites"
+          >
+            <i className="fas fa-heart"></i>
+          </a>
+          <a
+            className="product__footer--right product__footer--right-cart"
+            data-tooltip="Add To Cart"
+          >
+            <i className="fas fa-cart-plus"></i>
+          </a>
         </div>
       </div>
     )

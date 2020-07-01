@@ -75,14 +75,20 @@ class ProductReviewController extends Controller
             'product_id' => $request->product_id,
         ])->first();
         if ($current_review) {
-            $current_review->review = $request->review;
-            $current_review->save();
+            if ($request->review) {
+                $current_review->review = $request->review;
+                $current_review->save();
+            } else {
+                $current_review->delete();
+            }
         } else {
-            ProductReview::create([
-                'user_id' => $user_id,
-                'product_id' => $request->product_id,
-                'review' => $request->review,
-            ]);
+            if ($request->review) {
+                ProductReview::create([
+                    'user_id' => $user_id,
+                    'product_id' => $request->product_id,
+                    'review' => $request->review,
+                ]);
+            }
         }
         session()->flash('message', 'Review Added');
         return redirect('/products/' . $request->product_id);

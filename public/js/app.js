@@ -114550,7 +114550,7 @@ var ProductsCarousel = function (_Component) {
     _this.state = {
       products: JSON.parse(props.products),
       i: 0,
-      num: 3
+      num: 2
     };
     return _this;
   }
@@ -114700,7 +114700,23 @@ var ProductSmall = function (_Component) {
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
           'div',
           { className: 'product__footer' },
-          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__Price__["a" /* default */], { price: price, orig_price: orig_price, discount: discount })
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__Price__["a" /* default */], { price: price, orig_price: orig_price, discount: discount }),
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'a',
+            {
+              className: 'product__footer--right product__footer--right-favorite',
+              'data-tooltip': 'Add To Favorites'
+            },
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', { className: 'fas fa-heart' })
+          ),
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'a',
+            {
+              className: 'product__footer--right product__footer--right-cart',
+              'data-tooltip': 'Add To Cart'
+            },
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', { className: 'fas fa-cart-plus' })
+          )
         )
       );
     }
