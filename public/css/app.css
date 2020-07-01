@@ -22193,21 +22193,6 @@ body.stm-body.about .about-img-wrap img {
 
 .product-single .product-details .product-details__rating {
   margin-bottom: 0.6em;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
-.product-single .product-details .product-details__rating a.modal-open-review {
-  font-weight: 600;
-  margin-left: 0.3em;
-}
-
-.product-single .product-details .product-details__rating a.modal-open-review i {
-  margin-left: 0.1em;
 }
 
 .product-single .product-details .product-details__cost {
@@ -22315,6 +22300,25 @@ body.stm-body.about .about-img-wrap img {
 
 .product-single .product-details .product-details__reviews {
   padding: 1em;
+}
+
+.product-single .product-details .product-details__reviews a.modal-open-review {
+  font-weight: 600;
+  margin-bottom: 1.2em;
+  display: inline-block;
+  background-color: #fff;
+  border: 1px solid #dfdfdf;
+  padding: 0.2em 0.5em;
+  border-radius: 4px;
+  color: #0077b6;
+}
+
+.product-single .product-details .product-details__reviews a.modal-open-review i {
+  margin-left: 0.2em;
+}
+
+.product-single .product-details .product-details__reviews a.modal-open-review:hover {
+  opacity: 0.8;
 }
 
 .product-single .product-details .product-details__reviews .product-details__reviews--item {

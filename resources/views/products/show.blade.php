@@ -44,7 +44,7 @@
       <div id="rateYo" rating="{{ $product->rating }}" user_id="{{ Auth::user()->id }}" product_id="{{ $product->id }}">
       </div>
     </div>
-    <a class="modal-open-review">Leave a Review <i class="fas fa-user-edit"></i></a>
+    {{-- <a class="modal-open-review">Leave a Review <i class="fas fa-user-edit"></i></a> --}}
   </div>
   @if($product->discount)
   <div class="product-details__flex-space-wrap">
@@ -115,7 +115,8 @@
 
     <div class="tab-item background" id="tab-4">
       <div class="product-details__reviews">
-        @foreach($product->reviews as $review)
+        <a class="modal-open-review">Leave a Review <i class="fas fa-user-edit"></i></a>
+        @forelse($product->reviews as $review)
         <div class="product-details__reviews--item">
           <div class="text">
             {{ $review->review }}
@@ -124,7 +125,9 @@
             {{ $review->user->name }}
           </div>
         </div>
-        @endforeach
+        @empty
+        <div>There are no reviews yet...</div>
+        @endforelse
       </div>
     </div>
 
