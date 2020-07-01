@@ -21639,26 +21639,6 @@ body.stm-body.about .about-img-wrap img {
   }
 }
 
-.products-outer.products-outer--carousel .products-inner-wrap .products .product .product__image {
-  height: 130px;
-}
-
-.products-outer.products-outer--carousel .products-inner-wrap .products .product .product__image.product__image--url img {
-  max-height: 120px;
-}
-
-.products-outer.products-outer--carousel .products-inner-wrap .product__attributes .product__attributes--item {
-  font-size: 0.57em;
-}
-
-.products-outer.products-outer--carousel .products-inner-wrap .product__attributes .product__attributes--item i {
-  font-size: 0.48em;
-}
-
-.products-outer.products-outer--carousel .products-inner-wrap .product__footer .product__footer--cost {
-  font-size: 0.7em;
-}
-
 .products-outer .products {
   padding: 1em;
 }

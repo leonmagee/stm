@@ -50,37 +50,37 @@
                         margin: 2% 1.3% 0;
                     }
 
-                    .product__image {
-                        height: 130px;
-                        &.product__image--url {
-                            img {
-                                max-height: 120px;
-                            }
-                        }
-                    }
+                    // .product__image {
+                    //     height: 130px;
+                    //     &.product__image--url {
+                    //         img {
+                    //             max-height: 120px;
+                    //         }
+                    //     }
+                    // }
                 }
             }
-            .product__attributes {
-                //padding: 0.4em 1em;
-                //height: 5em;
-                //overflow: hidden;
-                .product__attributes--item {
-                    font-size: 0.57em;
-                    //white-space: nowrap;
-                    //overflow: hidden;
-                    //text-overflow: ellipsis;
-                    //display: flex;
-                    //align-items: center;
-                    i {
-                        font-size: 0.48em;
-                        //margin-right: 0.7em;
-                        //color: #aaa;
-                    }
-                }
-            }
+            // .product__attributes {
+            //     //padding: 0.4em 1em;
+            //     //height: 5em;
+            //     //overflow: hidden;
+            //     .product__attributes--item {
+            //         font-size: 0.57em;
+            //         //white-space: nowrap;
+            //         //overflow: hidden;
+            //         //text-overflow: ellipsis;
+            //         //display: flex;
+            //         //align-items: center;
+            //         i {
+            //             font-size: 0.48em;
+            //             //margin-right: 0.7em;
+            //             //color: #aaa;
+            //         }
+            //     }
+            // }
             .product__footer {
                 .product__footer--cost {
-                    font-size: 0.7em;
+                    //font-size: 0.7em;
                 }
             }
         }
