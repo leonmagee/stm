@@ -114678,7 +114678,6 @@ var ProductSmall = function (_Component) {
           rating = _props.rating,
           user_id = _props.user_id;
 
-      console.log('small', id, user_id, rating);
       return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
         'div',
         { className: 'product product--small' },

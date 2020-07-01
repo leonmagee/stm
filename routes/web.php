@@ -34,6 +34,7 @@ Route::group(['middleware' => 'App\Http\Middleware\LockOutUsersManagers'], funct
     Route::get('products/edit/{product}', 'ProductController@edit');
     Route::post('products/edit/{product}', 'ProductController@update');
     Route::get('products/delete/{product}', 'ProductController@destroy');
+    Route::post('review-create-update', 'ProductReviewController@update');
 });
 
 /**

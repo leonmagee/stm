@@ -18,4 +18,16 @@ class Product extends Model
     {
         return $this->hasMany(ProductSubCategories::class);
     }
+
+    public function review()
+    {
+        $user_id = \Auth::user()->id;
+        $review = ProductReview::where(['user_id' => $user_id, 'product_id' => $this->id])->first();
+        return $review ? $review->review : '';
+    }
+
+    public function reviews()
+    {
+        return $this->hasMany(ProductReview::class);
+    }
 }

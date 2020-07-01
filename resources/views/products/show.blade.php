@@ -113,7 +113,16 @@
 
     <div class="tab-item background" id="tab-4">
       <div class="product-details__reviews">
-        Reviews go here.
+        @foreach($product->reviews as $review)
+        <div class="product-details__reviews--item">
+          <div class="text">
+            {{ $review->review }}
+          </div>
+          <div class="user">
+            {{ $review->user->name }}
+          </div>
+        </div>
+        @endforeach
       </div>
     </div>
 
@@ -136,13 +145,19 @@
 
       <h3 class="title">Leave a Review</h3>
 
-      <form method="POST">
-        <label>Your Review</label>
-        <textarea></textarea>
-        <button type="submit">Submit</button>
+      <form method="POST" action="/review-create-update">
+        @csrf
+        <input type="hidden" name="product_id" value={{ $product->id }} />
+        <div class="field">
+          <label class="label">Your Review</label>
+          <textarea class="textarea" name="review">{{ $product->review() }}</textarea>
+        </div>
+        <div class="field">
+          <button class="button is-primary call-loader" type="submit">Submit</button>
+          <a class="modal-review-close button is-danger">Cancel</a>
+        </div>
       </form>
 
-      <a class="modal-review-close button is-primary">Cancel</a>
     </div>
 
   </div>

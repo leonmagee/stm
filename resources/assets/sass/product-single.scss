@@ -90,6 +90,15 @@
         }
         .product-details__rating {
             margin-bottom: 0.6em;
+            display: flex;
+            align-items: center;
+            a.modal-open-review {
+                font-weight: 600;
+                margin-left: 0.3em;
+                i {
+                    margin-left: 0.1em;
+                }
+            }
         }
         .product-details__cost {
             //color: darken($green, 5%);
@@ -155,6 +164,19 @@
                     &:nth-child(2) {
                         border-left: 1px solid #ddd;
                     }
+                }
+            }
+        }
+        .product-details__reviews {
+            padding: 1em;
+            .product-details__reviews--item {
+                margin-bottom: 2em;
+                .text {
+                    font-style: italic;
+                    margin-bottom: 0.2em;
+                }
+                .user {
+                    font-weight: 600;
                 }
             }
         }

@@ -69,7 +69,23 @@ class ProductReviewController extends Controller
      */
     public function update(Request $request, ProductReview $productReview)
     {
-        //
+        $user_id = \Auth::user()->id;
+        $current_review = ProductReview::where([
+            'user_id' => $user_id,
+            'product_id' => $request->product_id,
+        ])->first();
+        if ($current_review) {
+            $current_review->review = $request->review;
+            $current_review->save();
+        } else {
+            ProductReview::create([
+                'user_id' => $user_id,
+                'product_id' => $request->product_id,
+                'review' => $request->review,
+            ]);
+        }
+        session()->flash('message', 'Review Added');
+        return redirect('/products/' . $request->product_id);
     }
 
     /**

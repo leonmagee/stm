@@ -8,7 +8,6 @@ export default class ProductSmall extends Component {
   render() {
 
     const { id, img_url, discount, name, attributes, price, orig_price, rating, user_id } = this.props;
-    console.log('small', id, user_id, rating);
     return (
       <div className="product product--small">
         <a className="product__link" href={"/products/" + id}>
