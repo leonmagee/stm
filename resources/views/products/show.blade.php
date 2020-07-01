@@ -42,6 +42,7 @@
   <div class="product-details__rating">
     <div id="rateYo" rating="{{ $product->rating }}" user_id="{{ Auth::user()->id }}" product_id="{{ $product->id }}">
     </div>
+    <a class="modal-open-review">Leave a Review <i class="fas fa-user-edit"></i></a>
   </div>
   @if($product->discount)
   <div class="product-details__flex-space-wrap">
@@ -72,6 +73,7 @@
       <li class="is-active" tab="tab-1"><a>Product Images & Videos</a></li>
       <li tab="tab-2"><a>Product Specifications</a></li>
       <li tab="tab-3"><a>Product Parameters</a></li>
+      <li tab="tab-4"><a>Product Reviews</a></li>
     </ul>
   </div>
 
@@ -109,6 +111,12 @@
       </div>
     </div>
 
+    <div class="tab-item background" id="tab-4">
+      <div class="product-details__reviews">
+        Reviews go here.
+      </div>
+    </div>
+
 
   </div>
 
@@ -116,6 +124,31 @@
     <a href="/products/edit/{{ $product->id }}">Edit</a> / <a class="delete-product modal-open" href="#">Delete</a>
   </div>
 </div>
+</div>
+
+<div class="modal" id="review-modal">
+
+  <div class="modal-background"></div>
+
+  <div class="modal-content">
+
+    <div class="modal-box">
+
+      <h3 class="title">Leave a Review</h3>
+
+      <form method="POST">
+        <label>Your Review</label>
+        <textarea></textarea>
+        <button type="submit">Submit</button>
+      </form>
+
+      <a class="modal-review-close button is-primary">Cancel</a>
+    </div>
+
+  </div>
+
+  <button class="modal-close is-large" aria-label="close"></button>
+
 </div>
 
 @include('layouts.scroll-up')

@@ -443,6 +443,12 @@ $(
 });
 
 $(
+  '.modal-open-review, .modal-review-close, .modal-close',
+).click(function () {
+  $('#review-modal').toggleClass('is-active');
+});
+
+$(
   '.modal-open-transfer-2, #layout-modal-transfer-2 .modal-close, #layout-modal-transfer-2 .modal-close-button'
 ).click(function () {
   $('.modal#layout-modal-transfer-2').toggleClass('is-active');
