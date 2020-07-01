@@ -40,7 +40,9 @@
 <div class="product-single__right product-details">
   <div class="product-details__title">{{ $product->name }}</div>
   <div class="product-details__rating">
-    <div id="rateYo" rating="{{ $product->rating }}" user_id="{{ Auth::user()->id }}" product_id="{{ $product->id }}">
+    <div>
+      <div id="rateYo" rating="{{ $product->rating }}" user_id="{{ Auth::user()->id }}" product_id="{{ $product->id }}">
+      </div>
     </div>
     <a class="modal-open-review">Leave a Review <i class="fas fa-user-edit"></i></a>
   </div>
