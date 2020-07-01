@@ -122,7 +122,7 @@
             {{ $review->review }}
           </div>
           <div class="user">
-            {{ $review->user->name }}
+            {{ $review->user->company }}
           </div>
         </div>
         @empty
