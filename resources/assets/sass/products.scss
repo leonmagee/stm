@@ -60,24 +60,14 @@
                     // }
                 }
             }
-            // .product__attributes {
-            //     //padding: 0.4em 1em;
-            //     //height: 5em;
-            //     //overflow: hidden;
-            //     .product__attributes--item {
-            //         font-size: 0.57em;
-            //         //white-space: nowrap;
-            //         //overflow: hidden;
-            //         //text-overflow: ellipsis;
-            //         //display: flex;
-            //         //align-items: center;
-            //         i {
-            //             font-size: 0.48em;
-            //             //margin-right: 0.7em;
-            //             //color: #aaa;
-            //         }
-            //     }
-            // }
+            .product__attributes {
+                .product__attributes--item {
+                    font-size: 0.65em;
+                    i {
+                        font-size: 0.6em;
+                    }
+                }
+            }
             .product__footer {
                 .product__footer--cost {
                     //font-size: 0.7em;
