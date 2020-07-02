@@ -282,6 +282,7 @@
 <div class="field flex-margin">
   <div class="control">
     <button class="button is-primary call-loader" type="submit">Update Product</button>
+    <a class="button is-danger modal-open call-loader margin-left" href="#">Delete Product</a>
   </div>
 </div>
 
@@ -309,7 +310,16 @@
     theme: 'snow'
     };
     new Quill('#quill_editor', quill_settings);
-    //new Quill("#quill_editor-add-new", quill_settings);
 </script>
+
+@endsection
+
+@section('modal')
+
+<h3 class="title">Are You Sure?</h3>
+
+<a class="button is-danger call-loader" href="/products/delete/{{ $product->id }}">Delete Product</a>
+<a href="#" class="modal-close-button button is-primary">Cancel</a>
+
 
 @endsection

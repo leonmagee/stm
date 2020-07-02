@@ -169,7 +169,7 @@
                 }
             }
         }
-        .product-details__reviews {
+        .product-reviews {
             padding: 1em;
             a.modal-open-review {
                 font-weight: 600;
@@ -187,14 +187,22 @@
                     opacity: 0.8;
                 }
             }
-            .product-details__reviews--item {
+            .product-review {
                 margin-bottom: 2em;
-                .text {
+                background-color: #fcfcfc;
+                border: 1px solid #eee;
+                padding: 0.6em 0.8em;
+                border-radius: $border-radius;
+                .product-review__text {
                     font-style: italic;
-                    margin-bottom: 0.2em;
+                    margin-bottom: 0.3em;
                 }
-                .user {
+                .product-review__attribution {
                     font-weight: 600;
+                    span {
+                        color: #888;
+                        font-size: 0.9em;
+                    }
                 }
             }
         }

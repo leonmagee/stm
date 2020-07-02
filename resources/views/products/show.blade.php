@@ -114,15 +114,15 @@
     </div>
 
     <div class="tab-item background" id="tab-4">
-      <div class="product-details__reviews">
+      <div class="product-reviews">
         <a class="modal-open-review">Leave a Review <i class="fas fa-user-edit"></i></a>
         @forelse($product->reviews as $review)
-        <div class="product-details__reviews--item">
-          <div class="text">
+        <div class="product-review">
+          <div class="product-review__text">
             {{ $review->review }}
           </div>
-          <div class="user">
-            {{ $review->user->company }}
+          <div class="product-review__attribution">
+            {{ $review->user->company }} - <span>{{ $review->created_at->format('M d, Y') }}</span>
           </div>
         </div>
         @empty
@@ -135,7 +135,7 @@
   </div>
 
   <div class="product-details__edit">
-    <a href="/products/edit/{{ $product->id }}">Edit</a> / <a class="delete-product modal-open" href="#">Delete</a>
+    <a href="/products/edit/{{ $product->id }}">Edit</a>
   </div>
 </div>
 </div>
@@ -172,15 +172,5 @@
 </div>
 
 @include('layouts.scroll-up')
-
-@endsection
-
-@section('modal')
-
-<h3 class="title">Are You Sure?</h3>
-
-<a class="button is-danger call-loader" href="/products/delete/{{ $product->id }}">Delete Product</a>
-<a href="#" class="modal-close-button button is-primary">Cancel</a>
-
 
 @endsection
