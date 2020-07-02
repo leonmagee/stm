@@ -30373,7 +30373,8 @@ $('.rate_yo_thumbnail').each(function () {
         readOnly: true,
         starWidth: "17px",
         spacing: "2px",
-        ratedFill: "#D5BE48"
+        //ratedFill: "#D5BE48",
+        ratedFill: "#ffc43d"
     });
 });
 
@@ -30383,7 +30384,8 @@ $("#rateYo").rateYo({
     fullStar: true,
     starWidth: "27px",
     spacing: "2px",
-    ratedFill: "#D5BE48"
+    //ratedFill: "#D5BE48",
+    ratedFill: "#ffc43d"
 }).on("rateyo.set", function (e, data) {
     var rating = data.rating;
     var user_id = $(this).attr('user_id');
