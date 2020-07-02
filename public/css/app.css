@@ -22302,27 +22302,29 @@ body.stm-body.about .about-img-wrap img {
   padding: 1em;
 }
 
-.product-single .product-details .product-reviews a.modal-open-review {
+.product-single .product-details .product-reviews .product-reviews__first {
+  color: #fff;
   font-weight: 600;
-  margin-bottom: 1.2em;
-  display: inline-block;
-  background-color: #fff;
-  border: 1px solid #dfdfdf;
-  padding: 0.2em 0.5em;
+  text-shadow: 1px 1px rgba(0, 0, 0, 0.05);
+  background-color: #06dba3;
+  padding: 0.7em 1em;
   border-radius: 4px;
-  color: #0077b6;
+  width: auto;
+  display: inline-block;
+  text-transform: uppercase;
 }
 
-.product-single .product-details .product-reviews a.modal-open-review i {
+.product-single .product-details .product-reviews .product-reviews__first i {
   margin-left: 0.2em;
 }
 
-.product-single .product-details .product-reviews a.modal-open-review:hover {
-  opacity: 0.8;
+.product-single .product-details .product-reviews .product-reviews__first:hover {
+  cursor: pointer;
+  opacity: 0.9;
 }
 
 .product-single .product-details .product-reviews .product-review {
-  margin-bottom: 2em;
+  margin: 1em 0;
   background-color: #fcfcfc;
   border: 1px solid #eee;
   padding: 0.6em 0.8em;

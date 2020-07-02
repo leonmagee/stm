@@ -115,8 +115,17 @@
 
     <div class="tab-item background" id="tab-4">
       <div class="product-reviews">
-        <a class="modal-open-review">Leave a Review <i class="fas fa-user-edit"></i></a>
-        @forelse($product->reviews as $review)
+        <div class="product-reviews__first modal-open-review">
+          @if(count($product->reviews))
+          Leave a review <i class="fas fa-user-edit"></i>
+          @else
+          Be the first to Leave a review <i class="fas fa-user-edit"></i>
+          @endif
+        </div>
+        {{-- <div>
+          <a class="modal-open-review">Leave a Review <i class="fas fa-user-edit"></i></a>
+        </div> --}}
+        @foreach($product->reviews as $review)
         <div class="product-review">
           <div class="product-review__text">
             {{ $review->review }}
@@ -125,9 +134,9 @@
             {{ $review->user->company }} - <span>{{ $review->created_at->format('M d, Y') }}</span>
           </div>
         </div>
-        @empty
-        <div>There are no reviews yet...</div>
-        @endforelse
+        {{-- @empty
+        <div>There are no reviews yet...</div> --}}
+        @endforeach
       </div>
     </div>
 
