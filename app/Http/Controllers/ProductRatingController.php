@@ -37,8 +37,9 @@ class ProductRatingController extends Controller
      */
     public function store(Request $request)
     {
+        $user_id = \Auth::user()->id;
         $rating = ProductRating::where([
-            'user_id' => $request->user_id,
+            'user_id' => $user_id,
             'product_id' => $request->product_id,
         ])->first();
         //$rating->stars = $request->stars;
@@ -52,7 +53,7 @@ class ProductRatingController extends Controller
         } else {
             ProductRating::create([
                 'stars' => $request->stars,
-                'user_id' => $request->user_id,
+                'user_id' => $user_id,
                 'product_id' => $request->product_id,
             ]);
         }

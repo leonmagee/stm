@@ -18470,6 +18470,10 @@ body.stm-body .add-padding {
   border-radius: 20px;
 }
 
+.modal-box.left {
+  text-align: left;
+}
+
 .modal-box a,
 .modal-box button {
   margin-left: 5px;

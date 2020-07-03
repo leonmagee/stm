@@ -41,10 +41,8 @@
   <div class="product-details__title">{{ $product->name }}</div>
   <div class="product-details__rating">
     <div>
-      <div id="rateYo" rating="{{ $product->rating }}" user_id="{{ Auth::user()->id }}" product_id="{{ $product->id }}">
-      </div>
+      <div id="rateYoDisplay" rating="{{ $product->rating }}"></div>
     </div>
-    {{-- <a class="modal-open-review">Leave a Review <i class="fas fa-user-edit"></i></a> --}}
   </div>
   @if($product->discount)
   <div class="product-details__flex-space-wrap">
@@ -155,13 +153,17 @@
 
   <div class="modal-content">
 
-    <div class="modal-box">
+    <div class="modal-box left">
 
       <h3 class="title">Leave a Review</h3>
 
       <form method="POST" action="/review-create-update">
         @csrf
         <input type="hidden" name="product_id" value={{ $product->id }} />
+        <div class="field">
+          <label class="label">Rate This Product</label>
+          <div id="rateYo" rating="{{ $product->rating }}" product_id="{{ $product->id }}"></div>
+        </div>
         <div class="field">
           <label class="label">Your Review</label>
           <textarea class="textarea" name="review">{{ $product->review() }}</textarea>

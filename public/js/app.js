@@ -30379,6 +30379,7 @@ $('.rate_yo_thumbnail').each(function () {
 });
 
 var rating = $("#rateYo").attr('rating');
+//console.log('do we have a raiting?', rating);
 $("#rateYo").rateYo({
     rating: rating,
     fullStar: true,
@@ -30388,9 +30389,9 @@ $("#rateYo").rateYo({
     ratedFill: "#ffc43d"
 }).on("rateyo.set", function (e, data) {
     var rating = data.rating;
-    var user_id = $(this).attr('user_id');
+    //var user_id = $(this).attr('user_id');
     var product_id = $(this).attr('product_id');
-    //console.log('rating?', rating, user_id, product_id);
+    console.log('rating working?', rating, product_id);
     $(this).next().text(rating);
 
     axios({
@@ -30398,7 +30399,6 @@ $("#rateYo").rateYo({
         url: '/update-user-rating',
         data: {
             stars: rating,
-            user_id: user_id,
             product_id: product_id
         }
     }).then(function (response) {
@@ -30406,13 +30406,14 @@ $("#rateYo").rateYo({
     });
 });
 
-// $("#rateYo").rateYo()
-//   .on("rateyo.change", function (e, data) {
-
-//     var rating = data.rating;
-//     $(this).next().text(rating);
-//   });
-
+var ratingDisplay = $("#rateYoDisplay").attr('rating');
+$("#rateYoDisplay").rateYo({
+    rating: ratingDisplay,
+    readOnly: true,
+    starWidth: "27px",
+    spacing: "2px",
+    ratedFill: "#ffc43d"
+});
 
 /**
  * Set Defaults
