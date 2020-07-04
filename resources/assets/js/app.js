@@ -107,8 +107,6 @@ $('.rate_yo_review').each(function () {
   });
 });
 
-
-
 /**
  * Set Defaults
  */

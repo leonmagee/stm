@@ -30,4 +30,19 @@ class Product extends Model
     {
         return $this->hasMany(ProductReview::class);
     }
+
+    public function your_rating()
+    {
+        $user_id = \Auth::user()->id;
+        $rating = ProductRating::where([
+            'user_id' => $user_id,
+            'product_id' => $this->id,
+        ])->first();
+        if (!$rating) {
+            $final = 0;
+        } else {
+            $final = $rating->stars;
+        }
+        return $final;
+    }
 }

@@ -120,9 +120,6 @@
           Be the first to Leave a review <i class="fas fa-user-edit"></i>
           @endif
         </div>
-        {{-- <div>
-          <a class="modal-open-review">Leave a Review <i class="fas fa-user-edit"></i></a>
-        </div> --}}
         @foreach($product->reviews as $review)
         <div class="product-review">
           <div class="product-review__stars">
@@ -135,8 +132,6 @@
             {{ $review->user->company }} - <span>{{ $review->created_at->format('M d, Y') }}</span>
           </div>
         </div>
-        {{-- @empty
-        <div>There are no reviews yet...</div> --}}
         @endforeach
       </div>
     </div>
@@ -165,7 +160,7 @@
         <input type="hidden" name="product_id" value={{ $product->id }} />
         <div class="field">
           <label class="label">Rate This Product</label>
-          <div id="rateYo" rating="{{ $product->rating }}" product_id="{{ $product->id }}"></div>
+          <div id="rateYo" rating="{{ $product->your_rating() }}" product_id="{{ $product->id }}"></div>
         </div>
         <div class="field">
           <label class="label">Your Review</label>

@@ -26,6 +26,5 @@ class ProductReview extends Model
             $final = $rating->stars;
         }
         return $final;
-        //dd($rating);
     }
 }
