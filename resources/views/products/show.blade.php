@@ -41,7 +41,7 @@
   <div class="product-details__title">{{ $product->name }}</div>
   <div class="product-details__rating">
     <div>
-      <div id="rateYoDisplay" rating="{{ $product->rating }}"></div>
+      <div id="rateYoDisplay" class="rate_yo_no_hover" rating="{{ $product->rating }}"></div>
     </div>
   </div>
   @if($product->discount)
@@ -125,6 +125,9 @@
         </div> --}}
         @foreach($product->reviews as $review)
         <div class="product-review">
+          <div class="product-review__stars">
+            <div class="rate_yo_review rate_yo_no_hover" rating="{{ $review->rating() }}"></div>
+          </div>
           <div class="product-review__text">
             {{ $review->review }}
           </div>

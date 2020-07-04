@@ -22335,13 +22335,19 @@ body.stm-body.about .about-img-wrap img {
   border-radius: 4px;
 }
 
+.product-single .product-details .product-reviews .product-review .product-review__stars {
+  margin-bottom: 0.5em;
+}
+
 .product-single .product-details .product-reviews .product-review .product-review__text {
   font-style: italic;
   margin-bottom: 0.3em;
+  padding: 0 0.4em;
 }
 
 .product-single .product-details .product-reviews .product-review .product-review__attribution {
   font-weight: 600;
+  padding: 0 0.4em;
 }
 
 .product-single .product-details .product-reviews .product-review .product-review__attribution span {
@@ -22532,6 +22538,10 @@ body.stm-body.about .about-img-wrap img {
 
 .product-single .product-details__edit a.delete-product {
   color: #ff3860;
+}
+
+.product-single .rate_yo_no_hover {
+  cursor: default !important;
 }
 
 .form-wrapper-inner .form-wrap .form-wrap-flex.form-wrap-flex-products-top .field.name {

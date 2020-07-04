@@ -190,34 +190,23 @@
                     opacity: 0.9;
                 }
             }
-            // a.modal-open-review {
-            //     font-weight: 600;
-            //     margin-bottom: 1.2em;
-            //     display: inline-block;
-            //     background-color: #fff;
-            //     border: 1px solid #dfdfdf;
-            //     padding: 0.2em 0.5em;
-            //     border-radius: 4px;
-            //     color: $product-blue;
-            //     i {
-            //         margin-left: 0.2em;
-            //     }
-            //     &:hover {
-            //         opacity: 0.8;
-            //     }
-            // }
             .product-review {
                 margin: 1em 0;
                 background-color: #fcfcfc;
                 border: 1px solid #eee;
                 padding: 0.6em 0.8em;
                 border-radius: $border-radius;
+                .product-review__stars {
+                    margin-bottom: 0.5em;
+                }
                 .product-review__text {
                     font-style: italic;
                     margin-bottom: 0.3em;
+                    padding: 0 0.4em;
                 }
                 .product-review__attribution {
                     font-weight: 600;
+                    padding: 0 0.4em;
                     span {
                         color: #888;
                         font-size: 0.9em;
@@ -418,5 +407,9 @@
                 color: $red;
             }
         }
+    }
+    .rate_yo_no_hover {
+        //display: none !important;
+        cursor: default !important;
     }
 }

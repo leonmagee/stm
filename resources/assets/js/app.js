@@ -40,6 +40,7 @@ require('./components/ProductsCarousel');
   //   starWidth: "50px"
   // });
 
+// thumbnail
 $('.rate_yo_thumbnail').each(function() {
   //console.log('this is firing...');
   let rating = $(this).attr('rating');
@@ -53,6 +54,7 @@ $('.rate_yo_thumbnail').each(function() {
   });
 });
 
+// single modal
 let rating = $("#rateYo").attr('rating');
 //console.log('do we have a raiting?', rating);
   $("#rateYo").rateYo({
@@ -81,6 +83,7 @@ let rating = $("#rateYo").attr('rating');
     });
   });
 
+// single top
 let ratingDisplay = $("#rateYoDisplay").attr('rating');
 $("#rateYoDisplay").rateYo({
   rating: ratingDisplay,
@@ -88,6 +91,20 @@ $("#rateYoDisplay").rateYo({
   starWidth: "27px",
   spacing: "2px",
   ratedFill: "#ffc43d",
+});
+
+// single reviews
+$('.rate_yo_review').each(function () {
+  //console.log('this is firing...');
+  let rating = $(this).attr('rating');
+  $(this).rateYo({
+    rating: rating,
+    readOnly: true,
+    starWidth: "25px",
+    spacing: "2px",
+    //ratedFill: "#D5BE48",
+    ratedFill: "#ffc43d",
+  });
 });
 
 
