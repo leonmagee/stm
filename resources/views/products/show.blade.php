@@ -44,26 +44,37 @@
       <div id="rateYoDisplay" class="rate_yo_no_hover" rating="{{ $product->rating }}"></div>
     </div>
   </div>
-  @if($product->discount)
   <div class="product-details__flex-space-wrap">
+    @if($product->discount)
     <div class="product-details__cost">${{ $product->cost }}<span
         class="product-details__cost--orig"><span>${{ $product->orig_price }}</span></div>
     <div class="product-details__discount">
       <div class="product-details__discount--inner"><i class="fas fa-tag"></i>{{ $product->discount }}% Off
       </div>
     </div>
+    @else
+    <div class="product-details__cost">${{ $product->cost }}</div>
+    @endif
     <div class="product-details__cart">
+      @if(count($product->variations))
+      <div class="product-details__variations">
+        <div class="select">
+          <select name="variation">
+            @foreach($product->variations as $variation)
+            <option>{{ $variation->text }}</option>
+            @endforeach
+          </select>
+        </div>
+      </div>
+      @endif
       <div class="product-details__quantity">
-        <i class="fas fa-minus-circle"></i>1<i class="fas fa-plus-circle"></i>
+        <input type="hidden" name="quantity" class="hidden-quantity-input" value="1" />
+        <i class="fas fa-minus-circle subtract-from-quantity"></i><span class="quanity-display">1</span><i
+          class="fas fa-plus-circle add-to-quantity"></i>
       </div>
       <button class="add-to-cart"><i class="fas fa-cart-plus"></i>Add To Cart</button>
     </div>
   </div>
-  @else
-  <div class="product-details__flex-space-wrap">
-    <div class="product-details__cost">${{ $product->cost }}</div>
-  </div>
-  @endif
   <div class="product-details__description">
     {!! $product->description !!}
   </div>

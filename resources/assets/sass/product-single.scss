@@ -323,12 +323,17 @@
             margin-left: auto;
             @include product_bg;
             .product-details__quantity {
-                margin-right: 1em;
+                width: 5em;
+                text-align: center;
+                //margin-right: 1em;
                 font-weight: 600;
+                span {
+                    @include no_select;
+                }
                 i {
                     //color: darken($brand-primary, 5%);
                     //color: lighten($product-blue, 7%);
-                    color: #888;
+                    color: #9f9f9f;
                     margin: 0 0.2em;
                     &:hover {
                         cursor: pointer;
@@ -359,6 +364,9 @@
                     opacity: 0.9;
                 }
             }
+        }
+        .product-details__variations {
+            //margin-right: 0.5em;
         }
     }
     .tabs.is-toggle {

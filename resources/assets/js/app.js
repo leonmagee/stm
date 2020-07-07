@@ -40,6 +40,24 @@ require('./components/ProductsCarousel');
   //   starWidth: "50px"
   // });
 
+  // quantity toggle
+$('.product-details__quantity .add-to-quantity').click(function() {
+  let currentVal = parseInt($('input.hidden-quantity-input').val());
+  let newVal = currentVal + 1;
+  $('span.quanity-display').html(newVal);
+  $('input.hidden-quantity-input').val(newVal);
+});
+
+$('.product-details__quantity .subtract-from-quantity').click(function() {
+  let currentVal = parseInt($('input.hidden-quantity-input').val());
+  let newVal = currentVal - 1;
+  if(newVal <= 0) {
+    newVal = 0;
+  }
+  $('span.quanity-display').html(newVal);
+  $('input.hidden-quantity-input').val(newVal);
+});
+
 // thumbnail
 $('.rate_yo_thumbnail').each(function() {
   //console.log('this is firing...');
