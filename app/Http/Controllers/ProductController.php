@@ -132,22 +132,22 @@ class ProductController extends Controller
             $product->attributes_array = $attributes_array;
 
             // rating
-            $user_rating = ProductRating::where(['user_id' => $user_id, 'product_id' => $product->id])->first();
-            if ($user_rating) {
-                $product->rating = $user_rating->stars;
-            } else {
-                $ratings = ProductRating::where('product_id', $product->id)->get();
-                $stars_total = 0;
-                foreach ($ratings as $rating) {
-                    $stars_total += $rating->stars;
-                }
-                if ($count = $ratings->count()) {
-                    $rating_calc = ($stars_total / $count);
-                } else {
-                    $rating_calc = 0;
-                }
-                $product->rating = $rating_calc;
+            // $user_rating = ProductRating::where(['user_id' => $user_id, 'product_id' => $product->id])->first();
+            // if ($user_rating) {
+            //     $product->rating = $user_rating->stars;
+            // } else {
+            $ratings = ProductRating::where('product_id', $product->id)->get();
+            $stars_total = 0;
+            foreach ($ratings as $rating) {
+                $stars_total += $rating->stars;
             }
+            if ($count = $ratings->count()) {
+                $rating_calc = ($stars_total / $count);
+            } else {
+                $rating_calc = 0;
+            }
+            $product->rating = $rating_calc;
+            //}
 
         }
         $sub_cat_match = [];
@@ -359,22 +359,22 @@ class ProductController extends Controller
         }
 
         $user_id = \Auth::user()->id;
-        $user_rating = ProductRating::where(['user_id' => $user_id, 'product_id' => $product->id])->first();
-        if ($user_rating) {
-            $product->rating = $user_rating->stars;
-        } else {
-            $ratings = ProductRating::where('product_id', $product->id)->get();
-            $stars_total = 0;
-            foreach ($ratings as $rating) {
-                $stars_total += $rating->stars;
-            }
-            if ($count = $ratings->count()) {
-                $rating_calc = ($stars_total / $count);
-            } else {
-                $rating_calc = 0;
-            }
-            $product->rating = $rating_calc;
+        // $user_rating = ProductRating::where(['user_id' => $user_id, 'product_id' => $product->id])->first();
+        // if ($user_rating) {
+        //     $product->rating = $user_rating->stars;
+        // } else {
+        $ratings = ProductRating::where('product_id', $product->id)->get();
+        $stars_total = 0;
+        foreach ($ratings as $rating) {
+            $stars_total += $rating->stars;
         }
+        if ($count = $ratings->count()) {
+            $rating_calc = ($stars_total / $count);
+        } else {
+            $rating_calc = 0;
+        }
+        $product->rating = $rating_calc;
+        //}
 
         $num_images = $this->num_images;
         $num_tab_images = $this->num_tab_images;

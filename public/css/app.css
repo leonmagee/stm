@@ -22276,14 +22276,6 @@ body.stm-body.about .about-img-wrap img {
   padding: 1em;
 }
 
-.product-single .product-details .product-details__details > table {
-  margin: -1em;
-}
-
-.product-single .product-details .product-details__details .row {
-  margin: -1em;
-}
-
 @media (min-width: 768px) {
   .product-single .product-details .product-details__details .row {
     display: -webkit-box;

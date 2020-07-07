@@ -26,6 +26,16 @@ class Product extends Model
         return $review ? $review->review : '';
     }
 
+    public function has_review()
+    {
+        $user_id = \Auth::user()->id;
+        $review = ProductReview::where(['user_id' => $user_id, 'product_id' => $this->id])->first();
+        if ($review) {
+            return true;
+        }
+        return false;
+    }
+
     public function reviews()
     {
         return $this->hasMany(ProductReview::class);

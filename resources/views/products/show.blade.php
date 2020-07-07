@@ -114,7 +114,9 @@
     <div class="tab-item background" id="tab-4">
       <div class="product-reviews">
         <div class="product-reviews__first modal-open-review">
-          @if(count($product->reviews))
+          @if($product->has_review())
+          Edit your review <i class="fas fa-user-edit"></i>
+          @elseif(count($product->reviews))
           Leave a review <i class="fas fa-user-edit"></i>
           @else
           Be the first to Leave a review <i class="fas fa-user-edit"></i>
@@ -153,7 +155,7 @@
 
     <div class="modal-box left">
 
-      <h3 class="title">Leave a Review</h3>
+      <h3 class="title">{{ $product->has_review() ? 'Edit Your Review' : 'Leave a Review' }}</h3>
 
       <form method="POST" action="/review-create-update">
         @csrf
@@ -167,7 +169,8 @@
           <textarea class="textarea" name="review">{{ $product->review() }}</textarea>
         </div>
         <div class="field">
-          <button class="button is-primary call-loader" type="submit">Submit</button>
+          <button class="button is-primary call-loader"
+            type="submit">{{ $product->has_review() ? 'Update' : 'Submit' }}</button>
           <a class="modal-review-close button is-danger">Cancel</a>
         </div>
       </form>
