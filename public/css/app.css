@@ -22685,23 +22685,23 @@ body.stm-body.about .about-img-wrap img {
   padding: 1em;
 }
 
-#repeater-field-wrap p.control {
+.repeater-field-wrap p.control {
   width: 100%;
 }
 
-#repeater-field-wrap .field.has-addons {
+.repeater-field-wrap .field.has-addons {
   margin: 0;
 }
 
-#repeater-field-wrap button {
+.repeater-field-wrap button {
   border-radius: 0 4px 4px 0;
 }
 
-#repeater-field-wrap .entry.input-group {
+.repeater-field-wrap .entry.input-group {
   margin-bottom: 10px;
 }
 
-#repeater-field-wrap input {
+.repeater-field-wrap input {
   border-radius: 4px 0 0 4px;
 }
 

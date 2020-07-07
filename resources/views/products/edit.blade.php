@@ -40,28 +40,64 @@
           </div>
         </div>
 
-        {{-- attributes --}}
-        <div class="form-wrap-flex form-wrap-flex-attributes">
-          <div class="field full">
-            <label class="label" for="">Attributes (4 max)</label>
-            <div id="repeater-field-wrap">
-              @foreach($product->attributes as $attribute)
-              <div class="entry input-group">
-                <div class="field has-addons">
-                  <input type="text" class="input name" name="attribute_names[]" placeholder="Particpant Name"
-                    value="{{ $attribute->text }}">
-                  <div class="input-group-append">
-                    <button class="button is-danger remove-attribute" type="button"><i
-                        class="fas fa-times"></i></button>
+        <div class="columns">
+          <div class="column">
+            {{-- attributes --}}
+            <div class="form-wrap-flex form-wrap-flex-attributes">
+              <div class="field full">
+                <label class="label" for="">Attributes (4 max)</label>
+                <div class="repeater-field-wrap" id="repeater-field-wrap">
+                  @foreach($product->attributes as $attribute)
+                  <div class="entry input-group">
+                    <div class="field has-addons">
+                      <input type="text" class="input name" name="attribute_names[]" placeholder="Attribute"
+                        value="{{ $attribute->text }}">
+                      <div class="input-group-append">
+                        <button class="button is-danger remove-attribute" type="button"><i
+                            class="fas fa-times"></i></button>
+                      </div>
+                    </div>
+                  </div>
+                  @endforeach
+                  <div class="entry input-group">
+                    <div class="field has-addons">
+                      <input type="text" class="input name" name="attribute_names[]" placeholder="Attribute">
+                      <div class="input-group-append">
+                        <button class="button is-primary add-attribute" type="button"><i
+                            class="fas fa-plus"></i></button>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
-              @endforeach
-              <div class="entry input-group">
-                <div class="field has-addons">
-                  <input type="text" class="input name" name="attribute_names[]" placeholder="Attribute">
-                  <div class="input-group-append">
-                    <button class="button is-primary add-attribute" type="button"><i class="fas fa-plus"></i></button>
+            </div>
+          </div>
+          <div class="column">
+            {{-- variations --}}
+            <div class="form-wrap-flex form-wrap-flex-attributes">
+              <div class="field full">
+                <label class="label" for="">Variations</label>
+                <div class="repeater-field-wrap" id="repeater-field-wrap-variation">
+                  @foreach($product->variations as $variation)
+                  <div class="entry input-group">
+                    <div class="field has-addons">
+                      <input type="text" class="input name" name="variation_names[]" placeholder="Variation"
+                        value="{{ $variation->text }}">
+                      <div class="input-group-append">
+                        <button class="button is-danger remove-variation" type="button"><i
+                            class="fas fa-times"></i></button>
+                      </div>
+                    </div>
+                  </div>
+                  @endforeach
+                  <div class="entry input-group">
+                    <div class="field has-addons">
+                      <input type="text" class="input name" name="variation_names[]" placeholder="Variation">
+                      <div class="input-group-append">
+                        <button class="button is-primary add-variation" type="button"><i
+                            class="fas fa-plus"></i></button>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>

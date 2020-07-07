@@ -131,7 +131,7 @@
             {{ $review->review }}
           </div>
           <div class="product-review__attribution">
-            {{ $review->user->company }} - <span>{{ $review->created_at->format('M d, Y') }}</span>
+            {{ $review->user->company }} - <span>{{ $review->updated_at->format('M d, Y') }}</span>
           </div>
         </div>
         @endforeach

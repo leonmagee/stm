@@ -30686,9 +30686,7 @@ $(document).on('click', '.add-attribute', function (e) {
   e.preventDefault();
 
   var attribute = $(this).parents('.entry:first').find('input.name').val();
-  //var creditVal = $(this).parents('.entry:first').find('input.credit').val();
   var matches = $("#repeater-field-wrap .entry.input-group").length;
-  //console.log('number of matches...', matches);
 
   if (attribute !== "" && matches <= 4) {
     var controlForm = $("#repeater-field-wrap:first"),
@@ -30698,6 +30696,28 @@ $(document).on('click', '.add-attribute', function (e) {
     controlForm.find(".entry:not(:last) .add-attribute").removeClass("is-primary add-attribute").addClass("is-danger remove-attribute").find("i").removeClass("fa-plus").addClass("fa-times");
   }
 }).on('click', '.remove-attribute', function (e) {
+  e.preventDefault();
+  $(this).parents('.entry:first').remove();
+  return false;
+});
+
+/**
+ * Repeater Field for Variations
+ */
+$(document).on('click', '.add-variation', function (e) {
+  e.preventDefault();
+
+  var variation = $(this).parents('.entry:first').find('input.name').val();
+  //var matches = $("#repeater-field-wrap .entry.input-group").length;
+
+  if (variation !== "") {
+    var controlForm = $("#repeater-field-wrap-variation:first"),
+        currentEntry = $(this).parents(".entry:first"),
+        newEntry = $(currentEntry.clone()).appendTo(controlForm);
+    newEntry.find("input").val("");
+    controlForm.find(".entry:not(:last) .add-variation").removeClass("is-primary add-variation").addClass("is-danger remove-variation").find("i").removeClass("fa-plus").addClass("fa-times");
+  }
+}).on('click', '.remove-variation', function (e) {
   e.preventDefault();
   $(this).parents('.entry:first').remove();
   return false;

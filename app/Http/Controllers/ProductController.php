@@ -8,6 +8,7 @@ use App\ProductAttribute;
 use App\ProductCategories;
 use App\ProductRating;
 use App\ProductSubCategories;
+use App\ProductVariation;
 use App\SubCategory;
 use Cloudder;
 use Illuminate\Http\Request;
@@ -507,6 +508,19 @@ class ProductController extends Controller
                 ProductAttribute::create([
                     'product_id' => $product->id,
                     'text' => $attribute,
+                ]);
+            }
+        }
+
+        // 1. Delete existing variations for product
+        ProductVariation::where('product_id', $product->id)->delete();
+
+        // 2. Create new variationgs
+        foreach ($request->variation_names as $variation) {
+            if ($variation) {
+                ProductVariation::create([
+                    'product_id' => $product->id,
+                    'text' => $variation,
                 ]);
             }
         }
