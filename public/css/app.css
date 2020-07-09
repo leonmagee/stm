@@ -22785,9 +22785,13 @@ body.stm-body.about .about-img-wrap img {
   font-weight: 600;
 }
 
-.stm-cart .stm-cart__item.stm-cart__item--footer .stm-cart__item--total {
-  color: #ff3860;
+.stm-cart .stm-cart__item.stm-cart__item--footer .stm-cart__item--total span {
+  background-color: #ff3860;
+  color: #fff;
   font-size: 1.1em;
+  padding: 0.2em 0.5em 0.2em 0.4em;
+  border-radius: 4px;
+  display: inline-block;
 }
 
 .stm-cart .stm-cart__item div {
@@ -22800,6 +22804,27 @@ body.stm-body.about .about-img-wrap img {
   -webkit-box-flex: 1;
       -ms-flex: 1 0 25%;
           flex: 1 0 25%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.stm-cart .stm-cart__item div.stm-cart__item--product a.stm-cart__item--product---thumbnail {
+  width: 3em;
+  margin-right: 1em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.stm-cart .stm-cart__item div.stm-cart__item--product a.stm-cart__item--product---thumbnail img {
+  max-height: 3em;
 }
 
 .stm-cart .stm-cart__item div.stm-cart__item--delete {
@@ -22810,6 +22835,10 @@ body.stm-body.about .about-img-wrap img {
 
 .stm-cart .stm-cart__item div.stm-cart__item--delete a {
   color: #ff3860;
+}
+
+.stm-cart .stm-cart__item div.stm-cart__item--delete a:hover {
+  opacity: 0.9;
 }
 
 .stm-cart-empty {

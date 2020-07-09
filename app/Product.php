@@ -61,8 +61,16 @@ class Product extends Model
         return $final;
     }
 
-    public function get_small_thumbnail()
+    public function get_cloudinary_thumbnail($width, $height)
     {
-        //dd()
+        if ($image_url = $this->img_url_1) {
+            $match = null;
+            preg_match('(\/STM\/.*)', $image_url, $match);
+            $new_url = cloudinary_url($match[0], ["transformation" => ["width" => $width, "height" => $height, "crop" => "fit"], "cloud_name" => "www-stmmax-com", "secure" => "true"]);
+            return $new_url;
+        }
+        return false;
+
     }
+
 }

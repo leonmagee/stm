@@ -24,7 +24,12 @@
       <form class="stm-cart__form" method="POST" action="update-cart-item/{{ $item->id }}">
         @csrf
         <div class="stm-cart__item stm-cart__item--body">
-          <div class="stm-cart__item--product">{{ $item->product->name }}</div>
+          <div class="stm-cart__item--product">
+            <a class="stm-cart__item--product---thumbnail" href="/products/{{ $item->product->id }}">
+              <img src="{{ $item->product->get_cloudinary_thumbnail(200, 200) }}" />
+            </a>
+            <a href="/products/{{ $item->product->id }}">{{ $item->product->name }}</a>
+          </div>
           <div class="stm-cart__item--variation">
             @if(count(($item->product->variations)))
             <div class="select">
@@ -79,7 +84,7 @@
         <div class="stm-cart__item--quantity"></div>
         <div class="stm-cart__item--subtotal"></div>
         <div class="stm-cart__item--discount"></div>
-        <div class="stm-cart__item--total">${{ number_format($total, 2) }}</div>
+        <div class="stm-cart__item--total"><span>${{ number_format($total, 2) }}</span></div>
         <div class="stm-cart__item--delete"></div>
       </div>
       @else

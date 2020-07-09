@@ -93,16 +93,10 @@ class ProductController extends Controller
     public function index()
     {
         $user_id = \Auth::user()->id;
-        //$products = self::product_data();
         $products = Product::where('archived', 0)->get();
         foreach ($products as $product) {
-            if ($image_url = $product->img_url_1) {
-                $match = null;
-                preg_match('(\/STM\/.*)', $image_url, $match);
-                $new_url = cloudinary_url($match[0], ["transformation" => ["width" => 600, "height" => 600, "crop" => "fit"], "cloud_name" => "www-stmmax-com", "secure" => "true"]);
-                $product->img_url_1 = $new_url;
+            $product->img_url_1 = $product->get_cloudinary_thumbnail(600, 600);
 
-            }
             $orig_cost = number_format($product->cost, 2);
             if ($product->discount) {
                 $product->orig_price = $orig_cost;
