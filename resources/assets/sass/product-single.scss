@@ -318,10 +318,14 @@
         //         }
         //     }
         // }
+        // actual <form> tag
+        .product-details__form {
+            //width: 100%;
+            margin-left: auto;
+        }
         .product-details__cart {
             display: flex;
             align-items: center;
-            margin-left: auto;
             @include product_bg;
             .product-details__quantity {
                 width: 5em;

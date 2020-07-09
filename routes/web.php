@@ -78,6 +78,10 @@ Route::group(['middleware' => 'App\Http\Middleware\LockOutUsersManagers'], funct
     Route::post('edit-transaction/{user}', 'UserController@changeUserBalance');
     Route::post('credit-complete', 'UserController@creditComplete');
     Route::post('update-user-rating', 'ProductRatingController@store');
+    Route::get('cart', 'CartProductController@index');
+    Route::post('add-to-cart', 'CartProductController@store');
+    Route::post('update-cart-item/{item}', 'CartProductController@update');
+    Route::get('delete-cart-item/{item}', 'CartProductController@destroy');
 });
 
 /**

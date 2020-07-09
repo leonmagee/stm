@@ -30355,15 +30355,13 @@ __webpack_require__(178);
 
 __webpack_require__(219);
 
-/**
- * Star Ratings
- */
-// $("#rateYo").rateYo({
-//     starWidth: "40px"
-// });
-// $("#rateYo").rateYo({
-//   starWidth: "50px"
-// });
+// cart save on change
+$('select.variation-select').change(function () {
+  $(this).parent().parent().parent().parent().submit();
+});
+$('input.quantity-input').change(function () {
+  $(this).parent().parent().parent().submit();
+});
 
 // quantity toggle
 $('.product-details__quantity .add-to-quantity').click(function () {
@@ -30376,8 +30374,8 @@ $('.product-details__quantity .add-to-quantity').click(function () {
 $('.product-details__quantity .subtract-from-quantity').click(function () {
   var currentVal = parseInt($('input.hidden-quantity-input').val());
   var newVal = currentVal - 1;
-  if (newVal <= 0) {
-    newVal = 0;
+  if (newVal <= 1) {
+    newVal = 1;
   }
   $('span.quanity-display').html(newVal);
   $('input.hidden-quantity-input').val(newVal);

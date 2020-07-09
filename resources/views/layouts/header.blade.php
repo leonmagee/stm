@@ -25,6 +25,14 @@
         </div>
         <div class="field has-addons">
           <p class="control">
+            <a class="button cart" href="/cart">
+              <span class="icon is-small">
+                <i class="fas fa-cart-plus"></i>
+              </span>
+              <span class="text">Cart</span>
+            </a>
+          </p>
+          <p class="control">
             <a class="button type" href="/settings">
               <span class="icon is-small">
                 <i class="fas fa-sitemap"></i>

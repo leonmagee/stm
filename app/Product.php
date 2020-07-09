@@ -60,4 +60,9 @@ class Product extends Model
         }
         return $final;
     }
+
+    public function get_small_thumbnail()
+    {
+        //dd()
+    }
 }
