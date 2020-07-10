@@ -38,10 +38,11 @@
                 value="{{ $product->discount }}" />
             </div>
           </div>
+
         </div>
 
         <div class="columns">
-          <div class="column">
+          <div class="column is-one-third">
             {{-- attributes --}}
             <div class="form-wrap-flex form-wrap-flex-attributes">
               <div class="field full">
@@ -72,17 +73,19 @@
               </div>
             </div>
           </div>
-          <div class="column">
+          <div class="column is-one-third">
             {{-- variations --}}
             <div class="form-wrap-flex form-wrap-flex-attributes">
               <div class="field full">
-                <label class="label" for="">Variations</label>
+                <label class="label" for="">Colors / Quantity</label>
                 <div class="repeater-field-wrap" id="repeater-field-wrap-variation">
                   @foreach($product->variations as $variation)
                   <div class="entry input-group">
                     <div class="field has-addons">
-                      <input type="text" class="input name" name="variation_names[]" placeholder="Variation"
+                      <input type="text" class="input name" name="variation_names[]" placeholder="Color"
                         value="{{ $variation->text }}">
+                      <input type="number" class="input quantity" name="variation_quantity[]" placeholder="Quantity"
+                        value="{{ $variation->quantity }}">
                       <div class="input-group-append">
                         <button class="button is-danger remove-variation" type="button"><i
                             class="fas fa-times"></i></button>
@@ -92,7 +95,8 @@
                   @endforeach
                   <div class="entry input-group">
                     <div class="field has-addons">
-                      <input type="text" class="input name" name="variation_names[]" placeholder="Variation">
+                      <input type="text" class="input name" name="variation_names[]" placeholder="Color">
+                      <input type="number" class="input quantity" name="variation_quantity[]" placeholder="Quantity">
                       <div class="input-group-append">
                         <button class="button is-primary add-variation" type="button"><i
                             class="fas fa-plus"></i></button>

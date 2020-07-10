@@ -95,3 +95,9 @@
     background-color: #f7f7f7;
     padding: 0.6em 0.8em;
 }
+
+@mixin product_bg_single {
+    @include product_border;
+    background-color: #fefefe;
+    padding: 0.6em 0.8em;
+}

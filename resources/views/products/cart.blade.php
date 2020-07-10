@@ -43,7 +43,7 @@
             @endif
           </div>
           <div class="stm-cart__item--quantity">
-            <input class="input quantity-input" type="number" name="quantity" value={{ $item->quantity }} />
+            <input class="input quantity-input" min="0" type="number" name="quantity" value={{ $item->quantity }} />
           </div>
           <div class="stm-cart__item--subtotal">${{ number_format($item->product->cost * $item->quantity, 2) }}</div>
           <div class="stm-cart__item--discount">{{ $item->product->discount }}%</div>
@@ -105,4 +105,10 @@
   </div>
 </div>
 
+@endsection
+
+@section('page-script')
+<script>
+  console.log('cart working?')
+</script>
 @endsection

@@ -254,6 +254,7 @@ class ProductController extends Controller
             'details' => self::img_replace($request->details),
             'more_details' => self::img_replace($request->more_details),
             'archived' => $request->archived,
+            //'quantity' => $request->quantity ? $request->quantity : 0,
             'img_url_1' => $url_1,
             'img_url_2' => $url_2,
             'img_url_3' => $url_3,
@@ -272,6 +273,7 @@ class ProductController extends Controller
             'tab_img_url_8' => $tab_url_8,
         ]);
 
+        // 1. Create new attributes
         foreach ($request->attribute_names as $attribute) {
             if ($attribute) {
                 ProductAttribute::create([
@@ -280,6 +282,17 @@ class ProductController extends Controller
                 ]);
             }
         }
+
+        // 2. Create new variations (colors)
+        foreach ($request->variation_names as $variation) {
+            if ($variation) {
+                ProductVariation::create([
+                    'product_id' => $product->id,
+                    'text' => $variation,
+                ]);
+            }
+        }
+
         $cats_array = [];
         $categories = Category::all();
         foreach ($categories as $cat) {
@@ -475,6 +488,7 @@ class ProductController extends Controller
             'details' => self::img_replace($request->details),
             'more_details' => self::img_replace($request->more_details),
             'archived' => $request->archived,
+            //'quantity' => $request->quantity ? $request->quantity : 0,
             'img_url_1' => $url_1,
             'img_url_2' => $url_2,
             'img_url_3' => $url_3,
@@ -506,15 +520,18 @@ class ProductController extends Controller
             }
         }
 
+        $colors_quantity = array_filter(array_combine($request->variation_names, $request->variation_quantity));
+        //dd($colors_quantity);
         // 1. Delete existing variations for product
         ProductVariation::where('product_id', $product->id)->delete();
 
-        // 2. Create new variationgs
-        foreach ($request->variation_names as $variation) {
-            if ($variation) {
+        // 2. Create new variations
+        foreach ($colors_quantity as $text => $quantity) {
+            if ($text && $quantity) {
                 ProductVariation::create([
                     'product_id' => $product->id,
-                    'text' => $variation,
+                    'text' => $text,
+                    'quantity' => $quantity,
                 ]);
             }
         }
@@ -583,9 +600,11 @@ class ProductController extends Controller
         $ratings_delete = ProductRating::where('product_id', $product->id)->delete();
         // 4. delete from product_attributes
         $attributes_delete = ProductAttribute::where('product_id', $product->id)->delete();
-        // 5. finally, delete product
+        // 5. delete from product_variations
+        $attributes_delete = ProductVariation::where('product_id', $product->id)->delete();
+        // 6. finally, delete product
         $product->delete();
-        // 6 flash and redirect
+        // 7. flash and redirect
         session()->flash('message', 'Product Deleted');
         return redirect('/products');
     }

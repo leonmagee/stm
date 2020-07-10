@@ -45,13 +45,14 @@ class CartProductController extends Controller
     {
         $user_id = \Auth::user()->id;
 
-        // $existing = CartProduct::where([
-        //     'product_id' => $request->product_id,
-        //     'user_id' => $user_id,
-        // ])->first();
-        // if ($existing) {
-        //     $existing->delete();
-        // }
+        $existing = CartProduct::where([
+            'product_id' => $request->product_id,
+            'user_id' => $user_id,
+            'variation' => $request->variation,
+        ])->first();
+        if ($existing) {
+            $existing->delete();
+        }
 
         CartProduct::create([
             'product_id' => $request->product_id,
@@ -59,8 +60,8 @@ class CartProductController extends Controller
             'variation' => $request->variation,
             'user_id' => $user_id,
         ]);
-        session()->flash('message', 'Your Cart Has Been Updated');
-        return redirect('/cart');
+        return back()->withMessage('Added to Cart');
+
     }
 
     /**

@@ -59,23 +59,34 @@
       @csrf
       <input type="hidden" name="product_id" value="{{ $product->id }}" />
       <div class="product-details__cart">
-        @if(count($product->variations))
-        <div class="product-details__variations">
-          <div class="select">
-            <select name="variation">
-              @foreach($product->variations as $variation)
-              <option value={{ $variation->text }}>{{ $variation->text }}</option>
-              @endforeach
-            </select>
+        <div class="product-details__cart--inner">
+          @if(count($product->variations))
+          <div class="product-details__variations">
+            <div class="select is-green">
+              <select name="variation" id="variation-select">
+                @foreach($product->variations as $variation)
+                <option quantity="{{ $variation->quantity }}" value="{{ $variation->text }}">{{ $variation->text }}
+                </option>
+                @endforeach
+              </select>
+            </div>
           </div>
+          @endif
+          <div class="product-details__quantity">
+            <?php if(isset($product->variations[0]->quantity)) {
+              $quantity = $product->variations[0]->quantity;
+            } else {
+              $quantity = 1;
+            } ?>
+            <input class="input" type="number" min="1" name="quantity" id="quantity-input" class="quantity-input"
+              placeholder="{{ $quantity }} Max" max_quantity="{{ $quantity }}" required />
+
+
+            {{-- <i class="fas fa-minus-circle subtract-from-quantity"></i><span class="quanity-display">1</span><i
+              class="fas fa-plus-circle add-to-quantity"></i> --}}
+          </div>
+          <button class="add-to-cart"><i class="fas fa-cart-plus"></i>Add To Cart</button>
         </div>
-        @endif
-        <div class="product-details__quantity">
-          <input type="hidden" name="quantity" class="hidden-quantity-input" value="1" />
-          <i class="fas fa-minus-circle subtract-from-quantity"></i><span class="quanity-display">1</span><i
-            class="fas fa-plus-circle add-to-quantity"></i>
-        </div>
-        <button class="add-to-cart"><i class="fas fa-cart-plus"></i>Add To Cart</button>
       </div>
     </form>
   </div>

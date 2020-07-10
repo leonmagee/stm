@@ -40,16 +40,45 @@
           </div>
         </div>
 
-        <div class="form-wrap-flex form-wrap-flex-attributes">
+        <div class="columns">
+          <div class="column is-one-third">
+            {{-- attributes --}}
 
-          <div class="field full">
-            <label class="label" for="">Attributes (4 max)</label>
-            <div id="repeater-field-wrap">
-              <div class="entry input-group">
-                <div class="field has-addons">
-                  <input type="text" class="input name" name="attribute_names[]" placeholder="Attribute">
-                  <div class="input-group-append">
-                    <button class="button is-primary add-attribute" type="button"><i class="fas fa-plus"></i></button>
+            <div class="form-wrap-flex form-wrap-flex-attributes">
+
+              <div class="field full">
+                <label class="label" for="">Attributes (4 max)</label>
+                <div class="repeater-field-wrap" id="repeater-field-wrap">
+                  <div class="entry input-group">
+                    <div class="field has-addons">
+                      <input type="text" class="input name" name="attribute_names[]" placeholder="Attribute">
+                      <div class="input-group-append">
+                        <button class="button is-primary add-attribute" type="button"><i
+                            class="fas fa-plus"></i></button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {{-- variations --}}
+          <div class="column is-one-third">
+            <div class="form-wrap-flex form-wrap-flex-attributes">
+
+              <div class="field full">
+                <label class="label" for="">Colors / Quantity</label>
+                <div class="repeater-field-wrap" id="repeater-field-wrap-variation">
+                  <div class="entry input-group">
+                    <div class="field has-addons">
+                      <input type="text" class="input name" name="variation_names[]" placeholder="Color">
+                      <input type="number" class="input quantity" name="variation_quantity[]" placeholder="Quantity">
+                      <div class="input-group-append">
+                        <button class="button is-primary add-variation" type="button"><i
+                            class="fas fa-plus"></i></button>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>

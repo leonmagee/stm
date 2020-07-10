@@ -23,3 +23,8 @@
 .padding-right-10 {
     padding-right: 10px;
 }
+
+// select arrows
+.select.is-green:after {
+    border-color: darken($green, 1%) !important;
+}

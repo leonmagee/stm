@@ -17673,6 +17673,10 @@ label.panel-block:hover {
   padding-right: 10px;
 }
 
+.select.is-green:after {
+  border-color: #06d69f !important;
+}
+
 body.stm-body h1.title {
   text-align: center;
   font-size: 1em;
@@ -22204,20 +22208,22 @@ body.stm-body.about .about-img-wrap img {
 }
 
 .product-single .product-details .product-details__title {
-  font-size: 2.5em;
+  font-size: 2.1em;
   font-weight: 600;
   line-height: 1.1em;
   margin-bottom: 0.1em;
   white-space: nowrap;
+  color: #222;
 }
 
 .product-single .product-details .product-details__rating {
-  margin-bottom: 0.6em;
+  margin-left: -0.2rem;
+  margin-bottom: 0.6rem;
 }
 
 .product-single .product-details .product-details__cost {
   color: #05d19b;
-  font-size: 2.2em;
+  font-size: 1.9em;
   font-weight: 600;
   line-height: 0.8em;
   display: -webkit-box;
@@ -22271,7 +22277,7 @@ body.stm-body.about .about-img-wrap img {
   background: #ff2e58;
   color: #fff;
   text-shadow: 1px 1px rgba(0, 0, 0, 0.1);
-  padding: 0.3em 0.7em;
+  padding: 0.17em 0.7em 0.18em;
   border-radius: 4px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -22279,7 +22285,7 @@ body.stm-body.about .about-img-wrap img {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  font-size: 1em;
+  font-size: 0.9em;
   font-weight: 600;
   text-transform: uppercase;
 }
@@ -22368,7 +22374,7 @@ body.stm-body.about .about-img-wrap img {
   margin-top: 0.5em;
   border: 1px solid #e2e2e2;
   border-radius: 4px;
-  background-color: #f7f7f7;
+  background-color: #fefefe;
   padding: 0.6em 0.8em;
 }
 
@@ -22459,22 +22465,42 @@ body.stm-body.about .about-img-wrap img {
 }
 
 .product-single .product-details .product-details__cart {
+  border: 1px solid #e2e2e2;
+  border-radius: 4px;
+  background-color: #fefefe;
+  padding: 0.6em 0.8em;
+}
+
+.product-single .product-details .product-details__cart .product-details__cart--inner {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  border: 1px solid #e2e2e2;
-  border-radius: 4px;
-  background-color: #f7f7f7;
-  padding: 0.6em 0.8em;
 }
 
 .product-single .product-details .product-details__cart .product-details__quantity {
   width: 5em;
-  text-align: center;
   font-weight: 600;
+  font-size: 1.1em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  line-height: 1em;
+  margin: 0 0.5em;
+}
+
+.product-single .product-details .product-details__cart .product-details__quantity input {
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  height: 2.1rem;
 }
 
 .product-single .product-details .product-details__cart .product-details__quantity span {
@@ -22492,8 +22518,9 @@ body.stm-body.about .about-img-wrap img {
 }
 
 .product-single .product-details .product-details__cart .product-details__quantity i {
-  color: #9f9f9f;
+  color: #aaa;
   margin: 0 0.2em;
+  font-size: 0.8em;
 }
 
 .product-single .product-details .product-details__cart .product-details__quantity i:hover {
@@ -22503,6 +22530,7 @@ body.stm-body.about .about-img-wrap img {
 
 .product-single .product-details .product-details__cart button.add-to-cart {
   font-size: 0.9em;
+  height: 2rem;
   border-radius: 0;
   -webkit-box-shadow: none;
           box-shadow: none;
@@ -22597,6 +22625,12 @@ body.stm-body.about .about-img-wrap img {
 }
 
 .form-wrapper-inner .form-wrap .form-wrap-flex.form-wrap-flex-products-top .field.discount {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 1 10%;
+          flex: 0 1 10%;
+}
+
+.form-wrapper-inner .form-wrap .form-wrap-flex.form-wrap-flex-products-top .field.quantity {
   -webkit-box-flex: 0;
       -ms-flex: 0 1 10%;
           flex: 0 1 10%;
@@ -22750,7 +22784,12 @@ body.stm-body.about .about-img-wrap img {
 }
 
 .repeater-field-wrap input {
+  border-radius: 0;
+}
+
+.repeater-field-wrap input:first-child {
   border-radius: 4px 0 0 4px;
+  border-right: none;
 }
 
 .stm-cart .stm-cart__item {

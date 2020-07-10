@@ -12,6 +12,10 @@
         margin-bottom: 10px;
     }
     input {
-        border-radius: 4px 0 0 4px;
+        border-radius: 0;
+        &:first-child() {
+            border-radius: 4px 0 0 4px;
+            border-right: none;
+        }
     }
 }
