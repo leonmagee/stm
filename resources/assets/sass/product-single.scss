@@ -121,12 +121,12 @@
             //color: darken($green, 5%);
             //color: lighten($product-blue, 8%);
             color: darken($green, 2%);
-            font-size: 1.9em;
+            font-size: 2em;
             font-weight: 600;
             line-height: 0.8em;
             display: flex;
             align-items: center;
-            padding-bottom: 0.1em;
+            //padding-bottom: 0.1em;
             .product-details__cost--orig {
                 font-size: 0.5em;
                 margin-left: 0.4em;
@@ -169,7 +169,7 @@
                 border-radius: 4px;
                 display: flex;
                 align-items: center;
-                font-size: 0.9em;
+                font-size: 1.1em;
                 font-weight: 600;
                 text-transform: uppercase;
                 i {
@@ -274,15 +274,24 @@
             }
         }
         .product-details__flex-space-wrap {
-            padding-bottom: 0.3em;
+            //padding-bottom: 0.3em;
+            margin-bottom: 1em;
             @media (min-width: $screen-md) {
                 display: flex;
+                align-items: center;
             }
         }
         // tab nav
         .product-details__tabs {
             margin-top: 1.5em;
             margin-bottom: 1em;
+            ul {
+                //background: blue;
+                display: flex;
+                li {
+                    flex: 1;
+                }
+            }
         }
 
         .product-details__info {
