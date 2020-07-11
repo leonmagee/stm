@@ -96,7 +96,11 @@ class CartProductController extends Controller
     public function update(Request $request, CartProduct $item)
     {
         $item->variation = $request->variation;
+        $max = $item->color_quantity($item->product->id, $item->variation);
         $item->quantity = $request->quantity ? $request->quantity : 1;
+        if ($item->quantity > $max) {
+            $item->quantity = $max;
+        }
         $item->save();
 
         //session()->flash('message', 'update');

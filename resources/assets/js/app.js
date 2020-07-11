@@ -30,7 +30,7 @@ require('./components/Products');
 
 require('./components/ProductsCarousel');
 
-// quantity toggle
+// quantity toggle (single)
 let max_quantity = $('input#quantity-input').attr('max_quantity');
 function change_input_value(max) {
   $('input#quantity-input').change(function () {
@@ -55,8 +55,6 @@ $('select#variation-select').change(function() {
 });
 
 
-
-
 // cart save on change
 $('select.variation-select').change(function() {
   $(this).parent().parent().parent().parent().submit();
@@ -64,24 +62,6 @@ $('select.variation-select').change(function() {
 $('input.quantity-input').change(function() {
   $(this).parent().parent().parent().submit();
 });
-
-// quantity toggle
-// $('.product-details__quantity .add-to-quantity').click(function() {
-//   let currentVal = parseInt($('input.hidden-quantity-input').val());
-//   let newVal = currentVal + 1;
-//   $('span.quanity-display').html(newVal);
-//   $('input.hidden-quantity-input').val(newVal);
-// });
-
-// $('.product-details__quantity .subtract-from-quantity').click(function() {
-//   let currentVal = parseInt($('input.hidden-quantity-input').val());
-//   let newVal = currentVal - 1;
-//   if(newVal <= 1) {
-//     newVal = 1;
-//   }
-//   $('span.quanity-display').html(newVal);
-//   $('input.hidden-quantity-input').val(newVal);
-// });
 
 // thumbnail
 $('.rate_yo_thumbnail').each(function() {

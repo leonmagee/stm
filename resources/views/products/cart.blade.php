@@ -14,6 +14,7 @@
         <div class="stm-cart__item--product">Product</div>
         <div class="stm-cart__item--variation">Variation</div>
         <div class="stm-cart__item--quantity">Quantity</div>
+        <div class="stm-cart__item--available">Available</div>
         <div class="stm-cart__item--subtotal">Subtotal</div>
         <div class="stm-cart__item--discount">Discount</div>
         <div class="stm-cart__item--total">Total</div>
@@ -45,6 +46,7 @@
           <div class="stm-cart__item--quantity">
             <input class="input quantity-input" min="0" type="number" name="quantity" value={{ $item->quantity }} />
           </div>
+          <div class="stm-cart__item--available">{{ $item->color_quantity($item->product->id, $item->variation) }}</div>
           <div class="stm-cart__item--subtotal">${{ number_format($item->product->cost * $item->quantity, 2) }}</div>
           <div class="stm-cart__item--discount">{{ $item->product->discount }}%</div>
           <?php $after_discount = ($item->product->cost * ((100 - $item->product->discount)/100) * $item->quantity); $total += $after_discount; ?>
