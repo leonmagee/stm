@@ -18769,6 +18769,10 @@ body.stm-body .add-padding {
   border-left: 1px solid #ccc;
 }
 
+.header-wrap .header-area a.button.cart i {
+  color: #05d19b;
+}
+
 .header-wrap .header-area a.button input.search {
   font-size: 1.05em;
   padding: 3px;

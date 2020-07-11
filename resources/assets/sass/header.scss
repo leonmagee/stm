@@ -169,6 +169,11 @@
             &.links {
                 border-left: 1px solid #ccc;
             }
+            &.cart {
+                i {
+                    color: darken($green, 2%);
+                }
+            }
             input.search {
                 //border: none;
                 //border-color: #fafafa;
