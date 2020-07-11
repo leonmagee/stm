@@ -131,7 +131,7 @@ let ratingDisplay = $("#rateYoDisplay").attr('rating');
 $("#rateYoDisplay").rateYo({
   rating: ratingDisplay,
   readOnly: true,
-  starWidth: "19px",
+  starWidth: "23px",
   spacing: "2px",
   ratedFill: "#ffc43d",
 });
