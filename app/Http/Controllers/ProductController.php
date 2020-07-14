@@ -246,6 +246,7 @@ class ProductController extends Controller
             }
         }
 
+        $available_on = null;
         if ($request->available_on) {
             $available_on = \Carbon\Carbon::parse($request->available_on)->format('Y-m-d');
         }
