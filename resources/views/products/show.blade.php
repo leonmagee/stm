@@ -91,8 +91,10 @@
           <div class="out-of-stock">
             <div class="out-of-stock__text">Temporarily Out of Stock</div>
             @if($product->available_on)
+            @if(\Carbon\Carbon::parse($product->available_on)->gt(\Carbon\Carbon::now()))
             <div class="out-of-stock__date">Available on
               {{ \Carbon\Carbon::parse($product->available_on)->format('F j, Y') }}</div>
+            @endif
             @endif
           </div>
           @endif
