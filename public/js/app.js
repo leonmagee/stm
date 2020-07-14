@@ -30589,7 +30589,7 @@ $('.category-area input').click(function () {
  * Date Time Picker
  */
 jQuery.datetimepicker.setLocale("en");
-jQuery("#due_date").datetimepicker({
+jQuery("#due_date, #available_on").datetimepicker({
   timepicker: false,
   format: "M d, Y"
 });

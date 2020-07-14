@@ -60,13 +60,17 @@
       <input type="hidden" name="product_id" value="{{ $product->id }}" />
       <div class="product-details__cart">
         <div class="product-details__cart--inner">
+
+          @if($product->in_stock())
           @if(count($product->variations))
           <div class="product-details__variations">
             <div class="select is-green">
               <select name="variation" id="variation-select">
                 @foreach($product->variations as $variation)
+                @if($variation->quantity)
                 <option quantity="{{ $variation->quantity }}" value="{{ $variation->text }}">{{ $variation->text }}
                 </option>
+                @endif
                 @endforeach
               </select>
             </div>
@@ -81,11 +85,17 @@
             <input class="input" type="number" min="1" name="quantity" id="quantity-input" class="quantity-input"
               placeholder="{{ $quantity }} Max" max_quantity="{{ $quantity }}" required />
 
-
-            {{-- <i class="fas fa-minus-circle subtract-from-quantity"></i><span class="quanity-display">1</span><i
-              class="fas fa-plus-circle add-to-quantity"></i> --}}
           </div>
           <button class="add-to-cart"><i class="fas fa-cart-plus"></i>Add To Cart</button>
+          @else
+          <div class="out-of-stock">
+            <div class="out-of-stock__text">Out of Stock</div>
+            @if($product->available_on)
+            <div class="out-of-stock__date">Available on
+              {{ \Carbon\Carbon::parse($product->available_on)->format('m/d/Y') }}</div>
+            @endif
+          </div>
+          @endif
         </div>
       </div>
     </form>

@@ -480,6 +480,10 @@ class ProductController extends Controller
             }
         }
 
+        $available_on = null;
+        if ($request->available_on) {
+            $available_on = \Carbon\Carbon::parse($request->available_on)->format('Y-m-d');
+        }
         $product->update([
             'name' => $request->name,
             'cost' => $request->cost,
@@ -488,6 +492,7 @@ class ProductController extends Controller
             'details' => self::img_replace($request->details),
             'more_details' => self::img_replace($request->more_details),
             'archived' => $request->archived,
+            'available_on' => $available_on,
             //'quantity' => $request->quantity ? $request->quantity : 0,
             'img_url_1' => $url_1,
             'img_url_2' => $url_2,
@@ -520,14 +525,21 @@ class ProductController extends Controller
             }
         }
 
-        $colors_quantity = array_filter(array_combine($request->variation_names, $request->variation_quantity));
-        //dd($colors_quantity);
+        $temp_array = $request->variation_quantity;
+        $combined = array_combine($request->variation_names, $request->variation_quantity);
+        $colors_quantity = [];
+        foreach ($combined as $key => $item) {
+            if ($key) {
+                $colors_quantity[$key] = $item;
+            }
+        }
         // 1. Delete existing variations for product
         ProductVariation::where('product_id', $product->id)->delete();
 
         // 2. Create new variations
         foreach ($colors_quantity as $text => $quantity) {
-            if ($text && $quantity) {
+            if ($text) {
+                if (!$quantity) {$quantity = 0;}
                 ProductVariation::create([
                     'product_id' => $product->id,
                     'text' => $text,

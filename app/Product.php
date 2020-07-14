@@ -14,6 +14,16 @@ class Product extends Model
         return $this->hasMany(ProductVariation::class);
     }
 
+    public function in_stock()
+    {
+        foreach ($this->variations as $variation) {
+            if ($variation->quantity) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public function categories()
     {
         return $this->hasMany(ProductCategories::class);

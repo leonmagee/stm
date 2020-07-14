@@ -476,4 +476,12 @@
         //display: none !important;
         cursor: default !important;
     }
+    .out-of-stock {
+        .out-of-stock__text {
+            font-weight: 600;
+            font-size: 1.1em;
+        }
+        .out-of-stock__date {
+        }
+    }
 }

@@ -38,6 +38,13 @@
                 value="{{ $product->discount }}" />
             </div>
           </div>
+          <div class="field available-on">
+            <label class="label" for="available_on">Available On</label>
+            <div class="control">
+              <input class="input" type="text" id="available_on" name="available_on" autocomplete="off"
+                value="{{ $product->available_on }}" />
+            </div>
+          </div>
 
         </div>
 
