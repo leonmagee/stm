@@ -473,7 +473,6 @@
         }
     }
     .rate_yo_no_hover {
-        //display: none !important;
         cursor: default !important;
     }
     .out-of-stock {
@@ -482,6 +481,7 @@
             font-size: 1.1em;
         }
         .out-of-stock__date {
+            color: #444;
         }
     }
 }

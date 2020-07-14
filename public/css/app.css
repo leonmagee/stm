@@ -22635,6 +22635,10 @@ body.stm-body.about .about-img-wrap img {
   font-size: 1.1em;
 }
 
+.product-single .out-of-stock .out-of-stock__date {
+  color: #444;
+}
+
 .form-wrapper-inner .form-wrap .form-wrap-flex.form-wrap-flex-products-top .field.name {
   -webkit-box-flex: 1;
       -ms-flex: 1;

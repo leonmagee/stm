@@ -89,10 +89,10 @@
           <button class="add-to-cart"><i class="fas fa-cart-plus"></i>Add To Cart</button>
           @else
           <div class="out-of-stock">
-            <div class="out-of-stock__text">Out of Stock</div>
+            <div class="out-of-stock__text">Temporarily Out of Stock</div>
             @if($product->available_on)
             <div class="out-of-stock__date">Available on
-              {{ \Carbon\Carbon::parse($product->available_on)->format('m/d/Y') }}</div>
+              {{ \Carbon\Carbon::parse($product->available_on)->format('F j, Y') }}</div>
             @endif
           </div>
           @endif

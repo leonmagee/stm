@@ -246,6 +246,10 @@ class ProductController extends Controller
             }
         }
 
+        if ($request->available_on) {
+            $available_on = \Carbon\Carbon::parse($request->available_on)->format('Y-m-d');
+        }
+
         $product = Product::create([
             'name' => $request->name,
             'cost' => $request->cost,
@@ -254,7 +258,7 @@ class ProductController extends Controller
             'details' => self::img_replace($request->details),
             'more_details' => self::img_replace($request->more_details),
             'archived' => $request->archived,
-            //'quantity' => $request->quantity ? $request->quantity : 0,
+            'available_on' => $available_on,
             'img_url_1' => $url_1,
             'img_url_2' => $url_2,
             'img_url_3' => $url_3,
