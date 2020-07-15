@@ -22941,6 +22941,18 @@ body.stm-body.about .about-img-wrap img {
   max-height: 3em;
 }
 
+.stm-cart .stm-cart__item div.stm-cart__item--variation {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 0 4%;
+          flex: 1 0 4%;
+}
+
+.stm-cart .stm-cart__item div.stm-cart__item--quantity input {
+  font-size: 1em;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
 .stm-cart .stm-cart__item div.stm-cart__item--delete {
   -webkit-box-flex: 0;
       -ms-flex: 0 1 2%;

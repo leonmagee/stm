@@ -93,10 +93,15 @@
                     }
                 }
             }
-            // &.stm-cart__item--variation {
-            // }
-            // &.stm-cart__item--quantity {
-            // }
+            &.stm-cart__item--variation {
+                flex: 1 0 4%;
+            }
+            &.stm-cart__item--quantity {
+                input {
+                    font-size: 1em;
+                    box-shadow: none;
+                }
+            }
             &.stm-cart__item--delete {
                 flex: 0 1 2%;
                 a {
