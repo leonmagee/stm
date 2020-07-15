@@ -95,6 +95,13 @@
             }
             &.stm-cart__item--variation {
                 flex: 1 0 4%;
+                padding-right: 2em;
+                .select {
+                    width: 100%;
+                }
+                select {
+                    width: 100%;
+                }
             }
             &.stm-cart__item--quantity {
                 input {
