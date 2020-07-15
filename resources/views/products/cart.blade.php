@@ -84,6 +84,7 @@
         <div class="stm-cart__item--product"></div>
         <div class="stm-cart__item--variation"></div>
         <div class="stm-cart__item--quantity"></div>
+        <div class="stm-cart__item--available"></div>
         <div class="stm-cart__item--subtotal"></div>
         <div class="stm-cart__item--discount"></div>
         <div class="stm-cart__item--total"><span>${{ number_format($total, 2) }}</span></div>

@@ -22906,6 +22906,7 @@ body.stm-body.about .about-img-wrap img {
   padding: 0.2em 0.5em 0.2em 0.4em;
   border-radius: 4px;
   display: inline-block;
+  margin-left: -0.4em;
 }
 
 .stm-cart .stm-cart__item div {
