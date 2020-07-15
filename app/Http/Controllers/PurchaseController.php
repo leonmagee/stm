@@ -9,6 +9,14 @@ use Illuminate\Http\Request;
 class PurchaseController extends Controller
 {
     /**
+     * Only Logged In Users can see this
+     **/
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -34,12 +42,19 @@ class PurchaseController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(User $user)
+    //public function store(User $user)
+    public function store()
     {
-        //$user_id = \Auth::user()->id;
+        /**
+         * Auth doesn't work because I'm using an API route?
+         * But is there a reason to use an API route? It might be better to not use it, then
+         * authenitcation would be required, which should be the case, then the user would need to be
+         * logged in for it to work, and then I wouldn't need to pass in any data from JavaScript (except for the total) which should make sense.
+         */
+        $user_id = \Auth::user()->id;
         Purchase::create([
-            'user_id' => $user->id,
-            'total' => 777,
+            'user_id' => $user_id,
+            'total' => 789,
         ]);
     }
 

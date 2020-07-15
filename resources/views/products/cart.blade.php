@@ -135,7 +135,12 @@
 
     return actions.order.capture().then(function(details) {
     // This function shows a transaction success message to your buyer.
-        axios.post('/api/process-paypal/1').then(function(res) {
+        // axios.post('/api/process-paypal/1').then(function(res) {
+        //   console.log('capture in cart', res);
+        //   return res.id;
+        // });
+
+        axios.post('/process-paypal').then(function(res) {
           console.log('capture in cart', res);
           return res.id;
         });

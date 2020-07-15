@@ -22832,6 +22832,8 @@ body.stm-body.about .about-img-wrap img {
 .cart-wrapper .cart-wrapper-inner {
   border-radius: 4px;
   overflow: hidden;
+  -webkit-box-shadow: 1px 1px rgba(0, 0, 0, 0.05);
+          box-shadow: 1px 1px rgba(0, 0, 0, 0.05);
 }
 
 .cart-wrapper .cart-wrapper-inner h3 {
