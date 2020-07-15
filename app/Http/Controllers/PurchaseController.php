@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Purchase;
+use App\User;
 use Illuminate\Http\Request;
 
 class PurchaseController extends Controller
@@ -33,11 +34,11 @@ class PurchaseController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(User $user)
     {
-        $user_id = \Auth::user()->id;
+        //$user_id = \Auth::user()->id;
         Purchase::create([
-            'user_id' => $user_id,
+            'user_id' => $user->id,
             'total' => 777,
         ]);
     }

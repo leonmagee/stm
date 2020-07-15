@@ -1,9 +1,9 @@
-@extends('layouts.layout')
+@extends('layouts.layout-no-wrap')
 
 @section('content')
 
-<div class="form-wrapper">
-  <div class="form-wrapper-inner">
+<div class="cart-wrapper">
+  <div class="cart-wrapper-left cart-wrapper-inner">
     <h3>Shopping Cart <i class="fas fa-cart-plus"></i></h3>
 
     <div class="stm-cart">
@@ -97,13 +97,16 @@
 
     </div>
 
+  </div>
+
+  <div class="cart-wrapper-right cart-wrapper-inner">
+    <h3>Checkout <i class="far fa-credit-card"></i></h3>
     <div class="stm-cart-footer">
       @if(count($items))
       <div id="paypal-button-container" amount="777" name="Hector"></div>
       @endif
-      <a class="button is-primary checkout call-laoder margin-left" href="/products">Continue Shopping</a>
+      <a class="button continue-shopping" href="/products">Continue Shopping</a>
     </div>
-
   </div>
 </div>
 
@@ -131,13 +134,13 @@
 
     return actions.order.capture().then(function(details) {
     // This function shows a transaction success message to your buyer.
-        axios.post('/api/process-paypal').then(function(res) {
-        console.log('capture in cart', res);
-        return res.id;
+        axios.post('/api/process-paypal/1').then(function(res) {
+          console.log('capture in cart', res);
+          return res.id;
         });
 
-    alert('Transaction completed by ' + details.payer.name.given_name);
-    console.log(details);
+      //alert('Transaction completed by ' + details.payer.name.given_name);
+      console.log(details);
     });
   }
   }).render('#paypal-button-container');
