@@ -22873,6 +22873,7 @@ body.stm-body.about .about-img-wrap img {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  font-size: 0.8em;
 }
 
 .stm-cart .stm-cart__item.stm-cart__item--header {
