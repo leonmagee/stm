@@ -65,7 +65,6 @@ $('input.quantity-input').change(function() {
 
 // thumbnail
 $('.rate_yo_thumbnail').each(function() {
-  //console.log('this is firing...');
   let rating = $(this).attr('rating');
   $(this).rateYo({
     rating: rating,
@@ -79,7 +78,6 @@ $('.rate_yo_thumbnail').each(function() {
 
 // single modal
 let rating = $("#rateYo").attr('rating');
-//console.log('do we have a raiting?', rating);
   $("#rateYo").rateYo({
     rating: rating,
     fullStar: true,
@@ -89,9 +87,7 @@ let rating = $("#rateYo").attr('rating');
     ratedFill: "#ffc43d",
   }).on("rateyo.set", function(e, data) {
     var rating = data.rating;
-    //var user_id = $(this).attr('user_id');
     var product_id = $(this).attr('product_id');
-    console.log('rating working?', rating, product_id);
     $(this).next().text(rating);
 
     axios({
@@ -102,7 +98,7 @@ let rating = $("#rateYo").attr('rating');
         product_id,
       }
     }).then(response => {
-        //console.log(response);
+        //
     });
   });
 
@@ -118,7 +114,6 @@ $("#rateYoDisplay").rateYo({
 
 // single reviews
 $('.rate_yo_review').each(function () {
-  //console.log('this is firing...');
   let rating = $(this).attr('rating');
   $(this).rateYo({
     rating: rating,

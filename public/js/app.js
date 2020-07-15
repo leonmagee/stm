@@ -30389,7 +30389,6 @@ $('input.quantity-input').change(function () {
 
 // thumbnail
 $('.rate_yo_thumbnail').each(function () {
-  //console.log('this is firing...');
   var rating = $(this).attr('rating');
   $(this).rateYo({
     rating: rating,
@@ -30403,7 +30402,6 @@ $('.rate_yo_thumbnail').each(function () {
 
 // single modal
 var rating = $("#rateYo").attr('rating');
-//console.log('do we have a raiting?', rating);
 $("#rateYo").rateYo({
   rating: rating,
   fullStar: true,
@@ -30413,9 +30411,7 @@ $("#rateYo").rateYo({
   ratedFill: "#ffc43d"
 }).on("rateyo.set", function (e, data) {
   var rating = data.rating;
-  //var user_id = $(this).attr('user_id');
   var product_id = $(this).attr('product_id');
-  console.log('rating working?', rating, product_id);
   $(this).next().text(rating);
 
   axios({
@@ -30426,7 +30422,7 @@ $("#rateYo").rateYo({
       product_id: product_id
     }
   }).then(function (response) {
-    //console.log(response);
+    //
   });
 });
 
@@ -30442,7 +30438,6 @@ $("#rateYoDisplay").rateYo({
 
 // single reviews
 $('.rate_yo_review').each(function () {
-  //console.log('this is firing...');
   var rating = $(this).attr('rating');
   $(this).rateYo({
     rating: rating,

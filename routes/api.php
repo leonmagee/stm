@@ -17,9 +17,11 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::post('api-tester', function () {
-    return 'this test api is working';
-});
+// Route::post('process-paypal', function () {
+//     return 'our api is working!!!!';
+// });
+
+Route::post('process-paypal', 'PurchaseController@store');
 
 // Works with Amazon SNS/SES to record email bounces
 // Route is /api/email-bounced

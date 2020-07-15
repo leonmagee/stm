@@ -99,7 +99,7 @@
 
     <div class="stm-cart-footer">
       @if(count($items))
-      <div id="paypal-button-container"></div>
+      <div id="paypal-button-container" amount="777" name="Hector"></div>
       @endif
       <a class="button is-primary checkout call-laoder margin-left" href="/products">Continue Shopping</a>
     </div>
@@ -110,31 +110,35 @@
 @endsection
 
 @section('page-script')
-<script>
-  console.log('cart working new?')
-</script>
 <script src="https://www.paypal.com/sdk/js?client-id={{ env('PAYPAL_CLIENT_ID') }}">
 </script>
 
 <script>
   paypal.Buttons({
   createOrder: function(data, actions) {
+    console.log('my data', data);
   // This function sets up the details of the transaction, including the amount and line item details.
   return actions.order.create({
   purchase_units: [{
   amount: {
-  value: '10.99'
+  value: "{{ number_format($total, 2) }}"
   }
   }]
   });
   },
   onApprove: function(data, actions) {
-  // This function captures the funds from the transaction.
-  return actions.order.capture().then(function(details) {
-  // This function shows a transaction success message to your buyer.
-  alert('Transaction completed by ' + details.payer.name.given_name);
-  console.log(details);
-  });
+    // This function captures the funds from the transaction.
+
+    return actions.order.capture().then(function(details) {
+    // This function shows a transaction success message to your buyer.
+        axios.post('/api/process-paypal').then(function(res) {
+        console.log('capture in cart', res);
+        return res.id;
+        });
+
+    alert('Transaction completed by ' + details.payer.name.given_name);
+    console.log(details);
+    });
   }
   }).render('#paypal-button-container');
   //This function displays Smart Payment Buttons on your web page.
