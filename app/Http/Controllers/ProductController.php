@@ -165,7 +165,6 @@ class ProductController extends Controller
      * @return \Illuminate\Http\Response
      */
     function list() {
-        $products = Product::all();
         return view('products.list');
     }
 

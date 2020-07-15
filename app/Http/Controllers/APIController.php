@@ -6,6 +6,7 @@ use App\Helpers;
 use App\Invoice;
 use App\Note;
 use App\Product;
+use App\Purchase;
 use App\ReportType;
 use App\Sim;
 use App\SimMaster;
@@ -51,6 +52,24 @@ class APIController extends Controller
         $products = Product::all();
 
         return datatables($products)->make(true);
+    }
+
+    public function getPurchases()
+    {
+        $purchases = Purchase::with('user')->get();
+        foreach ($purchases as $key => $purchase) {
+            if ($purchase->user) {
+                // $user = $purchase->user->company;
+                // $note->user_name = $user;
+                $purchase->total = '$' . number_format($purchase->total, 2);
+            } else {
+                // remove ones without users
+                unset($purchase[$key]);
+            }
+            $purchase->date = $purchase->created_at->format('m/d/Y');
+        }
+
+        return datatables($purchases)->make(true);
     }
 
     public function getNotes()
