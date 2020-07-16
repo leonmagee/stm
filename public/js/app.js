@@ -114461,7 +114461,7 @@ var Product = function (_Component) {
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_rating_stars_component___default.a, {
                             count: 5,
                             value: rating,
-                            size: 18,
+                            size: 21,
                             edit: false,
                             isHalf: true,
                             activeColor: '#ffc43d'
@@ -114765,7 +114765,7 @@ var ProductSmall = function (_Component) {
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_rating_stars_component___default.a, {
                             count: 5,
                             value: rating,
-                            size: 17,
+                            size: 20,
                             edit: false,
                             isHalf: true,
                             activeColor: '#ffc43d'

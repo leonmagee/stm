@@ -18,7 +18,7 @@ export default class Product extends Component {
                     <ReactStars
                         count={5}
                         value={rating}
-                        size={18}
+                        size={21}
                         edit={false}
                         isHalf={true}
                         activeColor="#ffc43d"
