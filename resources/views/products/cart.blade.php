@@ -122,8 +122,12 @@
   createOrder: function(data, actions) {
     console.log('my data', data);
   // This function sets up the details of the transaction, including the amount and line item details.
+  /**
+  * @todo Add line items here...
+  **/
   return actions.order.create({
   purchase_units: [{
+  description: 'here is a description...',
   amount: {
   value: "{{ number_format($total, 2) }}"
   }
@@ -140,7 +144,9 @@
         //   return res.id;
         // });
 
-        axios.post('/process-paypal').then(function(res) {
+        axios.post('/process-paypal', {
+          total: "{{ number_format($total, 2) }}",
+        }).then(function(res) {
           console.log('capture in cart', res);
           return res.id;
         });

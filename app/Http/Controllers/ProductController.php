@@ -64,25 +64,21 @@ class ProductController extends Controller
 
             // rating
             $user_rating = ProductRating::where(['user_id' => $user_id, 'product_id' => $product->id])->first();
-            if ($user_rating) {
-                $product->rating = $user_rating->stars;
-            } else {
-                $ratings = ProductRating::where('product_id', $product->id)->get();
-                $stars_total = 0;
-                foreach ($ratings as $rating) {
-                    $stars_total += $rating->stars;
-                }
-                if ($count = $ratings->count()) {
-                    $rating_calc = ($stars_total / $count);
-                } else {
-                    $rating_calc = 0;
-                }
-                $product->rating = $rating_calc;
+
+            $ratings = ProductRating::where('product_id', $product->id)->get();
+            $stars_total = 0;
+            foreach ($ratings as $rating) {
+                $stars_total += $rating->stars;
             }
+            if ($count = $ratings->count()) {
+                $rating_calc = ($stars_total / $count);
+            } else {
+                $rating_calc = 0;
+            }
+            $product->rating = $rating_calc;
 
         }
         return $products;
-
     }
 
     /**

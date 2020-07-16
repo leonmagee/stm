@@ -41,7 +41,8 @@
   <div class="product-details__title">{{ $product->name }}</div>
   <div class="product-details__rating">
     <div>
-      <div id="rateYoDisplay" class="rate_yo_no_hover" rating="{{ $product->rating }}"></div>
+      <div id="rateYoDisplay" class="rate_yo_no_hover" rating="{{ (floor($product->rating * 2) / 2) }}">
+      </div>
     </div>
   </div>
   <div class="product-details__flex-space-wrap">

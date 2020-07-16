@@ -43,7 +43,7 @@ class PurchaseController extends Controller
      * @return \Illuminate\Http\Response
      */
     //public function store(User $user)
-    public function store()
+    public function store(Request $request)
     {
         /**
          * Auth doesn't work because I'm using an API route?
@@ -51,6 +51,10 @@ class PurchaseController extends Controller
          * authenitcation would be required, which should be the case, then the user would need to be
          * logged in for it to work, and then I wouldn't need to pass in any data from JavaScript (except for the total) which should make sense.
          */
+        //dd($request);
+        \Log::debug($request->name);
+        \Log::debug($request->address);
+        \Log::debug('from purchase controller working');
         $user_id = \Auth::user()->id;
         Purchase::create([
             'user_id' => $user_id,

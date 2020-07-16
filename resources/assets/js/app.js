@@ -71,6 +71,7 @@ $('.rate_yo_thumbnail').each(function() {
     readOnly: true,
     starWidth: "17px",
     spacing: "2px",
+    halfStar: true,
     //ratedFill: "#D5BE48",
     ratedFill: "#ffc43d",
   });
