@@ -18769,10 +18769,6 @@ body.stm-body .add-padding {
   border-left: 1px solid #ccc;
 }
 
-.header-wrap .header-area a.button.cart i {
-  color: #05d19b;
-}
-
 .header-wrap .header-area a.button input.search {
   font-size: 1.05em;
   padding: 3px;
@@ -18786,6 +18782,10 @@ body.stm-body .add-padding {
 
 .header-wrap .header-area a.button.logout:hover {
   background-color: #ef476f;
+  color: #fff;
+}
+
+.header-wrap .header-area a.button.logout:hover i {
   color: #fff;
 }
 
@@ -18820,9 +18820,17 @@ body.stm-body .add-padding {
   cursor: default;
 }
 
+.header-wrap .header-area a.button i {
+  color: #1b9aaa;
+}
+
 .header-wrap .header-area a.button.online {
   color: #fff;
   background-color: #06dba3;
+}
+
+.header-wrap .header-area a.button.online i {
+  color: #fff;
 }
 
 .header-wrap .header-area a.button.online:hover.not-link {
@@ -18832,6 +18840,10 @@ body.stm-body .add-padding {
 .header-wrap .header-area a.button.locked {
   color: #fff;
   background-color: #ef476f;
+}
+
+.header-wrap .header-area a.button.locked i {
+  color: #fff;
 }
 
 .header-wrap .header-area a.button.locked:hover.not-link {

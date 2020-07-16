@@ -170,9 +170,9 @@
                 border-left: 1px solid #ccc;
             }
             &.cart {
-                i {
-                    color: darken($green, 2%);
-                }
+                // i {
+                //     color: darken($green, 2%);
+                // }
             }
             input.search {
                 //border: none;
@@ -189,6 +189,9 @@
                 &:hover {
                     background-color: $color-red;
                     color: #fff;
+                    i {
+                        color: #fff;
+                    }
                 }
             }
             &.login,
@@ -211,9 +214,15 @@
                     }
                 }
             }
+            i {
+                color: $brand-primary;
+            }
             &.online {
                 color: #fff;
                 background-color: $color-green;
+                i {
+                    color: #fff;
+                }
                 &:hover {
                     &.not-link {
                         cursor: default;
@@ -223,6 +232,9 @@
             &.locked {
                 color: #fff;
                 background-color: $color-red;
+                i {
+                    color: #fff;
+                }
                 &:hover {
                     &.not-link {
                         cursor: default;
