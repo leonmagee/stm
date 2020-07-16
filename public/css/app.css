@@ -22630,9 +22630,12 @@ body.stm-body.about .about-img-wrap img {
   cursor: default !important;
 }
 
+.product-single .out-of-stock {
+  text-align: center;
+}
+
 .product-single .out-of-stock .out-of-stock__text {
   font-weight: 600;
-  font-size: 1.1em;
 }
 
 .product-single .out-of-stock .out-of-stock__date {

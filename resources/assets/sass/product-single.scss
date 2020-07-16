@@ -476,9 +476,10 @@
         cursor: default !important;
     }
     .out-of-stock {
+        text-align: center;
         .out-of-stock__text {
             font-weight: 600;
-            font-size: 1.1em;
+            //font-size: 1.1em;
         }
         .out-of-stock__date {
             color: #444;
