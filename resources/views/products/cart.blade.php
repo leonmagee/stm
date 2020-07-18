@@ -87,7 +87,7 @@
         <div class="stm-cart__item--available"></div>
         <div class="stm-cart__item--subtotal"></div>
         <div class="stm-cart__item--discount"></div>
-        <div class="stm-cart__item--total"><span>${{ $total }}</span></div>
+        <div class="stm-cart__item--total"><span>${{ $total_format }}</span></div>
         <div class="stm-cart__item--delete"></div>
       </div>
       @else
@@ -160,7 +160,7 @@
   onApprove: function(data, actions) {
     return actions.order.capture().then(function(details) {
         axios.post('/process-paypal', {
-          total: "{{ $total }}",
+          total: "{{ $total_format }}",
         }).then(function(res) {
           console.log('capture in cart', res);
           return res.id;

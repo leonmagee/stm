@@ -25,11 +25,14 @@ class CartProductController extends Controller
         foreach ($items as $item) {
             $total += $item->product->discount_cost() * $item->quantity;
         }
-        $total = number_format($total, 2);
-        $service_charge = number_format($total * 2 / 100, 2);
-        $paypal_total = number_format($total + $service_charge, 2);
+        $service_charge = $total * 2 / 100;
+        $paypal_total = $total + $service_charge;
+        $paypal_total = number_format($paypal_total, 2);
+        $service_charge = number_format($service_charge, 2);
+        //dd($service_charge);
         //dd($paypal_total);
-        return view('products.cart', compact('items', 'total', 'paypal_total', 'service_charge'));
+        $total_format = number_format($total, 2);
+        return view('products.cart', compact('items', 'total_format', 'paypal_total', 'service_charge'));
     }
 
     /**
