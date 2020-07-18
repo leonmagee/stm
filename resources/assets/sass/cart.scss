@@ -39,6 +39,9 @@
     }
 }
 .stm-cart {
+    .modal {
+        z-index: 100000;
+    }
     //@include product_bg;
     .stm-cart__item {
         display: flex;
@@ -142,5 +145,10 @@ a.button.continue-shopping {
     &:hover {
         color: #fff;
         opacity: 0.8;
+    }
+}
+#buttons-container {
+    .paypal-powered-by {
+        display: none !important;
     }
 }

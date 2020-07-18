@@ -21,8 +21,15 @@ class CartProductController extends Controller
     {
         $user_id = \Auth::user()->id;
         $items = CartProduct::where('user_id', $user_id)->get();
-        // get cart data for user
-        return view('products.cart', compact('items'));
+        $total = 0;
+        foreach ($items as $item) {
+            $total += $item->product->discount_cost() * $item->quantity;
+        }
+        $total = number_format($total, 2);
+        $service_charge = number_format($total * 2 / 100, 2);
+        $paypal_total = number_format($total + $service_charge, 2);
+        //dd($paypal_total);
+        return view('products.cart', compact('items', 'total', 'paypal_total', 'service_charge'));
     }
 
     /**

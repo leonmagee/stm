@@ -71,6 +71,14 @@ class Product extends Model
         return $final;
     }
 
+    public function discount_cost()
+    {
+        if ($this->discount) {
+            return $this->cost * ((100 - $this->discount) / 100);
+        }
+        return $this->cost;
+    }
+
     public function get_cloudinary_thumbnail($width, $height)
     {
         if ($image_url = $this->img_url_1) {

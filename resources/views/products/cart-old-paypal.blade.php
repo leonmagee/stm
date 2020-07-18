@@ -120,54 +120,154 @@
 @if(count($items))
 <script>
   paypal.Buttons({
-    createOrder: function(data, actions) {
-      return actions.order.create({
-        purchase_units: [{
-        amount: {
-          currency_code: "USD",
-          value: "{{ $paypal_total }}",
-          breakdown: {
-            item_total: {
-              currency_code: "USD",
-              value: "{{ $paypal_total }}",
-            }
-          }
-        },
-        items: [
-            @foreach($items as $item)
-            {
-            name: "{{ $item->product->name }} | {{ $item->variation }}",
-            unit_amount: {
-              currency_code: "USD",
-              value: "{{ $item->product->discount_cost() }}",
-            },
-            quantity: "{{ $item->quantity }}"
-            },
-            @endforeach
-            {
-              name: "Service Charge",
-              unit_amount: {
-                currency_code: "USD",
-                value: "{{ $service_charge }}",
-              },
-              quantity: "1"
-            },
-          ]
-        }
-      ],
-    });
+  style: {
+    // layout: 'vertical',
+    // color: 'blue',
+    // shape: 'pill',
+    // label: 'paypal'
+    },
+  createOrder: function(data, actions) {
+    console.log('my data', data);
+  // This function sets up the details of the transaction, including the amount and line item details.
+  /**
+  * @todo Add line items here...
+  **/
+ //purchase_units[].amount.breakdown.item_total
+  return actions.order.create({
+  purchase_units: [{
+  description: 'here is a description...',
+  amount: {
+  currency_code: "USD",
+  value: "{{ $total }}",
+  breakdown: {
+    item_total: {
+      currency_code: "USD",
+      value: "{{ $total }}",
+    }
+  }
+  },
+  //paypal_instruction: 'sldfjldfjdf',
+  items: [
+    @foreach($items as $item)
+    {
+    name: "{{ $item->product->name }} | {{ $item->variation }}",
+    unit_amount: {
+      currency_code: "USD",
+      value: "{{ $item->product->discount_cost() }}",
+    },
+    quantity: "{{ $item->quantity }}"
+    },
+    @endforeach
+    ]
+  }
+],
+// purchase_units  > amount > breakdown > item_total
+// purchase_units: [
+// {
+// // "reference_id": "PUHF",
+// // "description": "Sporting Goods",
+// // "custom_id": "CUST-HighFashions",
+// // "soft_descriptor": "HighFashions",
+// amount: {
+// currency_code: "USD",
+// value: 180,
+// breakdown: {
+// item_total: {
+// currency_code: "USD",
+// value: 180
+// },
+// // "shipping": {
+// // "currency_code": "USD",
+// // "value": "30.00"
+// // },
+// // "handling": {
+// // "currency_code": "USD",
+// // "value": "10.00"
+// // },
+// // "tax_total": {
+// // "currency_code": "USD",
+// // "value": "20.00"
+// // },
+// // "shipping_discount": {
+// // "currency_code": "USD",
+// // "value": "10"
+// // }
+// }
+// },
+// "items": [
+// {
+// name: "T-Shirt",
+// description: "Green XL",
+// //sku: "sku01",
+// unit_amount: {
+// currency_code: "USD",
+// value: 90
+// },
+// // "tax": {
+// // "currency_code": "USD",
+// // "value": "10.00"
+// // },
+// quantity: 1,
+// category: "PHYSICAL_GOODS"
+// },
+// {
+// name: "Shoes",
+// description: "Running, Size 10.5",
+// //sku: "sku02",
+// unit_amount: {
+// currency_code: "USD",
+// value: 45
+// },
+// // "tax": {
+// // "currency_code": "USD",
+// // "value": "5.00"
+// // },
+// quantity: 2,
+// category: "PHYSICAL_GOODS"
+// }
+// ],
+// // "shipping": {
+// // "method": "United States Postal Service",
+// // "address": {
+// // "name": {
+// // "full_name":"John",
+// // "surname":"Doe"
+// // },
+// // "address_line_1": "123 Townsend St",
+// // "address_line_2": "Floor 6",
+// // "admin_area_2": "San Francisco",
+// // "admin_area_1": "CA",
+// // "postal_code": "94107",
+// // "country_code": "US"
+// // }
+// // }
+// }
+// ]
+  });
   },
   onApprove: function(data, actions) {
+    // This function captures the funds from the transaction.
+
     return actions.order.capture().then(function(details) {
+    // This function shows a transaction success message to your buyer.
+        // axios.post('/api/process-paypal/1').then(function(res) {
+        //   console.log('capture in cart', res);
+        //   return res.id;
+        // });
+
         axios.post('/process-paypal', {
           total: "{{ $total }}",
         }).then(function(res) {
           console.log('capture in cart', res);
           return res.id;
         });
+
+      //alert('Transaction completed by ' + details.payer.name.given_name);
+      console.log(details);
     });
   }
   }).render('#paypal-button-container');
+  //This function displays Smart Payment Buttons on your web page.
 </script>
 @endif
 @endsection

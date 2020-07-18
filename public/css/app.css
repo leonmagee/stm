@@ -22883,6 +22883,10 @@ body.stm-body.about .about-img-wrap img {
   background: #f7f7f7;
 }
 
+.stm-cart .modal {
+  z-index: 100000;
+}
+
 .stm-cart .stm-cart__item {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -23014,6 +23018,10 @@ a.button.continue-shopping {
 a.button.continue-shopping:hover {
   color: #fff;
   opacity: 0.8;
+}
+
+#buttons-container .paypal-powered-by {
+  display: none !important;
 }
 
 .xdsoft_datetimepicker {

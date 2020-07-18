@@ -1,1 +1,1 @@
-<script type="text/javascript" src="{{ URL::asset('js/app.js?ver=1.1.63') }}"></script>
+<script type="text/javascript" src="{{ URL::asset('js/app.js?ver=1.1.64') }}"></script>
