@@ -1,0 +1,33 @@
+.purchase {
+    margin: 1em;
+    padding: 1em;
+    .purchase__row {
+        display: flex;
+        .purchase_item {
+            flex: 1;
+            padding: 0.5em 1em;
+            border: 1px solid #ddd;
+            border-right: none;
+            border-bottom: none;
+            &.purchase_item--product_name {
+                flex: 0 1 30%;
+            }
+            &:last-child {
+                border-right: 1px solid #ddd;
+            }
+        }
+        &.purchase__row--header {
+            font-weight: 600;
+            font-size: 0.9em;
+            color: #555;
+        }
+        &.purchase__row--body {
+            //margin-bottom: 1em;
+            &:last-child {
+                .purchase_item {
+                    border-bottom: 1px solid #ddd;
+                }
+            }
+        }
+    }
+}
