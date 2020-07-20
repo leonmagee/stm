@@ -145,12 +145,24 @@ a.button.custom-button {
     color: #fff;
     border: none;
     width: 100%;
-    padding: 1.37em 1em;
+    padding: 1.47em 1em;
     text-transform: uppercase;
+    &.stm-total {
+        background-color: $red;
+        margin-bottom: 0.9em;
+        span {
+            font-size: 1.3em;
+            margin-left: 0.4em;
+        }
+        &:hover {
+            cursor: default;
+            opacity: 1;
+        }
+    }
     &.stm-credit {
         margin-bottom: 0.9em;
-        //background-color: $red;
         background-color: lighten($red, 2%);
+        background-color: darken($product-blue, 2%);
     }
     &.continue-shopping {
         background-color: lighten($product-blue, 7%);

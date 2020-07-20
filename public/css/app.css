@@ -23018,13 +23018,29 @@ a.button.custom-button {
   color: #fff;
   border: none;
   width: 100%;
-  padding: 1.37em 1em;
+  padding: 1.47em 1em;
   text-transform: uppercase;
+}
+
+a.button.custom-button.stm-total {
+  background-color: #ff3860;
+  margin-bottom: 0.9em;
+}
+
+a.button.custom-button.stm-total span {
+  font-size: 1.3em;
+  margin-left: 0.4em;
+}
+
+a.button.custom-button.stm-total:hover {
+  cursor: default;
+  opacity: 1;
 }
 
 a.button.custom-button.stm-credit {
   margin-bottom: 0.9em;
   background-color: #ff4268;
+  background-color: #0070ac;
 }
 
 a.button.custom-button.continue-shopping {
@@ -23089,6 +23105,11 @@ a.button.custom-button:hover {
 
 .purchase .purchase__row.purchase__row--body:last-child .purchase_item {
   border-bottom: 1px solid #ddd;
+}
+
+.purchase-complete .purchase-complete__body {
+  font-size: 1.2em;
+  margin-bottom: 1.5em;
 }
 
 .xdsoft_datetimepicker {

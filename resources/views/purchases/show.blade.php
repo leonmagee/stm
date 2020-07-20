@@ -4,7 +4,7 @@
 
 <div class="form-wrapper">
   <div class="form-wrapper-inner">
-    <h3>Purchase Record</h3>
+    <h3>Purchase Order</h3>
     <div class="purchase">
       <div class="purchase__row purchase__row--header">
         <div class="purchase_item">Purchase ID</div>

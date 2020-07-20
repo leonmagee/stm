@@ -30,6 +30,7 @@ Route::group(['middleware' => 'App\Http\Middleware\LockOutUsersManagers'], funct
     Route::get('purchases', 'PurchaseController@index');
     Route::get('purchases/{purchase}', 'PurchaseController@show');
     Route::post('process-paypal', 'PurchaseController@store');
+    Route::get('purchase-complete', 'PurchaseController@purchase_complete');
 
     //Route::get('products-carousel', 'ProductController@index_carousel');
     Route::get('products/{product}', 'ProductController@show');
