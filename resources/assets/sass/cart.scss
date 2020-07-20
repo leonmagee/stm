@@ -1,19 +1,19 @@
 .cart-wrapper {
     //background: tomato;
     display: flex;
-    background: $info;
-    background: $product-blue;
+    //background: $info;
+    background: darken($product-blue, 7%);
     padding: 2em;
     height: 100%;
     .cart-wrapper-inner {
         //padding: 1em;
         border-radius: $border-radius;
         overflow: hidden;
-        box-shadow: 1px 1px rgba(0, 0, 0, 0.05);
+        box-shadow: 1px 1px rgba(0, 0, 0, 0.1);
         //border: 1px solid #eee;
         h3 {
             //color: darken($info, 11%);
-            color: darken($product-blue, 2%);
+            color: darken($product-blue, 10%);
             background: #ddd;
             text-align: center;
             font-size: 1.1em;
@@ -29,12 +29,13 @@
     }
     .cart-wrapper-left {
         background: #f7f7f7;
-        flex: 1;
+        flex: 0 1 75%;
         @media (min-width: $screen-md) {
             margin-right: 2em;
         }
     }
     .cart-wrapper-right {
+        flex: 0 1 25%;
         background: #f7f7f7;
     }
 }

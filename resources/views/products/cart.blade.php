@@ -117,17 +117,6 @@
 <script src="https://www.paypal.com/sdk/js?client-id={{ env('PAYPAL_CLIENT_ID') }}">
 </script>
 
-<script>
-  var js_total = 0;
-  @foreach($items as $item)
-    js_total = js_total + parseFloat("{{ $item->product->discount_cost() * $item->quantity }}");
-  @endforeach
-
-  js_total = js_total + parseFloat("{{ $service_charge }}");
-  console.log('custom total', js_total);
-  console.log('paypal total', parseFloat("{{ $paypal_total }}"));
-</script>
-
 @if(count($items))
 <script>
   paypal.Buttons({
@@ -136,12 +125,10 @@
         purchase_units: [{
         amount: {
           currency_code: "USD",
-          //value: parseFloat("{{ $paypal_total }}"),
           value: parseFloat("{{ $paypal_total }}"),
           breakdown: {
             item_total: {
               currency_code: "USD",
-              //value: parseFloat("{{ $paypal_total }}"),
               value: parseFloat("{{ $paypal_total }}"),
             }
           }
@@ -158,7 +145,7 @@
             },
             @endforeach
             {
-              name: "Service Charge",
+              name: "Service Charge (2%)",
               unit_amount: {
                 currency_code: "USD",
                 value: parseFloat("{{ $service_charge }}"),
@@ -173,7 +160,7 @@
   onApprove: function(data, actions) {
     return actions.order.capture().then(function(details) {
         axios.post('/process-paypal', {
-          total: "{{ $total }}",
+          total: "{{ $paypal_total }}",
         }).then(function(res) {
           console.log('capture in cart', res);
           return res.id;

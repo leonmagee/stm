@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\CartProduct;
 use App\Purchase;
+use App\PurchaseProduct;
 use App\User;
 use Illuminate\Http\Request;
 
@@ -42,24 +44,32 @@ class PurchaseController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    //public function store(User $user)
     public function store(Request $request)
     {
-        /**
-         * Auth doesn't work because I'm using an API route?
-         * But is there a reason to use an API route? It might be better to not use it, then
-         * authenitcation would be required, which should be the case, then the user would need to be
-         * logged in for it to work, and then I wouldn't need to pass in any data from JavaScript (except for the total) which should make sense.
-         */
-        //dd($request);
-        \Log::debug($request->name);
-        \Log::debug($request->address);
-        \Log::debug('from purchase controller working');
+        \Log::debug($request);
         $user_id = \Auth::user()->id;
-        Purchase::create([
+
+        $purchase = Purchase::create([
             'user_id' => $user_id,
-            'total' => 789,
+            'total' => $request->total,
         ]);
+
+        $cart_items = CartProduct::where('user_id', $user_id)->get();
+        //$total = 0;
+        foreach ($cart_items as $item) {
+            $price = $item->product->discount_cost() * $item->quantity;
+            //$total += $price;
+            PurchaseProduct::create([
+                'purchase_id' => $purchase->id,
+                'product_id' => $item->product_id,
+                'quantity' => $item->quantity,
+                'name' => $item->product->name,
+                'variation' => $item->variation,
+                //'unit'
+                //'subtotal'
+                'price' => $price,
+            ]);
+        }
     }
 
     /**
@@ -70,7 +80,7 @@ class PurchaseController extends Controller
      */
     public function show(Purchase $purchase)
     {
-        //
+        return view('purchases.show', compact('purchase'));
     }
 
     /**

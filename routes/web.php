@@ -28,6 +28,7 @@ Route::group(['middleware' => 'App\Http\Middleware\LockOutUsersManagers'], funct
     Route::get('products', 'ProductController@index');
     Route::get('products-list', 'ProductController@list');
     Route::get('purchases', 'PurchaseController@index');
+    Route::get('purchases/{purchase}', 'PurchaseController@show');
     Route::post('process-paypal', 'PurchaseController@store');
 
     //Route::get('products-carousel', 'ProductController@index_carousel');

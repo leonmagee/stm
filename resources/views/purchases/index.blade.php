@@ -16,7 +16,6 @@
           <th>User</th>
           <th>Total</th>
           <th></th>
-          <th></th>
         </tr>
       </thead>
       <tbody>
@@ -40,20 +39,6 @@
 { "data": "user.company" },
 { "data": "user.name" },
 { "data": "total" },
-// { "data": "archived",
-// "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
-// if(oData.archived == 0) {
-// $(nTd).html("<span class='completed'>Live</span>");
-// }
-// else if(oData.archived == 1) {
-// $(nTd).html("<span class='pending'>Archived</span>");
-// }
-// }
-// },
-{ "data": "id", "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
-$(nTd).html("<a class='invoice-view' href='/purchases/edit/" + oData.id + "'>Edit</a>");
-}
-},
 { "data": "id", "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
 $(nTd).html("<a class='invoice-view' href='/purchases/" + oData.id + "'>View</a>");
 }
