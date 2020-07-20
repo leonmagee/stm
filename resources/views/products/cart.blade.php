@@ -112,7 +112,7 @@
     <div class="stm-cart-footer">
       @if(count($items))
       <div id="paypal-button-container"></div>
-      <a class="button custom-button stm-credit" href="/stm-credit">Pay with STM Credit</a>
+      <a class="button custom-button stm-credit" href="/stm-credit">Pay with STM Balance</a>
       @endif
       <a class="button custom-button continue-shopping" href="/products">Continue Shopping</a>
     </div>
