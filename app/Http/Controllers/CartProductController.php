@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\CartProduct;
+use App\ProductVariation;
 use Illuminate\Http\Request;
 
 class CartProductController extends Controller
@@ -24,6 +25,10 @@ class CartProductController extends Controller
         $total = 0;
         foreach ($items as $item) {
             $total += $item->product->discount_cost() * $item->quantity;
+            $variation = ProductVariation::where(['product_id' => $item->product_id, 'text' => $item->variation])->first();
+            if ($variation->quantity < 1) {
+                $item->delete();
+            }
         }
         $service_charge = number_format($total * 2 / 100, 2);
         $paypal_total = $total + $service_charge;

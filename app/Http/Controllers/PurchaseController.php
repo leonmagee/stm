@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\CartProduct;
+//use App\Product;
+use App\ProductVariation;
 use App\Purchase;
 use App\PurchaseProduct;
 use App\User;
@@ -49,27 +51,47 @@ class PurchaseController extends Controller
         \Log::debug($request);
         $user_id = \Auth::user()->id;
 
+        // 1. Create purchase record
         $purchase = Purchase::create([
             'user_id' => $user_id,
             'total' => $request->total,
         ]);
 
         $cart_items = CartProduct::where('user_id', $user_id)->get();
-        //$total = 0;
         foreach ($cart_items as $item) {
-            $price = $item->product->discount_cost() * $item->quantity;
-            //$total += $price;
+            // 2. Add PuchaseProduct records (for each product)
+            $final_cost = $item->product->discount_cost() * $item->quantity;
             PurchaseProduct::create([
                 'purchase_id' => $purchase->id,
                 'product_id' => $item->product_id,
                 'quantity' => $item->quantity,
                 'name' => $item->product->name,
                 'variation' => $item->variation,
-                //'unit'
-                //'subtotal'
-                'price' => $price,
+                'discount' => $item->product->discount,
+                'unit_cost' => $item->product->cost,
+                'final_cost' => $final_cost,
             ]);
+            // 3. Update item quantity
+            $product_variation = ProductVariation::where([
+                'product_id' => $item->product_id,
+                'text' => $item->variation,
+            ])->first();
+            $new_quantity = $product_variation->quantity - $item->quantity;
+            if ($new_quantity < 0) {
+                $new_quantity = 0;
+            }
+            $product_variation->quantity = $new_quantity;
+            $product_variation->save();
+            // 4. Clear out cart item
+            $item->delete();
         }
+
+        // 5. Email user who made purchse
+
+        // 6. Email admins
+
+        // 7. Redirect, or display message of completion
+
     }
 
     /**

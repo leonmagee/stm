@@ -7,6 +7,13 @@
     <h3>Shopping Cart <i class="fas fa-cart-plus"></i></h3>
 
     <div class="stm-cart">
+      <div class="notification is-success" id="payment-complete-notification">
+
+        <button class="delete"></button>
+
+        Your purchase is complete. You will receive an email with purchase details.
+
+      </div>
 
       @if(count($items))
 
@@ -104,9 +111,10 @@
     <h3>Checkout <i class="far fa-credit-card"></i></h3>
     <div class="stm-cart-footer">
       @if(count($items))
-      <div id="paypal-button-container" amount="777" name="Hector"></div>
+      <div id="paypal-button-container"></div>
+      <a class="button custom-button stm-credit" href="/stm-credit">Pay with STM Credit</a>
       @endif
-      <a class="button continue-shopping" href="/products">Continue Shopping</a>
+      <a class="button custom-button continue-shopping" href="/products">Continue Shopping</a>
     </div>
   </div>
 </div>
@@ -114,12 +122,18 @@
 @endsection
 
 @section('page-script')
-<script src="https://www.paypal.com/sdk/js?client-id={{ env('PAYPAL_CLIENT_ID') }}">
-</script>
+<script src="https://www.paypal.com/sdk/js?client-id={{ env('PAYPAL_CLIENT_ID') }}"></script>
 
 @if(count($items))
 <script>
   paypal.Buttons({
+    style: {
+      //layout: 'horizontal',
+      // color: 'blue',
+      // shape: 'pill',
+      label: 'buynow',
+      //tagline: false, // only applies to horizontal layout
+    },
     createOrder: function(data, actions) {
       return actions.order.create({
         purchase_units: [{
@@ -162,8 +176,10 @@
         axios.post('/process-paypal', {
           total: "{{ $paypal_total }}",
         }).then(function(res) {
-          console.log('capture in cart', res);
-          return res.id;
+          $('#payment-complete-notification').show();
+          //console.log('capture in cart', res);
+          //return res.id;
+          // dispaly success message
         });
     });
   }

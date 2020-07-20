@@ -26,10 +26,11 @@
         <div class="purchase_item">Product ID</div>
         <div class="purchase_item purchase_item--product_name">Product Name</div>
         <div class="purchase_item">Color</div>
-        <div class="purchase_item">Quantity</div>
         <div class="purchase_item">Unit Cost</div>
+        <div class="purchase_item">Quantity</div>
+        <div class="purchase_item">Subtotal</div>
         <div class="purchase_item">Discount</div>
-        <div class="purchase_item">Item Cost</div>
+        <div class="purchase_item">Item Total</div>
       </div>
       @foreach($purchase->products as $product)
       <div class="purchase__row purchase__row--body">
@@ -37,10 +38,11 @@
         <div class="purchase_item purchase_item--product_name"><a
             href="/products/{{ $product->product_id }}">{{ $product->name }}</a></div>
         <div class=" purchase_item">{{ $product->variation }}</div>
+        <div class="purchase_item">${{ number_format($product->unit_cost, 2) }}</div>
         <div class="purchase_item">{{ $product->quantity }}</div>
-        <div class="purchase_item">${{ number_format($product->price, 2) }}</div>
-        <div class="purchase_item">{{ $product->discount }}</div>
-        <div class="purchase_item">${{ number_format($product->price, 2) }}</div>
+        <div class="purchase_item">{{ number_format($product->unit_cost * $product->quantity, 2) }}</div>
+        <div class="purchase_item">{{ $product->discount ? $product->discount . '%' : '' }}</div>
+        <div class="purchase_item">${{ number_format($product->final_cost, 2) }}</div>
       </div>
       @endforeach
     </div>
