@@ -117,6 +117,7 @@
       //tagline: false, // only applies to horizontal layout
     },
     createOrder: function(data, actions) {
+      $('.stm-absolute-wrap#loader-wrap').css({ display: 'flex' });
       return actions.order.create({
         purchase_units: [{
         amount: {

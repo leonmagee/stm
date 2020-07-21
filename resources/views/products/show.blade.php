@@ -78,11 +78,9 @@
           </div>
           @endif
           <div class="product-details__quantity">
-
             <input class="input" type="number" min="1" name="quantity" id="quantity-input" class="quantity-input"
               placeholder="{{ $product->initial_quantity() }} Max" max_quantity="{{ $product->initial_quantity() }}"
               required />
-
           </div>
           <button class="add-to-cart"><i class="fas fa-cart-plus"></i>Add To Cart</button>
           @else

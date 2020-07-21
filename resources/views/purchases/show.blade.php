@@ -24,7 +24,7 @@
         <div class="purchase_item">{{ $purchase->user->name }}</div>
         @if($purchase->type == 'paypal')
         <div class="purchase_item">${{ number_format($purchase->sub_total, 2) }}</div>
-        <div class="purchase_item">{{ number_format($purchase->sub_total * 2 / 100, 2) }}</div>
+        <div class="purchase_item">${{ number_format($purchase->sub_total * 2 / 100, 2) }}</div>
         @endif
         <div class="purchase_item">${{ number_format($purchase->total, 2) }}</div>
         <div class="purchase_item purchase_item--type">{{ $purchase->type }}</div>
