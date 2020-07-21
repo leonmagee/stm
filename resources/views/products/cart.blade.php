@@ -95,7 +95,13 @@
     <a class="button custom-button stm-total">Total Due: <span>${{ $total }}</span></a>
     @if(count($items))
     <div id="paypal-button-container"></div>
-    <a class="button custom-button stm-credit" href="/stm-credit">Pay with STM Balance</a>
+    <a class="button custom-button stm-credit" href="/stm-credit">
+      <span>
+        <div>Pay With</div>
+        <div>Balance</div>
+      </span>
+      <img src="{{ URL::asset('img/stm_logo_white.png') }}" />
+    </a>
     @endif
     <a class="button custom-button continue-shopping" href="/products">Continue Shopping</a>
   </div>

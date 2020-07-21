@@ -23039,8 +23039,23 @@ a.button.custom-button.stm-total:hover {
 
 a.button.custom-button.stm-credit {
   margin-bottom: 0.9em;
-  background-color: #ff4268;
-  background-color: #0070ac;
+  background-color: #333;
+  height: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+a.button.custom-button.stm-credit span {
+  color: #eee;
+}
+
+a.button.custom-button.stm-credit img {
+  max-width: 50%;
 }
 
 a.button.custom-button.continue-shopping {

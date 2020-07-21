@@ -161,8 +161,18 @@ a.button.custom-button {
     }
     &.stm-credit {
         margin-bottom: 0.9em;
-        background-color: lighten($red, 2%);
-        background-color: darken($product-blue, 2%);
+        background-color: #333;
+        height: auto;
+        display: flex;
+        justify-content: space-around;
+        padding-left: 0;
+        padding-right: 0;
+        span {
+            color: #eee;
+        }
+        img {
+            max-width: 50%;
+        }
     }
     &.continue-shopping {
         background-color: lighten($product-blue, 7%);
