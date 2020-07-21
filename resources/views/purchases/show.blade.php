@@ -7,11 +7,11 @@
     <h3>Purchase Order</h3>
     <div class="purchase">
       <div class="purchase__row purchase__row--header">
-        <div class="purchase_item">Purchase ID</div>
+        <div class="purchase_item">Purchase Order #</div>
         <div class="purchase_item">Company</div>
         <div class="purchase_item">Name</div>
         <div class="purchase_item">Total</div>
-        <div class="purchase_item">Date</div>
+        <div class="purchase_item">Purchase Date</div>
       </div>
       <div class="purchase__row purchase__row--body">
         <div class="purchase_item">{{ $purchase->id }}</div>
