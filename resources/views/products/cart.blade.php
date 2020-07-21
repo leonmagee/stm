@@ -96,11 +96,12 @@
     @if(count($items))
     <div id="paypal-button-container"></div>
     <a class="button custom-button stm-credit" href="/stm-credit">
+      <img src="{{ URL::asset('img/stm_logo_short.png') }}" />
       <span>
-        <div>Pay With</div>
-        <div>Balance</div>
+        Pay With Balance
+        {{-- <div>Pay With</div>
+        <div>Balance</div> --}}
       </span>
-      <img src="{{ URL::asset('img/stm_logo_white.png') }}" />
     </a>
     @endif
     <a class="button custom-button continue-shopping" href="/products">Continue Shopping</a>

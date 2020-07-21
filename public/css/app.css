@@ -23046,16 +23046,15 @@ a.button.custom-button.stm-credit {
   display: flex;
   -ms-flex-pack: distribute;
       justify-content: space-around;
-  padding-left: 0;
-  padding-right: 0;
+  padding: 1em 0.5em;
 }
 
 a.button.custom-button.stm-credit span {
-  color: #eee;
+  color: #ddd;
 }
 
 a.button.custom-button.stm-credit img {
-  max-width: 50%;
+  max-width: 35%;
 }
 
 a.button.custom-button.continue-shopping {

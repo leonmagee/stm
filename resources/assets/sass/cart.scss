@@ -165,13 +165,12 @@ a.button.custom-button {
         height: auto;
         display: flex;
         justify-content: space-around;
-        padding-left: 0;
-        padding-right: 0;
+        padding: 1em 0.5em;
         span {
-            color: #eee;
+            color: #ddd;
         }
         img {
-            max-width: 50%;
+            max-width: 35%;
         }
     }
     &.continue-shopping {

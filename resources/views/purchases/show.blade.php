@@ -15,7 +15,7 @@
         <div class="purchase_item">Service Charge</div>
         @endif
         <div class="purchase_item">Total</div>
-        <div class="purchase_item">Purchase Type</div>
+        <div class="purchase_item">Payment Type</div>
         <div class="purchase_item">Purchase Date</div>
       </div>
       <div class="purchase__row purchase__row--body">

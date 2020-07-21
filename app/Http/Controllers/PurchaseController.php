@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\CartProduct;
 //use App\Product;
+use App\Mail\PurchaseEmail;
 use App\ProductVariation;
 use App\Purchase;
 use App\PurchaseProduct;
@@ -59,17 +60,18 @@ class PurchaseController extends Controller
     public function store(Request $request)
     {
         //\Log::debug($request);
-        $user_id = \Auth::user()->id;
+        // 0. Get logged in user
+        $user = \Auth::user();
 
         // 1. Create purchase record
         $purchase = Purchase::create([
-            'user_id' => $user_id,
+            'user_id' => $user->id,
             'sub_total' => $request->sub_total,
             'total' => $request->total,
             'type' => $request->type,
         ]);
 
-        $cart_items = CartProduct::where('user_id', $user_id)->get();
+        $cart_items = CartProduct::where('user_id', $user->id)->get();
         foreach ($cart_items as $item) {
             // 2. Add PuchaseProduct records (for each product)
             $final_cost = $item->product->discount_cost() * $item->quantity;
@@ -99,10 +101,18 @@ class PurchaseController extends Controller
         }
 
         // 5. Email user who made purchse
+        \Mail::to($user)->send(new PurchaseEmail(
+            $user
+        ));
 
         // 6. Email admins
-
-        // 7. Redirect, or display message of completion
+        $admins = User::getAdminManageerUsers();
+        // foreach ($admins as $admin) {
+        //     \Mail::to($admin)->send(new PurchaseAdminEmail(
+        //         $admin,
+        //         $user,
+        //     ));
+        // }
 
     }
 
