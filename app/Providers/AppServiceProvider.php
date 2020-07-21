@@ -289,7 +289,7 @@ class AppServiceProvider extends ServiceProvider
                     'link' => '/products-list',
                 ],
                 [
-                    'name' => 'Purchases',
+                    'name' => 'Purchase Orders',
                     'link' => '/purchases',
                 ],
                 [

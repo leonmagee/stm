@@ -6,12 +6,12 @@
 
   <div class="form-wrapper-inner">
 
-    <h3>All Purchases</h3>
+    <h3>Purchase Orders</h3>
 
     <table id="sims_table" class="stripe compact">
       <thead>
         <tr>
-          <th>Id</th>
+          <th>Purchase Order #</th>
           <th>Company</th>
           <th>User</th>
           <th>Total</th>
@@ -35,7 +35,10 @@
 "ajax": "{!! route('api.purchases.index') !!}",
 "order": [[ 0, "desc" ]],
 "columns": [
-{ "data": "id" },
+{ "data": "id", "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
+$(nTd).html("GSW-" + oData.id);
+}
+},
 { "data": "user.company" },
 { "data": "user.name" },
 { "data": "total" },

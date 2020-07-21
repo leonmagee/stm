@@ -23107,9 +23107,14 @@ a.button.custom-button:hover {
   border-bottom: 1px solid #ddd;
 }
 
+.purchase-complete {
+  padding-left: 1em;
+}
+
 .purchase-complete .purchase-complete__body {
   font-size: 1.2em;
-  margin-bottom: 1.5em;
+  margin-bottom: 1.1em;
+  padding-top: 0.2em;
 }
 
 .xdsoft_datetimepicker {

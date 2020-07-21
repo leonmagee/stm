@@ -14,7 +14,7 @@
         <div class="purchase_item">Purchase Date</div>
       </div>
       <div class="purchase__row purchase__row--body">
-        <div class="purchase_item">{{ $purchase->id }}</div>
+        <div class="purchase_item">GSW-{{ $purchase->id }}</div>
         <div class="purchase_item">{{ $purchase->user->company }}</div>
         <div class="purchase_item">{{ $purchase->user->name }}</div>
         <div class="purchase_item">${{ number_format($purchase->total, 2) }}</div>
