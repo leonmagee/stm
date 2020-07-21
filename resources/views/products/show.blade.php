@@ -78,13 +78,10 @@
           </div>
           @endif
           <div class="product-details__quantity">
-            <?php if(isset($product->variations[0]->quantity)) {
-              $quantity = $product->variations[0]->quantity;
-            } else {
-              $quantity = 1;
-            } ?>
+
             <input class="input" type="number" min="1" name="quantity" id="quantity-input" class="quantity-input"
-              placeholder="{{ $quantity }} Max" max_quantity="{{ $quantity }}" required />
+              placeholder="{{ $product->initial_quantity() }} Max" max_quantity="{{ $product->initial_quantity() }}"
+              required />
 
           </div>
           <button class="add-to-cart"><i class="fas fa-cart-plus"></i>Add To Cart</button>

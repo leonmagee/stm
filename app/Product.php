@@ -14,6 +14,16 @@ class Product extends Model
         return $this->hasMany(ProductVariation::class);
     }
 
+    public function initial_quantity()
+    {
+        foreach ($this->variations as $variation) {
+            if ($variation->quantity) {
+                return $variation->quantity;
+            }
+        }
+        return 0;
+    }
+
     public function in_stock()
     {
         foreach ($this->variations as $variation) {

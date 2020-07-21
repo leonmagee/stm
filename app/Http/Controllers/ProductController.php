@@ -331,6 +331,9 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
+
+        //dd($product->variations);
+        $product->initial_quantity();
         for ($i = 1; $i <= $this->num_images; $i++) {
             if ($resource = $product->{"img_url_" . $i}) {
                 if (strpos($resource, 'video') !== false) {
