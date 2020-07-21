@@ -33,7 +33,6 @@
     </div>
     <div class="purchase">
       <div class="purchase__row purchase__row--header">
-        <div class="purchase_item">Product ID</div>
         <div class="purchase_item purchase_item--product_name">Product Name</div>
         <div class="purchase_item">Color</div>
         <div class="purchase_item">Unit Cost</div>
@@ -44,7 +43,6 @@
       </div>
       @foreach($purchase->products as $product)
       <div class="purchase__row purchase__row--body">
-        <div class="purchase_item">{{ $product->product_id }}</div>
         <div class="purchase_item purchase_item--product_name"><a
             href="/products/{{ $product->product_id }}">{{ $product->name }}</a></div>
         <div class=" purchase_item">{{ $product->variation }}</div>
