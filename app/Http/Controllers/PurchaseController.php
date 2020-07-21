@@ -58,13 +58,15 @@ class PurchaseController extends Controller
      */
     public function store(Request $request)
     {
-        \Log::debug($request);
+        //\Log::debug($request);
         $user_id = \Auth::user()->id;
 
         // 1. Create purchase record
         $purchase = Purchase::create([
             'user_id' => $user_id,
+            'sub_total' => $request->sub_total,
             'total' => $request->total,
+            'type' => $request->type,
         ]);
 
         $cart_items = CartProduct::where('user_id', $user_id)->get();

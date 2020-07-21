@@ -156,6 +156,7 @@
   onApprove: function(data, actions) {
     return actions.order.capture().then(function(details) {
         axios.post('/process-paypal', {
+          sub_total: "{{ $total }}",
           total: "{{ $paypal_total }}",
           type: 'paypal'
         }).then(function(res) {

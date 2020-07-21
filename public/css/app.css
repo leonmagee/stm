@@ -23093,6 +23093,10 @@ a.button.custom-button:hover {
           flex: 0 1 30%;
 }
 
+.purchase .purchase__row .purchase_item.purchase_item--type {
+  text-transform: uppercase;
+}
+
 .purchase .purchase__row .purchase_item:last-child {
   border-right: 1px solid #ddd;
 }

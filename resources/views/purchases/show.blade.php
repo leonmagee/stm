@@ -10,14 +10,24 @@
         <div class="purchase_item">Purchase Order #</div>
         <div class="purchase_item">Company</div>
         <div class="purchase_item">Name</div>
+        @if($purchase->type == 'paypal')
+        <div class="purchase_item">Subtotal</div>
+        <div class="purchase_item">Service Charge</div>
+        @endif
         <div class="purchase_item">Total</div>
+        <div class="purchase_item">Purchase Type</div>
         <div class="purchase_item">Purchase Date</div>
       </div>
       <div class="purchase__row purchase__row--body">
         <div class="purchase_item">GSW-{{ $purchase->id }}</div>
         <div class="purchase_item">{{ $purchase->user->company }}</div>
         <div class="purchase_item">{{ $purchase->user->name }}</div>
+        @if($purchase->type == 'paypal')
+        <div class="purchase_item">${{ number_format($purchase->sub_total, 2) }}</div>
+        <div class="purchase_item">{{ number_format($purchase->sub_total * 2 / 100, 2) }}</div>
+        @endif
         <div class="purchase_item">${{ number_format($purchase->total, 2) }}</div>
+        <div class="purchase_item purchase_item--type">{{ $purchase->type }}</div>
         <div class="purchase_item">{{ $purchase->created_at->format('m/d/Y') }}</div>
       </div>
     </div>

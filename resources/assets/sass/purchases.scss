@@ -12,6 +12,9 @@
             &.purchase_item--product_name {
                 flex: 0 1 30%;
             }
+            &.purchase_item--type {
+                text-transform: uppercase;
+            }
             &:last-child {
                 border-right: 1px solid #ddd;
             }
