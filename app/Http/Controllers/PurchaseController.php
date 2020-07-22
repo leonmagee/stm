@@ -57,6 +57,21 @@ class PurchaseController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+    public function store_test(Request $request)
+    {
+        $request->sub_total = 777;
+        $request->total = 812;
+        $request->type = 'paypal';
+        //dd($request->type);
+        $this->store($request);
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
     public function store(Request $request)
     {
         //\Log::debug($request);
@@ -97,7 +112,10 @@ class PurchaseController extends Controller
             $product_variation->quantity = $new_quantity;
             $product_variation->save();
             // 4. Clear out cart item
-            $item->delete();
+            /**
+             * @todo resume deleting
+             */
+            //$item->delete();
         }
 
         // 5. Email user who made purchse

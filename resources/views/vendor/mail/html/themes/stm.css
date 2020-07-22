@@ -458,6 +458,11 @@ img.email-header-logo {
 .invoice-wrap .table.custom tr .desc-column {
     width: 52%;
 }
+
+.invoice-wrap .table.custom tr .name-column {
+    width: 20%;
+}
+
 .invoice-wrap .table.custom tr .item {
     white-space: nowrap;
 }
@@ -497,6 +502,13 @@ img.email-header-logo {
     color: #111;
     border-bottom: none;
 }
+
+/* Purchases */
+.purchase-email .purchase-email__table table {
+    width: 100%;
+}
+
+/* Misc */
 .bottom-thanks {
     margin-top: 20px;
 }
