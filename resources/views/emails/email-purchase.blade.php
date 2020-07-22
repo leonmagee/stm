@@ -21,6 +21,7 @@ Hello {{ $user->name }}, thank you for your purchase!
   </div>
 
   <div class="invoice-wrap__middle">
+
     <table class="table custom">
       <tr class="header-row">
         <th>Item</th>

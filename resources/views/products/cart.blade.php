@@ -92,17 +92,16 @@
 <div class="cart-wrapper-right cart-wrapper-inner">
   <h3>Checkout <i class="far fa-credit-card"></i></h3>
   <div class="stm-cart-footer">
-    <a class="button custom-button stm-total">Total Due: <span>${{ $total }}</span></a>
+    <a class="button custom-button stm-total"><span class="text">Total Due:</span><span
+        class="total">${{ $total }}</span></a>
     @if(count($items))
-    <div id="paypal-button-container"></div>
     <a class="button custom-button stm-credit" href="/stm-credit">
       <img src="{{ URL::asset('img/stm_logo_short.png') }}" />
       <span>
         Pay With Balance
-        {{-- <div>Pay With</div>
-        <div>Balance</div> --}}
       </span>
     </a>
+    <div id="paypal-button-container"></div>
     @endif
     <a class="button custom-button continue-shopping" href="/products">Continue Shopping</a>
   </div>

@@ -150,7 +150,12 @@ a.button.custom-button {
     &.stm-total {
         background-color: $red;
         margin-bottom: 0.9em;
-        span {
+        display: flex;
+        align-items: center;
+        span.text {
+            padding-top: 0.1em;
+        }
+        span.total {
             font-size: 1.3em;
             margin-left: 0.4em;
         }
@@ -160,7 +165,7 @@ a.button.custom-button {
         }
     }
     &.stm-credit {
-        margin-bottom: 0.9em;
+        margin-bottom: 0.85em;
         background-color: #333;
         height: auto;
         display: flex;
@@ -174,6 +179,7 @@ a.button.custom-button {
         }
     }
     &.continue-shopping {
+        margin-top: 0.5em;
         background-color: lighten($product-blue, 7%);
     }
     &:hover {
