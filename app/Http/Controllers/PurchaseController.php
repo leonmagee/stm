@@ -102,7 +102,8 @@ class PurchaseController extends Controller
 
         // 5. Email user who made purchse
         \Mail::to($user)->send(new PurchaseEmail(
-            $user
+            $user,
+            $purchase
         ));
 
         // 6. Email admins

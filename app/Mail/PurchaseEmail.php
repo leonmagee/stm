@@ -11,15 +11,17 @@ class PurchaseEmail extends Mailable
     use Queueable, SerializesModels;
 
     public $user;
+    public $purchase;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($user)
+    public function __construct($user, $purchase)
     {
         $this->user = $user;
+        $this->purchase = $purchase;
     }
 
     /**

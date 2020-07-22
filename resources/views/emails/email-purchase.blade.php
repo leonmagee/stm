@@ -2,46 +2,57 @@
 
 Hello {{ $user->name }}, thank you for your purchase!
 
+Purchase Details:
 
+<table class="table custom">
+  <tr class="header-row">
+    <th>Purchase Order #</th>
+    {{-- <th>Company</th>
+    <th>Name</th> --}}
+    @if($purchase->type == 'paypal')
+    <th>Subtotal</th>
+    <th>Service Charge</th>
+    @endif
+    <th>Total</th>
+    <th>Payment Type</th>
+    <th>Purchase Date</th>
+  </tr>
+  <tr class="item">
+    <td class="">GSW-{{ $purchase->id }}</td>
+    {{-- <td class="">{{ $purchase->user->company }}</td>
+    <td class="">{{ $purchase->user->name }}</td> --}}
+    @if($purchase->type == 'paypal')
+    <td class="">${{ number_format($purchase->sub_total, 2) }}</td>
+    <td class="">${{ number_format($purchase->sub_total * 2 / 100, 2) }}</td>
+    @endif
+    <td class="">${{ number_format($purchase->total, 2) }}</td>
+    <td class="">{{ $purchase->type }}</td>
+    <td class="">{{ $purchase->created_at->format('m/d/Y') }}</td>
+  </tr>
+</table>
 
-
-<div class="invoice-wrap">
-
-  <div class="invoice-wrap__header">
-    <div class="address-block">
-      <div>GS Wireless, Inc.</div>
-      <div>100 Park Plaza, #3301</div>
-      <div>San Diego, CA 92101</div>
-      <div>gs-wireless@att.net</div>
-      <div>619-795-9200</div>
-    </div>
-    <div class="invoice-title">
-      <span>Purchase</span>
-    </div>
-  </div>
-
-  <div class="invoice-wrap__middle">
-
-    <table class="table custom">
-      <tr class="header-row">
-        <th>Item</th>
-        <th class="desc-column">Description</th>
-        <th>Unit Price</th>
-        <th>Quantity</th>
-        <th>Cost</th>
-      </tr>
-      <tr class="item">
-        <td class="item">sdfl</td>
-        <td class="desc-column">sdf</td>
-        <td class="cost">sdfs</td>
-        <td class="misc">sdf</td>
-        <td class="total">dlfjd</td>
-      </tr>
-    </table>
-
-  </div>{{-- invoice-wrap__middle --}}
-
-</div>
+<table class="table custom">
+  <tr class="header-row">
+    <th>Product Name</th>
+    <th>Color</th>
+    <th>Unit Cost</th>
+    <th>Quantity</th>
+    <th>Subtotal</th>
+    <th>Discount</th>
+    <th>Item Total</th>
+  </tr>
+  @foreach($purchase->products as $product)
+  <tr class="item">
+    <td class="">{{ $product->name }}</td>
+    <td class="">{{ $product->variation }}</td>
+    <td class="">${{ number_format($product->unit_cost, 2) }}</td>
+    <td class="">{{ $product->quantity }}</td>
+    <td class="">{{ number_format($product->unit_cost * $product->quantity, 2) }}</td>
+    <td class="">{{ $product->discount ? $product->discount . '%' : '' }}</td>
+    <td class="">${{ number_format($product->final_cost, 2) }}</td>
+  </tr>
+  @endforeach
+</table>
 
 <div class="bottom-thanks">
   <div>Thank you for your business.</div>

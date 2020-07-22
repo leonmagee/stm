@@ -123,7 +123,8 @@
       //tagline: false, // only applies to horizontal layout
     },
     createOrder: function(data, actions) {
-      $('.stm-absolute-wrap#loader-wrap').css({ display: 'flex' });
+      //console.log(paypal, data, actions);
+      //$('.stm-absolute-wrap#loader-wrap').css({ display: 'flex' });
       return actions.order.create({
         purchase_units: [{
         amount: {
@@ -158,9 +159,14 @@
           ]
         }
       ],
+      // redirect_urls: {
+      //   return_url: '/purchase-complete',
+      //   cancel_url: '/purchase-complete',
+      // },
     });
   },
   onApprove: function(data, actions) {
+    $('.stm-absolute-wrap#loader-wrap').css({ display: 'flex' });
     return actions.order.capture().then(function(details) {
         axios.post('/process-paypal', {
           sub_total: "{{ $total }}",
@@ -169,10 +175,7 @@
         }).then(function(res) {
           // redirect to purchase complete page
           window.location.href = "/purchase-complete";
-          //$('#payment-complete-notification').show();
-          //console.log('capture in cart', res);
           //return res.id;
-          // dispaly success message
         });
     });
   }
