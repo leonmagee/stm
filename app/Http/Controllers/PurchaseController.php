@@ -62,6 +62,7 @@ class PurchaseController extends Controller
         $request->sub_total = 777;
         $request->total = 812;
         $request->type = 'paypal';
+        $request->testers = true;
         //dd($request->type);
         $this->store($request);
     }
@@ -113,9 +114,11 @@ class PurchaseController extends Controller
             $product_variation->save();
             // 4. Clear out cart item
             /**
-             * @todo resume deleting
+             * @todo delete conditional when done testing
              */
-            $item->delete();
+            if (!$request->testers) {
+                $item->delete();
+            }
         }
 
         // 5. Email user who made purchse
@@ -124,14 +127,17 @@ class PurchaseController extends Controller
             $purchase
         ));
 
-        // 6. Email admins
+        // 6. Email admins (admins and managers)
         $admins = User::getAdminManageerUsers();
-        // foreach ($admins as $admin) {
-        //     \Mail::to($admin)->send(new PurchaseAdminEmail(
-        //         $admin,
-        //         $user,
-        //     ));
-        // }
+        foreach ($admins as $admin) {
+            if (!$admin->notes_email_disable) {
+                \Mail::to($admin)->send(new PurchaseEmail(
+                    $user,
+                    $purchase,
+                    $admin
+                ));
+            }
+        }
 
     }
 

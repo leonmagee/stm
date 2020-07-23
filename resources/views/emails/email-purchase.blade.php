@@ -1,7 +1,11 @@
 @component('mail::message')
 
+@if($admin)
+Hello {{ $admin->name }}, a purchase order has been submitted by {{ $user->company }} - {{ $user->name }}.
+@else
 Hello {{ $user->name }}, please review your sales receipt. Your order will be shipped ASAP and a tracking number will be
 provided when it becomes available.
+@endif
 
 <div class="invoice-wrap">
   <div class="invoice-wrap__header">
