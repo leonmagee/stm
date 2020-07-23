@@ -115,7 +115,7 @@ class PurchaseController extends Controller
             /**
              * @todo resume deleting
              */
-            //$item->delete();
+            $item->delete();
         }
 
         // 5. Email user who made purchse

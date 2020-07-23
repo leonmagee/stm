@@ -1,9 +1,9 @@
 @component('mail::message')
 
-Hello {{ $user->name }}, thank you for your purchase!
+Hello {{ $user->name }}, please review your sales receipt. Your order will be shipped ASAP and a tracking number will be
+provided when it becomes available.
 
 <div class="invoice-wrap">
-
   <div class="invoice-wrap__header">
     <div class="address-block">
       <div>GS Wireless, Inc.</div>
@@ -13,7 +13,7 @@ Hello {{ $user->name }}, thank you for your purchase!
       <div>619-795-9200</div>
     </div>
     <div class="invoice-title">
-      <span>Purchase Order</span>
+      <span>Sales Receipt</span>
     </div>
   </div>
 
@@ -34,7 +34,7 @@ Hello {{ $user->name }}, thank you for your purchase!
   </div>
 
   <div class="invoice-wrap__middle">
-    <table class="table custom">
+    <table class="table custom small-font">
       <tr class="header-row">
         <th class="name-column">Product Name</th>
         <th>Color</th>
@@ -46,7 +46,7 @@ Hello {{ $user->name }}, thank you for your purchase!
       </tr>
       @foreach($purchase->products as $product)
       <tr class="item-{{ $product->id }}">
-        <td class="item name-column">{{ $product->name }}</td>
+        <td class="name-column">{{ $product->name }}</td>
         <td class="item">{{ $product->variation }}</td>
         <td class="item">${{ number_format($product->unit_cost, 2) }}</td>
         <td class="item">{{ $product->quantity }}</td>
