@@ -6,6 +6,9 @@ use App\Settings;
 
 class Helpers
 {
+    /**
+     * Invoice Status
+     */
     public static function status($id)
     {
         if ($id == 2) {
@@ -16,6 +19,20 @@ class Helpers
             return 'Cancelled';
         } else {
             return 'New';
+        }
+    }
+
+    /**
+     * Purchase Status
+     */
+    public static function purchase_status($id)
+    {
+        if ($id == 2) {
+            return 'Cancelled';
+        } elseif ($id == 3) {
+            return 'Shipped';
+        } else {
+            return 'Pending';
         }
     }
 

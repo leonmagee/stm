@@ -85,6 +85,7 @@ class PurchaseController extends Controller
             'sub_total' => $request->sub_total,
             'total' => $request->total,
             'type' => $request->type,
+            'status' => 1,
         ]);
 
         $cart_items = CartProduct::where('user_id', $user->id)->get();
