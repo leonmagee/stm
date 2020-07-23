@@ -16,7 +16,6 @@
           <div class="stm_inv__header--label">Purchase Order #</div>
           <div class="stm_inv__header--label">Company</div>
           <div class="stm_inv__header--label">Name</div>
-          <div class="stm_inv__header--label">Payment Type</div>
           <div class="stm_inv__header--label">Purchase Date</div>
           <div class="stm_inv__header--label">Status</div>
         </div>
@@ -25,7 +24,6 @@
           <div class="stm_inv__header--item">GSW-{{ $purchase->id }}</div>
           <div class="stm_inv__header--item">{{ $purchase->user->company }}</div>
           <div class="stm_inv__header--item">{{ $purchase->user->name }}</div>
-          <div class="stm_inv__header--item">{{ strtoupper($purchase->type) }}</div>
           <div class="stm_inv__header--item">{{ $purchase->created_at->format('M d, Y') }}</div>
           <div class="stm_inv__header--item stm_inv__header--item-status-{{ $purchase->status }}">
             {{ \App\Helpers::purchase_status($purchase->status) }}
@@ -60,11 +58,13 @@
 
       <div class="stm_inv__header margin-top-1-5">
         <div class="stm_inv__flex">
+          <div class="stm_inv__header--label">Payment Type</div>
           <div class="stm_inv__header--label">Subtotal</div>
           <div class="stm_inv__header--label">Service Charge</div>
           <div class="stm_inv__header--label">Total</div>
         </div>
         <div class="stm_inv__flex">
+          <div class="stm_inv__header--item">{{ strtoupper($purchase->type) }}</div>
           <div class="stm_inv__header--item">${{ number_format($purchase->sub_total, 2) }}</div>
           <div class="stm_inv__header--item stm_inv__header--item-red">
             ${{ number_format($purchase->sub_total * 2 / 100, 2) }}</div>
