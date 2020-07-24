@@ -123,19 +123,26 @@ class PurchaseController extends Controller
         }
 
         // 5. Email user who made purchse
+        $header_text = "<strong>Hello " . $user->name . "!</strong><br />Thanks for giving us the opportunity to serve you. We truly appreciate your business, and we're grateful for the trust you've placed in us. Your tracking number will be provided ASAP when it becomes available.";
+
         \Mail::to($user)->send(new PurchaseEmail(
             $user,
-            $purchase
+            $purchase,
+            $header_text,
+            'Sale Receipt # GSW-' . $purchase->id
         ));
 
         // 6. Email admins (admins and managers)
         $admins = User::getAdminManageerUsers();
         foreach ($admins as $admin) {
             if (!$admin->notes_email_disable) {
+                $header_text = "<strong>Hello " . $admin->name . "!</strong><br />A purchase order has been submitted by " . $user->company . " - " . $user->name;
+
                 \Mail::to($admin)->send(new PurchaseEmail(
                     $user,
                     $purchase,
-                    $admin
+                    $header_text,
+                    'Purchase Order Placed'
                 ));
             }
         }

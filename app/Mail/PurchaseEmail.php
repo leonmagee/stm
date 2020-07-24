@@ -12,18 +12,19 @@ class PurchaseEmail extends Mailable
 
     public $user;
     public $purchase;
-    public $admin;
+    public $header_text;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($user, $purchase, $admin = false)
+    public function __construct($user, $purchase, $header_text, $subject)
     {
         $this->user = $user;
         $this->purchase = $purchase;
-        $this->admin = $admin;
+        $this->header_text = $header_text;
+        $this->subject = $subject;
     }
 
     /**
