@@ -142,7 +142,7 @@ class PurchaseController extends Controller
                     $user,
                     $purchase,
                     $header_text,
-                    'Purchase Order Placed'
+                    'New Purchase Order Placed'
                 ));
             }
         }
