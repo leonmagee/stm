@@ -74,7 +74,7 @@
 
       <div class="stm_inv__header margin-top-1-5">
         <div class="stm_inv__flex">
-          <div class="stm_inv__header--label stm_inv__flex--30">Address</div>
+          <div class="stm_inv__header--label stm_inv__flex--30">Shipping Address</div>
           <div class="stm_inv__header--label">City</div>
           <div class="stm_inv__header--label">State</div>
           <div class="stm_inv__header--label">Zip</div>
