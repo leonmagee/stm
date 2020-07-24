@@ -21466,6 +21466,24 @@ body.stm-body.about .about-img-wrap img {
   padding: 8px 15px;
 }
 
+.stm_inv .stm_inv__flex .stm_inv__header--label.stm_inv__flex--30,
+.stm_inv .stm_inv__flex .stm_inv__header--item.stm_inv__flex--30,
+.stm_inv .stm_inv__flex .stm_inv__item--item.stm_inv__flex--30,
+.stm_inv .stm_inv__flex .stm_inv__item--label.stm_inv__flex--30 {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 30%;
+          flex: 1 1 30%;
+}
+
+.stm_inv .stm_inv__flex .stm_inv__header--label.stm_inv__flex--40,
+.stm_inv .stm_inv__flex .stm_inv__header--item.stm_inv__flex--40,
+.stm_inv .stm_inv__flex .stm_inv__item--item.stm_inv__flex--40,
+.stm_inv .stm_inv__flex .stm_inv__item--label.stm_inv__flex--40 {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 40%;
+          flex: 1 1 40%;
+}
+
 .stm_inv .stm_inv__flex .stm_inv__header--label.stm_inv__flex--60,
 .stm_inv .stm_inv__flex .stm_inv__header--item.stm_inv__flex--60,
 .stm_inv .stm_inv__flex .stm_inv__item--item.stm_inv__flex--60,
@@ -21618,6 +21636,12 @@ body.stm-body.about .about-img-wrap img {
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
+}
+
+.stm_inv .stm_inv__form .stm_inv__form--flex .field.flex-20 {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 1 20%;
+          flex: 0 1 20%;
 }
 
 .stm_inv .stm_imv__finalize {

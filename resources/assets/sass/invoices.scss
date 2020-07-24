@@ -27,6 +27,12 @@
             flex: 1 1 12%;
             border: 1px solid #ccc;
             padding: 8px 15px;
+            &.stm_inv__flex--30 {
+                flex: 1 1 30%;
+            }
+            &.stm_inv__flex--40 {
+                flex: 1 1 40%;
+            }
             &.stm_inv__flex--60 {
                 flex: 1 1 60%;
             }
@@ -139,6 +145,9 @@
                 }
                 &.description {
                     flex: 1;
+                }
+                &.flex-20 {
+                    flex: 0 1 20%;
                 }
             }
         }

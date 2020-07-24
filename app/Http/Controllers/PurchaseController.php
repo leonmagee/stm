@@ -160,6 +160,8 @@ class PurchaseController extends Controller
         $purchase = Purchase::find($request->purchase_id);
         if ($purchase) {
             $purchase->tracking_number = $request->tracking_number;
+            $purchase->shipping_type = $request->shipping_type;
+            $purchase->status = 3;
             $purchase->save();
         }
         session()->flash('message', 'Tracking Number Updated - Emails Sent.');

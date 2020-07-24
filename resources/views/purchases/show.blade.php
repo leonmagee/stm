@@ -72,6 +72,26 @@
         </div>
       </div>
 
+      <div class="stm_inv__header margin-top-1-5">
+        <div class="stm_inv__flex">
+          <div class="stm_inv__header--label stm_inv__flex--30">Address</div>
+          <div class="stm_inv__header--label">City</div>
+          <div class="stm_inv__header--label">State</div>
+          <div class="stm_inv__header--label">Zip</div>
+          <div class="stm_inv__header--label">Tracking Number</div>
+          <div class="stm_inv__header--label">Shipping Service</div>
+        </div>
+        <div class="stm_inv__flex">
+          <div class="stm_inv__header--item stm_inv__flex--30">{{ $purchase->address . ' ' . $purchase->address2 }}
+          </div>
+          <div class="stm_inv__header--item">{{ $purchase->city }}</div>
+          <div class="stm_inv__header--item">{{ $purchase->state }}</div>
+          <div class="stm_inv__header--item">{{ $purchase->zip }}</div>
+          <div class="stm_inv__header--item">{{ $purchase->tracking_number }}</div>
+          <div class="stm_inv__header--item">{{ $purchase->shipping_type }}</div>
+        </div>
+      </div>
+
       @if((\Auth::user()->isAdmin()))
       <div class="stm_inv__flex--forms">
         <div class="stm_inv__form stm_inv__flex--forms-item stm_inv__flex--forms-tracking">
@@ -82,7 +102,18 @@
               <div class="field description">
                 <label class="label" for="description">Tracking Number</label>
                 <div class="control">
-                  <input class="input" type="text" id="tracking_number" name="tracking_number" />
+                  <input class="input" type="text" id="tracking_number" name="tracking_number"
+                    value="{{ $purchase->tracking_number }}" />
+                </div>
+              </div>
+              <div class="field flex-20">
+                <label class="label" for="status">Shipping Type</label>
+                <div class="select">
+                  <select name="shipping_type" id="shipping_type">
+                    <option value="USPS" @if($purchase->shipping_type == "USPS") selected @endif>USPS</option>
+                    <option value="UPS" @if($purchase->shipping_type == "UPS") selected @endif>UPS</option>
+                    <option value="FEDEX" @if($purchase->shipping_type == "FEDEX") selected @endif>FEDEX</option>
+                  </select>
                 </div>
               </div>
             </div>
@@ -108,7 +139,6 @@
                   </select>
                 </div>
               </div>
-
               <div class="field flex-margin margin-top-1">
                 <div class="control">
                   <button class="button is-primary" type="submit">Update</button>
