@@ -129,7 +129,7 @@ class PurchaseController extends Controller
             $user,
             $purchase,
             $header_text,
-            'Sale Receipt # GSW-' . $purchase->id
+            'Sales Receipt # GSW-' . $purchase->id
         ));
 
         // 6. Email admins (admins and managers)
