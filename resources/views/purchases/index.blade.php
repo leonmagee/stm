@@ -55,7 +55,7 @@ $(nTd).html("<span class='new'>New</span>");
 else if(oData.status == 2) {
 $(nTd).html("<span class='pending'>Pending</span>");
 } else if(oData.status == 3) {
-$(nTd).html("<span class='completed'>Paid</span>");
+$(nTd).html("<span class='completed'>Shipped</span>");
 } else if(oData.status == 4) {
 $(nTd).html("<span class='cancelled'>Cancelled</span>");
 }
