@@ -1,5 +1,23 @@
 .stm_inv {
     padding: 1.3em 1.2em;
+    .stm_inv__flex--forms {
+        display: flex;
+        justify-content: space-between;
+        .stm_inv__flex--forms-item {
+            &.stm_inv__flex--forms-tracking {
+                flex: 0 1 79%;
+            }
+            &.stm_inv__flex--forms-status {
+                flex: 0 1 19%;
+                .select {
+                    width: 100%;
+                    select {
+                        width: 100%;
+                    }
+                }
+            }
+        }
+    }
     .stm_inv__flex {
         display: flex;
         .stm_inv__header--label,

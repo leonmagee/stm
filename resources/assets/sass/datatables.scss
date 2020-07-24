@@ -154,6 +154,10 @@ table.dataTable thead .sorting_desc_disabled:after {
     tr {
         th {
             border-color: #ddd;
+            padding-left: 0.4em;
+        }
+        td {
+            padding-left: 0.4em;
         }
     }
 

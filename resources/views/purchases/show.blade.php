@@ -72,65 +72,70 @@
         </div>
       </div>
 
-      {{-- @if(($invoice->status < 3) && (\Auth::user()->isAdmin())) <div class="stm_inv__form">
-          <form method="POST" action="/new-invoice-item">
+      @if((\Auth::user()->isAdmin()))
+      <div class="stm_inv__flex--forms">
+        <div class="stm_inv__form stm_inv__flex--forms-item stm_inv__flex--forms-tracking">
+          <form method="POST" action="/update-shipping-info">
             @csrf
             <div class="stm_inv__form--flex">
-              <input type="hidden" name="invoice_id" value="{{ $invoice->id }}" />
-      <div class="field">
-        <label class="label" for="item">Item</label>
-        <div class="select">
-          <select name="item" id="item">
-            <option value="1">Product</option>
-            <option value="2">Service</option>
-            <option value="3">Discount</option>
-          </select>
+              <input type="hidden" name="purchase_id" value="{{ $purchase->id }}" />
+              <div class="field description">
+                <label class="label" for="description">Tracking Number</label>
+                <div class="control">
+                  <input class="input" type="text" id="tracking_number" name="tracking_number" />
+                </div>
+              </div>
+            </div>
+            <div class="field flex-margin margin-top-1">
+              <div class="control">
+                <button class="button is-primary" type="submit">Ship Purchase Order</button>
+              </div>
+            </div>
+          </form>
         </div>
-      </div>
-      <div class="field description">
-        <label class="label" for="description">Description</label>
-        <div class="control">
-          <input class="input" type="text" id="description" name="description" />
-        </div>
-      </div>
-      <div class="field">
-        <label class="label" for="quantity">Quantity</label>
-        <div class="control">
-          <input class="input" type="number" min="0" id="quantity" name="quantity" />
-        </div>
-      </div>
-      <div class="field">
-        <label class="label" for="cost">Cost</label>
-        <div class="control">
-          <input class="input" type="number" min="0" id="cost" name="cost" step="any" />
-        </div>
-      </div>
-    </div>
-    <div class="field flex-margin">
-      <div class="control">
-        <button class="button is-primary" type="submit">Add Line Item</button>
-      </div>
-    </div>
-    </form>
-  </div>
-  @endif --}}
+        <div class="stm_inv__form stm_inv__flex--forms-item stm_inv__flex--forms-status">
+          <form method="POST" action="/update-purchase-status">
+            @csrf
+            <div class="stm_inv__forms-no-flex">
+              <input type="hidden" name="purchase_id" value="{{ $purchase->id }}" />
+              <div class="field">
+                <label class="label" for="status">Status</label>
+                <div class="select">
+                  <select name="status" id="status">
+                    <option value="2" @if($purchase->status == 2) selected @endif>Pending</option>
+                    <option value="3" @if($purchase->status == 3) selected @endif>Shipped</option>
+                    <option value="4" @if($purchase->status == 4) selected @endif>Cancelled</option>
+                  </select>
+                </div>
+              </div>
 
-  {{-- @if(\Auth::user()->isAdmin())
+              <div class="field flex-margin margin-top-1">
+                <div class="control">
+                  <button class="button is-primary" type="submit">Update</button>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+      @endif
+
+      {{-- @if(\Auth::user()->isAdmin())
         <div class="stm_imv__finalize">
           @if($invoice->status < 4) <a href="#" class="modal-open button is-danger">Email Invoice</a>
             @if($invoice->status < 3) <a class="button is-primary" href="/invoices/edit/{{ $invoice->id }}">Finalize
-  Invoice</a>
-  @else
-  <a disabled class="button is-primary">Finalize Invoice</a>
-  @endif
-  @else
-  <a disabled class="button is-danger">Email Invoice</a>
-  <a disabled class="button is-primary">Finalize Invoice</a>
-  @endif
-</div>
-@endif --}}
+      Invoice</a>
+      @else
+      <a disabled class="button is-primary">Finalize Invoice</a>
+      @endif
+      @else
+      <a disabled class="button is-danger">Email Invoice</a>
+      <a disabled class="button is-primary">Finalize Invoice</a>
+      @endif
+    </div>
+    @endif --}}
 
-</div>
+  </div>
 </div>
 
 </div>

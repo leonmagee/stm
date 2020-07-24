@@ -19436,6 +19436,11 @@ table.dataTable thead .sorting_desc_disabled:after {
 
 #sims_table tr th {
   border-color: #ddd;
+  padding-left: 0.4em;
+}
+
+#sims_table tr td {
+  padding-left: 0.4em;
 }
 
 #sims_table.dataTable.no-footer {
@@ -21415,6 +21420,35 @@ body.stm-body.about .about-img-wrap img {
   padding: 1.3em 1.2em;
 }
 
+.stm_inv .stm_inv__flex--forms {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.stm_inv .stm_inv__flex--forms .stm_inv__flex--forms-item.stm_inv__flex--forms-tracking {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 1 79%;
+          flex: 0 1 79%;
+}
+
+.stm_inv .stm_inv__flex--forms .stm_inv__flex--forms-item.stm_inv__flex--forms-status {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 1 19%;
+          flex: 0 1 19%;
+}
+
+.stm_inv .stm_inv__flex--forms .stm_inv__flex--forms-item.stm_inv__flex--forms-status .select {
+  width: 100%;
+}
+
+.stm_inv .stm_inv__flex--forms .stm_inv__flex--forms-item.stm_inv__flex--forms-status .select select {
+  width: 100%;
+}
+
 .stm_inv .stm_inv__flex {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -23092,13 +23126,22 @@ a.button.custom-button:hover {
 }
 
 .purchase-complete {
-  padding-left: 1em;
+  padding-top: 2em;
+  text-align: center;
+}
+
+.purchase-complete h3 {
+  font-size: 2.7em;
 }
 
 .purchase-complete .purchase-complete__body {
-  font-size: 1.2em;
+  font-size: 1.8em;
   margin-bottom: 1.1em;
   padding-top: 0.2em;
+}
+
+.purchase-complete .purchase-complete__body div {
+  margin-bottom: 0.3em;
 }
 
 .xdsoft_datetimepicker {

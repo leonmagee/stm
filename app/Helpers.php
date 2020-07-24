@@ -28,11 +28,11 @@ class Helpers
     public static function purchase_status($id)
     {
         if ($id == 2) {
-            return 'Cancelled';
+            return 'Pending';
         } elseif ($id == 3) {
             return 'Shipped';
         } else {
-            return 'Pending';
+            return 'Cancelled'; // 4
         }
     }
 

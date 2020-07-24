@@ -85,7 +85,7 @@ class PurchaseController extends Controller
             'sub_total' => $request->sub_total,
             'total' => $request->total,
             'type' => $request->type,
-            'status' => 1,
+            'status' => 2, // pending
         ]);
 
         $cart_items = CartProduct::where('user_id', $user->id)->get();
@@ -140,6 +140,40 @@ class PurchaseController extends Controller
             }
         }
 
+    }
+
+    /**
+     * Update shipping info. Set status to shipped.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function update_shipping(Request $request)
+    {
+        $purchase = Purchase::find($request->purchase_id);
+        if ($purchase) {
+            $purchase->tracking_number = $request->tracking_number;
+            $purchase->save();
+        }
+        session()->flash('message', 'Tracking Number Updated - Emails Sent.');
+        return redirect()->back();
+    }
+
+    /**
+     * Update status
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function update_status(Request $request)
+    {
+        $purchase = Purchase::find($request->purchase_id);
+        if ($purchase) {
+            $purchase->status = $request->status;
+            $purchase->save();
+        }
+        //session()->flash('message', 'status has been updated');
+        return redirect()->back();
     }
 
     /**

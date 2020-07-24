@@ -59,14 +59,12 @@ class APIController extends Controller
         $purchases = Purchase::with('user')->get();
         foreach ($purchases as $key => $purchase) {
             if ($purchase->user) {
-                // $user = $purchase->user->company;
-                // $note->user_name = $user;
                 $purchase->total = '$' . number_format($purchase->total, 2);
             } else {
-                // remove ones without users
                 unset($purchase[$key]);
             }
-            $purchase->date = $purchase->created_at->format('m/d/Y');
+            $purchase->type = \strtoupper($purchase->type);
+            $purchase->date = $purchase->created_at->format('M d, Y');
         }
 
         return datatables($purchases)->make(true);
