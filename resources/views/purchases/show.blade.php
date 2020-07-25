@@ -119,7 +119,7 @@
             </div>
             <div class="field flex-margin margin-top-1">
               <div class="control">
-                <button class="button is-primary" type="submit">Ship Purchase Order</button>
+                <button class="button is-primary call-loader" type="submit">Ship Purchase Order</button>
               </div>
             </div>
           </form>
@@ -141,7 +141,7 @@
               </div>
               <div class="field flex-margin margin-top-1">
                 <div class="control">
-                  <button class="button is-primary" type="submit">Update</button>
+                  <button class="button is-primary call-loader" type="submit">Update</button>
                 </div>
               </div>
             </div>
