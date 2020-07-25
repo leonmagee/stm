@@ -164,7 +164,7 @@ class PurchaseController extends Controller
             $purchase->status = 3;
             $purchase->save();
         }
-        $header_text = "<strong>Hello " . $purchase->user->name . "!</strong><br />Your order has shipped! The tracking number is " . $purchase->tracking_number . " shipped via " . $purchase->shipping_type . ".";
+        $header_text = "<strong>Hello " . $purchase->user->name . "!</strong><br />Your order was shipped by <strong>" . $purchase->shipping_type . "</strong>, the tracking number is <strong>" . $purchase->tracking_number . "</strong>.";
 
         \Mail::to($purchase->user)->send(new PurchaseEmail(
             $purchase->user,
