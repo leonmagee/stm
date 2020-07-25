@@ -103,7 +103,7 @@
                 <label class="label" for="description">Tracking Number</label>
                 <div class="control">
                   <input class="input" type="text" id="tracking_number" name="tracking_number"
-                    value="{{ $purchase->tracking_number }}" />
+                    value="{{ $purchase->tracking_number }}" required />
                 </div>
               </div>
               <div class="field flex-20">
