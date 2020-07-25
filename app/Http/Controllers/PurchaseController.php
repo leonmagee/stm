@@ -123,7 +123,7 @@ class PurchaseController extends Controller
         }
 
         // 5. Email user who made purchse
-        $header_text = "<strong>Hello " . $user->name . "!</strong><br />Thanks for giving us the opportunity to serve you. We truly appreciate your business, and we're grateful for the trust you've placed in us. Your tracking number will be provided ASAP when it becomes available.";
+        $header_text = "<strong>Hello " . $user->name . "!</strong><br />Thanks for giving us the opportunity to serve you. We truly appreciate your business, and we're grateful for the trust you've placed in us. Your tracking number will be provided ASAP when it becomes available. CHEERS!!";
 
         \Mail::to($user)->send(new PurchaseEmail(
             $user,
