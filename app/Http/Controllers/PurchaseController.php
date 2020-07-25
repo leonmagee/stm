@@ -173,19 +173,19 @@ class PurchaseController extends Controller
             'Order Shipped - Tracking Number: ' . $purchase->tracking_number
         ));
 
-        $admins = User::getAdminManageerUsers();
-        foreach ($admins as $admin) {
-            if (!$admin->notes_email_disable) {
-                $header_text = "<strong>Hello " . $admin->name . "!</strong><br />Purchase order has shipped. The tracking number is " . $purchase->tracking_number . " shipped via " . $purchase->shipping_type . ".";
+        // $admins = User::getAdminManageerUsers();
+        // foreach ($admins as $admin) {
+        //     if (!$admin->notes_email_disable) {
+        //         $header_text = "<strong>Hello " . $admin->name . "!</strong><br />Purchase order has shipped. The tracking number is " . $purchase->tracking_number . " shipped via " . $purchase->shipping_type . ".";
 
-                \Mail::to($admin)->send(new PurchaseEmail(
-                    $purchase->user,
-                    $purchase,
-                    $header_text,
-                    'Purchase Order Shipped: ' . $purchase->tracking_number
-                ));
-            }
-        }
+        //         \Mail::to($admin)->send(new PurchaseEmail(
+        //             $purchase->user,
+        //             $purchase,
+        //             $header_text,
+        //             'Purchase Order Shipped: ' . $purchase->tracking_number
+        //         ));
+        //     }
+        // }
 
         session()->flash('message', 'Tracking Number Updated - Emails Sent.');
         return redirect()->back();
