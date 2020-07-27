@@ -171,12 +171,36 @@ class PurchaseController extends Controller
         }
         $header_text = "<strong>Hello " . $purchase->user->name . "!</strong><br />Your order was shipped by <strong>" . $purchase->shipping_type . "</strong>, the tracking number is <strong>" . $purchase->tracking_number . "</strong>.";
 
+        //$email_subject = 'Order Shipped - Tracking Number: ' . $purchase->tracking_number;
+        $email_subject = 'Purchase Order GSW-' . $purchase->id . ' has Shipped';
+
         \Mail::to($purchase->user)->send(new PurchaseEmail(
             $purchase->user,
             $purchase,
             $header_text,
-            'Order Shipped - Tracking Number: ' . $purchase->tracking_number
+            $email_subject
         ));
+
+        if ($cc_user_id = $request->cc_user_1) {
+
+            $cc_user = User::find($cc_user_id);
+
+            \Mail::to($cc_user->email)->send(new PurchaseEmail(
+                $purchase->user,
+                $purchase,
+                $header_text,
+                $email_subject
+            ));
+        }
+        if ($cc_user_2_email = $request->cc_user_2) {
+            \Mail::to($cc_user_2_email)->send(new PurchaseEmail(
+                $purchase->user,
+                $purchase,
+                $header_text,
+                $email_subject
+            ));
+
+        }
 
         // $admins = User::getAdminManageerUsers();
         // foreach ($admins as $admin) {

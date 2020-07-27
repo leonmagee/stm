@@ -123,6 +123,48 @@
                 <a href="#" class="modal-open button is-primary">Ship Purchase Order</a>
               </div>
             </div>
+            <div class="modal" id="layout-modal">
+
+              <div class="modal-background"></div>
+
+              <div class="modal-content">
+
+                <div class="modal-box">
+
+                  <h3 class="title">Are You Sure?</h3>
+
+                  <div class="invoice-modal-flex">
+                    <div class="field">
+                      <label class="label" for="cc_user_1">BCC User</label>
+                      <div class="control">
+                        <div class="select">
+                          <select name="cc_user_1" id="cc_user_1">
+                            <option value="0">---</option>
+                            @foreach($users as $user)
+                            <option value="{{ $user->id }}">{{ $user->company }} - {{ $user->name }}</option>
+                            @endforeach
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="field">
+                      <label class="label" for="cc_user_2">BCC Email Address</label>
+                      <div class="control">
+                        <input class="input" type="email" name="cc_user_2" id="cc_user_2" placeholder="Email Address" />
+                      </div>
+                    </div>
+                  </div>
+                  <button class="button is-danger call-loader" type="submit">Ship Purchase Order</button>
+                  <a href="#" class="modal-close-button button is-primary">Cancel</a>
+
+                </div>
+
+              </div>
+
+              <button class="modal-close is-large" aria-label="close"></button>
+
+            </div>
+
           </form>
         </div>
         <div class="stm_inv__form stm_inv__flex--forms-item stm_inv__flex--forms-status">
@@ -156,39 +198,5 @@
   </div>
 
 </div>
-
-@endsection
-
-@section('modal')
-
-<h3 class="title">Are You Sure?</h3>
-
-<form action="/purchase/finalize/{{ $purchase->id }}" method="POST" class="stm_imv__finalize">
-  @csrf
-  <div class="invoice-modal-flex">
-    <div class="field">
-      <label class="label" for="cc_user_1">BCC User</label>
-      <div class="control">
-        <div class="select">
-          <select name="cc_user_1" id="cc_user_1">
-            <option value="0">---</option>
-            @foreach($users as $user)
-            <option value="{{ $user->id }}">{{ $user->company }} - {{ $user->name }}</option>
-            @endforeach
-          </select>
-        </div>
-      </div>
-    </div>
-    <div class="field">
-      <label class="label" for="cc_user_2">BCC Email Address</label>
-      <div class="control">
-        <input class="input" type="email" name="cc_user_2" id="cc_user_2" placeholder="Email Address" />
-      </div>
-    </div>
-  </div>
-  <button class="button is-danger call-loader" type="submit">Ship Purchase Order</button>
-  <a href="#" class="modal-close-button button is-primary">Cancel</a>
-</form>
-
 
 @endsection

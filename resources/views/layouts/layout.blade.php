@@ -38,6 +38,7 @@
 
   </div>
 
+  @hassection('modal')
   <div class="modal" id="layout-modal">
 
     <div class="modal-background"></div>
@@ -55,6 +56,7 @@
     <button class="modal-close is-large" aria-label="close"></button>
 
   </div>
+  @endif
 
   @include('layouts.footer')
 
