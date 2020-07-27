@@ -167,7 +167,7 @@
   @csrf
   <div class="invoice-modal-flex">
     <div class="field">
-      <label class="label" for="cc_user_1">BCC User</label>
+      <label class="label" for="cc_user_1">BCC Email Address</label>
       <div class="control">
         <div class="select">
           <select name="cc_user_1" id="cc_user_1">
@@ -180,7 +180,7 @@
       </div>
     </div>
     <div class="field">
-      <label class="label" for="cc_user_2">BCC Another User</label>
+      <label class="label" for="cc_user_2">BCC Another Email Address</label>
       <div class="control">
         <input class="input" type="email" name="cc_user_2" id="cc_user_2" placeholder="Email Address" />
       </div>
