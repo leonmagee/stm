@@ -186,7 +186,7 @@
       </div>
     </div>
   </div>
-  <button class="button is-danger call-loader" type="submit">Email Invoice</button>
+  <button class="button is-danger call-loader" type="submit">Ship Purchase Order</button>
   <a href="#" class="modal-close-button button is-primary">Cancel</a>
 </form>
 
