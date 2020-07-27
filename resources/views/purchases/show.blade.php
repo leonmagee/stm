@@ -163,7 +163,7 @@
 
 <h3 class="title">Are You Sure?</h3>
 
-<form action="/invoice/finalize/{{ $purchase->id }}" method="POST" class="stm_imv__finalize">
+<form action="/purchase/finalize/{{ $purchase->id }}" method="POST" class="stm_imv__finalize">
   @csrf
   <div class="invoice-modal-flex">
     <div class="field">
