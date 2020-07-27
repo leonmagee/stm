@@ -85,6 +85,11 @@ class PurchaseController extends Controller
             'sub_total' => $request->sub_total,
             'total' => $request->total,
             'type' => $request->type,
+            // 'address' => $request->address,
+            // 'address2' => $request->address2,
+            // 'city' => $request->city,
+            // 'state' => $request->state,
+            // 'zip' => $request->zip,
             'status' => 2, // pending
         ]);
 
@@ -216,7 +221,8 @@ class PurchaseController extends Controller
      */
     public function show(Purchase $purchase)
     {
-        return view('purchases.show', compact('purchase'));
+        $users = User::orderBy('company')->get();
+        return view('purchases.show', compact('purchase', 'users'));
     }
 
     /**

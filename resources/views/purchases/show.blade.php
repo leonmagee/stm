@@ -82,11 +82,11 @@
           <div class="stm_inv__header--label">Shipping Service</div>
         </div>
         <div class="stm_inv__flex">
-          <div class="stm_inv__header--item stm_inv__flex--30">{{ $purchase->address . ' ' . $purchase->address2 }}
+          <div class="stm_inv__header--item stm_inv__flex--30">{{ $purchase->user->address  }}
           </div>
-          <div class="stm_inv__header--item">{{ $purchase->city }}</div>
-          <div class="stm_inv__header--item">{{ $purchase->state }}</div>
-          <div class="stm_inv__header--item">{{ $purchase->zip }}</div>
+          <div class="stm_inv__header--item">{{ $purchase->user->city }}</div>
+          <div class="stm_inv__header--item">{{ $purchase->user->state }}</div>
+          <div class="stm_inv__header--item">{{ $purchase->user->zip }}</div>
           <div class="stm_inv__header--item">{{ $purchase->tracking_number }}</div>
           <div class="stm_inv__header--item">{{ $purchase->shipping_type }}</div>
         </div>
@@ -119,7 +119,8 @@
             </div>
             <div class="field flex-margin margin-top-1">
               <div class="control">
-                <button class="button is-primary call-loader" type="submit">Ship Purchase Order</button>
+                {{-- <button class="button is-primary call-loader" type="submit">Ship Purchase Order</button> --}}
+                <a href="#" class="modal-open button is-primary">Ship Purchase Order</a>
               </div>
             </div>
           </form>
@@ -150,23 +151,9 @@
       </div>
       @endif
 
-      {{-- @if(\Auth::user()->isAdmin())
-        <div class="stm_imv__finalize">
-          @if($invoice->status < 4) <a href="#" class="modal-open button is-danger">Email Invoice</a>
-            @if($invoice->status < 3) <a class="button is-primary" href="/invoices/edit/{{ $invoice->id }}">Finalize
-      Invoice</a>
-      @else
-      <a disabled class="button is-primary">Finalize Invoice</a>
-      @endif
-      @else
-      <a disabled class="button is-danger">Email Invoice</a>
-      <a disabled class="button is-primary">Finalize Invoice</a>
-      @endif
-    </div>
-    @endif --}}
 
+    </div>
   </div>
-</div>
 
 </div>
 
@@ -176,32 +163,32 @@
 
 <h3 class="title">Are You Sure?</h3>
 
-{{-- <form action="/invoice/finalize/{{ $invoice->id }}" method="POST" class="stm_imv__finalize">
-@csrf
-<div class="invoice-modal-flex">
-  <div class="field">
-    <label class="label" for="cc_user_1">BCC User</label>
-    <div class="control">
-      <div class="select">
-        <select name="cc_user_1" id="cc_user_1">
-          <option value="0">---</option>
-          @foreach($users as $user)
-          <option value="{{ $user->id }}">{{ $user->company }} - {{ $user->name }}</option>
-          @endforeach
-        </select>
+<form action="/invoice/finalize/{{ $purchase->id }}" method="POST" class="stm_imv__finalize">
+  @csrf
+  <div class="invoice-modal-flex">
+    <div class="field">
+      <label class="label" for="cc_user_1">BCC User</label>
+      <div class="control">
+        <div class="select">
+          <select name="cc_user_1" id="cc_user_1">
+            <option value="0">---</option>
+            @foreach($users as $user)
+            <option value="{{ $user->id }}">{{ $user->company }} - {{ $user->name }}</option>
+            @endforeach
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="field">
+      <label class="label" for="cc_user_2">BCC Another User</label>
+      <div class="control">
+        <input class="input" type="email" name="cc_user_2" id="cc_user_2" placeholder="Email Address" />
       </div>
     </div>
   </div>
-  <div class="field">
-    <label class="label" for="cc_user_2">BCC Another User</label>
-    <div class="control">
-      <input class="input" type="email" name="cc_user_2" id="cc_user_2" placeholder="Email Address" />
-    </div>
-  </div>
-</div>
-<button class="button is-danger call-loader" type="submit">Email Invoice</button>
-<a href="#" class="modal-close-button button is-primary">Cancel</a>
-</form> --}}
+  <button class="button is-danger call-loader" type="submit">Email Invoice</button>
+  <a href="#" class="modal-close-button button is-primary">Cancel</a>
+</form>
 
 
 @endsection

@@ -123,7 +123,7 @@
       //tagline: false, // only applies to horizontal layout
     },
     createOrder: function(data, actions) {
-      //console.log(paypal, data, actions);
+      console.log('one', paypal, data, actions);
       //$('.stm-absolute-wrap#loader-wrap').css({ display: 'flex' });
       return actions.order.create({
         purchase_units: [{
@@ -167,12 +167,16 @@
   },
   onApprove: function(data, actions) {
     $('.stm-absolute-wrap#loader-wrap').css({ display: 'flex' });
+    console.log('two', data, actions, 'payer?', data.payer, data.payerID, data.orderID, data.payerAddress, data.payments, data.transactions);
     return actions.order.capture().then(function(details) {
         axios.post('/process-paypal', {
           sub_total: "{{ $total }}",
           total: "{{ $paypal_total }}",
-          type: 'paypal'
+          type: 'paypal',
+          //testers: true,
         }).then(function(res) {
+          //console.log('res', res);
+          //console.log('McDetails?', details, details.payer, details.payer.address);
           // redirect to purchase complete page
           window.location.href = "/purchase-complete";
           //return res.id;
