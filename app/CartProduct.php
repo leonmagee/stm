@@ -18,8 +18,23 @@ class CartProduct extends Model
         return 0;
     }
 
-    // public function variation()
-    // {
-    //     return $this->belongsTo(ProductVariation::class, 'product_variation_id');
-    // }
+    public function cart_variations()
+    {
+
+        $product_id = $this->product->id;
+        $cart_items = self::where(['product_id' => $product_id])->whereNotIn('id', [$this->id])->get();
+        $chosen_variations = [];
+        foreach ($cart_items as $item) {
+            $chosen_variations[] = $item->variation;
+        }
+        $variations = $this->product->variations;
+        $new_variations = [];
+        foreach ($variations as $variation) {
+            $text = $variation->text;
+            if (!in_array($text, $chosen_variations)) {
+                $new_variations[] = $text;
+            }
+        }
+        return $new_variations;
+    }
 }

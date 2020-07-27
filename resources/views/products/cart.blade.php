@@ -22,6 +22,7 @@
         <div class="stm-cart__item--delete"></div>
       </div>
       @foreach($items as $item)
+      <?php $item->cart_variations(); ?>
       <form class="stm-cart__form" method="POST" action="update-cart-item/{{ $item->id }}">
         @csrf
         <div class="stm-cart__item stm-cart__item--body">
@@ -32,12 +33,12 @@
             <a href="/products/{{ $item->product->id }}">{{ $item->product->name }}</a>
           </div>
           <div class="stm-cart__item--variation">
-            @if(count(($item->product->variations)))
+            @if(count(($item->cart_variations())))
             <div class="select">
               <select name="variation" class="variation-select">
-                @foreach($item->product->variations as $variation)
-                <option @if($item->variation == $variation->text) selected @endif
-                  value={{ $variation->text }}>{{ $variation->text }}</option>
+                @foreach($item->cart_variations() as $variation)
+                <option @if($item->variation == $variation) selected @endif
+                  value={{ $variation }}>{{ $variation }}</option>
                 @endforeach
               </select>
             </div>
