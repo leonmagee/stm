@@ -134,7 +134,8 @@ class PurchaseController extends Controller
             $user,
             $purchase,
             $header_text,
-            'Sales Receipt # GSW-' . $purchase->id
+            'Sales Receipt # GSW-' . $purchase->id,
+            true
         ));
 
         // 6. Email admins (admins and managers)
@@ -147,7 +148,8 @@ class PurchaseController extends Controller
                     $user,
                     $purchase,
                     $header_text,
-                    'New Purchase Order Placed'
+                    'New Purchase Order Placed',
+                    false
                 ));
             }
         }
@@ -169,6 +171,7 @@ class PurchaseController extends Controller
             $purchase->status = 3;
             $purchase->save();
         }
+
         $header_text = "<strong>Hello " . $purchase->user->name . "!</strong><br />Your order has shipped. Here is your <strong>" . $purchase->shipping_type . "</strong> tracking number: <strong>" . $purchase->tracking_number . "</strong>.";
 
         $email_subject = 'Purchase Order GSW-' . $purchase->id . ' has Shipped';
@@ -177,7 +180,8 @@ class PurchaseController extends Controller
             $purchase->user,
             $purchase,
             $header_text,
-            $email_subject
+            $email_subject,
+            true
         ));
 
         if ($cc_user_id = $request->cc_user_1) {
@@ -188,7 +192,8 @@ class PurchaseController extends Controller
                 $purchase->user,
                 $purchase,
                 $header_text,
-                $email_subject
+                $email_subject,
+                false
             ));
         }
         if ($cc_user_2_email = $request->cc_user_2) {
@@ -196,7 +201,8 @@ class PurchaseController extends Controller
                 $purchase->user,
                 $purchase,
                 $header_text,
-                $email_subject
+                $email_subject,
+                false
             ));
 
         }
