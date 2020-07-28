@@ -378,8 +378,6 @@ class ProductController extends Controller
         $user_id = \Auth::user()->id;
         // $user_rating = ProductRating::where(['user_id' => $user_id, 'product_id' => $product->id])->first();
         // if ($user_rating) {
-        //     $product->rating = $user_rating->stars;
-        // } else {
         $ratings = ProductRating::where('product_id', $product->id)->get();
         $stars_total = 0;
         foreach ($ratings as $rating) {
@@ -391,21 +389,24 @@ class ProductController extends Controller
             $rating_calc = 0;
         }
         $product->rating = $rating_calc;
-        //}
 
         $num_images = $this->num_images;
         $num_tab_images = $this->num_tab_images;
         $num_tab_videos = $this->num_tab_videos;
 
+        // NUMBER CORRESPONDS TO CATEGORY ID
         $products = self::product_data(1); // phones
         $products2 = self::product_data(2); // tempered glass
-        $products3 = self::product_data(3); // power banks
+        //$products3 = self::product_data(3); // power banks (cat deleted)
+        $products4 = self::product_data(4); // wall chargers
+        $products6 = self::product_data(6); // usb cables
 
         return view('products.show', compact(
             'product',
             'products',
             'products2',
-            'products3',
+            'products4',
+            'products6',
             'num_images',
             'num_tab_images',
             'num_tab_videos'

@@ -5,10 +5,11 @@ import ProductList from './products/ProductList';
 export default class ProductsCarousel extends Component {
     constructor(props) {
         super(props);
+        const products = JSON.parse(props.products);
         this.state = {
-            products: JSON.parse(props.products),
+            products: products,
             i: 0,
-            num: 2,
+            num: (products.length > 1) ? 2 : 1,
         };
     }
 
@@ -46,14 +47,20 @@ export default class ProductsCarousel extends Component {
         let final = this.parseIndex(i + x, length);
         productsDisplay.push(products[final])
       }
+      let leftNav = <i className="fas fa-chevron-circle-left products-nav products-nav--hidden"></i>;
+      let rightNav = <i className="fas fa-chevron-circle-right products-nav products-nav--hidden"></i>;
+      if(length > 2) {
+        leftNav = <i onClick={() => this.scroll(-1)} className="fas fa-chevron-circle-left products-nav"></i>;
+        rightNav = <i onClick={() => this.scroll(1)} className="fas fa-chevron-circle-right products-nav"></i>;
+      }
 
       return (
           <div className="products-outer products-outer--carousel">
-              <i onClick={() => this.scroll(-1)} className="fas fa-chevron-circle-left products-nav"></i>
-              <div className="products-inner-wrap">
-            <ProductList products={productsDisplay} display="carousel" />
-              </div>
-              <i onClick={() => this.scroll(1)} className="fas fa-chevron-circle-right products-nav"></i>
+            {leftNav}
+            <div className="products-inner-wrap">
+              <ProductList products={productsDisplay} display="carousel" />
+            </div>
+            {rightNav}
           </div>
       );
     }
@@ -79,12 +86,22 @@ if (document.getElementById("products-carousel2")) {
     );
 }
 
-if (document.getElementById("products-carousel3")) {
+if (document.getElementById("products-carousel4")) {
     const products = document
-        .getElementById("products-carousel3")
+        .getElementById("products-carousel4")
         .getAttribute("products");
     ReactDOM.render(
         <ProductsCarousel products={products} />,
-        document.getElementById("products-carousel3")
+        document.getElementById("products-carousel4")
+    );
+}
+
+if (document.getElementById("products-carousel6")) {
+    const products = document
+        .getElementById("products-carousel6")
+        .getAttribute("products");
+    ReactDOM.render(
+        <ProductsCarousel products={products} />,
+        document.getElementById("products-carousel6")
     );
 }

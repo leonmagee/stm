@@ -21670,12 +21670,10 @@ body.stm-body.about .about-img-wrap img {
 
 .product-single__carousel h2 {
   text-align: center;
-  margin-top: 1em;
-  padding-bottom: 0.1em;
-  margin-bottom: 0.2em;
+  color: #242424;
+  margin-top: 1.8em;
   font-size: 1.3em;
   font-weight: 600;
-  border-bottom: 1px solid #e5e5e5;
 }
 
 .products-outer {
@@ -21695,9 +21693,6 @@ body.stm-body.about .about-img-wrap img {
 
 .products-outer.products-outer--carousel {
   background: transparent;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -21721,14 +21716,22 @@ body.stm-body.about .about-img-wrap img {
   cursor: pointer;
 }
 
+.products-outer.products-outer--carousel i.products-nav.products-nav--hidden {
+  opacity: 0;
+}
+
+.products-outer.products-outer--carousel i.products-nav.products-nav--hidden:hover {
+  cursor: default;
+}
+
 .products-outer.products-outer--carousel .products-inner-wrap {
   padding: 1%;
 }
 
 .products-outer.products-outer--carousel .products-inner-wrap .products .product {
-  -webkit-box-flex: 1;
-      -ms-flex: 1 1 0px;
-          flex: 1 1 0;
+  -webkit-box-flex: 0;
+      -ms-flex: 0 1 47.4%;
+          flex: 0 1 47.4%;
 }
 
 @media (min-width: 980px) {

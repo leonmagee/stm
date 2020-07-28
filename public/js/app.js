@@ -114619,10 +114619,11 @@ var ProductsCarousel = function (_Component) {
 
     var _this = _possibleConstructorReturn(this, (ProductsCarousel.__proto__ || Object.getPrototypeOf(ProductsCarousel)).call(this, props));
 
+    var products = JSON.parse(props.products);
     _this.state = {
-      products: JSON.parse(props.products),
+      products: products,
       i: 0,
-      num: 2
+      num: products.length > 1 ? 2 : 1
     };
     return _this;
   }
@@ -114674,21 +114675,27 @@ var ProductsCarousel = function (_Component) {
         var final = this.parseIndex(i + x, length);
         productsDisplay.push(products[final]);
       }
+      var leftNav = __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', { className: 'fas fa-chevron-circle-left products-nav products-nav--hidden' });
+      var rightNav = __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', { className: 'fas fa-chevron-circle-right products-nav products-nav--hidden' });
+      if (length > 2) {
+        leftNav = __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', { onClick: function onClick() {
+            return _this2.scroll(-1);
+          }, className: 'fas fa-chevron-circle-left products-nav' });
+        rightNav = __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', { onClick: function onClick() {
+            return _this2.scroll(1);
+          }, className: 'fas fa-chevron-circle-right products-nav' });
+      }
 
       return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
         'div',
         { className: 'products-outer products-outer--carousel' },
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', { onClick: function onClick() {
-            return _this2.scroll(-1);
-          }, className: 'fas fa-chevron-circle-left products-nav' }),
+        leftNav,
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
           'div',
           { className: 'products-inner-wrap' },
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__products_ProductList__["a" /* default */], { products: productsDisplay, display: 'carousel' })
         ),
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', { onClick: function onClick() {
-            return _this2.scroll(1);
-          }, className: 'fas fa-chevron-circle-right products-nav' })
+        rightNav
       );
     }
   }]);
@@ -114709,9 +114716,14 @@ if (document.getElementById("products-carousel2")) {
   __WEBPACK_IMPORTED_MODULE_1_react_dom___default.a.render(__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(ProductsCarousel, { products: _products }), document.getElementById("products-carousel2"));
 }
 
-if (document.getElementById("products-carousel3")) {
-  var _products2 = document.getElementById("products-carousel3").getAttribute("products");
-  __WEBPACK_IMPORTED_MODULE_1_react_dom___default.a.render(__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(ProductsCarousel, { products: _products2 }), document.getElementById("products-carousel3"));
+if (document.getElementById("products-carousel4")) {
+  var _products2 = document.getElementById("products-carousel4").getAttribute("products");
+  __WEBPACK_IMPORTED_MODULE_1_react_dom___default.a.render(__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(ProductsCarousel, { products: _products2 }), document.getElementById("products-carousel4"));
+}
+
+if (document.getElementById("products-carousel6")) {
+  var _products3 = document.getElementById("products-carousel6").getAttribute("products");
+  __WEBPACK_IMPORTED_MODULE_1_react_dom___default.a.render(__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(ProductsCarousel, { products: _products3 }), document.getElementById("products-carousel6"));
 }
 
 /***/ }),
