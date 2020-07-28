@@ -60,9 +60,31 @@ export default class ProductsCarousel extends Component {
 }
 
 if (document.getElementById('products-carousel')) {
-  const products = document.getElementById('products-carousel').getAttribute('products');
+    const products = document
+        .getElementById('products-carousel')
+        .getAttribute('products');
+      ReactDOM.render(
+        <ProductsCarousel products={products} />,
+        document.getElementById('products-carousel')
+      );
+}
+
+if (document.getElementById("products-carousel2")) {
+    const products = document
+        .getElementById("products-carousel2")
+        .getAttribute("products");
     ReactDOM.render(
-      <ProductsCarousel products={products} />,
-      document.getElementById('products-carousel')
+        <ProductsCarousel products={products} />,
+        document.getElementById("products-carousel2")
+    );
+}
+
+if (document.getElementById("products-carousel3")) {
+    const products = document
+        .getElementById("products-carousel3")
+        .getAttribute("products");
+    ReactDOM.render(
+        <ProductsCarousel products={products} />,
+        document.getElementById("products-carousel3")
     );
 }

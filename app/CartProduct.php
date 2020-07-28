@@ -20,7 +20,6 @@ class CartProduct extends Model
 
     public function cart_variations()
     {
-
         $product_id = $this->product->id;
         $cart_items = self::where(['product_id' => $product_id])->whereNotIn('id', [$this->id])->get();
         $chosen_variations = [];

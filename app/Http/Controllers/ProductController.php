@@ -31,12 +31,18 @@ class ProductController extends Controller
      * @todo this is just for the carousel right now. Extend to make other methods more DRY.
      * @return \Illuminate\Http\Response
      */
-    private static function product_data()
+    private static function product_data($cat = false)
     {
-        //$products = Product::all();
         $user_id = \Auth::user()->id;
 
-        $products = Product::where('archived', 0)->get();
+        if ($cat) {
+            $products = Product::whereHas('categories', function ($query) use ($cat) {
+                $query->where('category_id', $cat);
+            })->where('archived', 0)->get();
+
+        } else {
+            $products = Product::where('archived', 0)->get();
+        }
 
         foreach ($products as $product) {
             if ($image_url = $product->img_url_1) {
@@ -391,9 +397,19 @@ class ProductController extends Controller
         $num_tab_images = $this->num_tab_images;
         $num_tab_videos = $this->num_tab_videos;
 
-        $products = $products = self::product_data();
+        $products = self::product_data(1); // phones
+        $products2 = self::product_data(2); // tempered glass
+        $products3 = self::product_data(3); // power banks
 
-        return view('products.show', compact('product', 'products', 'num_images', 'num_tab_images', 'num_tab_videos'));
+        return view('products.show', compact(
+            'product',
+            'products',
+            'products2',
+            'products3',
+            'num_images',
+            'num_tab_images',
+            'num_tab_videos'
+        ));
     }
 
     /**

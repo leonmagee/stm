@@ -32,10 +32,24 @@
   @else
   <div class="product-single__images--default"><i class="far fa-image"></i></div>
   @endif
+  @if(count($products))
   <div class="product-single__carousel">
-    <h2>More Products You May Also Like</h2>
+    <h2>More Phones You May Also Like</h2>
     <div id="products-carousel" class="products-react-carousel" products='{{ $products }}'></div>
   </div>
+  @endif
+  @if(count($products2))
+  <div class="product-single__carousel">
+    <h2>More Tempered Glass You May Also Like</h2>
+    <div id="products-carousel2" class="products-react-carousel" products='{{ $products2 }}'></div>
+  </div>
+  @endif
+  @if(count($products3))
+  <div class="product-single__carousel">
+    <h2>More Wall Chargers You May Also Like</h2>
+    <div id="products-carousel3" class="products-react-carousel" products='{{ $products3 }}'></div>
+  </div>
+  @endif
 </div>
 <div class="product-single__right product-details">
   <div class="product-details__title">{{ $product->name }}</div>

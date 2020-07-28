@@ -39,6 +39,11 @@ class Product extends Model
         return $this->hasMany(ProductCategories::class);
     }
 
+    // public function in_cat()
+    // {
+    //     return true;
+    // }
+
     public function sub_categories()
     {
         return $this->hasMany(ProductSubCategories::class);

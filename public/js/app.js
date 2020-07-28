@@ -114704,6 +114704,16 @@ if (document.getElementById('products-carousel')) {
   __WEBPACK_IMPORTED_MODULE_1_react_dom___default.a.render(__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(ProductsCarousel, { products: products }), document.getElementById('products-carousel'));
 }
 
+if (document.getElementById("products-carousel2")) {
+  var _products = document.getElementById("products-carousel2").getAttribute("products");
+  __WEBPACK_IMPORTED_MODULE_1_react_dom___default.a.render(__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(ProductsCarousel, { products: _products }), document.getElementById("products-carousel2"));
+}
+
+if (document.getElementById("products-carousel3")) {
+  var _products2 = document.getElementById("products-carousel3").getAttribute("products");
+  __WEBPACK_IMPORTED_MODULE_1_react_dom___default.a.render(__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(ProductsCarousel, { products: _products2 }), document.getElementById("products-carousel3"));
+}
+
 /***/ }),
 /* 220 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
