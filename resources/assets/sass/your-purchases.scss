@@ -1,0 +1,61 @@
+.stm-flex {
+    padding: 2em;
+    .stm-flex-wrap {
+        margin-bottom: 2em;
+    }
+    .stm-flex-padding-border {
+        padding: 1.3em;
+        border-left: 1px solid #ddd;
+        border-right: 1px solid #ddd;
+        border-bottom: 1px solid #ddd;
+    }
+    .stm-flex-row {
+        display: flex;
+        .stm-flex-row__item {
+            padding: 0.6em 1em;
+            font-size: 0.9em;
+            border-right: 1px solid #ddd;
+            border-bottom: 1px solid #ddd;
+            flex: 1;
+            &.stm-flex-row__item--35 {
+                flex: 0 1 35%;
+            }
+            &:first-child() {
+                border-left: 1px solid #ddd;
+            }
+            &.stm-flex-row__item--header {
+                font-weight: 600;
+                background-color: $invoice-header;
+            }
+            &.stm-flex-row__item--padding {
+                padding: 3em;
+                background: red;
+            }
+            &.stm-flex-row__item--status-1 {
+                background-color: darken($brand-fifth, 13%);
+                color: #fff;
+                text-shadow: 1px 1px rgba(0, 0, 0, 0.05);
+            }
+            &.stm-flex-row__item--status-2 {
+                background-color: $color-red;
+                color: #fff;
+                text-shadow: 1px 1px rgba(0, 0, 0, 0.05);
+            }
+            &.stm-flex-row__item--status-3 {
+                background-color: $color-green;
+                color: #fff;
+                text-shadow: 1px 1px rgba(0, 0, 0, 0.05);
+            }
+            &.stm-flex-row__item--status-4 {
+                background-color: #111;
+                color: #fff;
+                text-shadow: 1px 1px rgba(0, 0, 0, 0.05);
+            }
+        }
+        &:first-child() {
+            .stm-flex-row__item {
+                border-top: 1px solid #ddd;
+            }
+        }
+    }
+}

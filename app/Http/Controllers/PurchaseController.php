@@ -36,6 +36,18 @@ class PurchaseController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function your_purchases()
+    {
+        $user_id = \Auth::user()->id;
+        $purchases = Purchase::where('user_id', $user_id)->get();
+        return view('purchases.your-purchases', compact('purchases'));
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function purchase_complete()
     {
         return view('purchases.complete');

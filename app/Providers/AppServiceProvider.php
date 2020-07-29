@@ -296,6 +296,10 @@ class AppServiceProvider extends ServiceProvider
                     'name' => 'Purchase Orders',
                     'link' => '/purchases',
                 ],
+                [
+                    'name' => 'Your Purchases',
+                    'link' => '/your-purchases',
+                ],
             ];
 
             $settings = Settings::first();
