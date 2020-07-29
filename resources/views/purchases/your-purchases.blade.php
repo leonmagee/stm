@@ -33,7 +33,7 @@
           <div class="stm-flex-row__item header">Subtotal</div>
           <div class="stm-flex-row__item header">Discount</div>
           <div class="stm-flex-row__item header">Total</div>
-          <div class="stm-flex-row__item header flex-12">RMA</div>
+          <div class="stm-flex-row__item header flex-15">RMA (60 day limit)</div>
         </div>
         @foreach($purchase->products as $product)
         <div class="stm-flex-row">
@@ -45,8 +45,12 @@
           <div class="stm-flex-row__item red">
             {{ $product->discount ? $product->discount . '%' : '' }}</div>
           <div class="stm-flex-row__item">${{ number_format($product->final_cost, 2) }}</div>
-          <div class="stm-flex-row__item bold flex-12">
-            <a href="#" class="modal-delete-open" item_id={{ $product->id }}>SUBMIT RMA</a>
+          <div class="stm-flex-row__item bold flex-15">
+            @if($purchase->created_at->diff(\Carbon\Carbon::now())->days < 60) <a href="#" class="modal-delete-open"
+              item_id={{ $product->id }}>SUBMIT RMA</a>
+              @else
+              N/A
+              @endif
           </div>
         </div>
 
@@ -56,6 +60,7 @@
             <form method="POST" action="rma-new">
               @csrf
               <div class="modal-box">
+                <input type="hidden" name="purchase_id" value="{{ $purchase->id }}" />
                 <input type="hidden" name="purchase_product_id" value="{{ $product->id }}" />
                 <h4 class="title">Submit RMA Request</h4>
                 <div class="stm-flex">

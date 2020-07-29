@@ -23211,6 +23211,12 @@ a.button.custom-button:hover {
           flex: 0 1 12%;
 }
 
+.stm-flex .stm-flex-row .stm-flex-row__item.flex-15 {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 1 15%;
+          flex: 0 1 15%;
+}
+
 .stm-flex .stm-flex-row .stm-flex-row__item.flex-35 {
   -webkit-box-flex: 0;
       -ms-flex: 0 1 35%;

@@ -21,7 +21,7 @@
         </div>
 
         <div class="stm-flex-row">
-          <div class="stm-flex-row__item red bold">GSW-RMA-{{ $rma->id }}</div>
+          <div class="stm-flex-row__item red bold">RMA-GSW-{{ $rma->id }}</div>
           <div class="stm-flex-row__item">{{ $rma->created_at->format('M d, Y') }}</div>
           <div class="stm-flex-row__item status-{{ $rma->status }}">
             {{ \App\Helpers::rma_status($rma->status) }}
