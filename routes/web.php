@@ -35,7 +35,8 @@ Route::group(['middleware' => 'App\Http\Middleware\LockOutUsersManagers'], funct
     Route::get('purchase-email-test', 'PurchaseController@store_test');
     Route::post('update-shipping-info', 'PurchaseController@update_shipping');
     Route::post('update-purchase-status', 'PurchaseController@update_status');
-
+    Route::post('rma-new', 'RmaController@store');
+    Route::get('your-rmas', 'RmaController@your_rmas');
     //Route::get('products-carousel', 'ProductController@index_carousel');
     Route::get('products/{product}', 'ProductController@show');
     Route::get('product-new', 'ProductController@create');

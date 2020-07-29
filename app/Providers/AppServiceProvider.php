@@ -300,6 +300,10 @@ class AppServiceProvider extends ServiceProvider
                     'name' => 'Your Purchases',
                     'link' => '/your-purchases',
                 ],
+                [
+                    'name' => 'Your RMAs',
+                    'link' => '/your-rmas',
+                ],
             ];
 
             $settings = Settings::first();

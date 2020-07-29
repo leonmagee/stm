@@ -39,7 +39,7 @@ class PurchaseController extends Controller
     public function your_purchases()
     {
         $user_id = \Auth::user()->id;
-        $purchases = Purchase::where('user_id', $user_id)->get();
+        $purchases = Purchase::where('user_id', $user_id)->orderBy('id', 'desc')->get();
         return view('purchases.your-purchases', compact('purchases'));
     }
 

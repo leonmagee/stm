@@ -96,6 +96,14 @@ body.stm-body {
                 max-width: 48%;
             }
         }
+        a {
+            //text-decoration: none;
+            //text-shadow: none;
+            &:hover {
+                color: #fff;
+                opacity: 0.8;
+            }
+        }
     }
 
     .button-bar-wrap {

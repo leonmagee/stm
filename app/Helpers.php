@@ -36,6 +36,20 @@ class Helpers
         }
     }
 
+    /**
+     * Purchase Status
+     */
+    public static function rma_status($id)
+    {
+        if ($id == 2) {
+            return 'Pending';
+        } elseif ($id == 3) {
+            return 'Approved';
+        } else {
+            return 'Denied'; // 4
+        }
+    }
+
     public static function invoice_item($id)
     {
         if ($id == 2) {

@@ -4,7 +4,7 @@
 
   <button class="delete"></button>
 
-  {{ $flash }}
+  {!! $flash !!}
 
 </div>
 
