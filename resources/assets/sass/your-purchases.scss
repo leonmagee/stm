@@ -1,12 +1,12 @@
 .stm-flex {
     padding: 2em;
     .stm-flex-wrap {
-        margin-bottom: 2em;
+        margin-bottom: 3em;
     }
     .stm-flex-padding-border {
-        padding: 1.3em;
-        border-left: 1px solid #ddd;
-        border-right: 1px solid #ddd;
+        padding: 1em 0;
+        //border-left: 1px solid #ddd;
+        //border-right: 1px solid #ddd;
         border-bottom: 1px solid #ddd;
     }
     .stm-flex-row {
@@ -19,6 +19,13 @@
             flex: 1;
             &.stm-flex-row__item--35 {
                 flex: 0 1 35%;
+            }
+            &.stm-flex-row__item--po {
+                color: $red;
+                font-weight: 600;
+            }
+            &.stm-flex-row__item--bold {
+                font-weight: 600;
             }
             &:first-child() {
                 border-left: 1px solid #ddd;
@@ -50,6 +57,9 @@
                 background-color: #111;
                 color: #fff;
                 text-shadow: 1px 1px rgba(0, 0, 0, 0.05);
+            }
+            &.stm-flex-row__item--red {
+                color: $red;
             }
         }
         &:first-child() {

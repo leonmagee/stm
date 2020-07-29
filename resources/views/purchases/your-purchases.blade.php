@@ -17,12 +17,6 @@
             Purchase Order #
           </div>
           <div class="stm-flex-row__item stm-flex-row__item--header">
-            Total
-          </div>
-          <div class="stm-flex-row__item stm-flex-row__item--header">
-            Payment Type
-          </div>
-          <div class="stm-flex-row__item stm-flex-row__item--header">
             Purchase Date
           </div>
           <div class="stm-flex-row__item stm-flex-row__item--header">
@@ -30,14 +24,8 @@
           </div>
         </div>
         <div class="stm-flex-row">
-          <div class="stm-flex-row__item">
+          <div class="stm-flex-row__item stm-flex-row__item--po">
             GSW-{{ $purchase->id }}
-          </div>
-          <div class="stm-flex-row__item">
-            ${{ number_format($purchase->total, 2) }}
-          </div>
-          <div class="stm-flex-row__item">
-            {{ strtoupper($purchase->type) }}
           </div>
           <div class="stm-flex-row__item">
             {{ $purchase->created_at->format('M d, Y') }}
@@ -48,7 +36,6 @@
         </div>
 
         <div class="stm-flex-row__item stm-flex-padding-border">
-          @foreach($purchase->products as $product)
           <div class="stm-flex-row">
             <div class="stm-flex-row__item stm-flex-row__item--header stm-flex-row__item--35">
               Product Name
@@ -57,26 +44,39 @@
               Color
             </div>
             <div class="stm-flex-row__item stm-flex-row__item--header">
+              Unit Cost
+            </div>
+            <div class="stm-flex-row__item stm-flex-row__item--header">
               Quantity
+            </div>
+            <div class="stm-flex-row__item stm-flex-row__item--header">
+              Subtotal
+            </div>
+            <div class="stm-flex-row__item stm-flex-row__item--header">
+              Discount
+            </div>
+            <div class="stm-flex-row__item stm-flex-row__item--header">
+              Total
             </div>
             <div class="stm-flex-row__item stm-flex-row__item--header">
               RMA
             </div>
           </div>
+          @foreach($purchase->products as $product)
           <div class="stm-flex-row">
-            <div class="stm-flex-row__item stm-flex-row__item--35">
-              {{ $product->name }}
-            </div>
-            <div class="stm-flex-row__item">
-              {{ $product->variation }}
-            </div>
-            <div class="stm-flex-row__item">
-              {{ $product->quantity }}
-            </div>
+            <div class="stm-flex-row__item stm-flex-row__item--35">{{ $product->name }}</div>
+            <div class="stm-flex-row__item">{{ $product->variation }}</div>
+            <div class="stm-flex-row__item">${{ number_format($product->unit_cost, 2) }}</div>
+            <div class="stm-flex-row__item">{{ $product->quantity }}</div>
+            <div class="stm-flex-row__item">${{ number_format($product->unit_cost * $product->quantity, 2) }}</div>
+            <div class="stm-flex-row__item stm-flex-row__item--red">
+              {{ $product->discount ? $product->discount . '%' : '' }}</div>
+            <div class="stm-flex-row__item">${{ number_format($product->final_cost, 2) }}</div>
             <div class="stm-flex-row__item">
               <a href="#" class="modal-delete-open-pending" item_id={{ $product->id }}>Submit RMA</a>
             </div>
           </div>
+
 
           <div class="modal" id="delete-item-modal-{{ $product->id }}">
 
@@ -100,6 +100,26 @@
 
           @endforeach
         </div>
+
+        <div class="stm-flex-row">
+          <div class="stm-flex-row__item stm-flex-row__item--header">Payment Type</div>
+          <div class="stm-flex-row__item stm-flex-row__item--header">Subtotal</div>
+          <div class="stm-flex-row__item stm-flex-row__item--header">Service Charge</div>
+          <div class="stm-flex-row__item stm-flex-row__item--header">Total</div>
+        </div>
+        <div class="stm-flex-row">
+          <div class="stm-flex-row__item">{{ strtoupper($purchase->type) }}</div>
+          <div class="stm-flex-row__item">${{ number_format($purchase->sub_total, 2) }}</div>
+          <div class="stm-flex-row__item stm-flex-row__item--red">
+            ${{ number_format($purchase->sub_total * 2 / 100, 2) }}</div>
+          <div class="stm-flex-row__item stm-flex-row__item--bold">${{ number_format($purchase->total, 2) }}</div>
+        </div>
+
+
+
+
+
+
       </div>
       @endforeach
     </div>

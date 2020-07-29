@@ -132,7 +132,6 @@
                 <div class="modal-box">
 
                   <h3 class="title">Are You Sure?</h3>
-
                   <div class="invoice-modal-flex">
                     <div class="field">
                       <label class="label" for="cc_user_1">BCC User</label>
@@ -156,46 +155,47 @@
                   </div>
                   <button class="button is-danger call-loader" type="submit">Ship Purchase Order</button>
                   <a href="#" class="modal-close-button button is-primary">Cancel</a>
-
-                </div>
-
-              </div>
-
-              <button class="modal-close is-large" aria-label="close"></button>
-
-            </div>
-
           </form>
+
         </div>
-        <div class="stm_inv__form stm_inv__flex--forms-item stm_inv__flex--forms-status">
-          <form method="POST" action="/update-purchase-status">
-            @csrf
-            <div class="stm_inv__forms-no-flex">
-              <input type="hidden" name="purchase_id" value="{{ $purchase->id }}" />
-              <div class="field">
-                <label class="label" for="status">Status</label>
-                <div class="select">
-                  <select name="status" id="status">
-                    <option value="2" @if($purchase->status == 2) selected @endif>Pending</option>
-                    <option value="3" @if($purchase->status == 3) selected @endif>Shipped</option>
-                    <option value="4" @if($purchase->status == 4) selected @endif>Cancelled</option>
-                  </select>
-                </div>
-              </div>
-              <div class="field flex-margin margin-top-1">
-                <div class="control">
-                  <button class="button is-primary call-loader" type="submit">Update</button>
-                </div>
-              </div>
-            </div>
-          </form>
-        </div>
+
       </div>
-      @endif
 
+      <button class="modal-close is-large" aria-label="close"></button>
 
     </div>
+
+    </form>
   </div>
+  <div class="stm_inv__form stm_inv__flex--forms-item stm_inv__flex--forms-status">
+    <form method="POST" action="/update-purchase-status">
+      @csrf
+      <div class="stm_inv__forms-no-flex">
+        <input type="hidden" name="purchase_id" value="{{ $purchase->id }}" />
+        <div class="field">
+          <label class="label" for="status">Status</label>
+          <div class="select">
+            <select name="status" id="status">
+              <option value="2" @if($purchase->status == 2) selected @endif>Pending</option>
+              <option value="3" @if($purchase->status == 3) selected @endif>Shipped</option>
+              <option value="4" @if($purchase->status == 4) selected @endif>Cancelled</option>
+            </select>
+          </div>
+        </div>
+        <div class="field flex-margin margin-top-1">
+          <div class="control">
+            <button class="button is-primary call-loader" type="submit">Update</button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+@endif
+
+
+</div>
+</div>
 
 </div>
 
