@@ -10,6 +10,7 @@
 
     <div class="stm-flex">
 
+      @if(count($rmas))
       @foreach($rmas as $rma)
       <div class="stm-flex-wrap">
 
@@ -50,10 +51,12 @@
           <div class="stm-flex-row__item">${{ number_format($rma->product->final_cost, 2) }}</div>
         </div>
 
-
       </div>
 
       @endforeach
+      @else
+      <div class="no-rmas">No RMAs have been submitted yet.</div>
+      @endif
     </div>
   </div>
 </div>
