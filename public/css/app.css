@@ -23205,6 +23205,12 @@ a.button.custom-button:hover {
           flex: 1;
 }
 
+.stm-flex .stm-flex-row .stm-flex-row__item.flex-12 {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 1 12%;
+          flex: 0 1 12%;
+}
+
 .stm-flex .stm-flex-row .stm-flex-row__item.flex-35 {
   -webkit-box-flex: 0;
       -ms-flex: 0 1 35%;
@@ -23217,17 +23223,16 @@ a.button.custom-button:hover {
           flex: 0 1 50%;
 }
 
-.stm-flex .stm-flex-row .stm-flex-row__item.po-number {
-  color: #ff3860;
-  font-weight: 600;
-}
-
 .stm-flex .stm-flex-row .stm-flex-row__item.rma-link {
   font-weight: 600;
 }
 
 .stm-flex .stm-flex-row .stm-flex-row__item.bold {
   font-weight: 600;
+}
+
+.stm-flex .stm-flex-row .stm-flex-row__item.red {
+  color: #ff3860;
 }
 
 .stm-flex .stm-flex-row .stm-flex-row__item:first-child {
@@ -23261,10 +23266,6 @@ a.button.custom-button:hover {
   background-color: #111;
   color: #fff;
   text-shadow: 1px 1px rgba(0, 0, 0, 0.05);
-}
-
-.stm-flex .stm-flex-row .stm-flex-row__item.red {
-  color: #ff3860;
 }
 
 .stm-flex .stm-flex-row:first-child .stm-flex-row__item {

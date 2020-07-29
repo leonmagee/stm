@@ -33,7 +33,7 @@
           <div class="stm-flex-row__item header">Subtotal</div>
           <div class="stm-flex-row__item header">Discount</div>
           <div class="stm-flex-row__item header">Total</div>
-          <div class="stm-flex-row__item header">RMA</div>
+          <div class="stm-flex-row__item header flex-12">RMA</div>
         </div>
         @foreach($purchase->products as $product)
         <div class="stm-flex-row">
@@ -45,8 +45,8 @@
           <div class="stm-flex-row__item red">
             {{ $product->discount ? $product->discount . '%' : '' }}</div>
           <div class="stm-flex-row__item">${{ number_format($product->final_cost, 2) }}</div>
-          <div class="stm-flex-row__item">
-            <a href="#" class="modal-delete-open rma-link" item_id={{ $product->id }}>Submit RMA</a>
+          <div class="stm-flex-row__item bold flex-12">
+            <a href="#" class="modal-delete-open" item_id={{ $product->id }}>SUBMIT RMA</a>
           </div>
         </div>
 
@@ -57,7 +57,7 @@
               @csrf
               <div class="modal-box">
                 <input type="hidden" name="purchase_product_id" value="{{ $product->id }}" />
-                <h4 class="title">Process RMA</h4>
+                <h4 class="title">Submit RMA Request</h4>
                 <div class="stm-flex">
                   <div class="stm-flex-row">
                     <div class="stm-flex-row__item header flex-50">Product Name</div>
@@ -79,7 +79,7 @@
                     <textarea name="explanation" class="textarea" required></textarea>
                   </div>
                 </div>
-                <button type="submit" class="button is-danger call-loader">Process RMA</button>
+                <button type="submit" class="button is-danger call-loader">Submit RMA</button>
                 <a class="modal-delete-close-button button is-primary" item_id={{ $product->id }}>Cancel</a>
               </div>
             </form>

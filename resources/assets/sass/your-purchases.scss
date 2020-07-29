@@ -15,15 +15,14 @@
             border-right: 1px solid #ddd;
             border-bottom: 1px solid #ddd;
             flex: 1;
+            &.flex-12 {
+                flex: 0 1 12%;
+            }
             &.flex-35 {
                 flex: 0 1 35%;
             }
             &.flex-50 {
                 flex: 0 1 50%;
-            }
-            &.po-number {
-                color: $red;
-                font-weight: 600;
             }
             &.rma-link {
                 font-weight: 600;
@@ -31,6 +30,12 @@
             &.bold {
                 font-weight: 600;
             }
+            &.red {
+                color: $red;
+            }
+            // .nowrap {
+            //     white-space: nowrap;
+            // }
             &:first-child() {
                 border-left: 1px solid #ddd;
             }
@@ -57,9 +62,6 @@
                 background-color: #111;
                 color: #fff;
                 text-shadow: 1px 1px rgba(0, 0, 0, 0.05);
-            }
-            &.red {
-                color: $red;
             }
         }
         &:first-child() {

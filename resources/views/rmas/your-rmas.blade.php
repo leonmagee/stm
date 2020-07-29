@@ -21,14 +21,21 @@
         </div>
 
         <div class="stm-flex-row">
-          <div class="stm-flex-row__item po-number">GSW-RMA-{{ $rma->id }}</div>
+          <div class="stm-flex-row__item red bold">GSW-RMA-{{ $rma->id }}</div>
           <div class="stm-flex-row__item">{{ $rma->created_at->format('M d, Y') }}</div>
           <div class="stm-flex-row__item status-{{ $rma->status }}">
             {{ \App\Helpers::rma_status($rma->status) }}
           </div>
         </div>
 
-        {{-- <div class="stm-flex-row__item stm-flex-outer"> --}}
+        <div class="stm-flex-row separator">
+          <div class="stm-flex-row__item header">Reason for Return</div>
+        </div>
+
+        <div class="stm-flex-row">
+          <div class="stm-flex-row__item">{{ $rma->explanation }}</div>
+        </div>
+
         <div class="stm-flex-row separator">
           <div class="stm-flex-row__item header flex-35">Product Name</div>
           <div class="stm-flex-row__item header">Color</div>

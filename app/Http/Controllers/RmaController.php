@@ -53,6 +53,7 @@ class RmaController extends Controller
                 'purchase_product_id' => $request->purchase_product_id,
                 'quantity' => $request->quantity,
                 'explanation' => $request->explanation,
+                'status' => 2,
             ]
         );
         session()->flash('message', 'An RMA request has been submitted. You will receive an email with more details. <a href="/your-rmas">View RMA</a>.');
