@@ -35,6 +35,8 @@ Route::group(['middleware' => 'App\Http\Middleware\LockOutUsersManagers'], funct
     Route::get('purchase-email-test', 'PurchaseController@store_test');
     Route::post('update-shipping-info', 'PurchaseController@update_shipping');
     Route::post('update-purchase-status', 'PurchaseController@update_status');
+    Route::get('rmas', 'RmaController@index');
+    Route::get('rmas/{rma}', 'RmaController@show');
     Route::post('rma-new', 'RmaController@store');
     Route::get('your-rmas', 'RmaController@your_rmas');
     //Route::get('products-carousel', 'ProductController@index_carousel');
@@ -168,6 +170,7 @@ Route::get('/api/v1/sim_user/{id}', 'APIController@getSimUser')->name('api.sim_u
 Route::get('/api/v1/logins', 'APIController@getLogins')->name('api.logins.index');
 Route::get('/api/v1/products', 'APIController@getProducts')->name('api.products.index');
 Route::get('/api/v1/purchases', 'APIController@getPurchases')->name('api.purchases.index');
+Route::get('/api/v1/rmas', 'APIController@getRmas')->name('api.rmas.index');
 Route::get('/api/v1/notes', 'APIController@getNotes')->name('api.notes.index');
 Route::get('/api/v1/balance', 'APIController@getBalanceChanges')->name('api.balance.index');
 Route::get('/api/v1/balance-show/{user}', 'APIController@getBalanceChangesShow')->name('api.balance.show');

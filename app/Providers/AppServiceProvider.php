@@ -297,6 +297,10 @@ class AppServiceProvider extends ServiceProvider
                     'link' => '/purchases',
                 ],
                 [
+                    'name' => 'RMAs',
+                    'link' => '/rmas',
+                ],
+                [
                     'name' => 'Your Purchases',
                     'link' => '/your-purchases',
                 ],

@@ -8,6 +8,7 @@ use App\Note;
 use App\Product;
 use App\Purchase;
 use App\ReportType;
+use App\Rma;
 use App\Sim;
 use App\SimMaster;
 use App\SimResidual;
@@ -68,6 +69,21 @@ class APIController extends Controller
         }
 
         return datatables($purchases)->make(true);
+    }
+
+    public function getRmas()
+    {
+        $rmas = Rma::with(['user', 'product'])->get();
+        foreach ($rmas as $key => $rma) {
+            if ($rma->user) {
+                $rma->total = '$' . number_format($rma->total, 2);
+            } else {
+                unset($rma[$key]);
+            }
+            $rma->date = $rma->created_at->format('M d, Y');
+        }
+
+        return datatables($rmas)->make(true);
     }
 
     public function getNotes()

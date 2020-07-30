@@ -17,7 +17,7 @@ class RmaController extends Controller
      */
     public function index()
     {
-        //
+        return view('rmas.index');
     }
 
     /**
@@ -101,7 +101,8 @@ class RmaController extends Controller
      */
     public function show(Rma $rma)
     {
-        //
+        //$users = User::orderBy('company')->get();
+        return view('rmas.show', compact('rma'));
     }
 
     /**
