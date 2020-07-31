@@ -101,7 +101,7 @@ class PurchaseController extends Controller
         }
         //dd($total, $balance);
 
-        if ($balance < $total) {
+        if (floatval($balance) < floatval($total)) {
             session()->flash('danger', 'You do not have sufficent funds in your balance for this purchase');
             return redirect()->back();
         }

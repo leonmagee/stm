@@ -201,7 +201,7 @@
     Total Charge: <span>${{ number_format($total, 2) }}</span><br />
     Your Current Balance: <span>${{ $balance }}</span><br />
   </div>
-  @if($balance < $total) <div class="pay-with-balance-warning">
+  @if(floatval($balance) < floatval($total)) <div class="pay-with-balance-warning">
     Your balance is currently too low to make this purchase.
     </div>
     @else
