@@ -197,9 +197,9 @@
 <form method="POST" action="pay-with-balance">
   @csrf
   <div class="pay-with-balance-modal">
-    <?php $balance = number_format(\Auth::user()->balance, 2); ?>
+    <?php $balance = \Auth::user()->balance; ?>
     Total Charge: <span>${{ number_format($total, 2) }}</span><br />
-    Your Current Balance: <span>${{ $balance }}</span><br />
+    Your Current Balance: <span>${{ number_format($balance, 2) }}</span><br />
   </div>
   @if(floatval($balance) < floatval($total)) <div class="pay-with-balance-warning">
     Your balance is currently too low to make this purchase.
