@@ -399,7 +399,7 @@ class ProductController extends Controller
         $products2 = self::product_data(2); // tempered glass
         //$products3 = self::product_data(3); // power banks (cat deleted)
         $products4 = self::product_data(4); // wall chargers
-        $products6 = self::product_data(6); // usb cables
+        $products6 = self::product_data(7); // usb cables
 
         return view('products.show', compact(
             'product',

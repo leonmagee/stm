@@ -52,7 +52,7 @@
   @endif
   @if(count($products6))
   <div class="product-single__carousel">
-    <h2>USB Cables You May Also Like</h2>
+    <h2>Cases You May Also Like</h2>
     <div id="products-carousel6" class="products-react-carousel" products='{{ $products6 }}'></div>
   </div>
   @endif
