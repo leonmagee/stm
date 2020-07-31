@@ -6,6 +6,9 @@
   <div class="cart-wrapper-left cart-wrapper-inner">
     <h3>Shopping Cart <i class="fas fa-cart-plus"></i></h3>
     <div class="stm-cart">
+      <div class="stm-cart__alerts">
+        @include('layouts.alert')
+      </div>
       {{-- <div class="notification is-success" id="payment-complete-notification">
         <button class="delete"></button>
         Your purchase is complete. You will receive an email with purchase details.
@@ -94,9 +97,9 @@
   <h3>Checkout <i class="far fa-credit-card"></i></h3>
   <div class="stm-cart-footer">
     <a class="button custom-button stm-total"><span class="text">Total Due:</span><span
-        class="total">${{ $total }}</span></a>
+        class="total">${{ number_format($total, 2) }}</span></a>
     @if(count($items))
-    <a class="button custom-button stm-credit" href="/stm-credit">
+    <a class="button custom-button stm-credit modal-open">
       <img src="{{ URL::asset('img/stm_logo_short.png') }}" />
       <span>
         Pay With Balance
@@ -187,4 +190,23 @@
   }).render('#paypal-button-container');
 </script>
 @endif
+@endsection
+
+@section('modal')
+<h3 class="title">Pay with balance</h3>
+<form method="POST" action="pay-with-balance">
+  @csrf
+  <div class="pay-with-balance-modal">
+    <?php $balance = number_format(\Auth::user()->balance, 2); ?>
+    Total Charge: <span>${{ number_format($total, 2) }}</span><br />
+    Your Current Balance: <span>${{ $balance }}</span><br />
+  </div>
+  @if($balance < $total) <div class="pay-with-balance-warning">
+    Your balance is currently too low to make this purchase.
+    </div>
+    @else
+    <button type="submit" class="button is-danger call-loader">Pay Now with Balance</button>
+    @endif
+    <a href="#" class="modal-close-button button is-primary">Cancel</a>
+</form>
 @endsection

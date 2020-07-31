@@ -57,7 +57,7 @@ $(nTd).html("<span class='pending'>Pending</span>");
 } else if(oData.status == 3) {
 $(nTd).html("<span class='completed'>Approved</span>");
 } else if(oData.status == 4) {
-$(nTd).html("<span class='cancelled'>Denied</span>");
+$(nTd).html("<span class='cancelled'>Rejected</span>");
 }
 }
 },

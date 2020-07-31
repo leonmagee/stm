@@ -40,8 +40,8 @@
     }
 }
 .stm-cart {
-    .modal {
-        z-index: 100000;
+    .stm-cart__alerts {
+        padding: 0.5em 1em;
     }
     #payment-complete-notification {
         margin: 1em;
@@ -203,4 +203,21 @@ a.button.custom-button {
 }
 .paypal-powered-by {
     box-shadow: 1px 1px #000;
+}
+
+.pay-with-balance-modal {
+    padding: 1em;
+    font-size: 1.7em;
+    span {
+        font-weight: 600;
+    }
+}
+
+.pay-with-balance-warning {
+    background-color: $red;
+    border-radius: $border-radius;
+    padding: 1em;
+    color: #fff;
+    font-weight: 600;
+    margin: 0 2em 2em;
 }

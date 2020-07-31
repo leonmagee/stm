@@ -28,6 +28,9 @@ class CartProductController extends Controller
             $variation = ProductVariation::where(['product_id' => $item->product_id, 'text' => $item->variation])->first();
             if ($variation->quantity < 1) {
                 $item->delete();
+            } else if ($variation->quantity < $item->quantity) {
+                $item->quantity = $variation->quantity;
+                $item->save();
             }
         }
         $service_charge = number_format($total * 2 / 100, 2);

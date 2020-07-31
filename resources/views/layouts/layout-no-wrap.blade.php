@@ -26,8 +26,6 @@
 
       <div id="content">
 
-        {{-- @include('layouts.alert') --}}
-
         @yield('content')
 
       </div>

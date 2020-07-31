@@ -129,7 +129,7 @@
             <select name="status" id="status">
               <option value="2" @if($rma->status == 2) selected @endif>Pending</option>
               <option value="3" @if($rma->status == 3) selected @endif>Approved</option>
-              <option value="4" @if($rma->status == 4) selected @endif>Cancelled</option>
+              <option value="4" @if($rma->status == 4) selected @endif>Rejected</option>
             </select>
           </div>
         </div>

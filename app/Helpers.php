@@ -46,7 +46,8 @@ class Helpers
         } elseif ($id == 3) {
             return 'Approved';
         } else {
-            return 'Denied'; // 4
+            //return 'Denied'; // 4
+            return 'Rejected'; // 4
         }
     }
 

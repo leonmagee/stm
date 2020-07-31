@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\CartProduct;
-//use App\Product;
 use App\Mail\PurchaseEmail;
 use App\ProductVariation;
 use App\Purchase;
@@ -69,14 +68,61 @@ class PurchaseController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store_test(Request $request)
+    // public function store_test(Request $request)
+    // {
+    //     $request->sub_total = 777;
+    //     $request->total = 812;
+    //     $request->type = 'paypal';
+    //     $request->testers = true;
+    //     //dd($request->type);
+    //     $this->store($request);
+    // }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function pay_with_balance(Request $request)
     {
-        $request->sub_total = 777;
-        $request->total = 812;
-        $request->type = 'paypal';
-        $request->testers = true;
-        //dd($request->type);
+        $current_user = \Auth::user();
+        $balance = $current_user->balance;
+        $user_id = $current_user->id;
+        $items = CartProduct::where('user_id', $user_id)->get();
+        $total = 0;
+        foreach ($items as $item) {
+            $total += $item->product->discount_cost() * $item->quantity;
+            $variation = ProductVariation::where(['product_id' => $item->product_id, 'text' => $item->variation])->first();
+            if ($variation->quantity < $item->quantity) {
+                session()->flash('danger', 'Quantity Discrepancy. Please refresh and try again.');
+                return redirect()->back();
+            }
+        }
+        //dd($total, $balance);
+
+        if ($balance < $total) {
+            session()->flash('danger', 'You do not have sufficent funds in your balance for this purchase');
+            return redirect()->back();
+        }
+        $request->type = 'STM Balance';
+        $request->sub_total = $total;
+        $request->total = $total;
+
+        /**
+         * Store purchase
+         */
         $this->store($request);
+        /**
+         * Update user balance
+         */
+        $new_balance = $balance - $total;
+        $current_user->balance = $new_balance;
+        $current_user->save();
+        /**
+         * Go to confirmation page
+         */
+        return redirect('purchase-complete');
     }
 
     /**
@@ -87,6 +133,7 @@ class PurchaseController extends Controller
      */
     public function store(Request $request)
     {
+
         //\Log::debug($request);
         // 0. Get logged in user
         $user = \Auth::user();
@@ -130,13 +177,15 @@ class PurchaseController extends Controller
             }
             $product_variation->quantity = $new_quantity;
             $product_variation->save();
+            $item->delete();
+
             // 4. Clear out cart item
             /**
              * @todo delete conditional when done testing
              */
-            if (!$request->testers) {
-                $item->delete();
-            }
+            // if (!$request->testers) {
+            //     $item->delete();
+            // }
         }
 
         // 5. Email user who made purchse

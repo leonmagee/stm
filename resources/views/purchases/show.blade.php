@@ -64,10 +64,16 @@
           <div class="stm_inv__header--label">Total</div>
         </div>
         <div class="stm_inv__flex">
-          <div class="stm_inv__header--item">{{ strtoupper($purchase->type) }}</div>
+          <?php $type = strtoupper($purchase->type); ?>
+          <div class="stm_inv__header--item">{{ $type }}</div>
           <div class="stm_inv__header--item">${{ number_format($purchase->sub_total, 2) }}</div>
-          <div class="stm_inv__header--item stm_inv__header--item-red">
-            ${{ number_format($purchase->sub_total * 2 / 100, 2) }}</div>
+          <div class="stm_inv__header--item">
+            @if($type == 'PAYPAL')
+            ${{ number_format($purchase->sub_total * 2 / 100, 2) }}
+            @else
+            $0.00
+            @endif
+          </div>
           <div class="stm_inv__header--item">${{ number_format($purchase->total, 2) }}</div>
         </div>
       </div>

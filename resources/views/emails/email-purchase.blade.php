@@ -63,16 +63,18 @@
       {{-- note --}}
     </div>
     <div class="invoice-wrap__footer--totals">
-      @if($purchase->type == 'paypal')
       <div class="item">
         <div class="label">Subtotal</div>
         <div>${{ number_format($purchase->sub_total, 2) }}</div>
       </div>
       <div class="item discount">
         <div class="label">Service Charge</div>
+        @if(strtoupper($purchase->type == 'PAYPAL'))
         <div>${{ number_format($purchase->sub_total * 2 / 100, 2) }}</div>
+        @else
+        <div>$0.00</div>
+        @endif
       </div>
-      @endif
       <div class="item final">
         <div class="label">Total</div>
         <div>${{ number_format($purchase->total, 2) }}</div>
