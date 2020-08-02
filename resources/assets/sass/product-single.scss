@@ -479,8 +479,10 @@
         text-align: center;
         .out-of-stock__text {
             font-weight: 600;
-            color: $red;
+            color: darken($red, 2%);
             text-transform: uppercase;
+            font-size: 2.2em;
+            line-height: 1em;
             //font-size: 1.1em;
         }
         .out-of-stock__date {
