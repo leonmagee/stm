@@ -22717,10 +22717,10 @@ body.stm-body.about .about-img-wrap img {
 }
 
 .product-single .out-of-stock .out-of-stock__text {
-  font-weight: 600;
+  font-weight: 800;
   color: #ff2e58;
   text-transform: uppercase;
-  font-size: 2.2em;
+  font-size: 2em;
   line-height: 1em;
 }
 
