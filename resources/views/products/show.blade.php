@@ -105,7 +105,7 @@
           <button class="add-to-cart"><i class="fas fa-cart-plus"></i>Add To Cart</button>
           @else
           <div class="out-of-stock">
-            <div class="out-of-stock__text">Temporarily Out of Stock</div>
+            <div class="out-of-stock__text">Sold Out</div>
             @if($product->available_on)
             @if(\Carbon\Carbon::parse($product->available_on)->gt(\Carbon\Carbon::now()))
             <div class="out-of-stock__date">Available on
