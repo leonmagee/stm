@@ -108,7 +108,7 @@ class OrderController extends Controller
         /**
          * @todo change this for actual users
          */
-        session()->flash('message', 'Thank you! Your order has been submitted.');
+        session()->flash('message', 'Thank you! Your order has been placed.');
         return redirect('/order-sims');
     }
 

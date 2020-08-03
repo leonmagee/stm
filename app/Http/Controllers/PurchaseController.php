@@ -202,7 +202,7 @@ class PurchaseController extends Controller
         $admins = User::getAdminManageerUsers();
         foreach ($admins as $admin) {
             if (!$admin->notes_email_disable) {
-                $header_text = "<strong>Hello " . $admin->name . "!</strong><br />A new purchase order has been submitted by " . $user->company . " - " . $user->name;
+                $header_text = "<strong>Hello " . $admin->name . "!</strong><br />A new purchase order has been placed by " . $user->company . " - " . $user->name;
 
                 \Mail::to($admin)->send(new PurchaseEmail(
                     $user,
