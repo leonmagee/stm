@@ -14,7 +14,7 @@
           <th>Id</th>
           <th>Name</th>
           <th>Status</th>
-          <th>Cost</th>
+          <th>Price</th>
           <th>Discount</th>
           <th>Total</th>
           <th>Quantity</th>

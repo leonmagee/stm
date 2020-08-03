@@ -129,6 +129,21 @@ class RmaController extends Controller
     }
 
     /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Rma  $rma
+     * @return \Illuminate\Http\Response
+     */
+    public function update_status(Request $request, Rma $rma)
+    {
+        //dd($request, $rma);
+        $rma->status = $request->status;
+        $rma->save();
+        return redirect()->back();
+    }
+
+    /**
      * Remove the specified resource from storage.
      *
      * @param  \App\Rma  $rma

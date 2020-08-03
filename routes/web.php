@@ -40,6 +40,7 @@ Route::group(['middleware' => 'App\Http\Middleware\LockOutUsersManagers'], funct
     Route::get('rmas/{rma}', 'RmaController@show');
     Route::post('rma-new', 'RmaController@store');
     Route::get('your-rmas', 'RmaController@your_rmas');
+    Route::post('update-rma-status/{rma}', 'RmaController@update_status');
     //Route::get('products-carousel', 'ProductController@index_carousel');
     Route::get('products/{product}', 'ProductController@show');
     Route::get('product-new', 'ProductController@create');

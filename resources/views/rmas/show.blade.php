@@ -113,13 +113,32 @@
 
 <div class="stm_inv__flex--forms">
 
-
-
-
-
+  <div class="stm_inv__form stm_inv__flex--forms-item stm_inv__flex--forms-status">
+    <form method="POST" action="/update-rma-status/{{ $rma->id }}">
+      @csrf
+      <div class="stm_inv__forms-no-flex">
+        <input type="hidden" name="purchase_id" value="{{ $rma->id }}" />
+        <div class="field">
+          <label class="label" for="status">Approve or Reject RMA</label>
+          <div class="select">
+            <select name="status" id="status">
+              <option value="2" @if($rma->status == 2) selected @endif>Pending</option>
+              <option value="3" @if($rma->status == 3) selected @endif>Approved</option>
+              <option value="4" @if($rma->status == 4) selected @endif>Rejected</option>
+            </select>
+          </div>
+        </div>
+        <div class="field flex-margin margin-top-1">
+          <div class="control">
+            <button class="button is-primary call-loader" type="submit">Update</button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
 
   <div class="stm_inv__form stm_inv__flex--forms-item stm_inv__flex--forms-status">
-    <form method="POST" action="/update-rma-status">
+    <form method="POST" action="/update-rma-status/{{ $rma->id }}">
       @csrf
       <div class="stm_inv__forms-no-flex">
         <input type="hidden" name="purchase_id" value="{{ $rma->id }}" />
