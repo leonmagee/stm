@@ -486,6 +486,16 @@ img.email-header-logo {
     font-weight: bold;
     font-size: 0.9em;
 }
+.invoice-wrap__footer .invoice-wrap__footer--rma {
+    /* flex: 0 1 65%; */
+    width: 67%;
+    border-right: 1px solid #ddd;
+    padding: 10px 12px;
+    font-size: 0.9em;
+}
+.invoice-wrap__footer .invoice-wrap__footer--rma h4 {
+    margin: 0 0 0.3em;
+}
 .invoice-wrap__footer .invoice-wrap__footer--totals {
     /* flex: 0 1 35%; */
     width: 33%;

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Mail\PurchaseEmail;
+use App\Mail\RmaEmail;
 use App\Purchase;
 use App\Rma;
 use App\User;
@@ -65,12 +65,13 @@ class RmaController extends Controller
 
         $header_text = "<strong>Hello " . $user->name . "!</strong><br />We have received your RMA submission. Your RMA # is <strong>RMA-GSW" . $rma->id . "</strong>. You will receive another email when we update the status of your RMA.";
 
-        \Mail::to($user)->send(new PurchaseEmail(
+        \Mail::to($user)->send(new RmaEmail(
             $user,
             $purchase,
             $header_text,
             'RMA Processing: # RMA-GSW-' . $rma->id,
-            true
+            true,
+            $rma
         ));
 
         // 6. Email admins (admins and managers)
@@ -79,12 +80,13 @@ class RmaController extends Controller
             if (!$admin->notes_email_disable) {
                 $header_text = "<strong>Hello " . $admin->name . "!</strong><br />A new RMA has been submitted by " . $user->company . " - " . $user->name . ". RMA #: <strong>RMA-GSW-" . $rma->id . "</strong>";
 
-                \Mail::to($admin)->send(new PurchaseEmail(
+                \Mail::to($admin)->send(new RmaEmail(
                     $user,
                     $purchase,
                     $header_text,
                     'New RMA Received',
-                    false
+                    false,
+                    $rma
                 ));
             }
         }
