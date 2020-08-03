@@ -51,6 +51,24 @@ class APIController extends Controller
     public function getProducts()
     {
         $products = Product::all();
+        foreach ($products as $product) {
+            $quantity = 0;
+            if (count($product->variations)) {
+                foreach ($product->variations as $variation) {
+                    $quantity += $variation->quantity;
+                }
+            }
+            $product->quantity = $quantity;
+            if ($product->cost) {
+                $product->cost_val = '$' . number_format($product->cost, 2);
+            }
+            if ($product->discount) {
+                $product->discount_val = $product->discount . '%';
+            } else {
+                $product->discount_val = '';
+            }
+            $product->total = '$' . $product->discount_cost();
+        }
 
         return datatables($products)->make(true);
     }

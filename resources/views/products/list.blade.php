@@ -14,6 +14,10 @@
           <th>Id</th>
           <th>Name</th>
           <th>Status</th>
+          <th>Cost</th>
+          <th>Discount</th>
+          <th>Total</th>
+          <th>Quantity</th>
           <th></th>
           <th></th>
         </tr>
@@ -47,6 +51,10 @@ $(nTd).html("<span class='pending'>Archived</span>");
 }
 }
 },
+{ "data": "cost_val" },
+{ "data": "discount_val" },
+{ "data": "total" },
+{ "data": "quantity" },
 { "data": "id", "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
 $(nTd).html("<a class='invoice-view' href='/products/edit/" + oData.id + "'>Edit</a>");
 }
