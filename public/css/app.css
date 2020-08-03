@@ -21531,6 +21531,14 @@ body.stm-body.about .about-img-wrap img {
   border-left: none;
 }
 
+.stm_inv .stm_inv__flex .stm_inv__header--label.purchase-id,
+.stm_inv .stm_inv__flex .stm_inv__header--item.purchase-id,
+.stm_inv .stm_inv__flex .stm_inv__item--item.purchase-id,
+.stm_inv .stm_inv__flex .stm_inv__item--label.purchase-id {
+  color: #1b9aaa;
+  font-weight: bold;
+}
+
 .stm_inv .stm_inv__flex:not(:first-child) div {
   border-top: none;
 }
@@ -23272,6 +23280,10 @@ a.button.custom-button:hover {
 
 .stm-flex .stm-flex-row .stm-flex-row__item.bold {
   font-weight: 600;
+}
+
+.stm-flex .stm-flex-row .stm-flex-row__item.primary {
+  color: #1b9aaa;
 }
 
 .stm-flex .stm-flex-row .stm-flex-row__item.red {

@@ -21,7 +21,7 @@
         </div>
 
         <div class="stm_inv__flex">
-          <div class="stm_inv__header--item">GSW-{{ $purchase->id }}</div>
+          <div class="stm_inv__header--item purchase-id">GSW-{{ $purchase->id }}</div>
           <div class="stm_inv__header--item">{{ $purchase->user->company }}</div>
           <div class="stm_inv__header--item">{{ $purchase->user->name }}</div>
           <div class="stm_inv__header--item">{{ $purchase->created_at->format('M d, Y') }}</div>

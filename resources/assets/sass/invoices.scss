@@ -47,6 +47,10 @@
             &:not(:first-child) {
                 border-left: none;
             }
+            &.purchase-id {
+                color: $primary;
+                font-weight: bold;
+            }
         }
         &:not(:first-child) {
             div {

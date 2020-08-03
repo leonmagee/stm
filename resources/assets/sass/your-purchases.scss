@@ -33,6 +33,9 @@
             &.bold {
                 font-weight: 600;
             }
+            &.primary {
+                color: $primary;
+            }
             &.red {
                 color: $red;
             }

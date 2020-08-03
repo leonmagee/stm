@@ -18,7 +18,7 @@
           <div class="stm-flex-row__item header">Status</div>
         </div>
         <div class="stm-flex-row">
-          <div class="stm-flex-row__item po-number">GSW-{{ $purchase->id }}</div>
+          <div class="stm-flex-row__item bold primary">GSW-{{ $purchase->id }}</div>
           <div class="stm-flex-row__item">{{ $purchase->created_at->format('M d, Y') }}</div>
           <div class="stm-flex-row__item status-{{ $purchase->status }}">
             {{ \App\Helpers::purchase_status($purchase->status) }}
