@@ -152,6 +152,13 @@
             }
         }
     }
+    .stm_inv__form--buttons {
+        display: flex;
+        padding: 2em 0;
+        button {
+            margin-right: 3em;
+        }
+    }
     .stm_imv__finalize {
         margin: 1.5em 0 0.2em;
         a {

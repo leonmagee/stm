@@ -54,7 +54,7 @@
         <div class="stm_inv__flex">
           <div class="stm_inv__item--label stm_inv__flex--60">Product Name</div>
           <div class="stm_inv__item--label">Color</div>
-          <div class="stm_inv__item--label">Unit Cost</div>
+          <div class="stm_inv__item--label">Unit Price</div>
           <div class="stm_inv__item--label">Quantity</div>
           <div class="stm_inv__item--label">Subtotal</div>
           <div class="stm_inv__item--label">Discount</div>
@@ -113,29 +113,17 @@
 
 <div class="stm_inv__flex--forms">
 
-  <div class="stm_inv__form stm_inv__flex--forms-item stm_inv__flex--forms-status">
-    <form method="POST" action="/update-rma-status/{{ $rma->id }}">
+  <div class="stm_inv__form--buttons">
+    <form method="POST" action="/update-rma-status-approve/{{ $rma->id }}">
       @csrf
-      <div class="stm_inv__forms-no-flex">
-        <input type="hidden" name="purchase_id" value="{{ $rma->id }}" />
-        <div class="field">
-          <label class="label" for="status">Approve or Reject RMA</label>
-          <div class="select">
-            <select name="status" id="status">
-              <option value="2" @if($rma->status == 2) selected @endif>Pending</option>
-              <option value="3" @if($rma->status == 3) selected @endif>Approved</option>
-              <option value="4" @if($rma->status == 4) selected @endif>Rejected</option>
-            </select>
-          </div>
-        </div>
-        <div class="field flex-margin margin-top-1">
-          <div class="control">
-            <button class="button is-primary call-loader" type="submit">Update</button>
-          </div>
-        </div>
-      </div>
+      <button class="button is-danger">Approve RMA</button>
+    </form>
+    <form method="POST" action="/update-rma-status-reject/{{ $rma->id }}">
+      @csrf
+      <button class="button is-danger">Reject RMA</button>
     </form>
   </div>
+
 
   <div class="stm_inv__form stm_inv__flex--forms-item stm_inv__flex--forms-status">
     <form method="POST" action="/update-rma-status/{{ $rma->id }}">

@@ -37,7 +37,7 @@
       <tr class="header-row">
         <th class="name-column">Product Name</th>
         <th>Color</th>
-        <th>Unit Cost</th>
+        <th>Unit Price</th>
         <th>Quantity</th>
         <th>Subtotal</th>
         <th>Discount</th>
