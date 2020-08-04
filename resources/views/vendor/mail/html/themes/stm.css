@@ -472,6 +472,7 @@ img.email-header-logo {
 
 .invoice-wrap .table.custom tr .imei-column {
     width: 18%;
+    white-space: nowrap;
 }
 
 .invoice-wrap .table.custom tr .item {
