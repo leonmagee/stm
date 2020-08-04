@@ -241,6 +241,7 @@ class PurchaseController extends Controller
             $purchase,
             $header_text,
             $email_subject,
+            true,
             true
         ));
 
@@ -253,7 +254,8 @@ class PurchaseController extends Controller
                 $purchase,
                 $header_text,
                 $email_subject,
-                false
+                false,
+                true
             ));
         }
         if ($cc_user_2_email = $request->cc_user_2) {
@@ -262,7 +264,8 @@ class PurchaseController extends Controller
                 $purchase,
                 $header_text,
                 $email_subject,
-                false
+                false,
+                true
             ));
 
         }

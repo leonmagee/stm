@@ -14,18 +14,20 @@ class PurchaseEmail extends Mailable
     public $user;
     public $purchase;
     public $header_text;
+    public $show_imei;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($user, $purchase, $header_text, $subject, $track = true)
+    public function __construct($user, $purchase, $header_text, $subject, $track = true, $show_imei = false)
     {
         $this->user = $user;
         $this->purchase = $purchase;
         $this->header_text = $header_text;
         $this->subject = $subject;
+        $this->show_imei = $show_imei;
         if ($track) {
             $this->callbacks[] = (function ($message) use ($user) {$message->getHeaders()->addTextHeader('user_id', $user->id);});
         } else {

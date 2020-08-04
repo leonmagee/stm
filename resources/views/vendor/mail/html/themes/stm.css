@@ -204,7 +204,7 @@ img {
 .table.custom th,
 .table.custom td {
     text-align: left;
-    padding: 7px 15px;
+    padding: 7px 7px;
     border: 1px solid #e3e3e3;
     border-right: none;
 }
@@ -468,6 +468,10 @@ img.email-header-logo {
 
 .invoice-wrap .table.custom tr .name-column {
     width: 25%;
+}
+
+.invoice-wrap .table.custom tr .imei-column {
+    width: 18%;
 }
 
 .invoice-wrap .table.custom tr .item {
