@@ -26,9 +26,10 @@
         </div>
 
         <div class="stm-flex-row separator">
-          <div class="stm-flex-row__item header flex-35">Product Name</div>
+          <div class="stm-flex-row__item header flex-30">Product Name</div>
           <div class="stm-flex-row__item header">Color</div>
-          <div class="stm-flex-row__item header">Unit Price</div>
+          <div class="stm-flex-row__item header flex-15">IMEIs</div>
+          <div class="stm-flex-row__item header">Price</div>
           <div class="stm-flex-row__item header">Quantity</div>
           <div class="stm-flex-row__item header">Subtotal</div>
           <div class="stm-flex-row__item header">Discount</div>
@@ -37,8 +38,13 @@
         </div>
         @foreach($purchase->products as $product)
         <div class="stm-flex-row">
-          <div class="stm-flex-row__item flex-35">{{ $product->name }}</div>
+          <div class="stm-flex-row__item flex-30">{{ $product->name }}</div>
           <div class="stm-flex-row__item">{{ $product->variation }}</div>
+          <div class="stm-flex-row__item flex-15">
+            @foreach($product->imeis as $imei)
+            <div>{{ $imei->imei }}</div>
+            @endforeach
+          </div>
           <div class="stm-flex-row__item">${{ number_format($product->unit_cost, 2) }}</div>
           <div class="stm-flex-row__item">{{ $product->quantity }}</div>
           <div class="stm-flex-row__item">${{ number_format($product->unit_cost * $product->quantity, 2) }}</div>

@@ -39,7 +39,8 @@
         <div class="stm-flex-row separator">
           <div class="stm-flex-row__item header flex-35">Product Name</div>
           <div class="stm-flex-row__item header">Color</div>
-          <div class="stm-flex-row__item header">Unit Price</div>
+          <div class="stm-flex-row__item header flex-15">IMEIs</div>
+          <div class="stm-flex-row__item header">Price</div>
           <div class="stm-flex-row__item header">Quantity</div>
           <div class="stm-flex-row__item header">Subtotal</div>
           <div class="stm-flex-row__item header">Discount</div>
@@ -49,6 +50,11 @@
         <div class="stm-flex-row">
           <div class="stm-flex-row__item flex-35">{{ $rma->product->name }}</div>
           <div class="stm-flex-row__item">{{ $rma->product->variation }}</div>
+          <div class="stm-flex-row__item flex-15">
+            @foreach($rma->product->imeis as $imei)
+            <div>{{ $imei->imei }}</div>
+            @endforeach
+          </div>
           <div class="stm-flex-row__item">${{ number_format($rma->product->unit_cost, 2) }}</div>
           <div class="stm-flex-row__item">{{ $rma->quantity }}</div>
           <div class="stm-flex-row__item">${{ number_format($rma->product->unit_cost * $rma->product->quantity, 2) }}

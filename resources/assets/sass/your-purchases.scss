@@ -21,6 +21,9 @@
             &.flex-15 {
                 flex: 0 1 15%;
             }
+            &.flex-30 {
+                flex: 0 1 30%;
+            }
             &.flex-35 {
                 flex: 0 1 35%;
             }
@@ -48,6 +51,7 @@
             &.header {
                 font-weight: 600;
                 background-color: $invoice-header;
+                font-size: 0.8em;
             }
             &.status-1 {
                 background-color: darken($brand-fifth, 13%);
