@@ -130,6 +130,9 @@
       console.log('one', paypal, data, actions);
       //$('.stm-absolute-wrap#loader-wrap').css({ display: 'flex' });
       return actions.order.create({
+        application_context: {
+          shipping_preference: 'NO_SHIPPING'
+        },
         purchase_units: [{
         amount: {
           currency_code: "USD",
