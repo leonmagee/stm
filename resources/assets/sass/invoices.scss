@@ -200,3 +200,20 @@
         }
     }
 }
+
+.imei-row {
+    display: flex;
+    justify-content: space-between;
+    button {
+        padding: 0;
+        border: none;
+        background-color: transparent;
+        &:hover {
+            cursor: pointer;
+        }
+    }
+    i {
+        color: red;
+        margin-left: 0.5em;
+    }
+}

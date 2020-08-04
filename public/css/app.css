@@ -21722,6 +21722,30 @@ body.stm-body.about .about-img-wrap img {
   width: 100%;
 }
 
+.imei-row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.imei-row button {
+  padding: 0;
+  border: none;
+  background-color: transparent;
+}
+
+.imei-row button:hover {
+  cursor: pointer;
+}
+
+.imei-row i {
+  color: red;
+  margin-left: 0.5em;
+}
+
 .products-react {
   height: 100%;
 }

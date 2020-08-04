@@ -7,6 +7,11 @@ use Illuminate\Http\Request;
 
 class ImeiController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -39,7 +44,7 @@ class ImeiController extends Controller
             'purchase_product_id' => $request->purchase_product_id,
             'imei' => $request->imei_number,
         ]);
-        session()->flash('message', 'IMEI Number added');
+        session()->flash('message', 'IMEI Number added.');
         return redirect()->back();
     }
 
@@ -85,6 +90,8 @@ class ImeiController extends Controller
      */
     public function destroy(Imei $imei)
     {
-        //
+        $imei->delete();
+        session()->flash('danger', 'IMEI number removed');
+        return redirect()->back();
     }
 }
