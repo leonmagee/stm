@@ -107,7 +107,7 @@
     </a>
     <div id="paypal-button-container"></div>
     @endif
-    <a class="button custom-button continue-shopping" href="/products">Continue Shopping</a>
+    <a class="button custom-button continue-shopping" href="/">Continue Shopping</a>
   </div>
 </div>
 </div>

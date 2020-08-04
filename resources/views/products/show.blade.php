@@ -195,9 +195,11 @@
 
   </div>
 
+  @if(\Auth()->user()->isAdmin())
   <div class="product-details__edit">
     <a href="/products/edit/{{ $product->id }}">Edit</a>
   </div>
+  @endif
 </div>
 </div>
 

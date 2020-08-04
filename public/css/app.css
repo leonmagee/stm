@@ -18778,6 +18778,15 @@ body.stm-body .add-padding {
   border-left: 1px solid #ccc;
 }
 
+.header-wrap .header-area a.button.cart {
+  color: #fff;
+  background-color: #06dba3;
+}
+
+.header-wrap .header-area a.button.cart i {
+  color: #fff;
+}
+
 .header-wrap .header-area a.button input.search {
   font-size: 1.05em;
   padding: 3px;

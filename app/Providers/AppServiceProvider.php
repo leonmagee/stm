@@ -280,10 +280,10 @@ class AppServiceProvider extends ServiceProvider
             ];
 
             $products_sub = [
-                [
-                    'name' => 'Products',
-                    'link' => '/products',
-                ],
+                // [
+                //     'name' => 'Products',
+                //     'link' => '/products',
+                // ],
                 [
                     'name' => 'Products List',
                     'link' => '/products-list',
@@ -300,15 +300,22 @@ class AppServiceProvider extends ServiceProvider
                     'name' => 'RMAs',
                     'link' => '/rmas',
                 ],
-                [
-                    'name' => 'Your Purchases',
-                    'link' => '/your-purchases',
-                ],
-                [
-                    'name' => 'Your RMAs',
-                    'link' => '/your-rmas',
-                ],
             ];
+
+            // $products_sub_dealer = [
+            //     [
+            //         'name' => 'Products',
+            //         'link' => '/products',
+            //     ],
+            //     [
+            //         'name' => 'Your Purchases',
+            //         'link' => '/your-purchases',
+            //     ],
+            //     [
+            //         'name' => 'Your RMAs',
+            //         'link' => '/your-rmas',
+            //     ],
+            // ];
 
             $settings = Settings::first();
 
@@ -320,10 +327,18 @@ class AppServiceProvider extends ServiceProvider
 
                 $menu_array = [
                     [
-                        'name' => 'Homepage',
+                        'name' => 'Products',
                         'link' => '/',
                         'sub' => false,
                         'icon' => 'flaticon-home',
+                        //'icon' => 'flaticon-wifi',
+                        'default' => false,
+                    ],
+                    [
+                        'name' => 'Plans',
+                        'link' => '/plans',
+                        'sub' => false,
+                        'icon' => 'flaticon-wifi',
                         'default' => false,
                     ],
                     [
@@ -411,11 +426,11 @@ class AppServiceProvider extends ServiceProvider
                         'default' => '/all-users',
                     ],
                     [
-                        'name' => 'Products',
+                        'name' => 'Products List',
                         'link' => false,
                         'sub' => $products_sub,
                         'icon' => 'flaticon-wifi',
-                        'default' => '/products',
+                        'default' => '/products-list',
                     ],
                 ];
 
@@ -423,10 +438,17 @@ class AppServiceProvider extends ServiceProvider
 
                 $menu_array = [
                     [
-                        'name' => 'Homepage',
+                        'name' => 'Products',
                         'link' => '/',
                         'sub' => false,
                         'icon' => 'flaticon-home',
+                        'default' => false,
+                    ],
+                    [
+                        'name' => 'Plans',
+                        'link' => '/plans',
+                        'sub' => false,
+                        'icon' => 'flaticon-wifi',
                         'default' => false,
                     ],
                     [
@@ -512,10 +534,17 @@ class AppServiceProvider extends ServiceProvider
 
                 $menu_array = [
                     [
-                        'name' => 'Homepage',
+                        'name' => 'Products',
                         'link' => '/',
                         'sub' => false,
                         'icon' => 'flaticon-home',
+                        'default' => false,
+                    ],
+                    [
+                        'name' => 'Plans',
+                        'link' => '/plans',
+                        'sub' => false,
+                        'icon' => 'flaticon-wifi',
                         'default' => false,
                     ],
                     [
@@ -596,10 +625,17 @@ class AppServiceProvider extends ServiceProvider
                  */
                 $menu_array = [
                     [
-                        'name' => 'Homepage',
+                        'name' => 'Products',
                         'link' => '/',
                         'sub' => false,
                         'icon' => 'flaticon-home',
+                        'default' => false,
+                    ],
+                    [
+                        'name' => 'Plans',
+                        'link' => '/plans',
+                        'sub' => false,
+                        'icon' => 'flaticon-wifi',
                         'default' => false,
                     ],
                     [
@@ -700,6 +736,13 @@ class AppServiceProvider extends ServiceProvider
                         'icon' => 'flaticon-charging-battery',
                         'default' => false,
                     ],
+                    // [
+                    //     'name' => 'Products',
+                    //     'link' => false,
+                    //     'sub' => $products_sub_dealer,
+                    //     'icon' => 'flaticon-wifi',
+                    //     'default' => '/products',
+                    // ],
                 ];
 
             } else {
@@ -708,10 +751,17 @@ class AppServiceProvider extends ServiceProvider
                  */
                 $menu_array = [
                     [
-                        'name' => 'Homepage',
+                        'name' => 'Products',
                         'link' => '/',
                         'sub' => false,
                         'icon' => 'flaticon-home',
+                        'default' => false,
+                    ],
+                    [
+                        'name' => 'Plans',
+                        'link' => '/plans',
+                        'sub' => false,
+                        'icon' => 'flaticon-wifi',
                         'default' => false,
                     ],
                     [
@@ -777,6 +827,13 @@ class AppServiceProvider extends ServiceProvider
                         'icon' => 'flaticon-electric-plug',
                         'default' => false,
                     ],
+                    // [
+                    //     'name' => 'Products',
+                    //     'link' => false,
+                    //     'sub' => $products_sub_dealer,
+                    //     'icon' => 'flaticon-wifi',
+                    //     'default' => '/products',
+                    // ],
                 ];
 
             }

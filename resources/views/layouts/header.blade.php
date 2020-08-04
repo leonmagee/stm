@@ -24,14 +24,14 @@
           </form>
         </div>
         <div class="field has-addons">
-          <p class="control">
+          {{-- <p class="control">
             <a class="button cart" href="/cart">
               <span class="icon is-small">
                 <i class="fas fa-cart-plus"></i>
               </span>
               <span class="text">Cart</span>
             </a>
-          </p>
+          </p> --}}
           <p class="control">
             <a class="button type" href="/settings">
               <span class="icon is-small">
@@ -339,6 +339,22 @@
             </a>
           </p>
           <p class="control">
+            <a href="/your-purchases" class="button user">
+              <span class="icon is-small">
+                <i class="fi flaticon-security-on"></i>
+              </span>
+              <span class="text">Purchases</span>
+            </a>
+          </p>
+          <p class="control">
+            <a href="/your-rmas" class="button user">
+              <span class="icon is-small">
+                <i class="fi flaticon-security-on"></i>
+              </span>
+              <span class="text">RMAs</span>
+            </a>
+          </p>
+          <p class="control">
             <a href="/profile" class="button user">
               <span class="icon is-small">
                 <i class="fas fa-user"></i>
@@ -363,17 +379,25 @@
             </a>
           </p>
           <p class="control">
-            <a class="button mode not-link {{ $mode }}">
+            <a class="button cart" href="/cart">
               <span class="icon is-small">
-                @if($mode == 'online')
-                <i class="fas fa-signal"></i>
-                @else
-                <i class="fas fa-lock"></i>
-                @endif
+                <i class="fas fa-shopping-cart"></i>
               </span>
-              <span class="text">{{ $mode }}</span>
+              <span class="text">Cart</span>
             </a>
           </p>
+          {{-- <p class="control">
+            <a class="button mode not-link {{ $mode }}">
+          <span class="icon is-small">
+            @if($mode == 'online')
+            <i class="fas fa-signal"></i>
+            @else
+            <i class="fas fa-lock"></i>
+            @endif
+          </span>
+          <span class="text">{{ $mode }}</span>
+          </a>
+          </p> --}}
         </div>
       </div>
 

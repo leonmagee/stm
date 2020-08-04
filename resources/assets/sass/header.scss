@@ -170,6 +170,11 @@
                 border-left: 1px solid #ccc;
             }
             &.cart {
+                color: #fff;
+                background-color: $color-green;
+                i {
+                    color: #fff;
+                }
                 // i {
                 //     color: darken($green, 2%);
                 // }

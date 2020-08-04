@@ -19,40 +19,48 @@
 // just a test edit
 
 //Route::get('/', 'HomeController@index')->name('home');
-Route::get('/', 'HomeController@commission')->name('home');
+//Route::get('/', 'HomeController@commission')->name('home');
+Route::get('/', 'ProductController@index')->name('home');
 Route::get('about', 'LoggedOutController@about')->name('about');
+Route::get('plans', 'HomeController@commission');
 //Route::get('commission', 'HomeController@commission')->name('commission');
 Route::get('/charts', 'HomeController@index')->name('charts');
 
+//Route::get('products', 'ProductController@index');
+Route::post('rma-new', 'RmaController@store');
+Route::get('your-rmas', 'RmaController@your_rmas');
+Route::get('your-purchases', 'PurchaseController@your_purchases');
+Route::post('process-paypal', 'PurchaseController@store');
+Route::get('products/{product}', 'ProductController@show');
+Route::post('update-user-rating', 'ProductRatingController@store');
+Route::get('cart', 'CartProductController@index');
+Route::post('add-to-cart', 'CartProductController@store');
+Route::post('update-cart-item/{item}', 'CartProductController@update');
+Route::get('delete-cart-item/{item}', 'CartProductController@destroy');
+Route::post('review-create-update', 'ProductReviewController@update');
+Route::get('purchase-complete', 'PurchaseController@purchase_complete');
+Route::post('pay-with-balance', 'PurchaseController@pay_with_balance');
+
 Route::group(['middleware' => 'App\Http\Middleware\LockOutUsersManagers'], function () {
-    Route::get('products', 'ProductController@index');
     Route::get('products-list', 'ProductController@list');
     Route::get('purchases', 'PurchaseController@index');
-    Route::get('your-purchases', 'PurchaseController@your_purchases');
     Route::get('purchases/{purchase}', 'PurchaseController@show');
-    Route::post('process-paypal', 'PurchaseController@store');
-    Route::get('purchase-complete', 'PurchaseController@purchase_complete');
-    Route::get('purchase-email-test', 'PurchaseController@store_test');
+    //Route::get('purchase-email-test', 'PurchaseController@store_test');
     Route::post('update-shipping-info', 'PurchaseController@update_shipping');
     Route::post('update-purchase-status', 'PurchaseController@update_status');
-    Route::post('pay-with-balance', 'PurchaseController@pay_with_balance');
     Route::get('rmas', 'RmaController@index');
     Route::get('rmas/{rma}', 'RmaController@show');
-    Route::post('rma-new', 'RmaController@store');
-    Route::get('your-rmas', 'RmaController@your_rmas');
     Route::post('update-rma-status/{rma}', 'RmaController@update_status');
     Route::post('update-rma-status-approve/{rma}', 'RmaController@rma_approve');
     Route::post('update-rma-status-reject/{rma}', 'RmaController@rma_reject');
     Route::post('add-imei-number', 'ImeiController@store');
     Route::post('delete-imei/{imei}', 'ImeiController@destroy');
     //Route::get('products-carousel', 'ProductController@index_carousel');
-    Route::get('products/{product}', 'ProductController@show');
     Route::get('product-new', 'ProductController@create');
     Route::post('product-new', 'ProductController@store');
     Route::get('products/edit/{product}', 'ProductController@edit');
     Route::post('products/edit/{product}', 'ProductController@update');
     Route::get('products/delete/{product}', 'ProductController@destroy');
-    Route::post('review-create-update', 'ProductReviewController@update');
 });
 
 /**
@@ -95,11 +103,6 @@ Route::group(['middleware' => 'App\Http\Middleware\LockOutUsersManagers'], funct
     Route::get('transaction-change-credit/{user}', 'UserController@transactionTrackerAddCredit');
     Route::post('edit-transaction/{user}', 'UserController@changeUserBalance');
     Route::post('credit-complete', 'UserController@creditComplete');
-    Route::post('update-user-rating', 'ProductRatingController@store');
-    Route::get('cart', 'CartProductController@index');
-    Route::post('add-to-cart', 'CartProductController@store');
-    Route::post('update-cart-item/{item}', 'CartProductController@update');
-    Route::get('delete-cart-item/{item}', 'CartProductController@destroy');
 });
 
 /**

@@ -11,7 +11,7 @@
   </div>
 
   <div class="purchase-complete__footer">
-    <a href="products" class="button is-primary">Continue Shopping</a>
+    <a href="/" class="button is-primary">Continue Shopping</a>
   </div>
 </div>
 @endsection
