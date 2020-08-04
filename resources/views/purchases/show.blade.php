@@ -98,7 +98,7 @@
           <div class="stm_inv__header--label">City</div>
           <div class="stm_inv__header--label">State</div>
           <div class="stm_inv__header--label">Zip</div>
-          <div class="stm_inv__header--label">Tracking Number</div>
+          <div class="stm_inv__header--label stm_inv__flex--15">Tracking Number</div>
           <div class="stm_inv__header--label">Shipping Service</div>
         </div>
         <div class="stm_inv__flex">
@@ -107,7 +107,7 @@
           <div class="stm_inv__header--item">{{ $purchase->user->city }}</div>
           <div class="stm_inv__header--item">{{ $purchase->user->state }}</div>
           <div class="stm_inv__header--item">{{ $purchase->user->zip }}</div>
-          <div class="stm_inv__header--item">{{ $purchase->tracking_number }}</div>
+          <div class="stm_inv__header--item stm_inv__flex--15">{{ $purchase->tracking_number }}</div>
           <div class="stm_inv__header--item">{{ $purchase->shipping_type }}</div>
         </div>
       </div>
