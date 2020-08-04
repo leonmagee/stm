@@ -35,7 +35,7 @@
       <div class="stm_inv__items">
         <div class="stm_inv__flex">
           <div class="stm_inv__item--label stm_inv__flex--60">Product Name</div>
-          <div class="stm_inv__item--label stm_inv__flex--20">IMEIs</div>
+          <div class="stm_inv__item--label stm_inv__flex--22">IMEIs</div>
           <div class="stm_inv__item--label">Color</div>
           <div class="stm_inv__item--label">Unit Price</div>
           <div class="stm_inv__item--label">Quantity</div>
@@ -47,7 +47,7 @@
         @foreach($purchase->products as $product)
         <div class="stm_inv__flex stm_inv__flex-{{ $product->id }}">
           <div class="stm_inv__item--item stm_inv__flex--60">{{ $product->name }}</div>
-          <div class="stm_inv__item--item stm_inv__flex--20">
+          <div class="stm_inv__item--item stm_inv__flex--22">
             @foreach($product->imeis as $imei)
             <div class="imei-row">
               {{ $imei->imei }}

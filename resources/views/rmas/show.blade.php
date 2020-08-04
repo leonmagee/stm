@@ -16,9 +16,6 @@
           <div class="stm_inv__header--label">RMA #</div>
           <div class="stm_inv__header--label">Company</div>
           <div class="stm_inv__header--label">Name</div>
-          <div class="stm_inv__header--label">Product</div>
-          <div class="stm_inv__header--label">Color</div>
-          <div class="stm_inv__header--label">Quantity</div>
           <div class="stm_inv__header--label">RMA Date</div>
           <div class="stm_inv__header--label">Purchase Order</div>
           <div class="stm_inv__header--label">Status</div>
@@ -28,13 +25,30 @@
           <div class="stm_inv__header--item">RMA-GSW-{{ $rma->id }}</div>
           <div class="stm_inv__header--item">{{ $rma->user->company }}</div>
           <div class="stm_inv__header--item">{{ $rma->user->name }}</div>
-          <div class="stm_inv__header--item">{{ $rma->product->name }}</div>
-          <div class="stm_inv__header--item">{{ $rma->product->variation }}</div>
-          <div class="stm_inv__header--item">{{ $rma->quantity }}</div>
           <div class="stm_inv__header--item">{{ $rma->created_at->format('M d, Y') }}</div>
           <div class="stm_inv__header--item"><a href="/purchases/{{ $rma->product->purchase_id }}">View</a></div>
           <div class="stm_inv__header--item stm_inv__header--item-status-{{ $rma->status }}">
             {{ \App\Helpers::rma_status($rma->status) }}
+          </div>
+        </div>
+      </div>
+
+      <div class="stm_inv__header margin-top-1-5">
+        <div class="stm_inv__flex">
+          <div class="stm_inv__header--label">Product</div>
+          <div class="stm_inv__header--label">Color</div>
+          <div class="stm_inv__header--label">Quantity</div>
+          <div class="stm_inv__header--label">IMEIs</div>
+        </div>
+
+        <div class="stm_inv__flex">
+          <div class="stm_inv__header--item">{{ $rma->product->name }}</div>
+          <div class="stm_inv__header--item">{{ $rma->product->variation }}</div>
+          <div class="stm_inv__header--item">{{ $rma->quantity }}</div>
+          <div class="stm_inv__header--item">
+            @foreach($rma->product->imeis as $imei)
+            <div>{{ $imei->imei }}</div>
+            @endforeach
           </div>
         </div>
       </div>
