@@ -511,6 +511,18 @@ $(
 });
 
 $(
+    ".modal-open-rma-approve, .modal-rma-approve-close, #modal-close-rma-approve-icon"
+).click(function() {
+    $("#rma-approve-modal").toggleClass("is-active");
+});
+
+$(
+    ".modal-open-rma-reject, .modal-rma-reject-close, #modal-close-rma-reject-icon"
+).click(function() {
+    $("#rma-reject-modal").toggleClass("is-active");
+});
+
+$(
   '.modal-open-review, .modal-review-close, .modal-close',
 ).click(function () {
   $('#review-modal').toggleClass('is-active');

@@ -114,14 +114,66 @@
 <div class="stm_inv__flex--forms">
 
   <div class="stm_inv__form--buttons">
-    <form method="POST" action="/update-rma-status-approve/{{ $rma->id }}">
-      @csrf
-      <button class="button is-danger">Approve RMA</button>
-    </form>
-    <form method="POST" action="/update-rma-status-reject/{{ $rma->id }}">
-      @csrf
-      <button class="button is-danger">Reject RMA</button>
-    </form>
+    <button class="button is-green modal-open-rma-approve">Approve RMA</button>
+    <button class="button is-danger modal-open-rma-reject">Reject RMA</button>
+    {{-- <form method="POST" action="/update-rma-status-reject/{{ $rma->id }}">
+    @csrf
+    <button class="button is-danger">Reject RMA</button>
+    </form> --}}
+  </div>
+
+  <div class="modal" id="rma-approve-modal">
+
+    <div class="modal-background"></div>
+
+    <div class="modal-content">
+
+      <div class="modal-box">
+
+        <h4 class="title">Are You Sure?</h4>
+
+        <form method="POST" action="/update-rma-status-approve/{{ $rma->id }}">
+          @csrf
+          <label class="label">Message</label>
+          <?php $message = 'Your RMA has been approved.'; ?>
+          <textarea class="textarea" name="rma_message">{{ $message }}</textarea>
+          <button type="submit" class="button is-danger margin-top-1-5 call-loader">Approve RMA</button>
+        </form>
+
+        <a class="modal-rma-approve-close button is-primary">Cancel</a>
+      </div>
+
+    </div>
+
+    <a id="modal-close-rma-approve-icon" class="modal-close is-large" aria-label="close"></a>
+
+  </div>
+
+  <div class="modal" id="rma-reject-modal">
+
+    <div class="modal-background"></div>
+
+    <div class="modal-content">
+
+      <div class="modal-box">
+
+        <h4 class="title">Are You Sure?</h4>
+
+        <form method="POST" action="/update-rma-status-reject/{{ $rma->id }}">
+          @csrf
+          <label class="label">Message</label>
+          <?php $message = 'Your RMA has been rejected.'; ?>
+          <textarea class="textarea" name="rma_message">{{ $message }}</textarea>
+          <button type="submit" class="button is-danger margin-top-1-5 call-loader">Reject RMA</button>
+        </form>
+
+        <a class="modal-rma-reject-close button is-primary">Cancel</a>
+      </div>
+
+    </div>
+
+    <a id="modal-close-rma-reject-icon" class="modal-close is-large" aria-label="close"></a>
+
   </div>
 
 

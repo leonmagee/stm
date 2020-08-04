@@ -157,10 +157,16 @@
         }
     }
     .stm_inv__form--buttons {
-        display: flex;
+        //display: flex;
+        display: block;
         padding: 2em 0;
+        form {
+            height: auto;
+        }
         button {
-            margin-right: 3em;
+            //margin-right: 3em;
+            margin: 0 0 2em;
+            width: 100%;
         }
     }
     .stm_imv__finalize {

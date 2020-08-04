@@ -139,9 +139,65 @@ class RmaController extends Controller
      */
     public function update_status(Request $request, Rma $rma)
     {
-        //dd($request, $rma);
         $rma->status = $request->status;
         $rma->save();
+        return redirect()->back();
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Rma  $rma
+     * @return \Illuminate\Http\Response
+     */
+    public function rma_approve(Request $request, Rma $rma)
+    {
+        $rma->status = 3;
+        $rma->save();
+        $user = $rma->user;
+        $header_text = "<strong>Hello " . $user->name . "</strong><br />" . $request->rma_message;
+        $purchase = Purchase::find($rma->product->purchase_id);
+
+        \Mail::to($user)->send(new RmaEmail(
+            $user,
+            $purchase,
+            $header_text,
+            'RMA # RMA-GSW-' . $rma->id . ' Approved',
+            true,
+            $rma
+        ));
+
+        session()->flash('message', 'RMA Approved.');
+        return redirect()->back();
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Rma  $rma
+     * @return \Illuminate\Http\Response
+     */
+    public function rma_reject(Request $request, Rma $rma)
+    {
+        //dd('reject', $request, $rma);
+        $rma->status = 4;
+        $rma->save();
+        $user = $rma->user;
+        $header_text = "<strong>Hello " . $user->name . "</strong><br />" . $request->rma_message;
+        $purchase = Purchase::find($rma->product->purchase_id);
+
+        \Mail::to($user)->send(new RmaEmail(
+            $user,
+            $purchase,
+            $header_text,
+            'RMA # RMA-GSW-' . $rma->id . ' Rejected',
+            true,
+            $rma
+        ));
+
+        session()->flash('message', 'RMA Rejected.');
         return redirect()->back();
     }
 

@@ -21662,14 +21662,17 @@ body.stm-body.about .about-img-wrap img {
 }
 
 .stm_inv .stm_inv__form--buttons {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
+  display: block;
   padding: 2em 0;
 }
 
+.stm_inv .stm_inv__form--buttons form {
+  height: auto;
+}
+
 .stm_inv .stm_inv__form--buttons button {
-  margin-right: 3em;
+  margin: 0 0 2em;
+  width: 100%;
 }
 
 .stm_inv .stm_imv__finalize {
