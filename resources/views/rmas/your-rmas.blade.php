@@ -68,7 +68,7 @@
 
       @endforeach
       @else
-      <div class="no-rmas">No RMAs have been submitted yet.</div>
+      <div class="no-rmas-purchases">No RMAs have been submitted yet.</div>
       @endif
     </div>
   </div>

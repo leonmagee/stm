@@ -10,6 +10,7 @@
 
     <div class="stm-flex">
 
+      @if(count($purchases))
       @foreach($purchases as $purchase)
       <div class="stm-flex-wrap">
         <div class="stm-flex-row">
@@ -114,6 +115,9 @@
         </div>
       </div>
       @endforeach
+      @else
+      <div class="no-rmas-purchases">No purchases have been completed yet.</div>
+      @endif
     </div>
   </div>
 </div>
