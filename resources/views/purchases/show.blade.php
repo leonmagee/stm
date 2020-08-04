@@ -35,17 +35,23 @@
       <div class="stm_inv__items">
         <div class="stm_inv__flex">
           <div class="stm_inv__item--label stm_inv__flex--60">Product Name</div>
+          <div class="stm_inv__item--label stm_inv__flex--20">IMEIs</div>
           <div class="stm_inv__item--label">Color</div>
           <div class="stm_inv__item--label">Unit Price</div>
           <div class="stm_inv__item--label">Quantity</div>
           <div class="stm_inv__item--label">Subtotal</div>
           <div class="stm_inv__item--label">Discount</div>
-          <div class="stm_inv__item--label">Item Total</div>
+          <div class="stm_inv__item--label">Total</div>
         </div>
 
         @foreach($purchase->products as $product)
         <div class="stm_inv__flex stm_inv__flex-{{ $product->id }}">
           <div class="stm_inv__item--item stm_inv__flex--60">{{ $product->name }}</div>
+          <div class="stm_inv__item--item stm_inv__flex--20">
+            @foreach($product->imeis as $imei)
+            {{ $imei->imei }}
+            @endforeach
+          </div>
           <div class="stm_inv__item--item">{{ $product->variation }}</div>
           <div class="stm_inv__item--item ">${{ number_format($product->unit_cost, 2) }}</div>
           <div class="stm_inv__item--item">{{ $product->quantity }}</div>
@@ -98,8 +104,8 @@
         </div>
       </div>
 
-      @if((\Auth::user()->isAdmin()))
       <div class="stm_inv__flex--forms">
+
         <div class="stm_inv__form stm_inv__flex--forms-item stm_inv__flex--forms-tracking">
           <form method="POST" action="/update-shipping-info">
             @csrf
@@ -125,7 +131,6 @@
             </div>
             <div class="field flex-margin margin-top-1">
               <div class="control">
-                {{-- <button class="button is-primary call-loader" type="submit">Ship Purchase Order</button> --}}
                 <a href="#" class="modal-open button is-primary">Ship Purchase Order</a>
               </div>
             </div>
@@ -161,47 +166,76 @@
                   </div>
                   <button class="button is-danger call-loader" type="submit">Ship Purchase Order</button>
                   <a href="#" class="modal-close-button button is-primary">Cancel</a>
-          </form>
 
+                </div>
+              </div>
+              <button class="modal-close is-large" aria-label="close"></button>
+            </div>
+          </form>
+        </div>
+
+        <div class="stm_inv__form stm_inv__flex--forms-item stm_inv__flex--forms-status">
+          <form method="POST" action="/update-purchase-status">
+            @csrf
+            <div class="stm_inv__forms-no-flex">
+              <input type="hidden" name="purchase_id" value="{{ $purchase->id }}" />
+              <div class="field">
+                <label class="label" for="status">Status</label>
+                <div class="select">
+                  <select name="status" id="status">
+                    <option value="2" @if($purchase->status == 2) selected @endif>Pending</option>
+                    <option value="3" @if($purchase->status == 3) selected @endif>Shipped</option>
+                    <option value="4" @if($purchase->status == 4) selected @endif>Cancelled</option>
+                  </select>
+                </div>
+              </div>
+              <div class="field flex-margin margin-top-1">
+                <div class="control">
+                  <button class="button is-primary call-loader" type="submit">Update</button>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+
+
+      <div class="stm_inv__flex--forms">
+        <div class="stm_inv__form stm_inv__flex--forms-item stm_inv__flex--forms-imei">
+          <form method="POST" action="/add-imei-number">
+            @csrf
+            <div class="stm_inv__form--flex">
+              {{-- <input type="hidden" name="purchase_id" value="{{ $purchase->id }}" /> --}}
+              <div class="field description">
+                <label class="label" for="description">IMEI Number</label>
+                <div class="control">
+                  <input class="input" type="text" id="imei_number" name="imei_number" required />
+                </div>
+              </div>
+              <div class="field flex-50">
+                <label class="label" for="status">Product</label>
+                <div class="select">
+                  <select name="purchase_product_id" id="purchase_product_id">
+                    @foreach($purchase->products as $product)
+                    <option value="{{ $product->id }}">{{ $product->name . " - " . $product->variation }}</option>
+                    @endforeach
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="field flex-margin margin-top-1">
+              <div class="control">
+                <button type="submit" href="#" class="button is-primary">Add IMEI Number</button>
+              </div>
+            </div>
+
+          </form>
         </div>
 
       </div>
-
-      <button class="modal-close is-large" aria-label="close"></button>
 
     </div>
-
-    </form>
   </div>
-  <div class="stm_inv__form stm_inv__flex--forms-item stm_inv__flex--forms-status">
-    <form method="POST" action="/update-purchase-status">
-      @csrf
-      <div class="stm_inv__forms-no-flex">
-        <input type="hidden" name="purchase_id" value="{{ $purchase->id }}" />
-        <div class="field">
-          <label class="label" for="status">Status</label>
-          <div class="select">
-            <select name="status" id="status">
-              <option value="2" @if($purchase->status == 2) selected @endif>Pending</option>
-              <option value="3" @if($purchase->status == 3) selected @endif>Shipped</option>
-              <option value="4" @if($purchase->status == 4) selected @endif>Cancelled</option>
-            </select>
-          </div>
-        </div>
-        <div class="field flex-margin margin-top-1">
-          <div class="control">
-            <button class="button is-primary call-loader" type="submit">Update</button>
-          </div>
-        </div>
-      </div>
-    </form>
-  </div>
-</div>
-@endif
-
-
-</div>
-</div>
 
 </div>
 

@@ -43,6 +43,7 @@ Route::group(['middleware' => 'App\Http\Middleware\LockOutUsersManagers'], funct
     Route::post('update-rma-status/{rma}', 'RmaController@update_status');
     Route::post('update-rma-status-approve/{rma}', 'RmaController@rma_approve');
     Route::post('update-rma-status-reject/{rma}', 'RmaController@rma_reject');
+    Route::post('add-imei-number', 'ImeiController@store');
     //Route::get('products-carousel', 'ProductController@index_carousel');
     Route::get('products/{product}', 'ProductController@show');
     Route::get('product-new', 'ProductController@create');

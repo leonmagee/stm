@@ -8,4 +8,8 @@ class PurchaseProduct extends Model
     // {
     //     return $this->belongsTo(User::class);
     // }
+    public function imeis()
+    {
+        return $this->hasMany(Imei::class);
+    }
 }
