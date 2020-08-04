@@ -37,7 +37,7 @@
           <div class="stm_inv__item--label stm_inv__flex--60">Product Name</div>
           <div class="stm_inv__item--label stm_inv__flex--25">IMEIs</div>
           <div class="stm_inv__item--label">Color</div>
-          <div class="stm_inv__item--label">Unit Price</div>
+          <div class="stm_inv__item--label">Price</div>
           <div class="stm_inv__item--label">Quantity</div>
           <div class="stm_inv__item--label">Subtotal</div>
           <div class="stm_inv__item--label">Discount</div>
