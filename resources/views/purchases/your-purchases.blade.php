@@ -110,7 +110,12 @@
           <div class="stm-flex-row__item">{{ strtoupper($purchase->type) }}</div>
           <div class="stm-flex-row__item">${{ number_format($purchase->sub_total, 2) }}</div>
           <div class="stm-flex-row__item red">
-            ${{ number_format($purchase->sub_total * 2 / 100, 2) }}</div>
+            @if(strtoupper($purchase->type) == 'PAYPAL')
+            ${{ number_format($purchase->sub_total * 2 / 100, 2) }}
+            @else
+            $0.00
+            @endif
+          </div>
           <div class="stm-flex-row__item bold">${{ number_format($purchase->total, 2) }}</div>
         </div>
       </div>
