@@ -14,6 +14,12 @@ class Product extends Model
         return $this->hasMany(ProductVariation::class);
     }
 
+    public function first_variation()
+    {
+        $variation = $this->variations->first();
+        return $variation->text;
+    }
+
     public function initial_quantity()
     {
         foreach ($this->variations as $variation) {

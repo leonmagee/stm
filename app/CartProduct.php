@@ -21,7 +21,8 @@ class CartProduct extends Model
     public function cart_variations()
     {
         $product_id = $this->product->id;
-        $cart_items = self::where(['product_id' => $product_id])->whereNotIn('id', [$this->id])->get();
+        $user_id = \Auth::user()->id;
+        $cart_items = self::where(['product_id' => $product_id, 'user_id' => $user_id])->whereNotIn('id', [$this->id])->get();
         $chosen_variations = [];
         foreach ($cart_items as $item) {
             $chosen_variations[] = $item->variation;
@@ -29,9 +30,11 @@ class CartProduct extends Model
         $variations = $this->product->variations;
         $new_variations = [];
         foreach ($variations as $variation) {
-            $text = $variation->text;
-            if (!in_array($text, $chosen_variations)) {
-                $new_variations[] = $text;
+            if ($variation->quantity > 0) {
+                $text = $variation->text;
+                if (!in_array($text, $chosen_variations)) {
+                    $new_variations[] = $text;
+                }
             }
         }
         return $new_variations;

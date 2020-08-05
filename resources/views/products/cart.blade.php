@@ -9,10 +9,6 @@
       <div class="stm-cart__alerts">
         @include('layouts.alert')
       </div>
-      {{-- <div class="notification is-success" id="payment-complete-notification">
-        <button class="delete"></button>
-        Your purchase is complete. You will receive an email with purchase details.
-      </div> --}}
       @if(count($items))
       <div class="stm-cart__item stm-cart__item--header">
         <div class="stm-cart__item--product">Product</div>

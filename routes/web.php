@@ -35,6 +35,7 @@ Route::get('products/{product}', 'ProductController@show');
 Route::post('update-user-rating', 'ProductRatingController@store');
 Route::get('cart', 'CartProductController@index');
 Route::post('add-to-cart', 'CartProductController@store');
+Route::post('add-to-cart-axios', 'CartProductController@store_axios');
 Route::post('update-cart-item/{item}', 'CartProductController@update');
 Route::get('delete-cart-item/{item}', 'CartProductController@destroy');
 Route::post('review-create-update', 'ProductReviewController@update');

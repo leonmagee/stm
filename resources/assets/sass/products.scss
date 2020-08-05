@@ -223,11 +223,34 @@
     }
 
     // product thumbnail
+    @keyframes myanim {
+        70% {
+            font-size: 6em;
+        }
+    }
     .product {
         font-size: 1.2em;
         position: relative;
         @include product_style;
         overflow: hidden;
+        .product__cart_hover {
+            background-color: rgba(0, 0, 0, 0.1);
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            display: flex;
+            //display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000000;
+            i {
+                font-size: 3.3em;
+                color: $green;
+                animation: myanim 2s 1;
+            }
+        }
         .product__rating {
             padding: 0.3em 1.2em 0.4em;
             border-top: 1px solid #f2f2f2;

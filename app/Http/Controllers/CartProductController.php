@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\CartProduct;
+use App\Product;
 use App\ProductVariation;
 use Illuminate\Http\Request;
 
@@ -75,6 +76,35 @@ class CartProductController extends Controller
         ]);
         return back()->withMessage('Added to Cart. <a href="/cart">Checkout</a>.');
 
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store_axios(Request $request)
+    {
+        $user_id = \Auth::user()->id;
+        $product_id = $request->id;
+        $product = Product::find($product_id);
+        $variation = $product->first_variation();
+        //\Log::debug('Controller - Product ID: ' . $product);
+        //dd('product', $product);
+        $existing = CartProduct::where([
+            'product_id' => $product_id,
+            'user_id' => $user_id,
+            //'variation' => $variation,
+        ])->first();
+        if (!$existing) {
+            CartProduct::create([
+                'product_id' => $product_id,
+                'quantity' => 1,
+                'variation' => $variation,
+                'user_id' => $user_id,
+            ]);
+        }
     }
 
     /**
