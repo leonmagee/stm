@@ -34,10 +34,10 @@ require('./components/ProductsCarousel');
 let max_quantity = $('input#quantity-input').attr('max_quantity');
 function change_input_value(max) {
   $('input#quantity-input').change(function () {
-    if ($(this).val() < 1) {
+    if (parseInt($(this).val()) < 1) {
       $(this).val('');
     }
-    if ($(this).val() > max) {
+    if (parseInt($(this).val()) > max) {
       $(this).val(max);
     }
   })

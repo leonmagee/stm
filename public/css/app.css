@@ -22690,7 +22690,7 @@ body.stm-body.about .about-img-wrap img {
 }
 
 .product-single .product-details .product-details__cart .product-details__quantity {
-  width: 5em;
+  width: 6em;
   font-weight: 600;
   font-size: 1.1em;
   display: -webkit-box;
@@ -23101,7 +23101,7 @@ body.stm-body.about .about-img-wrap img {
 }
 
 .stm-cart .stm-cart__item.stm-cart__item--body .stm-cart__item--quantity input {
-  max-width: 4em;
+  max-width: 5em;
 }
 
 .stm-cart .stm-cart__item.stm-cart__item--footer {
