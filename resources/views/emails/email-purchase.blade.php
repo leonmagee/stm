@@ -79,7 +79,7 @@
       </div>
       <div class="item discount">
         <div class="label">Service Charge</div>
-        @if(strtoupper($purchase->type == 'PAYPAL'))
+        @if(strtoupper($purchase->type) == 'PAYPAL')
         <div>${{ number_format($purchase->sub_total * 2 / 100, 2) }}</div>
         @else
         <div>$0.00</div>
