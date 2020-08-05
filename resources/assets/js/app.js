@@ -245,7 +245,6 @@ for (let i = 1; i <= tab_number_images; ++i) {
  */
 $("#tab_preview_images .preview-image__image i.remove-tab").click(function() {
     let img_id = $(this).attr("img_id");
-    console.log("remove tab image", img_id);
     $("#tab_preview_images .preview-image__image.output_" + img_id).addClass(
         "hide_img"
     );

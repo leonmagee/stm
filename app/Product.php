@@ -66,6 +66,16 @@ class Product extends Model
         return false;
     }
 
+    public function was_purchased()
+    {
+        $user_id = \Auth::user()->id;
+        $purchase = Purchase::join('purchase_products', 'purchases.id', '=', 'purchase_products.purchase_id')->where(['purchases.user_id' => $user_id, 'purchase_products.product_id' => $this->id])->first();
+        if ($purchase) {
+            return true;
+        }
+        return false;
+    }
+
     public function reviews()
     {
         return $this->hasMany(ProductReview::class);

@@ -30558,7 +30558,6 @@ for (var _i3 = 1; _i3 <= tab_number_images; ++_i3) {
  */
 $("#tab_preview_images .preview-image__image i.remove-tab").click(function () {
   var img_id = $(this).attr("img_id");
-  console.log("remove tab image", img_id);
   $("#tab_preview_images .preview-image__image.output_" + img_id).addClass("hide_img");
   $("#tab_preview_images .preview-image__default_" + img_id).removeClass("hide");
   $("#tab_preview_images input[name='tab_img_url_" + img_id + "']").val("");

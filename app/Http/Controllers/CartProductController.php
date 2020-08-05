@@ -73,7 +73,7 @@ class CartProductController extends Controller
             'variation' => $request->variation,
             'user_id' => $user_id,
         ]);
-        return back()->withMessage('Added to Cart');
+        return back()->withMessage('Added to Cart. <a href="/cart">Checkout</a>.');
 
     }
 

@@ -337,7 +337,7 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-
+        //$product->was_purchased();
         //dd($product->variations);
         $product->initial_quantity();
         for ($i = 1; $i <= $this->num_images; $i++) {

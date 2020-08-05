@@ -167,6 +167,7 @@
 
     <div class="tab-item background" id="tab-4">
       <div class="product-reviews">
+        @if($product->was_purchased())
         <div class="product-reviews__first modal-open-review">
           @if($product->has_review())
           Edit your review <i class="fas fa-user-edit"></i>
@@ -176,6 +177,9 @@
           Be the first to Leave a review <i class="fas fa-user-edit"></i>
           @endif
         </div>
+        @else
+        You must purchase this product to leave a review.
+        @endif
         @foreach($product->reviews as $review)
         <div class="product-review">
           <div class="product-review__stars">
