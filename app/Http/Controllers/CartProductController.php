@@ -90,7 +90,7 @@ class CartProductController extends Controller
         $product_id = $request->id;
         $product = Product::find($product_id);
         $variation = $product->first_variation();
-        //\Log::debug('Controller - Product ID: ' . $product);
+        \Log::debug('Controller - Product ID: ' . $product_id . ' - ' . $product);
         //dd('product', $product);
         $existing = CartProduct::where([
             'product_id' => $product_id,

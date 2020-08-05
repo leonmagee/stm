@@ -30,10 +30,6 @@ export default class Product extends Component {
   }
 
   addToCart(id) {
-    console.log('product id', id);
-    // 1. Animate check mark overlay
-    // 2. Axios call to add to cart
-
     axios({
       method: "post",
       url: "/add-to-cart-axios",
