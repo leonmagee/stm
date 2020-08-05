@@ -90,20 +90,22 @@ class CartProductController extends Controller
         $product_id = $request->id;
         $product = Product::find($product_id);
         $variation = $product->first_variation();
-        \Log::debug('Controller - Product ID: ' . $product_id . ' - ' . $product);
-        //dd('product', $product);
-        $existing = CartProduct::where([
-            'product_id' => $product_id,
-            'user_id' => $user_id,
-            //'variation' => $variation,
-        ])->first();
-        if (!$existing) {
-            CartProduct::create([
+        if ($variation) {
+            \Log::debug('Controller - Product ID: ' . $product_id . ' - ' . $product);
+            //dd('product', $product);
+            $existing = CartProduct::where([
                 'product_id' => $product_id,
-                'quantity' => 1,
-                'variation' => $variation,
                 'user_id' => $user_id,
-            ]);
+                //'variation' => $variation,
+            ])->first();
+            if (!$existing) {
+                CartProduct::create([
+                    'product_id' => $product_id,
+                    'quantity' => 1,
+                    'variation' => $variation,
+                    'user_id' => $user_id,
+                ]);
+            }
         }
     }
 

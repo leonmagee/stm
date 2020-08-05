@@ -16,8 +16,12 @@ class Product extends Model
 
     public function first_variation()
     {
-        $variation = $this->variations->first();
-        return $variation->text;
+        $variation = $this->variations->where('quantity', '>', 0)->first();
+        if ($variation) {
+            return $variation->text;
+        } else {
+            return false;
+        }
     }
 
     public function initial_quantity()
