@@ -37,7 +37,7 @@
               <select name="variation" class="variation-select">
                 @foreach($item->cart_variations() as $variation)
                 <option @if($item->variation == $variation) selected @endif
-                  value={{ $variation }}>{{ $variation }}</option>
+                  value="{{ $variation }}">{{ $variation }}</option>
                 @endforeach
               </select>
             </div>

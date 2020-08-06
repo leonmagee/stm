@@ -24,15 +24,19 @@ class CartProductController extends Controller
         $user_id = \Auth::user()->id;
         $items = CartProduct::where('user_id', $user_id)->get();
         $total = 0;
-        foreach ($items as $item) {
+        foreach ($items as $key => $item) {
             $total += $item->product->discount_cost() * $item->quantity;
             $variation = ProductVariation::where(['product_id' => $item->product_id, 'text' => $item->variation])->first();
-            //dd($items);
-            if ($variation->quantity < 1) {
+            if ($variation) {
+                if ($variation->quantity < 1) {
+                    $item->delete();
+                } else if ($variation->quantity < $item->quantity) {
+                    $item->quantity = $variation->quantity;
+                    $item->save();
+                }
+            } else {
                 $item->delete();
-            } else if ($variation->quantity < $item->quantity) {
-                $item->quantity = $variation->quantity;
-                $item->save();
+                unset($items[$key]);
             }
         }
         $service_charge = number_format($total * 2 / 100, 2);
@@ -148,8 +152,6 @@ class CartProductController extends Controller
             $item->quantity = $max;
         }
         $item->save();
-
-        //session()->flash('message', 'update');
         return redirect('/cart');
     }
 
