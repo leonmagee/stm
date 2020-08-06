@@ -316,15 +316,15 @@
             text-align: center;
             line-height: 30px;
             letter-spacing: 1px;
-            background: $green;
+            background: darken($green, 1%);
             text-shadow: 1px 1px rgba(0, 0, 0, 0.1);
             color: #fff;
             font-weight: 600;
             font-size: 0.7em;
             box-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
+            text-transform: uppercase;
             &.sold-out {
                 background: $color-red;
-                text-transform: uppercase;
             }
         }
         // .product__cost {
