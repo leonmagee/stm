@@ -17704,6 +17704,11 @@ body.stm-body h1.title span {
   color: #ef476f;
 }
 
+body.stm-body .stm-subtitle {
+  font-weight: 600;
+  font-size: 1.4em;
+}
+
 .form-wrapper label span.label-green {
   color: #05c290 !important;
 }
@@ -21532,6 +21537,15 @@ body.stm-body.about .about-img-wrap img {
           flex: 1 1 25%;
 }
 
+.stm_inv .stm_inv__flex .stm_inv__header--label.stm_inv__flex--28,
+.stm_inv .stm_inv__flex .stm_inv__header--item.stm_inv__flex--28,
+.stm_inv .stm_inv__flex .stm_inv__item--item.stm_inv__flex--28,
+.stm_inv .stm_inv__flex .stm_inv__item--label.stm_inv__flex--28 {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 28%;
+          flex: 1 1 28%;
+}
+
 .stm_inv .stm_inv__flex .stm_inv__header--label.stm_inv__flex--30,
 .stm_inv .stm_inv__flex .stm_inv__header--item.stm_inv__flex--30,
 .stm_inv .stm_inv__flex .stm_inv__item--item.stm_inv__flex--30,
@@ -21765,21 +21779,21 @@ body.stm-body.about .about-img-wrap img {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-}
-
-.imei-row button {
-  padding: 0;
-  border: none;
-  background-color: transparent;
-}
-
-.imei-row button:hover {
-  cursor: pointer;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 0.2em 0;
 }
 
 .imei-row i {
-  color: red;
+  color: #ff3860;
   margin-left: 0.5em;
+  padding-top: 0.1em;
+  font-size: 0.9em;
+}
+
+.imei-row i:hover {
+  cursor: pointer;
 }
 
 .products-react {

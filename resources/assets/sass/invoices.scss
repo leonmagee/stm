@@ -45,6 +45,9 @@
             &.stm_inv__flex--25 {
                 flex: 1 1 25%;
             }
+            &.stm_inv__flex--28 {
+                flex: 1 1 28%;
+            }
             &.stm_inv__flex--30 {
                 flex: 1 1 30%;
             }
@@ -213,16 +216,23 @@
 .imei-row {
     display: flex;
     justify-content: space-between;
-    button {
-        padding: 0;
-        border: none;
-        background-color: transparent;
+    align-items: center;
+    padding: 0.2em 0;
+    // button {
+    //     padding: 0;
+    //     border: none;
+    //     background-color: transparent;
+    //     &:hover {
+    //         cursor: pointer;
+    //     }
+    // }
+    i {
+        color: $red;
+        margin-left: 0.5em;
+        padding-top: 0.1em;
+        font-size: 0.9em;
         &:hover {
             cursor: pointer;
         }
-    }
-    i {
-        color: red;
-        margin-left: 0.5em;
     }
 }

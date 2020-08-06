@@ -31,11 +31,10 @@
         </div>
       </div>
 
-
       <div class="stm_inv__items">
         <div class="stm_inv__flex">
           <div class="stm_inv__item--label stm_inv__flex--60">Product Name</div>
-          <div class="stm_inv__item--label stm_inv__flex--25">IMEI / Serial Number</div>
+          <div class="stm_inv__item--label stm_inv__flex--28">IMEI / Serial Number</div>
           <div class="stm_inv__item--label">Color</div>
           <div class="stm_inv__item--label">Price</div>
           <div class="stm_inv__item--label">Quantity</div>
@@ -47,16 +46,38 @@
         @foreach($purchase->products as $product)
         <div class="stm_inv__flex stm_inv__flex-{{ $product->id }}">
           <div class="stm_inv__item--item stm_inv__flex--60">{{ $product->name }}</div>
-          <div class="stm_inv__item--item stm_inv__flex--25">
+          <div class="stm_inv__item--item stm_inv__flex--28">
             @foreach($product->imeis as $imei)
             <div class="imei-row">
               {{ $imei->imei }}
-              <form method="POST" action="/delete-imei/{{ $imei->id }}">
-                @csrf
-                <button type="submit">
-                  <i class="fas fa-minus-circle"></i>
-                </button>
-              </form>
+              <i class="fas fa-minus-circle modal-delete-open" item_id={{ $imei->id }}></i>
+
+              <div class="modal" id="delete-item-modal-{{ $imei->id }}">
+
+                <div class="modal-background"></div>
+
+                <div class="modal-content">
+
+                  <div class="modal-box">
+
+                    <h3 class="title">Are You Sure?</h3>
+
+                    <form method="POST" action="/delete-imei/{{ $imei->id }}">
+                      @csrf
+                      <h2 class="stm-subtitle">Number to delete: {{ $imei->imei }}</h2>
+                      <button type="submit" class="button is-danger margin-top-1-5">Delete</button>
+                    </form>
+
+                    <a class="modal-delete-close-button button is-primary" item_id={{ $imei->id }}>Cancel</a>
+                  </div>
+
+                </div>
+
+                <button class="modal-delete-close is-large" aria-label="close" item_id={{ $imei->id }}></button>
+
+              </div>
+
+
             </div>
             @endforeach
           </div>

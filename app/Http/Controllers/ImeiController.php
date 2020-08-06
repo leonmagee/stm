@@ -44,7 +44,7 @@ class ImeiController extends Controller
             'purchase_product_id' => $request->purchase_product_id,
             'imei' => $request->imei_number,
         ]);
-        session()->flash('message', 'IMEI Number added.');
+        session()->flash('message', 'IMEI / Serial Number added.');
         return redirect()->back();
     }
 
@@ -91,7 +91,7 @@ class ImeiController extends Controller
     public function destroy(Imei $imei)
     {
         $imei->delete();
-        session()->flash('danger', 'IMEI number removed');
+        session()->flash('danger', 'IMEI / Serial Number removed.');
         return redirect()->back();
     }
 }
