@@ -46,17 +46,48 @@ export default class Product extends Component {
 
   render() {
 
-    const { id, img_url, discount, name, attributes, price, orig_price, rating } = this.props;
+    const { id, img_url, discount, name, attributes, price, orig_price, rating, stock } = this.props;
 
+    if(stock) {
+      console.log('shits in stock', id);
+    } else {
+      console.log('NOT in stock', id);
+    }
     let animatePane = <div></div>;
     if (this.state.animate) {
       animatePane = <div className="product__cart_hover"><i className="fas fa-check"></i></div>;
+    }
+
+    let addToCartButton = <div></div>;
+    if(stock) {
+                  addToCartButton = (
+                      <a
+                          className="product__footer--right product__footer--right-cart"
+                          data-tooltip="Add To Cart"
+                          onClick={() => this.addToCart(id)}
+                      >
+                          <i className="fas fa-cart-plus"></i>
+                      </a>
+                  );
+    } else {
+                  addToCartButton = (
+                      <a
+                          className="product__footer--right product__footer--right-cart faded"
+                          data-tooltip="Out of Stock"
+                      >
+                          <i className="fas fa-cart-plus"></i>
+                      </a>
+                  );
     }
         return (
             <div className="product">
                 {animatePane}
                 <a className="product__link" href={"/products/" + id}>
-                    <ImageDiv img_url={img_url} discount={discount} />
+                    <ImageDiv
+                        img_url={img_url}
+                        discount={discount}
+                        stock={stock}
+                    />
                     <div className="product__rating">
                         <ReactStars
                             count={5}
@@ -82,13 +113,7 @@ export default class Product extends Component {
                     >
                         <i className="fas fa-heart"></i>
                     </a>
-                    <a
-                        className="product__footer--right product__footer--right-cart"
-                        data-tooltip="Add To Cart"
-                        onClick={() => this.addToCart(id)}
-                    >
-                        <i className="fas fa-cart-plus"></i>
-                    </a>
+                    {addToCartButton}
                 </div>
             </div>
         );

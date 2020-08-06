@@ -22196,13 +22196,18 @@ body.stm-body.about .about-img-wrap img {
   text-align: center;
   line-height: 30px;
   letter-spacing: 1px;
-  background: #ef476f;
+  background: #06dba3;
   text-shadow: 1px 1px rgba(0, 0, 0, 0.1);
   color: #fff;
   font-weight: 600;
   font-size: 0.7em;
   -webkit-box-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
           box-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
+}
+
+.products-outer .product .product__discount.sold-out {
+  background: #ef476f;
+  text-transform: uppercase;
 }
 
 .products-outer .product .product__attributes {

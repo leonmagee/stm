@@ -82,7 +82,7 @@ class ProductController extends Controller
                 $rating_calc = 0;
             }
             $product->rating = $rating_calc;
-
+            $product->stock = $product->in_stock();
         }
         return $products;
     }
@@ -144,8 +144,7 @@ class ProductController extends Controller
                 $rating_calc = 0;
             }
             $product->rating = $rating_calc;
-            //}
-
+            $product->stock = $product->in_stock();
         }
         $sub_cat_match = [];
         $sub_cats = SubCategory::all();
