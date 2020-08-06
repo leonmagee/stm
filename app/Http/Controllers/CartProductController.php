@@ -27,6 +27,7 @@ class CartProductController extends Controller
         foreach ($items as $item) {
             $total += $item->product->discount_cost() * $item->quantity;
             $variation = ProductVariation::where(['product_id' => $item->product_id, 'text' => $item->variation])->first();
+            //dd($items);
             if ($variation->quantity < 1) {
                 $item->delete();
             } else if ($variation->quantity < $item->quantity) {
