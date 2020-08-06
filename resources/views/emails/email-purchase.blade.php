@@ -38,7 +38,7 @@
         <th class="name-column">Product Name</th>
         <th>Color</th>
         @if($show_imei)
-        <th class="imei-column">IMEIs</th>
+        <th class="imei-column">IMEI/Serial Number</th>
         @endif
         <th>Unit Price</th>
         <th>Quantity</th>

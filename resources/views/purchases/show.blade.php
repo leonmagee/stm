@@ -35,7 +35,7 @@
       <div class="stm_inv__items">
         <div class="stm_inv__flex">
           <div class="stm_inv__item--label stm_inv__flex--60">Product Name</div>
-          <div class="stm_inv__item--label stm_inv__flex--25">IMEIs</div>
+          <div class="stm_inv__item--label stm_inv__flex--25">IMEI / Serial Number</div>
           <div class="stm_inv__item--label">Color</div>
           <div class="stm_inv__item--label">Price</div>
           <div class="stm_inv__item--label">Quantity</div>
@@ -119,7 +119,7 @@
             <div class="stm_inv__form--flex">
               {{-- <input type="hidden" name="purchase_id" value="{{ $purchase->id }}" /> --}}
               <div class="field description">
-                <label class="label" for="description">IMEI Number</label>
+                <label class="label" for="description">IMEI / Serial Number</label>
                 <div class="control">
                   <input class="input" type="text" id="imei_number" name="imei_number" required />
                 </div>
@@ -137,7 +137,7 @@
             </div>
             <div class="field flex-margin margin-top-1">
               <div class="control">
-                <button type="submit" href="#" class="button is-primary">Add IMEI Number</button>
+                <button type="submit" href="#" class="button is-primary">Add IMEI / Serial Number</button>
               </div>
             </div>
 

@@ -29,7 +29,7 @@
         <div class="stm-flex-row separator">
           <div class="stm-flex-row__item header flex-30">Product Name</div>
           <div class="stm-flex-row__item header">Color</div>
-          <div class="stm-flex-row__item header flex-15">IMEIs</div>
+          <div class="stm-flex-row__item header flex-15">IMEI / Serial Number</div>
           <div class="stm-flex-row__item header">Price</div>
           <div class="stm-flex-row__item header">Quantity</div>
           <div class="stm-flex-row__item header">Subtotal</div>

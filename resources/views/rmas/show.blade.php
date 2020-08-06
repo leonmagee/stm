@@ -38,7 +38,7 @@
           <div class="stm_inv__header--label">Product</div>
           <div class="stm_inv__header--label">Color</div>
           <div class="stm_inv__header--label">Quantity</div>
-          <div class="stm_inv__header--label">IMEIs</div>
+          <div class="stm_inv__header--label">IMEI / Serial Number</div>
         </div>
 
         <div class="stm_inv__flex">
