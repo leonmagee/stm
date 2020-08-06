@@ -44,6 +44,16 @@ class Product extends Model
         return false;
     }
 
+    public function is_favorite()
+    {
+        $user_id = \Auth::user()->id;
+        $is_fav = ProductFavorite::where(['user_id' => $user_id, 'product_id' => $this->id])->first();
+        if ($is_fav) {
+            return true;
+        }
+        return false;
+    }
+
     public function categories()
     {
         return $this->hasMany(ProductCategories::class);

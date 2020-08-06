@@ -6,11 +6,37 @@ import ImageDiv from './ImageDiv';
 
 export default class Product extends Component {
 
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       animate: false,
+      favorite: props.favorite,
     }
+  }
+
+  toggleFavorite() {
+
+    const favorite = !this.state.favorite;
+    axios({
+      method: "post",
+      url: "/toggle-favorite",
+      data: {
+        id: this.props.id
+      }
+    }).then(res => {
+      //console.log('my response', res.data);
+      if(res.data === 'favorited') {
+        this.setState({
+            favorite: true
+        });
+      } else if(res.data === 'un-favorited') {
+        this.setState({
+            favorite: false
+        });
+      }
+    }).catch(err => {
+      console.log('error', err);
+    });
   }
 
   animateOff() {
@@ -37,7 +63,7 @@ export default class Product extends Component {
         id
       }
     }).then(res => {
-      console.log('worked. res:', res);
+      //console.log('worked. res:', res);
       this.animateOn();
     }).catch(err => {
       console.log('error', err);
@@ -48,13 +74,10 @@ export default class Product extends Component {
 
     const { id, img_url, discount, name, attributes, price, orig_price, rating, stock } = this.props;
 
-    if(stock) {
-      console.log('shits in stock', id);
-    } else {
-      console.log('NOT in stock', id);
-    }
+    const { animate, favorite } = this.state;
+
     let animatePane = <div></div>;
-    if (this.state.animate) {
+    if (animate) {
       animatePane = <div className="product__cart_hover"><i className="fas fa-check"></i></div>;
     }
 
@@ -72,13 +95,15 @@ export default class Product extends Component {
     } else {
                   addToCartButton = (
                       <a
-                          className="product__footer--right product__footer--right-cart faded"
+                          className="product__footer--right product__footer--right-cart"
                           data-tooltip="Out of Stock"
                       >
                           <i className="fas fa-cart-plus"></i>
                       </a>
                   );
     }
+
+    let favClass = favorite ? 'fav' : '';
         return (
             <div className="product">
                 {animatePane}
@@ -108,8 +133,9 @@ export default class Product extends Component {
                         discount={discount}
                     />
                     <a
-                        className="product__footer--right product__footer--right-favorite"
+                        className={'product__footer--right product__footer--right-favorite ' + favClass}
                         data-tooltip="Add To Favorites"
+                        onClick={() => this.toggleFavorite()}
                     >
                         <i className="fas fa-heart"></i>
                     </a>

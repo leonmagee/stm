@@ -22304,6 +22304,10 @@ body.stm-body.about .about-img-wrap img {
   font-size: 0.9em;
 }
 
+.products-outer .product .product__footer a.product__footer--right.product__footer--right-favorite.fav {
+  color: #ff3860;
+}
+
 .products-outer .product .product__footer a.product__footer--right.product__footer--right-cart {
   border-left: 1px solid #333;
 }

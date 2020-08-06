@@ -83,6 +83,7 @@ class ProductController extends Controller
             }
             $product->rating = $rating_calc;
             $product->stock = $product->in_stock();
+            $product->favorite = $product->is_favorite();
         }
         return $products;
     }
@@ -145,6 +146,7 @@ class ProductController extends Controller
             }
             $product->rating = $rating_calc;
             $product->stock = $product->in_stock();
+            $product->favorite = $product->is_favorite();
         }
         $sub_cat_match = [];
         $sub_cats = SubCategory::all();

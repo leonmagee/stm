@@ -22,6 +22,7 @@ export default class ProductList extends Component {
           rating={product.rating}
           user_id={user_id}
           stock={product.stock}
+          favorite={product.favorite}
         />
       );
       // } else {
