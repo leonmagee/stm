@@ -114470,7 +114470,6 @@ var Product = function (_Component) {
           id: this.props.id
         }
       }).then(function (res) {
-        //console.log('my response', res.data);
         if (res.data === 'favorited') {
           _this2.setState({
             favorite: true

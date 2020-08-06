@@ -24,7 +24,6 @@ export default class Product extends Component {
         id: this.props.id
       }
     }).then(res => {
-      //console.log('my response', res.data);
       if(res.data === 'favorited') {
         this.setState({
             favorite: true
