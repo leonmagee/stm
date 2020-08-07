@@ -39,6 +39,9 @@
       <tr class="header-row">
         <th class="name-column">Product Name</th>
         <th>Color</th>
+        @if($imeis)
+        <th class="imei-column">IMEI/Serial Number</th>
+        @endif
         <th>Unit Price</th>
         <th>Quantity</th>
         <th>Subtotal</th>
@@ -48,6 +51,13 @@
       <tr>
         <td class="name-column">{{ $rma->product->name }}</td>
         <td class="item">{{ $rma->product->variation }}</td>
+        @if($imeis)
+        <td class="imei-column">
+          @foreach($imeis as $imei)
+          <div>{{ $imei }}</div>
+          @endforeach
+        </td>
+        @endif
         <td class="item">${{ number_format($rma->product->unit_cost, 2) }}</td>
         <td class="item">{{ $rma->quantity }}</td>
         <td class="item">{{ number_format($rma->product->unit_cost * $rma->quantity, 2) }}</td>

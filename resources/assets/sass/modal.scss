@@ -60,3 +60,13 @@
         }
     }
 }
+
+.imei-checkboxes {
+    text-align: left;
+    display: inline-block;
+    margin-top: 0.3em;
+    label {
+        @include no_select;
+        margin-left: 0.1em;
+    }
+}

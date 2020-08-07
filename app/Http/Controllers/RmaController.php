@@ -29,6 +29,13 @@ class RmaController extends Controller
     {
         $user_id = \Auth::user()->id;
         $rmas = Rma::where('user_id', $user_id)->orderBy('id', 'desc')->get();
+        foreach ($rmas as $rma) {
+            if ($rma->imeis) {
+                $rma->imeis = unserialize($rma->imeis);
+            } else {
+                $rma->imeis = [];
+            }
+        }
         return view('rmas.your-rmas', compact('rmas'));
     }
 
@@ -51,12 +58,21 @@ class RmaController extends Controller
     public function store(Request $request)
     {
         $user = \Auth::user();
+        if (count($request->imeis)) {
+            $imeis = serialize($request->imeis);
+            $imeis_array = $request->imeis;
+        } else {
+            $imeis = null;
+            $imeis_array = false;
+        }
+
         $rma = Rma::create(
             [
                 'user_id' => $user->id,
                 'purchase_product_id' => $request->purchase_product_id,
                 'quantity' => $request->quantity,
                 'explanation' => $request->explanation,
+                'imeis' => $imeis,
                 'status' => 2,
             ]
         );
@@ -71,10 +87,10 @@ class RmaController extends Controller
             $header_text,
             'RMA Processing: # RMA-GSW-' . $rma->id,
             true,
-            $rma
+            $rma,
+            $imeis_array
         ));
 
-        // 6. Email admins (admins and managers)
         $admins = User::getAdminManageerUsers();
         foreach ($admins as $admin) {
             if (!$admin->notes_email_disable) {
@@ -86,7 +102,8 @@ class RmaController extends Controller
                     $header_text,
                     'New RMA Received',
                     false,
-                    $rma
+                    $rma,
+                    $imeis_array
                 ));
             }
         }
@@ -103,7 +120,11 @@ class RmaController extends Controller
      */
     public function show(Rma $rma)
     {
-        //$users = User::orderBy('company')->get();
+        if ($rma->imeis) {
+            $rma->imeis = unserialize($rma->imeis);
+        } else {
+            $rma->imeis = [];
+        }
         return view('rmas.show', compact('rma'));
     }
 

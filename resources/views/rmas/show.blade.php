@@ -38,18 +38,22 @@
           <div class="stm_inv__header--label">Product</div>
           <div class="stm_inv__header--label">Color</div>
           <div class="stm_inv__header--label">Quantity</div>
+          @if(count($rma->imeis))
           <div class="stm_inv__header--label">IMEI / Serial Number</div>
+          @endif
         </div>
 
         <div class="stm_inv__flex">
           <div class="stm_inv__header--item">{{ $rma->product->name }}</div>
           <div class="stm_inv__header--item">{{ $rma->product->variation }}</div>
           <div class="stm_inv__header--item">{{ $rma->quantity }}</div>
+          @if(count($rma->imeis))
           <div class="stm_inv__header--item">
-            @foreach($rma->product->imeis as $imei)
-            <div>{{ $imei->imei }}</div>
+            @foreach($rma->imeis as $imei)
+            <div>{{ $imei }}</div>
             @endforeach
           </div>
+          @endif
         </div>
       </div>
 

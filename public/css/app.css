@@ -18558,6 +18558,27 @@ body.stm-body .add-padding {
   font-size: 0.93m;
 }
 
+.imei-checkboxes {
+  text-align: left;
+  display: inline-block;
+  margin-top: 0.3em;
+}
+
+.imei-checkboxes label {
+  -webkit-touch-callout: none;
+  /* iOS Safari */
+  -webkit-user-select: none;
+  /* Safari */
+  /* Konqueror HTML */
+  -moz-user-select: none;
+  /* Old versions of Firefox */
+  -ms-user-select: none;
+  /* Internet Explorer/Edge */
+  user-select: none;
+  /* Non-prefixed version, currently*/
+  margin-left: 0.1em;
+}
+
 .header-wrap {
   background-color: #333;
   background-image: url(/img/black_thread.png);
@@ -23411,6 +23432,18 @@ a.button.custom-button:hover {
   -webkit-box-flex: 0;
       -ms-flex: 0 1 15%;
           flex: 0 1 15%;
+}
+
+.stm-flex .stm-flex-row .stm-flex-row__item.flex-17 {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 1 17%;
+          flex: 0 1 17%;
+}
+
+.stm-flex .stm-flex-row .stm-flex-row__item.flex-20 {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 1 20%;
+          flex: 0 1 20%;
 }
 
 .stm-flex .stm-flex-row .stm-flex-row__item.flex-30 {

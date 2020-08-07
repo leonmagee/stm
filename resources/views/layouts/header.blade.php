@@ -341,7 +341,7 @@
           <p class="control">
             <a href="/your-purchases" class="button user">
               <span class="icon is-small">
-                <i class="fi flaticon-security-on"></i>
+                <i class="fas fa-shopping-bag"></i>
               </span>
               <span class="text">Purchases</span>
             </a>
@@ -349,7 +349,7 @@
           <p class="control">
             <a href="/your-rmas" class="button user">
               <span class="icon is-small">
-                <i class="fi flaticon-security-on"></i>
+                <i class="fas fa-box"></i>
               </span>
               <span class="text">RMAs</span>
             </a>

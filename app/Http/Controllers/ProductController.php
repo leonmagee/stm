@@ -327,7 +327,7 @@ class ProductController extends Controller
         }
 
         session()->flash('message', 'A New Product was Created.');
-        return redirect('products');
+        return redirect('/');
     }
 
     /**
@@ -641,7 +641,7 @@ class ProductController extends Controller
         $product->delete();
         // 7. flash and redirect
         session()->flash('message', 'Product Deleted');
-        return redirect('/products');
+        return redirect('/');
     }
 
     /**

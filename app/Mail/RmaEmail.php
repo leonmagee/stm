@@ -15,19 +15,21 @@ class RmaEmail extends Mailable
     public $purchase;
     public $header_text;
     public $rma;
+    public $imeis;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($user, $purchase, $header_text, $subject, $track = true, $rma)
+    public function __construct($user, $purchase, $header_text, $subject, $track = true, $rma, $imeis = false)
     {
         $this->user = $user;
         $this->purchase = $purchase;
         $this->header_text = $header_text;
         $this->subject = $subject;
         $this->rma = $rma;
+        $this->imeis = $imeis;
         if ($track) {
             $this->callbacks[] = (function ($message) use ($user) {$message->getHeaders()->addTextHeader('user_id', $user->id);});
         } else {

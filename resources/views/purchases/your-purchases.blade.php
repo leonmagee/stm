@@ -86,6 +86,17 @@
                     <input name="quantity" class="input" min="0" max="{{ $product->quantity }}" type="number"
                       placeholder="quantity" value=1 required>
                   </div>
+                  @if(count($product->imeis))
+                  <div class="field imei-checkboxes">
+                    <label class="label">Choose Related IMEI / Serial Numbers</label>
+                    @foreach($product->imeis as $imei)
+                    <div>
+                      <input type="checkbox" id="{{ $imei->imei }}" value="{{ $imei->imei }}" name="imeis[]" />
+                      <label for="{{ $imei->imei }}">{{ $imei->imei }}</label>
+                    </div>
+                    @endforeach
+                  </div>
+                  @endif
                   <div class="field">
                     <label class="label">Reason for Return</label>
                     <textarea name="explanation" class="textarea" required></textarea>
