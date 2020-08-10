@@ -26,14 +26,14 @@
           <div class="field">
             <label class="label" for="email">Email</label>
             <div class="control">
-              <input class="input" type="email" id="email" name="email" />
+              <input class="input" type="email" id="email" name="email" required />
             </div>
           </div>
 
           <div class="field">
             <label class="label" for="password">Password</label>
             <div class="control">
-              <input class="input" type="password" id="password" name="password" />
+              <input class="input" type="password" id="password" name="password" required />
             </div>
           </div>
 
