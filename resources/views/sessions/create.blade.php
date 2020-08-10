@@ -1,14 +1,26 @@
-@extends('layouts.layout-simple')
+@extends('layouts.layout-simple-no-wrap')
 
 @section('content')
 
-<div class="form-wrapper center">
+<div class="stm-slider">
 
-  <div class="homepage-third">
+  <div class="stm-slider__item">
+    <img src="https://res.cloudinary.com/www-stmmax-com/image/upload/v1597094350/Slider/1_p7mff3.png" />
+  </div>
 
-    <div class="form-wrapper-inner homepage-form-wrap-inner">
+</div>
 
-      <h3>Log In</h3>
+<div class="modal" id="layout-modal">
+
+  <div class="modal-background"></div>
+
+  <div class="modal-content">
+
+    <div class="modal-box">
+
+      <img src="{{ URL::asset('img/gs-wireless.png') }}" />
+
+      <h3 class="title">Log In</h3>
 
       <form method="POST" action="/login">
         @csrf
@@ -46,7 +58,10 @@
       </form>
 
     </div>
+
   </div>
+
+  <button class="modal-close is-large" aria-label="close"></button>
 
 </div>
 

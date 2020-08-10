@@ -2,7 +2,8 @@
 
   <div class="logo-wrap">
     <a href="/">
-      <img src="{{ URL::asset('img/gs-stm-logo.png') }}" />
+      {{-- <img src="{{ URL::asset('img/gs-stm-logo.png') }}" /> --}}
+      <img src="{{ URL::asset('img/stm_logo_white.png') }}" />
     </a>
     <a class="menu-toggle menu-modal-open"><i class="fas fa-bars"></i></a>
   </div>
@@ -434,7 +435,8 @@
 
       <div class="large-menu-logged-out">
         <li class="item login">
-          <a class="item-a" href="/">
+          {{-- <a href="#" class="modal-open button is-danger">Email Invoice</a> --}}
+          <a class="item-a modal-open">
             <i class="fas fa-key"></i>
             <span class="text">Login</span>
           </a>
