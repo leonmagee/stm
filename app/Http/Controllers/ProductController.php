@@ -69,7 +69,7 @@ class ProductController extends Controller
             $product->attributes_array = $attributes_array;
 
             // rating
-            $user_rating = ProductRating::where(['user_id' => $user_id, 'product_id' => $product->id])->first();
+            //$user_rating = ProductRating::where(['user_id' => $user_id, 'product_id' => $product->id])->first();
 
             $ratings = ProductRating::where('product_id', $product->id)->get();
             $stars_total = 0;
@@ -148,6 +148,7 @@ class ProductController extends Controller
             $product->stock = $product->in_stock();
             $product->favorite = $product->is_favorite();
         }
+        //dd($products);
         $sub_cat_match = [];
         $sub_cats = SubCategory::all();
         $sub_cats_array = [];

@@ -111902,9 +111902,8 @@ var Products = function (_Component) {
   }, {
     key: 'catClick',
     value: function catClick(id) {
-      var _state2 = this.state,
-          catsChecked = _state2.catsChecked,
-          subCatsChecked = _state2.subCatsChecked;
+      //const { catsChecked, subCatsChecked } = this.state;
+      var catsChecked = this.state.catsChecked;
 
       var catsCheckedNew = [];
       if (catsChecked.includes(id)) {
@@ -111944,12 +111943,12 @@ var Products = function (_Component) {
     value: function render() {
       var _this2 = this;
 
-      var _state3 = this.state,
-          categories = _state3.categories,
-          catsChecked = _state3.catsChecked,
-          productsDisplay = _state3.productsDisplay,
-          subCatsChecked = _state3.subCatsChecked,
-          catsToggle = _state3.catsToggle;
+      var _state2 = this.state,
+          categories = _state2.categories,
+          catsChecked = _state2.catsChecked,
+          productsDisplay = _state2.productsDisplay,
+          subCatsChecked = _state2.subCatsChecked,
+          catsToggle = _state2.catsToggle;
 
 
       var catsBlock = categories.map(function (category, i) {
@@ -114428,6 +114427,7 @@ var Price = function (_Component) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Attributes__ = __webpack_require__(215);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Price__ = __webpack_require__(216);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ImageDiv__ = __webpack_require__(214);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__Starz__ = __webpack_require__(228);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -114435,6 +114435,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
 
 
 
@@ -114587,14 +114588,7 @@ var Product = function (_Component) {
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
             'div',
             { className: 'product__rating' },
-            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_rating_stars_component___default.a, {
-              count: 5,
-              value: rating,
-              size: 21,
-              edit: false,
-              isHalf: true,
-              activeColor: '#ffc43d'
-            })
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_5__Starz__["a" /* default */], { value: rating })
           ),
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
             'div',
@@ -116246,6 +116240,121 @@ function Star(props) {
         renderIcon()
     );
 }
+
+/***/ }),
+/* 228 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+
+
+var Starz = function (_Component) {
+    _inherits(Starz, _Component);
+
+    function Starz() {
+        _classCallCheck(this, Starz);
+
+        return _possibleConstructorReturn(this, (Starz.__proto__ || Object.getPrototypeOf(Starz)).apply(this, arguments));
+    }
+
+    _createClass(Starz, [{
+        key: 'getStar',
+        value: function getStar(limit, val) {
+
+            var starClass = '';
+            if (val >= limit) {
+                starClass = 'active';
+            } else {
+                starClass = 'inactive';
+            }
+
+            var svg = __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                'svg',
+                {
+                    className: starClass,
+                    version: '1.1',
+                    xmlns: 'http://www.w3.org/2000/svg',
+                    x: '0px',
+                    y: '0px',
+                    viewBox: '0 0 260 245'
+                },
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('path', { d: 'M55,237L129,9l74,228L9,96h240' })
+            );
+
+            var svgHalf = __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                'svg',
+                {
+                    className: 'half',
+                    version: '1.1',
+                    xmlns: 'http://www.w3.org/2000/svg',
+                    x: '0px',
+                    y: '0px',
+                    viewBox: '0 0 260 245'
+                },
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('path', { d: 'M-61.888,6.257' }),
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                    'g',
+                    null,
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('polygon', {
+                        className: 'left',
+                        points: '9,96 83.249,149.964 100.763,96 \t'
+                    }),
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('polygon', { className: 'left', points: '129,9 100.763,96 129,96 \t' }),
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('polygon', {
+                        className: 'left',
+                        points: '55,237 129,183.217 83.249,149.964 \t'
+                    }),
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('polygon', {
+                        className: 'left',
+                        points: '100.763,96 83.249,149.964 129,183.217 129,96 \t'
+                    }),
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('polygon', { points: '174.752,149.964 129,183.217 203,237 \t' }),
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('polygon', { points: '249,96 157.236,96 174.752,149.964 \t' }),
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('polygon', { points: '157.236,96 129,96 129,183.217 174.752,149.964 \t' }),
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('polygon', { points: '157.236,96 129,9 129,96 \t' })
+                )
+            );
+
+            if (val >= limit) {
+                return svg;
+            } else if (val >= limit - 1 + 0.5) {
+                return svgHalf;
+            } else {
+                return svg;
+            }
+        }
+    }, {
+        key: 'render',
+        value: function render() {
+            var value = this.props.value;
+
+
+            return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                'div',
+                { className: 'starzWrap' },
+                this.getStar(1, value),
+                this.getStar(2, value),
+                this.getStar(3, value),
+                this.getStar(4, value),
+                this.getStar(5, value)
+            );
+        }
+    }]);
+
+    return Starz;
+}(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]);
+
+/* harmony default export */ __webpack_exports__["a"] = (Starz);
 
 /***/ })
 /******/ ]);

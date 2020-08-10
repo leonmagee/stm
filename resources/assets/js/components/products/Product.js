@@ -3,6 +3,7 @@ import ReactStars from 'react-rating-stars-component';
 import Attributes from './Attributes';
 import Price from './Price';
 import ImageDiv from './ImageDiv';
+import Starz from './Starz';
 
 export default class Product extends Component {
 
@@ -113,14 +114,7 @@ export default class Product extends Component {
                         stock={stock}
                     />
                     <div className="product__rating">
-                        <ReactStars
-                            count={5}
-                            value={rating}
-                            size={21}
-                            edit={false}
-                            isHalf={true}
-                            activeColor="#ffc43d"
-                        />
+                        <Starz value={rating} />
                     </div>
                     <div className="product__title">{name}</div>
                     <Attributes attributes={attributes} />

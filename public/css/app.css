@@ -22167,6 +22167,30 @@ body.stm-body.about .about-img-wrap img {
           justify-content: center;
 }
 
+.products-outer .product .product__rating svg {
+  width: 1.3em;
+}
+
+.products-outer .product .product__rating svg.active path {
+  fill: #ffc43d;
+}
+
+.products-outer .product .product__rating svg.inactive path {
+  fill: #444;
+}
+
+.products-outer .product .product__rating svg.half path {
+  fill: #444;
+}
+
+.products-outer .product .product__rating svg.half polygon {
+  fill: #444;
+}
+
+.products-outer .product .product__rating svg.half polygon.left {
+  fill: #ffc43d;
+}
+
 .products-outer .product .product__title {
   padding: 0.4em 1.2em 0em;
   color: #111;

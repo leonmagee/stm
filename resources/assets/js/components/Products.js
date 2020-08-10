@@ -89,7 +89,8 @@ export default class Products extends Component {
     }
 
     catClick(id) {
-      const { catsChecked, subCatsChecked } = this.state;
+      //const { catsChecked, subCatsChecked } = this.state;
+      const { catsChecked } = this.state;
       let catsCheckedNew = [];
       if (catsChecked.includes(id)) {
         const catIndex = catsChecked.indexOf(id);
