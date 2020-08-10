@@ -20,8 +20,6 @@
 
       <img src="{{ URL::asset('img/gs-wireless.png') }}" />
 
-      <h3 class="title">Log In</h3>
-
       <form method="POST" action="/login">
         @csrf
         <div class="form-wrap">
@@ -39,9 +37,10 @@
             </div>
           </div>
 
-          <div class="field">
+          <div class="field margin-top-1-5">
             <div class="control">
-              <button class="button is-primary" type="submit">Log In</button>
+              <button class="button is-primary call-loader" type="submit">Log In</button>
+              <a href="#" class="modal-close-button button is-danger">Cancel</a>
             </div>
           </div>
 
