@@ -23420,7 +23420,6 @@ a.button.custom-button:hover {
 .stm-slider {
   position: relative;
   background-color: #111;
-  background-color: tomato;
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
