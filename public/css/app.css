@@ -23419,16 +23419,111 @@ a.button.custom-button:hover {
 
 .stm-slider {
   position: relative;
-  background-color: #111;
+  background-color: #000;
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
 }
 
-.stm-slider img {
-  display: block;
-  margin: 0;
+.stm-slider .stm-slider__inner {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 100%;
+  overflow: hidden;
+}
+
+.stm-slider .stm-slider__inner .image-div {
   width: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  display: none;
+  height: 100%;
+  height: auto;
+}
+
+.stm-slider .stm-slider__inner .image-div:first-child {
+  display: block;
+}
+
+.stm-slider .stm-slider__arrows {
+  position: absolute;
+  z-index: 1000;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 0 2em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.stm-slider .stm-slider__arrows a {
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.stm-slider .stm-slider__arrows a:hover {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.stm-slider .stm-slider__arrows a i {
+  font-size: 3em;
+}
+
+.stm-slider .stm-slider__nav {
+  position: absolute;
+  z-index: 1000;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding-bottom: 2em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+}
+
+.stm-slider .stm-slider__nav .stm-slider__nav--inner {
+  background-color: rgba(0, 0, 0, 0.2);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 0.6em 0.2em;
+  border-radius: 2em;
+}
+
+.stm-slider .stm-slider__nav .stm-slider__nav--inner .slide-dot {
+  margin: 0 0.7em;
+}
+
+.stm-slider .stm-slider__nav .stm-slider__nav--inner .slide-dot a i {
+  color: #999;
+  font-size: 0.8em;
+}
+
+.stm-slider .stm-slider__nav .stm-slider__nav--inner .slide-dot.active a i {
+  color: #fff;
 }
 
 .stm-flex {

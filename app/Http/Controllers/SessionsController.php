@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Slide;
 use Illuminate\Http\Request;
 
 class SessionsController extends Controller
@@ -18,8 +19,10 @@ class SessionsController extends Controller
         //$banner_2 = "https://res.cloudinary.com/dabvi4jmx/image/upload/v1560214428/stm/gsa-link.png";
         //$banner_2 = "https://res.cloudinary.com/dabvi4jmx/image/upload/v1551818965/stm/port-in-spiff-40.jpg";
         //return view('sessions.create', compact('banner_1', 'banner_2'));
-        return view('sessions.create');
-        //return view('sessions.homepage');
+
+        // get slides
+        $slides = Slide::all();
+        return view('sessions.create', compact('slides'));
     }
 
     public function store()
