@@ -48,12 +48,14 @@
 
 </div>
 
+@include('sessions.login-modal')
+
 @endsection
 
-@section('bottom-content')
+{{-- @section('bottom-content')
 
 <div class="about-img-wrap">
   <img src="{{ URL::asset('img/about-us.jpg') }}" />
 </div>
 
-@endsection
+@endsection --}}

@@ -14,7 +14,7 @@
 
       <div class="form-wrap">
 
-        {{ csrf_field() }}
+        @csrf
 
         <div class="form-wrap-flex">
 
@@ -72,6 +72,8 @@
   </div>
 
 </div>
+
+@include('sessions.login-modal')
 
 @endsection
 
