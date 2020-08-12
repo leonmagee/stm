@@ -21,7 +21,8 @@
         </div>
 
         <div class="stm_inv__flex">
-          <div class="stm_inv__header--item purchase-id">GSW-{{ $purchase->id }}</div>
+          <div class="stm_inv__header--item purchase-id"><a
+              href="/purchase-order/{{ $purchase->id }}">GSW-{{ $purchase->id }}</a></div>
           <div class="stm_inv__header--item">{{ $purchase->user->company }}</div>
           <div class="stm_inv__header--item">{{ $purchase->user->name }}</div>
           <div class="stm_inv__header--item">{{ $purchase->created_at->format('M d, Y') }}</div>
@@ -97,6 +98,7 @@
           <div class="stm_inv__header--label">Subtotal</div>
           <div class="stm_inv__header--label">Service Charge</div>
           <div class="stm_inv__header--label">Total</div>
+          <div class="stm_inv__header--label stm_inv__flex--7"></div>
         </div>
         <div class="stm_inv__flex">
           <?php $type = strtoupper($purchase->type); ?>
@@ -110,6 +112,8 @@
             @endif
           </div>
           <div class="stm_inv__header--item">${{ number_format($purchase->total, 2) }}</div>
+          <div class="stm_inv__header--item stm_inv__flex--7 strong"><a
+              href="/purchase-order/{{ $purchase->id }}">View</a></div>
         </div>
       </div>
 
