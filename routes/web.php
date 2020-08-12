@@ -30,6 +30,7 @@ Route::get('/charts', 'HomeController@index')->name('charts');
 Route::post('rma-new', 'RmaController@store');
 Route::get('your-rmas', 'RmaController@your_rmas');
 Route::get('your-purchases', 'PurchaseController@your_purchases');
+Route::get('your-purchases/{purchase}', 'PurchaseController@your_purchase');
 Route::post('process-paypal', 'PurchaseController@store');
 Route::get('products/{product}', 'ProductController@show');
 Route::post('update-user-rating', 'ProductRatingController@store');

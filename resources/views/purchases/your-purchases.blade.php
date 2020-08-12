@@ -19,7 +19,8 @@
           <div class="stm-flex-row__item header">Status</div>
         </div>
         <div class="stm-flex-row">
-          <div class="stm-flex-row__item bold primary">GSW-{{ $purchase->id }}</div>
+          <div class="stm-flex-row__item bold primary"><a
+              href="your-purchases/{{ $purchase->id }}">GSW-{{ $purchase->id }}</a></div>
           <div class="stm-flex-row__item">{{ $purchase->created_at->format('M d, Y') }}</div>
           <div class="stm-flex-row__item status-{{ $purchase->status }}">
             {{ \App\Helpers::purchase_status($purchase->status) }}
@@ -116,6 +117,7 @@
           <div class="stm-flex-row__item header">Subtotal</div>
           <div class="stm-flex-row__item header">Service Charge</div>
           <div class="stm-flex-row__item header">Total</div>
+          <div class="stm-flex-row__item header flex-7"></div>
         </div>
         <div class="stm-flex-row">
           <div class="stm-flex-row__item">{{ strtoupper($purchase->type) }}</div>
@@ -128,6 +130,7 @@
             @endif
           </div>
           <div class="stm-flex-row__item bold">${{ number_format($purchase->total, 2) }}</div>
+          <div class="stm-flex-row__item bold flex-7"><a href="your-purchases/{{ $purchase->id }}">View</a></div>
         </div>
       </div>
       @endforeach

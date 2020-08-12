@@ -318,6 +318,21 @@ class PurchaseController extends Controller
     }
 
     /**
+     * Display the specified resource.
+     *
+     * @param  \App\Purchase  $purchase
+     * @return \Illuminate\Http\Response
+     */
+    public function your_purchase(Purchase $purchase)
+    {
+        $users = User::orderBy('company')->get();
+        $user = \Auth::user();
+        $show_imei = true;
+
+        return view('purchases.your-purchase', compact('purchase', 'user', 'show_imei'));
+    }
+
+    /**
      * Show the form for editing the specified resource.
      *
      * @param  \App\Purchase  $purchase
