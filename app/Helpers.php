@@ -56,7 +56,7 @@ class Helpers
         if ($id == 2) {
             return 'Service';
         } elseif ($id == 3) {
-            return 'Discount';
+            return 'Payment';
         } else {
             return 'Product';
         }

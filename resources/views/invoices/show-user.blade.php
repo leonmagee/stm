@@ -49,7 +49,7 @@
       <div class="stm_inv__header margin-top-1-5">
         <div class="stm_inv__flex">
           <div class="stm_inv__header--label">Total</div>
-          <div class="stm_inv__header--label">Total Discount</div>
+          <div class="stm_inv__header--label">Total Payment</div>
           <div class="stm_inv__header--label">Amount Due</div>
         </div>
         <div class="stm_inv__flex">

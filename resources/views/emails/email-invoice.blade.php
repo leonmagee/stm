@@ -69,7 +69,7 @@ Hello {{ $user->name }}, please remit payment to:
         <div>${{ number_format($subtotal, 2) }}</div>
       </div>
       <div class="item discount">
-        <div class="label">Total Discount</div>
+        <div class="label">Total Payment</div>
         <div>-${{ number_format($discount, 2) }}</div>
       </div>
       <div class="item final">
