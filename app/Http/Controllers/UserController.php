@@ -309,6 +309,12 @@ class UserController extends Controller
         }
 
         $is_admin = Helpers::current_user_admin();
+        if (!$is_admin) {
+            $is_master = Helpers::current_user_master_agent($user);
+            if (!$is_master) {
+                return redirect('/');
+            }
+        }
 
         $role = $user->role->id;
 
@@ -669,11 +675,30 @@ class UserController extends Controller
     }
 
     /**
+     * Agent transfer balance to dealer
+     */
+    public function transfer_balance(Request $request)
+    {
+        $your_current_balance = \Auth::user()->balance;
+        $transfer_amount = floatval($request->balance_to_transfer);
+
+        if ($transfer_amount > $your_current_balance) {
+            session()->flash('danger', 'Balance transfer value is too high');
+            return redirect()->back();
+        }
+
+        dd($request);
+        dd($transfer_amount);
+        dd($your_current_balance);
+        dd($request->balance_to_transfer);
+    }
+
+    /**
      * Axios change user balance
      * Use same method for both react and laravel forms
      *
      */
-    public function changeUserBalance(request $request, User $user = null)
+    public function changeUserBalance(Request $request, User $user = null)
     {
 
         // process for non-react form

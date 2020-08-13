@@ -128,6 +128,20 @@ class Helpers
         return false;
     }
 
+    public static function current_user_master_agent($user)
+    {
+        if ($logged_in_user = \Auth::user()) {
+            if ($site_id = $logged_in_user->master_agent_site) {
+                if ($user->site_id() == $site_id) {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+        }
+        return false;
+    }
+
     public static function current_user_manager()
     {
         if ($user = \Auth::user()) {

@@ -43,6 +43,7 @@ Route::get('delete-cart-item/{item}', 'CartProductController@destroy');
 Route::post('review-create-update', 'ProductReviewController@update');
 Route::get('purchase-complete', 'PurchaseController@purchase_complete');
 Route::post('pay-with-balance', 'PurchaseController@pay_with_balance');
+Route::post('transfer-balance', 'UserController@transfer_balance');
 
 Route::group(['middleware' => 'App\Http\Middleware\LockOutUsersManagers'], function () {
     Route::get('products-list', 'ProductController@list');

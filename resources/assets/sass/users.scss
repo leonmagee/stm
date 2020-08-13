@@ -257,3 +257,19 @@
         }
     }
 }
+
+.transfer-balance {
+    padding-bottom: 1.5em;
+    .transfer-balance__item {
+        span {
+            font-weight: 600;
+        }
+    }
+    .transfer-balance__form {
+        input {
+            @media (min-width: $screen-sm) {
+                max-width: 7em;
+            }
+        }
+    }
+}

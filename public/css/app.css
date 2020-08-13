@@ -19850,6 +19850,20 @@ table.dataTable tr td .invoice-view {
   opacity: 0.7;
 }
 
+.transfer-balance {
+  padding-bottom: 1.5em;
+}
+
+.transfer-balance .transfer-balance__item span {
+  font-weight: 600;
+}
+
+@media (min-width: 768px) {
+  .transfer-balance .transfer-balance__form input {
+    max-width: 7em;
+  }
+}
+
 .dealersCount {
   font-weight: bold;
   color: #fff;
