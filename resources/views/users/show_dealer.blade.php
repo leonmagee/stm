@@ -140,10 +140,22 @@
 
   <div class="notes-wrap">
 
-    {{-- <div class="transfer-balance">
+    <div class="transfer-balance">
       <label>Transfer Balance</label>
-      Transfer balance here
-    </div> --}}
+      <div class="transfer-balance__item">
+        <span>Your Balance</span> ${{ number_format(\Auth::user()->balance, 2) }}
+      </div>
+      <div class="transfer-balance__item">
+        <span>Dealer Balance</span> ${{ number_format($user->balance, 2) }}
+      </div>
+      <div class="transfer-balance__form">
+        <form method="POST" action="transfer-balance">
+          @csrf
+          <label>Balance to Transfer</label>
+          <input class="input" type="number" name='balance-to-transfer' />
+        </form>
+      </div>
+    </div>
 
     <div class="notes-list-wrap">
       <label>Notes</label>

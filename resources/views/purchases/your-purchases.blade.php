@@ -117,7 +117,7 @@
           <div class="stm-flex-row__item header">Subtotal</div>
           <div class="stm-flex-row__item header">Service Charge</div>
           <div class="stm-flex-row__item header">Total</div>
-          <div class="stm-flex-row__item header flex-7"></div>
+          <div class="stm-flex-row__item header flex-4"></div>
         </div>
         <div class="stm-flex-row">
           <div class="stm-flex-row__item">{{ strtoupper($purchase->type) }}</div>
@@ -130,7 +130,8 @@
             @endif
           </div>
           <div class="stm-flex-row__item bold">${{ number_format($purchase->total, 2) }}</div>
-          <div class="stm-flex-row__item bold flex-7"><a href="/purchase-order/{{ $purchase->id }}">View</a></div>
+          <div class="stm-flex-row__item bold flex-4"><a href="/purchase-order/{{ $purchase->id }}"><i
+                class="fas fa-eye"></i></a></div>
         </div>
       </div>
       @endforeach

@@ -21513,6 +21513,15 @@ body.stm-body.about .middle-content-wrap .about-page .video-wrap .video-wrap-inn
   padding: 8px 15px;
 }
 
+.stm_inv .stm_inv__flex .stm_inv__header--label.stm_inv__flex--4,
+.stm_inv .stm_inv__flex .stm_inv__header--item.stm_inv__flex--4,
+.stm_inv .stm_inv__flex .stm_inv__item--item.stm_inv__flex--4,
+.stm_inv .stm_inv__flex .stm_inv__item--label.stm_inv__flex--4 {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 1 4%;
+          flex: 0 1 4%;
+}
+
 .stm_inv .stm_inv__flex .stm_inv__header--label.stm_inv__flex--7,
 .stm_inv .stm_inv__flex .stm_inv__header--item.stm_inv__flex--7,
 .stm_inv .stm_inv__flex .stm_inv__item--item.stm_inv__flex--7,
@@ -21621,6 +21630,27 @@ body.stm-body.about .middle-content-wrap .about-page .video-wrap .video-wrap-inn
 .stm_inv .stm_inv__flex .stm_inv__item--item.strong,
 .stm_inv .stm_inv__flex .stm_inv__item--label.strong {
   font-weight: 600;
+}
+
+.stm_inv .stm_inv__flex .stm_inv__header--label.blue,
+.stm_inv .stm_inv__flex .stm_inv__header--item.blue,
+.stm_inv .stm_inv__flex .stm_inv__item--item.blue,
+.stm_inv .stm_inv__flex .stm_inv__item--label.blue {
+  color: #209cee;
+}
+
+.stm_inv .stm_inv__flex .stm_inv__header--label.blue a,
+.stm_inv .stm_inv__flex .stm_inv__header--item.blue a,
+.stm_inv .stm_inv__flex .stm_inv__item--item.blue a,
+.stm_inv .stm_inv__flex .stm_inv__item--label.blue a {
+  color: #209cee;
+}
+
+.stm_inv .stm_inv__flex .stm_inv__header--label.blue a:hover,
+.stm_inv .stm_inv__flex .stm_inv__header--item.blue a:hover,
+.stm_inv .stm_inv__flex .stm_inv__item--item.blue a:hover,
+.stm_inv .stm_inv__flex .stm_inv__item--label.blue a:hover {
+  opacity: 0.9;
 }
 
 .stm_inv .stm_inv__flex .stm_inv__header--label:not(:first-child),
@@ -23517,6 +23547,10 @@ a.button.custom-button:hover {
   border-top: 1px solid #ddd;
 }
 
+.sales-receipt .invoice-wrap .invoice-wrap__footer .invoice-wrap__footer--note {
+  padding: 1em;
+}
+
 .sales-receipt .invoice-wrap .invoice-wrap__footer .invoice-wrap__footer--totals {
   border-left: 1px solid #ddd;
   -webkit-box-flex: 0;
@@ -23681,6 +23715,12 @@ a.button.custom-button:hover {
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
+}
+
+.stm-flex .stm-flex-row .stm-flex-row__item.flex-4 {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 1 4%;
+          flex: 0 1 4%;
 }
 
 .stm-flex .stm-flex-row .stm-flex-row__item.flex-7 {

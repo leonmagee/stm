@@ -62,6 +62,9 @@
             display: flex;
             justify-content: space-between;
             border-top: 1px solid #ddd;
+            .invoice-wrap__footer--note {
+                padding: 1em;
+            }
             .invoice-wrap__footer--totals {
                 border-left: 1px solid #ddd;
                 flex: 0 1 23%;

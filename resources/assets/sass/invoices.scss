@@ -33,6 +33,9 @@
             flex: 1 1 12%;
             border: 1px solid #ccc;
             padding: 8px 15px;
+            &.stm_inv__flex--4 {
+                flex: 0 1 4%;
+            }
             &.stm_inv__flex--7 {
                 flex: 0 1 7%;
             }
@@ -70,6 +73,15 @@
             }
             &.strong {
                 font-weight: 600;
+            }
+            &.blue {
+                color: $info;
+                a {
+                    color: $info;
+                    &:hover {
+                        opacity: 0.9;
+                    }
+                }
             }
             &:not(:first-child) {
                 border-left: none;

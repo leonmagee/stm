@@ -28,10 +28,10 @@
         <div class="invoice-wrap__details">
           <div class="address-block">
             <div class="top">Ship To:</div>
-            <div>{{ $user->name }}</div>
-            <div>{{ $user->company }}</div>
-            <div>{{ $user->address }}</div>
-            <div>{{ $user->city }}, {{ $user->state }} {{ $user->zip }}</div>
+            <div>{{ $purchase->user->name }}</div>
+            <div>{{ $purchase->user->company }}</div>
+            <div>{{ $purchase->user->address }}</div>
+            <div>{{ $purchase->user->city }}, {{ $purchase->user->state }} {{ $purchase->user->zip }}</div>
           </div>
 
           <div class="invoice-number-wrap">
@@ -79,7 +79,9 @@
 
         <div class="invoice-wrap__footer">
           <div class="invoice-wrap__footer--note">
-            {{-- note --}}
+            @if($purchase->tracking_number)
+            <span>Tracking Number:</span> <strong>{{ $purchase->tracking_number }}</strong>
+            @endif
           </div>
           <div class="invoice-wrap__footer--totals">
             <div class="item">
