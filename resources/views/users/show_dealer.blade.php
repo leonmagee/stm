@@ -140,6 +140,11 @@
 
   <div class="notes-wrap">
 
+    {{-- <div class="transfer-balance">
+      <label>Transfer Balance</label>
+      Transfer balance here
+    </div> --}}
+
     <div class="notes-list-wrap">
       <label>Notes</label>
       @if($notes->count())

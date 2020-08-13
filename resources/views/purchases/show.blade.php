@@ -32,6 +32,39 @@
         </div>
       </div>
 
+      <div class="stm_inv__flex--forms">
+        <div class="stm_inv__form stm_inv__flex--forms-item stm_inv__flex--forms-imei">
+          <form method="POST" action="/add-imei-number">
+            @csrf
+            <div class="stm_inv__form--flex">
+              {{-- <input type="hidden" name="purchase_id" value="{{ $purchase->id }}" /> --}}
+              <div class="field description">
+                <label class="label" for="description">IMEI / Serial Number</label>
+                <div class="control">
+                  <input class="input" type="text" id="imei_number" name="imei_number" required />
+                </div>
+              </div>
+              <div class="field flex-50">
+                <label class="label" for="status">Product</label>
+                <div class="select">
+                  <select name="purchase_product_id" id="purchase_product_id">
+                    @foreach($purchase->products as $product)
+                    <option value="{{ $product->id }}">{{ $product->name . " - " . $product->variation }}</option>
+                    @endforeach
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="field flex-margin margin-top-1">
+              <div class="control">
+                <button type="submit" href="#" class="button is-primary">Add IMEI / Serial Number</button>
+              </div>
+            </div>
+
+          </form>
+        </div>
+      </div>
+
       <div class="stm_inv__items">
         <div class="stm_inv__flex">
           <div class="stm_inv__item--label stm_inv__flex--60">Product Name</div>
@@ -135,40 +168,6 @@
           <div class="stm_inv__header--item stm_inv__flex--15">{{ $purchase->tracking_number }}</div>
           <div class="stm_inv__header--item">{{ $purchase->shipping_type }}</div>
         </div>
-      </div>
-
-      <div class="stm_inv__flex--forms">
-        <div class="stm_inv__form stm_inv__flex--forms-item stm_inv__flex--forms-imei">
-          <form method="POST" action="/add-imei-number">
-            @csrf
-            <div class="stm_inv__form--flex">
-              {{-- <input type="hidden" name="purchase_id" value="{{ $purchase->id }}" /> --}}
-              <div class="field description">
-                <label class="label" for="description">IMEI / Serial Number</label>
-                <div class="control">
-                  <input class="input" type="text" id="imei_number" name="imei_number" required />
-                </div>
-              </div>
-              <div class="field flex-50">
-                <label class="label" for="status">Product</label>
-                <div class="select">
-                  <select name="purchase_product_id" id="purchase_product_id">
-                    @foreach($purchase->products as $product)
-                    <option value="{{ $product->id }}">{{ $product->name . " - " . $product->variation }}</option>
-                    @endforeach
-                  </select>
-                </div>
-              </div>
-            </div>
-            <div class="field flex-margin margin-top-1">
-              <div class="control">
-                <button type="submit" href="#" class="button is-primary">Add IMEI / Serial Number</button>
-              </div>
-            </div>
-
-          </form>
-        </div>
-
       </div>
 
       <div class="stm_inv__flex--forms">

@@ -16,11 +16,10 @@
 
   <div class="main-wrap">
 
-    {{-- <div class="middle-content-wrap"> --}}
+    {{-- @todo create separate alert which is pos absolute with high z-index / this is hidden by slide --}}
+    @include('layouts.alert')
 
     @yield('content')
-
-    {{-- </div> --}}
 
   </div>
 
