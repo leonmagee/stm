@@ -140,59 +140,59 @@
 
   <div class="notes-wrap">
 
-    <div class="transfer-balance">
+    {{-- <div class="transfer-balance">
       <label>Transfer Balance</label>
       <div class="transfer-balance__item">
         <span>Your Balance</span> ${{ number_format(\Auth::user()->balance, 2) }}
-      </div>
-      <div class="transfer-balance__item">
-        <span>Dealer Balance</span> ${{ number_format($user->balance, 2) }}
-      </div>
-      <div class="transfer-balance__form">
-        <form method="POST" action="transfer-balance">
-          @csrf
-          <label>Balance to Transfer</label>
-          <input class="input" type="number" name='balance-to-transfer' />
-        </form>
-      </div>
-    </div>
-
-    <div class="notes-list-wrap">
-      <label>Notes</label>
-      @if($notes->count())
-      @foreach($notes as $note)
-      <div class="note">
-        <div class="note-header">
-          <span class="date">{{ $note->created_at->format('m/d/Y g:ia') }}</span>
-          <span class="user">{{ $note->author }}</span>
-        </div>
-        <div class="note-body">{{ $note->text }}</div>
-      </div>
-      <div class="modal" id="delete-note-modal-{{ $note->id }}">
-
-        <div class="modal-background"></div>
-
-        <div class="modal-content">
-
-          <div class="modal-box">
-
-            <h3 class="title">Are You Sure?</h3>
-
-            <a href="/delete-note/{{ $note->id }}" class="button is-danger">Delete Note</a>
-            <a class="modal-delete-close-button button is-primary" note_id={{ $note->id }}>Cancel</a>
-          </div>
-
-        </div>
-
-        <button class="modal-delete-close is-large" aria-label="close" note_id={{ $note->id }}></button>
-
-      </div>
-      @endforeach
-      @else
-      <div class="no-notes">No notes have been saved.</div>
-      @endif
-    </div>
   </div>
+  <div class="transfer-balance__item">
+    <span>Dealer Balance</span> ${{ number_format($user->balance, 2) }}
+  </div>
+  <div class="transfer-balance__form">
+    <form method="POST" action="transfer-balance">
+      @csrf
+      <label>Balance to Transfer</label>
+      <input class="input" type="number" name='balance-to-transfer' />
+    </form>
+  </div>
+</div> --}}
+
+<div class="notes-list-wrap">
+  <label>Notes</label>
+  @if($notes->count())
+  @foreach($notes as $note)
+  <div class="note">
+    <div class="note-header">
+      <span class="date">{{ $note->created_at->format('m/d/Y g:ia') }}</span>
+      <span class="user">{{ $note->author }}</span>
+    </div>
+    <div class="note-body">{{ $note->text }}</div>
+  </div>
+  <div class="modal" id="delete-note-modal-{{ $note->id }}">
+
+    <div class="modal-background"></div>
+
+    <div class="modal-content">
+
+      <div class="modal-box">
+
+        <h3 class="title">Are You Sure?</h3>
+
+        <a href="/delete-note/{{ $note->id }}" class="button is-danger">Delete Note</a>
+        <a class="modal-delete-close-button button is-primary" note_id={{ $note->id }}>Cancel</a>
+      </div>
+
+    </div>
+
+    <button class="modal-delete-close is-large" aria-label="close" note_id={{ $note->id }}></button>
+
+  </div>
+  @endforeach
+  @else
+  <div class="no-notes">No notes have been saved.</div>
+  @endif
+</div>
+</div>
 
 </div>
 
