@@ -140,7 +140,51 @@
 
   <div class="notes-wrap">
 
+    <div class="transfer-balance">
+      <label>Transfer Balance</label>
+      <div class="transfer-balance__item">
+        <?php $your_balance = \Auth::user()->balance; ?>
+        Your Balance: <span>${{ number_format($your_balance, 2) }}</span>
+      </div>
+      <div class="transfer-balance__item">
+        Dealer Balance: <span>${{ number_format($user->balance, 2) }}</span>
+      </div>
+      <div class="transfer-balance__form margin-top-1">
+        <form method="POST" action="/transfer-balance">
+          @csrf
+          <label>Balance to Transfer</label>
+          <input type="hidden" name="user_id" value="{{ $user->id }}" />
+          <div class="field">
+            <div class="control">
+              <input class="input" type="number" name='balance_to_transfer' step=".01" min="0"
+                max="{{ $your_balance }}" />
+            </div>
+          </div>
+          <div class="field">
+            <a href="#" class="modal-open button is-danger">Process Transfer</a>
+          </div>
 
+          <div class="modal" id="layout-modal">
+
+            <div class="modal-background"></div>
+
+            <div class="modal-content">
+
+              <div class="modal-box">
+
+                <h3 class="title">Are You Sure?</h3>
+
+                <button class="button is-danger call-loader" type="submit">Process Transfer</button>
+                <a href="#" class="modal-close-button button is-primary">Cancel</a>
+
+              </div>
+            </div>
+            <button class="modal-close is-large" aria-label="close"></button>
+          </div>
+
+        </form>
+      </div>
+    </div>
 
     <div class="notes-list-wrap">
       <label>Notes</label>

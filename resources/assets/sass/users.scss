@@ -191,7 +191,10 @@
             }
         }
         button {
-            margin: 10px 0 5px;
+            //margin: 10px 0 5px;
+        }
+        textarea {
+            margin-bottom: 10px;
         }
     }
     .button-bar-wrap {
@@ -266,10 +269,12 @@
         }
     }
     .transfer-balance__form {
-        input {
-            @media (min-width: $screen-sm) {
-                max-width: 7em;
-            }
+        //background: tomato;
+        @media (min-width: $screen-sm) {
+            max-width: 11em;
+        }
+        a {
+            width: 100%;
         }
     }
 }

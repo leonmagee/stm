@@ -318,18 +318,13 @@ class UserController extends Controller
 
         $role = $user->role->id;
 
-        //dd($user->role->name);
-
         if ($role === 1) {
             $role = 'Admin';
         } else {
-            //$role = Site::find($role)->name;
             $role = $user->role->name;
         }
 
-        //$notes = json_decode($user->notes);
         $notes = $user->notes;
-        //dd($notes);
         return view('users.show_dealer', compact('user', 'notes', 'role', 'bonus', 'credit', 'is_admin', 'recharge_data_array', 'third_recharge_data_array'));
     }
 
@@ -679,18 +674,58 @@ class UserController extends Controller
      */
     public function transfer_balance(Request $request)
     {
-        $your_current_balance = \Auth::user()->balance;
+        $logged_in_user = \Auth::user();
+        $your_current_balance = $logged_in_user->balance;
         $transfer_amount = floatval($request->balance_to_transfer);
+
+        if ($transfer_amount < 0) {
+            session()->flash('danger', 'Transfer amount must be a positive value.');
+            return redirect()->back();
+        }
 
         if ($transfer_amount > $your_current_balance) {
             session()->flash('danger', 'Balance transfer value is too high');
             return redirect()->back();
         }
 
-        dd($request);
-        dd($transfer_amount);
-        dd($your_current_balance);
-        dd($request->balance_to_transfer);
+        $user = User::find($request->user_id);
+        $is_master = Helpers::current_user_master_agent($user);
+        if (!$is_master) {
+            session()->flash('danger', 'Dealer not eligible.');
+            return redirect()->back();
+        }
+
+        $logged_new_balance = $logged_in_user->balance - $transfer_amount;
+        $logged_in_user->balance = $logged_new_balance;
+        $transfer_1 = $logged_in_user->save();
+        $transfer_2 = false;
+        if ($transfer_1) {
+            $user_new_balance = $user->balance + $transfer_amount;
+            $user->balance = $user_new_balance;
+            $transfer_2 = $user->save();
+        }
+        if ($transfer_1 && $transfer_2) {
+            session()->flash('message', 'Transfer Successful.');
+
+            BalanceTracker::create([
+                'admin_id' => null,
+                'user_id' => $logged_in_user->id,
+                'previous_balance' => $your_current_balance,
+                'difference' => $transfer_amount,
+                'new_balance' => $logged_new_balance,
+                'note' => 'Transfer to ' . $user->company . ' - ' . $user->name,
+            ]);
+
+            return redirect()->back();
+        } else {
+            session()->flash('danger', 'There was a problem with the transfer.');
+            return redirect()->back();
+        }
+
+        // dd($request);
+        // dd($transfer_amount);
+        // dd($your_current_balance);
+        // dd($request->balance_to_transfer);
     }
 
     /**
@@ -718,7 +753,6 @@ class UserController extends Controller
             } else {
                 return \Redirect::back()->withErrors(['Plese enter one Add or Subtract value.']);
             }
-
         }
 
         // end non-react form

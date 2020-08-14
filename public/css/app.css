@@ -19769,8 +19769,8 @@ table.dataTable tr td .invoice-view {
   cursor: pointer;
 }
 
-.users-flex-wrap .notes-wrap button {
-  margin: 10px 0 5px;
+.users-flex-wrap .notes-wrap textarea {
+  margin-bottom: 10px;
 }
 
 @media (min-width: 980px) {
@@ -19859,9 +19859,13 @@ table.dataTable tr td .invoice-view {
 }
 
 @media (min-width: 768px) {
-  .transfer-balance .transfer-balance__form input {
-    max-width: 7em;
+  .transfer-balance .transfer-balance__form {
+    max-width: 11em;
   }
+}
+
+.transfer-balance .transfer-balance__form a {
+  width: 100%;
 }
 
 .dealersCount {
