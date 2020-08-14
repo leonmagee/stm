@@ -19864,7 +19864,7 @@ table.dataTable tr td .invoice-view {
   }
 }
 
-.transfer-balance .transfer-balance__form a {
+.transfer-balance .transfer-balance__form a.full-width {
   width: 100%;
 }
 

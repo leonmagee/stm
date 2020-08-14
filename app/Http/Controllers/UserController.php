@@ -689,6 +689,7 @@ class UserController extends Controller
         }
 
         $user = User::find($request->user_id);
+        $user_old_balance = $user->balance;
         $is_master = Helpers::current_user_master_agent($user);
         if (!$is_master) {
             session()->flash('danger', 'Dealer not eligible.');
@@ -711,9 +712,18 @@ class UserController extends Controller
                 'admin_id' => null,
                 'user_id' => $logged_in_user->id,
                 'previous_balance' => $your_current_balance,
-                'difference' => $transfer_amount,
+                'difference' => ($transfer_amount * -1),
                 'new_balance' => $logged_new_balance,
-                'note' => 'Transfer to ' . $user->company . ' - ' . $user->name,
+                'note' => 'Balance Transfer to ' . $user->company . ' - ' . $user->name,
+            ]);
+
+            BalanceTracker::create([
+                'admin_id' => null,
+                'user_id' => $user->id,
+                'previous_balance' => $user_old_balance,
+                'difference' => $transfer_amount,
+                'new_balance' => $user_new_balance,
+                'note' => 'Balance Transfer from ' . $logged_in_user->company,
             ]);
 
             return redirect()->back();

@@ -161,7 +161,7 @@
             </div>
           </div>
           <div class="field">
-            <a href="#" class="modal-open button is-danger">Process Transfer</a>
+            <a href="#" class="full-width modal-open button is-danger">Process Transfer</a>
           </div>
 
           <div class="modal" id="layout-modal">
