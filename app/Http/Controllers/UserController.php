@@ -708,23 +708,69 @@ class UserController extends Controller
         if ($transfer_1 && $transfer_2) {
             session()->flash('message', 'Transfer Successful.');
 
+            $date = \Carbon\Carbon::now()->format('F d, Y');
+
+            $master_agent_note = 'Balance Transfer to ' . $user->company . ' - ' . $user->name;
+            $master_agent_difference = ($transfer_amount * -1);
             BalanceTracker::create([
                 'admin_id' => null,
                 'user_id' => $logged_in_user->id,
                 'previous_balance' => $your_current_balance,
-                'difference' => ($transfer_amount * -1),
+                'difference' => $master_agent_difference,
                 'new_balance' => $logged_new_balance,
-                'note' => 'Balance Transfer to ' . $user->company . ' - ' . $user->name,
+                'note' => $master_agent_note,
             ]);
 
+            /**
+             * Email user sending balance change
+             */
+            \Mail::to($logged_in_user)->send(new EmailBalance(
+                $logged_in_user,
+                $your_current_balance,
+                $master_agent_difference,
+                $logged_new_balance,
+                $master_agent_note,
+                $date
+            ));
+
+            $user_note = 'Balance Transfer from ' . $logged_in_user->company;
             BalanceTracker::create([
                 'admin_id' => null,
                 'user_id' => $user->id,
                 'previous_balance' => $user_old_balance,
                 'difference' => $transfer_amount,
                 'new_balance' => $user_new_balance,
-                'note' => 'Balance Transfer from ' . $logged_in_user->company,
+                'note' => $user_note,
             ]);
+
+            /**
+             * Email user receiving balance update
+             */
+            \Mail::to($user)->send(new EmailBalance(
+                $user,
+                $user_old_balance,
+                $transfer_amount,
+                $user_new_balance,
+                $user_note,
+                $date
+            ));
+
+            $admin_note = 'Balance Transfer to ' . $user->company . ' - ' . $user->name . ' from ' . $logged_in_user->company;
+            $admin_users = User::getAdminManageerUsers();
+            foreach ($admin_users as $admin) {
+                if (!$admin->notes_email_disable) {
+                    \Mail::to($admin)->send(new EmailBalance(
+                        $user,
+                        $user_old_balance,
+                        $transfer_amount,
+                        $user_new_balance,
+                        $admin_note,
+                        $date,
+                        $admin
+                    ));
+
+                }
+            }
 
             return redirect()->back();
         } else {
