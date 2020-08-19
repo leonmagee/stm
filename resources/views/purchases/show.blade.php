@@ -229,11 +229,10 @@
                 <label class="label" for="status">Shipping Type</label>
                 <div class="select">
                   <select name="shipping_type" id="shipping_type">
-                    <option value="USPS" @if($purchase->shipping_type == "USPS") selected @endif>USPS</option>
-                    <option value="UPS" @if($purchase->shipping_type == "UPS") selected @endif>UPS</option>
-                    <option value="FEDEX" @if($purchase->shipping_type == "FEDEX") selected @endif>FEDEX</option>
-                    <option value="Pick Up / Drop Off" @if($purchase->shipping_type == "Pick Up / Drop Off") selected
-                      @endif>Pick Up / Drop Off</option>
+                    <option value="USPS">USPS</option>
+                    <option value="UPS">UPS</option>
+                    <option value="FEDEX">FEDEX</option>
+                    <option value="Pick Up / Drop Off">Pick Up / Drop Off</option>
                   </select>
                 </div>
               </div>
