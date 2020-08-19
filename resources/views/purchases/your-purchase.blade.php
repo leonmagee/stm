@@ -79,9 +79,13 @@
 
         <div class="invoice-wrap__footer">
           <div class="invoice-wrap__footer--note">
-            @if($purchase->tracking_number)
-            <span>Tracking Number:</span> <strong>{{ $purchase->tracking_number }}</strong>
-            @endif
+            Tracking Numbers:
+            @foreach($purchase->tracking_numbers as $tracking_number)
+            <div>
+              <strong>{{ $tracking_number->tracking_number }}</strong> -
+              <strong>{{ $tracking_number->shipping_type }}</strong>
+            </div>
+            @endforeach
           </div>
           <div class="invoice-wrap__footer--totals">
             <div class="item">
