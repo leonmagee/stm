@@ -608,6 +608,16 @@ $('.modal-delete-open, .modal-delete-close, .modal-delete-close-button').click(
 );
 
 /**
+ * Modal for deleting note and email
+ */
+$('.modal-2-delete-open, .modal-2-delete-close, .modal-2-delete-close-button').click(
+  function () {
+    const itemId = $(this).attr('item_id');
+    $(`.modal#delete-item-modal-2-${itemId}`).toggleClass('is-active');
+  }
+);
+
+/**
  * Modal for resending email
  */
 $('.modal-resend-open, .modal-resend-close, .modal-resend-close-button').click(

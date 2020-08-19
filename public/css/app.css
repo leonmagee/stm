@@ -21484,8 +21484,14 @@ body.stm-body.about .middle-content-wrap .about-page .video-wrap .video-wrap-inn
 
 .stm_inv .stm_inv__flex--forms .stm_inv__flex--forms-item.stm_inv__flex--forms-tracking {
   -webkit-box-flex: 0;
-      -ms-flex: 0 1 79%;
-          flex: 0 1 79%;
+      -ms-flex: 0 1 59%;
+          flex: 0 1 59%;
+}
+
+.stm_inv .stm_inv__flex--forms .stm_inv__flex--forms-item.stm_inv__flex--forms-submit {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 1 19%;
+          flex: 0 1 19%;
 }
 
 .stm_inv .stm_inv__flex--forms .stm_inv__flex--forms-item.stm_inv__flex--forms-imei {
@@ -21806,6 +21812,12 @@ body.stm-body.about .middle-content-wrap .about-page .video-wrap .video-wrap-inn
   -webkit-box-flex: 0;
       -ms-flex: 0 1 20%;
           flex: 0 1 20%;
+}
+
+.stm_inv .stm_inv__form .stm_inv__form--flex .field.flex-25 {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 1 25%;
+          flex: 0 1 25%;
 }
 
 .stm_inv .stm_inv__form .stm_inv__form--flex .field.flex-50 {

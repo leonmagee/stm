@@ -226,13 +226,18 @@ class PurchaseController extends Controller
     {
         $purchase = Purchase::find($request->purchase_id);
         if ($purchase) {
-            $purchase->tracking_number = $request->tracking_number;
-            $purchase->shipping_type = $request->shipping_type;
+            //$purchase->tracking_number = $request->tracking_number;
+            //$purchase->shipping_type = $request->shipping_type;
             $purchase->status = 3;
             $purchase->save();
         }
 
-        $header_text = "<strong>Hello " . $purchase->user->name . "!</strong><br />Your order has shipped. Here is your <strong>" . $purchase->shipping_type . "</strong> tracking number: <strong>" . $purchase->tracking_number . "</strong>.";
+        // $header_text = "<strong>Hello " . $purchase->user->name . "!</strong><br />Your order has shipped. Here is your <strong>" . $purchase->shipping_type . "</strong> tracking number: <strong>" . $purchase->tracking_number ."</strong>.";
+        $header_text = "<div class='margin-bottom-10'><div><strong>Hello " . $purchase->user->name . "!</strong><br />Your order has shipped. Here is your tracking information:</div>";
+        foreach ($purchase->tracking_numbers as $tracking_number) {
+            $header_text .= "<div><strong>" . $tracking_number->tracking_number . "</strong> - <strong>" . $tracking_number->shipping_type . "</strong></div>";
+        }
+        $header_text .= "</div>";
 
         $email_subject = 'Purchase Order GSW-' . $purchase->id . ' has Shipped';
 
@@ -269,20 +274,6 @@ class PurchaseController extends Controller
             ));
 
         }
-
-        // $admins = User::getAdminManageerUsers();
-        // foreach ($admins as $admin) {
-        //     if (!$admin->notes_email_disable) {
-        //         $header_text = "<strong>Hello " . $admin->name . "!</strong><br />Purchase order has shipped. The tracking number is " . $purchase->tracking_number . " shipped via " . $purchase->shipping_type . ".";
-
-        //         \Mail::to($admin)->send(new PurchaseEmail(
-        //             $purchase->user,
-        //             $purchase,
-        //             $header_text,
-        //             'Purchase Order Shipped: ' . $purchase->tracking_number
-        //         ));
-        //     }
-        // }
 
         session()->flash('message', 'Tracking Number Updated - Emails Sent.');
         return redirect()->back();

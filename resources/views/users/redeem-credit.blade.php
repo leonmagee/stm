@@ -31,38 +31,38 @@
         <div class="item cash-app" name="cash-app">
           <img src="{{ URL::asset('img/cash-app.jpg') }}" />
         </div>
-        <div class="item h2o" name="h2o-direct-portal">
+        {{-- <div class="item h2o" name="h2o-direct-portal">
           <img src="{{ URL::asset('img/h2o.jpg') }}" />
-        </div>
-        <div class="item lyca" name="lyca-direct-portal">
+      </div> --}}
+      {{-- <div class="item lyca" name="lyca-direct-portal">
           <img src="{{ URL::asset('img/lyca.jpg') }}" />
-        </div>
-        <div class="item gs-posa" name="gs-posa-portal">
+    </div> --}}
+    {{-- <div class="item gs-posa" name="gs-posa-portal">
           <img src="{{ URL::asset('img/gs-posa.jpg') }}" />
-        </div>
-      </div>
+  </div> --}}
+</div>
 
-      <input type="hidden" id="hidden-user-balance" value="{{ $user->balance }}" />
-      <input type="hidden" id="hidden-user-company" value="{{ $user->company }}" />
+<input type="hidden" id="hidden-user-balance" value="{{ $user->balance }}" />
+<input type="hidden" id="hidden-user-company" value="{{ $user->company }}" />
 
-      <div class="field">
-        <label class="label" for="account">Account ID, Email Address, or Phone Number</label>
-        <div class="control">
-          <input class="input" type="text" id="account_entry" name="account_entry" />
-        </div>
-      </div>
-
-
-      <div class="field">
-        <div class="control">
-          <a href="#" class="redeem-credit-modal button is-primary">Submit</a>
-        </div>
-      </div>
-
-    </div>
-
-
+<div class="field">
+  <label class="label" for="account">Account ID, Email Address, or Phone Number</label>
+  <div class="control">
+    <input class="input" type="text" id="account_entry" name="account_entry" />
   </div>
+</div>
+
+
+<div class="field">
+  <div class="control">
+    <a href="#" class="redeem-credit-modal button is-primary">Submit</a>
+  </div>
+</div>
+
+</div>
+
+
+</div>
 
 </div>
 

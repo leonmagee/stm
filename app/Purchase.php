@@ -13,4 +13,9 @@ class Purchase extends Model
     {
         return $this->hasMany(PurchaseProduct::class);
     }
+
+    public function tracking_numbers()
+    {
+        return $this->hasMany(TrackingNumber::class);
+    }
 }

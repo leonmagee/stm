@@ -51,6 +51,8 @@ Route::group(['middleware' => 'App\Http\Middleware\LockOutUsersManagers'], funct
     Route::get('purchases/{purchase}', 'PurchaseController@show');
     //Route::get('purchase-email-test', 'PurchaseController@store_test');
     Route::post('update-shipping-info', 'PurchaseController@update_shipping');
+    Route::post('add-tracking-number', 'TrackingNumberController@store');
+    Route::post('delete-tracking-number/{trackingNumber}', 'TrackingNumberController@destroy');
     Route::post('update-purchase-status', 'PurchaseController@update_status');
     Route::get('rmas', 'RmaController@index');
     Route::get('rmas/{rma}', 'RmaController@show');

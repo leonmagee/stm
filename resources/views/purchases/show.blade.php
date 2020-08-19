@@ -156,6 +156,7 @@
           <div class="stm_inv__header--label">City</div>
           <div class="stm_inv__header--label">State</div>
           <div class="stm_inv__header--label">Zip</div>
+          <div class="stm_inv__header--label stm_inv__flex--15">Tracking Numbers</div>
           <div class="stm_inv__header--label stm_inv__flex--15">Tracking Number</div>
           <div class="stm_inv__header--label">Shipping Service</div>
         </div>
@@ -165,6 +166,47 @@
           <div class="stm_inv__header--item">{{ $purchase->user->city }}</div>
           <div class="stm_inv__header--item">{{ $purchase->user->state }}</div>
           <div class="stm_inv__header--item">{{ $purchase->user->zip }}</div>
+          <div class="stm_inv__header--item stm_inv__flex--15">
+            @foreach($purchase->tracking_numbers as $tracking_number)
+            <div class="imei-row">
+              {{ $tracking_number->tracking_number . ' - ' . $tracking_number->shipping_type }}
+              <i class="fas fa-minus-circle modal-2-delete-open" item_id={{ $tracking_number->id }}></i>
+
+              <div class="modal" id="delete-item-modal-2-{{ $tracking_number->id }}">
+
+                <div class="modal-background"></div>
+
+                <div class="modal-content">
+
+                  <div class="modal-box">
+
+                    <h3 class="title">Are You Sure?</h3>
+
+                    <form method="POST" action="/delete-tracking-number/{{ $tracking_number->id }}">
+                      @csrf
+                      <h2 class="stm-subtitle">Number to delete: {{ $tracking_number->tracking_number }}</h2>
+                      <h2 class="stm-subtitle">Shipping Type: {{ $tracking_number->shipping_type }}</h2>
+                      <button type="submit" class="button is-danger margin-top-1-5">Delete</button>
+                    </form>
+
+                    <a class="modal-2-delete-close-button button is-primary"
+                      item_id={{ $tracking_number->id }}>Cancel</a>
+                  </div>
+
+                </div>
+
+                <button class="modal-2-delete-close is-large" aria-label="close"
+                  item_id={{ $tracking_number->id }}></button>
+
+              </div>
+
+
+            </div>
+            @endforeach
+
+
+
+          </div>
           <div class="stm_inv__header--item stm_inv__flex--15">{{ $purchase->tracking_number }}</div>
           <div class="stm_inv__header--item">{{ $purchase->shipping_type }}</div>
         </div>
@@ -173,7 +215,7 @@
       <div class="stm_inv__flex--forms">
 
         <div class="stm_inv__form stm_inv__flex--forms-item stm_inv__flex--forms-tracking">
-          <form method="POST" action="/update-shipping-info">
+          <form method="POST" action="/add-tracking-number">
             @csrf
             <div class="stm_inv__form--flex">
               <input type="hidden" name="purchase_id" value="{{ $purchase->id }}" />
@@ -181,10 +223,10 @@
                 <label class="label" for="description">Tracking Number</label>
                 <div class="control">
                   <input class="input" type="text" id="tracking_number" name="tracking_number"
-                    value="{{ $purchase->tracking_number }}" required />
+                    value="{{ $purchase->tracking_number }}" />
                 </div>
               </div>
-              <div class="field flex-20">
+              <div class="field flex-25">
                 <label class="label" for="status">Shipping Type</label>
                 <div class="select">
                   <select name="shipping_type" id="shipping_type">
@@ -197,6 +239,43 @@
                 </div>
               </div>
             </div>
+            <div class="field flex-margin margin-top-1">
+              <div class="control">
+                <button type="submit" class="button is-primary">Add Tracking Number</button>
+              </div>
+            </div>
+
+          </form>
+        </div>
+
+        <div class="stm_inv__form stm_inv__flex--forms-item stm_inv__flex--forms-status">
+          <form method="POST" action="/update-purchase-status">
+            @csrf
+            <div class="stm_inv__forms-no-flex">
+              <input type="hidden" name="purchase_id" value="{{ $purchase->id }}" />
+              <div class="field">
+                <label class="label" for="status">Status</label>
+                <div class="select">
+                  <select name="status" id="status">
+                    <option value="2" @if($purchase->status == 2) selected @endif>Pending</option>
+                    <option value="3" @if($purchase->status == 3) selected @endif>Shipped</option>
+                    <option value="4" @if($purchase->status == 4) selected @endif>Cancelled</option>
+                  </select>
+                </div>
+              </div>
+              <div class="field flex-margin margin-top-1">
+                <div class="control">
+                  <button class="button is-primary call-loader" type="submit">Update</button>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+
+        <div class="stm_inv__form stm_inv__flex--forms-item stm_inv__flex--forms-submit">
+          <form method="POST" action="/update-shipping-info">
+            @csrf
+            <input type="hidden" name="purchase_id" value="{{ $purchase->id }}" />
             <div class="field flex-margin margin-top-1">
               <div class="control">
                 <a href="#" class="modal-open button is-primary">Ship Purchase Order</a>
@@ -238,30 +317,6 @@
                 </div>
               </div>
               <button class="modal-close is-large" aria-label="close"></button>
-            </div>
-          </form>
-        </div>
-
-        <div class="stm_inv__form stm_inv__flex--forms-item stm_inv__flex--forms-status">
-          <form method="POST" action="/update-purchase-status">
-            @csrf
-            <div class="stm_inv__forms-no-flex">
-              <input type="hidden" name="purchase_id" value="{{ $purchase->id }}" />
-              <div class="field">
-                <label class="label" for="status">Status</label>
-                <div class="select">
-                  <select name="status" id="status">
-                    <option value="2" @if($purchase->status == 2) selected @endif>Pending</option>
-                    <option value="3" @if($purchase->status == 3) selected @endif>Shipped</option>
-                    <option value="4" @if($purchase->status == 4) selected @endif>Cancelled</option>
-                  </select>
-                </div>
-              </div>
-              <div class="field flex-margin margin-top-1">
-                <div class="control">
-                  <button class="button is-primary call-loader" type="submit">Update</button>
-                </div>
-              </div>
             </div>
           </form>
         </div>
