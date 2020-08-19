@@ -156,9 +156,9 @@
           <div class="stm_inv__header--label">City</div>
           <div class="stm_inv__header--label">State</div>
           <div class="stm_inv__header--label">Zip</div>
-          <div class="stm_inv__header--label stm_inv__flex--15">Tracking Numbers</div>
-          <div class="stm_inv__header--label stm_inv__flex--15">Tracking Number</div>
-          <div class="stm_inv__header--label">Shipping Service</div>
+          <div class="stm_inv__header--label stm_inv__flex--25">Tracking Numbers</div>
+          {{-- <div class="stm_inv__header--label stm_inv__flex--15">Tracking Number</div>
+          <div class="stm_inv__header--label">Shipping Service</div> --}}
         </div>
         <div class="stm_inv__flex">
           <div class="stm_inv__header--item stm_inv__flex--30">{{ $purchase->user->address  }}
@@ -166,7 +166,7 @@
           <div class="stm_inv__header--item">{{ $purchase->user->city }}</div>
           <div class="stm_inv__header--item">{{ $purchase->user->state }}</div>
           <div class="stm_inv__header--item">{{ $purchase->user->zip }}</div>
-          <div class="stm_inv__header--item stm_inv__flex--15">
+          <div class="stm_inv__header--item stm_inv__flex--25">
             @foreach($purchase->tracking_numbers as $tracking_number)
             <div class="imei-row">
               {{ $tracking_number->tracking_number . ' - ' . $tracking_number->shipping_type }}
@@ -207,124 +207,125 @@
 
 
           </div>
-          <div class="stm_inv__header--item stm_inv__flex--15">{{ $purchase->tracking_number }}</div>
-          <div class="stm_inv__header--item">{{ $purchase->shipping_type }}</div>
+          {{-- <div class="stm_inv__header--item stm_inv__flex--15">{{ $purchase->tracking_number }}
         </div>
+        <div class="stm_inv__header--item">{{ $purchase->shipping_type }}</div> --}}
+      </div>
+    </div>
+
+    <div class="stm_inv__flex--forms">
+
+      <div class="stm_inv__form stm_inv__flex--forms-item stm_inv__flex--forms-tracking">
+        <form method="POST" action="/add-tracking-number">
+          @csrf
+          <div class="stm_inv__form--flex">
+            <input type="hidden" name="purchase_id" value="{{ $purchase->id }}" />
+            <div class="field description">
+              <label class="label" for="description">Tracking Number</label>
+              <div class="control">
+                <input class="input" type="text" id="tracking_number" name="tracking_number" />
+              </div>
+            </div>
+            <div class="field flex-25">
+              <label class="label" for="status">Shipping Type</label>
+              <div class="select">
+                <select name="shipping_type" id="shipping_type">
+                  <option value="USPS">USPS</option>
+                  <option value="UPS">UPS</option>
+                  <option value="FEDEX">FEDEX</option>
+                  <option value="Pick Up / Drop Off">Pick Up / Drop Off</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="field flex-margin margin-top-1">
+            <div class="control">
+              <button type="submit" class="button is-primary">Add Tracking Number</button>
+            </div>
+          </div>
+
+        </form>
       </div>
 
-      <div class="stm_inv__flex--forms">
-
-        <div class="stm_inv__form stm_inv__flex--forms-item stm_inv__flex--forms-tracking">
-          <form method="POST" action="/add-tracking-number">
-            @csrf
-            <div class="stm_inv__form--flex">
-              <input type="hidden" name="purchase_id" value="{{ $purchase->id }}" />
-              <div class="field description">
-                <label class="label" for="description">Tracking Number</label>
-                <div class="control">
-                  <input class="input" type="text" id="tracking_number" name="tracking_number" />
-                </div>
-              </div>
-              <div class="field flex-25">
-                <label class="label" for="status">Shipping Type</label>
-                <div class="select">
-                  <select name="shipping_type" id="shipping_type">
-                    <option value="USPS">USPS</option>
-                    <option value="UPS">UPS</option>
-                    <option value="FEDEX">FEDEX</option>
-                    <option value="Pick Up / Drop Off">Pick Up / Drop Off</option>
-                  </select>
-                </div>
-              </div>
-            </div>
-            <div class="field flex-margin margin-top-1">
-              <div class="control">
-                <button type="submit" class="button is-primary">Add Tracking Number</button>
-              </div>
-            </div>
-
-          </form>
-        </div>
-
-        <div class="stm_inv__form stm_inv__flex--forms-item stm_inv__flex--forms-status">
-          <form method="POST" action="/update-purchase-status">
-            @csrf
-            <div class="stm_inv__forms-no-flex">
-              <input type="hidden" name="purchase_id" value="{{ $purchase->id }}" />
-              <div class="field">
-                <label class="label" for="status">Status</label>
-                <div class="select">
-                  <select name="status" id="status">
-                    <option value="2" @if($purchase->status == 2) selected @endif>Pending</option>
-                    <option value="3" @if($purchase->status == 3) selected @endif>Shipped</option>
-                    <option value="4" @if($purchase->status == 4) selected @endif>Cancelled</option>
-                  </select>
-                </div>
-              </div>
-              <div class="field flex-margin margin-top-1">
-                <div class="control">
-                  <button class="button is-primary call-loader" type="submit">Update</button>
-                </div>
-              </div>
-            </div>
-          </form>
-        </div>
-
-        <div class="stm_inv__form stm_inv__flex--forms-item stm_inv__flex--forms-submit">
-          <form method="POST" action="/update-shipping-info">
-            @csrf
+      <div class="stm_inv__form stm_inv__flex--forms-item stm_inv__flex--forms-status">
+        <form method="POST" action="/update-purchase-status">
+          @csrf
+          <div class="stm_inv__forms-no-flex">
             <input type="hidden" name="purchase_id" value="{{ $purchase->id }}" />
-            <div class="field flex-margin margin-top-1">
-              <div class="control">
-                <a href="#" class="modal-open button is-primary">Ship Purchase Order</a>
+            <div class="field">
+              <label class="label" for="status">Status</label>
+              <div class="select">
+                <select name="status" id="status">
+                  <option value="2" @if($purchase->status == 2) selected @endif>Pending</option>
+                  <option value="3" @if($purchase->status == 3) selected @endif>Shipped</option>
+                  <option value="4" @if($purchase->status == 4) selected @endif>Cancelled</option>
+                </select>
               </div>
             </div>
-            <div class="modal" id="layout-modal">
+            <div class="field flex-margin margin-top-1">
+              <div class="control">
+                <button class="button is-primary call-loader" type="submit">Update</button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
 
-              <div class="modal-background"></div>
+      <div class="stm_inv__form stm_inv__flex--forms-item stm_inv__flex--forms-submit">
+        <form method="POST" action="/update-shipping-info">
+          @csrf
+          <input type="hidden" name="purchase_id" value="{{ $purchase->id }}" />
+          <div class="field flex-margin margin-top-1">
+            <div class="control">
+              <a href="#" class="modal-open button is-primary">Ship Purchase Order</a>
+            </div>
+          </div>
+          <div class="modal" id="layout-modal">
 
-              <div class="modal-content">
+            <div class="modal-background"></div>
 
-                <div class="modal-box">
+            <div class="modal-content">
 
-                  <h3 class="title">Are You Sure?</h3>
-                  <div class="invoice-modal-flex">
-                    <div class="field">
-                      <label class="label" for="cc_user_1">BCC User</label>
-                      <div class="control">
-                        <div class="select">
-                          <select name="cc_user_1" id="cc_user_1">
-                            <option value="0">---</option>
-                            @foreach($users as $user)
-                            <option value="{{ $user->id }}">{{ $user->company }} - {{ $user->name }}</option>
-                            @endforeach
-                          </select>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="field">
-                      <label class="label" for="cc_user_2">BCC Email Address</label>
-                      <div class="control">
-                        <input class="input" type="email" name="cc_user_2" id="cc_user_2" placeholder="Email Address" />
+              <div class="modal-box">
+
+                <h3 class="title">Are You Sure?</h3>
+                <div class="invoice-modal-flex">
+                  <div class="field">
+                    <label class="label" for="cc_user_1">BCC User</label>
+                    <div class="control">
+                      <div class="select">
+                        <select name="cc_user_1" id="cc_user_1">
+                          <option value="0">---</option>
+                          @foreach($users as $user)
+                          <option value="{{ $user->id }}">{{ $user->company }} - {{ $user->name }}</option>
+                          @endforeach
+                        </select>
                       </div>
                     </div>
                   </div>
-                  <button class="button is-danger call-loader" type="submit">Ship Purchase Order</button>
-                  <a href="#" class="modal-close-button button is-primary">Cancel</a>
-
+                  <div class="field">
+                    <label class="label" for="cc_user_2">BCC Email Address</label>
+                    <div class="control">
+                      <input class="input" type="email" name="cc_user_2" id="cc_user_2" placeholder="Email Address" />
+                    </div>
+                  </div>
                 </div>
+                <button class="button is-danger call-loader" type="submit">Ship Purchase Order</button>
+                <a href="#" class="modal-close-button button is-primary">Cancel</a>
+
               </div>
-              <button class="modal-close is-large" aria-label="close"></button>
             </div>
-          </form>
-        </div>
+            <button class="modal-close is-large" aria-label="close"></button>
+          </div>
+        </form>
       </div>
-
-
-
-
     </div>
+
+
+
+
   </div>
+</div>
 
 </div>
 
