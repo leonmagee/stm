@@ -222,8 +222,7 @@
               <div class="field description">
                 <label class="label" for="description">Tracking Number</label>
                 <div class="control">
-                  <input class="input" type="text" id="tracking_number" name="tracking_number"
-                    value="{{ $purchase->tracking_number }}" />
+                  <input class="input" type="text" id="tracking_number" name="tracking_number" />
                 </div>
               </div>
               <div class="field flex-25">
