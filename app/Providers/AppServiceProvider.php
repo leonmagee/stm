@@ -280,10 +280,6 @@ class AppServiceProvider extends ServiceProvider
             ];
 
             $products_sub = [
-                // [
-                //     'name' => 'Products',
-                //     'link' => '/products',
-                // ],
                 [
                     'name' => 'Products List',
                     'link' => '/products-list',
@@ -295,6 +291,10 @@ class AppServiceProvider extends ServiceProvider
                 [
                     'name' => 'Purchase Orders',
                     'link' => '/purchases',
+                ],
+                [
+                    'name' => 'Sales Totals',
+                    'link' => '/sales',
                 ],
                 [
                     'name' => 'RMAs',

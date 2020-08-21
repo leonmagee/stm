@@ -9,6 +9,7 @@ use App\Purchase;
 use App\PurchaseProduct;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PurchaseController extends Controller
 {
@@ -321,6 +322,33 @@ class PurchaseController extends Controller
         $show_imei = true;
 
         return view('purchases.your-purchase', compact('purchase', 'user', 'show_imei'));
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Purchase  $purchase
+     * @return \Illuminate\Http\Response
+     */
+    public function sales()
+    {
+        $month_data = DB::table('purchases')->select(DB::raw('SUM(total)'), DB::raw('count(id) as `data`'), DB::raw("DATE_FORMAT(created_at, '%m-%Y') new_date"), DB::raw('YEAR(created_at) year, MONTH(created_at) month'))
+            ->groupby('new_date', 'year', 'month')
+            ->get();
+        dd($month_data);
+
+        $user = \Auth::user();
+        if ($user->isAdmin()) {
+            $purchases = Purchase::all();
+            $total_sales = 0;
+            foreach ($purchases as $purchase) {
+                $total_sales += $purchase->total;
+            }
+            //dd($total_sales);
+        } else {
+            dd('not admin');
+        }
+        return view('purchases.sales', compact('total_sales', 'purchases', 'user'));
     }
 
     /**

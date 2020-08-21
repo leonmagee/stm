@@ -44,6 +44,7 @@ Route::post('review-create-update', 'ProductReviewController@update');
 Route::get('purchase-complete', 'PurchaseController@purchase_complete');
 Route::post('pay-with-balance', 'PurchaseController@pay_with_balance');
 Route::post('transfer-balance', 'UserController@transfer_balance');
+Route::get('sales', 'PurchaseController@sales');
 
 Route::group(['middleware' => 'App\Http\Middleware\LockOutUsersManagers'], function () {
     Route::get('products-list', 'ProductController@list');
