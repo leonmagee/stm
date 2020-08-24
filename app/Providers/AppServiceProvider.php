@@ -292,10 +292,10 @@ class AppServiceProvider extends ServiceProvider
                     'name' => 'Purchase Orders',
                     'link' => '/purchases',
                 ],
-                [
-                    'name' => 'Sales Totals',
-                    'link' => '/sales',
-                ],
+                // [
+                //     'name' => 'Sales Totals',
+                //     'link' => '/sales',
+                // ],
                 [
                     'name' => 'RMAs',
                     'link' => '/rmas',

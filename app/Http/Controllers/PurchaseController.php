@@ -332,10 +332,10 @@ class PurchaseController extends Controller
      */
     public function sales()
     {
-        $month_data = DB::table('purchases')->select(DB::raw('SUM(total)'), DB::raw('count(id) as `data`'), DB::raw("DATE_FORMAT(created_at, '%m-%Y') new_date"), DB::raw('YEAR(created_at) year, MONTH(created_at) month'))
+        $monthly_data = DB::table('purchases')->select(DB::raw('SUM(total) as total'), DB::raw('count(id) as `data`'), DB::raw("DATE_FORMAT(created_at, '%m-%Y') new_date"), DB::raw('YEAR(created_at) year, MONTH(created_at) month'))
             ->groupby('new_date', 'year', 'month')
             ->get();
-        dd($month_data);
+        //dd($monthly_data);
 
         $user = \Auth::user();
         if ($user->isAdmin()) {
@@ -348,7 +348,7 @@ class PurchaseController extends Controller
         } else {
             dd('not admin');
         }
-        return view('purchases.sales', compact('total_sales', 'purchases', 'user'));
+        return view('purchases.sales', compact('total_sales', 'monthly_data', 'purchases', 'user'));
     }
 
     /**

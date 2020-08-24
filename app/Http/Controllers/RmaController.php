@@ -58,7 +58,7 @@ class RmaController extends Controller
     public function store(Request $request)
     {
         $user = \Auth::user();
-        if (count($request->imeis)) {
+        if ($request->imeis && count($request->imeis)) {
             $imeis = serialize($request->imeis);
             $imeis_array = $request->imeis;
         } else {

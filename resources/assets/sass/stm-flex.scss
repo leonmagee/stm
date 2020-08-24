@@ -1,0 +1,95 @@
+.stm-flex {
+    padding: 2em;
+    .stm-flex-wrap {
+        margin-bottom: 3em;
+    }
+    .stm-flex-row {
+        display: flex;
+        &.separator {
+            margin-top: 1em;
+            border-top: 1px solid #ddd;
+        }
+        .stm-flex-row__item {
+            padding: 0.6em 1em;
+            font-size: 0.9em;
+            border-right: 1px solid #ddd;
+            border-bottom: 1px solid #ddd;
+            flex: 1;
+            &.flex-4 {
+                flex: 0 1 4%;
+            }
+            &.flex-7 {
+                flex: 0 1 7%;
+            }
+            &.flex-12 {
+                flex: 0 1 12%;
+            }
+            &.flex-15 {
+                flex: 0 1 15%;
+            }
+            &.flex-17 {
+                flex: 0 1 17%;
+            }
+            &.flex-20 {
+                flex: 0 1 20%;
+            }
+            &.flex-30 {
+                flex: 0 1 30%;
+            }
+            &.flex-35 {
+                flex: 0 1 35%;
+            }
+            &.flex-50 {
+                flex: 0 1 50%;
+            }
+            &.rma-link {
+                font-weight: 600;
+            }
+            &.bold {
+                font-weight: 600;
+            }
+            &.primary {
+                color: $primary;
+            }
+            &.red {
+                color: $red;
+            }
+            // .nowrap {
+            //     white-space: nowrap;
+            // }
+            &:first-child() {
+                border-left: 1px solid #ddd;
+            }
+            &.header {
+                font-weight: 600;
+                background-color: $invoice-header;
+                font-size: 0.8em;
+            }
+            &.status-1 {
+                background-color: darken($brand-fifth, 13%);
+                color: #fff;
+                text-shadow: 1px 1px rgba(0, 0, 0, 0.05);
+            }
+            &.status-2 {
+                background-color: $color-red;
+                color: #fff;
+                text-shadow: 1px 1px rgba(0, 0, 0, 0.05);
+            }
+            &.status-3 {
+                background-color: $color-green;
+                color: #fff;
+                text-shadow: 1px 1px rgba(0, 0, 0, 0.05);
+            }
+            &.status-4 {
+                background-color: #111;
+                color: #fff;
+                text-shadow: 1px 1px rgba(0, 0, 0, 0.05);
+            }
+        }
+        &:first-child() {
+            .stm-flex-row__item {
+                border-top: 1px solid #ddd;
+            }
+        }
+    }
+}
