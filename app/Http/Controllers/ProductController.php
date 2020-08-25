@@ -343,12 +343,18 @@ class ProductController extends Controller
         //dd($product->first_variation());
         //$product->was_purchased();
         //dd($product->variations);
+        //dd($product);
         $product->initial_quantity();
         for ($i = 1; $i <= $this->num_images; $i++) {
             if ($resource = $product->{"img_url_" . $i}) {
                 if (strpos($resource, 'video') !== false) {
+                    /**
+                     * @todo I don't think this does anything - since this
+                     * will only ever be images and not videos?
+                     */
                     $new_url_small = str_replace('mp4', 'jpeg', $resource);
                     $product->{"img_url_small_" . $i} = $new_url_small;
+                    //dd($new_url_small);
                 } else {
                     $match = null;
                     preg_match('(\/STM\/.*)', $resource, $match);
@@ -366,6 +372,13 @@ class ProductController extends Controller
                 preg_match('(\/STM\/.*)', $product->{"tab_img_url_" . $i}, $match);
                 $new_url = cloudinary_url($match[0], ["transformation" => ["width" => 800, "height" => 800, "crop" => "fit"], "cloud_name" => "www-stmmax-com", "secure" => "true"]);
                 $product->{"tab_img_url_" . $i} = $new_url;
+            }
+        }
+
+        for ($i = 1; $i <= $this->num_tab_videos; $i++) {
+            if ($video_url = $product->{"tab_video_url_" . $i}) {
+                $poster = str_replace('mp4', 'jpeg', $video_url);
+                $product->{"tab_video_poster_" . $i} = $poster;
             }
         }
 

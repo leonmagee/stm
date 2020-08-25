@@ -137,7 +137,7 @@
       <div class="product-details__images">
         @for($i = 1; $i<= $num_tab_videos; ++$i) @if($product->{'tab_video_url_' . $i })
           <div class="product-details__images--item">
-            <video controls>
+            <video controls poster="{{ $product->{'tab_video_poster_' . $i } }}">
               <source src="{{ $product->{'tab_video_url_' . $i } }}" type="video/mp4">
               Your browser does not support the video tag.
             </video>

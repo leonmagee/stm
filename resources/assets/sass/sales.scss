@@ -1,10 +1,17 @@
 .total-sales {
-    .total-sales__header {
-        font-size: 1.7em;
-        font-weight: 600;
-    }
-    .total-sales__item {
+    display: flex;
+    font-size: 1.7em;
+    font-weight: 600;
+    margin-bottom: 0.7em;
+    .total-sales__label {
+        background-color: $invoice-header;
+        padding: 0.25em 0.5em 0.2em;
         border: 1px solid #ddd;
-        display: flex;
+        border-right: none;
+    }
+    .total-sales__value {
+        padding: 0.25em 0.5em 0.2em;
+        background-color: $green;
+        color: #fff;
     }
 }
