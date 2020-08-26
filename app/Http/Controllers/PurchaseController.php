@@ -334,8 +334,8 @@ class PurchaseController extends Controller
     {
         $monthly_data = DB::table('purchases')->select(DB::raw('SUM(total) as total'), DB::raw('count(id) as `data`'), DB::raw("DATE_FORMAT(created_at, '%m-%Y') new_date"), DB::raw('YEAR(created_at) year, MONTH(created_at) month'))
             ->groupby('new_date', 'year', 'month')
+            ->orderby('new_date', 'DESC')
             ->get();
-        //dd($monthly_data);
 
         $user = \Auth::user();
         if ($user->isAdmin()) {
@@ -344,7 +344,6 @@ class PurchaseController extends Controller
             foreach ($purchases as $purchase) {
                 $total_sales += $purchase->total;
             }
-            //dd($total_sales);
         } else {
             dd('not admin');
         }

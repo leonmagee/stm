@@ -21482,6 +21482,17 @@ body.stm-body.about .middle-content-wrap .about-page .video-wrap .video-wrap-inn
           justify-content: space-between;
 }
 
+.stm_inv .stm_inv__flex--forms .stm_inv__flex--forms-item.margin-horizontal {
+  margin-left: 1.5em;
+  margin-right: 1.5em;
+}
+
+.stm_inv .stm_inv__flex--forms .stm_inv__flex--forms-item.stm_inv__flex--forms-grow {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
 .stm_inv .stm_inv__flex--forms .stm_inv__flex--forms-item.stm_inv__flex--forms-tracking {
   -webkit-box-flex: 0;
       -ms-flex: 0 1 59%;

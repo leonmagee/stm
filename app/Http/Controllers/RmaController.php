@@ -172,6 +172,20 @@ class RmaController extends Controller
      * @param  \App\Rma  $rma
      * @return \Illuminate\Http\Response
      */
+    public function update_note(Request $request, Rma $rma)
+    {
+        $rma->note = $request->note;
+        $rma->save();
+        return redirect()->back();
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Rma  $rma
+     * @return \Illuminate\Http\Response
+     */
     public function rma_approve(Request $request, Rma $rma)
     {
         $rma->status = 3;

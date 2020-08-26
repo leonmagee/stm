@@ -61,9 +61,17 @@
         <div class="stm_inv__flex">
           <div class="stm_inv__header--label">Reason for Return</div>
         </div>
-
         <div class="stm_inv__flex">
           <div class="stm_inv__header--item">{{ $rma->explanation }}</div>
+        </div>
+      </div>
+
+      <div class="stm_inv__header margin-top-1-5">
+        <div class="stm_inv__flex">
+          <div class="stm_inv__header--label">Note</div>
+        </div>
+        <div class="stm_inv__flex">
+          <div class="stm_inv__header--item">{!! $rma->note !!}</div>
         </div>
       </div>
 
@@ -195,13 +203,33 @@
   </div>
 
 
+  <div class="stm_inv__form stm_inv__flex--forms-item stm_inv__flex--forms-grow margin-horizontal">
+    <form method="POST" action="/update-rma-note/{{ $rma->id }}">
+      @csrf
+      <div class="stm_inv__forms-no-flex">
+        <input type="hidden" name="purchase_id" value="{{ $rma->id }}" />
+        <div class="field">
+          <label class="label" for="status">RMA Note</label>
+          <div class="control">
+            <textarea class="textarea" name="note">{{ $rma->note }}</textarea>
+          </div>
+        </div>
+        <div class="field flex-margin margin-top-1">
+          <div class="control">
+            <button class="button is-primary call-loader" type="submit">Update Note</button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+
   <div class="stm_inv__form stm_inv__flex--forms-item stm_inv__flex--forms-status">
     <form method="POST" action="/update-rma-status/{{ $rma->id }}">
       @csrf
       <div class="stm_inv__forms-no-flex">
         <input type="hidden" name="purchase_id" value="{{ $rma->id }}" />
         <div class="field">
-          <label class="label" for="status">Update Status</label>
+          <label class="label" for="status">RMA Status</label>
           <div class="select">
             <select name="status" id="status">
               <option value="2" @if($rma->status == 2) selected @endif>Pending</option>
@@ -212,7 +240,7 @@
         </div>
         <div class="field flex-margin margin-top-1">
           <div class="control">
-            <button class="button is-primary call-loader" type="submit">Update</button>
+            <button class="button is-primary call-loader" type="submit">Update Status</button>
           </div>
         </div>
       </div>

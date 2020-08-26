@@ -58,6 +58,7 @@ Route::group(['middleware' => 'App\Http\Middleware\LockOutUsersManagers'], funct
     Route::get('rmas', 'RmaController@index');
     Route::get('rmas/{rma}', 'RmaController@show');
     Route::post('update-rma-status/{rma}', 'RmaController@update_status');
+    Route::post('update-rma-note/{rma}', 'RmaController@update_note');
     Route::post('update-rma-status-approve/{rma}', 'RmaController@rma_approve');
     Route::post('update-rma-status-reject/{rma}', 'RmaController@rma_reject');
     Route::post('add-imei-number', 'ImeiController@store');

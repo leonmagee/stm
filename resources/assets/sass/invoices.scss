@@ -4,6 +4,13 @@
         display: flex;
         justify-content: space-between;
         .stm_inv__flex--forms-item {
+            &.margin-horizontal {
+                margin-left: 1.5em;
+                margin-right: 1.5em;
+            }
+            &.stm_inv__flex--forms-grow {
+                flex: 1;
+            }
             &.stm_inv__flex--forms-tracking {
                 flex: 0 1 59%;
             }

@@ -2,6 +2,10 @@
 
 {!! $header_text !!}
 
+@if($rma->note)
+<div class="margin-bottom-15">{!! $rma->note !!}</div>
+@endif
+
 <div class="invoice-wrap">
   <div class="invoice-wrap__header">
     <div class="address-block">
