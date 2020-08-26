@@ -12,7 +12,7 @@
 
     <div class="stm-flex">
       <div class="total-sales">
-        <div class="total-sales__label">Total</div>
+        <div class="total-sales__label">Total Sales</div>
         <div class="total-sales__value">${{ number_format($total_sales, 2) }}</div>
       </div>
       <div class="stm-flex-wrap">
