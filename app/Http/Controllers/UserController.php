@@ -7,6 +7,7 @@ use App\BalanceTracker;
 use App\Helpers;
 use App\Mail\EmailBalance;
 use App\Mail\EmailCredit;
+use App\Mail\UserUpdate;
 use App\ReportType;
 use App\Settings;
 use App\Site;
@@ -558,8 +559,10 @@ class UserController extends Controller
                 'zip' => 'required',
             ]);
 
+            $old_user = $user;
+
             // update user
-            $user = User::find($id)->update([
+            User::find($id)->update([
                 'name' => $request->name,
                 'email' => $request->email,
                 'company' => $request->company,
@@ -572,6 +575,36 @@ class UserController extends Controller
                 'email_blast_disable' => $blast_disable,
                 'contact_email_disable' => $contact_disable,
             ]);
+
+            if (!$user->isAdminManagerEmployee()) {
+
+                $user = User::find($id);
+
+                \Mail::to($user)->send(new UserUpdate(
+                    $user,
+                    $old_user,
+                ));
+
+                if ($old_user->email != $user->email) {
+                    \Mail::to($old_user)->send(new UserUpdate(
+                        $user,
+                        $old_user,
+                    ));
+                }
+
+                $admin_users = User::getAdminManageerUsers();
+
+                foreach ($admin_users as $admin) {
+                    if (!$admin->notes_email_disable) {
+                        \Mail::to($admin)->send(new UserUpdate(
+                            $user,
+                            $old_user,
+                        ));
+
+                    }
+                }
+
+            }
 
             session()->flash('message', 'Your profile has been updated.');
 

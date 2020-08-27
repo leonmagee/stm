@@ -201,6 +201,9 @@ img {
     border-spacing: 0;
     margin-bottom: 10px;
 }
+.table.custom.small-font {
+    font-size: 0.8em;
+}
 .table.custom th,
 .table.custom td {
     text-align: left;
