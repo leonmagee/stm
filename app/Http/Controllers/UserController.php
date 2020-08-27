@@ -582,13 +582,13 @@ class UserController extends Controller
 
                 \Mail::to($user)->send(new UserUpdate(
                     $user,
-                    $old_user,
+                    $old_user
                 ));
 
                 if ($old_user->email != $user->email) {
                     \Mail::to($old_user)->send(new UserUpdate(
                         $user,
-                        $old_user,
+                        $old_user
                     ));
                 }
 
@@ -598,9 +598,8 @@ class UserController extends Controller
                     if (!$admin->notes_email_disable) {
                         \Mail::to($admin)->send(new UserUpdate(
                             $user,
-                            $old_user,
+                            $old_user
                         ));
-
                     }
                 }
 
