@@ -140,7 +140,7 @@
 
   <div class="notes-wrap">
 
-    <label>Transfer Balance</label>
+    <label>Add Credit</label>
     <div class="transfer-balance">
       <div class="transfer-balance__row">
         <div class="transfer-balance__item transfer-balance__item--header flex-25 left">
@@ -159,8 +159,6 @@
           ${{ number_format($user->balance, 2) }}
         </div>
       </div>
-
-
       <div class="transfer-balance__form margin-top-1">
         <form method="POST" action="/transfer-balance">
           @csrf
@@ -176,7 +174,7 @@
               </div>
             </div>
             <div class="field">
-              <a href="#" class="modal-open button is-danger">Process Transfer</a>
+              <a href="#" class="modal-open button is-danger">Submit</a>
             </div>
           </div>
 
