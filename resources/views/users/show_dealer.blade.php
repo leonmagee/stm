@@ -140,28 +140,44 @@
 
   <div class="notes-wrap">
 
+    <label>Transfer Balance</label>
     <div class="transfer-balance">
-      <label>Transfer Balance</label>
-      <div class="transfer-balance__item">
-        <?php $your_balance = \Auth::user()->balance; ?>
-        Your Balance: <span>${{ number_format($your_balance, 2) }}</span>
+      <div class="transfer-balance__row">
+        <div class="transfer-balance__item transfer-balance__item--header flex-25 left">
+          Your Balance
+        </div>
+        <div class="transfer-balance__item transfer-balance__item--header">
+          Dealer Balance
+        </div>
       </div>
-      <div class="transfer-balance__item">
-        Dealer Balance: <span>${{ number_format($user->balance, 2) }}</span>
+      <div class="transfer-balance__row">
+        <div class="transfer-balance__item flex-25 left">
+          <?php $your_balance = \Auth::user()->balance; ?>
+          ${{ number_format($your_balance, 2) }}
+        </div>
+        <div class="transfer-balance__item">
+          ${{ number_format($user->balance, 2) }}
+        </div>
       </div>
+
+
       <div class="transfer-balance__form margin-top-1">
         <form method="POST" action="/transfer-balance">
           @csrf
-          <label>Balance to Transfer</label>
-          <input type="hidden" name="user_id" value="{{ $user->id }}" />
-          <div class="field">
-            <div class="control">
-              <input class="input" type="number" name='balance_to_transfer' step=".01" min="0"
-                max="{{ $your_balance }}" />
+          <div class="transfer-balance__row">
+            <div class="balance-to-transfer">
+              {{-- <label>Balance to Transfer</label> --}}
+              <input type="hidden" name="user_id" value="{{ $user->id }}" />
+              <div class="field">
+                <div class="control">
+                  <input class="input" type="number" name='balance_to_transfer' step=".01" min="0"
+                    max="{{ $your_balance }}" placeholder="Balance to Transfer" />
+                </div>
+              </div>
             </div>
-          </div>
-          <div class="field">
-            <a href="#" class="full-width modal-open button is-danger">Process Transfer</a>
+            <div class="field">
+              <a href="#" class="modal-open button is-danger">Process Transfer</a>
+            </div>
           </div>
 
           <div class="modal" id="layout-modal">

@@ -678,7 +678,7 @@ class UserController extends Controller
         $your_current_balance = $logged_in_user->balance;
         $transfer_amount = floatval($request->balance_to_transfer);
 
-        if ($transfer_amount < 0) {
+        if ($transfer_amount <= 0) {
             session()->flash('danger', 'Transfer amount must be a positive value.');
             return redirect()->back();
         }

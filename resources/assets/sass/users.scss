@@ -262,19 +262,42 @@
 }
 
 .transfer-balance {
-    padding-bottom: 1.5em;
+    background-color: #fdfdfd;
+    border: 1px solid #e3e3e3;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    .transfer-balance__row {
+        display: flex;
+    }
     .transfer-balance__item {
-        span {
-            font-weight: 600;
+        padding: 10px 1.1em;
+        font-weight: 600;
+        flex: 1;
+        border-bottom: 1px solid #e3e3e3;
+        &.transfer-balance__item--header {
+            font-weight: 400;
+        }
+        &.flex-25 {
+            flex: 0 1 25%;
+        }
+        &.left {
+            border-right: 1px solid #e3e3e3;
         }
     }
     .transfer-balance__form {
         //background: tomato;
+        .balance-to-transfer {
+            white-space: nowrap;
+            padding: 0 1.1em 1em;
+            input {
+                min-width: 11em;
+            }
+        }
         @media (min-width: $screen-sm) {
             max-width: 11em;
         }
-        a.full-width {
-            width: 100%;
-        }
+        // a.full-width {
+        //     width: 100%;
+        // }
     }
 }
