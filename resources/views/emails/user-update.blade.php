@@ -30,7 +30,7 @@
     <th>{{ $old_user->address }}</th>
     <th>{{ $old_user->city }}</th>
     <th>{{ $old_user->state }}</th>
-    <th>{{ $old_user->Zip }}</th>
+    <th>{{ $old_user->zip }}</th>
   </tr>
   <tr>
     <th>New</th>
@@ -41,7 +41,7 @@
     <th>{{ $user->address }}</th>
     <th>{{ $user->city }}</th>
     <th>{{ $user->state }}</th>
-    <th>{{ $user->Zip }}</th>
+    <th>{{ $user->zip }}</th>
   </tr>
 </table>
 
