@@ -93,6 +93,21 @@ class User extends Authenticatable
         return $users;
     }
 
+    public function getMasterAgent()
+    {
+        $role = $this->role->id;
+        $reg_sites_array = [1, 2, 3, 4, 6, 7];
+        if (in_array($role, $reg_sites_array)) {
+            return false;
+        }
+        $site = $this->site_id();
+        $master_agent = User::where('master_agent_site', $site)->first();
+        if ($master_agent) {
+            return $master_agent;
+        }
+        return false;
+    }
+
     public function isManager()
     {
         if ($this->role->id === 2) {

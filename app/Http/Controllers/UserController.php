@@ -592,6 +592,13 @@ class UserController extends Controller
                     ));
                 }
 
+                if ($master_agent = $user->getMasterAgent()) {
+                    \Mail::to($master_agent)->send(new UserUpdate(
+                        $user,
+                        $old_user
+                    ));
+                }
+
                 $admin_users = User::getAdminManageerUsers();
 
                 foreach ($admin_users as $admin) {
