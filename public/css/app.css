@@ -20617,6 +20617,68 @@ table.dataTable tr td .invoice-view {
   opacity: 0.9;
 }
 
+.rma-note {
+  background-color: #fdfdfd;
+  border: 1px solid #e3e3e3;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  padding-right: 10px;
+  overflow: hidden;
+  font-weight: bold;
+  font-size: 0.8em;
+}
+
+.rma-note .note-header {
+  border-bottom: 1px solid #e3e3e3;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.rma-note .note-body {
+  font-weight: normal;
+  color: #333;
+  padding: 10px;
+}
+
+.rma-note span {
+  padding: 10px;
+  font-size: 1.1em;
+}
+
+.rma-note span.date {
+  border-right: 1px solid #e3e3e3;
+  color: #1b9aaa;
+}
+
+.rma-note span.user {
+  color: #333;
+}
+
+.rma-note span.icon {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+
+.rma-note span.icon i {
+  font-size: 1.7em;
+  color: #ef476f;
+}
+
+.rma-note span.icon i:hover {
+  cursor: pointer;
+}
+
 .homepage-wrap {
   height: 100%;
 }

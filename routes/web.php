@@ -58,7 +58,7 @@ Route::group(['middleware' => 'App\Http\Middleware\LockOutUsersManagers'], funct
     Route::get('rmas', 'RmaController@index');
     Route::get('rmas/{rma}', 'RmaController@show');
     Route::post('update-rma-status/{rma}', 'RmaController@update_status');
-    Route::post('update-rma-note/{rma}', 'RmaController@update_note');
+    //Route::post('update-rma-note/{rma}', 'RmaController@update_note');
     Route::post('update-rma-status-approve/{rma}', 'RmaController@rma_approve');
     Route::post('update-rma-status-reject/{rma}', 'RmaController@rma_reject');
     Route::post('add-imei-number', 'ImeiController@store');
@@ -103,6 +103,7 @@ Route::group(['middleware' => 'App\Http\Middleware\LockOutUsersManagers'], funct
     Route::post('update-user-sites', 'UserController@changeUserSites');
     Route::post('update-user-balance', 'UserController@changeUserBalance');
     Route::get('delete-note/{note}', 'NoteController@destroy');
+    Route::get('delete-rma-note/{rmaNote}', 'RmaNoteController@destroy');
     Route::get('delete-email/{email}', 'EmailTrackerController@destroy');
     Route::get('delete-email-user/{email}/{user}', 'EmailTrackerController@destroy_on_user');
     Route::get('delete-emails/{string}', 'EmailTrackerController@destroy_page');
@@ -133,6 +134,7 @@ Route::group(['middleware' => 'App\Http\Middleware\LockOutUsers'], function () {
     Route::get('orders', 'OrderController@index');
     Route::get('users/{user}', 'UserController@show');
     Route::post('add-note/{user}', 'NoteController@store');
+    Route::post('add-rma-note/{rma}', 'RmaNoteController@store');
     Route::get('users', 'UserController@index')->name('users');
     Route::get('all-users', 'UserController@all_users')->name('all-users');
     Route::post('search-user', 'UserController@search');

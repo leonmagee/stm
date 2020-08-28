@@ -13,4 +13,9 @@ class Rma extends Model
     {
         return $this->belongsTo(PurchaseProduct::class, 'purchase_product_id');
     }
+
+    public function notes()
+    {
+        return $this->hasMany(RmaNote::class)->orderBy('id', 'DESC');
+    }
 }

@@ -66,16 +66,6 @@
         </div>
       </div>
 
-      <div class="stm_inv__header margin-top-1-5">
-        <div class="stm_inv__flex">
-          <div class="stm_inv__header--label">Note</div>
-        </div>
-        <div class="stm_inv__flex">
-          <div class="stm_inv__header--item">{!! $rma->note !!}</div>
-        </div>
-      </div>
-
-
       {{-- <div class="stm_inv__items">
         <div class="stm_inv__flex">
           <div class="stm_inv__item--label stm_inv__flex--60">Product Name</div>
@@ -204,19 +194,56 @@
 
 
   <div class="stm_inv__form stm_inv__flex--forms-item stm_inv__flex--forms-grow margin-horizontal">
-    <form method="POST" action="/update-rma-note/{{ $rma->id }}">
+    @if($rma->notes->count())
+    @foreach($rma->notes as $note)
+    <div class="rma-note">
+      <div class="note-header">
+        <span class="date">{{ $note->created_at->format('m/d/Y g:ia') }}</span>
+        <span class="user">{{ $note->author }}</span>
+        <span class="icon">
+          @if(Auth()->user()->isAdmin())
+          <i class="fas fa-times-circle modal-delete-open" item_id={{ $note->id }}></i>
+          @endif
+        </span>
+      </div>
+      <div class="note-body">{{ $note->text }}</div>
+    </div>
+    <div class="modal" id="delete-item-modal-{{ $note->id }}">
+
+      <div class="modal-background"></div>
+
+      <div class="modal-content">
+
+        <div class="modal-box">
+
+          <h3 class="title">Are You Sure?</h3>
+
+          <a href="/delete-rma-note/{{ $note->id }}" class="button is-danger">Delete Note</a>
+          <a class="modal-delete-close-button button is-primary" item_id={{ $note->id }}>Cancel</a>
+        </div>
+
+      </div>
+
+      <button class="modal-delete-close is-large" aria-label="close" item_id={{ $note->id }}></button>
+
+    </div>
+    @endforeach
+    @else
+    <div class="no-notes">No notes have been saved.</div>
+    @endif
+    <form method="POST" action="/add-rma-note/{{ $rma->id }}">
       @csrf
       <div class="stm_inv__forms-no-flex">
         <input type="hidden" name="purchase_id" value="{{ $rma->id }}" />
         <div class="field">
-          <label class="label" for="status">RMA Note</label>
+          <label class="label" for="status">New RMA Note</label>
           <div class="control">
-            <textarea class="textarea" name="note">{{ $rma->note }}</textarea>
+            <textarea class="textarea" name="note"></textarea>
           </div>
         </div>
         <div class="field flex-margin margin-top-1">
           <div class="control">
-            <button class="button is-primary call-loader" type="submit">Update Note</button>
+            <button class="button is-primary call-loader" type="submit">Add Note</button>
           </div>
         </div>
       </div>

@@ -2,18 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Mail\EmailNote;
-use App\Note;
-use App\User;
+use App\Rma;
+use App\RmaNote;
 use Illuminate\Http\Request;
 
-class NoteController extends Controller
+class RmaNoteController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
     /**
      * Display a listing of the resource.
      *
@@ -21,19 +15,7 @@ class NoteController extends Controller
      */
     public function index()
     {
-        $notes = Note::orderBy('created_at', 'DESC')->get();
-        return view('notes.index', compact('notes'));
-    }
-
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index_new()
-    {
-        //$notes = Note::orderBy('created_at', 'DESC')->get();
-        return view('notes.index-datatables');
+        //
     }
 
     /**
@@ -52,46 +34,31 @@ class NoteController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, User $user)
+    public function store(Request $request, Rma $rma)
     {
         $this->validate(request(), [
             'note' => 'required|max:200',
         ]);
 
         $current_user = \Auth::user();
-        $note = new \App\Note;
+        $note = new \App\RmaNote;
         $note->text = $request->note;
-        $note->user_id = $user->id;
+        $note->rma_id = $rma->id;
         $note->author = $current_user->name;
         $date = \Carbon\Carbon::now()->format('F j, Y - g:i a');
         $note->save();
 
-        $admin_users = User::getAdminManageerEmployeeUsers();
-        foreach ($admin_users as $admin) {
-            if (!$admin->notes_email_disable) {
-                \Mail::to($admin)->send(new EmailNote(
-                    $admin,
-                    $note->text,
-                    $note->author,
-                    $date,
-                    $user
-                )
-                );
-            }
-        }
-
         session()->flash('message', 'Note Added');
-        return redirect('/users/' . $user->id);
-
+        return redirect()->back();
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Note  $note
+     * @param  \App\RmaNote  $rmaNote
      * @return \Illuminate\Http\Response
      */
-    public function show(Note $note)
+    public function show(RmaNote $rmaNote)
     {
         //
     }
@@ -99,10 +66,10 @@ class NoteController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Note  $note
+     * @param  \App\RmaNote  $rmaNote
      * @return \Illuminate\Http\Response
      */
-    public function edit(Note $note)
+    public function edit(RmaNote $rmaNote)
     {
         //
     }
@@ -111,10 +78,10 @@ class NoteController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Note  $note
+     * @param  \App\RmaNote  $rmaNote
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Note $note)
+    public function update(Request $request, RmaNote $rmaNote)
     {
         //
     }
@@ -122,15 +89,13 @@ class NoteController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Note  $note
+     * @param  \App\RmaNote  $rmaNote
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Note $note)
+    public function destroy(RmaNote $rmaNote)
     {
-        $user = $note->user->id;
-        $note->delete();
+        $rmaNote->delete();
         session()->flash('danger', 'Note Deleted');
-        return redirect('/users/' . $user);
+        return redirect()->back();
     }
-
 }
