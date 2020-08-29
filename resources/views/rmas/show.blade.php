@@ -129,13 +129,9 @@
 
 <div class="stm_inv__flex--forms">
 
-  <div class="stm_inv__form--buttons">
+  <div class="stm_inv__form stm_inv__form--buttons">
     <button class="button is-green modal-open-rma-approve">Approve RMA</button>
     <button class="button is-danger modal-open-rma-reject">Reject RMA</button>
-    {{-- <form method="POST" action="/update-rma-status-reject/{{ $rma->id }}">
-    @csrf
-    <button class="button is-danger">Reject RMA</button>
-    </form> --}}
   </div>
 
   <div class="modal" id="rma-approve-modal">

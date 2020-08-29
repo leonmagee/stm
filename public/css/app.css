@@ -21934,7 +21934,10 @@ body.stm-body.about .middle-content-wrap .about-page .video-wrap .video-wrap-inn
 
 .stm_inv .stm_inv__form--buttons {
   display: block;
-  padding: 2em 0;
+  padding: 2em 1em;
+  -webkit-box-flex: 0;
+      -ms-flex: 0 1 17%;
+          flex: 0 1 17%;
 }
 
 .stm_inv .stm_inv__form--buttons form {

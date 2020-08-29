@@ -215,7 +215,8 @@
     .stm_inv__form--buttons {
         //display: flex;
         display: block;
-        padding: 2em 0;
+        padding: 2em 1em;
+        flex: 0 1 17%;
         form {
             height: auto;
         }
