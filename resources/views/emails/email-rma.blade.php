@@ -2,8 +2,12 @@
 
 {!! $header_text !!}
 
-@if($rma->note)
-<div class="margin-bottom-15">{!! $rma->note !!}</div>
+@if(count($rma->notes))
+<div class="margin-bottom-25">
+  @foreach($rma->notes as $note)
+  <div class="note">{{ $note->text }}</div>
+  @endforeach
+</div>
 @endif
 
 <div class="invoice-wrap">
