@@ -41,7 +41,9 @@ class Helpers
      */
     public static function rma_status($id)
     {
-        if ($id == 2) {
+        if ($id == 1) {
+            return 'Completed';
+        } elseif ($id == 2) {
             return 'Pending';
         } elseif ($id == 3) {
             return 'Approved';

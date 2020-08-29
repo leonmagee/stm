@@ -236,7 +236,7 @@
       <div class="stm_inv__forms-no-flex">
         <input type="hidden" name="purchase_id" value="{{ $rma->id }}" />
         <div class="field">
-          <label class="label" for="status">New RMA Note</label>
+          <label class="label" for="note">New RMA Note</label>
           <div class="control">
             <textarea class="textarea" name="note"></textarea>
           </div>
@@ -262,6 +262,7 @@
               <option value="2" @if($rma->status == 2) selected @endif>Pending</option>
               <option value="3" @if($rma->status == 3) selected @endif>Approved</option>
               <option value="4" @if($rma->status == 4) selected @endif>Rejected</option>
+              <option value="1" @if($rma->status == 1) selected @endif>Completed</option>
             </select>
           </div>
         </div>
