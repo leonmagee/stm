@@ -50,7 +50,7 @@ $(nTd).html("RMA-GSW-" + oData.id);
 { "data": "status",
 "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
 if(oData.status == 1) {
-$(nTd).html("<span class='new'>New</span>");
+$(nTd).html("<span class='new'>Completed</span>");
 }
 else if(oData.status == 2) {
 $(nTd).html("<span class='pending'>Pending</span>");
