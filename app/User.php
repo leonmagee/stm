@@ -66,6 +66,17 @@ class User extends Authenticatable
         }
     }
 
+    public function isMasterAgent()
+    {
+        if ($this->master_agent_site) {
+            return true;
+        }
+        if ($this->master_agent_access) {
+            return true;
+        }
+        return false;
+    }
+
     public static function getAdminUsers()
     {
         $users = self::where('role_id', 1)->get();

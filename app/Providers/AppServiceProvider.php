@@ -619,7 +619,7 @@ class AppServiceProvider extends ServiceProvider
                     ],
                 ];
 
-            } elseif ($agents = $user->master_agent_site) {
+            } elseif ($user->isMasterAgent()) {
                 /**
                  * Master Agents
                  */

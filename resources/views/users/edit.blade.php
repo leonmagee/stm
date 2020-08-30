@@ -163,6 +163,17 @@
             </label>
           </div>
           @endif
+          @if(!$user->isAdminManagerEmployee())
+          <div class="field notes-checkbox-field">
+            <label class="checkbox">
+              <input type="checkbox" name="master_agent_access" @if($user->master_agent_access)
+              checked="checked"
+              @endif
+              />
+              Master Agent Access
+            </label>
+          </div>
+          @endif
         </div>
 
         <div class="field flex-margin padding-top">
