@@ -79,7 +79,8 @@ class UserController extends Controller
     public function your_dealers()
     {
         $logged_in_user = \Auth::user();
-        if (!$id = $logged_in_user->master_agent_site) {
+        //if (!$id = $logged_in_user->master_agent_site) {
+        if (!$id = $logged_in_user->isMasterAgent()) {
             return redirect('/');
         }
         $site = Site::find($id);
@@ -453,6 +454,12 @@ class UserController extends Controller
             $master_agent_site = null;
         }
 
+        if ($request->master_agent_access) {
+            $master_agent_access = 1;
+        } else {
+            $master_agent_access = 0;
+        }
+
         //dd($request);
 
         //validate the form
@@ -488,6 +495,7 @@ class UserController extends Controller
                 'email_blast_disable' => $blast_disable,
                 'contact_email_disable' => $contact_disable,
                 'master_agent_site' => $master_agent_site,
+                'master_agent_access' => $master_agent_access,
             ]);
         } else {
             $this->validate(request(), [

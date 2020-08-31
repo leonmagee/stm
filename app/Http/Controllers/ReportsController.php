@@ -131,7 +131,7 @@ class ReportsController extends Controller
         //     $site_id = $current_user->site_id();
         // }
         $user = \Auth::user();
-        $site_id = $user->master_agent_site;
+        $site_id = $user->isMasterAgent();
         if (!$site_id) {
             return redirect('/');
         }
@@ -173,7 +173,7 @@ class ReportsController extends Controller
          * Get ReportData
          */
 
-        $report_data_object = new ReportData($site_id, $current_date, null, $defaults_array, $user_residual_override, $user_spiff_override, $site, $current_user->master_agent_site);
+        $report_data_object = new ReportData($site_id, $current_date, null, $defaults_array, $user_residual_override, $user_spiff_override, $site, $current_user->isMasterAgent());
         $total_payment_all_users = $report_data_object->total_payment_all_users;
         $total_payments_residual = $report_data_object->total_payments_residual;
         //$total_payments_residual = [];
@@ -275,7 +275,7 @@ class ReportsController extends Controller
         $current_date = Settings::first()->current_date;
         $current_site_date = Helpers::current_date_name();
         $user = \Auth::user();
-        $site_id = $user->master_agent_site;
+        $site_id = $user->isMasterAgent();
         //$site_id = Settings::first()->get_site_id();
         $site = Site::find($site_id);
         $site_name = $site->name;
@@ -731,7 +731,7 @@ class ReportsController extends Controller
      */
     public function dealer_2nd_recharge()
     {
-        if ($master_agent_id = \Auth::user()->master_agent_site) {
+        if ($master_agent_id = \Auth::user()->isMasterAgent()) {
             $current_site_date = Helpers::current_date_name();
             $site_id = Settings::first()->get_site_id();
             $site_name = Site::find($site_id)->name;
@@ -756,7 +756,7 @@ class ReportsController extends Controller
      */
     public function dealer_3rd_recharge()
     {
-        if ($master_agent_id = \Auth::user()->master_agent_site) {
+        if ($master_agent_id = \Auth::user()->isMasterAgent()) {
             $current_site_date = Helpers::current_date_name();
             $site_id = Settings::first()->get_site_id();
             $site_name = Site::find($site_id)->name;

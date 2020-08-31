@@ -30,6 +30,7 @@ class User extends Authenticatable
         'email_blast_disable',
         'contact_email_disable',
         'master_agent_site',
+        'master_agent_access',
     ];
 
     /**
@@ -69,10 +70,11 @@ class User extends Authenticatable
     public function isMasterAgent()
     {
         if ($this->master_agent_site) {
-            return true;
+            return $this->master_agent_site;
         }
         if ($this->master_agent_access) {
-            return true;
+            $site_id = Helpers::get_site_id($this->role_id);
+            return $site_id;
         }
         return false;
     }

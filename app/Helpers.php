@@ -133,7 +133,7 @@ class Helpers
     public static function current_user_master_agent($user)
     {
         if ($logged_in_user = \Auth::user()) {
-            if ($site_id = $logged_in_user->master_agent_site) {
+            if ($site_id = $logged_in_user->isMasterAgent()) {
                 if ($user->site_id() == $site_id) {
                     return true;
                 } else {
