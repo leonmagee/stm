@@ -242,6 +242,21 @@ class AppServiceProvider extends ServiceProvider
                 ],
             ];
 
+            $trackers_sub_dealer = [
+                [
+                    'name' => 'Email Tracker',
+                    'link' => '/email-tracker-dealer',
+                ],
+                [
+                    'name' => 'Login Tracker',
+                    'link' => '/login-tracker',
+                ],
+                [
+                    'name' => 'Credit History',
+                    'link' => '/transaction-tracker',
+                ],
+            ];
+
             $emails_sub_manager = [
                 [
                     'name' => 'Send Email',
@@ -735,6 +750,13 @@ class AppServiceProvider extends ServiceProvider
                         'sub' => false,
                         'icon' => 'flaticon-charging-battery',
                         'default' => false,
+                    ],
+                    [
+                        'name' => 'Dealer History',
+                        'link' => false,
+                        'sub' => $trackers_sub_dealer,
+                        'icon' => 'flaticon-bar-graph-on-a-rectangle',
+                        'default' => '/email-tracker',
                     ],
                     // [
                     //     'name' => 'Products',

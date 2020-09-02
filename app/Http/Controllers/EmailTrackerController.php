@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers;
 use App\User;
 use Illuminate\Http\Request;
 use jdavidbakr\MailTracker\Model\SentEmail;
@@ -18,6 +19,48 @@ class EmailTrackerController extends Controller
     {
         $emails = SentEmail::where('email_address', $user->email)->orderBy('created_at', 'desc')->get();
         return view('vendor.emailTrakingViews.index-one-user', compact('emails', 'user'));
+    }
+
+    /**
+     * Index.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function getIndex_dealers()
+    {
+        $user = \Auth::user();
+        if (!$user) {
+            return redirect('/');
+        }
+        $site_id = $user->isMasterAgent();
+        if (!$site_id) {
+            return redirect('/');
+        }
+        $role_id = Helpers::get_role_id($site_id);
+        session(['mail-tracker-index-page' => request()->page]);
+        $search = session('mail-tracker-index-search');
+
+        //$query = SentEmail::query();
+        $query = SentEmail::select('sent_emails.*', 'users.email')->join('users', 'users.email', '=', 'sent_emails.email_address')->where('users.role_id', $role_id)->latest('sent_emails.created_at');
+        //$query = SentEmail::join('users', 'users.email', '=', 'sent_emails.email_address')->where('users.role_id', 7)->orderBy('sent_emails.created_at', 'DESC');
+
+        //dd($query);
+
+        if ($search) {
+            $terms = explode(" ", $search);
+            foreach ($terms as $term) {
+                $query->where(function ($q) use ($term) {
+                    $q->where('sender', 'like', '%' . $term . '%')
+                        ->orWhere('recipient', 'like', '%' . $term . '%')
+                        ->orWhere('subject', 'like', '%' . $term . '%');
+                });
+            }
+        }
+        $query->orderBy('created_at', 'desc');
+
+        $emails = $query->paginate(config('mail-tracker.emails-per-page'));
+
+        return \View('emailTrakingViews::index')->with('emails', $emails);
     }
 
     /**

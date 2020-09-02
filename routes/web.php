@@ -339,6 +339,8 @@ Route::group(['middleware' => 'App\Http\Middleware\LockOutUsers'], function () {
     Route::get('email-tracker/{user}', 'EmailTrackerController@index_one_user');
 });
 
+Route::get('email-tracker-dealer', 'EmailTrackerController@getIndex_dealers');
+
 Route::get('your-emails', 'EmailTrackerController@your_emails');
 
 Route::get('contact', 'EmailBlastController@contact');
