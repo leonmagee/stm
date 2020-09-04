@@ -51,6 +51,16 @@ class UserController extends Controller
         }
     }
 
+    /**
+     * Track user balance changes
+     */
+    public function transactionTrackerDealer()
+    {
+        if (\Auth::user()->isMasterAgent()) {
+            return view('users.balance-tracker-dealer');
+        }
+    }
+
     public function transactionTrackerShow(User $user)
     {
         return view('users.balance-tracker-show', compact('user'));
@@ -736,7 +746,7 @@ class UserController extends Controller
         }
 
         $user = User::find($request->user_id);
-        $user_old_balance = $user->balance;
+        $user_old_balance = $user->balance ? $user->balance : 0;
         $is_master = Helpers::current_user_master_agent($user);
         if (!$is_master) {
             session()->flash('danger', 'Dealer not eligible.');
@@ -782,7 +792,7 @@ class UserController extends Controller
 
             $user_note = 'Balance Transfer from ' . $logged_in_user->company;
             BalanceTracker::create([
-                'admin_id' => null,
+                'admin_id' => $logged_in_user->id,
                 'user_id' => $user->id,
                 'previous_balance' => $user_old_balance,
                 'difference' => $transfer_amount,

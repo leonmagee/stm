@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\CartProduct;
+use App\Helpers;
 use App\Mail\PurchaseEmail;
 use App\ProductVariation;
 use App\Purchase;
@@ -29,6 +30,16 @@ class PurchaseController extends Controller
     public function index()
     {
         return view('purchases.index');
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index_dealer()
+    {
+        return view('purchases.index-dealer');
     }
 
     /**
@@ -315,13 +326,51 @@ class PurchaseController extends Controller
      * @param  \App\Purchase  $purchase
      * @return \Illuminate\Http\Response
      */
+    public function show_dealer(Purchase $purchase)
+    {
+        $site_id = \Auth::user()->isMasterAgent();
+        if ($site_id) {
+            $user = User::find($purchase->user_id);
+            $user_site_id = Helpers::get_site_id($user->role_id);
+            if ($site_id == $user_site_id) {
+                return view('purchases.show-dealer', compact('purchase'));
+            }
+        }
+        return redirect('/');
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Purchase  $purchase
+     * @return \Illuminate\Http\Response
+     */
     public function your_purchase(Purchase $purchase)
     {
-        $users = User::orderBy('company')->get();
+        //$users = User::orderBy('company')->get();
         $user = \Auth::user();
         $show_imei = true;
 
-        return view('purchases.your-purchase', compact('purchase', 'user', 'show_imei'));
+        if ($user->isAdminManagerEmployee()) {
+            return view('purchases.your-purchase', compact('purchase', 'user', 'show_imei'));
+        }
+        if ($site_id = $user->isMasterAgent()) {
+
+            $purchase_user = User::find($purchase->user_id);
+            if ($purchase_user) {
+                $user_site_id = Helpers::get_site_id($purchase_user->role_id);
+                //dd($user_site_id);
+                if ($site_id == $user_site_id) {
+                    return view('purchases.your-purchase', compact('purchase', 'user', 'show_imei'));
+                }
+            }
+        }
+        if ($user->id == $purchase->user_id) {
+            return view('purchases.your-purchase', compact('purchase', 'user', 'show_imei'));
+        }
+
+        return redirect('/');
+
     }
 
     /**

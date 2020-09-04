@@ -253,7 +253,11 @@ class AppServiceProvider extends ServiceProvider
                 ],
                 [
                     'name' => 'Credit History',
-                    'link' => '/transaction-tracker',
+                    'link' => '/transaction-tracker-dealer',
+                ],
+                [
+                    'name' => 'Purchase Orders',
+                    'link' => '/dealer-purchases',
                 ],
             ];
 
@@ -350,7 +354,7 @@ class AppServiceProvider extends ServiceProvider
                         'default' => false,
                     ],
                     [
-                        'name' => 'Plans',
+                        'name' => 'Plans Spiff',
                         'link' => '/plans',
                         'sub' => false,
                         'icon' => 'flaticon-wifi',
@@ -460,7 +464,7 @@ class AppServiceProvider extends ServiceProvider
                         'default' => false,
                     ],
                     [
-                        'name' => 'Plans',
+                        'name' => 'Plans Spiff',
                         'link' => '/plans',
                         'sub' => false,
                         'icon' => 'flaticon-wifi',
@@ -556,7 +560,7 @@ class AppServiceProvider extends ServiceProvider
                         'default' => false,
                     ],
                     [
-                        'name' => 'Plans',
+                        'name' => 'Plans Spiff',
                         'link' => '/plans',
                         'sub' => false,
                         'icon' => 'flaticon-wifi',
@@ -647,7 +651,7 @@ class AppServiceProvider extends ServiceProvider
                         'default' => false,
                     ],
                     [
-                        'name' => 'Plans',
+                        'name' => 'Plans Spiff',
                         'link' => '/plans',
                         'sub' => false,
                         'icon' => 'flaticon-wifi',
@@ -756,7 +760,7 @@ class AppServiceProvider extends ServiceProvider
                         'link' => false,
                         'sub' => $trackers_sub_dealer,
                         'icon' => 'flaticon-bar-graph-on-a-rectangle',
-                        'default' => '/email-tracker',
+                        'default' => '/email-tracker-dealer',
                     ],
                     // [
                     //     'name' => 'Products',
@@ -780,7 +784,7 @@ class AppServiceProvider extends ServiceProvider
                         'default' => false,
                     ],
                     [
-                        'name' => 'Plans',
+                        'name' => 'Plans Spiff',
                         'link' => '/plans',
                         'sub' => false,
                         'icon' => 'flaticon-wifi',
@@ -865,6 +869,8 @@ class AppServiceProvider extends ServiceProvider
                 'register' => 'all-users',
                 'login-tracker' => 'email-tracker',
                 'transaction-tracker' => 'email-tracker',
+                'transaction-tracker-dealer' => 'email-tracker-dealer',
+                'dealer-purchases' => 'email-tracker-dealer',
                 'sims/upload-all' => 'user-sims',
                 'find-sims' => 'user-sims',
                 'transfer-sims' => 'user-sims',

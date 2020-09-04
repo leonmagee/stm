@@ -19,7 +19,6 @@ class UserLoginLogoutController extends Controller
      */
     public function index()
     {
-        //$logs = UserLoginLogout::orderBy('id', 'DESC')->get();
         return view('login_tracker.index');
     }
 

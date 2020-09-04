@@ -43,9 +43,19 @@ class APIController extends Controller
 
     public function getLogins()
     {
-        $logs = UserLoginLogout::with('user')->get();
-
-        return datatables($logs)->make(true);
+        $user = \Auth::user();
+        if ($user) {
+            if ($user->isAdminManagerEmployee()) {
+                $logs = UserLoginLogout::select('user_login_logouts.id', 'user_login_logouts.login', 'user_login_logouts.logout', 'users.company', 'users.name')->join('users', 'users.id', 'user_login_logouts.user_id')->get();
+            } elseif ($site_id = $user->isMasterAgent()) {
+                $role_id = Helpers::get_role_id($site_id);
+                $logs = UserLoginLogout::select('user_login_logouts.id', 'user_login_logouts.login', 'user_login_logouts.logout', 'users.company', 'users.name')->join('users', 'users.id', 'user_login_logouts.user_id')->where('users.role_id', $role_id)->get();
+            } else {
+                return redirect('/');
+            }
+            return datatables($logs)->make(true);
+        }
+        return redirect('/');
     }
 
     public function getProducts()
@@ -87,6 +97,23 @@ class APIController extends Controller
         }
 
         return datatables($purchases)->make(true);
+    }
+
+    public function getPurchasesDealer()
+    {
+        $user = \Auth::user();
+        if ($site_id = $user->isMasterAgent()) {
+            $role_id = Helpers::get_role_id($site_id);
+            $purchases = Purchase::select('purchases.id', 'users.company', 'users.name', 'purchases.total', 'purchases.type', 'purchases.created_at', 'purchases.status')->join('users', 'users.id', 'purchases.user_id')->where('users.role_id', $role_id)->get();
+            if ($purchases) {
+                foreach ($purchases as $key => $purchase) {
+                    $purchase->total = '$' . number_format($purchase->total, 2);
+                    $purchase->type = \strtoupper($purchase->type);
+                    $purchase->date = $purchase->created_at->format('M d, Y');
+                }
+            }
+            return datatables($purchases)->make(true);
+        }
     }
 
     public function getRmas()
@@ -143,6 +170,21 @@ class APIController extends Controller
         $balance = self::standardizeBalance($balance);
 
         return datatables($balance)->make(true);
+    }
+
+    public function getBalanceChangesDealer()
+    {
+        $site_id = \Auth::user()->isMasterAgent();
+        if ($site_id) {
+            $role_id = Helpers::get_role_id($site_id);
+            //dd($role_id);
+            // select('purchases.id', 'users.company', 'users.name', 'purchases.total', 'purchases.type', 'purchases.created_at', 'purchases.status')
+
+            //$balance = BalanceTracker::with(['user', 'admin_user'])->select('balance_trackers.id', 'user.company', 'admin_user.name')->join('users', 'users.id', 'balance_trackers.user_id')->where('users.role_id', $role_id)->get();
+            $balance = BalanceTracker::select('balance_trackers.id', 'balance_trackers.previous_balance', 'balance_trackers.difference', 'balance_trackers.new_balance', 'balance_trackers.created_at', 'balance_trackers.note', 'balance_trackers.status', 'users.company', 'admin_users.name')->leftJoin('users', 'users.id', 'balance_trackers.user_id')->leftJoin('users as admin_users', 'admin_users.id', 'balance_trackers.admin_id')->get();
+            $balance = self::standardizeBalance($balance);
+            return datatables($balance)->make(true);
+        }
     }
 
     public function getBalanceChangesUser()

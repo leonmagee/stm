@@ -24,6 +24,9 @@
     if($item['name'] == 'Emails') {
       $active = 'active';
     }
+    if($item['name'] == 'Dealer History') {
+      $active = 'active';
+    }
   }
 
   $user_login_array = [

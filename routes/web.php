@@ -45,11 +45,12 @@ Route::get('purchase-complete', 'PurchaseController@purchase_complete');
 Route::post('pay-with-balance', 'PurchaseController@pay_with_balance');
 Route::post('transfer-balance', 'UserController@transfer_balance');
 Route::get('sales', 'PurchaseController@sales');
-
+Route::get('dealer-purchases', 'PurchaseController@index_dealer');
+Route::get('dealer-purchases/{purchase}', 'PurchaseController@show_dealer');
 Route::group(['middleware' => 'App\Http\Middleware\LockOutUsersManagers'], function () {
+    Route::get('purchases/{purchase}', 'PurchaseController@show');
     Route::get('products-list', 'ProductController@list');
     Route::get('purchases', 'PurchaseController@index');
-    Route::get('purchases/{purchase}', 'PurchaseController@show');
     //Route::get('purchase-email-test', 'PurchaseController@store_test');
     Route::post('update-shipping-info', 'PurchaseController@update_shipping');
     Route::post('add-tracking-number', 'TrackingNumberController@store');
@@ -118,6 +119,7 @@ Route::group(['middleware' => 'App\Http\Middleware\LockOutUsersManagers'], funct
  * @todo restrict access here?
  */
 Route::get('transaction-tracker', 'UserController@transactionTracker');
+Route::get('transaction-tracker-dealer', 'UserController@transactionTrackerDealer');
 Route::get('transaction-tracker/{user}', 'UserController@transactionTrackerShow');
 //Route::get('credit-tracker', 'UserController@creditTracker');
 //Route::get('credit-tracker/{user}', 'UserController@creditTrackerShow');
@@ -125,9 +127,9 @@ Route::get('order-sims', 'OrderController@create');
 Route::post('order-sims', 'OrderController@store');
 Route::get('redeem-credit', 'UserController@redeemCredit');
 Route::post('redeem-credit', 'UserController@redeemCreditSubmit');
+Route::get('login-tracker', 'UserLoginLogoutController@index');
 
 Route::group(['middleware' => 'App\Http\Middleware\LockOutUsers'], function () {
-    Route::get('login-tracker', 'UserLoginLogoutController@index');
     Route::get('login-tracker/{user}', 'UserLoginLogoutController@show');
     //Route::get('notes', 'NoteController@index');
     Route::get('notes', 'NoteController@index_new');
@@ -189,9 +191,11 @@ Route::get('/api/v1/sim_user/{id}', 'APIController@getSimUser')->name('api.sim_u
 Route::get('/api/v1/logins', 'APIController@getLogins')->name('api.logins.index');
 Route::get('/api/v1/products', 'APIController@getProducts')->name('api.products.index');
 Route::get('/api/v1/purchases', 'APIController@getPurchases')->name('api.purchases.index');
+Route::get('/api/v1/purchases-dealer', 'APIController@getPurchasesDealer')->name('api.purchases.index-dealer');
 Route::get('/api/v1/rmas', 'APIController@getRmas')->name('api.rmas.index');
 Route::get('/api/v1/notes', 'APIController@getNotes')->name('api.notes.index');
 Route::get('/api/v1/balance', 'APIController@getBalanceChanges')->name('api.balance.index');
+Route::get('/api/v1/balance-dealer', 'APIController@getBalanceChangesDealer')->name('api.balance.index-dealer');
 Route::get('/api/v1/balance-show/{user}', 'APIController@getBalanceChangesShow')->name('api.balance.show');
 Route::get('/api/v1/balance-user', 'APIController@getBalanceChangesUser')->name('api.balance.user');
 Route::get('/api/v1/logins-show/{id}', 'APIController@getLogin')->name('api.logins.show');

@@ -90,7 +90,6 @@ class Helpers
 
     public static function current_date_name()
     {
-
         $settings = Settings::first();
         return Self::get_date_name($settings->current_date);
     }
@@ -214,6 +213,9 @@ class Helpers
     public static function get_site_id($role_id)
     {
         $site = Site::where('role_id', $role_id)->first();
+        if (!$site) {
+            return 1;
+        }
         return $site->id;
     }
 

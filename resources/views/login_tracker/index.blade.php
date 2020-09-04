@@ -36,8 +36,8 @@
 "order": [[ 0, "desc" ]],
 "columns": [
 { "data": "id" },
-{ "data": "user.company" },
-{ "data": "user.name" },
+{ "data": "company" },
+{ "data": "name" },
 { "data": "login" },
 { "data": "logout" }
 ]

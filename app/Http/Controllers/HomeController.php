@@ -30,7 +30,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-
         /**
          * Create separate methods for getting reports
          * or outputting user homepage?
@@ -57,7 +56,6 @@ class HomeController extends Controller
 
     public function commission()
     {
-
         $h2o_plans = Plan::where('carrier_id', 1)->get();
         $lyca_plans = Plan::where('carrier_id', 2)->get();
 
