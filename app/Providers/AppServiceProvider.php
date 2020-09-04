@@ -321,17 +321,58 @@ class AppServiceProvider extends ServiceProvider
                 ],
             ];
 
+            $my_history_sub = [
+                [
+                    'name' => 'Email History',
+                    'link' => '/your-emails',
+                ],
+                [
+                    'name' => 'Invoice History',
+                    'link' => '/your-invoices',
+                ],
+                [
+                    'name' => 'Credit History',
+                    'link' => '/transaction-tracker',
+                ],
+            ];
+
+            $my_report_sub = [
+                [
+                    'name' => 'Commission Report',
+                    'link' => '/reports',
+                ],
+                [
+                    'name' => '2nd<span>/</span>3rd Recharge',
+                    'link' => '/all-recharge-data',
+                ],
+            ];
+
+            $your_dealers = [
+                [
+                    'name' => 'Dealer Reports',
+                    'link' => '/dealer-reports',
+                ],
+                [
+                    'name' => 'Dealer 2nd Recharge',
+                    'link' => '/dealer-2nd-recharge',
+                ],
+                [
+                    'name' => 'Dealer 3rd Recharge',
+                    'link' => '/dealer-3rd-recharge',
+                ],
+            ];
+
             // $products_sub_dealer = [
             //     [
             //         'name' => 'Products',
             //         'link' => '/products',
             //     ],
             //     [
-            //         'name' => 'Your Purchases',
+            //         'name' => 'My Purchases',
             //         'link' => '/your-purchases',
             //     ],
             //     [
-            //         'name' => 'Your RMAs',
+            //         'name' => 'My RMAs',
             //         'link' => '/your-rmas',
             //     ],
             // ];
@@ -345,14 +386,14 @@ class AppServiceProvider extends ServiceProvider
             if ($user->isAdmin()) {
 
                 $menu_array = [
-                    [
-                        'name' => 'Products',
-                        'link' => '/',
-                        'sub' => false,
-                        'icon' => 'flaticon-home',
-                        //'icon' => 'flaticon-wifi',
-                        'default' => false,
-                    ],
+                    // [
+                    //     'name' => 'Products',
+                    //     'link' => '/',
+                    //     'sub' => false,
+                    //     'icon' => 'flaticon-home',
+                    //     //'icon' => 'flaticon-wifi',
+                    //     'default' => false,
+                    // ],
                     [
                         'name' => 'Plans Spiff',
                         'link' => '/plans',
@@ -456,13 +497,13 @@ class AppServiceProvider extends ServiceProvider
             } elseif ($user->isManager()) {
 
                 $menu_array = [
-                    [
-                        'name' => 'Products',
-                        'link' => '/',
-                        'sub' => false,
-                        'icon' => 'flaticon-home',
-                        'default' => false,
-                    ],
+                    // [
+                    //     'name' => 'Products',
+                    //     'link' => '/',
+                    //     'sub' => false,
+                    //     'icon' => 'flaticon-home',
+                    //     'default' => false,
+                    // ],
                     [
                         'name' => 'Plans Spiff',
                         'link' => '/plans',
@@ -552,13 +593,13 @@ class AppServiceProvider extends ServiceProvider
             } elseif ($user->isEmployee()) {
 
                 $menu_array = [
-                    [
-                        'name' => 'Products',
-                        'link' => '/',
-                        'sub' => false,
-                        'icon' => 'flaticon-home',
-                        'default' => false,
-                    ],
+                    // [
+                    //     'name' => 'Products',
+                    //     'link' => '/',
+                    //     'sub' => false,
+                    //     'icon' => 'flaticon-home',
+                    //     'default' => false,
+                    // ],
                     [
                         'name' => 'Plans Spiff',
                         'link' => '/plans',
@@ -643,13 +684,13 @@ class AppServiceProvider extends ServiceProvider
                  * Master Agents
                  */
                 $menu_array = [
-                    [
-                        'name' => 'Products',
-                        'link' => '/',
-                        'sub' => false,
-                        'icon' => 'flaticon-home',
-                        'default' => false,
-                    ],
+                    // [
+                    //     'name' => 'Products',
+                    //     'link' => '/',
+                    //     'sub' => false,
+                    //     'icon' => 'flaticon-home',
+                    //     'default' => false,
+                    // ],
                     [
                         'name' => 'Plans Spiff',
                         'link' => '/plans',
@@ -658,28 +699,28 @@ class AppServiceProvider extends ServiceProvider
                         'default' => false,
                     ],
                     [
-                        'name' => 'Your Profile',
+                        'name' => 'My Profile',
                         'link' => '/profile',
                         'sub' => false,
                         'icon' => 'flaticon-user',
                         'default' => false,
                     ],
                     [
-                        'name' => 'Your Report',
-                        'link' => '/reports',
-                        'sub' => false,
+                        'name' => 'My Reports',
+                        'link' => false,
+                        'sub' => $my_report_sub,
                         'icon' => 'flaticon-growth',
-                        'default' => false,
+                        'default' => '/reports',
                     ],
                     [
-                        'name' => 'Your Sims',
+                        'name' => 'My Sims',
                         'link' => '/user-sims',
                         'sub' => false,
                         'icon' => 'flaticon-report-1',
                         'default' => false,
                     ],
                     [
-                        'name' => 'Your Archives',
+                        'name' => 'My Archives',
                         'link' => '/archives',
                         'sub' => false,
                         'icon' => 'flaticon-history-clock-button',
@@ -693,35 +734,42 @@ class AppServiceProvider extends ServiceProvider
                         'default' => false,
                     ],
                     [
-                        'name' => 'Email History',
-                        'link' => '/your-emails',
-                        'sub' => false,
+                        'name' => 'My History',
+                        'link' => false,
+                        'sub' => $my_history_sub,
                         'icon' => 'flaticon-mail',
-                        'default' => false,
+                        'default' => '/your-emails',
                     ],
+                    // [
+                    //     'name' => 'Email History',
+                    //     'link' => '/your-emails',
+                    //     'sub' => false,
+                    //     'icon' => 'flaticon-mail',
+                    //     'default' => false,
+                    // ],
+                    // [
+                    //     'name' => 'Invoice History',
+                    //     'link' => '/your-invoices',
+                    //     'sub' => false,
+                    //     'icon' => 'flaticon-mail-2',
+                    //     'default' => false,
+                    // ],
+                    // [
+                    //     'name' => 'Credit History',
+                    //     'link' => '/transaction-tracker',
+                    //     'sub' => false,
+                    //     'icon' => 'flaticon-bar-graph-on-a-rectangle',
+                    //     'default' => false,
+                    // ],
+                    // [
+                    //     'name' => '2nd<span>/</span>3rd Recharge',
+                    //     'link' => '/all-recharge-data',
+                    //     'sub' => false,
+                    //     'icon' => 'flaticon-battery-status',
+                    //     'default' => false,
+                    // ],
                     [
-                        'name' => 'Invoice History',
-                        'link' => '/your-invoices',
-                        'sub' => false,
-                        'icon' => 'flaticon-mail-2',
-                        'default' => false,
-                    ],
-                    [
-                        'name' => 'Credit History',
-                        'link' => '/transaction-tracker',
-                        'sub' => false,
-                        'icon' => 'flaticon-bar-graph-on-a-rectangle',
-                        'default' => false,
-                    ],
-                    [
-                        'name' => '2nd<span>/</span>3rd Recharge',
-                        'link' => '/all-recharge-data',
-                        'sub' => false,
-                        'icon' => 'flaticon-battery-status',
-                        'default' => false,
-                    ],
-                    [
-                        'name' => 'Your Dealers',
+                        'name' => 'My Dealers',
                         'link' => '/your-dealers',
                         'sub' => false,
                         'icon' => 'flaticon-group',
@@ -735,26 +783,33 @@ class AppServiceProvider extends ServiceProvider
                         'default' => false,
                     ],
                     [
-                        'name' => 'Dealer Reports',
-                        'link' => '/dealer-reports',
-                        'sub' => false,
+                        'name' => 'Your Dealers',
+                        'link' => false,
+                        'sub' => $your_dealers,
                         'icon' => 'flaticon-bar-chart',
-                        'default' => false,
+                        'default' => '/dealer-reports',
                     ],
-                    [
-                        'name' => 'Dealer 2nd Recharge',
-                        'link' => '/dealer-2nd-recharge',
-                        'sub' => false,
-                        'icon' => 'flaticon-electric-plug',
-                        'default' => false,
-                    ],
-                    [
-                        'name' => 'Dealer 3rd Recharge',
-                        'link' => '/dealer-3rd-recharge',
-                        'sub' => false,
-                        'icon' => 'flaticon-charging-battery',
-                        'default' => false,
-                    ],
+                    // [
+                    //     'name' => 'Dealer Reports',
+                    //     'link' => '/dealer-reports',
+                    //     'sub' => false,
+                    //     'icon' => 'flaticon-bar-chart',
+                    //     'default' => false,
+                    // ],
+                    // [
+                    //     'name' => 'Dealer 2nd Recharge',
+                    //     'link' => '/dealer-2nd-recharge',
+                    //     'sub' => false,
+                    //     'icon' => 'flaticon-electric-plug',
+                    //     'default' => false,
+                    // ],
+                    // [
+                    //     'name' => 'Dealer 3rd Recharge',
+                    //     'link' => '/dealer-3rd-recharge',
+                    //     'sub' => false,
+                    //     'icon' => 'flaticon-charging-battery',
+                    //     'default' => false,
+                    // ],
                     [
                         'name' => 'Dealer History',
                         'link' => false,
@@ -776,13 +831,13 @@ class AppServiceProvider extends ServiceProvider
                  * Agents / Dealers / VIP Menu
                  */
                 $menu_array = [
-                    [
-                        'name' => 'Products',
-                        'link' => '/',
-                        'sub' => false,
-                        'icon' => 'flaticon-home',
-                        'default' => false,
-                    ],
+                    // [
+                    //     'name' => 'Products',
+                    //     'link' => '/',
+                    //     'sub' => false,
+                    //     'icon' => 'flaticon-home',
+                    //     'default' => false,
+                    // ],
                     [
                         'name' => 'Plans Spiff',
                         'link' => '/plans',
@@ -791,28 +846,28 @@ class AppServiceProvider extends ServiceProvider
                         'default' => false,
                     ],
                     [
-                        'name' => 'Your Profile',
+                        'name' => 'My Profile',
                         'link' => '/profile',
                         'sub' => false,
                         'icon' => 'flaticon-user',
                         'default' => false,
                     ],
                     [
-                        'name' => 'Your Report',
-                        'link' => '/reports',
-                        'sub' => false,
+                        'name' => 'My Reports',
+                        'link' => false,
+                        'sub' => $my_report_sub,
                         'icon' => 'flaticon-growth',
-                        'default' => false,
+                        'default' => '/reports',
                     ],
                     [
-                        'name' => 'Your Sims',
+                        'name' => 'My Sims',
                         'link' => '/user-sims',
                         'sub' => false,
                         'icon' => 'flaticon-report-1',
                         'default' => false,
                     ],
                     [
-                        'name' => 'Your Archives',
+                        'name' => 'My Archives',
                         'link' => '/archives',
                         'sub' => false,
                         'icon' => 'flaticon-history-clock-button',
@@ -826,33 +881,40 @@ class AppServiceProvider extends ServiceProvider
                         'default' => false,
                     ],
                     [
-                        'name' => 'Email History',
-                        'link' => '/your-emails',
-                        'sub' => false,
+                        'name' => 'My History',
+                        'link' => false,
+                        'sub' => $my_history_sub,
                         'icon' => 'flaticon-mail',
-                        'default' => false,
+                        'default' => '/your-emails',
                     ],
-                    [
-                        'name' => 'Invoice History',
-                        'link' => '/your-invoices',
-                        'sub' => false,
-                        'icon' => 'flaticon-mail-2',
-                        'default' => false,
-                    ],
-                    [
-                        'name' => 'Credit History',
-                        'link' => '/transaction-tracker',
-                        'sub' => false,
-                        'icon' => 'flaticon-bar-graph-on-a-rectangle',
-                        'default' => false,
-                    ],
-                    [
-                        'name' => '2nd<span>/</span>3rd Recharge',
-                        'link' => '/all-recharge-data',
-                        'sub' => false,
-                        'icon' => 'flaticon-electric-plug',
-                        'default' => false,
-                    ],
+                    // [
+                    //     'name' => 'Email History',
+                    //     'link' => '/your-emails',
+                    //     'sub' => false,
+                    //     'icon' => 'flaticon-mail',
+                    //     'default' => false,
+                    // ],
+                    // [
+                    //     'name' => 'Invoice History',
+                    //     'link' => '/your-invoices',
+                    //     'sub' => false,
+                    //     'icon' => 'flaticon-mail-2',
+                    //     'default' => false,
+                    // ],
+                    // [
+                    //     'name' => 'Credit History',
+                    //     'link' => '/transaction-tracker',
+                    //     'sub' => false,
+                    //     'icon' => 'flaticon-bar-graph-on-a-rectangle',
+                    //     'default' => false,
+                    // ],
+                    // [
+                    //     'name' => '2nd<span>/</span>3rd Recharge',
+                    //     'link' => '/all-recharge-data',
+                    //     'sub' => false,
+                    //     'icon' => 'flaticon-electric-plug',
+                    //     'default' => false,
+                    // ],
                     // [
                     //     'name' => 'Products',
                     //     'link' => false,
@@ -883,6 +945,11 @@ class AppServiceProvider extends ServiceProvider
                 'add-report-type-residual' => 'settings',
                 'edit-profile' => 'settings',
                 'profile' => 'settings',
+                'all-recharge-data' => 'reports',
+                'your-invoices' => 'your-emails',
+                'transaction-tracker' => 'your-emails',
+                'dealer-2nd-recharge' => 'dealer-reports',
+                'dealer-3rd-recharge' => 'dealer-reports',
             ];
 
             $view->with(['menu' => $menu_array, 'path' => $path, 'match_array' => $match_array]);

@@ -2,7 +2,7 @@
 
 @section('title')
 <div class="with-background">
-  {{ $site_name }} {{ $recharge }} Recharge Data for {{ $current_site_date }}
+  {{ $recharge }} Recharge Data for {{ $current_site_date }}
 </div>
 @endsection
 

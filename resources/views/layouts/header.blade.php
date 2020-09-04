@@ -344,7 +344,7 @@
               <span class="icon is-small">
                 <i class="fas fa-shopping-bag"></i>
               </span>
-              <span class="text">Purchases</span>
+              <span class="text">My Purchases</span>
             </a>
           </p>
           <p class="control">
@@ -352,7 +352,7 @@
               <span class="icon is-small">
                 <i class="fas fa-box"></i>
               </span>
-              <span class="text">RMAs</span>
+              <span class="text">My RMAs</span>
             </a>
           </p>
           <p class="control">

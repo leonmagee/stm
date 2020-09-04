@@ -6,7 +6,7 @@
 
   <div class="form-wrapper-inner">
 
-    <h3>Your Purchases</h3>
+    <h3>My Purchases</h3>
 
     <div class="stm-flex">
 

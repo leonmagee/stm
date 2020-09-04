@@ -6,7 +6,7 @@
 
   <div class="form-wrapper-inner">
 
-    <h3>Your RMAs</h3>
+    <h3>My RMAs</h3>
 
     <div class="stm-flex">
 

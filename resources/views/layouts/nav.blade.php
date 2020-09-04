@@ -35,12 +35,12 @@
     'change-profile-password'
   ];
   if(in_array($path, $user_login_array)) {
-    if($item['name'] == 'Your Profile') {
+    if($item['name'] == 'My Profile') {
       $active = 'active';
     }
   }
 
-  if($item['name'] == 'Your Report') {
+  if($item['name'] == 'My Reports') {
     if($path == 'reports') {
       $active = 'active';
     }
@@ -211,7 +211,7 @@
 
       @foreach( $item['sub'] as $sub)
 
-      <li><a href="{{ $sub['link'] }}">{{ $sub['name'] }}</a></li>
+      <li><a href="{{ $sub['link'] }}">{!! $sub['name'] !!}</a></li>
 
       @endforeach
 
