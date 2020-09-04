@@ -181,7 +181,7 @@ class APIController extends Controller
             // select('purchases.id', 'users.company', 'users.name', 'purchases.total', 'purchases.type', 'purchases.created_at', 'purchases.status')
 
             //$balance = BalanceTracker::with(['user', 'admin_user'])->select('balance_trackers.id', 'user.company', 'admin_user.name')->join('users', 'users.id', 'balance_trackers.user_id')->where('users.role_id', $role_id)->get();
-            $balance = BalanceTracker::select('balance_trackers.id', 'balance_trackers.previous_balance', 'balance_trackers.difference', 'balance_trackers.new_balance', 'balance_trackers.created_at', 'balance_trackers.note', 'balance_trackers.status', 'users.company', 'admin_users.name')->leftJoin('users', 'users.id', 'balance_trackers.user_id')->leftJoin('users as admin_users', 'admin_users.id', 'balance_trackers.admin_id')->get();
+            $balance = BalanceTracker::select('balance_trackers.id', 'balance_trackers.previous_balance', 'balance_trackers.difference', 'balance_trackers.new_balance', 'balance_trackers.created_at', 'balance_trackers.note', 'balance_trackers.status', 'users.company', 'admin_users.name')->leftJoin('users', 'users.id', 'balance_trackers.user_id')->leftJoin('users as admin_users', 'admin_users.id', 'balance_trackers.admin_id')->where('users.role_id', $role_id)->get();
             $balance = self::standardizeBalance($balance);
             return datatables($balance)->make(true);
         }
