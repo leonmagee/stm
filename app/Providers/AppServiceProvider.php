@@ -947,7 +947,7 @@ class AppServiceProvider extends ServiceProvider
                 'profile' => 'settings',
                 'all-recharge-data' => 'reports',
                 'your-invoices' => 'your-emails',
-                'transaction-tracker' => 'your-emails',
+                //'transaction-tracker' => 'your-emails',
                 'dealer-2nd-recharge' => 'dealer-reports',
                 'dealer-3rd-recharge' => 'dealer-reports',
             ];
