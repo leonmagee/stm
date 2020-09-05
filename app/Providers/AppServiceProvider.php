@@ -349,6 +349,10 @@ class AppServiceProvider extends ServiceProvider
 
             $your_dealers = [
                 [
+                    'name' => 'Dealer List',
+                    'link' => '/your-dealers',
+                ],
+                [
                     'name' => 'Dealer Reports',
                     'link' => '/dealer-reports',
                 ],
@@ -768,13 +772,13 @@ class AppServiceProvider extends ServiceProvider
                     //     'icon' => 'flaticon-battery-status',
                     //     'default' => false,
                     // ],
-                    [
-                        'name' => 'My Dealers',
-                        'link' => '/your-dealers',
-                        'sub' => false,
-                        'icon' => 'flaticon-group',
-                        'default' => false,
-                    ],
+                    // [
+                    //     'name' => 'My Dealers',
+                    //     'link' => '/your-dealers',
+                    //     'sub' => false,
+                    //     'icon' => 'flaticon-group',
+                    //     'default' => false,
+                    // ],
                     [
                         'name' => 'Report Totals',
                         'link' => '/dealer-report-totals',
@@ -786,8 +790,8 @@ class AppServiceProvider extends ServiceProvider
                         'name' => 'Your Dealers',
                         'link' => false,
                         'sub' => $your_dealers,
-                        'icon' => 'flaticon-bar-chart',
-                        'default' => '/dealer-reports',
+                        'icon' => 'flaticon-group',
+                        'default' => '/your-dealers',
                     ],
                     // [
                     //     'name' => 'Dealer Reports',
@@ -948,8 +952,9 @@ class AppServiceProvider extends ServiceProvider
                 'all-recharge-data' => 'reports',
                 'your-invoices' => 'your-emails',
                 //'transaction-tracker' => 'your-emails',
-                'dealer-2nd-recharge' => 'dealer-reports',
-                'dealer-3rd-recharge' => 'dealer-reports',
+                'dealer-reports' => 'your-dealers',
+                'dealer-2nd-recharge' => 'your-dealers',
+                'dealer-3rd-recharge' => 'your-dealers',
             ];
 
             $view->with(['menu' => $menu_array, 'path' => $path, 'match_array' => $match_array]);
