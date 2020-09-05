@@ -318,7 +318,9 @@
       </div>
 
       @else
-      <div class="large-menu">
+
+
+      <div class="large-menu agent-top">
         <div class="field available-credit">
           Available Credit: <span>${{ number_format(Auth::user()->balance, 2) }}</span>
         </div>
@@ -339,6 +341,12 @@
               <span class="text">Order Free Sims</span>
             </a>
           </p>
+        </div>
+      </div>
+
+      <div class="large-menu">
+
+        <div class="field has-addons">
           <p class="control">
             <a href="/your-purchases" class="button user">
               <span class="icon is-small">
@@ -388,7 +396,7 @@
             </a>
           </p>
           {{-- <p class="control">
-            <a class="button mode not-link {{ $mode }}">
+                        <a class="button mode not-link {{ $mode }}">
           <span class="icon is-small">
             @if($mode == 'online')
             <i class="fas fa-signal"></i>

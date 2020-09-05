@@ -18600,7 +18600,7 @@ body.stm-body .add-padding {
 
 .header-wrap .available-credit {
   color: #fcfcfc;
-  padding-right: 1em;
+  font-size: 0.9em;
   text-shadow: 1px 1px rgba(0, 0, 0, 0.2);
   font-weight: 700;
   margin-bottom: 0;
@@ -18735,6 +18735,17 @@ body.stm-body .add-padding {
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
+  }
+
+  .header-wrap .header-area .large-menu.agent-top > div {
+    margin-bottom: 0.6em;
+    width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: end;
+        -ms-flex-pack: end;
+            justify-content: flex-end;
   }
 
   .header-wrap .header-area .large-menu i {

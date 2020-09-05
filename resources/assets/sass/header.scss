@@ -9,7 +9,8 @@
 
     .available-credit {
         color: #fcfcfc;
-        padding-right: 1em;
+        //padding-right: 1em;
+        font-size: 0.9em;
         text-shadow: 1px 1px rgba(0, 0, 0, 0.2);
         font-weight: 700;
         margin-bottom: 0;
@@ -108,6 +109,14 @@
                 //display: block;
                 display: flex;
                 align-items: center;
+                &.agent-top {
+                    > div {
+                        margin-bottom: 0.6em;
+                        width: 100%;
+                        display: flex;
+                        justify-content: flex-end;
+                    }
+                }
                 i {
                     font-size: 1em;
                     &.fas {
