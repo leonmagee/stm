@@ -366,6 +366,25 @@ class AppServiceProvider extends ServiceProvider
                 ],
             ];
 
+            // $plans_spiff_sub = [
+            //     [
+            //         'name' => 'Plan Details',
+            //         'link' => '/plans',
+            //     ],
+            //     [
+            //         'name' => 'Order Free Sims',
+            //         'link' => '/order-sims',
+            //     ],
+            //     [
+            //         'name' => 'Redeem Credit',
+            //         'link' => '/redeem-credit',
+            //     ],
+            //     [
+            //         'name' => 'Look up Sims',
+            //         'link' => '/look-up-sims',
+            //     ],
+            // ];
+
             // $products_sub_dealer = [
             //     [
             //         'name' => 'Products',
@@ -703,18 +722,25 @@ class AppServiceProvider extends ServiceProvider
                         'default' => false,
                     ],
                     [
-                        'name' => 'My Profile',
-                        'link' => '/profile',
+                        'name' => 'Redeem Credit',
+                        'link' => '/redeem-credit',
                         'sub' => false,
-                        'icon' => 'flaticon-user',
+                        'icon' => 'flaticon-zoom-1',
                         'default' => false,
                     ],
                     [
-                        'name' => 'My Reports',
-                        'link' => false,
-                        'sub' => $my_report_sub,
-                        'icon' => 'flaticon-growth',
-                        'default' => '/reports',
+                        'name' => 'Order Free Sims',
+                        'link' => '/order-sims',
+                        'sub' => false,
+                        'icon' => 'flaticon-zoom-1',
+                        'default' => false,
+                    ],
+                    [
+                        'name' => 'Look Up Sims',
+                        'link' => '/look-up-sims',
+                        'sub' => false,
+                        'icon' => 'flaticon-zoom-1',
+                        'default' => false,
                     ],
                     [
                         'name' => 'My Sims',
@@ -731,11 +757,18 @@ class AppServiceProvider extends ServiceProvider
                         'default' => false,
                     ],
                     [
-                        'name' => 'Look Up Sims',
-                        'link' => '/look-up-sims',
+                        'name' => 'My Profile',
+                        'link' => '/profile',
                         'sub' => false,
-                        'icon' => 'flaticon-zoom-1',
+                        'icon' => 'flaticon-user',
                         'default' => false,
+                    ],
+                    [
+                        'name' => 'My Reports',
+                        'link' => false,
+                        'sub' => $my_report_sub,
+                        'icon' => 'flaticon-growth',
+                        'default' => '/reports',
                     ],
                     [
                         'name' => 'My History',
@@ -850,18 +883,25 @@ class AppServiceProvider extends ServiceProvider
                         'default' => false,
                     ],
                     [
-                        'name' => 'My Profile',
-                        'link' => '/profile',
+                        'name' => 'Redeem Credit',
+                        'link' => '/redeem-credit',
                         'sub' => false,
-                        'icon' => 'flaticon-user',
+                        'icon' => 'flaticon-zoom-1',
                         'default' => false,
                     ],
                     [
-                        'name' => 'My Reports',
-                        'link' => false,
-                        'sub' => $my_report_sub,
-                        'icon' => 'flaticon-growth',
-                        'default' => '/reports',
+                        'name' => 'Order Free Sims',
+                        'link' => '/order-sims',
+                        'sub' => false,
+                        'icon' => 'flaticon-zoom-1',
+                        'default' => false,
+                    ],
+                    [
+                        'name' => 'Look Up Sims',
+                        'link' => '/look-up-sims',
+                        'sub' => false,
+                        'icon' => 'flaticon-zoom-1',
+                        'default' => false,
                     ],
                     [
                         'name' => 'My Sims',
@@ -878,11 +918,18 @@ class AppServiceProvider extends ServiceProvider
                         'default' => false,
                     ],
                     [
-                        'name' => 'Look Up Sims',
-                        'link' => '/look-up-sims',
+                        'name' => 'My Profile',
+                        'link' => '/profile',
                         'sub' => false,
-                        'icon' => 'flaticon-zoom-1',
+                        'icon' => 'flaticon-user',
                         'default' => false,
+                    ],
+                    [
+                        'name' => 'My Reports',
+                        'link' => false,
+                        'sub' => $my_report_sub,
+                        'icon' => 'flaticon-growth',
+                        'default' => '/reports',
                     ],
                     [
                         'name' => 'My History',
@@ -955,6 +1002,9 @@ class AppServiceProvider extends ServiceProvider
                 'dealer-reports' => 'your-dealers',
                 'dealer-2nd-recharge' => 'your-dealers',
                 'dealer-3rd-recharge' => 'your-dealers',
+                // 'order-sims' => 'plans',
+                // 'redeem-credit' => 'plans',
+                // 'look-up-sims' => 'plans',
             ];
 
             $view->with(['menu' => $menu_array, 'path' => $path, 'match_array' => $match_array]);

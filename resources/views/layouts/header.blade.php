@@ -320,33 +320,27 @@
       @else
 
 
-      <div class="large-menu agent-top">
+      <div class="large-menu">
         <div class="field available-credit">
           Available Credit: <span>${{ number_format(Auth::user()->balance, 2) }}</span>
         </div>
         <div class="field has-addons">
-          <p class="control">
+          {{-- <p class="control">
             <a href="/redeem-credit" class="button user">
               <span class="icon is-small">
                 <i class="fi flaticon-security-on"></i>
               </span>
               <span class="text">Redeem Credit</span>
             </a>
-          </p>
-          <p class="control">
+          </p> --}}
+          {{-- <p class="control">
             <a href="/order-sims" class="button user">
               <span class="icon is-small">
                 <i class="fi flaticon-sim"></i>
               </span>
               <span class="text">Order Free Sims</span>
             </a>
-          </p>
-        </div>
-      </div>
-
-      <div class="large-menu">
-
-        <div class="field has-addons">
+          </p> --}}
           <p class="control">
             <a href="/your-purchases" class="button user">
               <span class="icon is-small">
