@@ -725,14 +725,14 @@ class AppServiceProvider extends ServiceProvider
                         'name' => 'Redeem Credit',
                         'link' => '/redeem-credit',
                         'sub' => false,
-                        'icon' => 'flaticon-zoom-1',
+                        'icon' => 'flaticon-report',
                         'default' => false,
                     ],
                     [
                         'name' => 'Order Free Sims',
                         'link' => '/order-sims',
                         'sub' => false,
-                        'icon' => 'flaticon-zoom-1',
+                        'icon' => 'flaticon-sim',
                         'default' => false,
                     ],
                     [
@@ -886,14 +886,14 @@ class AppServiceProvider extends ServiceProvider
                         'name' => 'Redeem Credit',
                         'link' => '/redeem-credit',
                         'sub' => false,
-                        'icon' => 'flaticon-zoom-1',
+                        'icon' => 'flaticon-report',
                         'default' => false,
                     ],
                     [
                         'name' => 'Order Free Sims',
                         'link' => '/order-sims',
                         'sub' => false,
-                        'icon' => 'flaticon-zoom-1',
+                        'icon' => 'flaticon-sim',
                         'default' => false,
                     ],
                     [
