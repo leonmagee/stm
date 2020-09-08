@@ -347,11 +347,11 @@ class AppServiceProvider extends ServiceProvider
                 ],
             ];
 
-            $your_dealers = [
-                [
-                    'name' => 'Dealer List',
-                    'link' => '/your-dealers',
-                ],
+            $dealer_report_totals = [
+                // [
+                //     'name' => 'Dealer List',
+                //     'link' => '/your-dealers',
+                // ],
                 [
                     'name' => 'Dealer Reports',
                     'link' => '/dealer-reports',
@@ -820,11 +820,18 @@ class AppServiceProvider extends ServiceProvider
                         'default' => false,
                     ],
                     [
-                        'name' => 'Your Dealers',
+                        'name' => 'Dealer Report Totals',
                         'link' => false,
-                        'sub' => $your_dealers,
+                        'sub' => $dealer_report_totals,
                         'icon' => 'flaticon-group',
-                        'default' => '/your-dealers',
+                        'default' => '/dealer-reports',
+                    ],
+                    [
+                        'name' => 'Your Dealers',
+                        'link' => '/your-dealers',
+                        'sub' => false,
+                        'icon' => 'flaticon-group',
+                        'default' => false,
                     ],
                     // [
                     //     'name' => 'Dealer Reports',
@@ -848,7 +855,7 @@ class AppServiceProvider extends ServiceProvider
                     //     'default' => false,
                     // ],
                     [
-                        'name' => 'Dealer History',
+                        'name' => 'Your Dealers History',
                         'link' => false,
                         'sub' => $trackers_sub_dealer,
                         'icon' => 'flaticon-bar-graph-on-a-rectangle',
@@ -999,9 +1006,9 @@ class AppServiceProvider extends ServiceProvider
                 'all-recharge-data' => 'reports',
                 'your-invoices' => 'your-emails',
                 //'transaction-tracker' => 'your-emails',
-                'dealer-reports' => 'your-dealers',
-                'dealer-2nd-recharge' => 'your-dealers',
-                'dealer-3rd-recharge' => 'your-dealers',
+                //'dealer-reports' => 'your-dealers',
+                'dealer-2nd-recharge' => 'dealer-reports',
+                'dealer-3rd-recharge' => 'dealer-reports',
                 // 'order-sims' => 'plans',
                 // 'redeem-credit' => 'plans',
                 // 'look-up-sims' => 'plans',

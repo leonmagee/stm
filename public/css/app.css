@@ -19066,7 +19066,6 @@ ul.sidebar-menu {
   list-style-type: none;
   margin: 0;
   padding: 0;
-  font-size: 16px;
   width: 242px;
   /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#eeeeee+0,f3f3f3+100 */
   background: #eeeeee;
@@ -19082,7 +19081,7 @@ ul.sidebar-menu {
 
 ul.sidebar-menu li {
   position: relative;
-  font-size: 16px;
+  font-size: 0.8em;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -19094,8 +19093,8 @@ ul.sidebar-menu li span {
 
 ul.sidebar-menu li .icon-wrap {
   -webkit-box-flex: 0;
-      -ms-flex: 0 1 22%;
-          flex: 0 1 22%;
+      -ms-flex: 0 1 19%;
+          flex: 0 1 19%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -19112,7 +19111,6 @@ ul.sidebar-menu li .icon-wrap {
 ul.sidebar-menu li .icon-wrap i {
   font-weight: normal;
   margin: 0;
-  margin-right: 5px;
   color: #333;
 }
 
@@ -19124,10 +19122,10 @@ ul.sidebar-menu li .icon-wrap i:before {
 ul.sidebar-menu li a {
   border-bottom: 1px solid #dfdfdf;
   -webkit-box-flex: 0;
-      -ms-flex: 0 1 78%;
-          flex: 0 1 78%;
+      -ms-flex: 0 1 81%;
+          flex: 0 1 81%;
   text-decoration: none;
-  padding: 7px 5px 7px 15px;
+  padding: 0.6em 0.5em 0.6em 1em;
   color: #222;
   font-weight: 700;
 }
