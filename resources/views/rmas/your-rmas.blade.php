@@ -61,11 +61,13 @@
           @endif
           <div class="stm-flex-row__item">${{ number_format($rma->product->unit_cost, 2) }}</div>
           <div class="stm-flex-row__item">{{ $rma->quantity }}</div>
-          <div class="stm-flex-row__item">${{ number_format($rma->product->unit_cost * $rma->product->quantity, 2) }}
+          <div class="stm-flex-row__item">${{ number_format($rma->product->unit_cost * $rma->quantity, 2) }}
           </div>
           <div class="stm-flex-row__item red">
             {{ $rma->product->discount ? $rma->product->discount . '%' : '' }}</div>
-          <div class="stm-flex-row__item">${{ number_format($rma->product->final_cost, 2) }}</div>
+          <div class="stm-flex-row__item">
+            ${{ number_format((($rma->product->unit_cost * ((100 - $rma->product->discount) / 100)) * $rma->quantity), 2) }}
+          </div>
         </div>
 
       </div>
