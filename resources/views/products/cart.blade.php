@@ -199,12 +199,12 @@
     Total Charge: <span>${{ number_format($total, 2) }}</span><br />
     Your Current Balance: <span>${{ number_format($balance, 2) }}</span><br />
   </div>
-  @if(floatval($balance) < floatval($total)) <div class="pay-with-balance-warning">
+  @if(!$sufficient) <div class="pay-with-balance-warning">
     Your balance is currently too low to make this purchase.
-    </div>
-    @else
-    <button type="submit" class="button is-danger call-loader">Pay Now with Balance</button>
-    @endif
-    <a href="#" class="modal-close-button button is-primary">Cancel</a>
+  </div>
+  @else
+  <button type="submit" class="button is-danger call-loader">Pay Now with Balance</button>
+  @endif
+  <a href="#" class="modal-close-button button is-primary">Cancel</a>
 </form>
 @endsection
