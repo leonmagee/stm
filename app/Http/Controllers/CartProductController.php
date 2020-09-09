@@ -43,15 +43,16 @@ class CartProductController extends Controller
         }
         $service_charge = number_format($total * 2 / 100, 2);
         $paypal_total = $total + $service_charge;
-        if ($user->isAdmin()) {
-            $test_string = "Total: {$total}, Balance: {$balance}";
-            $total_2 = floatval($total);
-            $balance_2 = floatval($balance);
-            $test_string_2 = "Total: {$total_2}, Balance: {$balance_2}";
-            dd($test_string . ' - ' . $test_string_2);
-        }
+        $sufficient = true;
+        // if ($user->isAdmin()) {
+        //     $test_string = "Total: {$total}, Balance: {$balance}";
+        //     $total_2 = floatval($total);
+        //     $balance_2 = floatval($balance);
+        //     $test_string_2 = "Total: {$total_2}, Balance: {$balance_2}";
+        //     dd($test_string . ' - ' . $test_string_2);
+        // }
 
-        return view('products.cart', compact('items', 'total', 'service_charge', 'paypal_total', 'balance'));
+        return view('products.cart', compact('items', 'total', 'service_charge', 'paypal_total', 'balance', 'sufficient'));
     }
 
     /**
