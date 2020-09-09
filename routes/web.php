@@ -47,6 +47,10 @@ Route::post('transfer-balance', 'UserController@transfer_balance');
 Route::get('sales', 'PurchaseController@sales');
 Route::get('dealer-purchases', 'PurchaseController@index_dealer');
 Route::get('dealer-purchases/{purchase}', 'PurchaseController@show_dealer');
+//Route::get('dealer-rmas', 'RmaController@dealer_rmas');
+Route::get('rmas', 'RmaController@index');
+Route::get('rmas/{rma}', 'RmaController@show');
+
 Route::group(['middleware' => 'App\Http\Middleware\LockOutUsersManagers'], function () {
     Route::get('purchases/{purchase}', 'PurchaseController@show');
     Route::get('products-list', 'ProductController@list');
@@ -56,8 +60,6 @@ Route::group(['middleware' => 'App\Http\Middleware\LockOutUsersManagers'], funct
     Route::post('add-tracking-number', 'TrackingNumberController@store');
     Route::post('delete-tracking-number/{trackingNumber}', 'TrackingNumberController@destroy');
     Route::post('update-purchase-status', 'PurchaseController@update_status');
-    Route::get('rmas', 'RmaController@index');
-    Route::get('rmas/{rma}', 'RmaController@show');
     Route::post('update-rma-status/{rma}', 'RmaController@update_status');
     //Route::post('update-rma-note/{rma}', 'RmaController@update_note');
     Route::post('update-rma-status-approve/{rma}', 'RmaController@rma_approve');

@@ -196,7 +196,6 @@
 <form method="POST" action="pay-with-balance">
   @csrf
   <div class="pay-with-balance-modal">
-    <?php $balance = \Auth::user()->balance; ?>
     Total Charge: <span>${{ number_format($total, 2) }}</span><br />
     Your Current Balance: <span>${{ number_format($balance, 2) }}</span><br />
   </div>

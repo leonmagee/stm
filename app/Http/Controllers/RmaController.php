@@ -17,8 +17,23 @@ class RmaController extends Controller
      */
     public function index()
     {
-        return view('rmas.index');
+        $user = \Auth::user();
+        if ($user->isAdminManagerEmployee() || $user->isMasterAgent()) {
+            return view('rmas.index');
+        } else {
+            return redirect('/');
+        }
     }
+
+    // /**
+    //  * Display a listing of the resource.
+    //  *
+    //  * @return \Illuminate\Http\Response
+    //  */
+    // public function dealer_rmas()
+    // {
+    //     return view('rmas.index');
+    // }
 
     /**
      * Display a listing of the resource.

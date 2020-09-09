@@ -18993,11 +18993,12 @@ body.stm-body .large-menu-logged-out li.item a.item-a {
   font-weight: bold;
   border-right: 1px solid #ccc;
   text-transform: uppercase;
-  font-size: 15px;
+  font-size: 0.8em;
 }
 
 body.stm-body .large-menu-logged-out li.item a.item-a i {
   margin-right: 7px;
+  color: #1b9aaa;
 }
 
 body.stm-body .large-menu-logged-out li.item a.item-a:hover {

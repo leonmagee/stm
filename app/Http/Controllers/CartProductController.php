@@ -21,7 +21,9 @@ class CartProductController extends Controller
      */
     public function index()
     {
-        $user_id = \Auth::user()->id;
+        $user = \Auth::user();
+        $balance = $user->balance;
+        $user_id = $user->id;
         $items = CartProduct::where('user_id', $user_id)->get();
         $total = 0;
         foreach ($items as $key => $item) {
@@ -41,7 +43,15 @@ class CartProductController extends Controller
         }
         $service_charge = number_format($total * 2 / 100, 2);
         $paypal_total = $total + $service_charge;
-        return view('products.cart', compact('items', 'total', 'service_charge', 'paypal_total'));
+        if ($user->isAdmin()) {
+            $test_string = "Total: {$total}, Balance: {$balance}";
+            $total_2 = floatval($total);
+            $balance_2 = floatval($balance);
+            $test_string_2 = "Total: {$total_2}, Balance: {$balance_2}";
+            dd($test_string . ' - ' . $test_string_2);
+        }
+
+        return view('products.cart', compact('items', 'total', 'service_charge', 'paypal_total', 'balance'));
     }
 
     /**

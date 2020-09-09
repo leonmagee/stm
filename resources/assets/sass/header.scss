@@ -333,9 +333,10 @@ body.stm-body {
                 font-weight: bold;
                 border-right: 1px solid #ccc;
                 text-transform: uppercase;
-                font-size: 15px;
+                font-size: 0.8em;
                 i {
                     margin-right: 7px;
+                    color: $brand-primary;
                 }
                 &:hover {
                     background-color: #eee;

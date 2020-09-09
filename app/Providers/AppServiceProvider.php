@@ -259,6 +259,10 @@ class AppServiceProvider extends ServiceProvider
                     'name' => 'Purchase Orders',
                     'link' => '/dealer-purchases',
                 ],
+                // [
+                //     'name' => 'RMAs',
+                //     'link' => '/rmas',
+                // ],
             ];
 
             $emails_sub_manager = [

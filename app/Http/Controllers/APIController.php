@@ -118,7 +118,16 @@ class APIController extends Controller
 
     public function getRmas()
     {
-        $rmas = Rma::with(['user', 'product'])->get();
+        $user = \Auth::user();
+        if ($user->isAdminManagerEmployee()) {
+            $rmas = Rma::with(['user', 'product'])->get();
+        } elseif ($user->isMasterAgent()) {
+            $site_id = $user->master_agent_site;
+            $role_id = Helpers::get_role_id($site_id);
+            $rmas = RMA::select('rmas.id', 'rmas.quantity', 'rmas.created_at', 'rmas.status')->with(['user', 'product'])->join('users', 'users.id', 'rmas.user_id')->where('users.role_id', $role_id)->get();
+        } else {
+            return false;
+        }
         foreach ($rmas as $key => $rma) {
             if ($rma->user) {
                 $rma->total = '$' . number_format($rma->total, 2);
