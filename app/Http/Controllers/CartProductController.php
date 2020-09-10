@@ -43,8 +43,8 @@ class CartProductController extends Controller
         }
         $service_charge = number_format($total * 2 / 100, 2);
         $paypal_total = $total + $service_charge;
-        $total_float = floatval($total);
-        $balance_float = floatval($balance);
+        $total_float = floatval(strval($total));
+        $balance_float = floatval(strval($balance));
         if ($balance_float < $total_float) {
             $sufficient = false;
         } else {
