@@ -50,14 +50,14 @@ class CartProductController extends Controller
         } else {
             $sufficient = true;
         }
-        if ($user->isAdmin()) {
-            var_dump($total);
-            var_dump($total_float);
-            var_dump($balance);
-            var_dump($balance_float);
-            var_dump($sufficient);
-            dd('testing');
-        }
+        // if ($user->isAdmin()) {
+        //     var_dump($total);
+        //     var_dump($total_float);
+        //     var_dump($balance);
+        //     var_dump($balance_float);
+        //     var_dump($sufficient);
+        //     dd('testing');
+        // }
 
         return view('products.cart', compact('items', 'total', 'service_charge', 'paypal_total', 'balance', 'sufficient'));
     }
