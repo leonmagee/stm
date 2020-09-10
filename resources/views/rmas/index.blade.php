@@ -42,9 +42,9 @@
 $(nTd).html("RMA-GSW-" + oData.id);
 }
 },
-{ "data": "user.company" },
-{ "data": "user.name" },
-{ "data": "product.name" },
+{ "data": "company" },
+{ "data": "user_name" },
+{ "data": "product_name" },
 { "data": "quantity" },
 { "data": "date" },
 { "data": "status",

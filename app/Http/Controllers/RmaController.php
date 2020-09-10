@@ -140,7 +140,14 @@ class RmaController extends Controller
         } else {
             $rma->imeis = [];
         }
-        return view('rmas.show', compact('rma'));
+        $user = \Auth::user();
+        if ($user->isAdmin()) {
+            return view('rmas.show', compact('rma'));
+        } elseif ($user->isMasterAgent()) {
+            return view('rmas.show_dealer', compact('rma'));
+        } else {
+            return redirect('/');
+        }
     }
 
     /**

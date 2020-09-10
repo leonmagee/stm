@@ -120,11 +120,35 @@ class APIController extends Controller
     {
         $user = \Auth::user();
         if ($user->isAdminManagerEmployee()) {
-            $rmas = Rma::with(['user', 'product'])->get();
+            //$rmas = Rma::with(['user', 'product'])->get();
+            $rmas = RMA::select(
+                'rmas.id',
+                'rmas.quantity',
+                'rmas.created_at',
+                'rmas.status',
+                'users.company',
+                'users.name as user_name',
+                'purchase_products.name as product_name'
+            )
+                ->join('users', 'users.id', 'rmas.user_id')
+                ->join('purchase_products', 'purchase_products.id', 'rmas.purchase_product_id')
+                ->get();
         } elseif ($user->isMasterAgent()) {
             $site_id = $user->master_agent_site;
             $role_id = Helpers::get_role_id($site_id);
-            $rmas = RMA::select('rmas.id', 'rmas.quantity', 'rmas.created_at', 'rmas.status')->with(['user', 'product'])->join('users', 'users.id', 'rmas.user_id')->where('users.role_id', $role_id)->get();
+            $rmas = RMA::select(
+                'rmas.id',
+                'rmas.quantity',
+                'rmas.created_at',
+                'rmas.status',
+                'users.company',
+                'users.name as user_name',
+                'purchase_products.name as product_name'
+            )
+                ->join('users', 'users.id', 'rmas.user_id')
+                ->join('purchase_products', 'purchase_products.id', 'rmas.purchase_product_id')
+                ->where('users.role_id', $role_id)
+                ->get();
         } else {
             return false;
         }

@@ -58,6 +58,12 @@
     }
   }
 
+  if($item['name'] == 'Products List') {
+    if($path == 'rmas') {
+      $active = 'active';
+    }
+  }
+
   if($item['name'] == 'My History') {
     if($path == 'transaction-tracker') {
       $active = 'active';

@@ -259,10 +259,10 @@ class AppServiceProvider extends ServiceProvider
                     'name' => 'Purchase Orders',
                     'link' => '/dealer-purchases',
                 ],
-                // [
-                //     'name' => 'RMAs',
-                //     'link' => '/rmas',
-                // ],
+                [
+                    'name' => 'RMAs',
+                    'link' => '/rmas',
+                ],
             ];
 
             $emails_sub_manager = [
@@ -995,6 +995,7 @@ class AppServiceProvider extends ServiceProvider
                 'transaction-tracker' => 'email-tracker',
                 'transaction-tracker-dealer' => 'email-tracker-dealer',
                 'dealer-purchases' => 'email-tracker-dealer',
+                'rmas' => 'email-tracker-dealer',
                 'sims/upload-all' => 'user-sims',
                 'find-sims' => 'user-sims',
                 'transfer-sims' => 'user-sims',
@@ -1013,6 +1014,9 @@ class AppServiceProvider extends ServiceProvider
                 //'dealer-reports' => 'your-dealers',
                 'dealer-2nd-recharge' => 'dealer-reports',
                 'dealer-3rd-recharge' => 'dealer-reports',
+                'product-new' => 'products-list',
+                'purchases' => 'products-list',
+                'sales' => 'products-list',
                 // 'order-sims' => 'plans',
                 // 'redeem-credit' => 'plans',
                 // 'look-up-sims' => 'plans',
