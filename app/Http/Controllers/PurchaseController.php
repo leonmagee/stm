@@ -113,15 +113,15 @@ class PurchaseController extends Controller
         }
 
         if (floatval(strval($balance)) < floatval(strval($total))) {
-            if ($current_user->isAdmin()) {
-                dd('not enough');
-            }
+            // if ($current_user->isAdmin()) {
+            //     dd('not enough');
+            // }
             session()->flash('danger', 'You do not have sufficent funds in your balance for this purchase');
             return redirect()->back();
         }
-        if ($current_user->isAdmin()) {
-            dd('so far...');
-        }
+        // if ($current_user->isAdmin()) {
+        //     dd('so far...');
+        // }
         $request->type = 'STM Balance';
         $request->sub_total = $total;
         $request->total = $total;
