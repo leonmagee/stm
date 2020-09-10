@@ -112,7 +112,7 @@ class PurchaseController extends Controller
             }
         }
 
-        if (floatval($balance) < floatval($total)) {
+        if (floatval(strval($balance)) < floatval(strval($total))) {
             if ($current_user->isAdmin()) {
                 dd('not enough');
             }
