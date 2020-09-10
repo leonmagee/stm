@@ -56,10 +56,7 @@ class CartProductController extends Controller
             var_dump($balance);
             var_dump($balance_float);
             var_dump($sufficient);
-            if ($total_2 < $balance) {
-                dd('testing');
-            }
-            //dd($test_string . ' - ' . $test_string_2);
+            dd('testing');
         }
 
         return view('products.cart', compact('items', 'total', 'service_charge', 'paypal_total', 'balance', 'sufficient'));
