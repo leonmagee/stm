@@ -50,13 +50,17 @@ class CartProductController extends Controller
         } else {
             $sufficient = true;
         }
-        // if ($user->isAdmin()) {
-        //     $test_string = "Total: {$total}, Balance: {$balance}";
-        //     $total_2 = floatval($total);
-        //     $balance_2 = floatval($balance);
-        //     $test_string_2 = "Total: {$total_2}, Balance: {$balance_2}";
-        //     dd($test_string . ' - ' . $test_string_2);
-        // }
+        if ($user->isAdmin()) {
+            var_dump($total);
+            var_dump($total_float);
+            var_dump($balance);
+            var_dump($balance_float);
+            var_dump($sufficient);
+            if ($total_2 < $balance) {
+                dd('testing');
+            }
+            //dd($test_string . ' - ' . $test_string_2);
+        }
 
         return view('products.cart', compact('items', 'total', 'service_charge', 'paypal_total', 'balance', 'sufficient'));
     }
