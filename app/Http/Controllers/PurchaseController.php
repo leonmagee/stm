@@ -216,12 +216,23 @@ class PurchaseController extends Controller
             true
         ));
 
-        // 6. Email admins (admins and managers)
+        // 6. Email to master agent if one exists
+        if ($master_agent = $user->getMasterAgent()) {
+            $header_text = "<strong>Hello " . $master_agent->name . "!</strong><br />A new purchase order has been placed by " . $user->company . " - " . $user->name;
+            \Mail::to($master_agent)->send(new PurchaseEmail(
+                $user,
+                $purchase,
+                $header_text,
+                'New Purchase Order Placed',
+                true
+            ));
+        }
+
+        // 7. Email admins (admins and managers)
         $admins = User::getAdminManageerUsers();
         foreach ($admins as $admin) {
             if (!$admin->notes_email_disable) {
                 $header_text = "<strong>Hello " . $admin->name . "!</strong><br />A new purchase order has been placed by " . $user->company . " - " . $user->name;
-
                 \Mail::to($admin)->send(new PurchaseEmail(
                     $user,
                     $purchase,
