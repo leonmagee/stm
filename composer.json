@@ -1,7 +1,10 @@
 {
     "name": "laravel/laravel",
     "description": "The Laravel Framework.",
-    "keywords": ["framework", "laravel"],
+    "keywords": [
+        "framework",
+        "laravel"
+    ],
     "license": "MIT",
     "type": "project",
     "require": {
@@ -17,7 +20,8 @@
         "laravel/tinker": "^1.0",
         "league/csv": "^9.1",
         "paypal/paypal-checkout-sdk": "^1.0",
-        "yajra/laravel-datatables-oracle": "~8.0"
+        "yajra/laravel-datatables-oracle": "~8.0",
+        "nesbot/carbon": "1.29.0 as 1.25.0"
     },
     "require-dev": {
         "filp/whoops": "^2.0",
@@ -43,8 +47,7 @@
     },
     "extra": {
         "laravel": {
-            "dont-discover": [
-            ]
+            "dont-discover": []
         }
     },
     "scripts": {

@@ -23616,6 +23616,46 @@ a.button.custom-button:hover {
   color: #fff;
 }
 
+.sales-menu {
+  padding-bottom: 1.5em;
+}
+
+.sales-menu .sales-menu__form .field {
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .sales-menu .sales-menu__form {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    -webkit-box-align: end;
+        -ms-flex-align: end;
+            align-items: flex-end;
+    max-width: 60%;
+  }
+
+  .sales-menu .sales-menu__form .field {
+    margin-bottom: 0;
+    margin-right: 0.9em;
+  }
+}
+
+@media (min-width: 980px) {
+  .sales-menu .sales-menu__form {
+    max-width: 50%;
+  }
+}
+
+@media (min-width: 1200px) {
+  .sales-menu .sales-menu__form {
+    max-width: 40%;
+  }
+}
+
 .sales-receipt {
   margin: 1.5em;
   border: 2px solid #ddd;

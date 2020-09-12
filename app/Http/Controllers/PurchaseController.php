@@ -11,6 +11,8 @@ use App\PurchaseProduct;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use \Carbon\Carbon;
+use \Carbon\CarbonPeriod;
 
 class PurchaseController extends Controller
 {
@@ -396,24 +398,63 @@ class PurchaseController extends Controller
      * @param  \App\Purchase  $purchase
      * @return \Illuminate\Http\Response
      */
-    public function sales()
+    public function sales(Request $request)
     {
-        $monthly_data = DB::table('purchases')->select(DB::raw('SUM(total) as total'), DB::raw('count(id) as `data`'), DB::raw("DATE_FORMAT(created_at, '%m-%Y') new_date"), DB::raw('YEAR(created_at) year, MONTH(created_at) month'))
-            ->groupby('new_date', 'year', 'month')
-            ->orderby('new_date', 'DESC')
-            ->get();
+        $now = Carbon::now()->toDateString();
+        $period = CarbonPeriod::create('2020-08-01', $now)->month();
+        $months = collect($period)->map(function (Carbon $date) {
+            return [
+                'month' => $date->month,
+                'name' => $date->format('F'),
+                'days' => $date->daysInMonth,
+                'string' => $date->toDateString(),
+                'select' => $date->format('F Y'),
+
+            ];
+        });
+
+        $start = false;
+        $end = false;
+        if ($start = $request->starting_date) {
+            $end = $request->ending_date;
+            $monthly_data = DB::table('purchases')->select(DB::raw('SUM(total) as total'), DB::raw('count(id) as `data`'), DB::raw("DATE_FORMAT(created_at, '%m-%Y') new_date"), DB::raw('YEAR(created_at) year, MONTH(created_at) month'))
+                ->whereBetween('created_at', [$start, $end])
+                ->groupby('new_date', 'year', 'month')
+                ->orderby('new_date', 'DESC')
+                ->get();
+            // ->whereBetween(DB::raw("CONVERT_TZ(BadgePurchaseDate, @@session.time_zone, 'US/Pacific')"), [$start_date, $end_date])
+        } else {
+            $monthly_data = DB::table('purchases')->select(DB::raw('SUM(total) as total'), DB::raw('count(id) as `data`'), DB::raw("DATE_FORMAT(created_at, '%m-%Y') new_date"), DB::raw('YEAR(created_at) year, MONTH(created_at) month'))
+                ->groupby('new_date', 'year', 'month')
+                ->orderby('new_date', 'DESC')
+                ->get();
+        }
 
         $user = \Auth::user();
         if ($user->isAdmin()) {
             $purchases = Purchase::all();
             $total_sales = 0;
-            foreach ($purchases as $purchase) {
+            // foreach ($purchases as $purchase) {
+            //     $total_sales += $purchase->total;
+            // }
+            foreach ($monthly_data as $purchase) {
                 $total_sales += $purchase->total;
             }
+
         } else {
+            // check for master agent here?
             dd('not admin');
         }
-        return view('purchases.sales', compact('total_sales', 'monthly_data', 'purchases', 'user'));
+        return view('purchases.sales', compact(
+            'monthly_data',
+            'months',
+            'now',
+            'purchases',
+            'total_sales',
+            'user',
+            'start',
+            'end'
+        ));
     }
 
     /**

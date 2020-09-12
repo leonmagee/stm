@@ -15,3 +15,28 @@
         color: #fff;
     }
 }
+
+.sales-menu {
+    padding-bottom: 1.5em;
+    .sales-menu__form {
+        .field {
+            width: 100%;
+        }
+        @media (min-width: $screen-sm) {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            max-width: 60%;
+            .field {
+                margin-bottom: 0;
+                margin-right: 0.9em;
+            }
+        }
+        @media (min-width: $screen-md) {
+            max-width: 50%;
+        }
+        @media (min-width: $screen-lg) {
+            max-width: 40%;
+        }
+    }
+}
