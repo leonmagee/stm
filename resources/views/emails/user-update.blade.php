@@ -3,8 +3,8 @@
 # Hello {{ $user->name }}
 
 <div class="margin-bottom-35">
-  <strong>Your account details have been updated. If the new information is not correct please contact us
-    immediately.</strong>
+  <strong>As a part of our security measures, we noticed your account information was recently changed. If this wasn't
+    you, please contact us immediately.</strong>
 </div>
 
 ## Information Changes
