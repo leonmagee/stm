@@ -415,36 +415,48 @@ class PurchaseController extends Controller
 
         $start = false;
         $end = false;
-        if ($start = $request->starting_date) {
-            $end = $request->ending_date;
-            $monthly_data = DB::table('purchases')->select(DB::raw('SUM(total) as total'), DB::raw('count(id) as `data`'), DB::raw("DATE_FORMAT(created_at, '%m-%Y') new_date"), DB::raw('YEAR(created_at) year, MONTH(created_at) month'))
-                ->whereBetween('created_at', [$start, $end])
-                ->groupby('new_date', 'year', 'month')
-                ->orderby('new_date', 'DESC')
-                ->get();
-            // ->whereBetween(DB::raw("CONVERT_TZ(BadgePurchaseDate, @@session.time_zone, 'US/Pacific')"), [$start_date, $end_date])
-        } else {
-            $monthly_data = DB::table('purchases')->select(DB::raw('SUM(total) as total'), DB::raw('count(id) as `data`'), DB::raw("DATE_FORMAT(created_at, '%m-%Y') new_date"), DB::raw('YEAR(created_at) year, MONTH(created_at) month'))
-                ->groupby('new_date', 'year', 'month')
-                ->orderby('new_date', 'DESC')
-                ->get();
-        }
+
+        $default_query = DB::table('purchases')->select(DB::raw('SUM(purchases.total) as total'), DB::raw('count(purchases.id) as `data`'), DB::raw("DATE_FORMAT(purchases.created_at, '%m-%Y') new_date"), DB::raw('YEAR(purchases.created_at) year, MONTH(purchases.created_at) month'))
+            ->join('users', 'users.id', 'purchases.user_id')
+            ->groupby('new_date', 'year', 'month')
+            ->orderby('new_date', 'DESC');
 
         $user = \Auth::user();
         if ($user->isAdmin()) {
-            $purchases = Purchase::all();
-            $total_sales = 0;
-            // foreach ($purchases as $purchase) {
-            //     $total_sales += $purchase->total;
-            // }
-            foreach ($monthly_data as $purchase) {
-                $total_sales += $purchase->total;
+
+            if ($start = $request->starting_date) {
+                $end = $request->ending_date;
+                $monthly_data = $default_query
+                    ->whereBetween('purchases.created_at', [$start, $end])
+                    ->get();
+            } else {
+                $monthly_data = $default_query
+                    ->get();
             }
 
+        } elseif ($site_id = $user->isMasterAgent()) {
+            $role_id = Helpers::get_role_id($site_id);
+            if ($start = $request->starting_date) {
+                $end = $request->ending_date;
+                $monthly_data = $default_query
+                    ->where('users.role_id', $role_id)
+                    ->whereBetween('purchases.created_at', [$start, $end])
+                    ->get();
+            } else {
+                $monthly_data = $default_query
+                    ->where('users.role_id', $role_id)
+                    ->get();
+            }
         } else {
-            // check for master agent here?
-            dd('not admin');
+            return redirect('/');
         }
+
+        $purchases = Purchase::all();
+        $total_sales = 0;
+        foreach ($monthly_data as $purchase) {
+            $total_sales += $purchase->total;
+        }
+
         return view('purchases.sales', compact(
             'monthly_data',
             'months',
