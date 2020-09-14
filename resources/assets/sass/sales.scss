@@ -21,6 +21,9 @@
     .sales-menu__form {
         .field {
             width: 100%;
+            &.input-field {
+                min-width: 10em;
+            }
         }
         @media (min-width: $screen-sm) {
             display: flex;

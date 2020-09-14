@@ -400,6 +400,25 @@ class PurchaseController extends Controller
      */
     public function sales(Request $request)
     {
+        if ($request->starting_date) {
+            $start_input = $request->starting_date;
+            $starting_date = Carbon::createFromFormat('M d, Y', $start_input);
+            $start = $starting_date->toDateString();
+            //dd($start);
+        } else {
+            $start_input = '';
+            $start = '2020-08-01';
+        }
+
+        if ($request->ending_date) {
+            $end_input = $request->ending_date;
+            $ending_date = Carbon::createFromFormat('M d, Y', $end_input);
+            $end = $ending_date->toDateString();
+        } else {
+            $end_input = '';
+            $end = Carbon::now()->addDays(1)->toDateString();
+        }
+
         $now = Carbon::now()->toDateString();
         $period = CarbonPeriod::create('2020-08-01', $now)->month();
         $months = collect($period)->map(function (Carbon $date) {
@@ -413,8 +432,8 @@ class PurchaseController extends Controller
             ];
         });
 
-        $start = false;
-        $end = false;
+        // $start = false;
+        // $end = false;
 
         $default_query = DB::table('purchases')->select(DB::raw('SUM(purchases.total) as total'), DB::raw('count(purchases.id) as `data`'), DB::raw("DATE_FORMAT(purchases.created_at, '%m-%Y') new_date"), DB::raw('YEAR(purchases.created_at) year, MONTH(purchases.created_at) month'))
             ->join('users', 'users.id', 'purchases.user_id')
@@ -423,30 +442,23 @@ class PurchaseController extends Controller
 
         $user = \Auth::user();
         if ($user->isAdmin()) {
-
-            if ($start = $request->starting_date) {
-                $end = $request->ending_date;
-                $monthly_data = $default_query
-                    ->whereBetween('purchases.created_at', [$start, $end])
-                    ->get();
-            } else {
-                $monthly_data = $default_query
-                    ->get();
-            }
+            $monthly_data = $default_query
+                ->whereBetween('purchases.created_at', [$start, $end])
+                ->get();
 
         } elseif ($site_id = $user->isMasterAgent()) {
             $role_id = Helpers::get_role_id($site_id);
-            if ($start = $request->starting_date) {
-                $end = $request->ending_date;
-                $monthly_data = $default_query
-                    ->where('users.role_id', $role_id)
-                    ->whereBetween('purchases.created_at', [$start, $end])
-                    ->get();
-            } else {
-                $monthly_data = $default_query
-                    ->where('users.role_id', $role_id)
-                    ->get();
-            }
+            //if ($start = $request->starting_date) {
+            //$end = $request->ending_date;
+            $monthly_data = $default_query
+                ->where('users.role_id', $role_id)
+                ->whereBetween('purchases.created_at', [$start, $end])
+                ->get();
+            // } else {
+            //     $monthly_data = $default_query
+            //         ->where('users.role_id', $role_id)
+            //         ->get();
+            // }
         } else {
             return redirect('/');
         }
@@ -464,8 +476,10 @@ class PurchaseController extends Controller
             'purchases',
             'total_sales',
             'user',
-            'start',
-            'end'
+            //'start',
+            //'end',
+            'start_input',
+            'end_input'
         ));
     }
 
