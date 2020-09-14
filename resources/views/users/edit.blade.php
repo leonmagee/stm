@@ -163,7 +163,7 @@
             </label>
           </div>
           @endif
-          @if(!$user->isAdminManagerEmployee())
+          @if($user->isSubDealer())
           <div class="field notes-checkbox-field">
             <label class="checkbox">
               <input type="checkbox" name="master_agent_access" @if($user->master_agent_access)

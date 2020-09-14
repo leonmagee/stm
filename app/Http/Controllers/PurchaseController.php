@@ -416,7 +416,8 @@ class PurchaseController extends Controller
             $end = $ending_date->toDateString();
         } else {
             $end_input = '';
-            $end = Carbon::now()->addDays(1)->toDateString();
+            //$end = Carbon::now()->addDays(1)->toDateString();
+            $end = Carbon::now()->toDateTimeString();
         }
 
         $now = Carbon::now()->toDateString();

@@ -157,6 +157,16 @@ class User extends Authenticatable
         }
     }
 
+    public function isSubDealer()
+    {
+        $role = $this->role->id;
+        $reg_sites_array = [1, 2, 3, 4, 6, 7];
+        if (in_array($role, $reg_sites_array)) {
+            return false;
+        }
+        return true;
+    }
+
     public function role()
     {
         return $this->belongsTo(Role::class);
