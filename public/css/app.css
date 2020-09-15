@@ -20129,14 +20129,16 @@ table.dataTable tr td .invoice-view {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
 
 .allUserToggle button {
-  margin-right: 15px;
+  margin: 0 1em 1em 0;
   font-size: 0.8em;
+  -webkit-box-flex: 0;
+      -ms-flex: 0 1 13%;
+          flex: 0 1 13%;
 }
 
 .allUserToggle button:focus {

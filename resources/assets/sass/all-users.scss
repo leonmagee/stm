@@ -187,10 +187,12 @@
 
 .allUserToggle {
     display: flex;
-    align-items: center;
+    //align-items: center;
+    flex-wrap: wrap;
     button {
-        margin-right: 15px;
+        margin: 0 1em 1em 0;
         font-size: 0.8em;
+        flex: 0 1 13%;
         &:focus {
             outline: none;
         }
