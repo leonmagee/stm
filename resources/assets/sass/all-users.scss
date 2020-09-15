@@ -37,6 +37,9 @@
         font-weight: bold;
         color: #333;
         position: relative;
+        &:first-child {
+            margin-top: 0;
+        }
         .detail {
             padding: 15px 5px;
             flex: 1;
@@ -187,6 +190,8 @@
 
 .allUserToggle {
     display: flex;
+    margin-top: -1.1em;
+    margin-bottom: 0.2em;
     //align-items: center;
     flex-wrap: wrap;
     button {

@@ -19939,6 +19939,10 @@ table.dataTable tr td .invoice-view {
   position: relative;
 }
 
+.allUsersList .allUsersItem:first-child {
+  margin-top: 0;
+}
+
 .allUsersList .allUsersItem .detail {
   padding: 15px 5px;
   -webkit-box-flex: 1;
@@ -20129,6 +20133,8 @@ table.dataTable tr td .invoice-view {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  margin-top: -1.1em;
+  margin-bottom: 0.2em;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
 }
