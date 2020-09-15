@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers;
 use App\Invoice;
 use App\Mail\InvoiceEmail;
 use App\User;
@@ -21,6 +22,10 @@ class InvoiceController extends Controller
      */
     public function index()
     {
+        $user = \Auth::user();
+        if (!($user->isAdmin() || $user->isMasterAgent())) {
+            return redirect('/');
+        }
         return view('invoices.index');
     }
 
@@ -121,6 +126,14 @@ class InvoiceController extends Controller
 
             return view('invoices.show', compact('invoice', 'total', 'subtotal', 'discount', 'users'));
 
+        } elseif ($site_id = $logged_in->isMasterAgent()) {
+            $invoice_user = $invoice->user;
+            $role_id = Helpers::get_role_id($site_id);
+            if ($role_id != $invoice_user->role_id) {
+                return redirect('/');
+            }
+            $users = [];
+            return view('invoices.show', compact('invoice', 'total', 'subtotal', 'discount', 'users'));
         } else {
             if ($logged_in->id != $invoice->user_id) {
                 return redirect('/');

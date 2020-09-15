@@ -240,13 +240,28 @@ class APIController extends Controller
 
     public function getInvoices()
     {
-        $invoices = Invoice::all();
+        $user = \Auth::user();
+        $query = Invoice::select(
+            'invoices.id',
+            'invoices.created_at',
+            'invoices.status',
+            'users.company',
+            'users.name')
+            ->join('users', 'users.id', 'invoices.user_id');
+
+        if ($user->isAdmin()) {
+            $invoices = $query->get();
+        } elseif ($site_id = $user->isMasterAgent()) {
+            $role_id = Helpers::get_role_id($site_id);
+            $invoices = $query
+                ->where('users.role_id', $role_id)
+                ->get();
+        } else {
+            return false;
+        }
         foreach ($invoices as $item) {
             $item->due_date_new = \Carbon\Carbon::parse($item->due_date)->format('M d, Y');
             $item->invoice_date = $item->created_at->format('M d, Y');
-            $item->company = $item->user->company;
-            $item->user_name = $item->user->name;
-
             $total = 0;
             $discount = 0;
             $subtotal = 0;

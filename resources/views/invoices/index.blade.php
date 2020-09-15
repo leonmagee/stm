@@ -38,7 +38,7 @@
 "columns": [
 { "data": "id" },
 { "data": "company" },
-{ "data": "user_name" },
+{ "data": "name" },
 { "data": "invoice_date" },
 { "data": "total" },
 // { "data": "total",

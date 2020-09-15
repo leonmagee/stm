@@ -267,6 +267,10 @@ class AppServiceProvider extends ServiceProvider
                     'name' => 'Total Sales',
                     'link' => '/sales',
                 ],
+                [
+                    'name' => 'Invoices',
+                    'link' => '/invoices',
+                ],
             ];
 
             $emails_sub_manager = [
