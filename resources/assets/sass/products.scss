@@ -105,6 +105,8 @@
                 justify-content: space-between;
             }
             @include product_style;
+            background-color: $brand-primary;
+            color: #fff;
             .products-header__left {
                 display: flex;
                 align-items: center;
@@ -115,13 +117,20 @@
                 i {
                     margin-right: 0.7em;
                     font-size: 1.2em;
-                    color: $primary;
+                    //color: $primary;
+                    color: #fff;
                 }
             }
             .products-header__right {
                 display: flex;
                 button {
                     margin: 0 0.5em;
+                    border: none;
+                    &.is-selected {
+                        background-color: lighten($primary, 15%);
+                        color: #fff;
+                        text-shadow: 1px 1px rgba(0, 0, 0, 0.05);
+                    }
                     &:focus {
                         outline: none;
                         box-shadow: none;

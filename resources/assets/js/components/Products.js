@@ -148,7 +148,7 @@ export default class Products extends Component {
         const catsList = categories.map((category, i) => {
             let buttonClass = "button is-default is-small";
             if (catsChecked.includes(category.id)) {
-              buttonClass = "button is-primary is-small";
+              buttonClass = "button is-selected is-small";
             }
 
             return (
@@ -165,7 +165,7 @@ export default class Products extends Component {
 
       const menu = (
           <div className="product-cats">
-              <div className="product-cats__header">Categories</div>
+              <div className="product-cats__header">Filters</div>
               <div className="product-cats__body">
               {catsBlock}
               </div>
@@ -182,7 +182,7 @@ export default class Products extends Component {
                         className="products-header__left"
                         onClick={() => this.toggleCats()}
                     >
-                        <i className="fas fa-sliders-h"></i>All Categories
+                        <i className="fas fa-sliders-h"></i>Filters
                     </div>
                     <div className="products-header__right">{catsList}</div>
                 </div>

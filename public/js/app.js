@@ -114261,7 +114261,7 @@ var Products = function (_Component) {
       var catsList = categories.map(function (category, i) {
         var buttonClass = "button is-default is-small";
         if (catsChecked.includes(category.id)) {
-          buttonClass = "button is-primary is-small";
+          buttonClass = "button is-selected is-small";
         }
 
         return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
@@ -114286,7 +114286,7 @@ var Products = function (_Component) {
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
           'div',
           { className: 'product-cats__header' },
-          'Categories'
+          'Filters'
         ),
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
           'div',
@@ -114317,7 +114317,7 @@ var Products = function (_Component) {
               }
             },
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', { className: 'fas fa-sliders-h' }),
-            'All Categories'
+            'Filters'
           ),
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
             'div',
