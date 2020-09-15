@@ -20139,8 +20139,11 @@ table.dataTable tr td .invoice-view {
       flex-wrap: wrap;
 }
 
-.allUserToggle button {
+.allUserToggle > button {
   margin: 0 1em 1em 0;
+}
+
+.allUserToggle button {
   font-size: 0.8em;
   -webkit-box-flex: 0;
       -ms-flex: 0 1 13%;
@@ -20176,6 +20179,7 @@ table.dataTable tr td .invoice-view {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  margin-bottom: 0.5em;
 }
 
 .allUserToggle span.user-separator {

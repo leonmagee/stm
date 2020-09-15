@@ -193,9 +193,13 @@
     margin-top: -1.1em;
     margin-bottom: 0.2em;
     //align-items: center;
+    //justify-content: space-between;
     flex-wrap: wrap;
-    button {
+    > button {
         margin: 0 1em 1em 0;
+    }
+    button {
+        //margin: 0 1em 1em 0;
         font-size: 0.8em;
         flex: 0 1 13%;
         &:focus {
@@ -219,6 +223,7 @@
     .changeSiteForm {
         display: flex;
         align-items: center;
+        margin-bottom: 0.5em;
     }
 
     span.user-separator {
