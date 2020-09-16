@@ -23329,6 +23329,11 @@ body.stm-body.about .middle-content-wrap .about-page .video-wrap .video-wrap-inn
   height: 100%;
 }
 
+.cart-wrapper .cart-wrapper__notification {
+  padding: 1em 2em 0;
+  margin-bottom: -1em;
+}
+
 .cart-wrapper .cart-wrapper-inner {
   border-radius: 4px;
   overflow: hidden;

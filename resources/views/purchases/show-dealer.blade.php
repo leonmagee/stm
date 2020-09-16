@@ -69,6 +69,7 @@
           <div class="stm_inv__header--label">Payment Type</div>
           <div class="stm_inv__header--label">Subtotal</div>
           <div class="stm_inv__header--label">Service Charge</div>
+          <div class="stm_inv__header--label">Shipping Charge</div>
           <div class="stm_inv__header--label">Total</div>
           <div class="stm_inv__header--label stm_inv__flex--4"></div>
         </div>
@@ -83,6 +84,7 @@
             $0.00
             @endif
           </div>
+          <div class="stm_inv__header--item">${{ number_format($purchase->shipping, 2) }}</div>
           <div class="stm_inv__header--item">${{ number_format($purchase->total, 2) }}</div>
           <div class="stm_inv__header--item stm_inv__flex--4 strong blue"><a
               href="/purchase-order/{{ $purchase->id }}"><i class="fas fa-eye"></i></a></div>

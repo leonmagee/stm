@@ -5,6 +5,13 @@
 <div class="cart-wrapper">
   <div class="cart-wrapper-left cart-wrapper-inner">
     <h3>Shopping Cart <i class="fas fa-cart-plus"></i></h3>
+    <div class="cart-wrapper__notification">
+      <div class="notification is-danger">
+        <button class="delete"></button>
+        Free shipping on all orders above $100. A $10 shipping charge will be applied for all orders
+        under
+        $100.</div>
+    </div>
     <div class="stm-cart">
       <div class="stm-cart__alerts">
         @include('layouts.alert')
@@ -156,6 +163,14 @@
               unit_amount: {
                 currency_code: "USD",
                 value: parseFloat("{{ $service_charge }}"),
+              },
+              quantity: "1"
+            },
+            {
+              name: "Shipping Charge",
+              unit_amount: {
+              currency_code: "USD",
+              value: parseFloat("{{ $shipping_charge }}"),
               },
               quantity: "1"
             },

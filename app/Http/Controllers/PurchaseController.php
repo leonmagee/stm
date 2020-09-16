@@ -16,12 +16,14 @@ use \Carbon\CarbonPeriod;
 
 class PurchaseController extends Controller
 {
+    private $shipping_charge;
     /**
      * Only Logged In Users can see this
      **/
     public function __construct()
     {
         $this->middleware('auth');
+        $this->shipping_charge = 10;
     }
 
     /**
@@ -135,6 +137,9 @@ class PurchaseController extends Controller
         /**
          * Update user balance
          */
+        if ($total < 100) {
+            $total = $total + $this->shipping_charge;
+        }
         $new_balance = $balance - $total;
         $current_user->balance = $new_balance;
         $current_user->save();
@@ -157,18 +162,27 @@ class PurchaseController extends Controller
         // 0. Get logged in user
         $user = \Auth::user();
 
+        if ($request->total < 100) {
+            $total = $request->total + $this->shipping_charge;
+            $shipping = $this->shipping_charge;
+        } else {
+            $total = $request->total;
+            $shipping = null;
+        }
+
         // 1. Create purchase record
         $purchase = Purchase::create([
             'user_id' => $user->id,
             'sub_total' => $request->sub_total,
-            'total' => $request->total,
+            'total' => $total,
+            'shipping' => $shipping,
             'type' => $request->type,
+            'status' => 2, // pending
             // 'address' => $request->address,
             // 'address2' => $request->address2,
             // 'city' => $request->city,
             // 'state' => $request->state,
             // 'zip' => $request->zip,
-            'status' => 2, // pending
         ]);
 
         $cart_items = CartProduct::where('user_id', $user->id)->get();

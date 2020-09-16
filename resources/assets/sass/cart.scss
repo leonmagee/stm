@@ -6,6 +6,10 @@
     background-color: #dedede;
     padding: 2em;
     height: 100%;
+    .cart-wrapper__notification {
+        padding: 1em 2em 0;
+        margin-bottom: -1em;
+    }
     .cart-wrapper-inner {
         //padding: 1em;
         border-radius: $border-radius;

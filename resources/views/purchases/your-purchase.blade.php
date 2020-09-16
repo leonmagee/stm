@@ -100,6 +100,12 @@
               <div>$0.00</div>
               @endif
             </div>
+            <div class="item discount">
+              <div class="label">Shipping Charge</div>
+              <div>
+                ${{ number_format($purchase->shipping, 2) }}
+              </div>
+            </div>
             <div class="item final">
               <div class="label">Total</div>
               <div>${{ number_format($purchase->total, 2) }}</div>

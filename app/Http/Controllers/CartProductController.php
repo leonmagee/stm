@@ -9,9 +9,11 @@ use Illuminate\Http\Request;
 
 class CartProductController extends Controller
 {
+    private $shipping_charge;
     public function __construct()
     {
         $this->middleware('auth');
+        $this->shipping_charge = 10;
     }
 
     /**
@@ -42,7 +44,15 @@ class CartProductController extends Controller
             }
         }
         $service_charge = number_format($total * 2 / 100, 2);
-        $paypal_total = $total + $service_charge;
+        if ($total < 100) {
+            $shipping_charge = $this->shipping_charge;
+            $total = $total + $shipping_charge;
+            $paypal_total = $total + $service_charge;
+        } else {
+            $shipping_charge = 0;
+            $paypal_total = $total + $service_charge;
+        }
+        //dd($paypal_total);
         $total_float = floatval(strval($total));
         $balance_float = floatval(strval($balance));
         if ($balance_float < $total_float) {
@@ -50,6 +60,7 @@ class CartProductController extends Controller
         } else {
             $sufficient = true;
         }
+
         // if ($user->isAdmin()) {
         //     var_dump($total);
         //     var_dump($total_float);
@@ -59,7 +70,7 @@ class CartProductController extends Controller
         //     dd('testing');
         // }
 
-        return view('products.cart', compact('items', 'total', 'service_charge', 'paypal_total', 'balance', 'sufficient'));
+        return view('products.cart', compact('items', 'total', 'service_charge', 'paypal_total', 'balance', 'sufficient', 'shipping_charge'));
     }
 
     /**
