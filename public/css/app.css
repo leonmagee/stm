@@ -23643,10 +23643,13 @@ a.button.custom-button:hover {
 
 .sales-menu .sales-menu__form .field {
   width: 100%;
+  -webkit-box-flex: 0;
+      -ms-flex: 0;
+          flex: 0;
 }
 
 .sales-menu .sales-menu__form .field.input-field {
-  min-width: 10em;
+  min-width: 11em;
 }
 
 @media (min-width: 768px) {
@@ -23654,30 +23657,14 @@ a.button.custom-button:hover {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    -webkit-box-pack: justify;
-        -ms-flex-pack: justify;
-            justify-content: space-between;
     -webkit-box-align: end;
         -ms-flex-align: end;
             align-items: flex-end;
-    max-width: 60%;
   }
 
   .sales-menu .sales-menu__form .field {
     margin-bottom: 0;
     margin-right: 0.9em;
-  }
-}
-
-@media (min-width: 980px) {
-  .sales-menu .sales-menu__form {
-    max-width: 50%;
-  }
-}
-
-@media (min-width: 1200px) {
-  .sales-menu .sales-menu__form {
-    max-width: 40%;
   }
 }
 
