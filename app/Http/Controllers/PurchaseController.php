@@ -226,7 +226,9 @@ class PurchaseController extends Controller
                 $purchase,
                 $header_text,
                 'New Purchase Order Placed',
-                true
+                true,
+                false,
+                $master_agent
             ));
         }
 
