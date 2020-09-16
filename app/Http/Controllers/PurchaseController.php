@@ -406,7 +406,6 @@ class PurchaseController extends Controller
             $start_input = $request->starting_date;
             $starting_date = Carbon::createFromFormat('M d, Y', $start_input);
             $start = $starting_date->toDateString();
-            //dd($start);
         } else {
             $start_input = '';
             $start = '2020-08-01';
@@ -418,7 +417,6 @@ class PurchaseController extends Controller
             $end = $ending_date->toDateString();
         } else {
             $end_input = '';
-            //$end = Carbon::now()->addDays(1)->toDateString();
             $end = Carbon::now()->toDateTimeString();
         }
 
@@ -435,9 +433,6 @@ class PurchaseController extends Controller
             ];
         });
 
-        // $start = false;
-        // $end = false;
-
         $default_query = DB::table('purchases')->select(DB::raw('SUM(purchases.total) as total'), DB::raw('count(purchases.id) as `data`'), DB::raw("DATE_FORMAT(purchases.created_at, '%m-%Y') new_date"), DB::raw('YEAR(purchases.created_at) year, MONTH(purchases.created_at) month'))
             ->join('users', 'users.id', 'purchases.user_id')
             ->groupby('new_date', 'year', 'month')
@@ -445,26 +440,26 @@ class PurchaseController extends Controller
 
         $user = \Auth::user();
         if ($user->isAdmin()) {
-            $monthly_data = $default_query
-                ->whereBetween('purchases.created_at', [$start, $end])
-                ->get();
+            $updated_query = $default_query
+                ->whereBetween('purchases.created_at', [$start, $end]);
+            $users = User::getAgentsDealersActive();
 
         } elseif ($site_id = $user->isMasterAgent()) {
             $role_id = Helpers::get_role_id($site_id);
-            //if ($start = $request->starting_date) {
-            //$end = $request->ending_date;
-            $monthly_data = $default_query
+            $updated_query = $default_query
                 ->where('users.role_id', $role_id)
-                ->whereBetween('purchases.created_at', [$start, $end])
-                ->get();
-            // } else {
-            //     $monthly_data = $default_query
-            //         ->where('users.role_id', $role_id)
-            //         ->get();
-            // }
+                ->whereBetween('purchases.created_at', [$start, $end]);
+            $users = User::where('role_id', $role_id)->orderBy('company', 'ASC')->get();
+
         } else {
             return redirect('/');
         }
+        $user_id = 0;
+        if ($user_id = $request->user_id) {
+            $updated_query = $updated_query
+                ->where('users.id', $user_id);
+        }
+        $monthly_data = $updated_query->get();
 
         $purchases = Purchase::all();
         $total_sales = 0;
@@ -479,10 +474,10 @@ class PurchaseController extends Controller
             'purchases',
             'total_sales',
             'user',
-            //'start',
-            //'end',
             'start_input',
-            'end_input'
+            'end_input',
+            'users',
+            'user_id'
         ));
     }
 

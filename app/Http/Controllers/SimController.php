@@ -104,7 +104,8 @@ class SimController extends Controller
 
         $role_id = Helpers::current_role_id();
 
-        $users = User::whereNotIn('role_id', [1, 2, 6, 7])->orderBy('company')->get();
+        //$users = User::whereNotIn('role_id', [1, 2, 6, 7])->orderBy('company')->get();
+        $users = User::getAgentsDealersActive();
 
         if (Helpers::current_user_admin()) {
             return view('sims.upload', compact('report_types', 'users', 'carriers'));

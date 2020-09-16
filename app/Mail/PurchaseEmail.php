@@ -37,8 +37,6 @@ class PurchaseEmail extends Mailable
         } else {
             $this->callbacks[] = (function ($message) {$message->getHeaders()->addTextHeader('X-No-Track', Str::random(10));});
         }
-        //dd($this);
-        //dd('test');
     }
 
     /**

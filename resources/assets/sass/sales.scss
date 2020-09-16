@@ -19,27 +19,32 @@
 .sales-menu {
     padding-bottom: 1.5em;
     .sales-menu__form {
-        //background: tomato;
-        .field {
-            width: 100%;
-            flex: 0;
-            &.input-field {
-                min-width: 11em;
-            }
-        }
-        @media (min-width: $screen-sm) {
-            display: flex;
-            align-items: flex-end;
+        .sales-menu__form--inner {
+            //background: tomato;
             .field {
-                margin-bottom: 0;
-                margin-right: 0.9em;
+                width: 100%;
+                flex: 0;
+                &.input-field {
+                    min-width: 11em;
+                }
+                &.input-field-users {
+                    min-width: 19em;
+                }
             }
+            @media (min-width: $screen-sm) {
+                display: flex;
+                align-items: flex-end;
+                .field {
+                    margin-bottom: 0;
+                    margin-right: 0.9em;
+                }
+            }
+            // @media (min-width: $screen-md) {
+            //     //max-width: 50%;
+            // }
+            // @media (min-width: $screen-lg) {
+            //     //max-width: 40%;
+            // }
         }
-        // @media (min-width: $screen-md) {
-        //     //max-width: 50%;
-        // }
-        // @media (min-width: $screen-lg) {
-        //     //max-width: 40%;
-        // }
     }
 }

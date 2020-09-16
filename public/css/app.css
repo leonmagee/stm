@@ -23641,19 +23641,23 @@ a.button.custom-button:hover {
   padding-bottom: 1.5em;
 }
 
-.sales-menu .sales-menu__form .field {
+.sales-menu .sales-menu__form .sales-menu__form--inner .field {
   width: 100%;
   -webkit-box-flex: 0;
       -ms-flex: 0;
           flex: 0;
 }
 
-.sales-menu .sales-menu__form .field.input-field {
+.sales-menu .sales-menu__form .sales-menu__form--inner .field.input-field {
   min-width: 11em;
 }
 
+.sales-menu .sales-menu__form .sales-menu__form--inner .field.input-field-users {
+  min-width: 19em;
+}
+
 @media (min-width: 768px) {
-  .sales-menu .sales-menu__form {
+  .sales-menu .sales-menu__form .sales-menu__form--inner {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -23662,7 +23666,7 @@ a.button.custom-button:hover {
             align-items: flex-end;
   }
 
-  .sales-menu .sales-menu__form .field {
+  .sales-menu .sales-menu__form .sales-menu__form--inner .field {
     margin-bottom: 0;
     margin-right: 0.9em;
   }

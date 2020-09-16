@@ -106,6 +106,13 @@ class User extends Authenticatable
         return $users;
     }
 
+    public static function getAgentsDealersActive()
+    {
+        $users_array = [1, 2, 6, 7];
+        $users = self::whereNotIn('role_id', $users_array)->orderBy('company')->get();
+        return $users;
+    }
+
     public function getMasterAgent()
     {
         $role = $this->role->id;
