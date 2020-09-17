@@ -128,6 +128,9 @@ class PurchaseController extends Controller
         // }
         $request->type = 'STM Balance';
         $request->sub_total = $total;
+        if ($total < 100) {
+            $total = $total + $this->shipping_charge;
+        }
         $request->total = $total;
 
         /**
@@ -137,9 +140,6 @@ class PurchaseController extends Controller
         /**
          * Update user balance
          */
-        if ($total < 100) {
-            $total = $total + $this->shipping_charge;
-        }
         $new_balance = $balance - $total;
         $current_user->balance = $new_balance;
         $current_user->save();
@@ -163,10 +163,10 @@ class PurchaseController extends Controller
         $user = \Auth::user();
 
         if ($request->total < 100) {
-            $total = $request->total + $this->shipping_charge;
+            //$total = $request->total + $this->shipping_charge;
             $shipping = $this->shipping_charge;
         } else {
-            $total = $request->total;
+            //$total = $request->total;
             $shipping = null;
         }
 
@@ -174,7 +174,7 @@ class PurchaseController extends Controller
         $purchase = Purchase::create([
             'user_id' => $user->id,
             'sub_total' => $request->sub_total,
-            'total' => $total,
+            'total' => $request->total,
             'shipping' => $shipping,
             'type' => $request->type,
             'status' => 2, // pending

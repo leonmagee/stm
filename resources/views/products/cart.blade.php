@@ -188,7 +188,7 @@
     console.log('two', data, actions, 'payer?', data.payer, data.payerID, data.orderID, data.payerAddress, data.payments, data.transactions);
     return actions.order.capture().then(function(details) {
         axios.post('/process-paypal', {
-          sub_total: "{{ $total }}",
+          sub_total: "{{ $subtotal }}",
           total: "{{ $paypal_total }}",
           type: 'paypal',
           //testers: true,

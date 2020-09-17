@@ -23330,8 +23330,8 @@ body.stm-body.about .middle-content-wrap .about-page .video-wrap .video-wrap-inn
 }
 
 .cart-wrapper .cart-wrapper__notification {
-  padding: 1em 2em 0;
-  margin-bottom: -1em;
+  padding: 1em 1em 0;
+  margin-bottom: -0.5em;
 }
 
 .cart-wrapper .cart-wrapper-inner {
