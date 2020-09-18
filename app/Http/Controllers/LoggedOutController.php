@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers;
 use App\Mail\ContactEmailNew;
 use App\Mail\ContactEmailNewResponse;
 use App\User;
@@ -54,7 +55,6 @@ class LoggedOutController extends Controller
      */
     public function contact_submit(Request $request)
     {
-
         $this->validate($request, [
             'name' => 'required',
             'business' => 'required',
@@ -65,6 +65,22 @@ class LoggedOutController extends Controller
         ], [
             'g-recaptcha-response.required' => 'You mush check the reCAPTCHA box.',
         ]);
+
+        $email_block_array = [
+            '.ru',
+            'petviktors',
+            'shestakovromanrsai',
+        ];
+        foreach ($email_block_array as $block) {
+            if (strpos($request->email, $block) !== false) {
+                session()->flash('message', 'Thank you! We will get in touch as soon as possible.');
+                return redirect('contact-us');
+            }
+        }
+        if (Helpers::isRussian($request->message)) {
+            session()->flash('message', 'Thank you! We will get in touch as soon as possible.');
+            return redirect('contact-us');
+        }
 
         // 1. get all admin users
         $admin_users = User::getAdminManageerEmployeeUsers();

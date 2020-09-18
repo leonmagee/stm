@@ -219,6 +219,11 @@ class Helpers
         return $site->id;
     }
 
+    public static function isRussian($text)
+    {
+        return preg_match('/[А-Яа-яЁё]/u', $text);
+    }
+
     public static function date_array()
     {
         return [
