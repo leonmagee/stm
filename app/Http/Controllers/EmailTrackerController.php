@@ -21,6 +21,16 @@ class EmailTrackerController extends Controller
         return view('vendor.emailTrakingViews.index-one-user', compact('emails', 'user'));
     }
 
+    // /**
+    //  * Sent email search
+    //  */
+    // public function postSearchDealer(Request $request)
+    // {
+    //     dd('working');
+    //     session(['mail-tracker-index-search' => $request->search]);
+    //     return redirect()->back();
+    // }
+
     /**
      * Index.
      *

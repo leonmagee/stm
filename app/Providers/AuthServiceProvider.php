@@ -34,6 +34,11 @@ class AuthServiceProvider extends ServiceProvider
             } else {
                 $request = resolve(\Illuminate\Http\Request::class);
                 $uri = $request->getUri();
+                if (!(strpos($uri, 'show-email') !== false)) {
+                    if ($user->isMasterAgent()) {
+                        return true;
+                    }
+                }
                 $matches = false;
                 $match = preg_match('/email-tracker\/show-email\/([0-9]*)/', $uri, $matches);
                 if ($match) {
