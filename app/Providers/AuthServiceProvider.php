@@ -36,7 +36,6 @@ class AuthServiceProvider extends ServiceProvider
                 $uri = $request->getUri();
                 if (!(strpos($uri, 'show-email') !== false)) {
                     if ($user->isMasterAgent()) {
-                        dd('true');
                         return true;
                     }
                 }
