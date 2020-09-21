@@ -60,10 +60,11 @@ class LoggedOutController extends Controller
             'business' => 'required',
             'email' => 'required',
             'phone' => 'required',
-            'message' => 'required',
+            'message' => 'required|max:300',
             'g-recaptcha-response' => 'required',
         ], [
             'g-recaptcha-response.required' => 'You mush check the reCAPTCHA box.',
+            'message.max' => 'The Comment is limited to 300 characters.',
         ]);
 
         $email_block_array = [
@@ -81,6 +82,7 @@ class LoggedOutController extends Controller
             session()->flash('message', 'Thank you! We will get in touch as soon as possible.');
             return redirect('contact-us');
         }
+        $message = strip_tags($request->message, '<br />');
 
         // 1. get all admin users
         $admin_users = User::getAdminManageerEmployeeUsers();
@@ -94,7 +96,7 @@ class LoggedOutController extends Controller
                     $request->business,
                     $request->email,
                     $request->phone,
-                    $request->message
+                    $message
                 ));
             }
         }
