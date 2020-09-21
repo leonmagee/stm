@@ -52,6 +52,8 @@ Route::get('rmas', 'RmaController@index');
 Route::get('rmas/{rma}', 'RmaController@show');
 
 Route::group(['middleware' => 'App\Http\Middleware\LockOutUsersManagers'], function () {
+    Route::get('sales-agents', 'PurchaseController@sales_agents');
+    Route::get('sales-agents/{agent}', 'PurchaseController@sales');
     Route::get('purchases/{purchase}', 'PurchaseController@show');
     Route::get('products-list', 'ProductController@list');
     Route::get('purchases', 'PurchaseController@index');

@@ -23677,6 +23677,14 @@ a.button.custom-button:hover {
   }
 }
 
+.agent-sales .agent-sales__item {
+  padding: 1em 2em;
+}
+
+.agent-sales .agent-sales__item:not(:last-child) {
+  border-bottom: 1px solid #ddd;
+}
+
 .sales-receipt {
   margin: 1.5em;
   border: 2px solid #ddd;

@@ -48,3 +48,12 @@
         }
     }
 }
+
+.agent-sales {
+    .agent-sales__item {
+        padding: 1em 2em;
+        &:not(:last-child) {
+            border-bottom: 1px solid #ddd;
+        }
+    }
+}

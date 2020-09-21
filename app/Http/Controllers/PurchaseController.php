@@ -414,7 +414,7 @@ class PurchaseController extends Controller
      * @param  \App\Purchase  $purchase
      * @return \Illuminate\Http\Response
      */
-    public function sales(Request $request)
+    public function sales(Request $request, $agent = false)
     {
         if ($request->starting_date) {
             $start_input = $request->starting_date;
@@ -453,17 +453,24 @@ class PurchaseController extends Controller
             ->orderby('new_date', 'DESC');
 
         $user = \Auth::user();
-        if ($user->isAdmin()) {
-            $updated_query = $default_query
-                ->whereBetween('purchases.created_at', [$start, $end]);
-            $users = User::getAgentsDealersActive();
-
-        } elseif ($site_id = $user->isMasterAgent()) {
+        $agent_user = false;
+        if (($site_id = $user->isMasterAgent()) || $agent) {
+            if ($agent) {
+                $agent_user = User::find($agent);
+                $site_id = $agent_user->master_agent_site;
+                if (!$site_id) {
+                    return redirect('/');
+                }
+            }
             $role_id = Helpers::get_role_id($site_id);
             $updated_query = $default_query
                 ->where('users.role_id', $role_id)
                 ->whereBetween('purchases.created_at', [$start, $end]);
             $users = User::where('role_id', $role_id)->orderBy('company', 'ASC')->get();
+        } elseif ($user->isAdmin()) {
+            $updated_query = $default_query
+                ->whereBetween('purchases.created_at', [$start, $end]);
+            $users = User::getAgentsDealersActive();
 
         } else {
             return redirect('/');
@@ -491,8 +498,21 @@ class PurchaseController extends Controller
             'start_input',
             'end_input',
             'users',
-            'user_id'
+            'user_id',
+            'agent_user'
         ));
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Purchase  $purchase
+     * @return \Illuminate\Http\Response
+     */
+    public function sales_agents()
+    {
+        $agents = User::where('role_id', 3)->get();
+        return view('purchases.sales-agents', compact('agents'));
     }
 
     /**

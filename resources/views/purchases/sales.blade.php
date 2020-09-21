@@ -8,7 +8,11 @@
 
   <div class="form-wrapper-inner">
 
+    @if($agent_user)
+    <h3>{{ $agent_user->company }} Sales</h3>
+    @else
     <h3>Sales</h3>
+    @endif
 
     <div class="stm-flex">
       <div class="total-sales">
