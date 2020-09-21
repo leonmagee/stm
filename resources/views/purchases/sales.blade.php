@@ -22,7 +22,7 @@
 
 
       <div class="sales-menu">
-        <form method="GET" action="sales" class="sales-menu__form">
+        <form method="GET" class="sales-menu__form">
           @csrf
           <div class="sales-menu__form--inner">
             <div class="field input-field">
