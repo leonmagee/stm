@@ -114166,16 +114166,21 @@ var Products = function (_Component) {
       //const { catsChecked, subCatsChecked } = this.state;
       var catsChecked = this.state.catsChecked;
 
+      console.log(catsChecked);
       var catsCheckedNew = [];
       if (catsChecked.includes(id)) {
         var catIndex = catsChecked.indexOf(id);
         catsChecked.splice(catIndex, 1);
         catsCheckedNew = catsChecked;
       } else {
-        catsCheckedNew = [].concat(_toConsumableArray(catsChecked), [id]);
+        // **** change to make it just one category at a time ****
+        // catsCheckedNew = [...catsChecked, id];
+        catsCheckedNew = [id];
       }
       this.setState({
-        catsChecked: catsCheckedNew
+        catsChecked: catsCheckedNew,
+        // **** change to make subcats reset every time ****
+        subCatsChecked: []
       }, function () {
         this.updateProducts();
       });

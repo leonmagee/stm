@@ -91,16 +91,21 @@ export default class Products extends Component {
     catClick(id) {
       //const { catsChecked, subCatsChecked } = this.state;
       const { catsChecked } = this.state;
+      console.log(catsChecked);
       let catsCheckedNew = [];
       if (catsChecked.includes(id)) {
         const catIndex = catsChecked.indexOf(id);
         catsChecked.splice(catIndex, 1);
         catsCheckedNew = catsChecked;
       } else {
-        catsCheckedNew = [...catsChecked, id];
+        // **** change to make it just one category at a time ****
+        // catsCheckedNew = [...catsChecked, id];
+        catsCheckedNew = [id];
       }
       this.setState({
-        catsChecked: catsCheckedNew
+        catsChecked: catsCheckedNew,
+        // **** change to make subcats reset every time ****
+        subCatsChecked: []
       }, function() {
         this.updateProducts()
       })
