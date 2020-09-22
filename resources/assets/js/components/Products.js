@@ -5,16 +5,25 @@ import ProductList from './products/ProductList';
 export default class Products extends Component {
     constructor(props) {
         super(props);
+        const chosen_cat = JSON.parse(props.chosen_cat);
+        const catsChecked = chosen_cat ? [chosen_cat] : [];
         this.state = {
             products: JSON.parse(props.products),
             productsDisplay: JSON.parse(props.products),
             categories: JSON.parse(props.categories),
             sub_cat_match: JSON.parse(props.sub_cat_match),
             sub_cats_array: JSON.parse(props.sub_cats_array),
-            catsChecked: [],
+            catsChecked: catsChecked,
             subCatsChecked: [],
             catsToggle: false
         };
+    }
+
+    componentDidMount() {
+      const { catsChecked } = this.state;
+      if (catsChecked.length) {
+        this.updateProducts();
+      }
     }
 
     toggleCats() {
@@ -89,9 +98,7 @@ export default class Products extends Component {
     }
 
     catClick(id) {
-      //const { catsChecked, subCatsChecked } = this.state;
       const { catsChecked } = this.state;
-      console.log(catsChecked);
       let catsCheckedNew = [];
       if (catsChecked.includes(id)) {
         const catIndex = catsChecked.indexOf(id);
@@ -212,8 +219,9 @@ if (document.getElementById('products')) {
   const categories = document.getElementById('products').getAttribute('categories');
   const sub_cat_match = document.getElementById('products').getAttribute('sub_cat_match');
   const sub_cats_array = document.getElementById('products').getAttribute('sub_cats_array');
+  const chosen_cat = document.getElementById('products').getAttribute('chosen_cat');
     ReactDOM.render(
-      <Products products={products} categories={categories} sub_cat_match={sub_cat_match} sub_cats_array={sub_cats_array} />,
+      <Products products={products} categories={categories} sub_cat_match={sub_cat_match} sub_cats_array={sub_cats_array} chosen_cat={chosen_cat} />,
       document.getElementById('products')
     );
 }

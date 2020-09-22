@@ -2,10 +2,8 @@
 
 namespace App\Providers;
 
+use App\Category;
 use App\Helpers;
-
-//use App\Billing\Stripe;
-
 use App\ReportType;
 use App\Settings;
 use Illuminate\Support\ServiceProvider;
@@ -26,6 +24,11 @@ class AppServiceProvider extends ServiceProvider
         view()->composer('*', function ($view) {
             $name = str_replace('.', '-', $view->getName());
             view()->share('view_name', $name);
+        });
+
+        view()->composer(['layouts.product-menu'], function ($view) {
+            $cats = Category::all();
+            $view->with(compact('cats'));
         });
 
         view()->composer(['layouts.nav-mobile-logged-out'], function ($view) {

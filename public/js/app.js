@@ -114069,13 +114069,15 @@ var Products = function (_Component) {
 
     var _this = _possibleConstructorReturn(this, (Products.__proto__ || Object.getPrototypeOf(Products)).call(this, props));
 
+    var chosen_cat = JSON.parse(props.chosen_cat);
+    var catsChecked = chosen_cat ? [chosen_cat] : [];
     _this.state = {
       products: JSON.parse(props.products),
       productsDisplay: JSON.parse(props.products),
       categories: JSON.parse(props.categories),
       sub_cat_match: JSON.parse(props.sub_cat_match),
       sub_cats_array: JSON.parse(props.sub_cats_array),
-      catsChecked: [],
+      catsChecked: catsChecked,
       subCatsChecked: [],
       catsToggle: false
     };
@@ -114083,6 +114085,15 @@ var Products = function (_Component) {
   }
 
   _createClass(Products, [{
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      var catsChecked = this.state.catsChecked;
+
+      if (catsChecked.length) {
+        this.updateProducts();
+      }
+    }
+  }, {
     key: 'toggleCats',
     value: function toggleCats() {
       var catsToggle = this.state.catsToggle;
@@ -114163,10 +114174,8 @@ var Products = function (_Component) {
   }, {
     key: 'catClick',
     value: function catClick(id) {
-      //const { catsChecked, subCatsChecked } = this.state;
       var catsChecked = this.state.catsChecked;
 
-      console.log(catsChecked);
       var catsCheckedNew = [];
       if (catsChecked.includes(id)) {
         var catIndex = catsChecked.indexOf(id);
@@ -114358,7 +114367,8 @@ if (document.getElementById('products')) {
   var categories = document.getElementById('products').getAttribute('categories');
   var sub_cat_match = document.getElementById('products').getAttribute('sub_cat_match');
   var sub_cats_array = document.getElementById('products').getAttribute('sub_cats_array');
-  __WEBPACK_IMPORTED_MODULE_1_react_dom___default.a.render(__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(Products, { products: products, categories: categories, sub_cat_match: sub_cat_match, sub_cats_array: sub_cats_array }), document.getElementById('products'));
+  var chosen_cat = document.getElementById('products').getAttribute('chosen_cat');
+  __WEBPACK_IMPORTED_MODULE_1_react_dom___default.a.render(__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(Products, { products: products, categories: categories, sub_cat_match: sub_cat_match, sub_cats_array: sub_cats_array, chosen_cat: chosen_cat }), document.getElementById('products'));
 }
 
 /***/ }),

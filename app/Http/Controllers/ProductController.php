@@ -93,7 +93,7 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $user_id = \Auth::user()->id;
         $products = Product::where('archived', 0)->get();
@@ -159,8 +159,10 @@ class ProductController extends Controller
         $sub_cat_match = json_encode($sub_cat_match);
         $sub_cats_array = json_encode($sub_cats_array);
 
+        $chosen_cat = intval($request->cat);
+
         $categories = Category::with('sub_categories')->get();
-        return view('products.index', compact('categories', 'products', 'sub_cat_match', 'sub_cats_array'));
+        return view('products.index', compact('categories', 'products', 'sub_cat_match', 'sub_cats_array', 'chosen_cat'));
     }
 
     /**
