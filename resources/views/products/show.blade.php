@@ -2,6 +2,8 @@
 
 @section('content')
 
+@include('layouts.product-menu')
+
 <div class="product-single">
   <div class="product-single__images">
     @if($product->img_url_1)

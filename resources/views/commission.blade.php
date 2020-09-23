@@ -2,8 +2,6 @@
 
 @section('content')
 
-@include('layouts.product-menu')
-
 <div class="commission-wrap">
 
   <div class="commission-header">

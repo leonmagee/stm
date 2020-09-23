@@ -390,6 +390,7 @@ class UserController extends Controller
     public function edit_profile()
     {
         if ($user = \Auth::user()) {
+            // lock out demo user account from edit page
             if ($user->id == 446) {
                 return redirect('/');
             }
