@@ -27,9 +27,9 @@
         @media (min-width: $screen-md) {
             display: flex;
             justify-content: space-between;
-            &.center {
-                justify-content: center;
-            }
+            // &.center {
+            //     justify-content: center;
+            // }
         }
         @include product_style;
         background-color: $brand-primary;
@@ -48,12 +48,21 @@
                 color: #fff;
             }
             &.search-products {
-                font-weight: 600;
-                text-transform: uppercase;
-                margin-right: 1em;
-                font-size: 1.2em;
+                // font-weight: 600;
+                //text-transform: uppercase;
+                // margin-right: 1em;
+                // font-size: 1.2em;
                 a {
+                    display: flex;
+                    align-items: center;
                     color: #fff;
+                    span {
+                        //display: inline-block;
+                    }
+                    i {
+                        font-size: 1.5em;
+                        margin-right: 0.5em;
+                    }
                 }
             }
         }
