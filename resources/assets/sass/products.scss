@@ -20,7 +20,10 @@
     padding: 1% 1% 0;
     &.linking {
         padding: 0;
-        margin-bottom: 2em;
+        margin-top: -1em;
+        margin-bottom: 1em;
+        border-radius: $border-radius;
+        overflow: hidden;
     }
     .products-header {
         padding: 1em;
