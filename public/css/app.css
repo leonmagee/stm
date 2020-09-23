@@ -22351,6 +22351,7 @@ body.stm-body.about .middle-content-wrap .about-page .video-wrap .video-wrap-inn
   -webkit-box-shadow: 1px 1px rgba(0, 0, 0, 0.075);
           box-shadow: 1px 1px rgba(0, 0, 0, 0.075);
   overflow: hidden;
+  border-radius: 4px;
 }
 
 .products-outer .product .product__cart_hover {

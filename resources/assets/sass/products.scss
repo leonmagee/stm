@@ -269,6 +269,7 @@
         position: relative;
         @include product_style;
         overflow: hidden;
+        border-radius: $border-radius;
         .product__cart_hover {
             background-color: rgba(0, 0, 0, 0.1);
             position: absolute;
