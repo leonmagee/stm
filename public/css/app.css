@@ -22225,7 +22225,7 @@ body.stm-body.about .middle-content-wrap .about-page .video-wrap .video-wrap-inn
 
 @media (min-width: 980px) {
   .products-outer .products .product {
-    margin: 2% 1% 0;
+    margin: 0.9em 1% 0.3em;
   }
 }
 
