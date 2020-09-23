@@ -40,6 +40,11 @@
               <div class="select">
                 <select name="user_id">
                   <option value="0">N/A</option>
+                  @foreach($agents as $agent)
+                  <option @if('agent-' . $agent->id == $user_id) selected @endif value="agent-{{ $agent->id }}">AGENT:
+                    {{ $agent->company }}
+                  </option>
+                  @endforeach
                   @foreach($users as $dealer)
                   <option @if($dealer->id == $user_id) selected @endif value="{{ $dealer->id }}">{{ $dealer->company }}
                   </option>

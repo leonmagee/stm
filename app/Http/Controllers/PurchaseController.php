@@ -454,6 +454,7 @@ class PurchaseController extends Controller
 
         $user = \Auth::user();
         $agent_user = false;
+        $agents = [];
         if (($site_id = $user->isMasterAgent()) || $agent) {
             if ($agent) {
                 $agent_user = User::find($agent);
@@ -471,14 +472,32 @@ class PurchaseController extends Controller
             $updated_query = $default_query
                 ->whereBetween('purchases.created_at', [$start, $end]);
             $users = User::getAgentsDealersActive();
-
+            $agents = User::getAgents();
         } else {
             return redirect('/');
         }
         $user_id = 0;
         if ($user_id = $request->user_id) {
-            $updated_query = $updated_query
-                ->where('users.id', $user_id);
+            if (strpos($user_id, 'agent-') !== false) {
+                $master_agent_id = intval(str_replace('agent-', '', $user_id));
+                if ($master_agent_id) {
+                    $agent_user = User::find($master_agent_id);
+                    $site_id = $agent_user->master_agent_site;
+                    $role_id = Helpers::get_role_id($site_id);
+                    $updated_query = $default_query
+                        ->where('users.role_id', $role_id);
+
+                    if (!$site_id) {
+                        return redirect('/');
+                    }
+
+                } else {
+                    return redirect('/');
+                }
+            } else {
+                $updated_query = $updated_query
+                    ->where('users.id', $user_id);
+            }
         }
         $monthly_data = $updated_query->get();
 
@@ -499,7 +518,8 @@ class PurchaseController extends Controller
             'end_input',
             'users',
             'user_id',
-            'agent_user'
+            'agent_user',
+            'agents'
         ));
     }
 

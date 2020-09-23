@@ -99,6 +99,12 @@ class User extends Authenticatable
         return $users;
     }
 
+    public static function getAgents()
+    {
+        $agents = self::where('role_id', 3)->get();
+        return $agents;
+    }
+
     public static function getAgentsDealers()
     {
         $users_array = [1, 2, 6];
