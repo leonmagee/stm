@@ -390,8 +390,10 @@ class UserController extends Controller
     public function edit_profile()
     {
         if ($user = \Auth::user()) {
+            if ($user->id == 446) {
+                return redirect('/');
+            }
             return view('users.edit_profile', compact('user'));
-
         } else {
             return redirect('/');
         }
