@@ -18480,7 +18480,8 @@ body.stm-body .notification {
   font-weight: 700;
   border-radius: 10px;
   padding: 0.8em 1.2em;
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
+  border-radius: 4px;
 }
 
 body.stm-body .notification.is-success {
@@ -19087,7 +19088,7 @@ body.stm-body .large-menu-logged-out li.item.links {
 body.stm-body .large-menu-logged-out li.item.links #menu-direct-links {
   display: none;
   position: absolute;
-  z-index: 1000;
+  z-index: 1001;
   background-color: #fff;
   padding: 10px 20px;
   border: 1px solid #ccc;
