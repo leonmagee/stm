@@ -334,10 +334,10 @@ class AppServiceProvider extends ServiceProvider
                     'name' => 'Total Sales',
                     'link' => '/sales',
                 ],
-                [
-                    'name' => 'Total Sales Agents',
-                    'link' => '/sales-agents',
-                ],
+                // [
+                //     'name' => 'Total Sales Agents',
+                //     'link' => '/sales-agents',
+                // ],
             ];
 
             $my_history_sub = [
