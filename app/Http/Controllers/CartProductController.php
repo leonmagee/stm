@@ -71,10 +71,9 @@ class CartProductController extends Controller
         //     var_dump($sufficient);
         //     dd('testing');
         // }
-        $shipping_charge = $this->shipping_charge;
         $shipping_max = $this->shipping_max;
 
-        return view('products.cart', compact('items', 'total', 'service_charge', 'paypal_total', 'balance', 'sufficient', 'shipping_charge', 'subtotal', 'shipping_charge', 'shipping_max'));
+        return view('products.cart', compact('items', 'total', 'service_charge', 'paypal_total', 'balance', 'sufficient', 'shipping_charge', 'subtotal', 'shipping_max'));
     }
 
     /**
