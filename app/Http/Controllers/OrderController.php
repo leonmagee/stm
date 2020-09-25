@@ -35,7 +35,8 @@ class OrderController extends Controller
     public function create()
     {
         //$carriers = Carrier::all();
-        if (\Auth::user()->isMasterAgent()) {
+        $user = \Auth::user();
+        if ($user->isMasterAgent() || $user->is_demo_account()) {
             return redirect('/');
         }
         $carriers = Carrier::whereNotIn('id', [3])->get();

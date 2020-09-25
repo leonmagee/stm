@@ -389,11 +389,8 @@ class UserController extends Controller
 
     public function edit_profile()
     {
-        if ($user = \Auth::user()) {
-            // lock out demo user account from edit page
-            if ($user->id == 446) {
-                return redirect('/');
-            }
+        $user = \Auth::user();
+        if ($user && !$user->is_demo_account()) {
             return view('users.edit_profile', compact('user'));
         } else {
             return redirect('/');
@@ -407,7 +404,12 @@ class UserController extends Controller
 
     public function edit_profile_password()
     {
-        return view('users.edit_profile_password');
+        $user = \Auth::user();
+
+        if (!$user->is_demo_account()) {
+            return view('users.edit_profile_password');
+        }
+        return redirect('/');
     }
 
     /**

@@ -191,4 +191,15 @@ class User extends Authenticatable
         return $site->id;
     }
 
+    public function is_demo_account()
+    {
+        $demo_accounts = [
+            446,
+        ];
+        if (in_array($this->id, $demo_accounts)) {
+            return true;
+        }
+        return false;
+    }
+
 }
