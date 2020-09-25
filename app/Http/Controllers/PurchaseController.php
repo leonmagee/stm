@@ -23,8 +23,8 @@ class PurchaseController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-        $this->shipping_charge = intval(env('STM_SHIPPING'));
-        $this->shipping_max = intval(env('STM_MIN_TOTAL'));
+        $this->shipping_charge = config('app.stm_shipping');
+        $this->shipping_max = config('app.stm_min_total');
     }
 
     /**

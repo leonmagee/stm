@@ -47,6 +47,10 @@ class EmailBlastController extends Controller
      */
     public function contact()
     {
+        $user = \Auth::user();
+        if ($user->is_demo_account()) {
+            return redirect('/');
+        }
         return view('email_blast.contact');
     }
 

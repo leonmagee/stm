@@ -13,8 +13,8 @@ class CartProductController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-        $this->shipping_charge = intval(env('STM_SHIPPING'));
-        $this->shipping_max = intval(env('STM_MIN_TOTAL'));
+        $this->shipping_charge = config('app.stm_shipping');
+        $this->shipping_max = config('app.stm_min_total');
     }
 
     /**
@@ -72,8 +72,9 @@ class CartProductController extends Controller
         //     dd('testing');
         // }
         $shipping_max = $this->shipping_max;
+        $shipping_default = $this->shipping_charge;
 
-        return view('products.cart', compact('items', 'total', 'service_charge', 'paypal_total', 'balance', 'sufficient', 'shipping_charge', 'subtotal', 'shipping_max'));
+        return view('products.cart', compact('items', 'total', 'service_charge', 'paypal_total', 'balance', 'sufficient', 'shipping_charge', 'subtotal', 'shipping_max', 'shipping_default'));
     }
 
     /**

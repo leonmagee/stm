@@ -193,9 +193,7 @@ class User extends Authenticatable
 
     public function is_demo_account()
     {
-        $demo_accounts = [
-            446,
-        ];
+        $demo_accounts = config('app.stm_demo_accounts');
         if (in_array($this->id, $demo_accounts)) {
             return true;
         }

@@ -85,7 +85,8 @@
     <div class="cart-wrapper__notification">
       <div class="notification larger-text center is-danger">
         {{-- <button class="delete"></button> --}}
-        Free shipping on all orders above ${{ $shipping_max}}. A ${{ $shipping_charge }} shipping charge will be applied
+        Free shipping on all orders above ${{ $shipping_max}}. A ${{ $shipping_default }} shipping charge will be
+        applied
         for all orders
         under
         ${{ $shipping_max }}.</div>
