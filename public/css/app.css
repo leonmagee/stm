@@ -18484,6 +18484,14 @@ body.stm-body .notification {
   border-radius: 4px;
 }
 
+body.stm-body .notification.larger-text {
+  font-size: 1.1em;
+}
+
+body.stm-body .notification.center {
+  text-align: center;
+}
+
 body.stm-body .notification.is-success {
   color: #fff;
   text-shadow: 1px 1px #05d19b;

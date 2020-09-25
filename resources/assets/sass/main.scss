@@ -88,6 +88,12 @@ body.stm-body {
         padding: 0.8em 1.2em;
         margin-bottom: 2rem;
         border-radius: $border-radius;
+        &.larger-text {
+            font-size: 1.1em;
+        }
+        &.center {
+            text-align: center;
+        }
         &.is-success {
             color: #fff;
             text-shadow: 1px 1px darken($color-green, 2%);

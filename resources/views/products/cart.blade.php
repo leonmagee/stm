@@ -83,8 +83,8 @@
       <div class="stm-cart__item--delete"></div>
     </div>
     <div class="cart-wrapper__notification">
-      <div class="notification is-danger">
-        <button class="delete"></button>
+      <div class="notification larger-text center is-danger">
+        {{-- <button class="delete"></button> --}}
         Free shipping on all orders above $100. A $10 shipping charge will be applied for all orders
         under
         $100.</div>
