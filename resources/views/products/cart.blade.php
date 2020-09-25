@@ -85,9 +85,10 @@
     <div class="cart-wrapper__notification">
       <div class="notification larger-text center is-danger">
         {{-- <button class="delete"></button> --}}
-        Free shipping on all orders above $100. A $10 shipping charge will be applied for all orders
+        Free shipping on all orders above ${{ $shipping_max}}. A ${{ $shipping_charge }} shipping charge will be applied
+        for all orders
         under
-        $100.</div>
+        ${{ $shipping_max }}.</div>
     </div>
     @else
     <div class="stm-cart-empty">
@@ -99,9 +100,9 @@
 <div class="cart-wrapper-right cart-wrapper-inner">
   <h3>Checkout <i class="far fa-credit-card"></i></h3>
   <div class="stm-cart-footer">
+    @if(count($items))
     <a class="button custom-button stm-total"><span class="text">Total Due:</span><span
         class="total">${{ number_format($total, 2) }}</span></a>
-    @if(count($items))
     <a class="button custom-button stm-credit modal-open">
       <img src="{{ URL::asset('img/stm_logo_short.png') }}" />
       <span>

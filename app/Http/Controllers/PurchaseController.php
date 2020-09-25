@@ -23,7 +23,8 @@ class PurchaseController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-        $this->shipping_charge = 10;
+        $this->shipping_charge = intval(env('STM_SHIPPING'));
+        $this->shipping_max = intval(env('STM_MIN_TOTAL'));
     }
 
     /**
@@ -128,7 +129,7 @@ class PurchaseController extends Controller
         // }
         $request->type = 'STM Balance';
         $request->sub_total = $total;
-        if ($total < 100) {
+        if ($total < $this->shipping_max) {
             $total = $total + $this->shipping_charge;
         }
         $request->total = $total;
@@ -157,12 +158,11 @@ class PurchaseController extends Controller
      */
     public function store(Request $request)
     {
-
         //\Log::debug($request);
         // 0. Get logged in user
         $user = \Auth::user();
 
-        if ($request->total < 100) {
+        if ($request->total < $this->shipping_max) {
             //$total = $request->total + $this->shipping_charge;
             $shipping = $this->shipping_charge;
         } else {
