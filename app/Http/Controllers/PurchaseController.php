@@ -162,7 +162,7 @@ class PurchaseController extends Controller
         // 0. Get logged in user
         $user = \Auth::user();
 
-        if ($request->total < $this->shipping_max) {
+        if ($request->sub_total < $this->shipping_max) {
             //$total = $request->total + $this->shipping_charge;
             $shipping = $this->shipping_charge;
         } else {
@@ -223,6 +223,8 @@ class PurchaseController extends Controller
 
         // 5. Email user who made purchse
         $header_text = "<strong>Hello " . $user->name . "!</strong><br />Thanks for giving us the opportunity to serve you. We truly appreciate your business, and we're grateful for the trust you've placed in us. Your tracking number will be provided ASAP when it becomes available. CHEERS!!";
+
+        //dd($purchase);
 
         \Mail::to($user)->send(new PurchaseEmail(
             $user,
