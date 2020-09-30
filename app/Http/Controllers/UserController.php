@@ -1281,13 +1281,27 @@ class UserController extends Controller
 
     public function search_page(Request $request)
     {
+        $user = \Auth::user();
         $search = $request->user;
-        $users = User::query()
-            ->where('name', 'LIKE', "%{$search}%")
-            ->orWhere('email', 'LIKE', "%{$search}%")
-            ->orWhere('company', 'LIKE', "%{$search}%")
-            ->orWhere('phone', 'LIKE', "%{$search}%")
-            ->get();
+        if ($user->isAdminManagerEmployee()) {
+            $users = User::query()
+                ->where('name', 'LIKE', "%{$search}%")
+                ->orWhere('email', 'LIKE', "%{$search}%")
+                ->orWhere('company', 'LIKE', "%{$search}%")
+                ->orWhere('phone', 'LIKE', "%{$search}%")
+                ->get();
+        } elseif ($site_id = $user->isMasterAgent()) {
+            $role_id = Helpers::get_role_id($site_id);
+            $users = User::query()
+                ->where('role_id', $role_id)
+                ->where('name', 'LIKE', "%{$search}%")
+                ->orWhere('email', 'LIKE', "%{$search}%")
+                ->orWhere('company', 'LIKE', "%{$search}%")
+                ->orWhere('phone', 'LIKE', "%{$search}%")
+                ->get();
+        } else {
+            return redirect('/');
+        }
 
         return view('users.search-results', compact('users', 'search'));
     }

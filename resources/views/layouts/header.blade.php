@@ -15,24 +15,8 @@
       @if($logged_in_user->isAdmin())
 
       <div class="large-menu">
-        <div class="search-wrap">
-          <form method="POST" action="/search-user">
-            @csrf
-            <input type="text" class="search" name="user_search" placeholder="Search..." />
-            <button type="submit" class="submit">
-              <i class="fas fa-search"></i>
-            </button>
-          </form>
-        </div>
+        @include('layouts.search-user')
         <div class="field has-addons">
-          {{-- <p class="control">
-            <a class="button cart" href="/cart">
-              <span class="icon is-small">
-                <i class="fas fa-cart-plus"></i>
-              </span>
-              <span class="text">Cart</span>
-            </a>
-          </p> --}}
           <p class="control">
             <a class="button type" href="/settings">
               <span class="icon is-small">
@@ -113,31 +97,13 @@
             </a>
           </p>
         </div>
-
-        <div class="search-wrap">
-          <form method="POST" action="/search-user">
-            @csrf
-            <input type="text" class="search" name="user_search" placeholder="Search..." />
-            <button type="submit" class="submit">
-              <i class="fas fa-search"></i>
-            </button>
-          </form>
-        </div>
-
+        @include('layouts.search-user')
       </div>
 
       @elseif($logged_in_user->isManager())
 
       <div class="large-menu">
-        <div class="search-wrap">
-          <form method="POST" action="/search-user">
-            @csrf
-            <input type="text" class="search" name="user_search" placeholder="Search..." />
-            <button type="submit" class="submit">
-              <i class="fas fa-search"></i>
-            </button>
-          </form>
-        </div>
+        @include('layouts.search-user')
         <div class="field has-addons">
           <p class="control">
             <a class="button type" href="/settings">
@@ -224,15 +190,7 @@
 
       @elseif($logged_in_user->isEmployee())
       <div class="large-menu">
-        <div class="search-wrap">
-          <form method="POST" action="/search-user">
-            @csrf
-            <input type="text" class="search" name="user_search" placeholder="Search..." />
-            <button type="submit" class="submit">
-              <i class="fas fa-search"></i>
-            </button>
-          </form>
-        </div>
+        @include('layouts.search-user')
         <div class="field has-addons">
           <p class="control">
             <a class="button type not-link">
@@ -321,26 +279,13 @@
 
 
       <div class="large-menu">
+        @if($logged_in_user->isMasterAgent())
+        @include('layouts.search-user')
+        @endif
         <div class="field available-credit">
           Available Credit: <span>${{ number_format(Auth::user()->balance, 2) }}</span>
         </div>
         <div class="field has-addons">
-          {{-- <p class="control">
-            <a href="/redeem-credit" class="button user">
-              <span class="icon is-small">
-                <i class="fi flaticon-security-on"></i>
-              </span>
-              <span class="text">Redeem Credit</span>
-            </a>
-          </p> --}}
-          {{-- <p class="control">
-            <a href="/order-sims" class="button user">
-              <span class="icon is-small">
-                <i class="fi flaticon-sim"></i>
-              </span>
-              <span class="text">Order Free Sims</span>
-            </a>
-          </p> --}}
           <p class="control">
             <a href="/your-purchases" class="button user">
               <span class="icon is-small">

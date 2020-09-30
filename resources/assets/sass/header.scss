@@ -85,7 +85,7 @@
                 border-radius: 5px;
                 background-color: white;
                 display: inline-block;
-                padding: 5px 8px;
+                padding: 3px 8px;
                 display: flex;
                 align-items: center;
                 height: 100%;
@@ -93,6 +93,7 @@
                     font-size: 0.8em !important;
                     padding: 2px 5px;
                     margin-right: 5px;
+                    border: none;
                 }
                 button.submit {
                     color: #fff;
@@ -107,8 +108,31 @@
         @media (min-width: $screen-md) {
             .large-menu {
                 //display: block;
+                //background: tomato;
                 display: flex;
                 align-items: center;
+                margin-bottom: 0;
+                .field {
+                    margin-bottom: 0;
+                    .form-element {
+                        display: flex;
+                    }
+                    &.search-field {
+                        margin-right: 1rem;
+                    }
+                    .input-wrap {
+                        height: 2.25em;
+                        //background: green;
+                        input {
+                            border: none;
+                            border-radius: 4px 0 0 4px;
+                            box-shadow: none;
+                            padding: 0.5em 1em;
+                        }
+                        //display: inline-flex;
+                        line-height: 1.5;
+                    }
+                }
                 // &.agent-top {
                 //     > div {
                 //         margin-bottom: 0.6em;
@@ -231,6 +255,14 @@
             }
             i {
                 color: $brand-primary;
+            }
+            &.search-submit {
+                background-color: lighten($brand-primary, 3%);
+                //background-color: lighten($info, 7%);
+                //background-color: #999;
+                i {
+                    color: #fff;
+                }
             }
             &.online {
                 color: #fff;

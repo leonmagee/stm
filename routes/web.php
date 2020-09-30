@@ -132,6 +132,8 @@ Route::post('order-sims', 'OrderController@store');
 Route::get('redeem-credit', 'UserController@redeemCredit');
 Route::post('redeem-credit', 'UserController@redeemCreditSubmit');
 Route::get('login-tracker', 'UserLoginLogoutController@index');
+Route::post('search-user', 'UserController@search');
+Route::get('search-user', 'UserController@search_page');
 
 Route::group(['middleware' => 'App\Http\Middleware\LockOutUsers'], function () {
     Route::get('login-tracker/{user}', 'UserLoginLogoutController@show');
@@ -143,8 +145,6 @@ Route::group(['middleware' => 'App\Http\Middleware\LockOutUsers'], function () {
     Route::post('add-rma-note/{rma}', 'RmaNoteController@store');
     Route::get('users', 'UserController@index')->name('users');
     Route::get('all-users', 'UserController@all_users')->name('all-users');
-    Route::post('search-user', 'UserController@search');
-    Route::get('search-user', 'UserController@search_page');
 });
 
 Route::group(['middleware' => 'App\Http\Middleware\LockOutUsersManagers'], function () {

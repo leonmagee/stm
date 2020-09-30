@@ -205,6 +205,13 @@ $(".product-single__images--item").hover(function() {
 });
 
 /**
+ * Search Form Submit
+ */
+$("a#user-search-submit").click(function() {
+  $('#user-search-form').submit();
+})
+
+/**
  * JQuery Zoom
  */
 for(let i = 1; i < (number_images + 1); ++i) {
