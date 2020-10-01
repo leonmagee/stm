@@ -1289,15 +1289,19 @@ class UserController extends Controller
                 ->orWhere('email', 'LIKE', "%{$search}%")
                 ->orWhere('company', 'LIKE', "%{$search}%")
                 ->orWhere('phone', 'LIKE', "%{$search}%")
+                ->orderBy('company', 'ASC')
                 ->get();
         } elseif ($site_id = $user->isMasterAgent()) {
             $role_id = Helpers::get_role_id($site_id);
             $users = User::query()
                 ->where('role_id', $role_id)
-                ->where('name', 'LIKE', "%{$search}%")
-                ->orWhere('email', 'LIKE', "%{$search}%")
-                ->orWhere('company', 'LIKE', "%{$search}%")
-                ->orWhere('phone', 'LIKE', "%{$search}%")
+                ->where(function ($query) use ($search) {
+                    $query->where('name', 'LIKE', "%{$search}%")
+                        ->orWhere('email', 'LIKE', "%{$search}%")
+                        ->orWhere('company', 'LIKE', "%{$search}%")
+                        ->orWhere('phone', 'LIKE', "%{$search}%");
+                })
+                ->orderBy('company', 'ASC')
                 ->get();
         } else {
             return redirect('/');
