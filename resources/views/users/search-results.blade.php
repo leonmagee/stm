@@ -28,7 +28,11 @@ Search Results for <span>{{ $search }}</span>
     </div>
     <div class="divider hide-mobile"></div>
     <div class="detail hide-mobile">
+      @if($admin)
       <a class="balance" href="transaction-change-credit/{{ $user->id }}">${{ number_format($user->balance, 2) }}</a>
+      @else
+      ${{ number_format($user->balance, 2) }}
+      @endif
     </div>
 
 

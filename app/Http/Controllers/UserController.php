@@ -1283,8 +1283,10 @@ class UserController extends Controller
     {
         $user = \Auth::user();
         $search = $request->user;
+        $admin = false;
         if ($user->isAdminManagerEmployee()) {
             $search_route = 'users';
+            $admin = true;
             $users = User::query()
                 ->where('name', 'LIKE', "%{$search}%")
                 ->orWhere('email', 'LIKE', "%{$search}%")
@@ -1309,7 +1311,7 @@ class UserController extends Controller
             return redirect('/');
         }
 
-        return view('users.search-results', compact('users', 'search', 'search_route'));
+        return view('users.search-results', compact('users', 'search', 'search_route', 'admin'));
     }
 
     public function redeemCredit()
