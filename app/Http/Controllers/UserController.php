@@ -1284,6 +1284,7 @@ class UserController extends Controller
         $user = \Auth::user();
         $search = $request->user;
         if ($user->isAdminManagerEmployee()) {
+            $search_route = 'users';
             $users = User::query()
                 ->where('name', 'LIKE', "%{$search}%")
                 ->orWhere('email', 'LIKE', "%{$search}%")
@@ -1292,6 +1293,7 @@ class UserController extends Controller
                 ->orderBy('company', 'ASC')
                 ->get();
         } elseif ($site_id = $user->isMasterAgent()) {
+            $search_route = 'dealer';
             $role_id = Helpers::get_role_id($site_id);
             $users = User::query()
                 ->where('role_id', $role_id)
@@ -1307,7 +1309,7 @@ class UserController extends Controller
             return redirect('/');
         }
 
-        return view('users.search-results', compact('users', 'search'));
+        return view('users.search-results', compact('users', 'search', 'search_route'));
     }
 
     public function redeemCredit()

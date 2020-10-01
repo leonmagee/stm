@@ -12,7 +12,7 @@ Search Results for <span>{{ $search }}</span>
   <div class="allUsersItem">
     <div class="divider"></div>
     <div class="detail">
-      <a href="/users/{{ $user->id }}">{{ $user->company }}</a>
+      <a href="/{{ $search_route }}/{{ $user->id }}">{{ $user->company }}</a>
     </div>
     <div class="divider"></div>
     <div class="detail">
