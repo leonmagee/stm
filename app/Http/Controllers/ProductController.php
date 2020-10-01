@@ -95,8 +95,18 @@ class ProductController extends Controller
      */
     public function index(Request $request)
     {
+        //$cats = Category::all();
+        //dd($cats);
         $user_id = \Auth::user()->id;
-        $products = Product::where('archived', 0)->get();
+        // $products = Product::join('product_categories', 'products.id', 'product_categories.product_id')
+        //     ->where('products.archived', 0)
+        //     ->orderBy('products.created_at', 'DESC')
+        //     ->get();
+
+        $products = Product::where('products.archived', 0)
+            ->orderBy('created_at', 'DESC')
+            ->get();
+
         foreach ($products as $product) {
             $product->img_url_1 = $product->get_cloudinary_thumbnail(600, 600);
 
