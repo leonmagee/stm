@@ -30955,6 +30955,11 @@ $('.modal-open, #layout-modal .modal-close, #layout-modal .modal-close-button').
   $('.modal#layout-modal').toggleClass('is-active');
 });
 
+$('.modal-open-2, #layout-modal-2 .modal-close, #layout-modal-2 .modal-close-button').click(function () {
+  console.log('clickz...');
+  $('.modal#layout-modal-2').toggleClass('is-active');
+});
+
 $('.modal-open-transfer-1, #layout-modal-transfer-1 .modal-close, #layout-modal-transfer-1 .modal-close-button').click(function () {
   $('.modal#layout-modal-transfer-1').toggleClass('is-active');
 });

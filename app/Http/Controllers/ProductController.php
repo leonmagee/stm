@@ -671,6 +671,20 @@ class ProductController extends Controller
     }
 
     /**
+     * /Dupicate the Product instance
+     *
+     * @param  \App\Product  $product
+     * @return \Illuminate\Http\Response
+     */
+    public function duplicate(Product $product)
+    {
+        \Log::debug('product duplicated NEW...');
+        $product->duplicate();
+        return redirect()->back();
+        //dd($product);
+    }
+
+    /**
      * Replace image with icon
      */
     public static function img_replace($content)

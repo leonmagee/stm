@@ -330,6 +330,7 @@
   <div class="control">
     <button class="button is-primary call-loader" type="submit">Update Product</button>
     <a class="button is-danger modal-open call-loader margin-left" href="#">Delete Product</a>
+    <a class="button is-info modal-open-2 call-loader margin-left" href="#">Duplicate Product</a>
   </div>
 </div>
 
@@ -368,5 +369,14 @@
 <a class="button is-danger call-loader" href="/products/delete/{{ $product->id }}">Delete Product</a>
 <a href="#" class="modal-close-button button is-primary">Cancel</a>
 
+
+@endsection
+
+@section('modal-2')
+
+<h3 class="title">Are You Sure?</h3>
+
+<a class="button is-info call-loader" href="/products/duplicate/{{ $product->id }}">Dupliacate Product</a>
+<a href="#" class="modal-close-button button is-primary">Cancel</a>
 
 @endsection

@@ -58,6 +58,26 @@
   </div>
   @endif
 
+  @hassection('modal-2')
+  <div class="modal" id="layout-modal-2">
+
+    <div class="modal-background"></div>
+
+    <div class="modal-content">
+
+      <div class="modal-box">
+
+        @yield('modal-2')
+
+      </div>
+
+    </div>
+
+    <button class="modal-close-2 is-large" aria-label="close"></button>
+
+  </div>
+  @endif
+
   @include('layouts.footer')
 
   @include('layouts.scripts')

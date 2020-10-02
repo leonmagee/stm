@@ -136,4 +136,25 @@ class Product extends Model
 
     }
 
+    public function duplicate()
+    {
+        //copy attributes
+        $new = $this->replicate();
+
+        //save model before you recreate relations (so it has an id)
+        $new->push();
+
+        //reset relations on EXISTING MODEL (this way you can control which ones will be loaded
+        // $this->relations = [];
+
+        // //load relations on EXISTING MODEL
+        // $this->load('relation1', 'relation2');
+
+        // //re-sync everything
+        // foreach ($this->relations as $relationName => $values) {
+        //     $new->{$relationName}()->sync($values);
+        // }
+
+    }
+
 }
