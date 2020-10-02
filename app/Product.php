@@ -184,7 +184,7 @@ class Product extends Model
                 ProductVariation::create([
                     'product_id' => $copy->id,
                     'text' => $item->text,
-                    'quantity' => $item->quantity,
+                    'quantity' => 0,
                 ]);
             }
         }
