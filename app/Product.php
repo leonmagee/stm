@@ -9,6 +9,14 @@ class Product extends Model
         return $this->hasMany(ProductAttribute::class);
     }
 
+    /**
+     * This is necessary because 'attributes' functions differently on $this...
+     */
+    public function product_attributes()
+    {
+        return $this->hasMany(ProductAttribute::class);
+    }
+
     public function variations()
     {
         return $this->hasMany(ProductVariation::class);
@@ -138,23 +146,50 @@ class Product extends Model
 
     public function duplicate()
     {
-        //copy attributes
-        $new = $this->replicate();
+        $copy = $this->replicate();
+        $categories = $this->categories;
+        $copy->name = $copy->name . ' - COPY';
+        $copy->archived = 1;
+        $copy->push();
+        $attributes = $this->product_attributes;
+        if (count($attributes)) {
+            foreach ($attributes as $item) {
+                ProductAttribute::create([
+                    'product_id' => $copy->id,
+                    'text' => $item->text,
+                ]);
+            }
+        }
+        $categories = $this->categories;
+        if (count($categories)) {
+            foreach ($categories as $item) {
+                ProductCategories::create([
+                    'product_id' => $copy->id,
+                    'category_id' => $item->category_id,
+                ]);
+            }
+        }
+        $sub_categories = $this->sub_categories;
+        if (count($sub_categories)) {
+            foreach ($sub_categories as $item) {
+                ProductSubCategories::create([
+                    'product_id' => $copy->id,
+                    'sub_category_id' => $item->sub_category_id,
+                ]);
+            }
+        }
+        $variations = $this->variations;
+        if (count($variations)) {
+            foreach ($variations as $item) {
+                ProductVariation::create([
+                    'product_id' => $copy->id,
+                    'text' => $item->text,
+                    'quantity' => $item->quantity,
+                ]);
+            }
+        }
 
-        //save model before you recreate relations (so it has an id)
-        $new->push();
-
-        //reset relations on EXISTING MODEL (this way you can control which ones will be loaded
-        // $this->relations = [];
-
-        // //load relations on EXISTING MODEL
-        // $this->load('relation1', 'relation2');
-
-        // //re-sync everything
-        // foreach ($this->relations as $relationName => $values) {
-        //     $new->{$relationName}()->sync($values);
-        // }
-
+        return $copy->id;
     }
 
 }

@@ -679,8 +679,8 @@ class ProductController extends Controller
     public function duplicate(Product $product)
     {
         \Log::debug('product duplicated NEW...');
-        $product->duplicate();
-        return redirect()->back();
+        $new_id = $product->duplicate();
+        return redirect('/products/edit/' . $new_id);
         //dd($product);
     }
 
