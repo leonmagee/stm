@@ -124443,7 +124443,7 @@ var Products = /*#__PURE__*/function (_Component) {
 
     _this = _super.call(this, props);
     var chosen_cat = JSON.parse(props.chosen_cat);
-    var catsChecked = chosen_cat ? [chosen_cat] : [];
+    var catsChecked = chosen_cat ? [chosen_cat] : [1];
     _this.state = {
       products: JSON.parse(props.products),
       productsDisplay: JSON.parse(props.products),
@@ -124536,9 +124536,9 @@ var Products = /*#__PURE__*/function (_Component) {
 
           if (match) {
             return true;
-          } else {
-            return false;
           }
+
+          return false;
         });
       } else {
         productsUpdated = products;
@@ -124628,7 +124628,7 @@ var Products = /*#__PURE__*/function (_Component) {
               });
             }
 
-            var keyName = 'sub-' + j;
+            var keyName = "sub-".concat(j);
             return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
               key: keyName,
               onClick: function onClick() {
@@ -124649,10 +124649,10 @@ var Products = /*#__PURE__*/function (_Component) {
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, category.name), icon), subCats);
       });
       var catsList = categories.map(function (category, i) {
-        var buttonClass = "button is-default is-small";
+        var buttonClass = 'button is-default is-small';
 
         if (catsChecked.includes(category.id)) {
-          buttonClass = "button is-selected is-small";
+          buttonClass = 'button is-selected is-small';
         }
 
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
