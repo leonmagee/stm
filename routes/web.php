@@ -56,6 +56,7 @@ Route::group(['middleware' => 'App\Http\Middleware\LockOutUsersManagers'], funct
     //Route::get('sales-agents/{agent}', 'PurchaseController@sales');
     Route::get('purchases/{purchase}', 'PurchaseController@show');
     Route::get('products-list', 'ProductController@list');
+    Route::get('products-sort', 'ProductController@sort');
     Route::get('purchases', 'PurchaseController@index');
     //Route::get('purchase-email-test', 'PurchaseController@store_test');
     Route::post('update-shipping-info', 'PurchaseController@update_shipping');

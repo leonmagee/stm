@@ -23553,6 +23553,11 @@ a.button.custom-button:hover {
   border-top: 1px solid #ddd;
 }
 
+.list-group .list-group-item {
+  padding: 1em;
+  border-bottom: 1px solid #e7e7e7;
+}
+
 .xdsoft_datetimepicker {
   box-shadow: 0 5px 15px -5px rgba(0, 0, 0, 0.506);
   background: #fff;

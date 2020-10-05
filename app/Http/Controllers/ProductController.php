@@ -184,6 +184,17 @@ class ProductController extends Controller
         return view('products.list');
     }
 
+    /**
+     * Display a listing of the resource for sorting
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function sort()
+    {
+        $products = Product::all();
+        return view('products.sort', compact('products'));
+    }
+
     // public function index_carousel()
     // {
     //     $products = self::product_data();
