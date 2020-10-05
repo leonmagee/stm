@@ -197,19 +197,33 @@ export default class Products extends Component {
         });
 
         const catsList = categories.map((category, i) => {
-            let buttonClass = 'button is-default is-small';
+            // let buttonClass = 'button is-default is-small';
+            let buttonElement = (
+                <button
+                    onClick={() => this.catClick(category.id)}
+                    className="button is-default is-small"
+                >
+                    {category.name}
+                </button>
+            );
             if (catsChecked.includes(category.id)) {
-                buttonClass = 'button is-selected is-small';
+                // buttonClass = 'button is-selected is-small';
+                buttonElement = (
+                    <button className="button is-selected is-small">
+                        {category.name}
+                    </button>
+                );
             }
 
             return (
                 <div key={i}>
-                    <button
+                    {buttonElement}
+                    {/* <button
                         onClick={() => this.catClick(category.id)}
                         className={buttonClass}
                     >
-                        {category.name}
-                    </button>
+                    {category.name}
+                    </button> */}
                 </div>
             );
         });

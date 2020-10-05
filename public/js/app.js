@@ -127383,20 +127383,24 @@ var Products = /*#__PURE__*/function (_Component) {
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, category.name), icon), subCats);
       });
       var catsList = categories.map(function (category, i) {
-        var buttonClass = 'button is-default is-small';
+        // let buttonClass = 'button is-default is-small';
+        var buttonElement = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          onClick: function onClick() {
+            return _this2.catClick(category.id);
+          },
+          className: "button is-default is-small"
+        }, category.name);
 
         if (catsChecked.includes(category.id)) {
-          buttonClass = 'button is-selected is-small';
+          // buttonClass = 'button is-selected is-small';
+          buttonElement = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+            className: "button is-selected is-small"
+          }, category.name);
         }
 
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           key: i
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-          onClick: function onClick() {
-            return _this2.catClick(category.id);
-          },
-          className: buttonClass
-        }, category.name));
+        }, buttonElement);
       });
       var menu = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "product-cats"
