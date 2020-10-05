@@ -18827,6 +18827,7 @@ body.stm-body .add-padding {
 
   .header-wrap .header-area .large-menu .field {
     margin-bottom: 0;
+    background: blue;
   }
 
   .header-wrap .header-area .large-menu .field .form-element {
@@ -18838,15 +18839,18 @@ body.stm-body .add-padding {
   }
 
   .header-wrap .header-area .large-menu .field .input-wrap {
-    height: 2.25em;
+    display: block;
+    display: flex;
     line-height: 1.5;
   }
 
   .header-wrap .header-area .large-menu .field .input-wrap input {
+    display: block;
     border: none;
     border-radius: 4px 0 0 4px;
     box-shadow: none;
-    padding: 0.5em 1em;
+    flex: 1;
+    padding-left: 0.7em;
   }
 
   .header-wrap .header-area .large-menu i {

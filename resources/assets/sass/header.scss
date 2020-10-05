@@ -120,14 +120,17 @@
                     &.search-field {
                         margin-right: 1rem;
                     }
+                    background: blue;
                     .input-wrap {
-                        height: 2.25em;
-                        //background: green;
+                        display: block;
+                        display: flex;
                         input {
+                            display: block;
                             border: none;
                             border-radius: 4px 0 0 4px;
                             box-shadow: none;
-                            padding: 0.5em 1em;
+                            flex: 1;
+                            padding-left: 0.7em;
                         }
                         //display: inline-flex;
                         line-height: 1.5;
