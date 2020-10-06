@@ -21,6 +21,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        //Product::observe(ProductObserver::class);
         view()->composer('*', function ($view) {
             $name = str_replace('.', '-', $view->getName());
             view()->share('view_name', $name);

@@ -108,24 +108,25 @@ export default class Products extends Component {
         const { catsChecked } = this.state;
         let catsCheckedNew = [];
         if (catsChecked.includes(id)) {
-            const catIndex = catsChecked.indexOf(id);
-            catsChecked.splice(catIndex, 1);
-            catsCheckedNew = catsChecked;
+            // deprecated - you can't deselect a category
+            // const catIndex = catsChecked.indexOf(id);
+            // catsChecked.splice(catIndex, 1);
+            // catsCheckedNew = catsChecked;
         } else {
             // **** change to make it just one category at a time ****
             // catsCheckedNew = [...catsChecked, id];
             catsCheckedNew = [id];
+            this.setState(
+                {
+                    catsChecked: catsCheckedNew,
+                    // **** change to make subcats reset every time ****
+                    subCatsChecked: [],
+                },
+                function() {
+                    this.updateProducts();
+                }
+            );
         }
-        this.setState(
-            {
-                catsChecked: catsCheckedNew,
-                // **** change to make subcats reset every time ****
-                subCatsChecked: [],
-            },
-            function() {
-                this.updateProducts();
-            }
-        );
     }
 
     subCatClick(id) {

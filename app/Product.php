@@ -192,4 +192,14 @@ class Product extends Model
         return $copy->id;
     }
 
+    /**
+     * @todo this won't work without upgrading to Laravel 5.7?
+     */
+    // public function saveQuietly()
+    // {
+    //     return static::withoutEvents(function () {
+    //         return $this->save();
+    //     });
+    // }
+
 }

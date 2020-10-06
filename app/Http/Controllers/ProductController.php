@@ -191,7 +191,13 @@ class ProductController extends Controller
      */
     public function sort()
     {
-        $products = Product::all();
+        $products = Product::orderBy('created_at', 'DESC')->get();
+        $count = 1;
+        foreach ($products as $product) {
+            $product->order = $count;
+            $product->save();
+            $count++;
+        }
         return view('products.sort', compact('products'));
     }
 

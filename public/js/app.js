@@ -127288,23 +127288,22 @@ var Products = /*#__PURE__*/function (_Component) {
       var catsChecked = this.state.catsChecked;
       var catsCheckedNew = [];
 
-      if (catsChecked.includes(id)) {
-        var catIndex = catsChecked.indexOf(id);
-        catsChecked.splice(catIndex, 1);
-        catsCheckedNew = catsChecked;
+      if (catsChecked.includes(id)) {// deprecated - you can't deselect a category
+        // const catIndex = catsChecked.indexOf(id);
+        // catsChecked.splice(catIndex, 1);
+        // catsCheckedNew = catsChecked;
       } else {
         // **** change to make it just one category at a time ****
         // catsCheckedNew = [...catsChecked, id];
         catsCheckedNew = [id];
+        this.setState({
+          catsChecked: catsCheckedNew,
+          // **** change to make subcats reset every time ****
+          subCatsChecked: []
+        }, function () {
+          this.updateProducts();
+        });
       }
-
-      this.setState({
-        catsChecked: catsCheckedNew,
-        // **** change to make subcats reset every time ****
-        subCatsChecked: []
-      }, function () {
-        this.updateProducts();
-      });
     }
   }, {
     key: "subCatClick",
