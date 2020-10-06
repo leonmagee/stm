@@ -144,6 +144,35 @@ class Product extends Model
 
     }
 
+    public function update_order($order)
+    {
+        //if (is_null($this->order)) {
+        //$this->order = Product::max('position') + 1;
+        $this->order = $order;
+        $this->save();
+        $products = Product::where('id', '!=', $this->id)
+            ->where('order', '>=', $order)
+            ->get();
+        foreach ($products as $product) {
+            $product->order++;
+            $product->save();
+        }
+        //}
+    }
+
+    public function update_order_delete()
+    {
+        if ($this->order) {
+            $products = Product::where('id', '!=', $this->id)
+                ->where('order', '>=', $this->order)
+                ->get();
+            foreach ($products as $product) {
+                $product->order--;
+                $product->save();
+            }
+        }
+    }
+
     public function duplicate()
     {
         $copy = $this->replicate();
@@ -188,6 +217,8 @@ class Product extends Model
                 ]);
             }
         }
+
+        $copy->update_order(1);
 
         return $copy->id;
     }

@@ -104,7 +104,7 @@ class ProductController extends Controller
         //     ->get();
 
         $products = Product::where('products.archived', 0)
-            ->orderBy('created_at', 'DESC')
+            ->orderBy('order', 'ASC')
             ->get();
 
         foreach ($products as $product) {
@@ -191,13 +191,21 @@ class ProductController extends Controller
      */
     public function sort()
     {
-        $products = Product::orderBy('created_at', 'DESC')->get();
-        $count = 1;
-        foreach ($products as $product) {
-            $product->order = $count;
-            $product->save();
-            $count++;
-        }
+        // $ouput_array = [];
+        // $categories = Category::all();
+        // foreach($categories as $category) {
+
+        //   $products = Product::join()->orderBy('order', 'ASC')->get();
+        //   $output_array[$category->name] = 'xxx';
+        // }
+        // dd($categories);
+        // $count = 1;
+        // foreach ($products as $product) {
+        //     $product->order = $count;
+        //     $product->save();
+        //     $count++;
+        // }
+        $products = Product::orderBy('order', 'ASC')->get();
         return view('products.sort', compact('products'));
     }
 
@@ -309,6 +317,8 @@ class ProductController extends Controller
             'tab_img_url_7' => $tab_url_7,
             'tab_img_url_8' => $tab_url_8,
         ]);
+
+        $product->update_order(1);
 
         // 1. Create new attributes
         foreach ($request->attribute_names as $attribute) {
@@ -680,6 +690,8 @@ class ProductController extends Controller
         $attributes_delete = ProductAttribute::where('product_id', $product->id)->delete();
         // 5. delete from product_variations
         $attributes_delete = ProductVariation::where('product_id', $product->id)->delete();
+        // 5a change order
+        $product->update_order_delete();
         // 6. finally, delete product
         $product->delete();
         // 7. flash and redirect
@@ -695,10 +707,9 @@ class ProductController extends Controller
      */
     public function duplicate(Product $product)
     {
-        \Log::debug('product duplicated NEW...');
+        //\Log::debug('product duplicated NEW...');
         $new_id = $product->duplicate();
         return redirect('/products/edit/' . $new_id);
-        //dd($product);
     }
 
     /**
@@ -712,6 +723,14 @@ class ProductController extends Controller
         $pattern = '/<img alt="NO[^>]*>/i';
         $replacement = '<i class="fas fa-times"></i>';
         return preg_replace($pattern, $replacement, $updated);
+    }
+
+    public static function update_order(Request $request)
+    {
+        //$product->update_order($data->position);
+        $product = Product::find($request->productId);
+        $product->update_order($request->productIndex);
+        //\Log::debug('new index ' . $request->productIndex . ' for product ' . $request->productId);
     }
 
     // public function cloudinary_upload($file)

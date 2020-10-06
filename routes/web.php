@@ -76,6 +76,7 @@ Route::group(['middleware' => 'App\Http\Middleware\LockOutUsersManagers'], funct
     Route::post('products/edit/{product}', 'ProductController@update');
     Route::get('products/delete/{product}', 'ProductController@destroy');
     Route::get('products/duplicate/{product}', 'ProductController@duplicate');
+    Route::post('product-update-order', 'ProductController@update_order');
 });
 
 /**

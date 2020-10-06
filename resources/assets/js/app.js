@@ -46,7 +46,18 @@ require('./components/ProductsCarousel');
 
 $('#sortable-list').sortable({
     update(event, ui) {
-        console.log(event, ui);
+        const productId = ui.item.attr('id');
+        const productIndex = ui.item.index() + 1;
+        axios({
+            method: 'post',
+            url: '/product-update-order',
+            data: {
+                productId,
+                productIndex,
+            },
+        }).then(response => {
+            //
+        });
         // console.log('order has been updated');
     },
 });

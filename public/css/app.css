@@ -23553,9 +23553,18 @@ a.button.custom-button:hover {
   border-top: 1px solid #ddd;
 }
 
+.list-group {
+  background-color: #e7f4fd;
+}
+
 .list-group .list-group-item {
   padding: 1em;
+  background-color: #fdfdfd;
   border-bottom: 1px solid #e7e7e7;
+}
+
+.list-group .list-group-item:hover {
+  cursor: pointer;
 }
 
 .xdsoft_datetimepicker {

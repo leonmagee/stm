@@ -10,7 +10,7 @@
 
     <div class="list-group" id="sortable-list">
       @foreach($products as $product)
-      <div class="list-group-item">{{ $product->name }}</div>
+      <div class="list-group-item" id="{{ $product->id }}" order="{{ $product->order }}">{{ $product->name }}</div>
       @endforeach
     </div>
   </div>

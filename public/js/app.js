@@ -125381,7 +125381,17 @@ __webpack_require__(/*! ./components/ProductsCarousel */ "./resources/assets/js/
 
 $('#sortable-list').sortable({
   update: function update(event, ui) {
-    console.log(event, ui); // console.log('order has been updated');
+    var productId = ui.item.attr('id');
+    var productIndex = ui.item.index() + 1;
+    axios({
+      method: 'post',
+      url: '/product-update-order',
+      data: {
+        productId: productId,
+        productIndex: productIndex
+      }
+    }).then(function (response) {//
+    }); // console.log('order has been updated');
   }
 }); // $(selector).sortable({
 //     start: function(event, ui) {
