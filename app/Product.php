@@ -144,20 +144,44 @@ class Product extends Model
 
     }
 
-    public function update_order($order)
+    public function update_order($order, $duplicate = false)
     {
-        //if (is_null($this->order)) {
-        //$this->order = Product::max('position') + 1;
-        $this->order = $order;
-        $this->save();
-        $products = Product::where('id', '!=', $this->id)
-            ->where('order', '>=', $order)
-            ->get();
-        foreach ($products as $product) {
-            $product->order++;
-            $product->save();
+        if (!$this->order || $duplicate) {
+            $this->order = $order;
+            $this->save();
+            $products = Product::where('id', '!=', $this->id)
+                ->where('order', '>=', $order)
+                ->get();
+            foreach ($products as $product) {
+                $product->order++;
+                $product->save();
+            }
+        } else {
+            $existing_order = $this->order;
+            $this->order = $order;
+            $this->save();
+            if ($order < $existing_order) {
+                $products = Product::where('id', '!=', $this->id)
+                    ->where('order', '>=', $order)
+                    ->where('order', '<', $existing_order)
+                    ->get();
+                foreach ($products as $product) {
+                    $product->order++;
+                    $product->save();
+                }
+            } elseif ($order > $existing_order) {
+                $products = Product::where('id', '!=', $this->id)
+                    ->where('order', '>', $existing_order)
+                    ->where('order', '<=', $order)
+                    ->get();
+                foreach ($products as $product) {
+                    $product->order--;
+                    $product->save();
+                }
+
+            }
         }
-        //}
+
     }
 
     public function update_order_delete()
@@ -218,7 +242,7 @@ class Product extends Model
             }
         }
 
-        $copy->update_order(1);
+        $copy->update_order(1, true);
 
         return $copy->id;
     }
