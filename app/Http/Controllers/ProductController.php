@@ -191,12 +191,12 @@ class ProductController extends Controller
      */
     public function sort(Request $request)
     {
-        $products = Product::orderBy('order', 'ASC')->get();
-        $count = 1;
-        foreach ($products as $product) {
-            $product->order = $count++;
-            $product->save();
-        }
+        // $products = Product::orderBy('order', 'ASC')->get();
+        // $count = 1;
+        // foreach ($products as $product) {
+        //     $product->order = $count++;
+        //     $product->save();
+        // }
 
         $categories = Category::all();
         $products = Product::orderBy('order', 'ASC')->get();
