@@ -1,13 +1,25 @@
+.cats-wrap {
+    display: flex;
+    background-color: #f7f7f7;
+    border-bottom: 1px solid #e7e7e7;
+    a.button {
+        margin: 1rem;
+    }
+}
+
 .list-group {
     background-color: lighten($info, 42%);
     .list-group-item {
-        padding: 1em;
-        //border: 1px solid #eee;
-        //border-bottom: none;
-        background-color: #fdfdfd;
-        border-bottom: 1px solid #e7e7e7;
-        &:hover {
-            cursor: pointer;
+        height: 0;
+        overflow: hidden;
+        &.active {
+            height: auto;
+            padding: 1em;
+            background-color: #fdfdfd;
+            border-bottom: 1px solid #e7e7e7;
+            &:hover {
+                cursor: pointer;
+            }
         }
     }
 }

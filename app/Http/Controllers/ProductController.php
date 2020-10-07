@@ -189,25 +189,21 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function sort()
+    public function sort(Request $request)
     {
-        // $ouput_array = [];
-        // $categories = Category::all();
-        // foreach($categories as $category) {
-
-        //   $products = Product::join()->orderBy('order', 'ASC')->get();
-        //   $output_array[$category->name] = 'xxx';
-        // }
-        // dd($categories);
-        // $products = Product::orderBy('created_at', 'DESC')->get();
-        // $count = 1;
-        // foreach ($products as $product) {
-        //     $product->order = $count;
-        //     $product->save();
-        //     $count++;
-        // }
+        $categories = Category::all();
         $products = Product::orderBy('order', 'ASC')->get();
-        return view('products.sort', compact('products'));
+        $active = $request->cat;
+        foreach ($products as $product) {
+            $cat_class = '';
+            foreach ($product->categories as $cat) {
+                if ($cat->category_id == $active) {
+                    $cat_class = 'active';
+                }
+            }
+            $product->is_active = $cat_class;
+        }
+        return view('products.sort', compact('categories', 'products', 'active'));
     }
 
     // public function index_carousel()

@@ -23553,17 +23553,33 @@ a.button.custom-button:hover {
   border-top: 1px solid #ddd;
 }
 
+.cats-wrap {
+  display: flex;
+  background-color: #f7f7f7;
+  border-bottom: 1px solid #e7e7e7;
+}
+
+.cats-wrap a.button {
+  margin: 1rem;
+}
+
 .list-group {
   background-color: #e7f4fd;
 }
 
 .list-group .list-group-item {
+  height: 0;
+  overflow: hidden;
+}
+
+.list-group .list-group-item.active {
+  height: auto;
   padding: 1em;
   background-color: #fdfdfd;
   border-bottom: 1px solid #e7e7e7;
 }
 
-.list-group .list-group-item:hover {
+.list-group .list-group-item.active:hover {
   cursor: pointer;
 }
 

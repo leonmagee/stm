@@ -321,7 +321,7 @@ class AppServiceProvider extends ServiceProvider
                 ],
                 [
                     'name' => 'Products Sort',
-                    'link' => '/products-sort',
+                    'link' => '/products-sort?cat=1',
                 ],
                 [
                     'name' => 'Create New Product',
