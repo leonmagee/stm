@@ -489,6 +489,39 @@ class HomeController extends Controller
 
     public function imei()
     {
+
+        // $curl = curl_init();
+
+        // curl_setopt_array($curl, array(
+        //     CURLOPT_URL => "https://ismaelc-imei-info.p.rapidapi.com/checkimei?password=e9cdsR*M71%2526363KrT%25400O&login=leonmagee33%2540gmail.com",
+        //     CURLOPT_RETURNTRANSFER => true,
+        //     CURLOPT_FOLLOWLOCATION => true,
+        //     CURLOPT_ENCODING => "",
+        //     CURLOPT_MAXREDIRS => 10,
+        //     CURLOPT_TIMEOUT => 30,
+        //     CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+        //     CURLOPT_CUSTOMREQUEST => "POST",
+        //     CURLOPT_POSTFIELDS => "imei=355136052818864",
+        //     CURLOPT_HTTPHEADER => array(
+        //         "content-type: application/x-www-form-urlencoded",
+        //         "x-rapidapi-host: ismaelc-imei-info.p.rapidapi.com",
+        //         "x-rapidapi-key: 7f92af3009mshfe041a55ab2ecf1p14ef7ejsn8f081578ce1e",
+        //     ),
+        // ));
+
+        // $response = curl_exec($curl);
+        // $err = curl_error($curl);
+
+        // curl_close($curl);
+
+        // if ($err) {
+        //     echo "cURL Error #:" . $err;
+        // } else {
+        //     echo $response;
+        // }
+
+        // dd('so far');
+
         return view('imei.index');
     }
 }

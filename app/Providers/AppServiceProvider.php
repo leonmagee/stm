@@ -315,10 +315,10 @@ class AppServiceProvider extends ServiceProvider
             ];
 
             $products_sub = [
-                [
-                    'name' => 'IMEI Lookup',
-                    'link' => 'imei',
-                ],
+                // [
+                //     'name' => 'IMEI Lookup',
+                //     'link' => 'imei',
+                // ],
                 [
                     'name' => 'Products List',
                     'link' => '/products-list',
