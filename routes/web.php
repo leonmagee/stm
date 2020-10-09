@@ -51,6 +51,8 @@ Route::get('dealer-purchases/{purchase}', 'PurchaseController@show_dealer');
 Route::get('rmas', 'RmaController@index');
 Route::get('rmas/{rma}', 'RmaController@show');
 
+Route::get('imei', 'HomeController@imei');
+
 Route::group(['middleware' => 'App\Http\Middleware\LockOutUsersManagers'], function () {
     //Route::get('sales-agents', 'PurchaseController@sales_agents');
     //Route::get('sales-agents/{agent}', 'PurchaseController@sales');

@@ -125377,7 +125377,26 @@ __webpack_require__(/*! ./components/ProductsCarousel */ "./resources/assets/js/
 //         animation: 200,
 //     });
 // });
+// imei lookup
 
+
+var imeiSettings = {
+  async: true,
+  crossDomain: true,
+  url: 'https://ismaelc-imei-info.p.rapidapi.com/checkimei',
+  method: 'POST',
+  headers: {
+    'x-rapidapi-host': 'ismaelc-imei-info.p.rapidapi.com',
+    'x-rapidapi-key': '7f92af3009mshfe041a55ab2ecf1p14ef7ejsn8f081578ce1e',
+    'content-type': 'application/x-www-form-urlencoded'
+  },
+  data: {
+    imei: '355136052818864'
+  }
+};
+$.ajax(imeiSettings).done(function (response) {
+  console.log(response);
+}); // sortable
 
 $('#sortable-list').sortable({
   update: function update(event, ui) {

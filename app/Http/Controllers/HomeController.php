@@ -486,4 +486,9 @@ class HomeController extends Controller
         return view('index', compact('data_array', 'date_name_array'));
 
     }
+
+    public function imei()
+    {
+        return view('imei.index');
+    }
 }
