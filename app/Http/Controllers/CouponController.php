@@ -46,7 +46,7 @@ class CouponController extends Controller
             'percent' => $request->percent,
         ]);
 
-        session()->flash('message', 'Coupon has been saved');
+        session()->flash('message', 'Coupon has been saved.');
         return redirect()->back();
     }
 
@@ -93,7 +93,7 @@ class CouponController extends Controller
     public function destroy(Coupon $coupon)
     {
         $coupon->delete();
-        session()->flash('danger', 'Coupon has been deleted');
+        session()->flash('danger', 'Coupon has been deleted.');
         return redirect()->back();
     }
 }
