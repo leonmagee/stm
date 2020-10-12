@@ -23583,6 +23583,82 @@ a.button.custom-button:hover {
   cursor: pointer;
 }
 
+.coupons {
+  padding: 1em;
+}
+
+.coupon {
+  border: 1px solid #e2e2e2;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 1em;
+}
+
+@media (min-width: 980px) {
+  .coupon {
+    width: 40%;
+  }
+}
+
+.coupon .coupon__item {
+  height: 2.5em;
+  display: flex;
+  align-items: center;
+}
+
+.coupon .coupon__tag {
+  padding: 0 0.8em;
+  color: #1b9aaa;
+  flex: 0 1 6%;
+  background-color: #f5f5f5;
+}
+
+.coupon .coupon__input input {
+  border: none;
+  background-color: transparent;
+}
+
+.coupon .coupon__code {
+  font-weight: 600;
+  flex: 1;
+  padding: 0 1em;
+  border-left: 1px solid #e2e2e2;
+}
+
+.coupon .coupon__percent {
+  font-weight: 600;
+  flex: 0 1 40%;
+  padding: 0 1em;
+  border-left: 1px solid #e2e2e2;
+}
+
+.coupon .coupon__icon {
+  border-left: 1px solid #e2e2e2;
+  justify-content: center;
+  flex: 0 1 9%;
+}
+
+.coupon .coupon__icon:hover {
+  cursor: pointer;
+}
+
+.coupon .coupon__icon.coupon__delete i {
+  color: #ef476f;
+}
+
+.coupon .coupon__icon.coupon__add button {
+  background: transparent;
+  padding: 0;
+  box-shadow: none;
+  border: none;
+}
+
+.coupon .coupon__icon.coupon__add i {
+  color: #1b9aaa;
+  font-size: 1.1em;
+}
+
 .xdsoft_datetimepicker {
   box-shadow: 0 5px 15px -5px rgba(0, 0, 0, 0.506);
   background: #fff;

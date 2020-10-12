@@ -19,7 +19,8 @@ class CouponController extends Controller
      */
     public function index()
     {
-        //
+        $coupons = Coupon::all();
+        return view('coupons.index', compact('coupons'));
     }
 
     /**
@@ -29,7 +30,7 @@ class CouponController extends Controller
      */
     public function create()
     {
-        return view('coupons.create');
+        //
     }
 
     /**
@@ -91,6 +92,8 @@ class CouponController extends Controller
      */
     public function destroy(Coupon $coupon)
     {
-        //
+        $coupon->delete();
+        session()->flash('danger', 'Coupon has been deleted');
+        return redirect()->back();
     }
 }

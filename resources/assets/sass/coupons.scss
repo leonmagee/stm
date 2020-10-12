@@ -1,0 +1,67 @@
+.coupons {
+    padding: 1em;
+}
+
+.coupon {
+    @include product_border;
+    display: flex;
+    align-items: center;
+    margin-bottom: 1em;
+    @media (min-width: $screen-md) {
+        width: 40%;
+    }
+    .coupon__item {
+        height: 2.5em;
+        display: flex;
+        align-items: center;
+    }
+    .coupon__tag {
+        padding: 0 0.8em;
+        color: $brand-primary;
+        flex: 0 1 6%;
+        background-color: #f5f5f5;
+    }
+    .coupon__input {
+        input {
+            border: none;
+            background-color: transparent;
+        }
+    }
+    .coupon__code {
+        font-weight: 600;
+        flex: 1;
+        padding: 0 1em;
+        border-left: 1px solid #e2e2e2;
+    }
+    .coupon__percent {
+        font-weight: 600;
+        flex: 0 1 40%;
+        padding: 0 1em;
+        border-left: 1px solid #e2e2e2;
+    }
+    .coupon__icon {
+        border-left: 1px solid #e2e2e2;
+        justify-content: center;
+        flex: 0 1 9%;
+        &:hover {
+            cursor: pointer;
+        }
+        &.coupon__delete {
+            i {
+                color: $color-red;
+            }
+        }
+        &.coupon__add {
+            button {
+                background: transparent;
+                padding: 0;
+                box-shadow: none;
+                border: none;
+            }
+            i {
+                color: $brand-primary;
+                font-size: 1.1em;
+            }
+        }
+    }
+}

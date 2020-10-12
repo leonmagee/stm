@@ -336,10 +336,6 @@ class AppServiceProvider extends ServiceProvider
                     'link' => '/coupons',
                 ],
                 [
-                    'name' => 'Add New Coupon',
-                    'link' => '/add-coupon',
-                ],
-                [
                     'name' => 'Purchase Orders',
                     'link' => '/purchases',
                 ],

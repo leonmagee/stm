@@ -56,8 +56,9 @@ Route::get('imei', 'HomeController@imei');
 Route::group(['middleware' => 'App\Http\Middleware\LockOutUsersManagers'], function () {
     //Route::get('sales-agents', 'PurchaseController@sales_agents');
     //Route::get('sales-agents/{agent}', 'PurchaseController@sales');
-    Route::get('add-coupon', 'CouponController@create');
+    Route::get('coupons', 'CouponController@index');
     Route::post('add-coupon', 'CouponController@store');
+    Route::get('delete-coupon/{coupon}', 'CouponController@destroy');
     Route::get('purchases/{purchase}', 'PurchaseController@show');
     Route::get('products-list', 'ProductController@list');
     Route::get('products-sort', 'ProductController@sort');
