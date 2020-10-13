@@ -8,7 +8,7 @@
 
   <div class="form-wrapper-inner">
 
-    <h3>Coupons</h3>
+    <h3>Discount Coupons</h3>
 
     <div class="coupons">
       @foreach($coupons as $coupon)
