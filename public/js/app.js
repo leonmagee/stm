@@ -125399,11 +125399,11 @@ var imeiSettings = {
     // key: '7f92af3009mshfe041a55ab2ecf1p14ef7ejsn8f081578ce1e',
     key: 'bb31213cd934cecdd3546016528a8ee26770f10d9ad4b8711f0d0ce0d6cbd179'
   }
-};
-console.log('testing');
-$.ajax(imeiSettings).done(function (response) {
-  console.log(response);
-}); // sortable
+}; // console.log('testing');
+// $.ajax(imeiSettings).done(function(response) {
+//     console.log(response);
+// });
+// sortable
 
 $('#sortable-list').sortable({
   update: function update(event, ui) {

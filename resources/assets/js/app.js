@@ -66,10 +66,10 @@ const imeiSettings = {
         key: 'bb31213cd934cecdd3546016528a8ee26770f10d9ad4b8711f0d0ce0d6cbd179',
     },
 };
-console.log('testing');
-$.ajax(imeiSettings).done(function(response) {
-    console.log(response);
-});
+// console.log('testing');
+// $.ajax(imeiSettings).done(function(response) {
+//     console.log(response);
+// });
 
 // sortable
 $('#sortable-list').sortable({
