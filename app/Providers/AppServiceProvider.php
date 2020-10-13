@@ -317,7 +317,7 @@ class AppServiceProvider extends ServiceProvider
             $products_sub = [
                 // [
                 //     'name' => 'IMEI Lookup',
-                //     'link' => 'imei',
+                //     'link' => '/imei',
                 // ],
                 [
                     'name' => 'Products List',

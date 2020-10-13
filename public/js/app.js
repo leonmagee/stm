@@ -125378,32 +125378,50 @@ __webpack_require__(/*! ./components/ProductsCarousel */ "./resources/assets/js/
 //     });
 // });
 // imei lookup
-
-
-var imeiSettings = {
-  async: true,
-  crossDomain: true,
-  // url: 'https://ismaelc-imei-info.p.rapidapi.com/checkimei',
-  url: 'https://www.imei.info/api/checkimei',
-  method: 'POST',
-  headers: {
-    'cache-control': 'no-cache',
-    'content-type': 'multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW' // 'x-rapidapi-host': 'ismaelc-imei-info.p.rapidapi.com',
-    // 'x-rapidapi-key': '7f92af3009mshfe041a55ab2ecf1p14ef7ejsn8f081578ce1e',
-    // 'content-type': 'application/x-www-form-urlencoded',
-
-  },
-  data: {
-    // imei: "355136052818864",
-    imei: '353331072816483',
-    // key: '7f92af3009mshfe041a55ab2ecf1p14ef7ejsn8f081578ce1e',
-    key: 'bb31213cd934cecdd3546016528a8ee26770f10d9ad4b8711f0d0ce0d6cbd179'
-  }
-}; // console.log('testing');
+// const imeiUrl = 'https://www.imei.info/api/checkimei';
+// const imeiUrl = 'https://api.chucknorris.io/jokes/random';
+// fetch(imeiUrl, {
+//     method: 'post',
+//     // mode: 'cors',
+//     body: {
+//         key: 'bb31213cd934cecdd3546016528a8ee26770f10d9ad4b8711f0d0ce0d6cbd179',
+//         imei: '353331072816483',
+//     },
+// })
+//     .then(res => res.json())
+//     .then(data => {
+//         console.log(data);
+//     })
+//     .catch(err => {
+//         console.log(err);
+//     });
+// const imeiSettings = {
+//     async: true,
+//     crossDomain: true,
+//     // url: 'https://ismaelc-imei-info.p.rapidapi.com/checkimei',
+//     url: 'https://www.imei.info/api/checkimei',
+//     method: 'POST',
+//     headers: {
+//         'cache-control': 'no-cache',
+//         'content-type':
+//             'multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW',
+//         // 'x-rapidapi-host': 'ismaelc-imei-info.p.rapidapi.com',
+//         // 'x-rapidapi-key': '7f92af3009mshfe041a55ab2ecf1p14ef7ejsn8f081578ce1e',
+//         // 'content-type': 'application/x-www-form-urlencoded',
+//     },
+//     data: {
+//         // imei: "355136052818864",
+//         imei: '353331072816483',
+//         // key: '7f92af3009mshfe041a55ab2ecf1p14ef7ejsn8f081578ce1e',
+//         key: 'bb31213cd934cecdd3546016528a8ee26770f10d9ad4b8711f0d0ce0d6cbd179',
+//     },
+// };
+// console.log('fetch testing');
 // $.ajax(imeiSettings).done(function(response) {
 //     console.log(response);
 // });
 // sortable
+
 
 $('#sortable-list').sortable({
   update: function update(event, ui) {

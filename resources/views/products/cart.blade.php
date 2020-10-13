@@ -109,8 +109,16 @@
   <h3>Checkout <i class="far fa-credit-card"></i></h3>
   <div class="stm-cart-footer">
     @if(count($items))
+    @if($shipping_charge)
+    <a class="button custom-button stm-total flex-vertical">
+      <div><span class="text">Subtotal:</span><span class="total">${{ number_format($subtotal, 2) }}</span></div>
+      <div><span class="text">Shipping:</span><span class="total">${{ number_format($shipping_charge, 2) }}</span></div>
+      <div><span class="text">Total Due:</span><span class="total">${{ number_format($total, 2) }}</span></div>
+    </a>
+    @else
     <a class="button custom-button stm-total"><span class="text">Total Due:</span><span
         class="total">${{ number_format($total, 2) }}</span></a>
+    @endif
     <a class="button custom-button stm-credit modal-open">
       <img src="{{ URL::asset('img/stm_logo_short.png') }}" />
       <span>

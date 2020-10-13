@@ -489,16 +489,32 @@ class HomeController extends Controller
 
     public function imei()
     {
+        dd('test');
+        /**
+         * Shell Exec
+         */
+        // $imei = "355136052818864";
+        // // $imei = "353331072816483";
+
+        // $curl_command = "curl -X POST https://www.imei.info/api/checkimei/ -H 'cache-control: no-cache'  -H 'content-type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW' -F imei=" . $imei . " -F key=bb31213cd934cecdd3546016528a8ee26770f10d9ad4b8711f0d0ce0d6cbd179";
+
+        // $response = shell_exec($curl_command);
+
+        // echo $response;
+
+        /// END SHELL
 
         $curl = curl_init();
 
         // curl -X POST https://www.imei.info/api/checkimei/ -H 'cache-control: no-cache'  -H 'content-type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW' -F imei={imei-to-check-here} -F key={your-api-key-here}
 
-        //$imei = "355136052818864";
-        $imei = "353331072816483";
-        $curl_url = "https://www.imei.info/api/checkimei/ -H 'cache-control: no-cache'  -H 'content-type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW' -F imei=" . $imei . " -F key=" . env('IMEI_KEY');
+        // $curl_url = "-X POST https://www.imei.info/api/checkimei/ -H 'cache-control: no-cache'  -H 'content-type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW' -F imei=" . $imei . " -F key=" . env('IMEI_KEY');
+
+        //$curl_url = "https://www.imei.info/api/checkimei/ -H 'cache-control: no-cache' -H boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW' -F";
+        $curl_url = "https://www.imei.info/api/checkimei/";
 
         curl_setopt($curl, CURLOPT_URL, $curl_url);
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 
         curl_exec($curl);
 
@@ -513,11 +529,12 @@ class HomeController extends Controller
         //     CURLOPT_TIMEOUT => 30,
         //     CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
         //     CURLOPT_CUSTOMREQUEST => "POST",
-        //     CURLOPT_POSTFIELDS => "imei=355136052818864",
+        //     CURLOPT_POSTFIELDS => "imei=353331072816483",
         //     CURLOPT_HTTPHEADER => array(
-        //         "content-type: application/x-www-form-urlencoded",
-        //         "x-rapidapi-host: ismaelc-imei-info.p.rapidapi.com",
-        //         "x-rapidapi-key: 7f92af3009mshfe041a55ab2ecf1p14ef7ejsn8f081578ce1e",
+        //         //"content-type: application/x-www-form-urlencoded",
+        //         "content-type: multipart/form-data",
+        //         //"x-rapidapi-host: ismaelc-imei-info.p.rapidapi.com",
+        //         "key: 7f92af3009mshfe041a55ab2ecf1p14ef7ejsn8f081578ce1e",
         //     ),
         // ));
 
@@ -549,7 +566,7 @@ class HomeController extends Controller
         //     echo $response;
         // }
 
-        dd('so far');
+        //dd('so far');
 
         return view('imei.index');
     }

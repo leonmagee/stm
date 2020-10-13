@@ -158,6 +158,10 @@ a.button.custom-button {
         margin-bottom: 0.9em;
         display: flex;
         align-items: center;
+        &.flex-vertical {
+            padding: 3.3em 0;
+            flex-direction: column;
+        }
         span.text {
             padding-top: 0.1em;
         }
