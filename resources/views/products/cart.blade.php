@@ -82,6 +82,13 @@
       <div class="stm-cart__item--total"></div>
       <div class="stm-cart__item--delete"></div>
     </div>
+    {{-- <div class="apply-coupon">
+      <form action="">
+        @csrf
+        <input type="text" class="input" placeholder="Coupon Code..." />
+        <button class="button is-primary">Apply Coupon</button>
+      </form>
+    </div> --}}
     <div class="cart-wrapper__notification">
       <div class="notification larger-text center is-danger">
         {{-- <button class="delete"></button> --}}

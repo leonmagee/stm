@@ -332,7 +332,7 @@ class AppServiceProvider extends ServiceProvider
                     'link' => '/product-new',
                 ],
                 [
-                    'name' => 'Coupons',
+                    'name' => 'Discount Coupons',
                     'link' => '/coupons',
                 ],
                 [

@@ -23659,6 +23659,15 @@ a.button.custom-button:hover {
   font-size: 1.1em;
 }
 
+.apply-coupon {
+  padding: 1em;
+}
+
+.apply-coupon input {
+  max-width: 20%;
+  margin-right: 1em;
+}
+
 .xdsoft_datetimepicker {
   box-shadow: 0 5px 15px -5px rgba(0, 0, 0, 0.506);
   background: #fff;

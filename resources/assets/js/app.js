@@ -45,29 +45,31 @@ require('./components/ProductsCarousel');
 // });
 
 // imei lookup
-// const imeiSettings = {
-//     async: true,
-//     crossDomain: true,
-//     // url: 'https://ismaelc-imei-info.p.rapidapi.com/checkimei',
-//     url: 'https://www.imei.info/api/checkimei',
-//     method: 'POST',
-//     headers: {
-//         'cache-control': 'no-cache',
-//         'content-type':
-//             'multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW',
-//         // 'x-rapidapi-host': 'ismaelc-imei-info.p.rapidapi.com',
-//         // 'x-rapidapi-key': '7f92af3009mshfe041a55ab2ecf1p14ef7ejsn8f081578ce1e',
-//         // 'content-type': 'application/x-www-form-urlencoded',
-//     },
-//     data: {
-//         imei: '355136052818864',
-//         key: '7f92af3009mshfe041a55ab2ecf1p14ef7ejsn8f081578ce1e',
-//     },
-// };
-
-// $.ajax(imeiSettings).done(function(response) {
-//     console.log(response);
-// });
+const imeiSettings = {
+    async: true,
+    crossDomain: true,
+    // url: 'https://ismaelc-imei-info.p.rapidapi.com/checkimei',
+    url: 'https://www.imei.info/api/checkimei',
+    method: 'POST',
+    headers: {
+        'cache-control': 'no-cache',
+        'content-type':
+            'multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW',
+        // 'x-rapidapi-host': 'ismaelc-imei-info.p.rapidapi.com',
+        // 'x-rapidapi-key': '7f92af3009mshfe041a55ab2ecf1p14ef7ejsn8f081578ce1e',
+        // 'content-type': 'application/x-www-form-urlencoded',
+    },
+    data: {
+        // imei: "355136052818864",
+        imei: '353331072816483',
+        // key: '7f92af3009mshfe041a55ab2ecf1p14ef7ejsn8f081578ce1e',
+        key: 'bb31213cd934cecdd3546016528a8ee26770f10d9ad4b8711f0d0ce0d6cbd179',
+    },
+};
+console.log('testing');
+$.ajax(imeiSettings).done(function(response) {
+    console.log(response);
+});
 
 // sortable
 $('#sortable-list').sortable({
