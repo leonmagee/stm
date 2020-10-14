@@ -77,59 +77,62 @@
         <div class="stm-cart__item--available"></div>
         <div class="stm-cart__item--subtotal"></div>
         <div class="stm-cart__item--discount"></div>
-        {{-- <div class="stm-cart__item--total"><span>${{ $total }}</span>
-      </div> --}}
-      <div class="stm-cart__item--total"></div>
-      <div class="stm-cart__item--delete"></div>
+        <div class="stm-cart__item--total"></div>
+        <div class="stm-cart__item--delete"></div>
+      </div>
+      <div class="apply-coupon">
+        <form method="post" action="/apply-coupon" class="apply-coupon-form">
+          @csrf
+          <input type="text" class="input" name="coupon_code" placeholder="Coupon Code..." />
+          <button type="submit" class="button is-primary">Apply Coupon</button>
+          @if($coupon)
+          <span class="current-coupon">
+            Coupon Applied: {{ $coupon->code }} - {{ $coupon->percent }}% Off
+          </span>
+          @endif
+        </form>
+      </div>
+      <div class="cart-wrapper__notification">
+        <div class="notification larger-text center is-danger">
+          Free shipping on all orders above ${{ $shipping_max}}. A ${{ $shipping_default }} shipping charge will be
+          applied
+          for all orders
+          under
+          ${{ $shipping_max }}.</div>
+      </div>
+      @else
+      <div class="stm-cart-empty">
+        Your cart is empty.
+      </div>
+      @endif
     </div>
-    {{-- <div class="apply-coupon">
-      <form action="">
-        @csrf
-        <input type="text" class="input" placeholder="Coupon Code..." />
-        <button class="button is-primary">Apply Coupon</button>
-      </form>
-    </div> --}}
-    <div class="cart-wrapper__notification">
-      <div class="notification larger-text center is-danger">
-        {{-- <button class="delete"></button> --}}
-        Free shipping on all orders above ${{ $shipping_max}}. A ${{ $shipping_default }} shipping charge will be
-        applied
-        for all orders
-        under
-        ${{ $shipping_max }}.</div>
-    </div>
-    @else
-    <div class="stm-cart-empty">
-      Your cart is empty.
-    </div>
-    @endif
   </div>
-</div>
-<div class="cart-wrapper-right cart-wrapper-inner">
-  <h3>Checkout <i class="far fa-credit-card"></i></h3>
-  <div class="stm-cart-footer">
-    @if(count($items))
-    @if($shipping_charge)
-    <a class="button custom-button stm-total flex-vertical">
-      <div><span class="text">Subtotal:</span><span class="total">${{ number_format($subtotal, 2) }}</span></div>
-      <div><span class="text">Shipping:</span><span class="total">${{ number_format($shipping_charge, 2) }}</span></div>
-      <div><span class="text">Total Due:</span><span class="total">${{ number_format($total, 2) }}</span></div>
-    </a>
-    @else
-    <a class="button custom-button stm-total"><span class="text">Total Due:</span><span
-        class="total">${{ number_format($total, 2) }}</span></a>
-    @endif
-    <a class="button custom-button stm-credit modal-open">
-      <img src="{{ URL::asset('img/stm_logo_short.png') }}" />
-      <span>
-        Pay With Balance
-      </span>
-    </a>
-    <div id="paypal-button-container"></div>
-    @endif
-    <a class="button custom-button continue-shopping" href="/">Continue Shopping</a>
+  <div class="cart-wrapper-right cart-wrapper-inner">
+    <h3>Checkout <i class="far fa-credit-card"></i></h3>
+    <div class="stm-cart-footer">
+      @if(count($items))
+      @if($shipping_charge)
+      <a class="button custom-button stm-total flex-vertical">
+        <div><span class="text">Subtotal:</span><span class="total">${{ number_format($subtotal, 2) }}</span></div>
+        <div><span class="text">Shipping:</span><span class="total">${{ number_format($shipping_charge, 2) }}</span>
+        </div>
+        <div><span class="text">Total Due:</span><span class="total">${{ number_format($total, 2) }}</span></div>
+      </a>
+      @else
+      <a class="button custom-button stm-total"><span class="text">Total Due:</span><span
+          class="total">${{ number_format($total, 2) }}</span></a>
+      @endif
+      <a class="button custom-button stm-credit modal-open">
+        <img src="{{ URL::asset('img/stm_logo_short.png') }}" />
+        <span>
+          Pay With Balance
+        </span>
+      </a>
+      <div id="paypal-button-container"></div>
+      @endif
+      <a class="button custom-button continue-shopping" href="/">Continue Shopping</a>
+    </div>
   </div>
-</div>
 </div>
 
 @endsection
@@ -147,7 +150,7 @@
       //tagline: false, // only applies to horizontal layout
     },
     createOrder: function(data, actions) {
-      console.log('one', paypal, data, actions);
+      //console.log('one', paypal, data, actions);
       //$('.stm-absolute-wrap#loader-wrap').css({ display: 'flex' });
       return actions.order.create({
         application_context: {

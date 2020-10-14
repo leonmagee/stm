@@ -231,3 +231,14 @@ a.button.custom-button {
     font-weight: 600;
     margin: 0 2em 2em;
 }
+.apply-coupon-form {
+    display: flex;
+    .current-coupon {
+        background-color: $green;
+        padding: 0.4em 1em;
+        color: #fff;
+        font-weight: 600;
+        margin-left: 1em;
+        border-radius: $border-radius;
+    }
+}

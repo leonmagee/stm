@@ -23180,6 +23180,19 @@ a.button.custom-button:hover {
   margin: 0 2em 2em;
 }
 
+.apply-coupon-form {
+  display: flex;
+}
+
+.apply-coupon-form .current-coupon {
+  background-color: #06dba3;
+  padding: 0.4em 1em;
+  color: #fff;
+  font-weight: 600;
+  margin-left: 1em;
+  border-radius: 4px;
+}
+
 .purchase-complete {
   padding-top: 2em;
   text-align: center;

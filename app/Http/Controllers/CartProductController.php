@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\CartCoupon;
 use App\CartProduct;
+use App\Coupon;
 use App\Product;
 use App\ProductVariation;
 use Illuminate\Http\Request;
@@ -74,7 +76,31 @@ class CartProductController extends Controller
         $shipping_max = $this->shipping_max;
         $shipping_default = $this->shipping_charge;
 
-        return view('products.cart', compact('items', 'total', 'service_charge', 'paypal_total', 'balance', 'sufficient', 'shipping_charge', 'subtotal', 'shipping_max', 'shipping_default'));
+        //dd($user);
+        $coupon = false;
+        $cart_coupon = CartCoupon::where('user_id', $user->id)->first();
+        if ($cart_coupon) {
+            $coupon = Coupon::find($cart_coupon->coupon_id);
+            if (!$coupon) {
+                $cart_coupon->delete();
+            }
+        }
+        //dd($coupon);
+        //dd($cart_coupon);
+
+        return view('products.cart', compact(
+            'items',
+            'total',
+            'service_charge',
+            'paypal_total',
+            'balance',
+            'sufficient',
+            'shipping_charge',
+            'subtotal',
+            'shipping_max',
+            'shipping_default',
+            'coupon'
+        ));
     }
 
     /**
@@ -129,7 +155,7 @@ class CartProductController extends Controller
         $product = Product::find($product_id);
         $variation = $product->first_variation();
         if ($variation) {
-            \Log::debug('Controller - Product ID: ' . $product_id . ' - ' . $product);
+            //\Log::debug('Controller - Product ID: ' . $product_id . ' - ' . $product);
             //dd('product', $product);
             $existing = CartProduct::where([
                 'product_id' => $product_id,
