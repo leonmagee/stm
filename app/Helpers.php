@@ -37,6 +37,14 @@ class Helpers
     }
 
     /**
+     * Calc Discount
+     */
+    public static function get_discount_price($price, $discount)
+    {
+        return $price - ($price * ($discount / 100));
+    }
+
+    /**
      * Purchase Status
      */
     public static function rma_status($id)

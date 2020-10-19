@@ -46,8 +46,24 @@ class CartProductController extends Controller
                 unset($items[$key]);
             }
         }
+        // calculate service charge
         $service_charge = number_format($total * 2 / 100, 2);
+        // get coupon info
+        $coupon = false;
+        $cart_coupon = CartCoupon::where('user_id', $user->id)->first();
+        if ($cart_coupon) {
+            $coupon = Coupon::find($cart_coupon->coupon_id);
+            if (!$coupon) {
+                $cart_coupon->delete();
+            }
+        }
         $subtotal = $total;
+        $coupon_discount = false;
+        if ($coupon) {
+            $coupon_discount = $total * ($coupon->percent / 100);
+            $total = $total - $coupon_discount;
+        }
+
         if ($total < $this->shipping_max) {
             $shipping_charge = $this->shipping_charge;
             $total = $total + $shipping_charge;
@@ -76,18 +92,6 @@ class CartProductController extends Controller
         $shipping_max = $this->shipping_max;
         $shipping_default = $this->shipping_charge;
 
-        //dd($user);
-        $coupon = false;
-        $cart_coupon = CartCoupon::where('user_id', $user->id)->first();
-        if ($cart_coupon) {
-            $coupon = Coupon::find($cart_coupon->coupon_id);
-            if (!$coupon) {
-                $cart_coupon->delete();
-            }
-        }
-        //dd($coupon);
-        //dd($cart_coupon);
-
         return view('products.cart', compact(
             'items',
             'total',
@@ -99,7 +103,8 @@ class CartProductController extends Controller
             'subtotal',
             'shipping_max',
             'shipping_default',
-            'coupon'
+            'coupon',
+            'coupon_discount'
         ));
     }
 

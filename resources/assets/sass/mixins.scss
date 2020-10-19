@@ -101,3 +101,11 @@
     background-color: #fefefe;
     padding: 0.6em 0.8em;
 }
+
+@mixin cart_total_styles {
+    background: #f1f1f1;
+    border: 1px solid #dfdfdf;
+    border-radius: $border-radius;
+    color: #333;
+    font-weight: 600;
+}

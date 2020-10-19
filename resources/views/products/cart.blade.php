@@ -93,12 +93,23 @@
         </form>
       </div>
       <div class="cart-wrapper__notification">
-        <div class="notification larger-text center is-danger">
-          Free shipping on all orders above ${{ $shipping_max}}. A ${{ $shipping_default }} shipping charge will be
-          applied
-          for all orders
-          under
-          ${{ $shipping_max }}.</div>
+
+
+        <div class="free-shipping-alert">
+          {{-- <div class="icon-wrap"><i class="fas fa-shipping-fast"></i></div> --}}
+          <div class="image-wrap"><img src="{{ asset('img/free-shipping.png') }}" /></div>
+          <div class="text-wrap">
+            <div class="line-1">Free shipping on all orders above ${{ $shipping_max}}.</div>
+            <div class="line-2">A <span>${{ $shipping_default }}</span> shipping charge will be applied for all orders
+              under
+              ${{ $shipping_max }}.
+            </div>
+          </div>
+        </div>
+
+
+
+
       </div>
       @else
       <div class="stm-cart-empty">
@@ -111,17 +122,24 @@
     <h3>Checkout <i class="far fa-credit-card"></i></h3>
     <div class="stm-cart-footer">
       @if(count($items))
-      @if($shipping_charge)
-      <a class="button custom-button stm-total flex-vertical">
-        <div><span class="text">Subtotal:</span><span class="total">${{ number_format($subtotal, 2) }}</span></div>
-        <div><span class="text">Shipping:</span><span class="total">${{ number_format($shipping_charge, 2) }}</span>
+      <div class="stm-total-wrap">
+        @if($shipping_charge || $coupon)
+        <div class="item"><span class="">Subtotal:</span><span class="">${{ number_format($subtotal, 2) }}</span>
         </div>
-        <div><span class="text">Total Due:</span><span class="total">${{ number_format($total, 2) }}</span></div>
-      </a>
-      @else
-      <a class="button custom-button stm-total"><span class="text">Total Due:</span><span
-          class="total">${{ number_format($total, 2) }}</span></a>
-      @endif
+        @endif
+        @if($coupon_discount)
+        <div class="item"><span class="">Coupon:</span><span
+            class="green">-${{ number_format($coupon_discount, 2) }}</span>
+        </div>
+        @endif
+        @if($shipping_charge)
+        <div class="item"><span class="">Shipping:</span><span
+            class="red">${{ number_format($shipping_charge, 2) }}</span>
+        </div>
+        @endif
+        <div class="item total"><span class="">Total Due:</span><span class="">${{ number_format($total, 2) }}</span>
+        </div>
+      </div>
       <a class="button custom-button stm-credit modal-open">
         <img src="{{ URL::asset('img/stm_logo_short.png') }}" />
         <span>

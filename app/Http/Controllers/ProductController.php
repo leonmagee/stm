@@ -31,17 +31,17 @@ class ProductController extends Controller
      * @todo this is just for the carousel right now. Extend to make other methods more DRY.
      * @return \Illuminate\Http\Response
      */
-    private static function product_data($cat = false)
+    private static function product_data($cat = false, $current = 0)
     {
         $user_id = \Auth::user()->id;
 
         if ($cat) {
             $products = Product::whereHas('categories', function ($query) use ($cat) {
                 $query->where('category_id', $cat);
-            })->where('archived', 0)->get();
+            })->where('archived', 0)->where('id', '!=', $current)->orderBy('order', 'ASC')->get();
 
         } else {
-            $products = Product::where('archived', 0)->get();
+            $products = Product::where('archived', 0)->where('id', '!=', $current)->orderBy('order', 'ASC')->get();
         }
 
         foreach ($products as $product) {
@@ -453,13 +453,12 @@ class ProductController extends Controller
         $num_images = $this->num_images;
         $num_tab_images = $this->num_tab_images;
         $num_tab_videos = $this->num_tab_videos;
-
         // NUMBER CORRESPONDS TO CATEGORY ID
-        $products = self::product_data(1); // phones
-        $products2 = self::product_data(2); // tempered glass
+        $products = self::product_data(1, $product->id); // phones
+        $products2 = self::product_data(2, $product->id); // tempered glass
         //$products3 = self::product_data(3); // power banks (cat deleted)
-        $products4 = self::product_data(4); // wall chargers
-        $products6 = self::product_data(7); // usb cables
+        $products4 = self::product_data(4, $product->id); // wall chargers
+        $products6 = self::product_data(7, $product->id); // usb cables
 
         return view('products.show', compact(
             'product',
