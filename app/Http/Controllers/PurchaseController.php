@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\CartCoupon;
 use App\CartProduct;
 use App\Helpers;
 use App\Mail\PurchaseEmail;
@@ -132,7 +133,11 @@ class PurchaseController extends Controller
         if ($total < $this->shipping_max) {
             $total = $total + $this->shipping_charge;
         }
-        $request->total = $total;
+        if ($request->discount) {
+            $request->total = ($total - $request->discount);
+        } else {
+            $request->total = $total;
+        }
 
         /**
          * Store purchase
@@ -141,7 +146,7 @@ class PurchaseController extends Controller
         /**
          * Update user balance
          */
-        $new_balance = $balance - $total;
+        $new_balance = $balance - $request->total;
         $current_user->balance = $new_balance;
         $current_user->save();
         /**
@@ -176,6 +181,7 @@ class PurchaseController extends Controller
             'sub_total' => $request->sub_total,
             'total' => $request->total,
             'shipping' => $shipping,
+            'discount' => $request->discount,
             'type' => $request->type,
             'status' => 2, // pending
             // 'address' => $request->address,
@@ -261,6 +267,11 @@ class PurchaseController extends Controller
                     false
                 ));
             }
+        }
+
+        $discount_coupon = CartCoupon::where('user_id', $user->id)->first();
+        if ($discount_coupon) {
+            $discount_coupon->delete();
         }
 
     }

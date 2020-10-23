@@ -96,8 +96,10 @@ class CartCouponController extends Controller
      * @param  \App\CartCoupon  $cartCoupon
      * @return \Illuminate\Http\Response
      */
-    public function destroy(CartCoupon $cartCoupon)
+    public function destroy(CartCoupon $coupon)
     {
-        //
+        $coupon->delete();
+        session()->flash('message', 'Coupon removed.');
+        return redirect()->back();
     }
 }

@@ -16,6 +16,7 @@
       <th>Carrier</th>
       <th>Company</th>
       <th>Name</th>
+      <th>Upload Date</th>
     </tr>
   </thead>
   <tbody></tbody>
@@ -43,7 +44,8 @@
         { data: "sim_number", name: "sim_users.sim_number" },
         { data: "carrier_name", name: "carriers.name" },
         { data: "company", name: "users.company" },
-        { data: "user_name", name: "users.name" }
+        { data: "user_name", name: "users.name" },
+        { data: "created_at", name: "sim_users.created_at" }
     ]
 });
 

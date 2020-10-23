@@ -50,8 +50,9 @@ Route::get('dealer-purchases/{purchase}', 'PurchaseController@show_dealer');
 //Route::get('dealer-rmas', 'RmaController@dealer_rmas');
 Route::get('rmas', 'RmaController@index');
 Route::get('rmas/{rma}', 'RmaController@show');
-
 Route::get('imei', 'HomeController@imei');
+Route::post('/apply-coupon', 'CartCouponController@store');
+Route::post('/delete-cart-coupon/{coupon}', 'CartCouponController@destroy');
 
 Route::group(['middleware' => 'App\Http\Middleware\LockOutUsersManagers'], function () {
     //Route::get('sales-agents', 'PurchaseController@sales_agents');
@@ -59,7 +60,6 @@ Route::group(['middleware' => 'App\Http\Middleware\LockOutUsersManagers'], funct
     Route::get('coupons', 'CouponController@index');
     Route::post('add-coupon', 'CouponController@store');
     Route::get('delete-coupon/{coupon}', 'CouponController@destroy');
-    Route::post('/apply-coupon', 'CartCouponController@store');
     Route::get('purchases/{purchase}', 'PurchaseController@show');
     Route::get('products-list', 'ProductController@list');
     Route::get('products-sort', 'ProductController@sort');

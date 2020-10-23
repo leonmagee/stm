@@ -94,6 +94,12 @@
               <div>$0.00</div>
               @endif
             </div>
+            <div class="item">
+              <div class="label">Coupon Discount</div>
+              <div>
+                -${{ number_format($purchase->discount, 2) }}
+              </div>
+            </div>
             <div class="item discount">
               <div class="label">Shipping Charge</div>
               <div>

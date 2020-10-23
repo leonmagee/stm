@@ -81,16 +81,26 @@
         <div class="stm-cart__item--delete"></div>
       </div>
       <div class="apply-coupon">
-        <form method="post" action="/apply-coupon" class="apply-coupon-form">
+        @if(!$coupon)
+        <form method="POST" action="/apply-coupon">
           @csrf
-          <input type="text" class="input" name="coupon_code" placeholder="Coupon Code..." />
-          <button type="submit" class="button is-primary">Apply Coupon</button>
-          @if($coupon)
-          <span class="current-coupon">
-            Coupon Applied: {{ $coupon->code }} - {{ $coupon->percent }}% Off
-          </span>
-          @endif
+          <div class="apply-coupon-form">
+            <input type="text" class="input" name="coupon_code" placeholder="Coupon Code..." />
+            <button type="submit" class="button is-primary">Apply Coupon</button>
+          </div>
         </form>
+        @endif
+        @if($coupon)
+        <form method="POST" action="/delete-cart-coupon/{{ $cart_coupon->id }}">
+          @csrf
+          <div class="apply-coupon-form">
+            <span class="current-coupon">
+              Coupon Applied: {{ $coupon->code }} - {{ $coupon->percent }}% Off
+            </span>
+            <button type="submit" class="button is-danger">Remove Coupon</button>
+          </div>
+        </form>
+        @endif
       </div>
       <div class="cart-wrapper__notification">
 
@@ -106,10 +116,6 @@
             </div>
           </div>
         </div>
-
-
-
-
       </div>
       @else
       <div class="stm-cart-empty">
@@ -159,17 +165,32 @@
 <script src="https://www.paypal.com/sdk/js?client-id={{ env('PAYPAL_CLIENT_ID') }}"></script>
 @if(count($items))
 <script>
+  let breakdown_obj = false;
+  if("{{ $coupon_discount }}") {
+      breakdown_obj = {
+      item_total: {
+        currency_code: "USD",
+        value: parseFloat("{{ $paypal_total_item }}"),
+      },
+      discount: {
+        currency_code: "USD",
+        value: parseFloat("{{ $coupon_discount }}"),
+      },
+    }
+  } else {
+    breakdown_obj = {
+      item_total: {
+        currency_code: "USD",
+        value: parseFloat("{{ $paypal_total_item }}"),
+      },
+    }
+  }
+
   paypal.Buttons({
     style: {
-      //layout: 'horizontal',
-      // color: 'blue',
-      // shape: 'pill',
       label: 'buynow',
-      //tagline: false, // only applies to horizontal layout
     },
     createOrder: function(data, actions) {
-      //console.log('one', paypal, data, actions);
-      //$('.stm-absolute-wrap#loader-wrap').css({ display: 'flex' });
       return actions.order.create({
         application_context: {
           shipping_preference: 'NO_SHIPPING'
@@ -178,12 +199,7 @@
         amount: {
           currency_code: "USD",
           value: parseFloat("{{ $paypal_total }}"),
-          breakdown: {
-            item_total: {
-              currency_code: "USD",
-              value: parseFloat("{{ $paypal_total }}"),
-            }
-          }
+          breakdown: breakdown_obj
         },
         items: [
             @foreach($items as $item)
@@ -215,24 +231,21 @@
           ]
         }
       ],
-      // redirect_urls: {
-      //   return_url: '/purchase-complete',
-      //   cancel_url: '/purchase-complete',
-      // },
     });
   },
   onApprove: function(data, actions) {
     $('.stm-absolute-wrap#loader-wrap').css({ display: 'flex' });
-    console.log('two', data, actions, 'payer?', data.payer, data.payerID, data.orderID, data.payerAddress, data.payments, data.transactions);
+    // console.log('two', data, actions, 'payer?', data.payer, data.payerID, data.orderID, data.payerAddress, data.payments, data.transactions);
     return actions.order.capture().then(function(details) {
         axios.post('/process-paypal', {
           sub_total: "{{ $subtotal }}",
+          discount: "{{ $coupon_discount }}",
           total: "{{ $paypal_total }}",
           type: 'paypal',
           //testers: true,
         }).then(function(res) {
           //console.log('res', res);
-          //console.log('McDetails?', details, details.payer, details.payer.address);
+          //console.log(details, details.payer, details.payer.address);
           // redirect to purchase complete page
           window.location.href = "/purchase-complete";
           //return res.id;
@@ -248,6 +261,7 @@
 <h3 class="title">Pay with balance</h3>
 <form method="POST" action="pay-with-balance">
   @csrf
+  <input type="hidden" value="{{ $coupon_discount }}" name="discount" />
   <div class="pay-with-balance-modal">
     Total Charge: <span>${{ number_format($total, 2) }}</span><br />
     Your Current Balance: <span>${{ number_format($balance, 2) }}</span><br />

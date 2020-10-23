@@ -521,6 +521,9 @@ img.email-header-logo {
 .invoice-wrap__footer .invoice-wrap__footer--totals .item.discount {
     color: #ef476f;
 }
+.invoice-wrap__footer .invoice-wrap__footer--totals .item.coupon-discount {
+    color: #05c793;
+}
 .invoice-wrap__footer .invoice-wrap__footer--totals .item.final {
     background-color: #f3f3f3;
     font-weight: bold;

@@ -22950,18 +22950,20 @@ body.stm-body.about .middle-content-wrap .about-page .video-wrap .video-wrap-inn
   border-radius: 4px;
   color: #333;
   font-weight: 600;
-  padding: 1em 2em;
+  border: 1px solid #e3e3e3;
+  background-color: #fff;
+  padding: 0 2em;
 }
 
 .cart-wrapper .cart-wrapper__notification .free-shipping-alert .image-wrap img {
   max-width: 15em;
-  margin-right: 2em;
-  border-radius: 4px;
+  display: block;
 }
 
 .cart-wrapper .cart-wrapper__notification .free-shipping-alert .text-wrap {
   flex: 1;
   padding-bottom: 0.3em;
+  text-align: center;
 }
 
 .cart-wrapper .cart-wrapper__notification .free-shipping-alert .text-wrap span {
@@ -23220,10 +23222,10 @@ a.button.custom-button:hover {
 
 .apply-coupon-form .current-coupon {
   background-color: #06dba3;
-  padding: 0.4em 1em;
+  padding: 0.3em 1em;
   color: #fff;
   font-weight: 600;
-  margin-left: 1em;
+  margin-right: 1em;
   border-radius: 4px;
 }
 

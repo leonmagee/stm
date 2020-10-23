@@ -79,6 +79,12 @@
         <div>$0.00</div>
         @endif
       </div>
+      @if($purchase->discount)
+      <div class="item coupon-discount">
+        <div class="label">Discount</div>
+        ${{ number_format($purchase->discount, 2) }}
+      </div>
+      @endif
       @if($purchase->shipping)
       <div class="item discount">
         <div class="label">Shipping Charge</div>

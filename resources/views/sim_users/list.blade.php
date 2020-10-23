@@ -35,6 +35,11 @@
           <div>{{ $item['user_data']['user'] }}</div>
         </div>
 
+        <div class="detail-item">
+          <label>Upload Date</label>
+          <div>{{ $item['user_data']['date'] }}</div>
+        </div>
+
       </div>
 
       @endif

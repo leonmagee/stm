@@ -195,6 +195,7 @@ class SimUserController extends AuthorizedController
                     'carrier' => $sim_user_result->carrier->name,
                     'company' => $sim_user_result->user->company,
                     'user' => $sim_user_result->user->name,
+                    'date' => $sim_user_result->created_at->format('M d, Y'),
                 ];
             } else {
                 $user_data = false;

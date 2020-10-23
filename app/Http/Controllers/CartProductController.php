@@ -46,8 +46,6 @@ class CartProductController extends Controller
                 unset($items[$key]);
             }
         }
-        // calculate service charge
-        $service_charge = number_format($total * 2 / 100, 2);
         // get coupon info
         $coupon = false;
         $cart_coupon = CartCoupon::where('user_id', $user->id)->first();
@@ -57,20 +55,30 @@ class CartProductController extends Controller
                 $cart_coupon->delete();
             }
         }
+        // calculate service charge
+        $service_charge = number_format($total * 2 / 100, 2);
         $subtotal = $total;
-        $coupon_discount = false;
+        $coupon_discount = 0;
+        $item_total = $total;
         if ($coupon) {
-            $coupon_discount = $total * ($coupon->percent / 100);
+            $coupon_discount = floatval(strval(number_format($total * ($coupon->percent / 100), 2)));
             $total = $total - $coupon_discount;
+            //$coupon_discount_neg = -1 * $coupon_discount;
         }
 
         if ($total < $this->shipping_max) {
             $shipping_charge = $this->shipping_charge;
             $total = $total + $shipping_charge;
+            $item_total = $item_total + $shipping_charge;
             $paypal_total = $total + $service_charge;
+            $paypal_total_item = $item_total + $service_charge;
+            // dd($paypal_total);
+            // dd($coupon_discount);
+            // dd($paypal_total_item);
         } else {
             $shipping_charge = 0;
             $paypal_total = $total + $service_charge;
+            $paypal_total_item = $item_total + $service_charge;
         }
         //dd($paypal_total);
         $total_float = floatval(strval($total));
@@ -97,6 +105,7 @@ class CartProductController extends Controller
             'total',
             'service_charge',
             'paypal_total',
+            'paypal_total_item',
             'balance',
             'sufficient',
             'shipping_charge',
@@ -104,7 +113,8 @@ class CartProductController extends Controller
             'shipping_max',
             'shipping_default',
             'coupon',
-            'coupon_discount'
+            'cart_coupon',
+            'coupon_discount',
         ));
     }
 

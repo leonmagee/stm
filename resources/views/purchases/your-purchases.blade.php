@@ -116,6 +116,7 @@
           <div class="stm-flex-row__item header">Payment Type</div>
           <div class="stm-flex-row__item header">Subtotal</div>
           <div class="stm-flex-row__item header">Service Charge</div>
+          <div class="stm-flex-row__item header">Coupon Discount</div>
           <div class="stm-flex-row__item header">Shipping Charge</div>
           <div class="stm-flex-row__item header">Total</div>
           <div class="stm-flex-row__item header flex-4"></div>
@@ -130,6 +131,7 @@
             $0.00
             @endif
           </div>
+          <div class="stm-flex-row__item">-${{ number_format($purchase->discount, 2) }}</div>
           <div class="stm-flex-row__item red">${{ number_format($purchase->shipping, 2) }}</div>
           <div class="stm-flex-row__item bold">${{ number_format($purchase->total, 2) }}</div>
           <div class="stm-flex-row__item bold flex-4"><a href="/purchase-order/{{ $purchase->id }}"><i
