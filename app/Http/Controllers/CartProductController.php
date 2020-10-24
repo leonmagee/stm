@@ -114,7 +114,7 @@ class CartProductController extends Controller
             'shipping_default',
             'coupon',
             'cart_coupon',
-            'coupon_discount',
+            'coupon_discount'
         ));
     }
 
