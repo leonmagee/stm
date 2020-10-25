@@ -23,6 +23,15 @@ body.stm-body {
             display: none;
         }
     }
+    .layout-simple-wrap {
+        background-color: #111;
+        display: flex;
+        flex-direction: column;
+        flex: 1 1 100%;
+        .notification {
+            margin: 1em;
+        }
+    }
 
     .main-wrap {
         // @media(min-width: $screen-sm) {

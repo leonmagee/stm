@@ -14,13 +14,14 @@
 
   @include('layouts.nav-mobile-logged-out')
 
-  <div class="main-wrap">
-
-    {{-- @todo create separate alert which is pos absolute with high z-index / this is hidden by slide --}}
+  <div class="layout-simple-wrap">
     @include('layouts.alert')
 
-    @yield('content')
+    <div class="main-wrap">
 
+      @yield('content')
+
+    </div>
   </div>
 
   @include('layouts.footer')

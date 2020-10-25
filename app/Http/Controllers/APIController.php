@@ -379,13 +379,15 @@ class APIController extends Controller
             $sim_users_query = \DB::table('sim_users')
                 ->join('users', 'sim_users.user_id', '=', 'users.id')
                 ->join('carriers', 'sim_users.carrier_id', '=', 'carriers.id')
-                ->select(['sim_users.sim_number', 'carriers.name as carrier_name', 'users.company as company', 'users.name as user_name', 'sim_users.created_at']);
+                ->select(['sim_users.sim_number', 'carriers.name as carrier_name', 'users.company as company', 'users.name as user_name', 'sim_users.created_at'])
+                ->orderBy('created_at', 'DESC');
         } else {
             $sim_users_query = \DB::table('sim_users')
                 ->join('users', 'sim_users.user_id', '=', 'users.id')
                 ->join('carriers', 'sim_users.carrier_id', '=', 'carriers.id')
                 ->where('users.id', $user->id)
-                ->select(['sim_users.sim_number', 'carriers.name as carrier_name', 'users.company as company', 'users.name as user_name', 'sim_users.created_at']);
+                ->select(['sim_users.sim_number', 'carriers.name as carrier_name', 'users.company as company', 'users.name as user_name', 'sim_users.created_at'])
+                ->orderBy('created_at', 'DESC');
         }
 
         return Datatables::of($sim_users_query)->editColumn('created_at', function ($item) {
@@ -400,7 +402,8 @@ class APIController extends Controller
             ->join('users', 'sim_users.user_id', '=', 'users.id')
             ->join('carriers', 'sim_users.carrier_id', '=', 'carriers.id')
             ->where('users.id', $id)
-            ->select(['sim_users.sim_number', 'carriers.name as carrier_name', 'users.company as company', 'users.name as user_name', 'sim_users.created_at']);
+            ->select(['sim_users.sim_number', 'carriers.name as carrier_name', 'users.company as company', 'users.name as user_name', 'sim_users.created_at'])
+            ->orderBy('created_at', 'DESC');
 
         //return Datatables::of($sim_users_query)->make(true);
         return Datatables::of($sim_users_query)->editColumn('created_at', function ($item) {

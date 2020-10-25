@@ -18418,6 +18418,17 @@ body.stm-body .chart-wrap-outer {
   }
 }
 
+body.stm-body .layout-simple-wrap {
+  background-color: #111;
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 100%;
+}
+
+body.stm-body .layout-simple-wrap .notification {
+  margin: 1em;
+}
+
 body.stm-body .main-wrap {
   display: flex;
   flex: 1 1 100%;
