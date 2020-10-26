@@ -333,8 +333,37 @@
     <a class="button is-info modal-open-2 call-loader margin-left" href="#">Duplicate Product</a>
   </div>
 </div>
-
 </div>
+</form>
+<div class="blocked-users">
+  <label class="label" for="name">Blocked Agents/Dealers</label>
+  @foreach($blocked_users as $blocked)
+  <div class="blocked-users__item"><span>{{ $blocked->user->company . ' - ' . $blocked->user->name }}</span>
+    <a href="/remove-blocked-user/{{ $blocked->user->id }}/{{ $product->id }}"><i class="fas fa-trash-alt"></i></a>
+  </div>
+  @endforeach
+</div>
+<form method=" POST" action="/block-dealer">
+  @csrf
+  <div class="form-wrap">
+    <div class="form-wrap-flex form-wrap-flex-blocked-dealers">
+      <div class="field">
+        <label class="label" for="name">Block New Agent/Dealer</label>
+        <div class="control item-flex">
+          <input type="hidden" name="product_id" value="{{ $product->id }}" />
+          <div class="select">
+            <select name="user_id">
+              <option>--</option>
+              @foreach($users as $user)
+              <option value="{{ $user->id }}">{{ $user->company }} - {{ $user->name }}</option>
+              @endforeach
+            </select>
+          </div>
+          <button class="button is-danger call-loader" type="submit">Block Dealer</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </form>
 </div>
 </div>

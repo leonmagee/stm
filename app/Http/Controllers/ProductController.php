@@ -8,8 +8,10 @@ use App\ProductAttribute;
 use App\ProductCategories;
 use App\ProductRating;
 use App\ProductSubCategories;
+use App\ProductUser;
 use App\ProductVariation;
 use App\SubCategory;
+use App\User;
 use Cloudder;
 use Illuminate\Http\Request;
 
@@ -494,7 +496,21 @@ class ProductController extends Controller
         $tab_images = $this->num_tab_images;
         $tab_videos = $this->num_tab_videos;
 
-        return view('products.edit', compact('product', 'categories', 'selected_cats', 'selected_sub_cats', 'num_images', 'tab_images', 'tab_videos'));
+        $users = User::getAgentsDealersActive();
+
+        $blocked_users = ProductUser::where('product_id', $product->id)->get();
+
+        return view('products.edit', compact(
+            'product',
+            'categories',
+            'selected_cats',
+            'selected_sub_cats',
+            'num_images',
+            'tab_images',
+            'tab_videos',
+            'users',
+            'blocked_users'
+        ));
     }
 
     /**

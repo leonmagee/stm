@@ -145,6 +145,9 @@
                         display: flex;
                         width: 45%;
                     }
+                    &.form-wrap-flex-blocked-dealers {
+                        padding-bottom: 1em;
+                    }
                 }
             }
 
@@ -341,6 +344,15 @@ body.stm-body {
         min-height: 160px;
         strong {
             font-weight: 600;
+        }
+    }
+}
+
+.control {
+    &.item-flex {
+        display: flex;
+        button {
+            margin-left: 1em;
         }
     }
 }

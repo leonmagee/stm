@@ -130,3 +130,30 @@
         //border: 1px solid #ddd;
     }
 }
+
+.blocked-users {
+    padding: 1em 2em;
+    .blocked-users__item {
+        width: 40%;
+        background: #fff;
+        border-radius: $border-radius;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        overflow: hidden;
+        border: 1px solid #eee;
+        span {
+            display: block;
+            padding-left: 1em;
+        }
+        a {
+            padding: 0.5em 1em;
+            background: $red;
+            color: #fff;
+            &:hover {
+                background: darken($red, 5%);
+                color: #fff;
+            }
+        }
+    }
+}

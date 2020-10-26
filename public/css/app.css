@@ -18093,6 +18093,10 @@ body.stm-body .stm-subtitle {
   width: 45%;
 }
 
+.form-wrapper .form-wrapper-inner form .form-wrap .form-wrap-flex.form-wrap-flex-blocked-dealers {
+  padding-bottom: 1em;
+}
+
 .form-wrapper .form-wrapper-inner.homepage-form-wrap-inner {
   height: auto;
 }
@@ -18238,6 +18242,14 @@ body.stm-body .quill-wrap {
 
 body.stm-body .quill-wrap strong {
   font-weight: 600;
+}
+
+.control.item-flex {
+  display: flex;
+}
+
+.control.item-flex button {
+  margin-left: 1em;
 }
 
 .product-categories-checkboxes .control {
@@ -22914,6 +22926,37 @@ body.stm-body.about .middle-content-wrap .about-page .video-wrap .video-wrap-inn
   border-radius: 4px;
   background-color: #fff;
   padding: 1em;
+}
+
+.blocked-users {
+  padding: 1em 2em;
+}
+
+.blocked-users .blocked-users__item {
+  width: 40%;
+  background: #fff;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  overflow: hidden;
+  border: 1px solid #eee;
+}
+
+.blocked-users .blocked-users__item span {
+  display: block;
+  padding-left: 1em;
+}
+
+.blocked-users .blocked-users__item a {
+  padding: 0.5em 1em;
+  background: #ff3860;
+  color: #fff;
+}
+
+.blocked-users .blocked-users__item a:hover {
+  background: #ff1f4b;
+  color: #fff;
 }
 
 .repeater-field-wrap p.control {
