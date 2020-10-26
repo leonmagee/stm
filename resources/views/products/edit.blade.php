@@ -335,15 +335,17 @@
 </div>
 </div>
 </form>
+@if(count($blocked_users))
 <div class="blocked-users">
   <label class="label" for="name">Blocked Agents/Dealers</label>
   @foreach($blocked_users as $blocked)
   <div class="blocked-users__item"><span>{{ $blocked->user->company . ' - ' . $blocked->user->name }}</span>
-    <a href="/remove-blocked-user/{{ $blocked->user->id }}/{{ $product->id }}"><i class="fas fa-trash-alt"></i></a>
+    <a href="/remove-blocked-user/{{ $blocked->id }}"><i class="fas fa-trash-alt"></i></a>
   </div>
   @endforeach
 </div>
-<form method=" POST" action="/block-dealer">
+@endif
+<form method="POST" action="/block-dealer">
   @csrf
   <div class="form-wrap">
     <div class="form-wrap-flex form-wrap-flex-blocked-dealers">
@@ -359,7 +361,7 @@
               @endforeach
             </select>
           </div>
-          <button class="button is-danger call-loader" type="submit">Block Dealer</button>
+          <button class="button is-danger call-loader" type="submit">Block User</button>
         </div>
       </div>
     </div>

@@ -36,14 +36,24 @@ class ProductController extends Controller
     private static function product_data($cat = false, $current = 0)
     {
         $user_id = \Auth::user()->id;
+        $blocked_products = ProductUser::where('user_id', $user_id)->pluck('product_id')->toArray();
 
         if ($cat) {
             $products = Product::whereHas('categories', function ($query) use ($cat) {
                 $query->where('category_id', $cat);
-            })->where('archived', 0)->where('id', '!=', $current)->orderBy('order', 'ASC')->get();
+            })
+                ->where('archived', 0)
+                ->where('id', '!=', $current)
+                ->whereNotIn('id', $blocked_products)
+                ->orderBy('order', 'ASC')
+                ->get();
 
         } else {
-            $products = Product::where('archived', 0)->where('id', '!=', $current)->orderBy('order', 'ASC')->get();
+            $products = Product::where('archived', 0)
+                ->where('id', '!=', $current)
+                ->whereNotIn('id', $blocked_products)
+                ->orderBy('order', 'ASC')
+                ->get();
         }
 
         foreach ($products as $product) {
@@ -104,9 +114,13 @@ class ProductController extends Controller
         //     ->where('products.archived', 0)
         //     ->orderBy('products.created_at', 'DESC')
         //     ->get();
+        $blocked_products = ProductUser::where('user_id', $user_id)->pluck('product_id')->toArray();
+        //dd($user_id);
+        //dd($blocked_products);
 
         $products = Product::where('products.archived', 0)
             ->orderBy('order', 'ASC')
+            ->whereNotIn('id', $blocked_products)
             ->get();
 
         foreach ($products as $product) {

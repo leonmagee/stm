@@ -85,6 +85,8 @@ class ProductUserController extends Controller
      */
     public function destroy(ProductUser $productUser)
     {
-        //
+        $productUser->delete();
+        session()->flash('message', 'Blocked User Removed.');
+        return redirect()->back();
     }
 }

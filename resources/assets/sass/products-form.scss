@@ -132,10 +132,11 @@
 }
 
 .blocked-users {
-    padding: 1em 2em;
+    padding: 1em 2em 0;
     .blocked-users__item {
         width: 40%;
         background: #fff;
+        margin-bottom: 1em;
         border-radius: $border-radius;
         display: flex;
         align-items: center;
