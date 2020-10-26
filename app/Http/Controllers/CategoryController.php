@@ -14,7 +14,9 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        $cats = Category::all();
+
+        return view('categories.index', compact('cats'));
     }
 
     /**
@@ -46,7 +48,7 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
-        //
+        return view('categories.show', compact('category'));
     }
 
     /**
@@ -69,7 +71,13 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
-        //
+        $this->validate(request(), [
+            'name' => 'required|min:3',
+        ]);
+        $category->name = $request->name;
+        $category->save();
+        session()->flash('message', 'Category name has been updated.');
+        return redirect()->back();
     }
 
     /**
