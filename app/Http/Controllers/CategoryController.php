@@ -37,7 +37,14 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate(request(), [
+            'name' => 'required|min:3',
+        ]);
+        Category::create([
+            'name' => $request->name,
+        ]);
+        session()->flash('message', 'A new category as been added.');
+        return redirect()->back();
     }
 
     /**

@@ -88,6 +88,7 @@ Route::group(['middleware' => 'App\Http\Middleware\LockOutUsersManagers'], funct
     Route::get('categories', 'CategoryController@index');
     Route::get('categories/{category}', 'CategoryController@show');
     Route::post('edit-cat/{category}', 'CategoryController@update');
+    Route::post('add-cat', 'CategoryController@store');
 });
 
 /**

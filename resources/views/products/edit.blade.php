@@ -337,7 +337,7 @@
 </form>
 @if(count($blocked_users))
 <div class="blocked-users">
-  <label class="label" for="name">Blocked Agents/Dealers</label>
+  <label class="label" for="name">Product Blocked For:</label>
   @foreach($blocked_users as $blocked)
   <div class="blocked-users__item"><span>{{ $blocked->user->company . ' - ' . $blocked->user->name }}</span>
     <a href="/remove-blocked-user/{{ $blocked->id }}"><i class="fas fa-trash-alt"></i></a>
