@@ -350,7 +350,7 @@
   <div class="form-wrap">
     <div class="form-wrap-flex form-wrap-flex-blocked-dealers">
       <div class="field">
-        <label class="label" for="name">Block New Agent/Dealer</label>
+        <label class="label" for="name">Block This Product For:</label>
         <div class="control item-flex">
           <input type="hidden" name="product_id" value="{{ $product->id }}" />
           <div class="select">
@@ -361,7 +361,7 @@
               @endforeach
             </select>
           </div>
-          <button class="button is-danger call-loader" type="submit">Block User</button>
+          <button class="button is-danger call-loader" type="submit">Block Product</button>
         </div>
       </div>
     </div>
