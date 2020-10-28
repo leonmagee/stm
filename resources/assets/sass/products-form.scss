@@ -45,6 +45,9 @@
             position: relative;
             img {
                 height: 13em;
+                &.full-height {
+                    height: auto;
+                }
             }
             &.hide_img {
                 display: none;

@@ -146,6 +146,10 @@ class AppServiceProvider extends ServiceProvider
                     'name' => 'Add New Plan',
                     'link' => '/plan/create',
                 ],
+                [
+                    'name' => 'Homepage Slider',
+                    'link' => '/slider',
+                ],
             ];
 
             $sims_sub = [

@@ -31,7 +31,7 @@
 
           <div class="modal-box">
 
-            <h3 class="title">Are You Sure?</h3>
+            <h4 class="title modal-title">Are You Sure?</h4>
 
             <a href="/delete-coupon/{{ $coupon->id }}" class="button is-danger">Delete Coupon</a>
             <a class="modal-delete-close-button button is-primary" item_id={{ $coupon->id }}>Cancel</a>

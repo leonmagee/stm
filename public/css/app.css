@@ -22857,6 +22857,10 @@ body.stm-body.about .middle-content-wrap .about-page .video-wrap .video-wrap-inn
   height: 13em;
 }
 
+.form-wrapper-inner .preview-image .preview-image__image img.full-height {
+  height: auto;
+}
+
 .form-wrapper-inner .preview-image .preview-image__image.hide_img {
   display: none;
 }
