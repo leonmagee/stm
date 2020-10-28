@@ -21,7 +21,8 @@ class SessionsController extends Controller
         //return view('sessions.create', compact('banner_1', 'banner_2'));
 
         // get slides
-        $slides = Slide::all();
+        //$slides = Slide::all();
+        $slides = Slide::where('url', '!=', '')->get();
         return view('sessions.create', compact('slides'));
     }
 

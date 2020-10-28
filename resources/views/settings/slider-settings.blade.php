@@ -43,7 +43,8 @@
                 </div>
                 @else
                 <div class="preview-image__image hide_img output_{{ $i }}">
-                  <img id="output_{{ $i }}" />
+                  <img class="full-height" id="output_{{ $i }}" />
+                  <i class="remove fas fa-times-circle" img_id="{{ $i }}"></i>
                 </div>
                 <div class="preview-image__default preview-image__default_{{ $i }}"><i class="far fa-image"></i></div>
                 @endif

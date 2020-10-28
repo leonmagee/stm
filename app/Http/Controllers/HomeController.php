@@ -24,7 +24,7 @@ class HomeController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-        $this->num_slides = 6;
+        $this->num_slides = 4;
     }
 
     /**
@@ -256,7 +256,6 @@ class HomeController extends Controller
         $slides = Slide::all();
         $num_slides = $this->num_slides;
         return view('settings.slider-settings', compact('slides', 'num_slides'));
-
     }
 
     public function update_slides(Request $request)
@@ -269,7 +268,10 @@ class HomeController extends Controller
             if (${"image_upload_" . $i}) {
                 //dd(${"image_upload_" . $i});
                 $image_path = ${"image_upload_" . $i}->getRealPath();
-                $cloudinaryWrapper = Cloudder::upload($image_path, null, ['folder' => 'STM']);
+                $cloudinaryWrapper = Cloudder::upload($image_path, null, [
+                    'folder' => 'STM',
+                    'format' => 'jpeg',
+                ]);
                 $result = $cloudinaryWrapper->getResult();
                 //${"url_" . $i} = $result['secure_url'];
                 $slide->url = $result['secure_url'];
