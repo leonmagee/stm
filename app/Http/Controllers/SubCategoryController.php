@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\ProductSubCategories;
 use App\SubCategory;
 use Illuminate\Http\Request;
 
@@ -35,7 +36,17 @@ class SubCategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate(request(), [
+            'sub_cat_name' => 'required|min:3',
+            'category_id' => 'required',
+        ]);
+        SubCategory::create([
+            'name' => $request->sub_cat_name,
+            'category_id' => $request->category_id,
+        ]);
+        session()->flash('message', 'A new sub category as been added.');
+        return redirect()->back();
+
     }
 
     /**
@@ -44,9 +55,9 @@ class SubCategoryController extends Controller
      * @param  \App\SubCategory  $subCategory
      * @return \Illuminate\Http\Response
      */
-    public function show(SubCategory $subCategory)
+    public function show(SubCategory $category)
     {
-        //
+        return view('categories.show-sub', compact('category'));
     }
 
     /**
@@ -55,7 +66,7 @@ class SubCategoryController extends Controller
      * @param  \App\SubCategory  $subCategory
      * @return \Illuminate\Http\Response
      */
-    public function edit(SubCategory $subCategory)
+    public function edit(SubCategory $category)
     {
         //
     }
@@ -67,9 +78,15 @@ class SubCategoryController extends Controller
      * @param  \App\SubCategory  $subCategory
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, SubCategory $subCategory)
+    public function update(Request $request, SubCategory $category)
     {
-        //
+        $this->validate(request(), [
+            'name' => 'required|min:3',
+        ]);
+        $category->name = $request->name;
+        $category->save();
+        session()->flash('message', 'Sub Category name has been updated.');
+        return redirect()->back();
     }
 
     /**
@@ -78,8 +95,14 @@ class SubCategoryController extends Controller
      * @param  \App\SubCategory  $subCategory
      * @return \Illuminate\Http\Response
      */
-    public function destroy(SubCategory $subCategory)
+    public function destroy(SubCategory $category)
     {
-        //
+        $sub_cats = ProductSubCategories::where('sub_category_id', $category->id)->get();
+        foreach ($sub_cats as $sub_cat) {
+            $sub_cat->delete();
+        }
+        $category->delete();
+        session()->flash('message', 'Category and data has been removed.');
+        return redirect()->back();
     }
 }

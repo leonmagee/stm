@@ -18716,6 +18716,17 @@ body.stm-body .add-padding {
   margin-left: 0.1em;
 }
 
+h4.modal-title {
+  font-size: 2.1em;
+  margin: 0.2em 0 0.5em !important;
+}
+
+p.modal-text {
+  font-size: 1.2em;
+  margin: 0 auto 1em;
+  max-width: 70%;
+}
+
 .header-wrap {
   background-color: #333;
   background-image: url(/img/black_thread.png);
@@ -23817,23 +23828,34 @@ a.button.custom-button:hover {
 
 .stm-cats .stm-cats__item {
   flex: 0 1 31%;
-  border: 1px solid #eee;
   background-color: #fff;
   border-radius: 4px;
   font-weight: 600;
-  color: #333;
   margin: 1em 1.15%;
   display: flex;
   align-items: center;
   overflow: hidden;
 }
 
-.stm-cats .stm-cats__item span {
-  padding: 0 0.9em;
+.stm-cats .stm-cats__item a {
+  font-size: 0.9em;
+  padding: 0.7em 0;
+  width: 3.5em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.stm-cats .stm-cats__item a {
-  padding: 0.4em 0.7em;
+.stm-cats .stm-cats__item a.edit-name {
+  justify-content: flex-start;
+  color: #333;
+  padding: 0 0.9em;
+  border-top: 1px solid #e3e3e3;
+  border-bottom: 1px solid #e3e3e3;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
 }
 
 .stm-cats .stm-cats__item a.edit-link {
@@ -23841,12 +23863,21 @@ a.button.custom-button:hover {
   background-color: #06d69f;
 }
 
+.stm-cats .stm-cats__item a.edit-link:hover {
+  opacity: 0.8;
+}
+
 .stm-cats .stm-cats__item a.delete-link {
   background-color: #ff3860;
 }
 
+.stm-cats .stm-cats__item a.delete-link:hover {
+  opacity: 0.8;
+}
+
 .stm-cats .stm-cats__item a i {
   color: #fff;
+  text-shadow: 1px 1px rgba(0, 0, 0, 0.025);
 }
 
 .stm-cat.flex {

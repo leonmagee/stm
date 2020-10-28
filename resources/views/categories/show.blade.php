@@ -27,14 +27,15 @@
           </div>
         </div>
       </form>
-      <form method="POST" action="/edit-cat/{{ $category->id }}">
+      <form method="POST" action="/add-sub-cat">
         @csrf
+        <input type="hidden" name="category_id" value="{{ $category->id }}" />
         <div class="form-wrap">
           <div class="form-wrap-flex">
             <div class="field">
-              <label class="label" for="sub-cat">New Subcategory for {{ $category->name }}</label>
+              <label class="label" for="sub_cat_name">New Subcategory for {{ $category->name }}</label>
               <div class="control item-flex">
-                <input class="input" name="sub-cat" placeholder="Subcategory Name" />
+                <input class="input" name="sub_cat_name" placeholder="Subcategory Name" />
                 <button class="button is-primary call-loader" type="submit">Add New</button>
               </div>
             </div>
@@ -46,11 +47,14 @@
     <div class="stm-cats">
       @if($category->sub_categories->count())
       @foreach($category->sub_categories as $cat)
-      <div class="stm-cats__item">
-        <span>{{ $cat->name }}</span>
-        <a class="edit-link" href="categories/{{ $cat->id }}"><i class="fas fa-edit"></i></a>
-        <a class="delete-link" href="delete-cat/{{ $cat->id }}"><i class="fas fa-trash-alt"></i></a>
-      </div>
+      @include('mixins.cat-item', [
+      'id' => $cat->id,
+      'name' => $cat->name,
+      'url' => 'sub-categories',
+      'delete_url' => 'delete-sub-cat',
+      'delete_text' => 'Delete Sub Category',
+      'warning' => 'This will delete all associated category data for products.'
+      ])
       @endforeach
       @else
       <div class="no-sub-cats">

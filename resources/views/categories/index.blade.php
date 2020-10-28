@@ -30,11 +30,14 @@
 
     <div class="stm-cats">
       @foreach($cats as $cat)
-      <div class="stm-cats__item">
-        <span>{{ $cat->name }}</span>
-        <a class="edit-link" href="/categories/{{ $cat->id }}"><i class="fas fa-edit"></i></a>
-        <a class="delete-link" href="/delete-cat/{{ $cat->id }}"><i class="fas fa-trash-alt"></i></a>
-      </div>
+      @include('mixins.cat-item', [
+      'id' => $cat->id,
+      'name' => $cat->name,
+      'url' => 'categories',
+      'delete_url' => 'delete-cat',
+      'delete_text' => 'Delete Category',
+      'warning' => 'This will delete all associated sub categories and category data for products.'
+      ])
       @endforeach
     </div>
 

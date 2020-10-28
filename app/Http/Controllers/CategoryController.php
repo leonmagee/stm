@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Category;
+use App\ProductCategories;
+use App\ProductSubCategories;
+use App\SubCategory;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -95,6 +98,23 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        //
+        $sub_cats = SubCategory::where('category_id', $category->id)->get();
+        foreach ($sub_cats as $sub_cat) {
+            $product_sub_cats = ProductSubCategories::where('sub_category_id', $sub_cat->id)->get();
+            foreach ($product_sub_cats as $product_sub_cat) {
+                $product_sub_cat->delete();
+            }
+        }
+        foreach ($sub_cats as $sub_cat) {
+            $sub_cat->delete();
+        }
+        $product_cats = ProductCategories::where('category_id', $category->id)->get();
+        foreach ($product_cats as $product_cat) {
+            $product_cat->delete();
+        }
+        $category->delete();
+        session()->flash('message', 'Category, Sub Categories and data has been removed.');
+        return redirect()->back();
+
     }
 }

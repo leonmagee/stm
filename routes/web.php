@@ -87,8 +87,13 @@ Route::group(['middleware' => 'App\Http\Middleware\LockOutUsersManagers'], funct
     Route::get('remove-blocked-user/{productUser}', 'ProductUserController@destroy');
     Route::get('categories', 'CategoryController@index');
     Route::get('categories/{category}', 'CategoryController@show');
+    Route::get('sub-categories/{category}', 'SubCategoryController@show');
     Route::post('edit-cat/{category}', 'CategoryController@update');
+    Route::post('edit-sub-cat/{category}', 'SubCategoryController@update');
     Route::post('add-cat', 'CategoryController@store');
+    Route::post('add-sub-cat', 'SubCategoryController@store');
+    Route::get('delete-cat/{category}', 'CategoryController@destroy');
+    Route::get('delete-sub-cat/{category}', 'SubCategoryController@destroy');
 });
 
 /**
