@@ -61,7 +61,7 @@
 "columns": [
 { "data": "id" },
 { "data": "user.company" },
-{ "data": "admin_user.name", "defaultContent": "Cash Out" },
+{ "data": "admin_user.name", "defaultContent": "Balance Transfer" },
 { "data": "previous_balance" },
 { "data": "difference" },
 { "data": "new_balance" },

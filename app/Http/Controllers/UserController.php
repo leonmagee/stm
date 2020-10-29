@@ -772,7 +772,7 @@ class UserController extends Controller
 
             $date = \Carbon\Carbon::now()->format('F d, Y');
 
-            $master_agent_note = 'Balance Transfer to ' . $user->company . ' - ' . $user->name;
+            $master_agent_note = 'To: ' . $user->company . ' - ' . $user->name;
             $master_agent_difference = ($transfer_amount * -1);
             BalanceTracker::create([
                 'admin_id' => null,
@@ -817,7 +817,7 @@ class UserController extends Controller
                 $date
             ));
 
-            $admin_note = 'Balance Transfer to ' . $user->company . ' - ' . $user->name . ' from ' . $logged_in_user->company;
+            $admin_note = 'To: ' . $user->company . ' - ' . $user->name . ' from ' . $logged_in_user->company;
             $admin_users = User::getAdminManageerUsers();
             foreach ($admin_users as $admin) {
                 if (!$admin->notes_email_disable) {
