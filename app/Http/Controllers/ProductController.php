@@ -270,7 +270,10 @@ class ProductController extends Controller
             ${"image_upload_" . $i} = $request->file('upload-image-' . $i);
             if (${"image_upload_" . $i}) {
                 $image_path = ${"image_upload_" . $i}->getRealPath();
-                $cloudinaryWrapper = Cloudder::upload($image_path, null, ['folder' => 'STM']);
+                $cloudinaryWrapper = Cloudder::upload($image_path, null, [
+                    'folder' => 'STM',
+                    'format' => 'jpeg',
+                ]);
                 $result = $cloudinaryWrapper->getResult();
                 ${"url_" . $i} = $result['secure_url'];
             } else {
@@ -282,7 +285,10 @@ class ProductController extends Controller
             ${"video_upload_" . $i} = $request->file('tab-upload-video-' . $i);
             if (${"video_upload_" . $i}) {
                 $video_path = ${"video_upload_" . $i}->getRealPath();
-                $cloudinaryWrapper = Cloudder::uploadVideo($video_path, null, ['folder' => 'STM', 'timeout' => 300]);
+                $cloudinaryWrapper = Cloudder::uploadVideo($video_path, null, [
+                    'folder' => 'STM',
+                    'timeout' => 300,
+                ]);
                 $result = $cloudinaryWrapper->getResult();
                 ${"tab_url_video_" . $i} = $result['secure_url'];
             } elseif ($request->{"tab_video_url_" . $i}) {
@@ -296,7 +302,10 @@ class ProductController extends Controller
             ${"image_upload_" . $i} = $request->file('tab-upload-image-' . $i);
             if (${"image_upload_" . $i}) {
                 $image_path = ${"image_upload_" . $i}->getRealPath();
-                $cloudinaryWrapper = Cloudder::upload($image_path, null, ['folder' => 'STM']);
+                $cloudinaryWrapper = Cloudder::upload($image_path, null, [
+                    'folder' => 'STM',
+                    'format' => 'jpeg',
+                ]);
                 $result = $cloudinaryWrapper->getResult();
                 ${"tab_url_" . $i} = $result['secure_url'];
             } elseif ($request->{"tab_img_url_" . $i}) {
@@ -551,7 +560,10 @@ class ProductController extends Controller
                 $image_path = ${"image_upload_" . $i}->getRealPath();
                 // $mime_type = ${"image_upload_" . $i}->getMimeType();
                 // if (strpos($mime_type, 'video') !== false) {}
-                $cloudinaryWrapper = Cloudder::upload($image_path, null, ['folder' => 'STM']);
+                $cloudinaryWrapper = Cloudder::upload($image_path, null, [
+                    'folder' => 'STM',
+                    'format' => 'jpeg',
+                ]);
                 $result = $cloudinaryWrapper->getResult();
                 ${"url_" . $i} = $result['secure_url'];
             } elseif ($request->{"img_url_" . $i}) {
@@ -565,7 +577,10 @@ class ProductController extends Controller
             ${"video_upload_" . $i} = $request->file('tab-upload-video-' . $i);
             if (${"video_upload_" . $i}) {
                 $video_path = ${"video_upload_" . $i}->getRealPath();
-                $cloudinaryWrapper = Cloudder::uploadVideo($video_path, null, ['folder' => 'STM', 'timeout' => 300]);
+                $cloudinaryWrapper = Cloudder::uploadVideo($video_path, null, [
+                    'folder' => 'STM',
+                    'timeout' => 300,
+                ]);
                 $result = $cloudinaryWrapper->getResult();
                 ${"tab_url_video_" . $i} = $result['secure_url'];
             } elseif ($request->{"tab_video_url_" . $i}) {
@@ -579,7 +594,10 @@ class ProductController extends Controller
             ${"image_upload_" . $i} = $request->file('tab-upload-image-' . $i);
             if (${"image_upload_" . $i}) {
                 $image_path = ${"image_upload_" . $i}->getRealPath();
-                $cloudinaryWrapper = Cloudder::upload($image_path, null, ['folder' => 'STM']);
+                $cloudinaryWrapper = Cloudder::upload($image_path, null, [
+                    'folder' => 'STM',
+                    'format' => 'jpeg',
+                ]);
                 $result = $cloudinaryWrapper->getResult();
                 ${"tab_url_" . $i} = $result['secure_url'];
             } elseif ($request->{"tab_img_url_" . $i}) {
