@@ -462,6 +462,11 @@ class UserController extends Controller
         } else {
             $contact_disable = 0;
         }
+        if ($request->purchase_email_disable) {
+            $purchase_disable = 1;
+        } else {
+            $purchase_disable = 0;
+        }
 
         if ($request->master_agent_site) {
             $master_agent_site = $request->master_agent_site;
@@ -509,6 +514,7 @@ class UserController extends Controller
                 'notes_email_disable' => $disable,
                 'email_blast_disable' => $blast_disable,
                 'contact_email_disable' => $contact_disable,
+                'purchase_email_disable' => $purchase_disable,
                 'master_agent_site' => $master_agent_site,
                 'master_agent_access' => $master_agent_access,
             ]);

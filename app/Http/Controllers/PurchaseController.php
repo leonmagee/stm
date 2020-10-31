@@ -255,9 +255,9 @@ class PurchaseController extends Controller
         }
 
         // 7. Email admins (admins and managers)
-        $admins = User::getAdminManageerUsers();
+        $admins = User::getAdminManageerEmployeeUsers();
         foreach ($admins as $admin) {
-            if (!$admin->notes_email_disable) {
+            if (!$admin->purchase_email_disable) {
                 $header_text = "<strong>Hello " . $admin->name . "!</strong><br />A new purchase order has been placed by " . $user->company . " - " . $user->name;
                 \Mail::to($admin)->send(new PurchaseEmail(
                     $user,

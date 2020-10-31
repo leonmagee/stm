@@ -162,6 +162,15 @@
               Disable Contact Email
             </label>
           </div>
+          <div class="field notes-checkbox-field">
+            <label class="checkbox">
+              <input type="checkbox" name="purchase_email_disable" @if($user->purchase_email_disable)
+              checked="checked"
+              @endif
+              />
+              Disable Purchase Email
+            </label>
+          </div>
           @endif
           @if($user->isSubDealer())
           <div class="field notes-checkbox-field">

@@ -29,6 +29,7 @@ class User extends Authenticatable
         'notes_email_disable',
         'email_blast_disable',
         'contact_email_disable',
+        'purchase_email_disable',
         'master_agent_site',
         'master_agent_access',
     ];
