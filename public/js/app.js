@@ -125437,6 +125437,21 @@ $('#sortable-list').sortable({
     }).then(function (response) {//
     }); // console.log('order has been updated');
   }
+});
+$('.list-group-sort#preview_images').sortable({
+  update: function update(event, ui) {
+    var slideId = ui.item.attr('id');
+    var slideIndex = ui.item.index() + 1;
+    axios({
+      method: 'post',
+      url: '/slider-update-order',
+      data: {
+        slideId: slideId,
+        slideIndex: slideIndex
+      }
+    }).then(function (response) {//
+    });
+  }
 }); // $(selector).sortable({
 //     start: function(event, ui) {
 //         ui.item.data("start_pos", ui.item.index());

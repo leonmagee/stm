@@ -13,48 +13,49 @@
       <div class="form-wrap">
         @csrf
 
-        <div class="form-wrap-flex form-wrap-flex-images" id="preview_images">
-          @for($i = 1; $i <= $num_slides; ++$i) <?php $slide = isset($slides[$i - 1]) ? $slides[$i - 1]->url : false; ?>
-            <div class="field half">
-            <label class="label" for="product_upload_image_{{ $i }}">Slide {{ $i }}</label>
+        <div class="slider-admin list-group list-group-sort" id="preview_images">
+          @foreach($slides as $slide)
+          <div class="field" id="{{ $slide->id }}" order="{{ $slide->order }}">
             <div class="control">
+              <div class="preview-image">
+                @if($slide->url)
+                <div class="preview-image__image output_{{ $slide->id }}">
+                  <img class="full-height" id="output_{{ $slide->id }}" src={{ $slide->url }} />
+                  <i class="remove fas fa-times-circle" img_id="{{ $slide->id }}"></i>
+                </div>
+                <div class="preview-image__default preview-image__default_{{ $slide->id }} hide"><i
+                    class="far fa-image"></i>
+                </div>
+                @else
+                <div class="preview-image__image hide_img output_{{ $slide->id }}">
+                  <img class="full-height" id="output_{{ $slide->id }}" />
+                  <i class="remove fas fa-times-circle" img_id="{{ $slide->id }}"></i>
+                </div>
+                <div class="preview-image__default preview-image__default_{{ $slide->id }}"><i class="far fa-image"></i>
+                </div>
+                @endif
+              </div>
               <div class="file">
                 <label class="file-label">
-                  <input type="hidden" name="img_url_{{ $i }}" value="{{ $slide }}" />
-                  <input class="file-input" type="file" id="product_upload_image_{{ $i }}" name="upload-image-{{ $i }}"
-                    accept="image/*">
+                  <input type="hidden" name="img_url_{{ $slide->id }}" value="{{ $slide->url }}" />
+                  <input class="file-input" type="file" id="product_upload_image_{{ $slide->id }}"
+                    name="upload-image-{{ $slide->id }}" accept="image/*">
                   <span class="file-cta">
                     <span class="file-icon">
                       <i class="fas fa-upload"></i>
                     </span>
                     <span class="file-label">
-                      Choose an Image…
+                      Choose New Image…
                     </span>
                   </span>
                 </label>
               </div>
-              <div class="preview-image">
-                @if($slide)
-                <div class="preview-image__image output_{{ $i }}">
-                  <img class="full-height" id="output_{{ $i }}" src={{ $slide }} />
-                  <i class="remove fas fa-times-circle" img_id="{{ $i }}"></i>
-                </div>
-                <div class="preview-image__default preview-image__default_{{ $i }} hide"><i class="far fa-image"></i>
-                </div>
-                @else
-                <div class="preview-image__image hide_img output_{{ $i }}">
-                  <img class="full-height" id="output_{{ $i }}" />
-                  <i class="remove fas fa-times-circle" img_id="{{ $i }}"></i>
-                </div>
-                <div class="preview-image__default preview-image__default_{{ $i }}"><i class="far fa-image"></i></div>
-                @endif
-              </div>
             </div>
+          </div>
+          @endforeach
         </div>
-        @endfor
       </div>
   </div>
-</div>
 </div>
 <button class="button is-primary call-loader" type="submit">Update Slides</button>
 

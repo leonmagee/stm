@@ -24,7 +24,6 @@ class HomeController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-        $this->num_slides = 4;
     }
 
     /**
@@ -253,33 +252,32 @@ class HomeController extends Controller
 
     public function slider()
     {
-        $slides = Slide::all();
-        $num_slides = $this->num_slides;
-        return view('settings.slider-settings', compact('slides', 'num_slides'));
+        $slides = Slide::orderBy('order')->get();
+        return view('settings.slider-settings', compact('slides'));
+    }
+
+    public static function update_order(Request $request)
+    {
+        $slide = Slide::find($request->slideId);
+        $slide->update_order($request->slideIndex);
     }
 
     public function update_slides(Request $request)
     {
-        $slides = Slide::all();
-        //dd($request);
-        for ($i = 1; $i <= ($this->num_slides); $i++) {
-            ${"image_upload_" . $i} = $request->file('upload-image-' . $i);
-            $slide = $slides[$i - 1];
-            if (${"image_upload_" . $i}) {
-                //dd(${"image_upload_" . $i});
-                $image_path = ${"image_upload_" . $i}->getRealPath();
+        $slides = Slide::orderBy('order')->get();
+        foreach ($slides as $slide) {
+            ${"image_upload_" . $slide->id} = $request->file('upload-image-' . $slide->id);
+            if (${"image_upload_" . $slide->id}) {
+                $image_path = ${"image_upload_" . $slide->id}->getRealPath();
                 $cloudinaryWrapper = Cloudder::upload($image_path, null, [
                     'folder' => 'STM',
                     'format' => 'jpeg',
                 ]);
                 $result = $cloudinaryWrapper->getResult();
-                //${"url_" . $i} = $result['secure_url'];
                 $slide->url = $result['secure_url'];
-            } elseif ($request->{"img_url_" . $i}) {
-                //${"url_" . $i} = $request->{"img_url_" . $i};
-                $slide->url = $request->{"img_url_" . $i};
+            } elseif ($request->{"img_url_" . $slide->id}) {
+                $slide->url = $request->{"img_url_" . $slide->id};
             } else {
-                //${"url_" . $i} = '';
                 $slide->url = '';
             }
             $slide->save();

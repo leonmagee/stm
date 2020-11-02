@@ -96,6 +96,7 @@ Route::group(['middleware' => 'App\Http\Middleware\LockOutUsersManagers'], funct
     Route::get('delete-sub-cat/{category}', 'SubCategoryController@destroy');
     Route::get('slider', 'HomeController@slider');
     Route::post('slides-update', 'HomeController@update_slides');
+    Route::post('slider-update-order', 'HomeController@update_order');
 });
 
 /**

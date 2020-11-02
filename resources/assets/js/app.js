@@ -109,6 +109,23 @@ $('#sortable-list').sortable({
     },
 });
 
+$('.list-group-sort#preview_images').sortable({
+    update(event, ui) {
+        const slideId = ui.item.attr('id');
+        const slideIndex = ui.item.index() + 1;
+        axios({
+            method: 'post',
+            url: '/slider-update-order',
+            data: {
+                slideId,
+                slideIndex,
+            },
+        }).then(response => {
+            //
+        });
+    },
+});
+
 // $(selector).sortable({
 //     start: function(event, ui) {
 //         ui.item.data("start_pos", ui.item.index());

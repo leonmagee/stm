@@ -22,7 +22,7 @@ class SessionsController extends Controller
 
         // get slides
         //$slides = Slide::all();
-        $slides = Slide::where('url', '!=', '')->get();
+        $slides = Slide::where('url', '!=', '')->orderBy('order', 'ASC')->get();
         return view('sessions.create', compact('slides'));
     }
 

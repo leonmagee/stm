@@ -23594,6 +23594,48 @@ a.button.custom-button:hover {
   color: #fff;
 }
 
+.slider-admin {
+  background: #8eb4cb;
+}
+
+.slider-admin .field {
+  margin: 0;
+  padding: 0 !important;
+  border: 1px solid #ddd;
+  background: #fff;
+}
+
+.slider-admin .field:not(:last-child) {
+  border-bottom: none;
+}
+
+.slider-admin .field .control {
+  display: flex;
+}
+
+.slider-admin .field .control .preview-image {
+  flex: 0 1 25%;
+  margin: 0;
+}
+
+.slider-admin .field .control .preview-image .preview-image__image {
+  border: none;
+}
+
+.slider-admin .field .control .preview-image .preview-image__image img {
+  border: 1px solid #ddd;
+}
+
+.slider-admin .field .control .preview-image__default {
+  height: 9em;
+  margin: 1em;
+}
+
+.slider-admin .field .control .file {
+  flex: 0 1 50%;
+  padding: 2em;
+}
+
 .stm-flex {
   padding: 2em;
 }
