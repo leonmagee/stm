@@ -18,9 +18,9 @@
           <th>Model Name</th>
           <th>Manufacturer</th>
           <th>Carrier</th>
-          <th>Blacklist</th>
           <th>Price</th>
           <th>Balance</th>
+          <th>Blacklist</th>
         </tr>
       </thead>
       <tbody>
@@ -47,9 +47,17 @@
 { "data": "model_name" },
 { "data": "manufacturer" },
 { "data": "carrier" },
-{ "data": "blacklist" },
 { "data": "price" },
 { "data": "balance" },
+{ "data": "blacklist",
+"fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
+if(oData.blacklist == 'BLACKLISTED') {
+  $(nTd).html("<span class='pending'>BLACKLISTED</span>");
+} else if(oData.blacklist == 'CLEAN') {
+  $(nTd).html("<span class='completed'>CLEAN</span>");
+}
+}
+},
 ]
 });
 
