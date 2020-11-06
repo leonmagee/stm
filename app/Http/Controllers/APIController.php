@@ -3,6 +3,7 @@ namespace App\Http\Controllers;
 
 use App\BalanceTracker;
 use App\Helpers;
+use App\ImeiSearch;
 use App\Invoice;
 use App\Note;
 use App\Product;
@@ -57,6 +58,25 @@ class APIController extends Controller
             return datatables($logs)->make(true);
         }
         return redirect('/');
+    }
+
+    public function getImeiRecords()
+    {
+        $user = \Auth::user();
+        if ($user) {
+            if ($user->isAdminManagerEmployee()) {
+                $data = ImeiSearch::all();
+                // $logs = UserLoginLogout::select('user_login_logouts.id', 'user_login_logouts.login', 'user_login_logouts.logout', 'users.company', 'users.name')->join('users', 'users.id', 'user_login_logouts.user_id')->get();
+            } elseif ($site_id = $user->isMasterAgent()) {
+                // $role_id = Helpers::get_role_id($site_id);
+                // $logs = UserLoginLogout::select('user_login_logouts.id', 'user_login_logouts.login', 'user_login_logouts.logout', 'users.company', 'users.name')->join('users', 'users.id', 'user_login_logouts.user_id')->where('users.role_id', $role_id)->get();
+            } else {
+                return redirect('/');
+            }
+            return datatables($data)->make(true);
+        }
+        return redirect('/');
+
     }
 
     public function getProducts()

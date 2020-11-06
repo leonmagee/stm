@@ -50,11 +50,13 @@ Route::get('dealer-purchases/{purchase}', 'PurchaseController@show_dealer');
 //Route::get('dealer-rmas', 'RmaController@dealer_rmas');
 Route::get('rmas', 'RmaController@index');
 Route::get('rmas/{rma}', 'RmaController@show');
-Route::get('imei', 'HomeController@imei');
 Route::post('/apply-coupon', 'CartCouponController@store');
 Route::post('/delete-cart-coupon/{coupon}', 'CartCouponController@destroy');
 
 Route::group(['middleware' => 'App\Http\Middleware\LockOutUsersManagers'], function () {
+    Route::get('imeis', 'ImeiSearchController@index');
+    Route::get('imei-search', 'ImeiSearchController@create');
+    Route::post('imei', 'ImeiSearchController@store');
     //Route::get('sales-agents', 'PurchaseController@sales_agents');
     //Route::get('sales-agents/{agent}', 'PurchaseController@sales');
     Route::get('coupons', 'CouponController@index');
@@ -216,6 +218,7 @@ Route::get('/api/v1/sims_archive/{id}', 'APIController@getSimsArchive')->name('a
 Route::get('/api/v1/sim_users', 'APIController@getSimUsers')->name('api.sim_users.index');
 Route::get('/api/v1/sim_user/{id}', 'APIController@getSimUser')->name('api.sim_users.index_user');
 Route::get('/api/v1/logins', 'APIController@getLogins')->name('api.logins.index');
+Route::get('/api/v1/imei_search', 'APIController@getImeiRecords')->name('api.imei_search.index');
 Route::get('/api/v1/products', 'APIController@getProducts')->name('api.products.index');
 Route::get('/api/v1/purchases', 'APIController@getPurchases')->name('api.purchases.index');
 Route::get('/api/v1/purchases-dealer', 'APIController@getPurchasesDealer')->name('api.purchases.index-dealer');
