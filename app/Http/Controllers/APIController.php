@@ -65,7 +65,11 @@ class APIController extends Controller
         $user = \Auth::user();
         if ($user) {
             if ($user->isAdminManagerEmployee()) {
-                $data = ImeiSearch::all();
+                $data = ImeiSearch::with('user')->get();
+                foreach ($data as $item) {
+                    $item->price = '$' . number_format($item->price, 2);
+                    $item->balance = '$' . number_format($item->balance, 2);
+                }
                 // $logs = UserLoginLogout::select('user_login_logouts.id', 'user_login_logouts.login', 'user_login_logouts.logout', 'users.company', 'users.name')->join('users', 'users.id', 'user_login_logouts.user_id')->get();
             } elseif ($site_id = $user->isMasterAgent()) {
                 // $role_id = Helpers::get_role_id($site_id);

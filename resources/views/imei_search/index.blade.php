@@ -13,7 +13,7 @@
         <tr>
           <th>Id</th>
           <th>IMEI</th>
-          {{-- <th>User</th> --}}
+          <th>User</th>
           <th>Model</th>
           <th>Model Name</th>
           <th>Manufacturer</th>
@@ -42,7 +42,7 @@
 "columns": [
 { "data": "id" },
 { "data": "imei" },
-//{ "data": "company" },
+{ "data": "user.company" },
 { "data": "model" },
 { "data": "model_name" },
 { "data": "manufacturer" },
