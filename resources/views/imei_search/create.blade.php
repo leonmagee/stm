@@ -8,7 +8,7 @@
 
   <div class="form-wrapper-inner">
 
-    <h3>IMEI Lookup</h3>
+    <h3>IMEI Check</h3>
 
 
     <form method="POST" action="/imei">

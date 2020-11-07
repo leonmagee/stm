@@ -320,11 +320,11 @@ class AppServiceProvider extends ServiceProvider
 
             $products_sub = [
                 [
-                    'name' => 'IMEI Records',
+                    'name' => 'IMEI History',
                     'link' => '/imeis',
                 ],
                 [
-                    'name' => 'IMEI Lookup',
+                    'name' => 'IMEI Check',
                     'link' => '/imei-search',
                 ],
                 [

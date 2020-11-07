@@ -232,6 +232,21 @@ class Helpers
         return preg_match('/[А-Яа-яЁё]/u', $text);
     }
 
+    public static function checkImei($imei, $service)
+    {
+        $key = env('IMEI_KEY');
+        $url = 'https://api.imeicheck.com/api/v1/services/order/create?serviceid=' . $service . '&key=' . $key . '&imei=' . $imei;
+        $curl = curl_init($url);
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
+        curl_setopt($curl, CURLOPT_CONNECTTIMEOUT, 60);
+        curl_setopt($curl, CURLOPT_TIMEOUT, 60);
+        $json = curl_exec($curl);
+        $curl_result = json_decode($json);
+        curl_close($curl);
+        return $curl_result;
+    }
+
     public static function date_array()
     {
         return [
