@@ -44,6 +44,8 @@ class ImeiSearchController extends Controller
 
         // $apple_warranty = 'Model: iPhone 6s Plus 64GB Gold<br>IMEI: 353331072816483<br>Serial Number: ********GRX2<br>Activated: <span style="color: green">Yes</span><br>Estimated Purchase Date: 2016-01-21<br>Valid Purchase Date: <span style="color: green">Yes</span><br>Repairs & Service Coverage: <span style="color:red">Expired</span><br>Days Remaining: 0<br>Telephone Technical Support: <span style="color:red">Expired</span><br>AppleCare: <span style="color: red">No</span><br>Refurbished: <span style="color: green">No</span><br>Replaced: <span style="color: green">No</span><br>Loaner: <span style="color: green">No</span><br>';
 
+        $xxx = 'Model: iPhone 6s Plus 64GB Gold<br>IMEI: 353331072816483<br> Serial Number: F2LQT415GRX2<br>Carrier: Unlocked<br>SIMLock Status: <font color="green">Unlocked.</font> <br>Find my iPhone: <font color="red"> <strong>ON.</strong></font> <br> Activated: <span style="color: green">Yes</span><br>Estimated Purchase Date: 2016-01-21<br>Valid Purchase Date: <span style="color: green">Yes</span><br>Repairs & Service Coverage: <span style="color:red">Expired</span><br>Days Remaining: 0<br>Telephone Technical Support: <span style="color:red">Expired</span><br>AppleCare: <span style="color: red">No</span><br>Refurbished: <span style="color: green">No</span><br>Replaced: <span style="color: green">No</span><br>Loaner: <span style="color: green">No</span><br>';
+
         //$service = 134; // Custom Service - All Models Phone Details and Blacklist
         //$service = 72; // Samsung info/carrier
         //$service = 62; // Apple info/carrier
@@ -62,10 +64,11 @@ class ImeiSearchController extends Controller
         // curl_close($curl);
 
         // service - 134 - all model general check with blacklist info
+        //$curl_result = Helpers::checkImei($imei, 128);
         $curl_result = Helpers::checkImei($imei, 134);
 
         $status = $curl_result->status;
-        //dd($curl_result);
+        dd($curl_result);
         if ($status == 'failed') {
             session()->flash('danger', 'IMEI Number Not Found.');
             return redirect()->back();
