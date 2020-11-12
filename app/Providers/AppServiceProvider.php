@@ -318,15 +318,18 @@ class AppServiceProvider extends ServiceProvider
                 ],
             ];
 
-            $products_sub = [
-                [
-                    'name' => 'IMEI History',
-                    'link' => '/imeis',
-                ],
+            $imeis_sub = [
                 [
                     'name' => 'IMEI Check',
                     'link' => '/imei-search',
                 ],
+                [
+                    'name' => 'IMEI History',
+                    'link' => '/imeis',
+                ],
+            ];
+
+            $products_sub = [
                 [
                     'name' => 'Products List',
                     'link' => '/products-list',
@@ -421,6 +424,13 @@ class AppServiceProvider extends ServiceProvider
                         'sub' => false,
                         'icon' => 'flaticon-wifi',
                         'default' => false,
+                    ],
+                    [
+                        'name' => 'IMEI Check',
+                        'link' => false,
+                        'sub' => $imeis_sub,
+                        'icon' => 'flaticon-zoom',
+                        'default' => 'imei-search',
                     ],
                     [
                         'name' => 'Notes',

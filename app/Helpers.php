@@ -247,6 +247,44 @@ class Helpers
         return $curl_result;
     }
 
+    public static function imeiCarrier($service, $imei)
+    {
+        $curl_new = Helpers::checkImei($imei, $service);
+        $result2 = false;
+        if ($curl_new) {
+            //dd($curl_new);
+            $status = $curl_new->status;
+            if ($status !== 'failed') {
+                $result2 = $curl_new->result;
+            }
+        }
+        if ($result2) {
+            $pattern = '|Carrier: ([^<]+)<br|';
+            $matches = [];
+            preg_match($pattern, $result2, $matches);
+            if (isset($matches[1])) {
+                $carrier = $matches[1];
+            } else {
+                $carrier = null;
+            }
+
+            $result = [
+                'carrier' => $carrier,
+                'price' => $curl_new->price,
+            ];
+
+        } else {
+            $result = [
+                'carrier' => null,
+                'price' => 0,
+            ];
+
+        }
+
+        return $result;
+
+    }
+
     public static function date_array()
     {
         return [

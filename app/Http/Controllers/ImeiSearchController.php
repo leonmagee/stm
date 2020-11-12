@@ -40,35 +40,16 @@ class ImeiSearchController extends Controller
             'imei' => 'required',
         ]);
 
-        // $apple_response = 'Model: iPhone 6s Plus 64GB Gold<br>IMEI: 353331072816483<br> Serial Number: F2LQT415GRX2<br>Carrier: Unlocked<br>SIMLock Status: <font color="green">Unlocked.</font> <br>GSMA Blacklist Status:<font  color="green"> <strong>Clean</strong></font> <br> Activated: <span style="color: green">Yes</span><br>Estimated Purchase Date: 2016-01-21<br>Valid Purchase Date: <span style="color: green">Yes</span><br>Repairs & Service Coverage: <span style="color:red">Expired</span><br>Days Remaining: 0<br>Telephone Technical Support: <span style="color:red">Expired</span><br>AppleCare: <span style="color: red">No</span><br>Refurbished: <span style="color: green">No</span><br>Replaced: <span style="color: green">No</span><br>Loaner: <span style="color: green">No</span><br>';
-
-        // $apple_warranty = 'Model: iPhone 6s Plus 64GB Gold<br>IMEI: 353331072816483<br>Serial Number: ********GRX2<br>Activated: <span style="color: green">Yes</span><br>Estimated Purchase Date: 2016-01-21<br>Valid Purchase Date: <span style="color: green">Yes</span><br>Repairs & Service Coverage: <span style="color:red">Expired</span><br>Days Remaining: 0<br>Telephone Technical Support: <span style="color:red">Expired</span><br>AppleCare: <span style="color: red">No</span><br>Refurbished: <span style="color: green">No</span><br>Replaced: <span style="color: green">No</span><br>Loaner: <span style="color: green">No</span><br>';
-
-        $xxx = 'Model: iPhone 6s Plus 64GB Gold<br>IMEI: 353331072816483<br> Serial Number: F2LQT415GRX2<br>Carrier: Unlocked<br>SIMLock Status: <font color="green">Unlocked.</font> <br>Find my iPhone: <font color="red"> <strong>ON.</strong></font> <br> Activated: <span style="color: green">Yes</span><br>Estimated Purchase Date: 2016-01-21<br>Valid Purchase Date: <span style="color: green">Yes</span><br>Repairs & Service Coverage: <span style="color:red">Expired</span><br>Days Remaining: 0<br>Telephone Technical Support: <span style="color:red">Expired</span><br>AppleCare: <span style="color: red">No</span><br>Refurbished: <span style="color: green">No</span><br>Replaced: <span style="color: green">No</span><br>Loaner: <span style="color: green">No</span><br>';
-
-        //$service = 134; // Custom Service - All Models Phone Details and Blacklist
-        //$service = 72; // Samsung info/carrier
-        //$service = 62; // Apple info/carrier
-        //$service = 66; // Apple Warranty
         $imei = $request->imei;
 
-        // $key = env('IMEI_KEY');
-        // $url = 'https://api.imeicheck.com/api/v1/services/order/create?serviceid=' . $service . '&key=' . $key . '&imei=' . $imei;
-        // $curl = curl_init($url);
-        // curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-        // curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
-        // curl_setopt($curl, CURLOPT_CONNECTTIMEOUT, 60);
-        // curl_setopt($curl, CURLOPT_TIMEOUT, 60);
-        // $json = curl_exec($curl);
-        // $curl_result = json_decode($json);
-        // curl_close($curl);
-
-        // service - 134 - all model general check with blacklist info
-        //$curl_result = Helpers::checkImei($imei, 128);
+        /**
+         * Get curl result for service 134
+         * All model lookup for model and blacklist
+         */
         $curl_result = Helpers::checkImei($imei, 134);
 
         $status = $curl_result->status;
-        dd($curl_result);
+        //dd($curl_result);
         if ($status == 'failed') {
             session()->flash('danger', 'IMEI Number Not Found.');
             return redirect()->back();
@@ -88,7 +69,7 @@ class ImeiSearchController extends Controller
             $blacklist = null;
         }
 
-        $pattern = '|Model: ([^<]+)<br>|';
+        $pattern = '|Model: ([^<]+)<br|';
         $matches = [];
         preg_match($pattern, $result, $matches);
         if (isset($matches[1])) {
@@ -97,7 +78,7 @@ class ImeiSearchController extends Controller
             $model = null;
         }
 
-        $pattern = '|Model Name: ([^<]+)<br>|';
+        $pattern = '|Model Name: ([^<]+)<br|';
         $matches = [];
         preg_match($pattern, $result, $matches);
         if (isset($matches[1])) {
@@ -106,7 +87,7 @@ class ImeiSearchController extends Controller
             $model_name = null;
         }
 
-        $pattern = '|Manufacturer: ([^<]+)<br>|';
+        $pattern = '|Manufacturer: ([^<]+)<br|';
         $matches = [];
         preg_match($pattern, $result, $matches);
         if (isset($matches[1])) {
@@ -115,39 +96,44 @@ class ImeiSearchController extends Controller
             $manufacturer = null;
         }
 
-        $carrier = null;
-
-        $result2 = false;
+        // set default for second curl request data
+        $result_2 = [
+            'carrier' => null,
+            'price' => 0,
+        ];
         if ($manufacturer) {
-            // second api request for different manufacturers
+
             $apple = stripos($manufacturer, 'apple');
+            $samsung = stripos($manufacturer, 'samsung');
+            $xiaomi = stripos($manufacturer, 'xiaomi');
+            $huawei = stripos($manufacturer, 'huawei');
+            $lg = stripos($manufacturer, 'lg');
+
             if ($apple !== false) {
-                // service - 62 - apple info/carrier
-                $curl_new = Helpers::checkImei($imei, 62);
-                //dd($curl_new);
-                if ($curl_new) {
-                    $status = $curl_new->status;
-                    if ($status !== 'failed') {
-                        $result2 = $curl_new->result;
-                    }
-                }
-            }
-
-            // get carrier from result
-            if ($result2) {
-                $pattern = '|Carrier: ([^<]+)<br>|';
-                $matches = [];
-                preg_match($pattern, $result2, $matches);
-                if (isset($matches[1])) {
-                    $carrier = $matches[1];
-                } else {
-                    $carrier = null;
-                }
-
+                // 128 - 8 cents??? - carrier and warranty - he might give a discount
+                $result_2 = Helpers::imeiCarrier(128, $imei);
+            } elseif ($samsung !== false) {
+                // 72 - 5 cents? -
+                // 93 -
+                $result_2 = Helpers::imeiCarrier(72, $imei); // maybe 93
+            } elseif ($xiaomi !== false) {
+                // 96 - 2 cents // info - no carrier or waranty info
+                // 71 - 1 cent // just basic stuff
+                //$result_2 = Helpers::imeiCarrier(96, $imei);
+                $result_2 = Helpers::imeiCarrier(71, $imei);
+            } elseif ($huawei !== false) {
+                // 80 - 9 cents // lots of warranty info - no carrier
+                $result_2 = Helpers::imeiCarrier(80, $imei); // maybe 93
+            } elseif ($lg !== false) {
+                // 97 - 6 cents // carrier and warranty
+                $result_2 = Helpers::imeiCarrier(97, $imei); // maybe 93
             }
         }
 
         $user_id = \Auth::user()->id;
+
+        $carrier = $result_2['carrier'];
+        $total = floatval($price) + floatval($result_2['price']);
 
         // create new ImeiSearch entry
         ImeiSearch::create([
@@ -158,7 +144,7 @@ class ImeiSearchController extends Controller
             'manufacturer' => $manufacturer,
             'carrier' => $carrier,
             'blacklist' => $blacklist,
-            'price' => $price,
+            'price' => $total,
             'balance' => $balance,
         ]);
 
