@@ -21,6 +21,7 @@
           <th>Price</th>
           <th>Balance</th>
           <th>Blacklist</th>
+          <th></th>
         </tr>
       </thead>
       <tbody>
@@ -58,6 +59,10 @@ if(oData.blacklist == 'BLACKLISTED') {
 }
 }
 },
+{ "data": "id", "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
+$(nTd).html("<a class='invoice-view' href='/imeis/" + oData.id + "'>View</a>");
+}
+}
 ]
 });
 

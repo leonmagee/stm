@@ -252,7 +252,7 @@ class Helpers
         $curl_new = Helpers::checkImei($imei, $service);
         $result2 = false;
         if ($curl_new) {
-            //dd($curl_new);
+            dd($curl_new);
             $status = $curl_new->status;
             if ($status !== 'failed') {
                 $result2 = $curl_new->result;

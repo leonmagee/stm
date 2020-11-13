@@ -57,6 +57,7 @@ Route::group(['middleware' => 'App\Http\Middleware\LockOutUsersManagers'], funct
     Route::get('imeis', 'ImeiSearchController@index');
     Route::get('imei-search', 'ImeiSearchController@create');
     Route::post('imei', 'ImeiSearchController@store');
+    Route::get('imeis/{imei}', 'ImeiSearchController@show');
     //Route::get('sales-agents', 'PurchaseController@sales_agents');
     //Route::get('sales-agents/{agent}', 'PurchaseController@sales');
     Route::get('coupons', 'CouponController@index');
