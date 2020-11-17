@@ -101,6 +101,8 @@ class ImeiSearchController extends Controller
             'price' => 0,
             'carrier' => null,
             'warranty_status' => null,
+            'warranty_start' => null,
+            'warranty_end' => null,
             'apple_care' => null,
             'activated' => null,
             'repairs_service' => null,
@@ -123,6 +125,7 @@ class ImeiSearchController extends Controller
                 $result_2 = Helpers::imeiCarrier(128, $imei);
             } elseif ($samsung !== false) {
                 // 72 - 6 cents - carrier - some warranty
+                // 93 - 10 cents - carrier - some warranty - usa open instead of factory unlocked
                 $result_2 = Helpers::imeiCarrier(72, $imei);
             } elseif ($lg !== false) {
                 // 97 - 6 cents // carrier and warranty
@@ -166,6 +169,8 @@ class ImeiSearchController extends Controller
 
         $carrier = $result_2['carrier'];
         $warranty_status = $result_2['warranty_status'];
+        $warranty_start = $result_2['warranty_start'];
+        $warranty_end = $result_2['warranty_end'];
         $apple_care = $result_2['apple_care'];
         $activated = $result_2['activated'];
         $repairs_service = $result_2['repairs_service'];
@@ -182,6 +187,8 @@ class ImeiSearchController extends Controller
             'blacklist' => $blacklist,
             'carrier' => $carrier,
             'warranty_status' => $warranty_status,
+            'warranty_start' => $warranty_start,
+            'warranty_end' => $warranty_end,
             'apple_care' => $apple_care,
             'activated' => $activated,
             'repairs_service' => $repairs_service,

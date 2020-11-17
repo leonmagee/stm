@@ -279,6 +279,26 @@ class Helpers
                 $warranty_status = null;
             }
 
+            // warranty start date
+            $pattern = '|Warranty Start[^:]*: ([^<]+)<br|';
+            $matches = [];
+            preg_match($pattern, $result2, $matches);
+            if (isset($matches[1])) {
+                $warranty_start = $matches[1];
+            } else {
+                $warranty_start = null;
+            }
+
+            // warranty end date
+            $pattern = '|Warranty End[^:]*: ([^<]+)<br|';
+            $matches = [];
+            preg_match($pattern, $result2, $matches);
+            if (isset($matches[1])) {
+                $warranty_end = $matches[1];
+            } else {
+                $warranty_end = null;
+            }
+
             // apple care
             $pattern = '|AppleCare: <span[^>]*>([^<]+)<\/span>|';
             $matches = [];
@@ -323,6 +343,8 @@ class Helpers
                 'price' => $curl_new->price,
                 'carrier' => $carrier,
                 'warranty_status' => $warranty_status,
+                'warranty_start' => $warranty_start,
+                'warranty_end' => $warranty_end,
                 'apple_care' => $apple_care,
                 'activated' => $activated,
                 'repairs_service' => $repairs_service,
@@ -334,6 +356,8 @@ class Helpers
                 'price' => 0,
                 'carrier' => null,
                 'warranty_status' => null,
+                'warranty_start' => null,
+                'warranty_end' => null,
                 'apple_care' => null,
                 'activated' => null,
                 'repairs_service' => null,
