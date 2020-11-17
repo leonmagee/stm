@@ -419,18 +419,18 @@ class AppServiceProvider extends ServiceProvider
 
                 $menu_array = [
                     [
+                        'name' => 'Blacklisted IMEI Check',
+                        'link' => false,
+                        'sub' => $imeis_sub,
+                        'icon' => 'flaticon-zoom',
+                        'default' => '/imei-search',
+                    ],
+                    [
                         'name' => 'Plans Spiff',
                         'link' => '/plans',
                         'sub' => false,
                         'icon' => 'flaticon-wifi',
                         'default' => false,
-                    ],
-                    [
-                        'name' => 'IMEI Check',
-                        'link' => false,
-                        'sub' => $imeis_sub,
-                        'icon' => 'flaticon-zoom',
-                        'default' => '/imei-search',
                     ],
                     [
                         'name' => 'Notes',
