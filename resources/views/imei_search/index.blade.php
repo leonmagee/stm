@@ -15,7 +15,6 @@
           <th>IMEI</th>
           <th>User</th>
           <th>Model</th>
-          <th>Model Name</th>
           <th>Manufacturer</th>
           <th>Carrier</th>
           <th>Price</th>
@@ -45,7 +44,6 @@
 { "data": "imei" },
 { "data": "user.company" },
 { "data": "model" },
-{ "data": "model_name" },
 { "data": "manufacturer" },
 { "data": "carrier" },
 { "data": "price" },

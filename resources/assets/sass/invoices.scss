@@ -133,12 +133,14 @@
                 color: #fff;
                 text-shadow: 1px 1px rgba(0, 0, 0, 0.05);
             }
-            &.stm_inv__header--item-status-2 {
+            &.stm_inv__header--item-status-2,
+            &.stm_inv__header--item-status-BLACKLISTED {
                 background-color: $color-red;
                 color: #fff;
                 text-shadow: 1px 1px rgba(0, 0, 0, 0.05);
             }
-            &.stm_inv__header--item-status-3 {
+            &.stm_inv__header--item-status-3,
+            &.stm_inv__header--item-status-CLEAN {
                 background-color: $color-green;
                 color: #fff;
                 text-shadow: 1px 1px rgba(0, 0, 0, 0.05);

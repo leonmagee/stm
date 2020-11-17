@@ -21670,13 +21670,15 @@ body.stm-body.about .middle-content-wrap .about-page .video-wrap .video-wrap-inn
   text-shadow: 1px 1px rgba(0, 0, 0, 0.05);
 }
 
-.stm_inv .stm_inv__header .stm_inv__header--item.stm_inv__header--item-status-2 {
+.stm_inv .stm_inv__header .stm_inv__header--item.stm_inv__header--item-status-2,
+.stm_inv .stm_inv__header .stm_inv__header--item.stm_inv__header--item-status-BLACKLISTED {
   background-color: #ef476f;
   color: #fff;
   text-shadow: 1px 1px rgba(0, 0, 0, 0.05);
 }
 
-.stm_inv .stm_inv__header .stm_inv__header--item.stm_inv__header--item-status-3 {
+.stm_inv .stm_inv__header .stm_inv__header--item.stm_inv__header--item-status-3,
+.stm_inv .stm_inv__header .stm_inv__header--item.stm_inv__header--item-status-CLEAN {
   background-color: #06dba3;
   color: #fff;
   text-shadow: 1px 1px rgba(0, 0, 0, 0.05);

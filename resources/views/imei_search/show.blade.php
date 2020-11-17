@@ -26,7 +26,8 @@
           <div class="stm_inv__header--item">{{ $imei->model }}</div>
           <div class="stm_inv__header--item">{{ $imei->model_name }}</div>
           <div class="stm_inv__header--item">{{ $imei->created_at->format('M d, Y') }}</div>
-          <div class="stm_inv__header--item">{{ $imei->blacklist }}</div>
+          <div class="stm_inv__header--item stm_inv__header--item-status-{{ $imei->blacklist }}">{{ $imei->blacklist }}
+          </div>
         </div>
       </div>
 
@@ -34,18 +35,42 @@
         <div class="stm_inv__flex">
           <div class="stm_inv__header--label">Manufacturer</div>
           <div class="stm_inv__header--label">Carrier</div>
-          <div class="stm_inv__header--label">Price</div>
-          <div class="stm_inv__header--label">Warranty</div>
-          <div class="stm_inv__header--label">Warranty</div>
-          <div class="stm_inv__header--label">Warranty</div>
+          @if($imei->warranty_status)
+          <div class="stm_inv__header--label">Warranty Status</div>
+          @endif
+          @if($imei->apple_care)
+          <div class="stm_inv__header--label">Apple Care</div>
+          @endif
+          @if($imei->activated)
+          <div class="stm_inv__header--label">Activated</div>
+          @endif
+          @if($imei->repairs_service)
+          <div class="stm_inv__header--label">Repairs & Services</div>
+          @endif
+          @if($imei->refurbished)
+          <div class="stm_inv__header--label">Refurbished</div>
+          @endif
+          <div class="stm_inv__header--label">Search Price</div>
         </div>
         <div class="stm_inv__flex">
           <div class="stm_inv__header--item">{{ $imei->manufacturer }}</div>
           <div class="stm_inv__header--item">{{ $imei->carrier }}</div>
+          @if($imei->warranty_status)
+          <div class="stm_inv__header--item">{{ $imei->warranty_status }}</div>
+          @endif
+          @if($imei->apple_care)
+          <div class="stm_inv__header--item">{{ $imei->apple_care }}</div>
+          @endif
+          @if($imei->activated)
+          <div class="stm_inv__header--item">{{ $imei->activated }}</div>
+          @endif
+          @if($imei->repairs_service)
+          <div class="stm_inv__header--item">{{ $imei->repairs_service }}</div>
+          @endif
+          @if($imei->refurbished)
+          <div class="stm_inv__header--item">{{ $imei->refurbished }}</div>
+          @endif
           <div class="stm_inv__header--item">${{ number_format($imei->price, 2) }}</div>
-          <div class="stm_inv__header--item">{{ $imei->model_name }}</div>
-          <div class="stm_inv__header--item">{{ $imei->created_at->format('M d, Y') }}</div>
-          <div class="stm_inv__header--item">{{ $imei->blacklist }}</div>
         </div>
       </div>
 

@@ -252,13 +252,14 @@ class Helpers
         $curl_new = Helpers::checkImei($imei, $service);
         $result2 = false;
         if ($curl_new) {
-            dd($curl_new);
+            //dd($curl_new);
             $status = $curl_new->status;
             if ($status !== 'failed') {
                 $result2 = $curl_new->result;
             }
         }
         if ($result2) {
+            // carrier
             $pattern = '|Carrier: ([^<]+)<br|';
             $matches = [];
             preg_match($pattern, $result2, $matches);
@@ -268,15 +269,75 @@ class Helpers
                 $carrier = null;
             }
 
+            // warranty status
+            $pattern = '|Warranty Status: ([^<]+)<br|';
+            $matches = [];
+            preg_match($pattern, $result2, $matches);
+            if (isset($matches[1])) {
+                $warranty_status = $matches[1];
+            } else {
+                $warranty_status = null;
+            }
+
+            // apple care
+            $pattern = '|AppleCare: <span[^>]*>([^<]+)<\/span>|';
+            $matches = [];
+            preg_match($pattern, $result2, $matches);
+            if (isset($matches[1])) {
+                $apple_care = $matches[1];
+            } else {
+                $apple_care = null;
+            }
+
+            // activated
+            $pattern = '|Activated: <span[^>]*>([^<]+)<\/span>|';
+            $matches = [];
+            preg_match($pattern, $result2, $matches);
+            if (isset($matches[1])) {
+                $activated = $matches[1];
+            } else {
+                $activated = null;
+            }
+
+            // repairs & service coverage
+            $pattern = '|Repairs & Service Coverage: <span[^>]*>([^<]+)<\/span>|';
+            $matches = [];
+            preg_match($pattern, $result2, $matches);
+            if (isset($matches[1])) {
+                $repairs_service = $matches[1];
+            } else {
+                $repairs_service = null;
+            }
+
+            // refurbished
+            $pattern = '|Refurbished: <span[^>]*>([^<]+)<\/span>|';
+            $matches = [];
+            preg_match($pattern, $result2, $matches);
+            if (isset($matches[1])) {
+                $refurbished = $matches[1];
+            } else {
+                $refurbished = null;
+            }
+
             $result = [
-                'carrier' => $carrier,
                 'price' => $curl_new->price,
+                'carrier' => $carrier,
+                'warranty_status' => $warranty_status,
+                'apple_care' => $apple_care,
+                'activated' => $activated,
+                'repairs_service' => $repairs_service,
+                'refurbished' => $refurbished,
             ];
 
         } else {
             $result = [
-                'carrier' => null,
                 'price' => 0,
+                'carrier' => null,
+                'warranty_status' => null,
+                'apple_care' => null,
+                'activated' => null,
+                'repairs_service' => null,
+                'refurbished' => null,
             ];
 
         }

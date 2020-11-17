@@ -430,7 +430,7 @@ class AppServiceProvider extends ServiceProvider
                         'link' => false,
                         'sub' => $imeis_sub,
                         'icon' => 'flaticon-zoom',
-                        'default' => 'imei-search',
+                        'default' => '/imei-search',
                     ],
                     [
                         'name' => 'Notes',
