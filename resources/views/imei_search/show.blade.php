@@ -13,16 +13,16 @@
     <div class="stm_inv">
       <div class="stm_inv__header">
         <div class="stm_inv__flex">
-          <div class="stm_inv__header--label">IMEI Number</div>
           <div class="stm_inv__header--label">User</div>
+          <div class="stm_inv__header--label">IMEI Number</div>
           <div class="stm_inv__header--label">Model</div>
           <div class="stm_inv__header--label">Model Name</div>
           <div class="stm_inv__header--label">Search Date</div>
           <div class="stm_inv__header--label">Blacklist</div>
         </div>
         <div class="stm_inv__flex">
-          <div class="stm_inv__header--item">{{ $imei->imei }}</div>
           <div class="stm_inv__header--item">{{ $imei->user->company }}</div>
+          <div class="stm_inv__header--item">{{ $imei->imei }}</div>
           <div class="stm_inv__header--item">{{ $imei->model }}</div>
           <div class="stm_inv__header--item">{{ $imei->model_name }}</div>
           <div class="stm_inv__header--item">{{ $imei->created_at->format('M d, Y') }}</div>
