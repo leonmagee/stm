@@ -12,8 +12,8 @@
       <thead>
         <tr>
           <th>Id</th>
-          <th>IMEI</th>
           <th>User</th>
+          <th>IMEI</th>
           <th>Model</th>
           <th>Manufacturer</th>
           <th>Carrier</th>
@@ -41,8 +41,8 @@
 "order": [[ 0, "desc" ]],
 "columns": [
 { "data": "id" },
-{ "data": "imei" },
 { "data": "user.company" },
+{ "data": "imei" },
 { "data": "model" },
 { "data": "manufacturer" },
 { "data": "carrier" },
