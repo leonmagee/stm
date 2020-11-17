@@ -19,7 +19,7 @@
 
         <div class="form-wrap-flex">
           <div class="field full padding-bottom">
-            <label class="label">Lookup an IMEI Number</label>
+            <label class="label">Blacklisted & Carriers IMEI Check</label>
             <div class="control">
               <input name="imei" class="input" type="text" placeholder="Enter Number..." />
             </div>
