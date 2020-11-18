@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Helpers;
 use App\ImeiSearch;
 use Illuminate\Http\Request;
+use \Carbon\Carbon;
 
 class ImeiSearchController extends Controller
 {
@@ -41,6 +42,30 @@ class ImeiSearchController extends Controller
         ]);
 
         $imei = $request->imei;
+        $user_id = \Auth::user()->id;
+
+        $existing = ImeiSearch::where([
+            'user_id' => $user_id,
+            'imei' => $imei,
+        ])->first();
+
+        if ($existing) {
+            $now = Carbon::now();
+
+            $saved = $existing->created_at;
+
+            $days = $saved->diffInDays($now);
+
+            if ($days >= 3) {
+                // delete saved instance
+                $existing->delete();
+            } else {
+                // redirect to saved instance
+                session()->flash('message', 'Entry Previously Recorded for IMEI: ' . $imei);
+                return redirect('/imeis/' . $existing->id);
+            }
+
+        }
 
         /**
          * Get curl result for service 134
@@ -165,8 +190,6 @@ class ImeiSearchController extends Controller
 
         }
 
-        $user_id = \Auth::user()->id;
-
         $carrier = $result_2['carrier'];
         $warranty_status = $result_2['warranty_status'];
         $warranty_start = $result_2['warranty_start'];
@@ -178,7 +201,7 @@ class ImeiSearchController extends Controller
         $total = floatval($price) + floatval($result_2['price']);
 
         // create new ImeiSearch entry
-        ImeiSearch::create([
+        $imei_id = ImeiSearch::create([
             'user_id' => $user_id,
             'imei' => $imei,
             'model' => $model,
@@ -198,7 +221,7 @@ class ImeiSearchController extends Controller
         ]);
 
         session()->flash('message', 'Entry Recorded for IMEI: ' . $imei);
-        return redirect('/imeis');
+        return redirect('/imeis/' . $imei_id->id);
     }
 
     /**

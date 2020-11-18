@@ -2,13 +2,15 @@
 
 @section('content')
 
+@include('mixins.misc-back', ['url' => '/imeis', 'label' => 'IMEI Check History'])
+
 @include('layouts.errors')
 
 <div class="form-wrapper">
 
   <div class="form-wrapper-inner">
 
-    <h3>IMEI</h3>
+    <h3>IMEI # {{ $imei->imei }}</h3>
 
     <div class="stm_inv">
       <div class="stm_inv__header">
