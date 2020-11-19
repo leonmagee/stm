@@ -46,6 +46,12 @@
     }
   }
 
+  if($item['name'] == 'IMEI Check History') {
+    if($path == 'imeis') {
+      $active = 'active';
+    }
+  }
+
   if($item['name'] == 'Credit History') {
     if($path == 'transaction-tracker') {
       $active = 'active';

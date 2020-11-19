@@ -544,11 +544,11 @@ class AppServiceProvider extends ServiceProvider
 
                 $menu_array = [
                     [
-                        'name' => 'Blacklisted IMEI Check',
-                        'link' => false,
-                        'sub' => $imeis_sub,
+                        'name' => 'IMEI Check History',
+                        'link' => '/imeis',
+                        'sub' => false,
                         'icon' => 'flaticon-zoom',
-                        'default' => '/imei-search',
+                        'default' => false,
                     ],
                     [
                         'name' => 'Plans Spiff',
@@ -640,11 +640,11 @@ class AppServiceProvider extends ServiceProvider
 
                 $menu_array = [
                     [
-                        'name' => 'Blacklisted IMEI Check',
-                        'link' => false,
-                        'sub' => $imeis_sub,
+                        'name' => 'IMEI Check History',
+                        'link' => '/imeis',
+                        'sub' => false,
                         'icon' => 'flaticon-zoom',
-                        'default' => '/imei-search',
+                        'default' => false,
                     ],
                     [
                         'name' => 'Plans Spiff',
