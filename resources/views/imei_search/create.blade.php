@@ -21,7 +21,7 @@
           <div class="field full padding-bottom">
             <label class="label">Blacklisted & Carriers IMEI Check</label>
             <div class="control">
-              <input name="imei" class="input" type="text" placeholder="Enter Number..." />
+              <input name="imei" class="input" type="text" placeholder="Enter IMEI Number..." autocomplete="off" />
             </div>
           </div>
         </div>
