@@ -84,7 +84,11 @@
           @if($imei->refurbished)
           <div class="stm_inv__header--item">{{ $imei->refurbished }}</div>
           @endif
+          @if(\Auth::user()->isAdminManager())
           <div class="stm_inv__header--item">${{ number_format($imei->price, 2) }}</div>
+          @else
+          <div class="stm_inv__header--item">$0.00</div>
+          @endif
         </div>
       </div>
 

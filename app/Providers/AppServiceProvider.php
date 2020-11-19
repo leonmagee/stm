@@ -339,7 +339,7 @@ class AppServiceProvider extends ServiceProvider
                     'link' => '/imeis',
                 ],
                 [
-                    'name' => 'IMEI Dealer History',
+                    'name' => 'Dealers IMEI Check History',
                     'link' => '/dealer-imeis',
                 ],
             ];

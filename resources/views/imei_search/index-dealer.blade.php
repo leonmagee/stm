@@ -6,7 +6,7 @@
 
   <div class="form-wrapper-inner">
 
-    <h3>IMEI History</h3>
+    <h3>IMEI Check History</h3>
 
     <table id="sims_table" class="stripe compact">
       <thead>
