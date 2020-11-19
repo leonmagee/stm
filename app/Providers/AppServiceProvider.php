@@ -329,6 +329,21 @@ class AppServiceProvider extends ServiceProvider
                 ],
             ];
 
+            $imeis_sub_agent = [
+                [
+                    'name' => 'Check an IMEI',
+                    'link' => '/imei-search',
+                ],
+                [
+                    'name' => 'IMEI Check History',
+                    'link' => '/imeis',
+                ],
+                [
+                    'name' => 'IMEI Dealer History',
+                    'link' => '/dealer-imeis',
+                ],
+            ];
+
             $products_sub = [
                 [
                     'name' => 'Products List',
@@ -529,6 +544,13 @@ class AppServiceProvider extends ServiceProvider
 
                 $menu_array = [
                     [
+                        'name' => 'Blacklisted IMEI Check',
+                        'link' => false,
+                        'sub' => $imeis_sub,
+                        'icon' => 'flaticon-zoom',
+                        'default' => '/imei-search',
+                    ],
+                    [
                         'name' => 'Plans Spiff',
                         'link' => '/plans',
                         'sub' => false,
@@ -618,6 +640,13 @@ class AppServiceProvider extends ServiceProvider
 
                 $menu_array = [
                     [
+                        'name' => 'Blacklisted IMEI Check',
+                        'link' => false,
+                        'sub' => $imeis_sub,
+                        'icon' => 'flaticon-zoom',
+                        'default' => '/imei-search',
+                    ],
+                    [
                         'name' => 'Plans Spiff',
                         'link' => '/plans',
                         'sub' => false,
@@ -701,6 +730,13 @@ class AppServiceProvider extends ServiceProvider
                  * Master Agents
                  */
                 $menu_array = [
+                    [
+                        'name' => 'Blacklisted IMEI Check',
+                        'link' => false,
+                        'sub' => $imeis_sub_agent,
+                        'icon' => 'flaticon-zoom',
+                        'default' => '/imei-search',
+                    ],
                     [
                         'name' => 'Plans Spiff',
                         'link' => '/plans',
@@ -800,6 +836,13 @@ class AppServiceProvider extends ServiceProvider
                  */
                 $menu_array = [
                     [
+                        'name' => 'Blacklisted IMEI Check',
+                        'link' => false,
+                        'sub' => $imeis_sub,
+                        'icon' => 'flaticon-zoom',
+                        'default' => '/imei-search',
+                    ],
+                    [
                         'name' => 'Plans Spiff',
                         'link' => '/plans',
                         'sub' => false,
@@ -893,6 +936,7 @@ class AppServiceProvider extends ServiceProvider
                 'product-new' => 'products-list',
                 'purchases' => 'products-list',
                 'sales' => 'products-list',
+                'imeis' => 'imei-search',
             ];
 
             $view->with(['menu' => $menu_array, 'path' => $path, 'match_array' => $match_array]);

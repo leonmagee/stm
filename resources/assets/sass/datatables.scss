@@ -219,6 +219,19 @@ table.dataTable {
             .invoice-view {
                 padding-left: 10px;
             }
+            a.imei-view {
+                background-color: darken($brand-fifth, 18%);
+                color: #fafafa !important;
+                font-weight: bold;
+                display: block;
+                padding: 1px 7px;
+                text-shadow: 1px 1px rgba(0, 0, 0, 0.05);
+                white-space: nowrap;
+                &:hover {
+                    text-decoration: none !important;
+                    background-color: darken($brand-fifth, 15%);
+                }
+            }
         }
     }
 }

@@ -4,11 +4,16 @@ namespace App\Http\Controllers;
 
 use App\Helpers;
 use App\ImeiSearch;
+use App\User;
 use Illuminate\Http\Request;
 use \Carbon\Carbon;
 
 class ImeiSearchController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -16,7 +21,17 @@ class ImeiSearchController extends Controller
      */
     public function index()
     {
-        return view('imei_search.index');
+        $user = \Auth::user();
+        if ($user->isAdminManagerEmployee()) {
+            return view('imei_search.index');
+        } else {
+            return view('imei_search.index-dealer');
+        }
+    }
+
+    public function index_dealers()
+    {
+        return view('imei_search.index-agent');
     }
 
     /**
@@ -232,6 +247,18 @@ class ImeiSearchController extends Controller
      */
     public function show(ImeiSearch $imei)
     {
+        $user = \Auth::user();
+        if (!$user->isAdminManagerEmployee() && ($user->id !== $imei->user_id)) {
+            if ($site_id = $user->isMasterAgent()) {
+                $role_id = Helpers::get_role_id($site_id);
+                $imei_user = User::find($imei->user_id);
+                if ($role_id !== $imei_user->role_id) {
+                    return redirect('/');
+                }
+            } else {
+                return redirect('/');
+            }
+        }
         return view('imei_search.show', compact('imei'));
     }
 

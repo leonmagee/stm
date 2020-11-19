@@ -19696,6 +19696,21 @@ table.dataTable tr td .invoice-view {
   padding-left: 10px;
 }
 
+table.dataTable tr td a.imei-view {
+  background-color: #00d0f4;
+  color: #fafafa !important;
+  font-weight: bold;
+  display: block;
+  padding: 1px 7px;
+  text-shadow: 1px 1px rgba(0, 0, 0, 0.05);
+  white-space: nowrap;
+}
+
+table.dataTable tr td a.imei-view:hover {
+  text-decoration: none !important;
+  background-color: #05daff;
+}
+
 .users-wrap a.user-wrap .flex-item.company-wrap {
   font-size: 0.9em;
   flex: 0 1 45%;

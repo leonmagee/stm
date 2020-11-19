@@ -70,13 +70,34 @@ class APIController extends Controller
                     $item->price = '$' . number_format($item->price, 2);
                     $item->balance = '$' . number_format($item->balance, 2);
                 }
-                // $logs = UserLoginLogout::select('user_login_logouts.id', 'user_login_logouts.login', 'user_login_logouts.logout', 'users.company', 'users.name')->join('users', 'users.id', 'user_login_logouts.user_id')->get();
-            } elseif ($site_id = $user->isMasterAgent()) {
-                // $role_id = Helpers::get_role_id($site_id);
-                // $logs = UserLoginLogout::select('user_login_logouts.id', 'user_login_logouts.login', 'user_login_logouts.logout', 'users.company', 'users.name')->join('users', 'users.id', 'user_login_logouts.user_id')->where('users.role_id', $role_id)->get();
             } else {
-                return redirect('/');
+                $data = ImeiSearch::with('user')->where('user_id', $user->id)->get();
+                foreach ($data as $item) {
+                    //$item->price = '$' . number_format($item->price, 2);
+                    $item->price = '$0.00';
+                    $item->balance = '$' . number_format($item->balance, 2);
+                }
             }
+            return datatables($data)->make(true);
+        }
+        return redirect('/');
+
+    }
+
+    public function getImeiRecordsAgent()
+    {
+        $user = \Auth::user();
+        if ($user && ($site_id = $user->isMasterAgent())) {
+
+            $role_id = Helpers::get_role_id($site_id);
+
+            $data = ImeiSearch::select('imei_searches.id', 'users.company', 'imei_searches.imei', 'imei_searches.model', 'imei_searches.manufacturer', 'imei_searches.carrier', 'imei_searches.price', 'imei_searches.blacklist')->join('users', 'users.id', 'imei_searches.user_id')->where('users.role_id', $role_id)->get();
+            foreach ($data as $item) {
+                //$item->price = '$' . number_format($item->price, 2);
+                $item->price = '$0.00';
+                $item->balance = '$' . number_format($item->balance, 2);
+            }
+
             return datatables($data)->make(true);
         }
         return redirect('/');

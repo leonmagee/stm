@@ -18,7 +18,6 @@
           <th>Manufacturer</th>
           <th>Carrier</th>
           <th>Price</th>
-          <th>Balance</th>
           <th>Blacklist</th>
           <th></th>
         </tr>
@@ -37,17 +36,16 @@
   $('#sims_table').DataTable({
 "processing": true,
 "serverSide": true,
-"ajax": "{!! route('api.imei_search.index') !!}",
+"ajax": "{!! route('api.imei_search.index-agent') !!}",
 "order": [[ 0, "desc" ]],
 "columns": [
 { "data": "id" },
-{ "data": "user.company" },
+{ "data": "company" },
 { "data": "imei" },
 { "data": "model" },
 { "data": "manufacturer" },
 { "data": "carrier" },
 { "data": "price" },
-{ "data": "balance" },
 { "data": "blacklist",
 "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
 if(oData.blacklist == 'BLACKLISTED') {

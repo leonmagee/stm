@@ -84,6 +84,13 @@
     }
   }
 
+  if($item['name'] == 'Blacklisted IMEI Check') {
+    $sub_path = substr($path, 0, 6);
+    if($sub_path == 'imeis/') {
+      $active = 'active';
+    }
+  }
+
   if($item['name'] == 'Users') {
 
     $match_array_users = [
