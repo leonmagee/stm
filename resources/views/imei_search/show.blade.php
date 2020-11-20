@@ -27,7 +27,7 @@
           <div class="stm_inv__header--item">{{ $imei->imei }}</div>
           <div class="stm_inv__header--item">{{ $imei->model }}</div>
           <div class="stm_inv__header--item">{{ $imei->model_name }}</div>
-          <div class="stm_inv__header--item">{{ $imei->created_at->format('M d, Y') }}</div>
+          <div class="stm_inv__header--item">{{ $imei->created_at->format('M d, Y g:ia') }}</div>
           <div class="stm_inv__header--item stm_inv__header--item-status-{{ $imei->blacklist }}">{{ $imei->blacklist }}
           </div>
         </div>
