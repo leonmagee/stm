@@ -44,6 +44,7 @@ class CouponController extends Controller
         Coupon::create([
             'code' => $request->code,
             'percent' => $request->percent,
+            'text' => $request->text,
         ]);
 
         session()->flash('message', 'Coupon has been saved.');

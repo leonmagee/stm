@@ -16,12 +16,10 @@
         <div class="coupon__item coupon__tag"><i class="fas fa-tag"></i></div>
         <div class="coupon__item coupon__code">{{ $coupon->code }}</div>
         <div class="coupon__item coupon__percent">{{ $coupon->percent }}% Off</div>
+        <div class="coupon__item coupon__text">{{ $coupon->text }}</div>
         <div class="coupon__item coupon__icon coupon__delete modal-delete-open" item_id={{ $coupon->id }}><i
             class="fa fa-trash"></i></div>
       </div>
-
-
-
 
       <div class="modal" id="delete-item-modal-{{ $coupon->id }}">
 
@@ -43,13 +41,6 @@
 
       </div>
 
-
-
-
-
-
-
-
       @endforeach
       <form method="POST" action="/add-coupon">
         @csrf
@@ -60,6 +51,9 @@
           </div>
           <div class="coupon__item coupon__percent coupon__input">
             <input type="number" name="percent" id="percent" placeholder="Percent Off..." autocomplete="off" required />
+          </div>
+          <div class="coupon__item coupon__text coupon__input">
+            <input type="text" name="text" id="text" placeholder="Promo Text..." autocomplete="off" required />
           </div>
           <div class="coupon__item coupon__icon coupon__add"><button type="submit"><i class="fa fa-plus"></i></button>
           </div>

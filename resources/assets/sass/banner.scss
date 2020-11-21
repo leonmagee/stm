@@ -1,0 +1,20 @@
+.promo-banner {
+    color: #fff;
+    //background: darken($red, 25%);
+    background: darken($green, 2%);
+    font-weight: 600;
+    text-shadow: 1px 1px rgba(0, 0, 0, 0.2);
+    padding: 0.67em;
+    font-size: 1.3em;
+    //height: 3.5em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .text {
+        margin-right: 1em;
+    }
+    .timer {
+    }
+    //display: none; //temp
+}

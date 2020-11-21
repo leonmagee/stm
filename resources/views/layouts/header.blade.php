@@ -347,6 +347,7 @@
           </a>
           </p> --}}
         </div>
+
       </div>
 
       <div class="mobile-menu">
@@ -415,7 +416,16 @@
       </div>
 
       @endif
+
     </div>
   </div>
 
 </div>
+@if(\Auth::user())
+@if(\Auth::user()->isAdmin())
+<div class="promo-banner">
+  <div class="text">Black Friday</div>
+  <div class="time" id="countdownTimer" secondsleft="345600"></div>
+</div>
+@endif
+@endif

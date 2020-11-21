@@ -34,6 +34,8 @@ require('./components/Products');
 
 require('./components/ProductsCarousel');
 
+require('./components/Timer');
+
 // sortable list
 // $(document).ready(function() {
 //     console.log('ready!');
