@@ -125765,7 +125765,7 @@ $('.category-area input').click(function () {
  */
 
 jQuery.datetimepicker.setLocale('en');
-jQuery('#due_date, #available_on, #starting_date, #ending_date').datetimepicker({
+jQuery('#due_date, #available_on, #starting_date, #ending_date, #expiration_date').datetimepicker({
   timepicker: false,
   format: 'M d, Y'
 });
@@ -127770,7 +127770,6 @@ var Timer = /*#__PURE__*/function (_Component) {
 
     _this = _super.call(this, props);
     var secondsLeft = _this.props.secondsLeft;
-    console.log('xxx', secondsLeft);
     _this.state = {
       time: {},
       // secondsLeft,
@@ -127850,20 +127849,30 @@ var Timer = /*#__PURE__*/function (_Component) {
     value: function render() {
       var time = this.state.time;
       var countdownTimer = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "voting__question--timer"
+        className: "promo-banner__timer"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "time-span"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "time1"
-      }, "Hours: ", time.h), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "time-divider"
-      }, ":"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "time2"
-      }, "Minutes: ", time.m), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "time-divider"
-      }, ":"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "time3"
-      }, "Seconds: ", time.s)));
+        className: "time hours"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "time-item"
+      }, time.h), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "time-desc"
+      }, "Hours")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "time-sep"
+      }, ":"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "time minutes"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "time-item"
+      }, time.m), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "time-desc"
+      }, "Minutes")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "time-sep"
+      }, ":"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "time seconds"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "time-item"
+      }, time.s), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "time-desc"
+      }, "Seconds")));
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "timer-wrapper"
       }, countdownTimer);

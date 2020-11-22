@@ -3,14 +3,14 @@
 namespace App\Providers;
 
 use App\Category;
+use App\Coupon;
 use App\Helpers;
 use App\ReportType;
 use App\Settings;
 use Illuminate\Support\ServiceProvider;
+use \Carbon\Carbon;
 
 //use App\UserLockedRedirect;
-
-use \Carbon\Carbon;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -956,10 +956,28 @@ class AppServiceProvider extends ServiceProvider
                 $site = $settings->get_site_object()->name;
             }
 
+            $promotion = Coupon::where('active', 1)->first();
+            if ($promotion) {
+                if ($promotion->expiration) {
+                    $expires = Carbon::parse($promotion->expiration);
+                    $now = Carbon::now();
+                    if ($now->greaterThan($expires)) {
+                        $promotion->delete();
+                        $promotion = null;
+                    } else {
+                        $diff = $expires->diffInSeconds($now);
+                        $promotion->seconds_left = $diff;
+                    }
+                } else {
+                    $promotion = null;
+                }
+            }
+
             $view->with('current_date', $date)
                 ->with('logged_in_user', $logged_in_user)
                 ->with('company', $settings->company)
                 ->with('mode', $settings->mode)
+                ->with('promotion', $promotion)
                 ->with('site', $site);
         });
 

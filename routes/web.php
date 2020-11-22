@@ -66,6 +66,8 @@ Route::group(['middleware' => 'App\Http\Middleware\LockOutUsersManagers'], funct
     //Route::get('sales-agents/{agent}', 'PurchaseController@sales');
     Route::get('coupons', 'CouponController@index');
     Route::post('add-coupon', 'CouponController@store');
+    Route::post('start-promotion/{coupon}', 'CouponController@start_promotion');
+    Route::post('end-promotion/{coupon}', 'CouponController@end_promotion');
     Route::get('delete-coupon/{coupon}', 'CouponController@destroy');
     Route::get('purchases/{purchase}', 'PurchaseController@show');
     Route::get('products-list', 'ProductController@list');

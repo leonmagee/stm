@@ -5,7 +5,6 @@ export default class Timer extends Component {
     constructor(props) {
         super(props);
         const { secondsLeft } = this.props;
-        console.log('xxx', secondsLeft);
         this.state = {
             time: {},
             // secondsLeft,
@@ -74,13 +73,20 @@ export default class Timer extends Component {
     render() {
         const { time } = this.state;
         const countdownTimer = (
-            <div className="voting__question--timer">
-                <div className="time-span">
-                    <span className="time1">Hours: {time.h}</span>
-                    <span className="time-divider">:</span>
-                    <span className="time2">Minutes: {time.m}</span>
-                    <span className="time-divider">:</span>
-                    <span className="time3">Seconds: {time.s}</span>
+            <div className="promo-banner__timer">
+                <div className="time hours">
+                    <div className="time-item">{time.h}</div>
+                    <div className="time-desc">Hours</div>
+                </div>
+                <div className="time-sep">:</div>
+                <div className="time minutes">
+                    <div className="time-item">{time.m}</div>
+                    <div className="time-desc">Minutes</div>
+                </div>
+                <div className="time-sep">:</div>
+                <div className="time seconds">
+                    <div className="time-item">{time.s}</div>
+                    <div className="time-desc">Seconds</div>
                 </div>
             </div>
         );

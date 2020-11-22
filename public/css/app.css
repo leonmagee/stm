@@ -23826,6 +23826,12 @@ a.button.custom-button:hover {
 .coupon .coupon__input input {
   border: none;
   background-color: transparent;
+  font-size: 1.1em;
+}
+
+.coupon .coupon__input input:focus,
+.coupon .coupon__input input:active {
+  outline: none;
 }
 
 .coupon .coupon__code {
@@ -23842,7 +23848,45 @@ a.button.custom-button:hover {
   border-left: 1px solid #e2e2e2;
 }
 
-.coupon .coupon__text {
+.coupon .coupon__activate {
+  border-left: 1px solid #e2e2e2;
+  flex: 0 1 14%;
+}
+
+.coupon .coupon__activate form {
+  width: 100%;
+  font-weight: 600;
+}
+
+.coupon .coupon__activate form button {
+  flex: 1;
+  background: transparent;
+  font-weight: 600;
+  font-size: 1em;
+  color: #fff;
+  text-transform: uppercase;
+  white-space: nowrap;
+  padding: 0 1em;
+  box-shadow: none;
+  border: none;
+  width: 100%;
+  height: 100%;
+}
+
+.coupon .coupon__activate form button:hover {
+  cursor: pointer;
+  opacity: 0.9;
+}
+
+.coupon .coupon__activate form button.start {
+  background: #06dba3;
+}
+
+.coupon .coupon__activate form button.end {
+  background: #ff3860;
+}
+
+.coupon .coupon__expires {
   font-weight: 600;
   flex: 0 1 20%;
   padding: 0 1em;
@@ -23868,11 +23912,18 @@ a.button.custom-button:hover {
   padding: 0;
   box-shadow: none;
   border: none;
+  width: 100%;
+  height: 100%;
 }
 
-.coupon .coupon__icon.coupon__add i {
+.coupon .coupon__icon.coupon__add button i {
   color: #1b9aaa;
-  font-size: 1.1em;
+  font-size: 1.2em;
+}
+
+.coupon .coupon__icon.coupon__add button:hover {
+  background-color: #f7f7f7;
+  cursor: pointer;
 }
 
 .apply-coupon {
@@ -23958,11 +24009,10 @@ a.button.custom-button:hover {
 
 .promo-banner {
   color: #fff;
-  background: #05d19b;
+  background: linear-gradient(#06dba3, #05cc98);
   font-weight: 600;
   text-shadow: 1px 1px rgba(0, 0, 0, 0.2);
-  padding: 0.67em;
-  font-size: 1.3em;
+  padding: 0.4em;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -23970,6 +24020,40 @@ a.button.custom-button:hover {
 
 .promo-banner .text {
   margin-right: 1em;
+  text-transform: uppercase;
+  font-size: 2.1em;
+  font-style: italic;
+}
+
+.promo-banner .text span {
+  color: #037859;
+  text-shadow: 1px 1px rgba(255, 255, 255, 0.15);
+}
+
+.promo-banner__timer {
+  display: flex;
+  align-items: center;
+}
+
+.promo-banner__timer .time {
+  text-align: center;
+  z-index: 100;
+}
+
+.promo-banner__timer .time .time-item {
+  font-size: 3em;
+  line-height: 1em;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.275) 50%, rgba(255, 255, 255, 0.35) 50%);
+  padding: 0.04em 0.1em 0.08em;
+}
+
+.promo-banner__timer .time .time-desc {
+  font-size: 0.7em;
+}
+
+.promo-banner__timer .time-sep {
+  font-size: 2em;
+  padding: 0 0.2em 0.6em;
 }
 
 .xdsoft_datetimepicker {

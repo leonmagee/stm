@@ -16,7 +16,22 @@
         <div class="coupon__item coupon__tag"><i class="fas fa-tag"></i></div>
         <div class="coupon__item coupon__code">{{ $coupon->code }}</div>
         <div class="coupon__item coupon__percent">{{ $coupon->percent }}% Off</div>
-        <div class="coupon__item coupon__text">{{ $coupon->text }}</div>
+        <div class="coupon__item coupon__expires">Expires: {{ $coupon->expiration ? $coupon->expiration : 'N/A' }}</div>
+        @if($coupon->expiration)
+        <div class="coupon__item coupon__activate">
+          @if(!$coupon->active)
+          <form method="POST" action="/start-promotion/{{ $coupon->id }}">
+            @csrf
+            <button class="start call-loader" type="submit">Start Promotion</button>
+          </form>
+          @else
+          <form method="POST" action="/end-promotion/{{ $coupon->id }}">
+            @csrf
+            <button class="end call-loader" type="submit">End Promotion</button>
+          </form>
+          @endif
+        </div>
+        @endif
         <div class="coupon__item coupon__icon coupon__delete modal-delete-open" item_id={{ $coupon->id }}><i
             class="fa fa-trash"></i></div>
       </div>
@@ -42,7 +57,7 @@
       </div>
 
       @endforeach
-      <form method="POST" action="/add-coupon">
+      <form method="POST" action="/add-coupon" class="margin-top-2">
         @csrf
         <div class="coupon">
           <div class="coupon__item coupon__tag"><i class="fas fa-tag"></i></div>
@@ -52,8 +67,8 @@
           <div class="coupon__item coupon__percent coupon__input">
             <input type="number" name="percent" id="percent" placeholder="Percent Off..." autocomplete="off" required />
           </div>
-          <div class="coupon__item coupon__text coupon__input">
-            <input type="text" name="text" id="text" placeholder="Promo Text..." autocomplete="off" required />
+          <div class="coupon__item coupon__expires coupon__input">
+            <input type="text" name="expiration" id="expiration_date" placeholder="Expires..." autocomplete="off" />
           </div>
           <div class="coupon__item coupon__icon coupon__add"><button type="submit"><i class="fa fa-plus"></i></button>
           </div>
