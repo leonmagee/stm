@@ -127793,7 +127793,14 @@ var Timer = /*#__PURE__*/function (_Component) {
   }, {
     key: "secondsToTime",
     value: function secondsToTime(secs) {
+      var days = Math.floor(secs / 86400);
       var hours = Math.floor(secs / (60 * 60));
+      hours -= days * 24;
+
+      if (hours < 10) {
+        hours = "0".concat(hours);
+      }
+
       var divisor_for_minutes = secs % (60 * 60);
       var minutes = Math.floor(divisor_for_minutes / 60);
 
@@ -127808,7 +127815,10 @@ var Timer = /*#__PURE__*/function (_Component) {
         seconds = "0".concat(seconds);
       }
 
+      console.log('seconds?', secs);
+      console.log('days?', days);
       var obj = {
+        d: days,
         h: hours,
         m: minutes,
         s: seconds
@@ -127851,6 +127861,14 @@ var Timer = /*#__PURE__*/function (_Component) {
       var countdownTimer = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "promo-banner__timer"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "time days"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "time-item"
+      }, time.d), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "time-desc"
+      }, "Days")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "time-sep"
+      }, ":"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "time hours"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "time-item"

@@ -23,7 +23,12 @@ export default class Timer extends Component {
     }
 
     secondsToTime(secs) {
-        const hours = Math.floor(secs / (60 * 60));
+        const days = Math.floor(secs / 86400);
+        let hours = Math.floor(secs / (60 * 60));
+        hours -= days * 24;
+        if (hours < 10) {
+            hours = `0${hours}`;
+        }
 
         const divisor_for_minutes = secs % (60 * 60);
         let minutes = Math.floor(divisor_for_minutes / 60);
@@ -37,7 +42,11 @@ export default class Timer extends Component {
             seconds = `0${seconds}`;
         }
 
+        console.log('seconds?', secs);
+        console.log('days?', days);
+
         const obj = {
+            d: days,
             h: hours,
             m: minutes,
             s: seconds,
@@ -74,6 +83,11 @@ export default class Timer extends Component {
         const { time } = this.state;
         const countdownTimer = (
             <div className="promo-banner__timer">
+                <div className="time days">
+                    <div className="time-item">{time.d}</div>
+                    <div className="time-desc">Days</div>
+                </div>
+                <div className="time-sep">:</div>
                 <div className="time hours">
                     <div className="time-item">{time.h}</div>
                     <div className="time-desc">Hours</div>
