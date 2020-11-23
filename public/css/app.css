@@ -18633,6 +18633,10 @@ body.stm-body .add-padding {
   cursor: pointer;
 }
 
+.imei-all-data-wrap {
+  padding: 1em;
+}
+
 .modal {
   z-index: 100000;
 }
@@ -24009,13 +24013,19 @@ a.button.custom-button:hover {
 
 .promo-banner {
   color: #fff;
+  display: none;
   background: linear-gradient(#06dba3, #05cc98);
   font-weight: 600;
   text-shadow: 1px 1px rgba(0, 0, 0, 0.2);
   padding: 0.4em;
-  display: flex;
   justify-content: center;
   align-items: center;
+}
+
+@media (min-width: 980px) {
+  .promo-banner {
+    display: flex;
+  }
 }
 
 .promo-banner .text {

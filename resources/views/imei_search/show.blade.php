@@ -91,6 +91,9 @@
           @endif
         </div>
       </div>
+      <div class="imei-all-data-wrap">
+        {!! json_decode($imei->all_data) !!}
+      </div>
 
     </div>
   </div>

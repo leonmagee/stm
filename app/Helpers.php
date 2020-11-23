@@ -349,6 +349,7 @@ class Helpers
                 'activated' => $activated,
                 'repairs_service' => $repairs_service,
                 'refurbished' => $refurbished,
+                'all_data' => json_encode($result2),
             ];
 
         } else {
@@ -362,6 +363,7 @@ class Helpers
                 'activated' => null,
                 'repairs_service' => null,
                 'refurbished' => null,
+                'all_data' => null,
             ];
 
         }

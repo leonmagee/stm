@@ -147,6 +147,7 @@ class ImeiSearchController extends Controller
             'activated' => null,
             'repairs_service' => null,
             'refurbished' => null,
+            'all_data' => null,
         ];
         if ($manufacturer) {
 
@@ -213,6 +214,7 @@ class ImeiSearchController extends Controller
         $activated = $result_2['activated'];
         $repairs_service = $result_2['repairs_service'];
         $refurbished = $result_2['refurbished'];
+        $all_data = $result_2['all_data'];
         $total = floatval($price) + floatval($result_2['price']);
 
         // create new ImeiSearch entry
@@ -233,6 +235,7 @@ class ImeiSearchController extends Controller
             'refurbished' => $refurbished,
             'price' => $total,
             'balance' => $balance,
+            'all_data' => $all_data,
         ]);
 
         session()->flash('message', 'Entry Recorded for IMEI: ' . $imei);
