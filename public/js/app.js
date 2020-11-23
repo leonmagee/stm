@@ -127801,6 +127801,10 @@ var Timer = /*#__PURE__*/function (_Component) {
       var hours = Math.floor(secs / (60 * 60));
       hours -= days * 24;
 
+      if (days < 10) {
+        days = "0".concat(days);
+      }
+
       if (hours < 10) {
         hours = "0".concat(hours);
       }
@@ -127819,8 +127823,6 @@ var Timer = /*#__PURE__*/function (_Component) {
         seconds = "0".concat(seconds);
       }
 
-      console.log('seconds?', secs);
-      console.log('days?', days);
       var obj = {
         d: days,
         h: hours,
