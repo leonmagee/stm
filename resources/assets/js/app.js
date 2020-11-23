@@ -469,11 +469,16 @@ $('.category-area input').click(function() {
  * Date Time Picker
  */
 jQuery.datetimepicker.setLocale('en');
-jQuery(
-    '#due_date, #available_on, #starting_date, #ending_date, #expiration_date'
-).datetimepicker({
-    timepicker: false,
-    format: 'M d, Y',
+jQuery('#due_date, #available_on, #starting_date, #ending_date').datetimepicker(
+    {
+        timepicker: false,
+        format: 'M d, Y',
+    }
+);
+
+jQuery('#expiration_date').datetimepicker({
+    timepicker: true,
+    format: 'M d, Y g:ia',
 });
 
 /**

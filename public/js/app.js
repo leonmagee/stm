@@ -125765,9 +125765,13 @@ $('.category-area input').click(function () {
  */
 
 jQuery.datetimepicker.setLocale('en');
-jQuery('#due_date, #available_on, #starting_date, #ending_date, #expiration_date').datetimepicker({
+jQuery('#due_date, #available_on, #starting_date, #ending_date').datetimepicker({
   timepicker: false,
   format: 'M d, Y'
+});
+jQuery('#expiration_date').datetimepicker({
+  timepicker: true,
+  format: 'M d, Y g:ia'
 });
 /**
  * Quill Submit
