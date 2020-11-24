@@ -44,6 +44,12 @@ body.stm-body {
             height: 100%;
         }
 
+        .middle-content-wrap-outer {
+            flex: 1;
+            flex-direction: column;
+            display: flex;
+        }
+
         .middle-content-wrap {
             position: relative;
             flex: 1;

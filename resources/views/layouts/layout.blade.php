@@ -18,24 +18,29 @@
 
     @include('layouts.sidebar')
 
-    <div class="middle-content-wrap">
+    <div class="middle-content-wrap-outer">
+      @include('layouts.banner')
 
-      <h1 class="title">
-        @yield('title')
-      </h1>
+      <div class="middle-content-wrap">
 
 
-      <div id="content">
+        <h1 class="title">
+          @yield('title')
+        </h1>
 
-        @include('layouts.alert')
 
-        @yield('content')
+        <div id="content">
+
+          @include('layouts.alert')
+
+          @yield('content')
+
+        </div>
+
 
       </div>
 
-
     </div>
-
   </div>
 
   @hassection('modal')

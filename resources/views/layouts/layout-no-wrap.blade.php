@@ -4,6 +4,7 @@
 
 @include('layouts.head')
 
+
 <body class='stm-body {{ $view_name }}'>
 
   <div class="stm-absolute-wrap" id="loader-wrap">
@@ -20,9 +21,7 @@
 
     <div class="middle-content-wrap-no-padding">
 
-      {{-- <h1 class="title">
-        @yield('title')
-      </h1> --}}
+      @include('layouts.banner')
 
       <div id="content">
 

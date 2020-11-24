@@ -942,19 +942,7 @@ class AppServiceProvider extends ServiceProvider
             $view->with(['menu' => $menu_array, 'path' => $path, 'match_array' => $match_array]);
         });
 
-        view()->composer('layouts.header', function ($view) {
-
-            $settings = Settings::first();
-            $date_array = explode('_', $settings->current_date);
-            $month = Carbon::createFromFormat('m', $date_array[0])->format('F');
-            $date = $month . ' ' . $date_array[1];
-            $logged_in_user = \Auth::user();
-
-            if (Helpers::is_normal_user()) {
-                $site = $logged_in_user->role->name;
-            } else {
-                $site = $settings->get_site_object()->name;
-            }
+        view()->composer('layouts.banner', function ($view) {
 
             $promotion = Coupon::where('active', 1)->first();
             if ($promotion) {
@@ -973,11 +961,28 @@ class AppServiceProvider extends ServiceProvider
                 }
             }
 
+            $view->with('promotion', $promotion);
+
+        });
+
+        view()->composer('layouts.header', function ($view) {
+
+            $settings = Settings::first();
+            $date_array = explode('_', $settings->current_date);
+            $month = Carbon::createFromFormat('m', $date_array[0])->format('F');
+            $date = $month . ' ' . $date_array[1];
+            $logged_in_user = \Auth::user();
+
+            if (Helpers::is_normal_user()) {
+                $site = $logged_in_user->role->name;
+            } else {
+                $site = $settings->get_site_object()->name;
+            }
+
             $view->with('current_date', $date)
                 ->with('logged_in_user', $logged_in_user)
                 ->with('company', $settings->company)
                 ->with('mode', $settings->mode)
-                ->with('promotion', $promotion)
                 ->with('site', $site);
         });
 

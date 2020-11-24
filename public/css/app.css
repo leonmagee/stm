@@ -18450,6 +18450,12 @@ body.stm-body .main-wrap #content {
   height: 100%;
 }
 
+body.stm-body .main-wrap .middle-content-wrap-outer {
+  flex: 1;
+  flex-direction: column;
+  display: flex;
+}
+
 body.stm-body .main-wrap .middle-content-wrap {
   position: relative;
   flex: 1;
@@ -24017,7 +24023,7 @@ a.button.custom-button:hover {
   background: linear-gradient(#06dba3, #05cc98);
   font-weight: 600;
   text-shadow: 1px 1px rgba(0, 0, 0, 0.2);
-  padding: 0.4em;
+  padding: 0.4em 0.4em 0.3em;
   justify-content: center;
   align-items: center;
 }
@@ -24031,7 +24037,7 @@ a.button.custom-button:hover {
 .promo-banner .text {
   margin-right: 1em;
   text-transform: uppercase;
-  font-size: 2.1em;
+  font-size: 1.9em;
   font-style: italic;
 }
 
@@ -24051,7 +24057,7 @@ a.button.custom-button:hover {
 }
 
 .promo-banner__timer .time .time-item {
-  font-size: 3em;
+  font-size: 2.7em;
   line-height: 1em;
   background: linear-gradient(180deg, rgba(0, 0, 0, 0.275) 50%, rgba(255, 255, 255, 0.35) 50%);
   padding: 0.04em 0.1em 0.08em;
