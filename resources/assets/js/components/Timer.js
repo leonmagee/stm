@@ -66,10 +66,6 @@ export default class Timer extends Component {
     countDown() {
         // Remove one second, set state so a re-render happens.
         const seconds = this.state.seconds - 1;
-        if (seconds < 1) {
-            // document.location.href = "/";
-            this.submitVoting();
-        }
         this.setState({
             time: this.secondsToTime(seconds),
             seconds,

@@ -127845,12 +127845,6 @@ var Timer = /*#__PURE__*/function (_Component) {
     value: function countDown() {
       // Remove one second, set state so a re-render happens.
       var seconds = this.state.seconds - 1;
-
-      if (seconds < 1) {
-        // document.location.href = "/";
-        this.submitVoting();
-      }
-
       this.setState({
         time: this.secondsToTime(seconds),
         seconds: seconds
