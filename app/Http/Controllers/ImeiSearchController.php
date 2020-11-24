@@ -250,7 +250,26 @@ class ImeiSearchController extends Controller
      */
     public function show(ImeiSearch $imei)
     {
-        //dd($imei->all_data);
+        $all_data = $imei->all_data;
+        $all_data = explode('<br>', $all_data);
+        $new_array = [];
+        foreach ($all_data as $data) {
+            $data = str_replace('color: red', 'color:red', $data);
+            $one = substr($data, 0, 1);
+            if ($one == '"') {
+                $data = substr($data, 1);
+            }
+            if ($data) {
+                $data = str_replace(['color: green', 'color:green'], 'color: tomato', $data);
+                $new_array[] = trim($data);
+
+            }
+
+            //$new_array[] = '<div class="imei-data-item">' . trim(str_replace('"', '', $data)) . '</div>';
+            //$new_array[] = '<div class="imei-data-item">' . trim($data) . '</div>';
+        }
+        //dd($new_array);
+        //dd($all_data);
         $user = \Auth::user();
         if (!$user->isAdminManagerEmployee() && ($user->id !== $imei->user_id)) {
             if ($site_id = $user->isMasterAgent()) {
