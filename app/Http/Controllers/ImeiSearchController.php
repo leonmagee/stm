@@ -250,6 +250,7 @@ class ImeiSearchController extends Controller
      */
     public function show(ImeiSearch $imei)
     {
+        //dd($imei->all_data);
         $user = \Auth::user();
         if (!$user->isAdminManagerEmployee() && ($user->id !== $imei->user_id)) {
             if ($site_id = $user->isMasterAgent()) {
