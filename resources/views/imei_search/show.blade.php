@@ -92,6 +92,7 @@
         </div>
       </div>
 
+      @if($imei->all_data)
       <div class="stm_inv__header margin-top-1-5">
         <div class="stm_inv__flex">
           <div class="stm_inv__header--label">All Data</div>
@@ -103,9 +104,8 @@
             </div>
           </div>
         </div>
-
-
       </div>
+      @endif
     </div>
   </div>
 
