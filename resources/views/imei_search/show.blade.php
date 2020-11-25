@@ -91,10 +91,21 @@
           @endif
         </div>
       </div>
-      <div class="imei-all-data-wrap">
-        {!! json_decode($imei->all_data) !!}
-      </div>
 
+      <div class="stm_inv__header margin-top-1-5">
+        <div class="stm_inv__flex">
+          <div class="stm_inv__header--label">All Data</div>
+        </div>
+        <div class="stm_inv__flex">
+          <div class="stm_inv__header--item">
+            <div class="imei-all-data-wrap">
+              {!! $imei->all_data !!}
+            </div>
+          </div>
+        </div>
+
+
+      </div>
     </div>
   </div>
 

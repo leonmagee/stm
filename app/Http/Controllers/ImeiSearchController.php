@@ -251,22 +251,36 @@ class ImeiSearchController extends Controller
     public function show(ImeiSearch $imei)
     {
         $all_data = $imei->all_data;
+        $all_data = str_replace(['\\', '<strong>', '</strong>'], '', $all_data);
+        //dd($all_data);
         $all_data = explode('<br>', $all_data);
-        $new_array = [];
+        //$new_array = [];
+        $new_string = null;
         foreach ($all_data as $data) {
-            $data = str_replace('color: red', 'color:red', $data);
             $one = substr($data, 0, 1);
             if ($one == '"') {
                 $data = substr($data, 1);
             }
             if ($data) {
-                $data = str_replace(['color: green', 'color:green'], 'color: tomato', $data);
-                $new_array[] = trim($data);
+                $red = '#ef476f';
+                $green = '#05cc98';
+                $data = str_replace(['color: red', 'color:red'], 'color:' . $red, $data);
+                $data = str_replace(['"red"'], '"' . $red . '"', $data);
+                $data = str_replace(['color: green', 'color:green'], 'color:' . $green, $data);
+                $data = str_replace(['"green"'], '"' . $green . '"', $data);
+                $data = preg_replace('/:/', ':</span>', $data, 1);
+                //$new_array[] = '<div class="imei-item"><span>' . trim($data) . '</div>';
+                $new_string .= '<div class="imei-item"><span class="bold-span">' . trim($data) . '</div>';
 
             }
-
             //$new_array[] = '<div class="imei-data-item">' . trim(str_replace('"', '', $data)) . '</div>';
             //$new_array[] = '<div class="imei-data-item">' . trim($data) . '</div>';
+        }
+        if ($new_string) {
+            //dd($new_array);
+            //dd($new_string);
+            //dd('yes');
+            $imei->all_data = $new_string;
         }
         //dd($new_array);
         //dd($all_data);
