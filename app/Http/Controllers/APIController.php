@@ -91,7 +91,7 @@ class APIController extends Controller
 
             $role_id = Helpers::get_role_id($site_id);
 
-            $data = ImeiSearch::select('imei_searches.id', 'users.company', 'imei_searches.imei', 'imei_searches.model', 'imei_searches.manufacturer', 'imei_searches.carrier', 'imei_searches.price', 'imei_searches.blacklist')->join('users', 'users.id', 'imei_searches.user_id')->where('users.role_id', $role_id)->get();
+            $data = ImeiSearch::select('imei_searches.id', 'users.company', 'imei_searches.imei', 'imei_searches.model', 'imei_searches.manufacturer', 'imei_searches.price', 'imei_searches.blacklist')->join('users', 'users.id', 'imei_searches.user_id')->where('users.role_id', $role_id)->get();
             foreach ($data as $item) {
                 //$item->price = '$' . number_format($item->price, 2);
                 $item->price = '$0.00';

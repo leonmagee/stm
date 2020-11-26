@@ -16,7 +16,7 @@
           <th>IMEI</th>
           <th>Model</th>
           <th>Manufacturer</th>
-          <th>Carrier</th>
+          {{-- <th>Carrier</th> --}}
           <th>Price</th>
           <th>Balance</th>
           <th>Blacklist</th>
@@ -45,7 +45,7 @@
 { "data": "imei" },
 { "data": "model" },
 { "data": "manufacturer" },
-{ "data": "carrier" },
+// { "data": "carrier" },
 { "data": "price" },
 { "data": "balance" },
 { "data": "blacklist",

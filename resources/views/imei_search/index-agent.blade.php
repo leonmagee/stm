@@ -16,7 +16,7 @@
           <th>IMEI</th>
           <th>Model</th>
           <th>Manufacturer</th>
-          <th>Carrier</th>
+          {{-- <th>Carrier</th> --}}
           <th>Price</th>
           <th>Blacklist</th>
           <th></th>
@@ -44,7 +44,7 @@
 { "data": "imei" },
 { "data": "model" },
 { "data": "manufacturer" },
-{ "data": "carrier" },
+// { "data": "carrier" },
 { "data": "price" },
 { "data": "blacklist",
 "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
