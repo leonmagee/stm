@@ -41,8 +41,59 @@
         </div>
       </div>
 
+      <div class="stm_inv__header margin-top-1-5">
+        <div class="stm_inv__flex">
+          <div class="stm_inv__header--label">Carrier</div>
+          @if($imei->warranty_status)
+          <div class="stm_inv__header--label">Warranty Status</div>
+          @endif
+          @if($imei->warranty_start)
+          <div class="stm_inv__header--label">Warranty Start</div>
+          @endif
+          @if($imei->warranty_end)
+          <div class="stm_inv__header--label">Warranty End</div>
+          @endif
+          @if($imei->apple_care)
+          <div class="stm_inv__header--label">Apple Care</div>
+          @endif
+          @if($imei->activated)
+          <div class="stm_inv__header--label">Activated</div>
+          @endif
+          @if($imei->repairs_service)
+          <div class="stm_inv__header--label">Repairs & Services</div>
+          @endif
+          @if($imei->refurbished)
+          <div class="stm_inv__header--label">Refurbished</div>
+          @endif
+        </div>
+        <div class="stm_inv__flex">
+          <div class="stm_inv__header--item">{{ $imei->carrier }}</div>
+          @if($imei->warranty_status)
+          <div class="stm_inv__header--item">{{ $imei->warranty_status }}</div>
+          @endif
+          @if($imei->warranty_start)
+          <div class="stm_inv__header--item">{{ $imei->warranty_start }}</div>
+          @endif
+          @if($imei->warranty_end)
+          <div class="stm_inv__header--item">{{ $imei->warranty_end }}</div>
+          @endif
+          @if($imei->apple_care)
+          <div class="stm_inv__header--item">{{ $imei->apple_care }}</div>
+          @endif
+          @if($imei->activated)
+          <div class="stm_inv__header--item">{{ $imei->activated }}</div>
+          @endif
+          @if($imei->repairs_service)
+          <div class="stm_inv__header--item">{{ $imei->repairs_service }}</div>
+          @endif
+          @if($imei->refurbished)
+          <div class="stm_inv__header--item">{{ $imei->refurbished }}</div>
+          @endif
+        </div>
+      </div>
+
       @if($imei->all_data)
-      <div class="stm_inv__header imei-center-max-wrap margin-top-1-5">
+      <div class="stm_inv__header margin-top-1-5">
         <div class="stm_inv__flex">
           <div class="stm_inv__header--label">All Data</div>
         </div>
