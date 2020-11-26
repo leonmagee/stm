@@ -232,6 +232,146 @@ class Helpers
         return preg_match('/[А-Яа-яЁё]/u', $text);
     }
 
+    public static function checkImei($imei, $service)
+    {
+        $key = env('IMEI_KEY');
+        $url = 'https://api.imeicheck.com/api/v1/services/order/create?serviceid=' . $service . '&key=' . $key . '&imei=' . $imei;
+        $curl = curl_init($url);
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
+        curl_setopt($curl, CURLOPT_CONNECTTIMEOUT, 60);
+        curl_setopt($curl, CURLOPT_TIMEOUT, 60);
+        $json = curl_exec($curl);
+        $curl_result = json_decode($json);
+        curl_close($curl);
+        return $curl_result;
+    }
+
+    public static function imeiCarrier($service, $imei)
+    {
+        $curl_new = Helpers::checkImei($imei, $service);
+        $result2 = false;
+        if ($curl_new) {
+            //dd($curl_new);
+            $status = $curl_new->status;
+            if ($status !== 'failed') {
+                $result2 = $curl_new->result;
+            }
+        }
+        if ($result2) {
+            // carrier
+            $pattern = '|Carrier: ([^<]+)<br|';
+            $matches = [];
+            preg_match($pattern, $result2, $matches);
+            if (isset($matches[1])) {
+                $carrier = $matches[1];
+            } else {
+                $carrier = null;
+            }
+
+            // warranty status
+            $pattern = '|Warranty Status: ([^<]+)<br|';
+            $matches = [];
+            preg_match($pattern, $result2, $matches);
+            if (isset($matches[1])) {
+                $warranty_status = $matches[1];
+            } else {
+                $warranty_status = null;
+            }
+
+            // warranty start date
+            $pattern = '|Warranty Start[^:]*: ([^<]+)<br|';
+            $matches = [];
+            preg_match($pattern, $result2, $matches);
+            if (isset($matches[1])) {
+                $warranty_start = $matches[1];
+            } else {
+                $warranty_start = null;
+            }
+
+            // warranty end date
+            $pattern = '|Warranty End[^:]*: ([^<]+)<br|';
+            $matches = [];
+            preg_match($pattern, $result2, $matches);
+            if (isset($matches[1])) {
+                $warranty_end = $matches[1];
+            } else {
+                $warranty_end = null;
+            }
+
+            // apple care
+            $pattern = '|AppleCare: <span[^>]*>([^<]+)<\/span>|';
+            $matches = [];
+            preg_match($pattern, $result2, $matches);
+            if (isset($matches[1])) {
+                $apple_care = $matches[1];
+            } else {
+                $apple_care = null;
+            }
+
+            // activated
+            $pattern = '|Activated: <span[^>]*>([^<]+)<\/span>|';
+            $matches = [];
+            preg_match($pattern, $result2, $matches);
+            if (isset($matches[1])) {
+                $activated = $matches[1];
+            } else {
+                $activated = null;
+            }
+
+            // repairs & service coverage
+            $pattern = '|Repairs & Service Coverage: <span[^>]*>([^<]+)<\/span>|';
+            $matches = [];
+            preg_match($pattern, $result2, $matches);
+            if (isset($matches[1])) {
+                $repairs_service = $matches[1];
+            } else {
+                $repairs_service = null;
+            }
+
+            // refurbished
+            $pattern = '|Refurbished: <span[^>]*>([^<]+)<\/span>|';
+            $matches = [];
+            preg_match($pattern, $result2, $matches);
+            if (isset($matches[1])) {
+                $refurbished = $matches[1];
+            } else {
+                $refurbished = null;
+            }
+
+            $result = [
+                'price' => $curl_new->price,
+                'carrier' => $carrier,
+                'warranty_status' => $warranty_status,
+                'warranty_start' => $warranty_start,
+                'warranty_end' => $warranty_end,
+                'apple_care' => $apple_care,
+                'activated' => $activated,
+                'repairs_service' => $repairs_service,
+                'refurbished' => $refurbished,
+                'all_data' => json_encode($result2),
+            ];
+
+        } else {
+            $result = [
+                'price' => 0,
+                'carrier' => null,
+                'warranty_status' => null,
+                'warranty_start' => null,
+                'warranty_end' => null,
+                'apple_care' => null,
+                'activated' => null,
+                'repairs_service' => null,
+                'refurbished' => null,
+                'all_data' => null,
+            ];
+
+        }
+
+        return $result;
+
+    }
+
     public static function date_array()
     {
         return [

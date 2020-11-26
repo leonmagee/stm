@@ -44,21 +44,6 @@ class ImeiSearchController extends Controller
         return view('imei_search.create');
     }
 
-    public static function checkImei($imei, $service)
-    {
-        $key = env('IMEI_KEY');
-        $url = 'https://api.imeicheck.com/api/v1/services/order/create?serviceid=' . $service . '&key=' . $key . '&imei=' . $imei;
-        $curl = curl_init($url);
-        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
-        curl_setopt($curl, CURLOPT_CONNECTTIMEOUT, 60);
-        curl_setopt($curl, CURLOPT_TIMEOUT, 60);
-        $json = curl_exec($curl);
-        $curl_result = json_decode($json);
-        curl_close($curl);
-        return $curl_result;
-    }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -101,9 +86,10 @@ class ImeiSearchController extends Controller
          * Get curl result for service 134
          * All model lookup for model and blacklist
          */
-        $curl_result = self::checkImei($imei, 134);
+        $curl_result = Helpers::checkImei($imei, 134);
 
         $status = $curl_result->status;
+        //dd($curl_result);
         if ($status == 'failed') {
             session()->flash('danger', 'IMEI Number Not Found.');
             return redirect()->back();
@@ -153,6 +139,14 @@ class ImeiSearchController extends Controller
         // set default for second curl request data
         $result_2 = [
             'price' => 0,
+            'carrier' => null,
+            'warranty_status' => null,
+            'warranty_start' => null,
+            'warranty_end' => null,
+            'apple_care' => null,
+            'activated' => null,
+            'repairs_service' => null,
+            'refurbished' => null,
             'all_data' => null,
         ];
         if ($manufacturer) {
@@ -169,47 +163,57 @@ class ImeiSearchController extends Controller
 
             if ($apple !== false) {
                 // 128 - 8 cents - carrier and warranty - he might give a discount
-                $result_2 = self::imeiSearchTwo(128, $imei);
+                $result_2 = Helpers::imeiCarrier(128, $imei);
             } elseif ($samsung !== false) {
                 // 72 - 6 cents - carrier - some warranty
                 // 93 - 10 cents - carrier - some warranty - usa open instead of factory unlocked
-                $result_2 = self::imeiSearchTwo(72, $imei);
+                $result_2 = Helpers::imeiCarrier(72, $imei);
             } elseif ($lg !== false) {
                 // 97 - 6 cents // carrier and warranty
-                $result_2 = self::imeiSearchTwo(97, $imei);
+                $result_2 = Helpers::imeiCarrier(97, $imei);
             }
+
             // if ($apple !== false) {
             //     // 128 - 8 cents - carrier and warranty - he might give a discount
-            //     $result_2 = self::imeiSearchTwo(128, $imei);
+            //     $result_2 = Helpers::imeiCarrier(128, $imei);
             // } elseif ($samsung !== false) {
             //     // 72 - 6 cents - carrier - some warranty
             //     // 93 - 10 cents - carrier - some warranty - usa open instead of factory unlocked
-            //     $result_2 = self::imeiSearchTwo(72, $imei);
+            //     $result_2 = Helpers::imeiCarrier(72, $imei);
             // } elseif ($xiaomi !== false) {
             //     // 71 - 1 cent // just basic stuff
             //     // 96 - 2 cents // info - no carrier or waranty info
-            //     $result_2 = self::imeiSearchTwo(71, $imei);
+            //     $result_2 = Helpers::imeiCarrier(71, $imei);
             // } elseif ($huawei !== false) {
             //     // 80 - 9 cents // lots of warranty info - no carrier
-            //     $result_2 = self::imeiSearchTwo(80, $imei);
+            //     $result_2 = Helpers::imeiCarrier(80, $imei);
             // } elseif ($motorola !== false) {
             //     // 119 - 5 cents // warranty only
-            //     $result_2 = self::imeiSearchTwo(119, $imei);
+            //     $result_2 = Helpers::imeiCarrier(119, $imei);
             // } elseif ($sony !== false) {
             //     // 95 - 10 cents - warranty only
-            //     $result_2 = self::imeiSearchTwo(95, $imei);
+            //     $result_2 = Helpers::imeiCarrier(95, $imei);
             // } elseif ($google !== false) {
             //     // 102 - 2 cents - warranty only
-            //     $result_2 = self::imeiSearchTwo(102, $imei);
+            //     $result_2 = Helpers::imeiCarrier(102, $imei);
             // } elseif ($nokia !== false) {
             //     // 94 - 10 cents - warranty only
-            //     $result_2 = self::imeiSearchTwo(94, $imei);
+            //     $result_2 = Helpers::imeiCarrier(94, $imei);
             // } elseif ($lg !== false) {
             //     // 97 - 6 cents // carrier and warranty
-            //     $result_2 = self::imeiSearchTwo(97, $imei);
+            //     $result_2 = Helpers::imeiCarrier(97, $imei);
             // }
+
         }
 
+        $carrier = $result_2['carrier'];
+        $warranty_status = $result_2['warranty_status'];
+        $warranty_start = $result_2['warranty_start'];
+        $warranty_end = $result_2['warranty_end'];
+        $apple_care = $result_2['apple_care'];
+        $activated = $result_2['activated'];
+        $repairs_service = $result_2['repairs_service'];
+        $refurbished = $result_2['refurbished'];
         $all_data = $result_2['all_data'];
         $total = floatval($price) + floatval($result_2['price']);
 
@@ -221,6 +225,14 @@ class ImeiSearchController extends Controller
             'model_name' => $model_name,
             'manufacturer' => $manufacturer,
             'blacklist' => $blacklist,
+            'carrier' => $carrier,
+            'warranty_status' => $warranty_status,
+            'warranty_start' => $warranty_start,
+            'warranty_end' => $warranty_end,
+            'apple_care' => $apple_care,
+            'activated' => $activated,
+            'repairs_service' => $repairs_service,
+            'refurbished' => $refurbished,
             'price' => $total,
             'balance' => $balance,
             'all_data' => $all_data,
@@ -228,33 +240,6 @@ class ImeiSearchController extends Controller
 
         session()->flash('message', 'Entry Recorded for IMEI: ' . $imei);
         return redirect('/imeis/' . $imei_id->id);
-    }
-
-    public static function imeiSearchTwo($service, $imei)
-    {
-        $curl_new = self::checkImei($imei, $service);
-        $result2 = false;
-        if ($curl_new) {
-            $status = $curl_new->status;
-            if ($status !== 'failed') {
-                $result2 = $curl_new->result;
-            }
-        }
-        if ($result2) {
-
-            $result = [
-                'price' => $curl_new->price,
-                'all_data' => json_encode($result2),
-            ];
-
-        } else {
-            $result = [
-                'price' => 0,
-                'all_data' => null,
-            ];
-        }
-
-        return $result;
     }
 
     /**
