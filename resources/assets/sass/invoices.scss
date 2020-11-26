@@ -121,10 +121,10 @@
         }
         .stm_inv__header--item {
             color: #333;
-            //color: darken($color-green, 11%);
-            //font-weight: 600;
-
             font-size: 0.9em;
+            &.stm_inv__header--item-no-wrap {
+                white-space: nowrap;
+            }
             &.stm_inv__header--item-red {
                 color: $color-red;
             }
@@ -149,6 +149,12 @@
                 background-color: #111;
                 color: #fff;
                 text-shadow: 1px 1px rgba(0, 0, 0, 0.05);
+            }
+        }
+
+        .stm_inv__header--smaller-font {
+            .stm_inv__header--item {
+                font-size: 0.8em;
             }
         }
     }

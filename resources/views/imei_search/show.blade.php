@@ -24,13 +24,14 @@
           <div class="stm_inv__header--label">Price</div>
           <div class="stm_inv__header--label">Blacklist</div>
         </div>
-        <div class="stm_inv__flex">
+        <div class="stm_inv__flex stm_inv__header--smaller-font">
           <div class="stm_inv__header--item">{{ $imei->user->company }}</div>
           <div class="stm_inv__header--item">{{ $imei->imei }}</div>
           <div class="stm_inv__header--item">{{ $imei->model }}</div>
           <div class="stm_inv__header--item">{{ $imei->model_name }}</div>
           <div class="stm_inv__header--item">{{ $imei->manufacturer }}</div>
-          <div class="stm_inv__header--item">{{ $imei->created_at->format('M d, Y g:ia') }}</div>
+          <div class="stm_inv__header--item stm_inv__header--item-no-wrap">
+            {{ $imei->created_at->format('M d, Y g:ia') }}</div>
           @if(\Auth::user()->isAdminManager())
           <div class="stm_inv__header--item">${{ number_format($imei->price, 2) }}</div>
           @else

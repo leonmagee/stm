@@ -21700,6 +21700,10 @@ body.stm-body.about .middle-content-wrap .about-page .video-wrap .video-wrap-inn
   font-size: 0.9em;
 }
 
+.stm_inv .stm_inv__header .stm_inv__header--item.stm_inv__header--item-no-wrap {
+  white-space: nowrap;
+}
+
 .stm_inv .stm_inv__header .stm_inv__header--item.stm_inv__header--item-red {
   color: #ef476f;
 }
@@ -21728,6 +21732,10 @@ body.stm-body.about .middle-content-wrap .about-page .video-wrap .video-wrap-inn
   background-color: #111;
   color: #fff;
   text-shadow: 1px 1px rgba(0, 0, 0, 0.05);
+}
+
+.stm_inv .stm_inv__header .stm_inv__header--smaller-font .stm_inv__header--item {
+  font-size: 0.8em;
 }
 
 .stm_inv .stm_inv__items {
