@@ -45,7 +45,7 @@
       @if($imei->all_data)
       <div class="stm_inv__header imei-center-max-wrap margin-top-1-5">
         <div class="stm_inv__flex">
-          <div class="stm_inv__header--label">All Data</div>
+          <div class="stm_inv__header--label stm_inv__header--center complete-data-imei">Complete Data Report</div>
         </div>
         <div class="stm_inv__flex">
           <div class="stm_inv__header--item">

@@ -18658,6 +18658,15 @@ body.stm-body .add-padding {
   font-weight: 600;
 }
 
+.complete-data-imei {
+  background-color: #209cee !important;
+  color: #fff !important;
+  border-color: #209cee !important;
+  text-transform: uppercase;
+  font-weight: 600;
+  text-shadow: white;
+}
+
 .modal {
   z-index: 100000;
 }
@@ -21693,6 +21702,10 @@ body.stm-body.about .middle-content-wrap .about-page .video-wrap .video-wrap-inn
   color: #333;
   background-color: #e9e9e9;
   font-size: 1.05em;
+}
+
+.stm_inv .stm_inv__header .stm_inv__header--center {
+  text-align: center;
 }
 
 .stm_inv .stm_inv__header .stm_inv__header--item {
