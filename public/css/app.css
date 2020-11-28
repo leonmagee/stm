@@ -23724,6 +23724,10 @@ a.button.custom-button:hover {
   flex: 1;
 }
 
+.stm-flex .stm-flex-row .stm-flex-row__item:first-child {
+  border-left: 1px solid #ddd;
+}
+
 .stm-flex .stm-flex-row .stm-flex-row__item.flex-4 {
   flex: 0 1 4%;
 }
@@ -23776,10 +23780,6 @@ a.button.custom-button:hover {
   color: #ff3860;
 }
 
-.stm-flex .stm-flex-row .stm-flex-row__item:first-child() {
-  border-left: 1px solid #ddd;
-}
-
 .stm-flex .stm-flex-row .stm-flex-row__item.header {
   font-weight: 600;
   background-color: #e9e9e9;
@@ -23810,7 +23810,7 @@ a.button.custom-button:hover {
   text-shadow: 1px 1px rgba(0, 0, 0, 0.05);
 }
 
-.stm-flex .stm-flex-row:first-child() .stm-flex-row__item {
+.stm-flex .stm-flex-row:first-child .stm-flex-row__item {
   border-top: 1px solid #ddd;
 }
 

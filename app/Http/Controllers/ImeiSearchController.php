@@ -154,6 +154,7 @@ class ImeiSearchController extends Controller
         $result_2 = [
             'price' => 0,
             'all_data' => null,
+            'balance' => null,
         ];
         if ($manufacturer) {
 
@@ -178,13 +179,6 @@ class ImeiSearchController extends Controller
                 // 97 - 6 cents // carrier and warranty
                 $result_2 = self::imeiSearchTwo(97, $imei);
             }
-            // if ($apple !== false) {
-            //     // 128 - 8 cents - carrier and warranty - he might give a discount
-            //     $result_2 = self::imeiSearchTwo(128, $imei);
-            // } elseif ($samsung !== false) {
-            //     // 72 - 6 cents - carrier - some warranty
-            //     // 93 - 10 cents - carrier - some warranty - usa open instead of factory unlocked
-            //     $result_2 = self::imeiSearchTwo(72, $imei);
             // } elseif ($xiaomi !== false) {
             //     // 71 - 1 cent // just basic stuff
             //     // 96 - 2 cents // info - no carrier or waranty info
@@ -204,13 +198,10 @@ class ImeiSearchController extends Controller
             // } elseif ($nokia !== false) {
             //     // 94 - 10 cents - warranty only
             //     $result_2 = self::imeiSearchTwo(94, $imei);
-            // } elseif ($lg !== false) {
-            //     // 97 - 6 cents // carrier and warranty
-            //     $result_2 = self::imeiSearchTwo(97, $imei);
-            // }
         }
 
         $all_data = $result_2['all_data'];
+        $balance_final = $result_2['balance'] ? $result_2['balance'] : $balance;
         $total = floatval($price) + floatval($result_2['price']);
 
         // create new ImeiSearch entry
@@ -222,7 +213,7 @@ class ImeiSearchController extends Controller
             'manufacturer' => $manufacturer,
             'blacklist' => $blacklist,
             'price' => $total,
-            'balance' => $balance,
+            'balance' => $balance_final,
             'all_data' => $all_data,
         ]);
 
@@ -236,6 +227,7 @@ class ImeiSearchController extends Controller
         $result2 = false;
         if ($curl_new) {
             $status = $curl_new->status;
+            $balance = $curl_new->balance;
             if ($status !== 'failed') {
                 $result2 = $curl_new->result;
             }
@@ -245,12 +237,14 @@ class ImeiSearchController extends Controller
             $result = [
                 'price' => $curl_new->price,
                 'all_data' => json_encode($result2),
+                'balance' => $balance,
             ];
 
         } else {
             $result = [
                 'price' => 0,
                 'all_data' => null,
+                'balance' => null,
             ];
         }
 

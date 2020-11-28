@@ -15,6 +15,9 @@
             border-right: 1px solid #ddd;
             border-bottom: 1px solid #ddd;
             flex: 1;
+            &:first-child {
+                border-left: 1px solid #ddd;
+            }
             &.flex-4 {
                 flex: 0 1 4%;
             }
@@ -54,12 +57,7 @@
             &.red {
                 color: $red;
             }
-            // .nowrap {
-            //     white-space: nowrap;
-            // }
-            &:first-child() {
-                border-left: 1px solid #ddd;
-            }
+
             &.header {
                 font-weight: 600;
                 background-color: $invoice-header;
@@ -86,7 +84,7 @@
                 text-shadow: 1px 1px rgba(0, 0, 0, 0.05);
             }
         }
-        &:first-child() {
+        &:first-child {
             .stm-flex-row__item {
                 border-top: 1px solid #ddd;
             }
