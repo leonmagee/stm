@@ -125720,7 +125720,7 @@ var _loop3 = function _loop3(_i3) {
     var id_name = "tab_output_".concat(_i3);
     var output = document.getElementById(id_name);
     $("#tab_preview_images .preview-image__image.tab_output_".concat(_i3)).removeClass('hide_img');
-    $("#tab_preview_images .preview-image__default_tab_".concat(_i3)).hide();
+    $("#tab_preview_images .preview-image__default_tab_".concat(_i3)).addClass('hide');
     output.src = URL.createObjectURL(event.target.files[0]);
 
     output.onload = function () {
@@ -125739,8 +125739,8 @@ for (var _i3 = 1; _i3 <= tab_number_images; ++_i3) {
 
 $('#tab_preview_images .preview-image__image i.remove-tab').click(function () {
   var img_id = $(this).attr('img_id');
-  $("#tab_preview_images .preview-image__image.output_".concat(img_id)).addClass('hide_img');
-  $("#tab_preview_images .preview-image__default_".concat(img_id)).removeClass('hide');
+  $("#tab_preview_images .preview-image__image.tab_output_".concat(img_id)).addClass('hide_img');
+  $("#tab_preview_images .preview-image__default_tab_".concat(img_id)).removeClass('hide');
   $("#tab_preview_images input[name='tab_img_url_".concat(img_id, "']")).val('');
 });
 /**

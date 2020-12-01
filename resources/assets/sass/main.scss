@@ -62,6 +62,11 @@ body.stm-body {
                 //padding: 20px;
             }
         }
+        .middle-content-banner-wrap {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
         .middle-content-wrap-no-padding {
             flex: 1;
         }

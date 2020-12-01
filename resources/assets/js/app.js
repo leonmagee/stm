@@ -415,14 +415,11 @@ $('#tab_preview_videos .preview-image__image i.remove-video').click(function() {
  * Tab Image Preview (edit page)
  */
 for (let i = 1; i <= tab_number_images; ++i) {
-    $(`#tab_preview_images input#tab_product_upload_image_${i}`).change(
-        function() {
+    $(`#tab_preview_images input#tab_product_upload_image_${i}`).change(function() {
             const id_name = `tab_output_${i}`;
             const output = document.getElementById(id_name);
-            $(
-                `#tab_preview_images .preview-image__image.tab_output_${i}`
-            ).removeClass('hide_img');
-            $(`#tab_preview_images .preview-image__default_tab_${i}`).hide();
+            $(`#tab_preview_images .preview-image__image.tab_output_${i}`).removeClass('hide_img');
+            $(`#tab_preview_images .preview-image__default_tab_${i}`).addClass('hide');
             output.src = URL.createObjectURL(event.target.files[0]);
             output.onload = function() {
                 URL.revokeObjectURL(output.src); // free memory
@@ -436,10 +433,10 @@ for (let i = 1; i <= tab_number_images; ++i) {
  */
 $('#tab_preview_images .preview-image__image i.remove-tab').click(function() {
     const img_id = $(this).attr('img_id');
-    $(`#tab_preview_images .preview-image__image.output_${img_id}`).addClass(
+    $(`#tab_preview_images .preview-image__image.tab_output_${img_id}`).addClass(
         'hide_img'
     );
-    $(`#tab_preview_images .preview-image__default_${img_id}`).removeClass(
+    $(`#tab_preview_images .preview-image__default_tab_${img_id}`).removeClass(
         'hide'
     );
     $(`#tab_preview_images input[name='tab_img_url_${img_id}']`).val('');

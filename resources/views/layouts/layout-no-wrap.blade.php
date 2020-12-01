@@ -19,13 +19,17 @@
 
     @include('layouts.sidebar')
 
-    <div class="middle-content-wrap-no-padding">
+    <div class="middle-content-banner-wrap">
 
       @include('layouts.banner')
 
-      <div id="content">
+      <div class="middle-content-wrap-no-padding">
 
-        @yield('content')
+        <div id="content">
+
+          @yield('content')
+
+        </div>
 
       </div>
 

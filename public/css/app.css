@@ -18469,6 +18469,12 @@ body.stm-body .main-wrap .middle-content-wrap {
   }
 }
 
+body.stm-body .main-wrap .middle-content-banner-wrap {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
 body.stm-body .main-wrap .middle-content-wrap-no-padding {
   flex: 1;
 }

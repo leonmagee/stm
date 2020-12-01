@@ -257,11 +257,11 @@
         </div>
         <div class="preview-image">
           @if($product->{"tab_img_url_" . $i})
-          <div class="preview-image__image output_{{ $i }}">
+          <div class="preview-image__image tab_output_{{ $i }}">
             <img id="tab_output_{{ $i }}" src={{ $product->{"tab_img_url_" . $i} }} />
             <i class="remove-tab fas fa-times-circle" img_id="{{ $i }}"></i>
           </div>
-          <div class="preview-image__default preview-image__default_{{ $i }} hide"><i class="far fa-image"></i>
+          <div class="preview-image__default preview-image__default_tab_{{ $i }} hide"><i class="far fa-image"></i>
           </div>
           @else
           <div class="preview-image__image hide_img tab_output_{{ $i }}">
