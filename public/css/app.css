@@ -21389,6 +21389,7 @@ body.stm-body.about .middle-content-wrap .about-page .video-wrap .video-wrap-inn
 
 .com-spiff .com-spiff__item {
   flex: 1;
+  font-size: 0.9em;
   white-space: nowrap;
   background-color: #1b9aaa;
   padding: 5px 10px;
@@ -21404,8 +21405,12 @@ body.stm-body.about .middle-content-wrap .about-page .video-wrap .video-wrap-inn
   background: #1eaec0;
 }
 
-.com-spiff .com-spiff__item:last-child {
+.com-spiff .com-spiff__item:nth-child(3) {
   background: #188694;
+}
+
+.com-spiff .com-spiff__item:last-child {
+  background: #14727e;
 }
 
 .com-text {

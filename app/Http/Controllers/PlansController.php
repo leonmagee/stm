@@ -55,6 +55,7 @@ class PlansController extends Controller
             'spiff_1' => $request->spiff_1,
             'spiff_2' => $request->spiff_2,
             'spiff_3' => $request->spiff_3,
+            'spiff_4' => $request->spiff_4,
             'feature_1' => $request->feature_1,
             'feature_2' => $request->feature_2,
             'feature_3' => $request->feature_3,
@@ -123,6 +124,7 @@ class PlansController extends Controller
             'spiff_1' => $request->spiff_1,
             'spiff_2' => $request->spiff_2,
             'spiff_3' => $request->spiff_3,
+            'spiff_4' => $request->spiff_4,
             'feature_1' => $request->feature_1,
             'feature_2' => $request->feature_2,
             'feature_3' => $request->feature_3,
@@ -137,7 +139,7 @@ class PlansController extends Controller
             'carrier_id' => $request->carrier_id,
         ]);
         session()->flash('message', 'Plan Data Has Been Updated.');
-        return redirect('/');
+        return redirect('/plans');
     }
 
     /**

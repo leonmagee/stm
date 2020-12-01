@@ -115,6 +115,7 @@
 
     .com-spiff__item {
         flex: 1;
+        font-size: 0.9em;
         white-space: nowrap;
         background-color: $brand-primary;
         padding: 5px 10px;
@@ -127,8 +128,11 @@
         &:first-child {
             background: lighten($brand-primary, 5%);
         }
-        &:last-child {
+        &:nth-child(3) {
             background: darken($brand-primary, 5%);
+        }
+        &:last-child {
+            background: darken($brand-primary, 10%);
         }
     }
 }

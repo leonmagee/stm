@@ -18,7 +18,7 @@
 
         <div class="form-wrap-flex">
 
-          <div class="field fifth">
+          <div class="field sixth">
             <label class="label" for="carrier">Carrier</label>
             <div class="select">
               <select name="carrier_id" id="carrier">
@@ -33,31 +33,38 @@
             </div>
           </div>
 
-          <div class="field fifth">
+          <div class="field sixth">
             <label class="label" for="value">Value</label>
             <div class="control">
               <input class="input" value="{{ $plan->value }}" type="text" id="value" name="value" />
             </div>
           </div>
 
-          <div class="field fifth">
+          <div class="field sixth">
             <label class="label" for="value">1st Spiff</label>
             <div class="control">
               <input class="input" value="{{ $plan->spiff_1 }}" type="text" id="spiff_1" name="spiff_1" />
             </div>
           </div>
 
-          <div class="field fifth">
+          <div class="field sixth">
             <label class="label" for="value">2nd Spiff</label>
             <div class="control">
               <input class="input" value="{{ $plan->spiff_2 }}" type="text" id="spiff_2" name="spiff_2" />
             </div>
           </div>
 
-          <div class="field fifth">
+          <div class="field sixth">
             <label class="label" for="value">3rd Spiff</label>
             <div class="control">
               <input class="input" value="{{ $plan->spiff_3 }}" type="text" id="spiff_3" name="spiff_3" />
+            </div>
+          </div>
+
+          <div class="field sixth">
+            <label class="label" for="value">4th Spiff</label>
+            <div class="control">
+              <input class="input" value="{{ $plan->spiff_4 }}" type="text" id="spiff_4" name="spiff_4" />
             </div>
           </div>
 

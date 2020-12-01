@@ -62,6 +62,9 @@
             <div class="com-spiff__item">1st Spiff ${{ $plan->spiff_1 }}</div>
             <div class="com-spiff__item">2nd Spiff ${{ $plan->spiff_2 }}</div>
             <div class="com-spiff__item">3rd Spiff ${{ $plan->spiff_3 }}</div>
+            @if($plan->spiff_4)
+            <div class="com-spiff__item">4th Spiff ${{ $plan->spiff_4 }}</div>
+            @endif
           </div>
         </div>
         <div class="com-bar__item">
@@ -165,6 +168,9 @@
             <div class="com-spiff__item">1st Spiff ${{ $plan->spiff_1 }}</div>
             <div class="com-spiff__item">2nd Spiff ${{ $plan->spiff_2 }}</div>
             <div class="com-spiff__item">3rd Spiff ${{ $plan->spiff_3 }}</div>
+            @if($plan->spiff_4)
+            <div class="com-spiff__item">4th Spiff ${{ $plan->spiff_4 }}</div>
+            @endif
           </div>
         </div>
         <div class="com-bar__item">
