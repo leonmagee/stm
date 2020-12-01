@@ -119,6 +119,10 @@ class PlansController extends Controller
             //'cc_manual_email.email' => 'Must be a valid email address.',
         ]);
 
+        if (!$request->spiff_4) {
+            $request->spiff_4 = 0;
+        }
+
         $plan->update([
             'value' => $request->value,
             'spiff_1' => $request->spiff_1,
