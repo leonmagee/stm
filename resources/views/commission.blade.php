@@ -99,7 +99,7 @@
               Total Commission
             </div>
             <div class="com-text__item com-text__item--percent com-text__item--white">
-              <span>$</span>{{ ($plan->spiff_1 + $plan->spiff_2 + $plan->spiff_3) }}
+              <span>$</span>{{ ($plan->spiff_1 + $plan->spiff_2 + $plan->spiff_3 + $plan->spiff_4) }}
             </div>
           </div>
         </div>
@@ -205,7 +205,7 @@
               Total Commission
             </div>
             <div class="com-text__item com-text__item--percent com-text__item--white">
-              <span>$</span>{{ ($plan->spiff_1 + $plan->spiff_2 + $plan->spiff_3) }}
+              <span>$</span>{{ ($plan->spiff_1 + $plan->spiff_2 + $plan->spiff_3 + $plan->spiff_4) }}
             </div>
           </div>
         </div>
