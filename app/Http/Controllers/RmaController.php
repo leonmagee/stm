@@ -10,6 +10,11 @@ use Illuminate\Http\Request;
 
 class RmaController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -142,6 +147,14 @@ class RmaController extends Controller
      */
     public function show(Rma $rma)
     {
+
+        $rma->coupon_discount = $rma->product->purchase->coupon_percent;
+        $discounted_cost = $rma->product->unit_cost * ((100 - ($rma->product->discount)) / 100) * $rma->quantity;
+        if ($rma->coupon_discount) {
+            $discounted_cost = $discounted_cost * ((100 - ($rma->coupon_discount)) / 100);
+        }
+        $rma->final_cost = $discounted_cost;
+
         if ($rma->imeis) {
             $rma->imeis = unserialize($rma->imeis);
         } else {

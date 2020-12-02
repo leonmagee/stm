@@ -40,6 +40,7 @@
           <div class="stm_inv__header--label">Unit Cost</div>
           <div class="stm_inv__header--label">Quantity</div>
           <div class="stm_inv__header--label">Discount</div>
+          <div class="stm_inv__header--label">Coupon</div>
           <div class="stm_inv__header--label">Total</div>
           @if(count($rma->imeis))
           <div class="stm_inv__header--label stm_inv__flex--15">IMEI / Serial Number</div>
@@ -51,9 +52,14 @@
           <div class="stm_inv__header--item">{{ $rma->product->variation }}</div>
           <div class="stm_inv__header--item">${{ number_format($rma->product->unit_cost, 2) }}</div>
           <div class="stm_inv__header--item">{{ $rma->quantity }}</div>
-          <div class="stm_inv__header--item">{{ $rma->product->discount }}%</div>
           <div class="stm_inv__header--item">
-            ${{ number_format($rma->quantity * \App\Helpers::get_discount_price($rma->product->unit_cost, $rma->product->discount), 2) }}
+            {{ $rma->product->discount ? $rma->product->discount . '%' : '' }}
+          </div>
+          <div class="stm_inv__header--item">
+            {{ $rma->coupon_discount ? $rma->coupon_discount . '%' : '' }}
+          </div>
+          <div class="stm_inv__header--item">
+            ${{ number_format($rma->final_cost, 2) }}
           </div>
           @if(count($rma->imeis))
           <div class="stm_inv__header--item stm_inv__flex--15">
