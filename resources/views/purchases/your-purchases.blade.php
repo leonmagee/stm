@@ -70,6 +70,7 @@
               <div class="modal-box">
                 <input type="hidden" name="purchase_id" value="{{ $purchase->id }}" />
                 <input type="hidden" name="purchase_product_id" value="{{ $product->id }}" />
+                <input type="hidden" name="coupon_percent" value="{{ $purchase->coupon_percent }}" />
                 <h4 class="title">Submit RMA Request</h4>
                 <div class="stm-flex">
                   <div class="stm-flex-row">

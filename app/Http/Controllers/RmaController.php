@@ -45,6 +45,13 @@ class RmaController extends Controller
         $user_id = \Auth::user()->id;
         $rmas = Rma::where('user_id', $user_id)->orderBy('id', 'desc')->get();
         foreach ($rmas as $rma) {
+            $rma->coupon_discount = $rma->product->purchase->coupon_percent;
+            $discounted_cost = $rma->product->unit_cost * ((100 - ($rma->product->discount)) / 100) * $rma->quantity;
+            if ($rma->coupon_discount) {
+                $discounted_cost = $discounted_cost * ((100 - ($rma->coupon_discount)) / 100);
+            }
+            $rma->final_cost = $discounted_cost;
+
             if ($rma->imeis) {
                 $rma->imeis = unserialize($rma->imeis);
             } else {

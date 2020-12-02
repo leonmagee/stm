@@ -21405,11 +21405,15 @@ body.stm-body.about .middle-content-wrap .about-page .video-wrap .video-wrap-inn
   background: #1eaec0;
 }
 
+.com-spiff .com-spiff__item:nth-child(2) {
+  background: #1b9aaa;
+}
+
 .com-spiff .com-spiff__item:nth-child(3) {
   background: #188694;
 }
 
-.com-spiff .com-spiff__item:last-child {
+.com-spiff .com-spiff__item:nth-child(4) {
   background: #14727e;
 }
 

@@ -12,4 +12,8 @@ class PurchaseProduct extends Model
     {
         return $this->hasMany(Imei::class);
     }
+    public function purchase()
+    {
+        return $this->belongsTo(Purchase::class);
+    }
 }

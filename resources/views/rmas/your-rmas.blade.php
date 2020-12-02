@@ -14,6 +14,7 @@
       @foreach($rmas as $rma)
       <div class="stm-flex-wrap">
 
+
         <div class="stm-flex-row">
           <div class="stm-flex-row__item header">RMA #</div>
           <div class="stm-flex-row__item header">Request Date</div>
@@ -46,6 +47,7 @@
           <div class="stm-flex-row__item header">Quantity</div>
           <div class="stm-flex-row__item header">Subtotal</div>
           <div class="stm-flex-row__item header">Discount</div>
+          <div class="stm-flex-row__item header">Coupon</div>
           <div class="stm-flex-row__item header">Total</div>
         </div>
 
@@ -65,8 +67,10 @@
           </div>
           <div class="stm-flex-row__item red">
             {{ $rma->product->discount ? $rma->product->discount . '%' : '' }}</div>
+          <div class="stm-flex-row__item red">
+            {{ $rma->coupon_discount ? $rma->coupon_discount . '%' : '' }}</div>
           <div class="stm-flex-row__item">
-            ${{ number_format((($rma->product->unit_cost * ((100 - $rma->product->discount) / 100)) * $rma->quantity), 2) }}
+            ${{ number_format($rma->final_cost, 2) }}
           </div>
         </div>
 

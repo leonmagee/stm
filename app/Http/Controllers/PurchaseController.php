@@ -163,6 +163,7 @@ class PurchaseController extends Controller
      */
     public function store(Request $request)
     {
+
         //\Log::debug($request);
         // 0. Get logged in user
         $user = \Auth::user();
@@ -175,6 +176,16 @@ class PurchaseController extends Controller
             $shipping = null;
         }
 
+        // 0. Get discount coupon
+        $discount_coupon = CartCoupon::where('user_id', $user->id)->first();
+        if ($discount_coupon && $discount_coupon->coupon) {
+            $coupon_percent = $discount_coupon->coupon->percent;
+            $coupon_text = $discount_coupon->coupon->code;
+        } else {
+            $coupon_percent = null;
+            $coupon_text = null;
+        }
+
         // 1. Create purchase record
         $purchase = Purchase::create([
             'user_id' => $user->id,
@@ -184,6 +195,8 @@ class PurchaseController extends Controller
             'discount' => $request->discount,
             'type' => $request->type,
             'status' => 2, // pending
+            'coupon_percent' => $coupon_percent,
+            'coupon_text' => $coupon_text,
             // 'address' => $request->address,
             // 'address2' => $request->address2,
             // 'city' => $request->city,
@@ -269,7 +282,6 @@ class PurchaseController extends Controller
             }
         }
 
-        $discount_coupon = CartCoupon::where('user_id', $user->id)->first();
         if ($discount_coupon) {
             $discount_coupon->delete();
         }
