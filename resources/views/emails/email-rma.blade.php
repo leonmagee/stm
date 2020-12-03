@@ -36,7 +36,10 @@
   </div>
 
   <div class="invoice-wrap__middle">
-    <?php $return_total = '$' . number_format((($rma->product->unit_cost * $rma->quantity) * ((100 - $rma->product->discount) / 100)), 2); ?>
+    <?php
+    $return_total = '$' . number_format($rma->final_cost, 2);
+    //$return_total = '$' . number_format((($rma->product->unit_cost * $rma->quantity) * ((100 - $rma->product->discount) / 100)), 2);
+    ?>
     <table class="table custom small-font">
       <tr class="header-row">
         <th class="name-column">Product Name</th>
@@ -48,6 +51,7 @@
         <th>Quantity</th>
         <th>Subtotal</th>
         <th>Discount</th>
+        <th>Coupon</th>
         <th>Item Total</th>
       </tr>
       <tr>
@@ -63,7 +67,8 @@
         <td class="item">${{ number_format($rma->product->unit_cost, 2) }}</td>
         <td class="item">{{ $rma->quantity }}</td>
         <td class="item">{{ number_format($rma->product->unit_cost * $rma->quantity, 2) }}</td>
-        <td class="item">{{ $rma->product->discount ? $rma->product->discount . '%' : '' }}</td>
+        <td class="item">{{ $rma->discount_output }}</td>
+        <td class="item">{{ $rma->coupon_output }}</td>
         <td class="item">{{ $return_total }}</td>
       </tr>
     </table>

@@ -50,12 +50,8 @@ class RmaController extends Controller
         $user_id = \Auth::user()->id;
         $rmas = Rma::where('user_id', $user_id)->orderBy('id', 'desc')->get();
         foreach ($rmas as $rma) {
-            $rma->coupon_discount = $rma->product->purchase->coupon_percent;
-            $discounted_cost = $rma->product->unit_cost * ((100 - ($rma->product->discount)) / 100) * $rma->quantity;
-            if ($rma->coupon_discount) {
-                $discounted_cost = $discounted_cost * ((100 - ($rma->coupon_discount)) / 100);
-            }
-            $rma->final_cost = $discounted_cost;
+
+            $rma->discount_final_total();
 
             if ($rma->imeis) {
                 $rma->imeis = unserialize($rma->imeis);
@@ -104,6 +100,8 @@ class RmaController extends Controller
             ]
         );
 
+        $rma->discount_final_total();
+
         $purchase = Purchase::find($request->purchase_id);
 
         $header_text = "<strong>Hello " . $user->name . "!</strong><br />We have received your RMA submission. Your RMA # is <strong>RMA-GSW" . $rma->id . "</strong>. You will receive another email when we update the status of your RMA.";
@@ -147,13 +145,7 @@ class RmaController extends Controller
      */
     public function show(Rma $rma)
     {
-
-        $rma->coupon_discount = $rma->product->purchase->coupon_percent;
-        $discounted_cost = $rma->product->unit_cost * ((100 - ($rma->product->discount)) / 100) * $rma->quantity;
-        if ($rma->coupon_discount) {
-            $discounted_cost = $discounted_cost * ((100 - ($rma->coupon_discount)) / 100);
-        }
-        $rma->final_cost = $discounted_cost;
+        $rma->discount_final_total();
 
         if ($rma->imeis) {
             $rma->imeis = unserialize($rma->imeis);
@@ -235,6 +227,8 @@ class RmaController extends Controller
         $user = $rma->user;
         $header_text = "<strong>Hello " . $user->name . "</strong><br />" . $request->rma_message;
         $purchase = Purchase::find($rma->product->purchase_id);
+
+        $rma->discount_final_total();
 
         \Mail::to($user)->send(new RmaEmail(
             $user,

@@ -66,9 +66,9 @@
           <div class="stm-flex-row__item">${{ number_format($rma->product->unit_cost * $rma->quantity, 2) }}
           </div>
           <div class="stm-flex-row__item red">
-            {{ $rma->product->discount ? $rma->product->discount . '%' : '' }}</div>
+            {{ $rma->discount_output }}</div>
           <div class="stm-flex-row__item red">
-            {{ $rma->coupon_discount ? $rma->coupon_discount . '%' : '' }}</div>
+            {{ $rma->coupon_output }}</div>
           <div class="stm-flex-row__item">
             ${{ number_format($rma->final_cost, 2) }}
           </div>

@@ -53,10 +53,10 @@
           <div class="stm_inv__header--item">${{ number_format($rma->product->unit_cost, 2) }}</div>
           <div class="stm_inv__header--item">{{ $rma->quantity }}</div>
           <div class="stm_inv__header--item">
-            {{ $rma->product->discount ? $rma->product->discount . '%' : '' }}
+            {{ $rma->discount_output }}
           </div>
           <div class="stm_inv__header--item">
-            {{ $rma->coupon_discount ? $rma->coupon_discount . '%' : '' }}
+            {{ $rma->coupon_output }}
           </div>
           <div class="stm_inv__header--item">
             ${{ number_format($rma->final_cost, 2) }}
