@@ -125640,8 +125640,11 @@ $('.product-single__images--item').hover(function () {
  * Search Form Submit
  */
 
-$('a#user-search-submit').click(function () {
+$('a#user-search-form-submit').click(function () {
   $('#user-search-form').submit();
+});
+$('a#user-search-form-mobile-submit').click(function () {
+  $('#user-search-form-mobile').submit();
 });
 /**
  * JQuery Zoom

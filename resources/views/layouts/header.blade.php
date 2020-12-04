@@ -15,7 +15,7 @@
       @if($logged_in_user->isAdmin())
 
       <div class="large-menu">
-        @include('layouts.search-user')
+        @include('layouts.search-user', ['submit_id' => 'user-search-form'])
         <div class="field has-addons">
           <p class="control">
             <a class="button type" href="/settings">
@@ -97,13 +97,13 @@
             </a>
           </p>
         </div>
-        @include('layouts.search-user')
+        @include('layouts.search-user', ['submit_id' => 'user-search-form-mobile'])
       </div>
 
       @elseif($logged_in_user->isManager())
 
       <div class="large-menu">
-        @include('layouts.search-user')
+        @include('layouts.search-user', ['submit_id' => 'user-search-form'])
         <div class="field has-addons">
           <p class="control">
             <a class="button type" href="/settings">
@@ -190,7 +190,7 @@
 
       @elseif($logged_in_user->isEmployee())
       <div class="large-menu">
-        @include('layouts.search-user')
+        @include('layouts.search-user', ['submit_id' => 'user-search-form'])
         <div class="field has-addons">
           <p class="control">
             <a class="button type not-link">
@@ -280,7 +280,7 @@
 
       <div class="large-menu">
         @if($logged_in_user->isMasterAgent())
-        @include('layouts.search-user')
+        @include('layouts.search-user', ['submit_id' => 'user-search-form'])
         @endif
         <div class="field available-credit">
           Available Credit: <span>${{ number_format(Auth::user()->balance, 2) }}</span>

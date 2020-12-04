@@ -227,6 +227,20 @@ a.button.custom-button {
             max-width: 35%;
         }
     }
+    &.behalf {
+        margin-bottom: 0.85em;
+        background-color: #e1e1e1;
+        height: auto;
+        display: flex;
+        justify-content: space-around;
+        padding: 1em 0.5em;
+        span {
+            color: #222;
+        }
+        img {
+            max-width: 35%;
+        }
+    }
     &.continue-shopping {
         margin-top: 0.5em;
         background-color: lighten($product-blue, 7%);

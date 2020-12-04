@@ -23323,6 +23323,23 @@ a.button.custom-button.stm-credit img {
   max-width: 35%;
 }
 
+a.button.custom-button.behalf {
+  margin-bottom: 0.85em;
+  background-color: #e1e1e1;
+  height: auto;
+  display: flex;
+  justify-content: space-around;
+  padding: 1em 0.5em;
+}
+
+a.button.custom-button.behalf span {
+  color: #222;
+}
+
+a.button.custom-button.behalf img {
+  max-width: 35%;
+}
+
 a.button.custom-button.continue-shopping {
   margin-top: 0.5em;
   background-color: #008eda;

@@ -478,9 +478,9 @@ img.email-header-logo {
     white-space: nowrap;
 }
 
-.invoice-wrap .table.custom tr .item {
+/* .invoice-wrap .table.custom tr .item {
     white-space: nowrap;
-}
+} */
 
 .invoice-wrap__footer {
     display: flex;
