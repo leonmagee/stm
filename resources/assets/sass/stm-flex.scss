@@ -15,6 +15,9 @@
             border-right: 1px solid #ddd;
             border-bottom: 1px solid #ddd;
             flex: 1;
+            &.font-center {
+                text-align: center;
+            }
             &:first-child {
                 border-left: 1px solid #ddd;
             }
@@ -63,6 +66,19 @@
                 background-color: $invoice-header;
                 font-size: 0.8em;
             }
+
+            &.bg-blue {
+                background-color: $info;
+                color: #fff;
+                border-color: $info;
+                text-transform: uppercase;
+                font-weight: 600;
+                text-shadow: rgba(255, 255, 255, 1);
+                &:not(:last-child) {
+                    border-right-color: lighten($info, 20%);
+                }
+            }
+
             &.status-1 {
                 background-color: darken($brand-fifth, 13%);
                 color: #fff;
@@ -84,6 +100,18 @@
                 text-shadow: 1px 1px rgba(0, 0, 0, 0.05);
             }
         }
+        // font adjustments
+        &.font-small {
+            .stm-flex-row__item {
+                font-size: 0.8em;
+            }
+        }
+        &.font-bold {
+            .stm-flex-row__item {
+                font-weight: 600 !important;
+            }
+        }
+        // misc
         &:first-child {
             .stm-flex-row__item {
                 border-top: 1px solid #ddd;

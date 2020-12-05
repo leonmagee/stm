@@ -18664,15 +18664,6 @@ body.stm-body .add-padding {
   font-weight: 600;
 }
 
-.complete-data-imei {
-  background-color: #209cee !important;
-  color: #fff !important;
-  border-color: #209cee !important;
-  text-transform: uppercase;
-  font-weight: 600;
-  text-shadow: white;
-}
-
 .modal {
   z-index: 100000;
 }
@@ -23756,6 +23747,10 @@ a.button.custom-button:hover {
   flex: 1;
 }
 
+.stm-flex .stm-flex-row .stm-flex-row__item.font-center {
+  text-align: center;
+}
+
 .stm-flex .stm-flex-row .stm-flex-row__item:first-child {
   border-left: 1px solid #ddd;
 }
@@ -23818,6 +23813,19 @@ a.button.custom-button:hover {
   font-size: 0.8em;
 }
 
+.stm-flex .stm-flex-row .stm-flex-row__item.bg-blue {
+  background-color: #209cee;
+  color: #fff;
+  border-color: #209cee;
+  text-transform: uppercase;
+  font-weight: 600;
+  text-shadow: white;
+}
+
+.stm-flex .stm-flex-row .stm-flex-row__item.bg-blue:not(:last-child) {
+  border-right-color: #7fc6f5;
+}
+
 .stm-flex .stm-flex-row .stm-flex-row__item.status-1 {
   background-color: #0fdbff;
   color: #fff;
@@ -23840,6 +23848,14 @@ a.button.custom-button:hover {
   background-color: #111;
   color: #fff;
   text-shadow: 1px 1px rgba(0, 0, 0, 0.05);
+}
+
+.stm-flex .stm-flex-row.font-small .stm-flex-row__item {
+  font-size: 0.8em;
+}
+
+.stm-flex .stm-flex-row.font-bold .stm-flex-row__item {
+  font-weight: 600 !important;
 }
 
 .stm-flex .stm-flex-row:first-child .stm-flex-row__item {

@@ -22,6 +22,17 @@ class Helpers
         }
     }
 
+    public static function blacklist_status($text)
+    {
+        $text = strtoupper($text);
+        if ($text == 'CLEAN') {
+            return 3;
+        } elseif ($text == 'BLACKLISTED') {
+            return 2;
+        }
+        return 0;
+    }
+
     /**
      * Purchase Status
      */

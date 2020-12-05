@@ -14,7 +14,6 @@
       @foreach($rmas as $rma)
       <div class="stm-flex-wrap">
 
-
         <div class="stm-flex-row">
           <div class="stm-flex-row__item header">RMA #</div>
           <div class="stm-flex-row__item header">Request Date</div>
