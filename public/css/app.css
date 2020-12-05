@@ -23417,6 +23417,15 @@ a.button.custom-button:hover {
   color: #05b889;
 }
 
+.cart-saved-favorites {
+  padding: 2em;
+}
+
+.cart-saved-favorites h4 {
+  font-size: 1.2em;
+  font-weight: 600;
+}
+
 .purchase-complete {
   padding-top: 2em;
   text-align: center;

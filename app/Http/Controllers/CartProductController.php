@@ -6,6 +6,7 @@ use App\CartCoupon;
 use App\CartProduct;
 use App\Coupon;
 use App\Product;
+use App\ProductFavorite;
 use App\ProductVariation;
 use Illuminate\Http\Request;
 
@@ -100,6 +101,18 @@ class CartProductController extends Controller
         $shipping_max = $this->shipping_max;
         $shipping_default = $this->shipping_charge;
 
+        // get saved products
+
+        $saved_products = null;
+
+        // get favorite products
+        $favorites = ProductFavorite::select('product_id')->where('user_id', $user_id)->get()->toArray();
+        $fav_array = [];
+        foreach ($favorites as $favorite) {
+            $fav_array[] = $favorite['product_id'];
+        }
+        $fav_products = Product::whereIn('id', $fav_array)->get();
+
         return view('products.cart', compact(
             'items',
             'total',
@@ -114,7 +127,9 @@ class CartProductController extends Controller
             'shipping_default',
             'coupon',
             'cart_coupon',
-            'coupon_discount'
+            'coupon_discount',
+            'saved_products',
+            'fav_products'
         ));
     }
 

@@ -123,6 +123,15 @@
       </div>
       @endif
     </div>
+    <div class="cart-saved-favorites">
+      <h4>Saved Products</h4>
+      <h4>Favorite Products</h4>
+      <div class="wrap">
+        @foreach($fav_products as $fav)
+        <div>{{ $fav->name }}</div>
+        @endforeach
+      </div>
+    </div>
   </div>
   <div class="cart-wrapper-right cart-wrapper-inner">
     <h3>Checkout <i class="far fa-credit-card"></i></h3>
