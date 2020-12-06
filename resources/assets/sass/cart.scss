@@ -335,7 +335,11 @@ a.button.custom-button {
     .saved-favorites__item {
         @include normal-background;
         margin-bottom: 1em;
+        padding: 0.8em 1.1em;
         display: flex;
+        align-items: center;
+        position: relative;
+        overflow: hidden;
         .saved-favorites__item--image {
             img {
                 max-width: 9em;
@@ -347,6 +351,17 @@ a.button.custom-button {
                 padding-left: 2em;
             }
         }
+        .saved-favorites__item--price {
+            // media query
+            @media (min-width: $screen-md) {
+                //padding-left: 2em;
+                margin-left: auto;
+            }
+            font-size: 2.4em;
+            font-weight: 600;
+            color: #111;
+            //align-self: flex-end;
+        }
         .saved-favorites__item--name {
             font-size: 1.1em;
             font-weight: 600;
@@ -354,6 +369,59 @@ a.button.custom-button {
         }
         .saved-favorites__item--description {
             //background: red;
+            li {
+                margin-bottom: 0.1em;
+            }
+        }
+        .saved-favorites__item--links {
+            display: flex;
+            align-items: center;
+            font-size: 1em;
+            a {
+                font-size: 0.9em;
+                color: $brand-primary;
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
+            span {
+                color: #bbb;
+                font-size: 0.9em;
+                padding: 0 0.4em;
+            }
+            button {
+                background-image: none;
+                border: none;
+                background-color: transparent;
+                color: $brand-primary;
+                font-size: 0.9em;
+                padding: 0;
+                &:hover {
+                    text-decoration: underline;
+                    cursor: pointer;
+                }
+            }
+        }
+        .saved-favorites__item--discount {
+            position: absolute;
+            transform: rotate(-45deg);
+            -webkit-transform: rotate(-45deg);
+            width: 190px;
+            top: 20px;
+            left: -60px;
+            text-align: center;
+            line-height: 30px;
+            letter-spacing: 1px;
+            background: darken($green, 1%);
+            text-shadow: 1px 1px rgba(0, 0, 0, 0.1);
+            color: #fff;
+            font-weight: 600;
+            font-size: 0.7em;
+            box-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
+            text-transform: uppercase;
+            // &.sold-out {
+            //     background: $color-red;
+            // }
         }
     }
 }

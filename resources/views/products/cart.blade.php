@@ -126,23 +126,51 @@
     <div class="saved-favorites">
       <h4>Saved Products</h4>
       @if(!$saved_products)
+      {{-- @if($saved_products->isEmpty()) --}}
       <div class="saved-favorites__no-items">
-        You have no saved products
+        You have no saved products.
       </div>
       @endif
       <h4>Favorite Products</h4>
-      @foreach($fav_products as $fav)
+      @if($fav_products->isEmpty())
+      <div class="saved-favorites__no-items">
+        You have no favorite products.
+      </div>
+      @endif
+      @foreach($fav_products as $item)
       <div class="saved-favorites__item">
         <div class="saved-favorites__item--image">
-          <img src="{{ $fav->img_url_1 }}" />
+          <img src="{{ $item->img_url_1 }}" />
         </div>
         <div class="saved-favorites__item--details">
           <div class="saved-favorites__item--name">
-            {{ $fav->name }}
+            {{ $item->name }}
           </div>
           <div class="saved-favorites__item--description">
-            {!! $fav->description !!}
+            {!! $item->description !!}
           </div>
+          <div class="saved-favorites__item--links">
+            <form method="POST" action="/cart-remove-favorite">
+              @csrf
+              <input type="hidden" name="product_id" value="{{ $item->id }}" />
+              <button type="submit">Un-Favorite</button>
+            </form>
+            <span class="sep">|</span>
+            <form method="POST" action="/favorite-add-to-cart">
+              @csrf
+              <input type="hidden" name="product_id" value="{{ $item->id }}" />
+              <button type="submit">Add to Cart</button>
+            </form>
+            <span class="sep">|</span>
+            <a>Compare with Similar Items</a>
+          </div>
+
+        </div>
+        <div class="saved-favorites__item--price">
+          ${{ number_format($item->cost, 2) }}
+        </div>
+        <div class="saved-favorites__item--discount">
+          {{ $item->discount }}% Off
         </div>
       </div>
 

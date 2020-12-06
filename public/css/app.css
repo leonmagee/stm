@@ -23439,7 +23439,11 @@ a.button.custom-button:hover {
   color: #333;
   padding: 15px;
   margin-bottom: 1em;
+  padding: 0.8em 1.1em;
   display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
 }
 
 .saved-favorites .saved-favorites__item .saved-favorites__item--image img {
@@ -23452,10 +23456,80 @@ a.button.custom-button:hover {
   }
 }
 
+.saved-favorites .saved-favorites__item .saved-favorites__item--price {
+  font-size: 2.4em;
+  font-weight: 600;
+  color: #111;
+}
+
+@media (min-width: 980px) {
+  .saved-favorites .saved-favorites__item .saved-favorites__item--price {
+    margin-left: auto;
+  }
+}
+
 .saved-favorites .saved-favorites__item .saved-favorites__item--name {
   font-size: 1.1em;
   font-weight: 600;
   color: #0f81cc;
+}
+
+.saved-favorites .saved-favorites__item .saved-favorites__item--description li {
+  margin-bottom: 0.1em;
+}
+
+.saved-favorites .saved-favorites__item .saved-favorites__item--links {
+  display: flex;
+  align-items: center;
+  font-size: 1em;
+}
+
+.saved-favorites .saved-favorites__item .saved-favorites__item--links a {
+  font-size: 0.9em;
+  color: #1b9aaa;
+}
+
+.saved-favorites .saved-favorites__item .saved-favorites__item--links a:hover {
+  text-decoration: underline;
+}
+
+.saved-favorites .saved-favorites__item .saved-favorites__item--links span {
+  color: #bbb;
+  font-size: 0.9em;
+  padding: 0 0.4em;
+}
+
+.saved-favorites .saved-favorites__item .saved-favorites__item--links button {
+  background-image: none;
+  border: none;
+  background-color: transparent;
+  color: #1b9aaa;
+  font-size: 0.9em;
+  padding: 0;
+}
+
+.saved-favorites .saved-favorites__item .saved-favorites__item--links button:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.saved-favorites .saved-favorites__item .saved-favorites__item--discount {
+  position: absolute;
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+  width: 190px;
+  top: 20px;
+  left: -60px;
+  text-align: center;
+  line-height: 30px;
+  letter-spacing: 1px;
+  background: #06d69f;
+  text-shadow: 1px 1px rgba(0, 0, 0, 0.1);
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.7em;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
+  text-transform: uppercase;
 }
 
 .purchase-complete {

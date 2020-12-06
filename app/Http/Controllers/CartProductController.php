@@ -103,7 +103,7 @@ class CartProductController extends Controller
 
         // get saved products
 
-        $saved_products = null;
+        $saved_products = [];
 
         // get favorite products
         $favorites = ProductFavorite::select('product_id')->where('user_id', $user_id)->get()->toArray();
@@ -112,7 +112,6 @@ class CartProductController extends Controller
             $fav_array[] = $favorite['product_id'];
         }
         $fav_products = Product::whereIn('id', $fav_array)->get();
-
         //dd($fav_products);
 
         return view('products.cart', compact(
