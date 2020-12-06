@@ -113,6 +113,8 @@ class CartProductController extends Controller
         }
         $fav_products = Product::whereIn('id', $fav_array)->get();
 
+        //dd($fav_products);
+
         return view('products.cart', compact(
             'items',
             'total',

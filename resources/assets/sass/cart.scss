@@ -319,11 +319,41 @@ a.button.custom-button {
     }
 }
 
-.cart-saved-favorites {
+.saved-favorites {
     padding: 2em;
 
     h4 {
         font-size: 1.2em;
+        margin-bottom: 0.3em;
         font-weight: 600;
+    }
+    .saved-favorites__no-items {
+        color: $red;
+        font-weight: 400;
+        padding-bottom: 1em;
+    }
+    .saved-favorites__item {
+        @include normal-background;
+        margin-bottom: 1em;
+        display: flex;
+        .saved-favorites__item--image {
+            img {
+                max-width: 9em;
+            }
+        }
+        .saved-favorites__item--details {
+            // media query
+            @media (min-width: $screen-md) {
+                padding-left: 2em;
+            }
+        }
+        .saved-favorites__item--name {
+            font-size: 1.1em;
+            font-weight: 600;
+            color: darken($info, 10%);
+        }
+        .saved-favorites__item--description {
+            //background: red;
+        }
     }
 }

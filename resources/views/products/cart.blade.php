@@ -123,14 +123,36 @@
       </div>
       @endif
     </div>
-    <div class="cart-saved-favorites">
+    <div class="saved-favorites">
       <h4>Saved Products</h4>
-      <h4>Favorite Products</h4>
-      <div class="wrap">
-        @foreach($fav_products as $fav)
-        <div>{{ $fav->name }}</div>
-        @endforeach
+      @if(!$saved_products)
+      <div class="saved-favorites__no-items">
+        You have no saved products
       </div>
+      @endif
+      <h4>Favorite Products</h4>
+      @foreach($fav_products as $fav)
+      <div class="saved-favorites__item">
+        <div class="saved-favorites__item--image">
+          <img src="{{ $fav->img_url_1 }}" />
+        </div>
+        <div class="saved-favorites__item--details">
+          <div class="saved-favorites__item--name">
+            {{ $fav->name }}
+          </div>
+          <div class="saved-favorites__item--description">
+            {!! $fav->description !!}
+          </div>
+        </div>
+      </div>
+
+
+
+
+
+
+
+      @endforeach
     </div>
   </div>
   <div class="cart-wrapper-right cart-wrapper-inner">
