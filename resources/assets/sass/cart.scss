@@ -364,7 +364,7 @@ a.button.custom-button {
             }
         }
         .saved-favorites__item--price {
-            font-size: 2.1em;
+            font-size: 1.9em;
             font-weight: 600;
             color: #111;
             background-color: #fcfcfc;
@@ -386,6 +386,7 @@ a.button.custom-button {
             }
             .saved-favorites__item--price-final {
                 color: darken($green, 3%);
+                text-shadow: 1px 1px #fff;
             }
         }
         .saved-favorites__item--name {

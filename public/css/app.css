@@ -23476,7 +23476,7 @@ a.button.custom-button:hover {
 }
 
 .saved-favorites .saved-favorites__item .saved-favorites__item--price {
-  font-size: 2.1em;
+  font-size: 1.9em;
   font-weight: 600;
   color: #111;
   background-color: #fcfcfc;
@@ -23504,6 +23504,7 @@ a.button.custom-button:hover {
 
 .saved-favorites .saved-favorites__item .saved-favorites__item--price .saved-favorites__item--price-final {
   color: #05cc98;
+  text-shadow: 1px 1px #fff;
 }
 
 .saved-favorites .saved-favorites__item .saved-favorites__item--name {

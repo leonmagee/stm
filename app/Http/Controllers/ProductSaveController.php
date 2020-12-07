@@ -111,9 +111,11 @@ class ProductSaveController extends Controller
      * @param  \App\ProductSave  $productSave
      * @return \Illuminate\Http\Response
      */
-    public function destroy(ProductSave $productSave)
+    public function destroy($product_id)
     {
-        $productSave->delete();
+        $user_id = \Auth::user()->id;
+        $product_saved = ProductSave::where(['user_id' => $user_id, 'product_id' => $product_id])->first();
+        $product_saved->delete();
         session()->flash('message', 'Saved product has been removed.');
         return redirect()->back();
     }
