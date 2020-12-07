@@ -99,11 +99,12 @@
         font-size: 0.8em;
         a.save-for-later {
             font-weight: 400;
-            color: $red;
+            //color: lighten($color-orange, 1%);
+            color: $color-orange;
             white-space: nowrap;
             margin-top: 0.1em;
             &:hover {
-                color: darken($red, 7%);
+                color: darken($color-orange, 7%);
             }
         }
         .stm-cart__item--name {
