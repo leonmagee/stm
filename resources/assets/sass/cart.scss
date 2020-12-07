@@ -97,6 +97,16 @@
         display: flex;
         align-items: center;
         font-size: 0.8em;
+        a.save-for-later {
+            font-weight: 400;
+            color: darken($brand-primary, 3%);
+            white-space: nowrap;
+        }
+        .stm-cart__item--name {
+            a {
+                display: block;
+            }
+        }
         &.stm-cart__item--header {
             padding: 1em 1em 0.5em;
             font-weight: 600;
@@ -324,7 +334,7 @@ a.button.custom-button {
 
     h4 {
         font-size: 1.2em;
-        margin-bottom: 0.3em;
+        margin: 0.7em 0 0.5em;
         font-weight: 600;
     }
     .saved-favorites__no-items {
@@ -335,32 +345,48 @@ a.button.custom-button {
     .saved-favorites__item {
         @include normal-background;
         margin-bottom: 1em;
-        padding: 0.8em 1.1em;
+        padding: 0;
         display: flex;
-        align-items: center;
+        align-items: stretch;
         position: relative;
         overflow: hidden;
         .saved-favorites__item--image {
+            display: flex;
+            align-items: center;
             img {
                 max-width: 9em;
             }
         }
         .saved-favorites__item--details {
-            // media query
+            padding: 0.7em 1.2em;
             @media (min-width: $screen-md) {
                 padding-left: 2em;
             }
         }
         .saved-favorites__item--price {
-            // media query
-            @media (min-width: $screen-md) {
-                //padding-left: 2em;
-                margin-left: auto;
-            }
-            font-size: 2.4em;
+            font-size: 2.1em;
             font-weight: 600;
             color: #111;
-            //align-self: flex-end;
+            background-color: #fcfcfc;
+            border-left: 1px solid #eee;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            flex: 0 0 17%;
+            padding: 0.5em;
+            @media (min-width: $screen-md) {
+                margin-left: auto;
+            }
+            .saved-favorites__item--price-orig {
+                font-size: 0.8em;
+                text-decoration: line-through;
+                opacity: 0.4;
+                font-weight: 400;
+            }
+            .saved-favorites__item--price-final {
+                color: darken($green, 3%);
+            }
         }
         .saved-favorites__item--name {
             font-size: 1.1em;

@@ -29,7 +29,11 @@
             <a class="stm-cart__item--product---thumbnail" href="/products/{{ $item->product->id }}">
               <img src="{{ $item->product->get_cloudinary_thumbnail(200, 200) }}" />
             </a>
-            <a href="/products/{{ $item->product->id }}">{{ $item->product->name }}</a>
+            <div class="stm-cart__item--name">
+              <a href="/products/{{ $item->product->id }}">{{ $item->product->name }}</a>
+              <a class="save-for-later" href="/save-for-later/{{ $item->product->id }}/{{ $item->id }}">(save for
+                later)</a>
+            </div>
           </div>
           <div class="stm-cart__item--variation">
             @if(count(($item->cart_variations())))
@@ -123,14 +127,19 @@
       </div>
       @endif
     </div>
+
+    {{-- Saved Favorites Section --}}
+    @if(\Auth::user()->isAdmin())
     <div class="saved-favorites">
       <h4>Saved Products</h4>
-      @if(!$saved_products)
-      {{-- @if($saved_products->isEmpty()) --}}
+      @if($saved_products->isEmpty())
       <div class="saved-favorites__no-items">
         You have no saved products.
       </div>
       @endif
+      @foreach($saved_products as $item)
+      @include('products.fav-saved', ['item' => $item, 'link' => 'Delete', 'link_path' => 'delete-saved'])
+      @endforeach
       <h4>Favorite Products</h4>
       @if($fav_products->isEmpty())
       <div class="saved-favorites__no-items">
@@ -138,50 +147,10 @@
       </div>
       @endif
       @foreach($fav_products as $item)
-      <div class="saved-favorites__item">
-        <div class="saved-favorites__item--image">
-          <img src="{{ $item->img_url_1 }}" />
-        </div>
-        <div class="saved-favorites__item--details">
-          <div class="saved-favorites__item--name">
-            {{ $item->name }}
-          </div>
-          <div class="saved-favorites__item--description">
-            {!! $item->description !!}
-          </div>
-          <div class="saved-favorites__item--links">
-            <form method="POST" action="/cart-remove-favorite">
-              @csrf
-              <input type="hidden" name="product_id" value="{{ $item->id }}" />
-              <button type="submit">Un-Favorite</button>
-            </form>
-            <span class="sep">|</span>
-            <form method="POST" action="/favorite-add-to-cart">
-              @csrf
-              <input type="hidden" name="product_id" value="{{ $item->id }}" />
-              <button type="submit">Add to Cart</button>
-            </form>
-            <span class="sep">|</span>
-            <a>Compare with Similar Items</a>
-          </div>
-
-        </div>
-        <div class="saved-favorites__item--price">
-          ${{ number_format($item->cost, 2) }}
-        </div>
-        <div class="saved-favorites__item--discount">
-          {{ $item->discount }}% Off
-        </div>
-      </div>
-
-
-
-
-
-
-
+      @include('products.fav-saved', ['item' => $item, 'link' => 'Un-Favorite', 'link_path' => ''])
       @endforeach
     </div>
+    @endif
   </div>
   <div class="cart-wrapper-right cart-wrapper-inner">
     <h3>Checkout <i class="far fa-credit-card"></i></h3>

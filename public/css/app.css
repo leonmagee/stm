@@ -23170,6 +23170,16 @@ body.stm-body.about .middle-content-wrap .about-page .video-wrap .video-wrap-inn
   font-size: 0.8em;
 }
 
+.stm-cart .stm-cart__item a.save-for-later {
+  font-weight: 400;
+  color: #198e9d;
+  white-space: nowrap;
+}
+
+.stm-cart .stm-cart__item .stm-cart__item--name a {
+  display: block;
+}
+
 .stm-cart .stm-cart__item.stm-cart__item--header {
   padding: 1em 1em 0.5em;
   font-weight: 600;
@@ -23423,7 +23433,7 @@ a.button.custom-button:hover {
 
 .saved-favorites h4 {
   font-size: 1.2em;
-  margin-bottom: 0.3em;
+  margin: 0.7em 0 0.5em;
   font-weight: 600;
 }
 
@@ -23439,15 +23449,24 @@ a.button.custom-button:hover {
   color: #333;
   padding: 15px;
   margin-bottom: 1em;
-  padding: 0.8em 1.1em;
+  padding: 0;
   display: flex;
-  align-items: center;
+  align-items: stretch;
   position: relative;
   overflow: hidden;
 }
 
+.saved-favorites .saved-favorites__item .saved-favorites__item--image {
+  display: flex;
+  align-items: center;
+}
+
 .saved-favorites .saved-favorites__item .saved-favorites__item--image img {
   max-width: 9em;
+}
+
+.saved-favorites .saved-favorites__item .saved-favorites__item--details {
+  padding: 0.7em 1.2em;
 }
 
 @media (min-width: 980px) {
@@ -23457,15 +23476,34 @@ a.button.custom-button:hover {
 }
 
 .saved-favorites .saved-favorites__item .saved-favorites__item--price {
-  font-size: 2.4em;
+  font-size: 2.1em;
   font-weight: 600;
   color: #111;
+  background-color: #fcfcfc;
+  border-left: 1px solid #eee;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 17%;
+  padding: 0.5em;
 }
 
 @media (min-width: 980px) {
   .saved-favorites .saved-favorites__item .saved-favorites__item--price {
     margin-left: auto;
   }
+}
+
+.saved-favorites .saved-favorites__item .saved-favorites__item--price .saved-favorites__item--price-orig {
+  font-size: 0.8em;
+  text-decoration: line-through;
+  opacity: 0.4;
+  font-weight: 400;
+}
+
+.saved-favorites .saved-favorites__item .saved-favorites__item--price .saved-favorites__item--price-final {
+  color: #05cc98;
 }
 
 .saved-favorites .saved-favorites__item .saved-favorites__item--name {
