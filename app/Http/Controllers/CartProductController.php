@@ -205,7 +205,9 @@ class CartProductController extends Controller
         }
 
         $product_saved = ProductSave::where(['user_id' => $user_id, 'product_id' => $product_id])->first();
-        $product_saved->delete();
+        if ($product_saved) {
+            $product_saved->delete();
+        }
 
         return back()->withMessage('Added to Cart.');
 
