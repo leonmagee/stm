@@ -89,8 +89,14 @@ class ProductFavoriteController extends Controller
      * @param  \App\ProductFavorite  $productFavorite
      * @return \Illuminate\Http\Response
      */
-    public function destroy(ProductFavorite $productFavorite)
+    public function destroy($product_id)
     {
-        //
+        $user_id = \Auth::user()->id;
+        $favorite = ProductFavorite::where(['user_id' => $user_id, 'product_id' => $product_id])->first();
+        if ($favorite) {
+            $favorite->delete();
+            session()->flash('message', 'Favorite removed.');
+        }
+        return redirect()->back();
     }
 }

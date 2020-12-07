@@ -16,9 +16,9 @@
     <div class="saved-favorites__item--links">
       <a href="/{{ $link_path }}/{{ $item->id }}">{{ $link }}</a>
       <span class="sep">|</span>
-      <a href="/{{ $link_path }}/{{ $item->id }}">Add to Cart</a>
-      <span class="sep">|</span>
-      <a>Compare with Similar Items</a>
+      <a href="/add-to-cart-sav-fav/{{ $item->id }}">Add to Cart</a>
+      <span class="sep TEMP-HIDE">|</span>
+      <a href="#" class="TEMP-HIDE">Compare with Similar Items</a>
     </div>
   </div>
   <div class="saved-favorites__item--price">

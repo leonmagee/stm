@@ -184,6 +184,39 @@ class CartProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+    public function store_sav_fav($product_id)
+    {
+        $user_id = \Auth::user()->id;
+        $product = Product::find($product_id);
+        $variation = $product->first_variation();
+        if ($variation) {
+            $existing = CartProduct::where([
+                'product_id' => $product_id,
+                'user_id' => $user_id,
+            ])->first();
+            if (!$existing) {
+                CartProduct::create([
+                    'product_id' => $product_id,
+                    'quantity' => 1,
+                    'variation' => $variation,
+                    'user_id' => $user_id,
+                ]);
+            }
+        }
+
+        $product_saved = ProductSave::where(['user_id' => $user_id, 'product_id' => $product_id])->first();
+        $product_saved->delete();
+
+        return back()->withMessage('Added to Cart.');
+
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
     public function store_axios(Request $request)
     {
         $user_id = \Auth::user()->id;

@@ -23571,6 +23571,10 @@ a.button.custom-button:hover {
   text-transform: uppercase;
 }
 
+.TEMP-HIDE {
+  display: none;
+}
+
 .purchase-complete {
   padding-top: 2em;
   text-align: center;

@@ -129,7 +129,7 @@
     </div>
 
     {{-- Saved Favorites Section --}}
-    @if(\Auth::user()->isAdmin())
+    {{-- @if(\Auth::user()->isAdmin()) --}}
     <div class="saved-favorites">
       <h4>Saved Products</h4>
       @if($saved_products->isEmpty())
@@ -147,10 +147,10 @@
       </div>
       @endif
       @foreach($fav_products as $item)
-      @include('products.fav-saved', ['item' => $item, 'link' => 'Un-Favorite', 'link_path' => ''])
+      @include('products.fav-saved', ['item' => $item, 'link' => 'Un-Favorite', 'link_path' => 'remove-favorite'])
       @endforeach
     </div>
-    @endif
+    {{-- @endif --}}
   </div>
   <div class="cart-wrapper-right cart-wrapper-inner">
     <h3>Checkout <i class="far fa-credit-card"></i></h3>
