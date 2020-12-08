@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\CartProduct;
 use App\ProductFavorite;
 use Illuminate\Http\Request;
 
@@ -54,6 +55,29 @@ class ProductFavoriteController extends Controller
         }
     }
 
+    public function store_from_cart($product_id, $item_id)
+    {
+        $user_id = \Auth::user()->id;
+
+        $favorited = ProductFavorite::where(['user_id' => $user_id, 'product_id' => $product_id])->first();
+        $favorite = false;
+        if (!$favorited) {
+            $favorite = ProductFavorite::create([
+                'user_id' => $user_id,
+                'product_id' => $product_id,
+            ]);
+        }
+
+        if ($favorite || $favorited) {
+            $cart_item = CartProduct::find($item_id);
+            $cart_item->delete();
+
+            session()->flash('message', 'Product added to Wish List.');
+            return redirect()->back();
+        }
+
+    }
+
     /**
      * Display the specified resource.
      *
@@ -100,7 +124,7 @@ class ProductFavoriteController extends Controller
         $favorite = ProductFavorite::where(['user_id' => $user_id, 'product_id' => $product_id])->first();
         if ($favorite) {
             $favorite->delete();
-            session()->flash('message', 'Favorite removed.');
+            session()->flash('message', 'Product was removed from Wish List.');
         }
         return redirect()->back();
     }

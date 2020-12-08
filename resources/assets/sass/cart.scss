@@ -337,10 +337,16 @@ a.button.custom-button {
 .saved-favorites {
     padding: 0.5em 2em 2em;
 
-    h4 {
-        font-size: 1.2em;
-        margin: 0.7em 0 0.5em;
-        font-weight: 600;
+    // h4 {
+    //     font-size: 1.5em;
+    //     margin: 0.7em 0 0.5em;
+    //     font-weight: 600;
+    //     color: darken($info, 5%);
+    // }
+    h3.wish-list {
+        border-bottom: none;
+        font-size: 1.5em;
+        padding: 0.7em 0 0.1em;
     }
     .saved-favorites__no-items {
         color: $red;
@@ -401,7 +407,7 @@ a.button.custom-button {
         }
         .saved-favorites__item--description {
             //background: red;
-            height: 8em;
+            height: 6.5em;
             overflow: hidden;
             li {
                 margin-bottom: 0.1em;

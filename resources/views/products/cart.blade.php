@@ -31,8 +31,8 @@
             </a>
             <div class="stm-cart__item--name">
               <a href="/products/{{ $item->product->id }}">{{ $item->product->name }}</a>
-              <a class="save-for-later" href="/save-for-later/{{ $item->product->id }}/{{ $item->id }}">(save for
-                later)</a>
+              <a class="save-for-later" href="/save-for-later/{{ $item->product->id }}/{{ $item->id }}">(Move to Wish
+                List)</a>
             </div>
           </div>
           <div class="stm-cart__item--variation">
@@ -128,26 +128,16 @@
       @endif
     </div>
 
-    {{-- Saved Favorites Section --}}
-    {{-- @if(\Auth::user()->isAdmin()) --}}
+    {{-- Wish List Section --}}
     <div class="saved-favorites">
-      <h4>Saved Products</h4>
-      @if($saved_products->isEmpty())
-      <div class="saved-favorites__no-items">
-        You have no saved products.
-      </div>
-      @endif
-      @foreach($saved_products as $item)
-      @include('products.fav-saved', ['item' => $item, 'link' => 'Remove', 'link_path' => 'delete-saved'])
-      @endforeach
-      <h4>Favorite Products</h4>
+      <h3 class="wish-list">Wish List <i class="far fa-list-alt"></i></h3>
       @if($fav_products->isEmpty())
       <div class="saved-favorites__no-items">
         You have no favorite products.
       </div>
       @endif
       @foreach($fav_products as $item)
-      @include('products.fav-saved', ['item' => $item, 'link' => 'Un-Favorite', 'link_path' => 'remove-favorite'])
+      @include('products.fav-saved', ['item' => $item, 'link' => 'Remove', 'link_path' => 'remove-favorite'])
       @endforeach
     </div>
     {{-- @endif --}}

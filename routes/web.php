@@ -56,7 +56,7 @@ Route::post('/apply-coupon', 'CartCouponController@store');
 Route::post('/delete-cart-coupon/{coupon}', 'CartCouponController@destroy');
 
 // Save for Later
-Route::get('save-for-later/{product_id}/{item_id}', 'ProductSaveController@store');
+Route::get('save-for-later/{product_id}/{item_id}', 'ProductFavoriteController@store_from_cart');
 Route::get('delete-saved/{product_id}', 'ProductSaveController@destroy');
 // IMEI Searches
 Route::get('imeis', 'ImeiSearchController@index');

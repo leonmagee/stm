@@ -23435,10 +23435,10 @@ a.button.custom-button:hover {
   padding: 0.5em 2em 2em;
 }
 
-.saved-favorites h4 {
-  font-size: 1.2em;
-  margin: 0.7em 0 0.5em;
-  font-weight: 600;
+.saved-favorites h3.wish-list {
+  border-bottom: none;
+  font-size: 1.5em;
+  padding: 0.7em 0 0.1em;
 }
 
 .saved-favorites .saved-favorites__no-items {
@@ -23518,7 +23518,7 @@ a.button.custom-button:hover {
 }
 
 .saved-favorites .saved-favorites__item .saved-favorites__item--description {
-  height: 8em;
+  height: 6.5em;
   overflow: hidden;
 }
 

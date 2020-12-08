@@ -6,10 +6,15 @@ use App\CartProduct;
 use App\ProductSave;
 use Illuminate\Http\Request;
 
+/**
+ * Depracated...
+ */
+
 class ProductSaveController extends Controller
 {
     public function __construct()
     {
+        dd('deprecated');
         $this->middleware('auth');
     }
 
