@@ -4,7 +4,7 @@ namespace App;
 
 use App\Settings;
 
-class Helpers
+class HelpersSave
 {
     /**
      * Invoice Status

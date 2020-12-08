@@ -23517,6 +23517,11 @@ a.button.custom-button:hover {
   color: #0f81cc;
 }
 
+.saved-favorites .saved-favorites__item .saved-favorites__item--description {
+  height: 8em;
+  overflow: hidden;
+}
+
 .saved-favorites .saved-favorites__item .saved-favorites__item--description li {
   margin-bottom: 0.1em;
 }
@@ -23525,6 +23530,7 @@ a.button.custom-button:hover {
   display: flex;
   align-items: center;
   font-size: 1em;
+  padding-top: 0.2em;
 }
 
 .saved-favorites .saved-favorites__item .saved-favorites__item--links a {

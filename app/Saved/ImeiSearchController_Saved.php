@@ -8,7 +8,7 @@ use App\User;
 use Illuminate\Http\Request;
 use \Carbon\Carbon;
 
-class ImeiSearchController extends Controller
+class ImeiSearchControllerSave extends Controller
 {
     public function __construct()
     {
