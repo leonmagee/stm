@@ -7,8 +7,8 @@
     padding: 2em;
     height: 100%;
     .cart-wrapper__notification {
-        padding: 2em 1em 0;
-        margin-bottom: -0.5em;
+        padding: 1em 1em 0;
+        //margin-bottom: -1.5em;
         .free-shipping-alert {
             display: flex;
             align-items: center;
@@ -27,7 +27,7 @@
             // }
             .image-wrap {
                 img {
-                    max-width: 15em;
+                    max-width: 10em;
                     //margin-right: 1em;
                     display: block;
                     //border-radius: $border-radius;
@@ -335,7 +335,7 @@ a.button.custom-button {
 }
 
 .saved-favorites {
-    padding: 2em;
+    padding: 0.5em 2em 2em;
 
     h4 {
         font-size: 1.2em;
@@ -415,6 +415,15 @@ a.button.custom-button {
                 &:hover {
                     text-decoration: underline;
                 }
+            }
+            .saved-favorites__item--link-remove {
+                color: $red;
+            }
+            .saved-favorites__item--link-add {
+                color: $info;
+            }
+            .saved-favorites__item--link-compare {
+                color: darken($green, 5%);
             }
             span {
                 color: #bbb;

@@ -23077,8 +23077,7 @@ body.stm-body.about .middle-content-wrap .about-page .video-wrap .video-wrap-inn
 }
 
 .cart-wrapper .cart-wrapper__notification {
-  padding: 2em 1em 0;
-  margin-bottom: -0.5em;
+  padding: 1em 1em 0;
 }
 
 .cart-wrapper .cart-wrapper__notification .free-shipping-alert {
@@ -23095,7 +23094,7 @@ body.stm-body.about .middle-content-wrap .about-page .video-wrap .video-wrap-inn
 }
 
 .cart-wrapper .cart-wrapper__notification .free-shipping-alert .image-wrap img {
-  max-width: 15em;
+  max-width: 10em;
   display: block;
 }
 
@@ -23433,7 +23432,7 @@ a.button.custom-button:hover {
 }
 
 .saved-favorites {
-  padding: 2em;
+  padding: 0.5em 2em 2em;
 }
 
 .saved-favorites h4 {
@@ -23535,6 +23534,18 @@ a.button.custom-button:hover {
 
 .saved-favorites .saved-favorites__item .saved-favorites__item--links a:hover {
   text-decoration: underline;
+}
+
+.saved-favorites .saved-favorites__item .saved-favorites__item--links .saved-favorites__item--link-remove {
+  color: #ff3860;
+}
+
+.saved-favorites .saved-favorites__item .saved-favorites__item--links .saved-favorites__item--link-add {
+  color: #209cee;
+}
+
+.saved-favorites .saved-favorites__item .saved-favorites__item--links .saved-favorites__item--link-compare {
+  color: #05c290;
 }
 
 .saved-favorites .saved-favorites__item .saved-favorites__item--links span {

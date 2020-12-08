@@ -111,7 +111,7 @@
 
         <div class="free-shipping-alert">
           {{-- <div class="icon-wrap"><i class="fas fa-shipping-fast"></i></div> --}}
-          <div class="image-wrap"><img src="{{ asset('img/free-shipping.png') }}" /></div>
+          <div class="image-wrap"><img src="{{ asset('img/free-shipping-small.png') }}" /></div>
           <div class="text-wrap">
             <div class="line-1">Free shipping on all orders above ${{ $shipping_max}}.</div>
             <div class="line-2">A <span>${{ $shipping_default }}</span> shipping charge will be applied for all orders
@@ -138,7 +138,7 @@
       </div>
       @endif
       @foreach($saved_products as $item)
-      @include('products.fav-saved', ['item' => $item, 'link' => 'Delete', 'link_path' => 'delete-saved'])
+      @include('products.fav-saved', ['item' => $item, 'link' => 'Remove', 'link_path' => 'delete-saved'])
       @endforeach
       <h4>Favorite Products</h4>
       @if($fav_products->isEmpty())

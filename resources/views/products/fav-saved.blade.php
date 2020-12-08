@@ -14,11 +14,11 @@
       {!! $item->description !!}
     </div>
     <div class="saved-favorites__item--links">
-      <a href="/{{ $link_path }}/{{ $item->id }}">{{ $link }}</a>
+      <a class="saved-favorites__item--link-remove" href="/{{ $link_path }}/{{ $item->id }}">{{ $link }}</a>
       <span class="sep">|</span>
-      <a href="/add-to-cart-sav-fav/{{ $item->id }}">Add to Cart</a>
+      <a class="saved-favorites__item--link-add" href="/add-to-cart-sav-fav/{{ $item->id }}">Add to Cart</a>
       <span class="sep TEMP-HIDE">|</span>
-      <a href="#" class="TEMP-HIDE">Compare with Similar Items</a>
+      <a class="saved-favorites__item--link-compare TEMP-HIDE" href="#">Compare with Similar Items</a>
     </div>
   </div>
   <div class="saved-favorites__item--price">
