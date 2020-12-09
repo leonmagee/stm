@@ -133,7 +133,7 @@
       <h3 class="wish-list">Wish List <i class="far fa-list-alt"></i></h3>
       @if($fav_products->isEmpty())
       <div class="saved-favorites__no-items">
-        You have no favorite products.
+        You have no products in your Wish List.
       </div>
       @endif
       @foreach($fav_products as $item)
