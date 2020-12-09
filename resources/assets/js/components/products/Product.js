@@ -14,6 +14,7 @@ export default class Product extends Component {
         // console.log('count', favorite);
         this.state = {
             animate: false,
+            animateHeart: false,
             // favorite,
         };
     }
@@ -45,6 +46,7 @@ export default class Product extends Component {
                     this.setState({
                         favorite: true,
                     });
+                    this.animateHeartOn();
                 } else if (res.data === 'un-favorited') {
                     this.setState({
                         favorite: false,
@@ -62,6 +64,12 @@ export default class Product extends Component {
         });
     }
 
+    animateHeartOff() {
+        this.setState({
+            animateHeart: false,
+        });
+    }
+
     animateOn() {
         this.setState({
             animate: true,
@@ -69,6 +77,18 @@ export default class Product extends Component {
         setTimeout(
             function() {
                 this.animateOff();
+            }.bind(this),
+            1100
+        );
+    }
+
+    animateHeartOn() {
+        this.setState({
+            animateHeart: true,
+        });
+        setTimeout(
+            function() {
+                this.animateHeartOff();
             }.bind(this),
             1100
         );
@@ -105,7 +125,7 @@ export default class Product extends Component {
             // favorite,
         } = this.props;
 
-        const { animate, favorite } = this.state;
+        const { animate, animateHeart, favorite } = this.state;
         // const { animate } = this.state;
         // console.log(id, favorite);
 
@@ -114,6 +134,15 @@ export default class Product extends Component {
             animatePane = (
                 <div className="product__cart_hover">
                     <i className="fas fa-check" />
+                </div>
+            );
+        }
+
+        let animateHeartPane = <div />;
+        if (animateHeart) {
+            animateHeartPane = (
+                <div className="product__cart_hover">
+                    <i className="fas fa-heart" />
                 </div>
             );
         }
@@ -145,6 +174,7 @@ export default class Product extends Component {
         return (
             <div className="product">
                 {animatePane}
+                {animateHeartPane}
                 <a className="product__link" href={`/products/${id}`}>
                     <ImageDiv
                         img_url={img_url}

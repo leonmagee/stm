@@ -22204,6 +22204,10 @@ body.stm-body.about .middle-content-wrap .about-page .video-wrap .video-wrap-inn
           animation: myanim 2s 1;
 }
 
+.products-outer .product .product__cart_hover i.fa-heart {
+  color: #ff3860;
+}
+
 .products-outer .product .product__rating {
   padding: 0.4em 1.2em 0.3em;
   border-top: 1px solid #f2f2f2;

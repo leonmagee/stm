@@ -286,6 +286,9 @@
                 font-size: 3.3em;
                 color: $green;
                 animation: myanim 2s 1;
+                &.fa-heart {
+                    color: $red;
+                }
             }
         }
         .product__rating {
