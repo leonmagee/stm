@@ -257,4 +257,42 @@ class Product extends Model
     //     });
     // }
 
+    public function get_related()
+    {
+        $cats = $this->categories();
+        $sub_cats = $this->sub_categories()->first();
+        if ($sub_cats) {
+
+            $products_sub_cats = ProductSubCategories::where('sub_category_id', $sub_cats->sub_category_id)->get();
+            $sub_cats_array = [];
+            foreach ($products_sub_cats as $sub_cat) {
+                if ($sub_cat->product_id !== $this->id) {
+                    $sub_cats_array[] = $sub_cat->product_id;
+                }
+            }
+            $count = count($sub_cats_array);
+            if ($count == 3) {
+                $final_array = $sub_cats_array;
+            } elseif ($count < 3) {
+                $final_array = false;
+            } else {
+                $final_array = array_slice($sub_cats_array, 2);
+            }
+
+            if (!$final_array) {
+                // get more items from regular cats
+            }
+
+            $final_products = Product::whereIn('id', $final_array)->get();
+
+        } else {
+            $final_products = Product::where('id', 108)->get();
+        }
+        dd($final_products);
+        return $final_products;
+        //dd($final_products);
+
+        //dd($sub_cats_array);
+    }
+
 }

@@ -38,4 +38,9 @@
   <div class="saved-favorites__item--discount">
     {{ $item->discount }}% Off
   </div>
+  @foreach($item->get_related() as $related)
+  <div>
+    <h4>{{ $related->name }}</h4>
+  </div>
+  @endforeach
 </div>

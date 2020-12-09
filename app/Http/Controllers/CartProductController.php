@@ -108,7 +108,7 @@ class CartProductController extends Controller
         foreach ($saves as $save) {
             $save_array[] = $save['product_id'];
         }
-        $saved_products = Product::whereIn('id', $save_array)->orderBy('order')->get();
+        //$saved_products = Product::whereIn('id', $save_array)->orderBy('order')->get();
 
         // get favorite products
         $favorites = ProductFavorite::select('product_id')->where('user_id', $user_id)->get()->toArray();
@@ -116,7 +116,13 @@ class CartProductController extends Controller
         foreach ($favorites as $favorite) {
             $fav_array[] = $favorite['product_id'];
         }
+        /**
+         * @todo change to 'wish list' - not 'fav'
+         */
         $fav_products = Product::whereIn('id', $fav_array)->orderBy('order')->get();
+        // foreach ($fav_products as $fav) {
+        //     dd($fav->get_related());
+        // }
         //dd($fav_products);
 
         return view('products.cart', compact(
@@ -134,7 +140,7 @@ class CartProductController extends Controller
             'coupon',
             'cart_coupon',
             'coupon_discount',
-            'saved_products',
+            //'saved_products',
             'fav_products'
         ));
     }
