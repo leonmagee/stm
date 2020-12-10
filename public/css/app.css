@@ -23603,12 +23603,17 @@ a.button.custom-button:hover {
 
 .compare {
   padding: 3em 0;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  margin: 1em;
 }
 
 .compare .compare__row {
   display: flex;
   align-items: center;
-  padding: 0 1em;
+  padding: 0.5em 1em;
+  border-top: 1px solid #eee;
 }
 
 .compare .compare__row.compare__row--header {
@@ -23617,6 +23622,10 @@ a.button.custom-button:hover {
 
 .compare .compare__row .compare__item {
   flex: 1;
+}
+
+.compare .compare__row .compare__item.compare__item--img {
+  text-align: center;
 }
 
 .compare .compare__row .compare__item.compare__item--img img {

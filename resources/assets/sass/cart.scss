@@ -485,16 +485,22 @@ a.button.custom-button {
 
 .compare {
     padding: 3em 0;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: $border-radius;
+    margin: 1em;
     .compare__row {
         display: flex;
         align-items: center;
-        padding: 0 1em;
+        padding: 0.5em 1em;
+        border-top: 1px solid #eee;
         &.compare__row--header {
             color: darken($red, 20%);
         }
         .compare__item {
             flex: 1;
             &.compare__item--img {
+                text-align: center;
                 img {
                     max-height: 4em;
                 }
