@@ -432,7 +432,7 @@ a.button.custom-button {
                 color: $info;
             }
             .saved-favorites__item--link-compare {
-                color: darken($green, 5%);
+                color: darken($green, 8%);
             }
             span {
                 color: #bbb;
@@ -484,32 +484,68 @@ a.button.custom-button {
 // }
 
 .compare {
-    padding: 3em 0;
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: $border-radius;
-    margin: 1em;
+    padding: 0 0 2em;
+    //padding: 3em 0;
+    //background-color: #fff;
+    //border: 1px solid #ddd;
+    //margin: 1em;
     .compare__row {
         display: flex;
         align-items: center;
         padding: 0.5em 1em;
-        border-top: 1px solid #eee;
+        &:not(:first-child) {
+            //border-top: 1px solid #f3f3f3;
+            border-top: 1px solid #eee;
+        }
+        &:nth-child(2) {
+            border-width: 2px;
+        }
+        &:nth-child(3) {
+            border-width: 2px;
+        }
         &.compare__row--header {
-            color: darken($red, 20%);
+            .compare__item {
+                color: darken($info, 20%);
+                font-weight: 600;
+            }
         }
         .compare__item {
-            flex: 1;
+            flex: 0 1 11%;
+            text-align: left;
+            //flex: 1;
+            &.compare__item--name {
+                flex: 1;
+                padding-right: 1em;
+            }
+            &.compare__item--discount {
+                flex: 0 1 9%;
+            }
+            &.compare__item--rating {
+                flex: 0 1 13%;
+                padding-right: 1em;
+            }
+            font-size: 0.9em;
+            font-weight: 600;
             &.compare__item--img {
-                text-align: center;
+                display: flex;
+                justify-content: center;
                 img {
-                    max-height: 4em;
+                    max-height: 4.5em;
+                    background: #fff;
+                    border-radius: $border-radius;
+                    padding: 0.3em;
+                    display: block;
                 }
+            }
+            .compare__item--add-to-cart {
+                color: $info;
+            }
+            .compare__item--sold-out {
+                color: $color-red;
             }
         }
         &.compare__row--current {
-            .compare__item {
-                color: darken($info, 20%);
-            }
+            //background-color: #f3f3f3;
         }
     }
 }

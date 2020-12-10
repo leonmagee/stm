@@ -248,15 +248,28 @@ $('input.quantity-input').change(function() {
 });
 
 // thumbnail
-$('.rate_yo_thumbnail').each(function() {
-    const rating = $(this).attr('rating');
+// $('.rate_yo_thumbnail').each(function() {
+//     const rating = $(this).attr('rating');
+//     $(this).rateYo({
+//         rating,
+//         readOnly: true,
+//         starWidth: '17px',
+//         spacing: '2px',
+//         halfStar: true,
+//         // ratedFill: "#D5BE48",
+//         ratedFill: '#ffc43d',
+//     });
+// });
+
+// wish list
+$('.rate_yo_wish_list').each(function() {
+    const ratingItem = $(this).attr('rating');
     $(this).rateYo({
-        rating,
+        rating: ratingItem,
         readOnly: true,
-        starWidth: '17px',
-        spacing: '2px',
+        starWidth: '16px',
+        spacing: '1.5px',
         halfStar: true,
-        // ratedFill: "#D5BE48",
         ratedFill: '#ffc43d',
     });
 });

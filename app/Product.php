@@ -109,6 +109,21 @@ class Product extends Model
         return $this->hasMany(ProductReview::class);
     }
 
+    public function get_rating()
+    {
+        $ratings = ProductRating::where('product_id', $this->id)->get();
+        $stars_total = 0;
+        foreach ($ratings as $rating) {
+            $stars_total += $rating->stars;
+        }
+        if ($count = $ratings->count()) {
+            $rating_calc = ($stars_total / $count);
+        } else {
+            $rating_calc = 0;
+        }
+        return $rating_calc;
+    }
+
     public function your_rating()
     {
         $user_id = \Auth::user()->id;

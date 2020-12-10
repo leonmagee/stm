@@ -463,6 +463,8 @@ class ProductController extends Controller
         $user_id = \Auth::user()->id;
         // $user_rating = ProductRating::where(['user_id' => $user_id, 'product_id' => $product->id])->first();
         // if ($user_rating) {
+
+        // move to model
         $ratings = ProductRating::where('product_id', $product->id)->get();
         $stars_total = 0;
         foreach ($ratings as $rating) {
