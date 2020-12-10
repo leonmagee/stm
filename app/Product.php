@@ -257,42 +257,70 @@ class Product extends Model
     //     });
     // }
 
+    public function get_cats($needed, $sub_cat_final_array)
+    {
+        $cats = $this->categories()->first();
+        $products_cats = ProductCategories::where('category_id', $cats->category_id)->get();
+
+        if ($products_cats->count()) {
+
+            $cats_array = [];
+            foreach ($products_cats as $cat) {
+                if ($cat->product_id !== $this->id) {
+                    if (!in_array($cat->product_id, $sub_cat_final_array)) {
+                        $cats_array[] = $cat->product_id;
+                    }
+                }
+            }
+            $count = count($cats_array);
+
+            $cat_final_array = array_slice($cats_array, 0, $needed);
+        }
+
+        return array_merge($sub_cat_final_array, $cat_final_array);
+
+    }
+
     public function get_related()
     {
         $cats = $this->categories();
         $sub_cats = $this->sub_categories()->first();
+        $sub_cat_final_array = [];
+        $max_posts = 3;
+        $needed = 0;
+        $final_final_array = false;
         if ($sub_cats) {
-
             $products_sub_cats = ProductSubCategories::where('sub_category_id', $sub_cats->sub_category_id)->get();
-            $sub_cats_array = [];
-            foreach ($products_sub_cats as $sub_cat) {
-                if ($sub_cat->product_id !== $this->id) {
-                    $sub_cats_array[] = $sub_cat->product_id;
+            if ($products_sub_cats->count()) {
+                $sub_cats_array = [];
+                foreach ($products_sub_cats as $sub_cat) {
+                    if ($sub_cat->product_id !== $this->id) {
+                        $sub_cats_array[] = $sub_cat->product_id;
+                    }
+                }
+                $count = count($sub_cats_array);
+                if ($count > $max_posts) {
+                    $sub_cat_final_array = array_slice($sub_cats_array, 0, $max_posts);
+                } else {
+                    $sub_cat_final_array = $sub_cats_array;
                 }
             }
-            $count = count($sub_cats_array);
-            if ($count == 3) {
-                $final_array = $sub_cats_array;
-            } elseif ($count < 3) {
-                $final_array = false;
+            $current_count = count($sub_cat_final_array);
+            if ($current_count < $max_posts) {
+                $needed = $max_posts - $current_count;
+                $final_final_array = $this->get_cats($needed, $sub_cat_final_array);
             } else {
-                $final_array = array_slice($sub_cats_array, 2);
+                $final_final_array = $sub_cat_final_array;
             }
-
-            if (!$final_array) {
-                // get more items from regular cats
-            }
-
-            $final_products = Product::whereIn('id', $final_array)->get();
-
         } else {
-            $final_products = Product::where('id', 108)->get();
+            $final_final_array = $this->get_cats(3, []);
         }
-        dd($final_products);
+        if ($final_final_array) {
+            $final_products = Product::whereIn('id', $final_final_array)->get();
+        } else {
+            $final_products = false;
+        }
         return $final_products;
-        //dd($final_products);
-
-        //dd($sub_cats_array);
     }
 
 }

@@ -161,11 +161,11 @@ class ImeiSearchController extends Controller
             $apple = stripos($manufacturer, 'apple');
             $samsung = stripos($manufacturer, 'samsung');
             $lg = stripos($manufacturer, 'lg');
+            $google = stripos($manufacturer, 'google');
             //$xiaomi = stripos($manufacturer, 'xiaomi');
             //$huawei = stripos($manufacturer, 'huawei');
             //$motorola = stripos($manufacturer, 'motorola');
             //$sony = stripos($manufacturer, 'sony');
-            //$google = stripos($manufacturer, 'google');
             //$nokia = stripos($manufacturer, 'nokia');
 
             if ($apple !== false) {
@@ -178,7 +178,11 @@ class ImeiSearchController extends Controller
             } elseif ($lg !== false) {
                 // 97 - 6 cents // carrier and warranty
                 $result_2 = self::imeiSearchTwo(97, $imei);
+            } elseif ($google !== false) {
+                // 102 - 2 cents - warranty only
+                $result_2 = self::imeiSearchTwo(102, $imei);
             }
+
             // } elseif ($xiaomi !== false) {
             //     // 71 - 1 cent // just basic stuff
             //     // 96 - 2 cents // info - no carrier or waranty info
@@ -192,9 +196,6 @@ class ImeiSearchController extends Controller
             // } elseif ($sony !== false) {
             //     // 95 - 10 cents - warranty only
             //     $result_2 = self::imeiSearchTwo(95, $imei);
-            // } elseif ($google !== false) {
-            //     // 102 - 2 cents - warranty only
-            //     $result_2 = self::imeiSearchTwo(102, $imei);
             // } elseif ($nokia !== false) {
             //     // 94 - 10 cents - warranty only
             //     $result_2 = self::imeiSearchTwo(94, $imei);
@@ -272,6 +273,10 @@ class ImeiSearchController extends Controller
             if ($one == '"') {
                 $data = substr($data, 1);
             }
+            $last = substr($data, -1);
+            if ($last == '"') {
+                $data = substr($data, 0, -1);
+            }
             if ($data) {
                 $red = '#ef476f';
                 $green = '#05cc98';
@@ -279,7 +284,7 @@ class ImeiSearchController extends Controller
                 $data = str_replace(['"red"'], '"' . $red . '"', $data);
                 $data = str_replace(['color: green', 'color:green'], 'color:' . $green, $data);
                 $data = str_replace(['"green"'], '"' . $green . '"', $data);
-                $data = preg_replace('/:/', ':</span>', $data, 1);
+                $data = preg_replace('/:\s/', ':</span> ', $data, 1);
                 //$new_array[] = '<div class="imei-item"><span>' . trim($data) . '</div>';
                 $new_string .= '<div class="imei-item"><span class="bold-span">' . trim($data) . '</div>';
 

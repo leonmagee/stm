@@ -113,6 +113,7 @@ class CartProductController extends Controller
         // get favorite products
         $favorites = ProductFavorite::select('product_id')->where('user_id', $user_id)->get()->toArray();
         $fav_array = [];
+        //dd($favorites);
         foreach ($favorites as $favorite) {
             $fav_array[] = $favorite['product_id'];
         }
@@ -120,10 +121,11 @@ class CartProductController extends Controller
          * @todo change to 'wish list' - not 'fav'
          */
         $fav_products = Product::whereIn('id', $fav_array)->orderBy('order')->get();
+        $related_array = [];
         // foreach ($fav_products as $fav) {
-        //     dd($fav->get_related());
+        //     $related_array[] = $fav->get_related();
         // }
-        //dd($fav_products);
+        // dd($related_array);
 
         return view('products.cart', compact(
             'items',
@@ -194,6 +196,7 @@ class CartProductController extends Controller
     {
         $user_id = \Auth::user()->id;
         $product = Product::find($product_id);
+        //dd($product);
         $variation = $product->first_variation();
         if ($variation) {
             $existing = CartProduct::where([

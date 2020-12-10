@@ -55,7 +55,7 @@
         overflow: hidden;
         box-shadow: 1px 1px rgba(0, 0, 0, 0.1);
         //border: 1px solid #eee;
-        h3 {
+        h3.cart-h3 {
             //color: darken($info, 11%);
             color: darken($product-blue, 10%);
             border-bottom: 1px solid #ddd;
@@ -469,6 +469,9 @@ a.button.custom-button {
             font-size: 0.7em;
             box-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
             text-transform: uppercase;
+            &.sold-out {
+                background-color: $color-red;
+            }
             // &.sold-out {
             //     background: $color-red;
             // }
@@ -479,3 +482,28 @@ a.button.custom-button {
 // .TEMP-HIDE {
 //     display: none;
 // }
+
+.compare {
+    padding: 3em 0;
+    .compare__row {
+        display: flex;
+        align-items: center;
+        padding: 0 1em;
+        &.compare__row--header {
+            color: darken($red, 20%);
+        }
+        .compare__item {
+            flex: 1;
+            &.compare__item--img {
+                img {
+                    max-height: 4em;
+                }
+            }
+        }
+        &.compare__row--current {
+            .compare__item {
+                color: darken($info, 20%);
+            }
+        }
+    }
+}

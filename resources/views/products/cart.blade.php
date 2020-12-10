@@ -4,7 +4,7 @@
 
 <div class="cart-wrapper">
   <div class="cart-wrapper-left cart-wrapper-inner">
-    <h3>Shopping Cart <i class="fas fa-cart-plus"></i></h3>
+    <h3 class="cart-h3">Shopping Cart <i class="fas fa-cart-plus"></i></h3>
     <div class="stm-cart">
       <div class="stm-cart__alerts">
         @include('layouts.alert')
@@ -130,7 +130,7 @@
 
     {{-- Wish List Section --}}
     <div class="saved-favorites">
-      <h3 class="wish-list">Wish List <i class="far fa-list-alt"></i></h3>
+      <h3 class="wish-list cart-h3">Wish List <i class="far fa-list-alt"></i></h3>
       @if($fav_products->isEmpty())
       <div class="saved-favorites__no-items">
         You have no products in your Wish List.
@@ -143,7 +143,7 @@
     {{-- @endif --}}
   </div>
   <div class="cart-wrapper-right cart-wrapper-inner">
-    <h3>Checkout <i class="far fa-credit-card"></i></h3>
+    <h3 class="cart-h3">Checkout <i class="far fa-credit-card"></i></h3>
     <div class="stm-cart-footer">
       @if(count($items))
       <div class="stm-total-wrap">
