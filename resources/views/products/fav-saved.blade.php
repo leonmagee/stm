@@ -69,7 +69,7 @@
           <div class="compare__item"></div>
           <div class="compare__item compare__item--name">Product Name</div>
           <div class="compare__item">Orig Price</div>
-          <div class="compare__item compare__item--discount">Sale</div>
+          <div class="compare__item compare__item--discount">Discount</div>
           <div class="compare__item">Cost</div>
           <div class="compare__item compare__item--rating">Rating</div>
           <div class="compare__item"></div>
