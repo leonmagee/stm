@@ -23471,20 +23471,18 @@ a.button.custom-button:hover {
 .saved-favorites .saved-favorites__item .saved-favorites__item--image {
   display: flex;
   align-items: center;
+  justify-content: center;
+  flex: 0 1 23%;
 }
 
 .saved-favorites .saved-favorites__item .saved-favorites__item--image img {
   max-width: 9em;
+  max-height: 9em;
 }
 
 .saved-favorites .saved-favorites__item .saved-favorites__item--details {
-  padding: 0.7em 1.2em;
-}
-
-@media (min-width: 980px) {
-  .saved-favorites .saved-favorites__item .saved-favorites__item--details {
-    padding-left: 2em;
-  }
+  padding: 0.7em 1em 0.7em 0;
+  flex: 0 1 73%;
 }
 
 .saved-favorites .saved-favorites__item .saved-favorites__item--price {

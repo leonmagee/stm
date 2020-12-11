@@ -336,13 +336,6 @@ a.button.custom-button {
 
 .saved-favorites {
     padding: 0.5em 2em 2em;
-
-    // h4 {
-    //     font-size: 1.5em;
-    //     margin: 0.7em 0 0.5em;
-    //     font-weight: 600;
-    //     color: darken($info, 5%);
-    // }
     h3.wish-list {
         border-bottom: none !important;
         font-size: 1.5em !important;
@@ -364,15 +357,20 @@ a.button.custom-button {
         .saved-favorites__item--image {
             display: flex;
             align-items: center;
+            justify-content: center;
+            flex: 0 1 23%;
+            //padding: 0 1em;
             img {
                 max-width: 9em;
+                max-height: 9em;
             }
         }
         .saved-favorites__item--details {
-            padding: 0.7em 1.2em;
-            @media (min-width: $screen-md) {
-                padding-left: 2em;
-            }
+            padding: 0.7em 1em 0.7em 0;
+            flex: 0 1 73%;
+            // @media (min-width: $screen-md) {
+            //     padding-left: 2em;
+            // }
         }
         .saved-favorites__item--price {
             font-size: 1.9em;
