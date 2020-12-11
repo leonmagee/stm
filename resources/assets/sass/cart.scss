@@ -495,14 +495,16 @@ a.button.custom-button {
         padding: 0.5em 1em;
         &:not(:first-child) {
             //border-top: 1px solid #f3f3f3;
-            border-top: 1px solid #eee;
+            border-top: 1px solid #e7e7e7;
         }
         &:nth-child(2) {
-            border-width: 2px;
+            //border-width: 2px;
+            background-color: #f5f5f5;
         }
-        &:nth-child(3) {
-            border-width: 2px;
-        }
+        // &:nth-child(3) {
+        //     border-width: 2px;
+        //     border-color: #ccc;
+        // }
         &.compare__row--header {
             .compare__item {
                 color: darken($info, 20%);
