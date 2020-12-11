@@ -8,7 +8,8 @@
 </div>
 <div class="compare__item">
   @if($item->in_stock())
-  <a class="compare__item--add-to-cart" href="/add-to-cart-sav-fav/{{ $item->id }}">Add to Cart</a>
+  <a class="compare__item--add-to-cart" href="/add-to-cart-sav-fav/{{ $item->id }}">Add to Cart <i
+      class="fas fa-cart-plus"></i></a>
   @else
   <span class="compare__item--sold-out">Sold Out</span>
   @endif

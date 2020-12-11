@@ -32,6 +32,28 @@ class Product extends Model
         }
     }
 
+    public function description_parsed()
+    {
+        $desc = strip_tags($this->description);
+        $desc = preg_replace('/<[^>]*>/', ' ', $this->description);
+        $length = strlen($desc);
+        $max_length = 300;
+        if ($length > $max_length) {
+            $new_string = trim(substr($desc, 0, $max_length));
+            $exploded = explode(' ', $new_string);
+            array_pop($exploded);
+            $new_string = implode(' ', $exploded);
+            $last_char = substr($new_string, -1);
+            if ($last_char == '.') {
+                $new_string = substr($new_string, 0, -1);
+            }
+            return $new_string . '...';
+
+        } else {
+            return $desc;
+        }
+    }
+
     public function initial_quantity()
     {
         foreach ($this->variations as $variation) {

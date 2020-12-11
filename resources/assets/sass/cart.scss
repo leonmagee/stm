@@ -405,8 +405,8 @@ a.button.custom-button {
         }
         .saved-favorites__item--description {
             //background: red;
-            height: 6.1em;
-            overflow: hidden;
+            //height: 6.1em;
+            //overflow: hidden;
             li {
                 //margin-bottom: 1.1em;
             }
@@ -419,6 +419,12 @@ a.button.custom-button {
             a {
                 font-size: 0.9em;
                 color: $brand-primary;
+                display: flex;
+                align-items: center;
+                i {
+                    padding-top: 0.2em;
+                    margin-left: 0.3em;
+                }
                 &:hover {
                     text-decoration: underline;
                 }

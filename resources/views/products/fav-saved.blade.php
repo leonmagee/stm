@@ -12,18 +12,26 @@
     </div>
     <?php $related = $item->get_related(); ?>
     <div class="saved-favorites__item--description">
-      {!! $item->description !!}
+      {{-- <ul>
+        @foreach($item->product_attributes as $attribute)
+        <li>{{ $attribute->text }}</li>
+      @endforeach
+      </ul> --}}
+      {!! $item->description_parsed() !!}
+      {{-- {!! $item->description !!} --}}
     </div>
     <div class="saved-favorites__item--links">
-      <a class="saved-favorites__item--link-remove" href="/{{ $link_path }}/{{ $item->id }}">{{ $link }}</a>
+      <a class="saved-favorites__item--link-remove" href="/{{ $link_path }}/{{ $item->id }}">{{ $link }} <i
+          class="fas fa-times-circle"></i></a>
       @if($item->in_stock())
       <span class="sep">|</span>
-      <a class="saved-favorites__item--link-add" href="/add-to-cart-sav-fav/{{ $item->id }}">Add to Cart</a>
+      <a class="saved-favorites__item--link-add" href="/add-to-cart-sav-fav/{{ $item->id }}">Add to Cart <i
+          class="fas fa-cart-plus"></i></a>
       @endif
       @if($related)
       <span class="sep">|</span>
       <a class="saved-favorites__item--link-compare modal-delete-open" item_id={{ $item->id }}>Compare with Similar
-        Items</a>
+        Items <i class="fas fa-eye"></i></a>
       @endif
     </div>
   </div>

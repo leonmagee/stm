@@ -121,10 +121,10 @@ class CartProductController extends Controller
          * @todo change to 'wish list' - not 'fav'
          */
         $fav_products = Product::whereIn('id', $fav_array)->orderBy('order')->get();
-        $related_array = [];
-        foreach ($fav_products as $fav) {
-            $fav->get_related();
-        }
+        //$related_array = [];
+        // foreach ($fav_products as $fav) {
+        //     $fav->get_related();
+        // }
         // dd($related_array);
 
         return view('products.cart', compact(

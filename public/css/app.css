@@ -23523,11 +23523,6 @@ a.button.custom-button:hover {
   color: #0f81cc;
 }
 
-.saved-favorites .saved-favorites__item .saved-favorites__item--description {
-  height: 6.1em;
-  overflow: hidden;
-}
-
 .saved-favorites .saved-favorites__item .saved-favorites__item--links {
   display: flex;
   align-items: center;
@@ -23538,6 +23533,13 @@ a.button.custom-button:hover {
 .saved-favorites .saved-favorites__item .saved-favorites__item--links a {
   font-size: 0.9em;
   color: #1b9aaa;
+  display: flex;
+  align-items: center;
+}
+
+.saved-favorites .saved-favorites__item .saved-favorites__item--links a i {
+  padding-top: 0.2em;
+  margin-left: 0.3em;
 }
 
 .saved-favorites .saved-favorites__item .saved-favorites__item--links a:hover {
