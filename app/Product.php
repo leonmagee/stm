@@ -307,7 +307,7 @@ class Product extends Model
         $cats = $this->categories();
         $sub_cats = $this->sub_categories()->first();
         $sub_cat_final_array = [];
-        $max_posts = 10;
+        $max_posts = 8;
         $needed = 0;
         $final_final_array = false;
         if ($sub_cats) {
