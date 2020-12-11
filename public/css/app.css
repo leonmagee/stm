@@ -23524,12 +23524,8 @@ a.button.custom-button:hover {
 }
 
 .saved-favorites .saved-favorites__item .saved-favorites__item--description {
-  height: 6.5em;
+  height: 6.1em;
   overflow: hidden;
-}
-
-.saved-favorites .saved-favorites__item .saved-favorites__item--description li {
-  margin-bottom: 0.1em;
 }
 
 .saved-favorites .saved-favorites__item .saved-favorites__item--links {
