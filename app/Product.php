@@ -147,12 +147,15 @@ class Product extends Model
         return number_format($this->cost, 2);
     }
 
-    public function get_cloudinary_thumbnail($width, $height)
+    public function get_cloudinary_thumbnail($width, $height, $ext = false)
     {
         if ($image_url = $this->img_url_1) {
             $match = null;
             preg_match('(\/STM\/.*)', $image_url, $match);
             $new_url = cloudinary_url($match[0], ["transformation" => ["width" => $width, "height" => $height, "crop" => "fit"], "cloud_name" => "www-stmmax-com", "secure" => "true"]);
+            if ($ext) {
+                $new_url = str_replace('.jpg', '.' . $ext, $new_url);
+            }
             return $new_url;
         }
         return false;

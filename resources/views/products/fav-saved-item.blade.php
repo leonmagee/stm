@@ -1,4 +1,4 @@
-<div class="compare__item compare__item--img"><img src="{{ $item->get_cloudinary_thumbnail(200, 200) }}" /></div>
+<div class="compare__item compare__item--img"><img src="{{ $item->get_cloudinary_thumbnail(200, 200, 'png') }}" /></div>
 <div class="compare__item compare__item--name"><a href="/products/{{ $item->id }}">{{ $item->name }}</a></div>
 <div class="compare__item">${{ number_format($item->cost, 2) }}</div>
 <div class="compare__item compare__item--discount">{{ $item->discount }}%</div>
