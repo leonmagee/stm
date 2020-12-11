@@ -307,7 +307,7 @@ class Product extends Model
         $cats = $this->categories();
         $sub_cats = $this->sub_categories()->first();
         $sub_cat_final_array = [];
-        $max_posts = 3;
+        $max_posts = 10;
         $needed = 0;
         $final_final_array = false;
         if ($sub_cats) {
@@ -329,15 +329,17 @@ class Product extends Model
                     $sub_cat_final_array = $sub_cats_array;
                 }
             }
-            $current_count = count($sub_cat_final_array);
-            if ($current_count < $max_posts) {
-                $needed = $max_posts - $current_count;
-                $final_final_array = $this->get_cats($needed, $sub_cat_final_array);
-            } else {
-                $final_final_array = $sub_cat_final_array;
-            }
+            // $current_count = count($sub_cat_final_array);
+            // if ($current_count < $max_posts) {
+            //     $needed = $max_posts - $current_count;
+            //     $final_final_array = $this->get_cats($needed, $sub_cat_final_array);
+            // } else {
+            //     $final_final_array = $sub_cat_final_array;
+            // }
+            $final_final_array = $sub_cat_final_array;
         } else {
-            $final_final_array = $this->get_cats(3, []);
+            //$final_final_array = $this->get_cats(3, []);
+            $final_final_array = false;
         }
 
         if ($final_final_array) {
