@@ -283,7 +283,10 @@ class Product extends Model
             foreach ($products_cats as $cat) {
                 if ($cat->product_id !== $this->id) {
                     if (!in_array($cat->product_id, $sub_cat_final_array)) {
-                        $cats_array[] = $cat->product_id;
+                        $product_check_cat = Product::find($cat->product_id);
+                        if (!$product_check_cat->archived) {
+                            $cats_array[] = $cat->product_id;
+                        }
                     }
                 }
             }
@@ -310,7 +313,10 @@ class Product extends Model
                 $sub_cats_array = [];
                 foreach ($products_sub_cats as $sub_cat) {
                     if ($sub_cat->product_id !== $this->id) {
-                        $sub_cats_array[] = $sub_cat->product_id;
+                        $product_check = Product::find($sub_cat->product_id);
+                        if (!$product_check->archived) {
+                            $sub_cats_array[] = $sub_cat->product_id;
+                        }
                     }
                 }
                 $count = count($sub_cats_array);
@@ -330,8 +336,13 @@ class Product extends Model
         } else {
             $final_final_array = $this->get_cats(3, []);
         }
+
         if ($final_final_array) {
-            $final_products = Product::whereIn('id', $final_final_array)->get();
+            $final_products = [];
+            foreach ($final_final_array as $final_product) {
+                $final_products[] = Product::find($final_product);
+            }
+            //$final_products = Product::whereIn('id', $final_final_array)->get();
         } else {
             $final_products = false;
         }
