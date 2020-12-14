@@ -327,11 +327,14 @@
             </a>
           </p>
           <p class="control">
-            <a class="button cart" href="/cart">
+            <a class="button cart cart-add-number" href="/cart">
               <span class="icon is-small">
                 <i class="fas fa-shopping-cart"></i>
               </span>
               <span class="text">Cart</span>
+              @if($cart_items)
+              <span class="number-of-items">{{ $cart_items }}</span>
+              @endif
             </a>
           </p>
           {{-- <p class="control">

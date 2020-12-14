@@ -18989,6 +18989,22 @@ p.modal-text {
   color: #fff;
 }
 
+.header-wrap .header-area a.button.cart.cart-add-number .number-of-items {
+  width: 1.7em;
+  height: 1.7em;
+  border-radius: 50%;
+  position: absolute;
+  margin: 0;
+  top: -0.4em;
+  right: -0.9em;
+  background-color: #fff;
+  color: #111;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 1px 1px rgba(0, 0, 0, 0.2);
+}
+
 .header-wrap .header-area a.button input.search {
   font-size: 1.05em;
   padding: 3px;
