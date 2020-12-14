@@ -41,6 +41,10 @@ class ImeiSearchController extends Controller
      */
     public function create()
     {
+        $user = \Auth::user();
+        if ($user->is_demo_account()) {
+            return redirect('/');
+        }
         return view('imei_search.create');
     }
 
@@ -162,11 +166,11 @@ class ImeiSearchController extends Controller
             $samsung = stripos($manufacturer, 'samsung');
             $lg = stripos($manufacturer, 'lg');
             $google = stripos($manufacturer, 'google');
-            //$xiaomi = stripos($manufacturer, 'xiaomi');
-            //$huawei = stripos($manufacturer, 'huawei');
-            //$motorola = stripos($manufacturer, 'motorola');
-            //$sony = stripos($manufacturer, 'sony');
-            //$nokia = stripos($manufacturer, 'nokia');
+            $xiaomi = stripos($manufacturer, 'xiaomi');
+            $huawei = stripos($manufacturer, 'huawei');
+            $motorola = stripos($manufacturer, 'motorola');
+            $sony = stripos($manufacturer, 'sony');
+            $nokia = stripos($manufacturer, 'nokia');
 
             if ($apple !== false) {
                 // 128 - 8 cents - carrier and warranty - he might give a discount
@@ -181,24 +185,23 @@ class ImeiSearchController extends Controller
             } elseif ($google !== false) {
                 // 102 - 2 cents - warranty only
                 $result_2 = self::imeiSearchTwo(102, $imei);
+            } elseif ($xiaomi !== false) {
+                // 71 - 1 cent // just basic stuff
+                // 96 - 2 cents // info - no carrier or waranty info
+                $result_2 = self::imeiSearchTwo(71, $imei);
+            } elseif ($huawei !== false) {
+                // 80 - 9 cents // lots of warranty info - no carrier
+                $result_2 = self::imeiSearchTwo(80, $imei);
+            } elseif ($motorola !== false) {
+                // 119 - 5 cents // warranty only
+                $result_2 = self::imeiSearchTwo(119, $imei);
+            } elseif ($sony !== false) {
+                // 95 - 10 cents - warranty only
+                $result_2 = self::imeiSearchTwo(95, $imei);
+            } elseif ($nokia !== false) {
+                // 94 - 10 cents - warranty only
+                $result_2 = self::imeiSearchTwo(94, $imei);
             }
-
-            // } elseif ($xiaomi !== false) {
-            //     // 71 - 1 cent // just basic stuff
-            //     // 96 - 2 cents // info - no carrier or waranty info
-            //     $result_2 = self::imeiSearchTwo(71, $imei);
-            // } elseif ($huawei !== false) {
-            //     // 80 - 9 cents // lots of warranty info - no carrier
-            //     $result_2 = self::imeiSearchTwo(80, $imei);
-            // } elseif ($motorola !== false) {
-            //     // 119 - 5 cents // warranty only
-            //     $result_2 = self::imeiSearchTwo(119, $imei);
-            // } elseif ($sony !== false) {
-            //     // 95 - 10 cents - warranty only
-            //     $result_2 = self::imeiSearchTwo(95, $imei);
-            // } elseif ($nokia !== false) {
-            //     // 94 - 10 cents - warranty only
-            //     $result_2 = self::imeiSearchTwo(94, $imei);
         }
 
         $all_data = $result_2['all_data'];
