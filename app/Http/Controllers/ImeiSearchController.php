@@ -265,11 +265,8 @@ class ImeiSearchController extends Controller
     {
         $all_data = $imei->all_data;
         $all_data = str_replace(['\\', '<strong>', '</strong>'], '', $all_data);
-        $all_data = str_replace('<br />', '<br>', $all_data);
-        //dd($all_data);
-
+        $all_data = str_replace(['<br />', '<br/>'], '<br>', $all_data);
         $all_data = explode('<br>', $all_data);
-        //$new_array = [];
         $new_string = null;
         foreach ($all_data as $data) {
             $one = substr($data, 0, 1);
