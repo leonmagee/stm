@@ -264,7 +264,7 @@ class ImeiSearchController extends Controller
     public function show(ImeiSearch $imei)
     {
         $all_data = $imei->all_data;
-        $all_data = str_replace(['\\', '<strong>', '</strong>'], '', $all_data);
+        $all_data = str_replace(['\\', '<strong>', '</strong>', '<b>', '</b>'], '', $all_data);
         $all_data = str_replace(['<br />', '<br/>'], '<br>', $all_data);
         $all_data = explode('<br>', $all_data);
         $new_string = null;
