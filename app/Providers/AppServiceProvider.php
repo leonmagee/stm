@@ -980,10 +980,12 @@ class AppServiceProvider extends ServiceProvider
                 $site = $settings->get_site_object()->name;
             }
 
+            $cart_items = 0;
             if ($logged_in_user) {
-                $cart_items = CartProduct::where('user_id', $logged_in_user->id)->count();
-            } else {
-                $cart_items = 0;
+                $cart_query = CartProduct::where('user_id', $logged_in_user->id)->get();
+                foreach ($cart_query as $item) {
+                    $cart_items += $item->quantity;
+                }
             }
 
             $view->with('current_date', $date)
