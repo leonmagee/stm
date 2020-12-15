@@ -530,6 +530,10 @@ a.button.custom-button {
                 flex: 0 1 13%;
                 padding-right: 1em;
             }
+            &.compare__item--action {
+                flex: 0 1 12%;
+                //padding-right: 1em;
+            }
             font-size: 0.9em;
             font-weight: 600;
             &.compare__item--img {
@@ -543,11 +547,27 @@ a.button.custom-button {
                     display: block;
                 }
             }
+            .compare__item--button {
+                color: #fff;
+                padding: 0.5em 0.7em;
+                border-radius: $border-radius;
+                white-space: nowrap;
+                font-size: 0.9em;
+                min-width: 100%;
+                display: inline-block;
+                margin: 0;
+                text-align: center;
+                text-transform: uppercase;
+                font-weight: 600;
+            }
             .compare__item--add-to-cart {
-                color: $info;
+                background-color: $info;
+                &:hover {
+                    opacity: 0.9;
+                }
             }
             .compare__item--sold-out {
-                color: $color-red;
+                background-color: $color-red;
             }
         }
         &.compare__row--current {

@@ -206,9 +206,6 @@
                 i {
                     color: #fff;
                 }
-                // i {
-                //     color: darken($green, 2%);
-                // }
                 &.cart-add-number {
                     .number-of-items {
                         width: 1.7em;
@@ -224,14 +221,10 @@
                         justify-content: center;
                         align-items: center;
                         box-shadow: 1px 1px rgba(0, 0, 0, 0.2);
-                        //border: 1px solid rgba(0, 0, 0, 0.2);
-                        //border: 1px solid #ddd;
                     }
                 }
             }
             input.search {
-                //border: none;
-                //border-color: #fafafa;
                 font-size: 1.05em;
                 padding: 3px;
             }
