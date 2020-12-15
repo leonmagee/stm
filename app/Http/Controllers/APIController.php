@@ -115,6 +115,11 @@ class APIController extends Controller
                 }
             }
             $product->quantity = $quantity;
+            if ($product->our_cost) {
+                $product->our_cost_val = '$' . number_format($product->our_cost, 2);
+            } else {
+                $product->our_cost_val = '';
+            }
             if ($product->cost) {
                 $product->cost_val = '$' . number_format($product->cost, 2);
             }

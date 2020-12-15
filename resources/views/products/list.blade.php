@@ -14,7 +14,8 @@
           <th>Id</th>
           <th>Name</th>
           <th>Status</th>
-          <th>Price</th>
+          <th>Our Price</th>
+          <th>Dealer Price</th>
           <th>Discount</th>
           <th>Total</th>
           <th>Quantity</th>
@@ -51,6 +52,7 @@ $(nTd).html("<span class='pending'>Archived</span>");
 }
 }
 },
+{ "data": "our_cost_val" },
 { "data": "cost_val" },
 { "data": "discount_val" },
 { "data": "total" },

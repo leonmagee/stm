@@ -25,7 +25,14 @@
             </div>
           </div>
           <div class="field cost">
-            <label class="label" for="cost">Price<span class="required">*</span></label>
+            <label class="label" for="our_cost">Our Price<span class="required">*</span></label>
+            <div class="control">
+              <input class="input" type="number" min="0" step="0.01" id="our_cost" name="our_cost" autocomplete="off"
+                value="{{ $product->our_cost }}" required />
+            </div>
+          </div>
+          <div class="field cost">
+            <label class="label" for="cost">Dealer Price<span class="required">*</span></label>
             <div class="control">
               <input class="input" type="number" min="0" step="0.01" id="cost" name="cost" autocomplete="off"
                 value="{{ $product->cost }}" required />

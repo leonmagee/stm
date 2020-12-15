@@ -260,10 +260,12 @@ class ProductController extends Controller
         $request->validate([
             'name' => 'required',
             'cost' => 'required',
+            'our_cost' => 'required',
             'archived' => 'required',
         ], [
             'name.required' => 'Please enter a Name.',
-            'cost.required' => 'Please enter a Cost.',
+            'cost.required' => 'Please enter the Dealer Price.',
+            'our_cost.required' => 'Please enter Our Price.',
         ]);
 
         for ($i = 1; $i <= (1 + $this->secondary_images); $i++) {
@@ -323,6 +325,7 @@ class ProductController extends Controller
         $product = Product::create([
             'name' => $request->name,
             'cost' => $request->cost,
+            'our_cost' => $request->our_cost,
             'discount' => $request->discount,
             'description' => $request->description,
             'details' => self::img_replace($request->details),
@@ -550,10 +553,12 @@ class ProductController extends Controller
         $request->validate([
             'name' => 'required',
             'cost' => 'required',
+            'our_cost' => 'required',
             'archived' => 'required',
         ], [
             'name.required' => 'Please enter a Name.',
-            'cost.required' => 'Please enter a Cost.',
+            'cost.required' => 'Please enter Dealer Price.',
+            'our_cost.required' => 'Please enter a Our Price.',
         ]);
 
         for ($i = 1; $i <= (1 + $this->secondary_images); $i++) {
@@ -616,6 +621,7 @@ class ProductController extends Controller
         $product->update([
             'name' => $request->name,
             'cost' => $request->cost,
+            'our_cost' => $request->our_cost,
             'discount' => $request->discount,
             'description' => $request->description,
             'details' => self::img_replace($request->details),
