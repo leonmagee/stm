@@ -243,6 +243,19 @@ class Helpers
         return preg_match('/[А-Яа-яЁё]/u', $text);
     }
 
+    public static function get_number_cart_items()
+    {
+        $user = \Auth::user();
+        $cart_items = 0;
+        if ($user) {
+            $cart_query = CartProduct::where('user_id', $user->id)->get();
+            foreach ($cart_query as $item) {
+                $cart_items += $item->quantity;
+            }
+        }
+        return $cart_items;
+    }
+
     public static function date_array()
     {
         return [

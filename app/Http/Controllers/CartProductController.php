@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\CartCoupon;
 use App\CartProduct;
 use App\Coupon;
+use App\Helpers;
 use App\Product;
 use App\ProductFavorite;
 use App\ProductSave;
@@ -250,6 +251,10 @@ class CartProductController extends Controller
                     'user_id' => $user_id,
                 ]);
             }
+
+            $cart_items = Helpers::get_number_cart_items();
+
+            return $cart_items;
         }
     }
 

@@ -332,9 +332,7 @@
                 <i class="fas fa-shopping-cart"></i>
               </span>
               <span class="text">Cart</span>
-              @if($cart_items)
-              <span class="number-of-items">{{ $cart_items }}</span>
-              @endif
+              <span class="number-of-items" id="cart-number-of-items">{{ $cart_items }}</span>
             </a>
           </p>
           {{-- <p class="control">

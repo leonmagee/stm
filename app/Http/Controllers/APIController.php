@@ -107,7 +107,7 @@ class APIController extends Controller
     public function getProducts()
     {
         $products = Product::all();
-        foreach ($products as $product) {
+        foreach ($products as $product)
             $quantity = 0;
             if (count($product->variations)) {
                 foreach ($product->variations as $variation) {

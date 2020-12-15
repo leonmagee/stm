@@ -2,7 +2,6 @@
 
 namespace App\Providers;
 
-use App\CartProduct;
 use App\Category;
 use App\Coupon;
 use App\Helpers;
@@ -980,13 +979,7 @@ class AppServiceProvider extends ServiceProvider
                 $site = $settings->get_site_object()->name;
             }
 
-            $cart_items = 0;
-            if ($logged_in_user) {
-                $cart_query = CartProduct::where('user_id', $logged_in_user->id)->get();
-                foreach ($cart_query as $item) {
-                    $cart_items += $item->quantity;
-                }
-            }
+            $cart_items = Helpers::get_number_cart_items();
 
             $view->with('current_date', $date)
                 ->with('logged_in_user', $logged_in_user)

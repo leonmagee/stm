@@ -103,8 +103,8 @@ export default class Product extends Component {
             },
         })
             .then(res => {
-                // console.log('worked. res:', res);
                 this.animateOn();
+                $('#cart-number-of-items').html(res.data);
             })
             .catch(err => {
                 console.log('error', err);
