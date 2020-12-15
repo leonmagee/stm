@@ -107,7 +107,7 @@ class APIController extends Controller
     public function getProducts()
     {
         $products = Product::all();
-        foreach ($products as $product)
+        foreach ($products as $product) {
             $quantity = 0;
             if (count($product->variations)) {
                 foreach ($product->variations as $variation) {
@@ -115,14 +115,14 @@ class APIController extends Controller
                 }
             }
             $product->quantity = $quantity;
-            if ($product->our_cost) {
-                $product->our_cost_val = '$' . number_format($product->our_cost, 2);
-            } else {
-                $product->our_cost_val = '';
-            }
             if ($product->cost) {
                 $product->cost_val = '$' . number_format($product->cost, 2);
             }
+            $product->our_cost_val = '';
+            if ($product->our_cost) {
+                $product->our_cost_val = '$' . number_format($product->our_cost, 2);
+            }
+
             if ($product->discount) {
                 $product->discount_val = $product->discount . '%';
             } else {
