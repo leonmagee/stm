@@ -449,7 +449,8 @@
                 align-items: center;
                 justify-content: center;
                 &.product__footer--right {
-                    background-color: $product-dark;
+                    //background-color: $product-dark;
+                    background-color: darken($product-blue, 13%);
                     color: #fff;
                     text-shadow: 1px 1px #333;
                     &.product__footer--right-favorite {
