@@ -441,7 +441,7 @@ class AppServiceProvider extends ServiceProvider
                         'default' => '/imei-search',
                     ],
                     [
-                        'name' => 'Plans Spiff',
+                        'name' => 'Plans Spiff Payout',
                         'link' => '/plans',
                         'sub' => false,
                         'icon' => 'flaticon-wifi',
@@ -551,7 +551,7 @@ class AppServiceProvider extends ServiceProvider
                         'default' => false,
                     ],
                     [
-                        'name' => 'Plans Spiff',
+                        'name' => 'Plans Spiff Payout',
                         'link' => '/plans',
                         'sub' => false,
                         'icon' => 'flaticon-wifi',
@@ -647,7 +647,7 @@ class AppServiceProvider extends ServiceProvider
                         'default' => false,
                     ],
                     [
-                        'name' => 'Plans Spiff',
+                        'name' => 'Plans Spiff Payout',
                         'link' => '/plans',
                         'sub' => false,
                         'icon' => 'flaticon-wifi',
@@ -738,7 +738,7 @@ class AppServiceProvider extends ServiceProvider
                         'default' => '/imei-search',
                     ],
                     [
-                        'name' => 'Plans Spiff',
+                        'name' => 'Plans Spiff Payout',
                         'link' => '/plans',
                         'sub' => false,
                         'icon' => 'flaticon-wifi',
@@ -843,7 +843,7 @@ class AppServiceProvider extends ServiceProvider
                         'default' => '/imei-search',
                     ],
                     [
-                        'name' => 'Plans Spiff',
+                        'name' => 'Plans Spiff Payout',
                         'link' => '/plans',
                         'sub' => false,
                         'icon' => 'flaticon-wifi',
