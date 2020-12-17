@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import ReactStars from 'react-rating-stars-component';
 import Attributes from './Attributes';
 import Price from './Price';
 import Heart from './Heart';
@@ -9,30 +8,30 @@ import Starz from './Starz';
 export default class Product extends Component {
     constructor(props) {
         super(props);
-        // const { favorite } = props;
-        // console.log(props);
-        // console.log('count', favorite);
         this.state = {
             animate: false,
             animateHeart: false,
-            // favorite,
+            ownUpdate: false,
         };
     }
 
-    UNSAFE_componentWillReceiveProps(nextProps) {
-        this.setState({
-            favorite: nextProps.favorite,
-        });
+    static getDerivedStateFromProps(nextProps, prevState) {
+        if (
+            nextProps.favorite !== prevState.favorite &&
+            prevState.ownUpdate === false
+        ) {
+            return {
+                favorite: nextProps.favorite,
+            };
+        }
+        return null;
     }
 
-    //     componentWillReceiveProps(nextProps){
-    //     this.setState({ productdatail: nextProps.productdetailProps })
-    // }
-
     toggleFavorite() {
-        // const favorite = !this.state.favorite;
         const { id } = this.props;
-        // console.log('toggz', id);
+        this.setState({
+            ownUpdate: true,
+        });
 
         axios({
             method: 'post',
@@ -169,8 +168,10 @@ export default class Product extends Component {
             );
         }
 
-        // const favClass = favorite ? 'fav' : '';
-        // console.log(favClass, id, price);
+        // if (id == 95) {
+        //     // const favClass = favorite ? 'fav' : '';
+        //     console.log(favorite, id);
+        // }
         return (
             <div className="product">
                 {animatePane}
