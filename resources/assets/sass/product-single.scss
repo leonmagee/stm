@@ -101,6 +101,12 @@
             color: #222;
             //border-bottom: 1px solid #dfdfdf;
         }
+        .product-details__compare {
+            padding-bottom: 0.3em;
+            a {
+                color: darken($green, 8%);
+            }
+        }
         .product-details__rating {
             margin-left: -0.2rem;
             margin-bottom: 0.6rem;

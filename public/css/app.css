@@ -22527,6 +22527,14 @@ body.stm-body.about .middle-content-wrap .about-page .video-wrap .video-wrap-inn
   color: #222;
 }
 
+.product-single .product-details .product-details__compare {
+  padding-bottom: 0.3em;
+}
+
+.product-single .product-details .product-details__compare a {
+  color: #05b385;
+}
+
 .product-single .product-details .product-details__rating {
   margin-left: -0.2rem;
   margin-bottom: 0.6rem;
