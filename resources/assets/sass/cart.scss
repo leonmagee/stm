@@ -46,6 +46,11 @@
                 .line-2 {
                     font-size: 1.2em;
                 }
+                .line-3 {
+                    color: darken($red, 1%);
+                    font-size: 0.9em;
+                    padding-top: 0.1em;
+                }
             }
         }
     }

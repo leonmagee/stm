@@ -118,6 +118,9 @@
               under
               ${{ $shipping_max }}.
             </div>
+            <div class="line-3">
+              Returning or exchanging undamaged or undefective phones are subject to 20% restocking fee.
+            </div>
           </div>
         </div>
       </div>
