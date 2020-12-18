@@ -61,9 +61,11 @@
 </div>
 <div class="product-single__right product-details">
   <div class="product-details__title">{{ $product->name }}</div>
+  @if($related_products = $product->get_related())
   <div class="product-details__compare"><a class="saved-favorites__item--link-compare modal-delete-open"
       item_id={{ $product->id }}>Compare with Similar
       Items <i class="fas fa-eye"></i></a></div>
+  @endif
   <div class="product-details__rating">
     <div>
       <div id="rateYoDisplay" class="rate_yo_no_hover" rating="{{ (floor($product->rating * 2) / 2) }}">
@@ -248,7 +250,7 @@
 
 </div>
 
-@include('products.compare-modal', ['item' => $product, 'related' => $product->get_related()])
+@include('products.compare-modal', ['item' => $product, 'related' => $related_products])
 
 @include('layouts.scroll-up')
 
