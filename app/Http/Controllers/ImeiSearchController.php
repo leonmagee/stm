@@ -203,7 +203,7 @@ class ImeiSearchController extends Controller
                 // 94 - 10 cents - warranty only
                 $result_2 = self::imeiSearchTwo(94, $imei);
             } elseif ($oneplus !== false) {
-                // 94 - 10 cents - warranty only
+                // 137 - 6 cents - warranty only
                 $result_2 = self::imeiSearchTwo(137, $imei);
             }
         }
