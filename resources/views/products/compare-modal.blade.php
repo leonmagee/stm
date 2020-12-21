@@ -34,6 +34,6 @@
 
   </div>
 
-  <button class="modal-delete-close is-large" aria-label="close" item_id={{ $item->id }}></button>
+  <button class="modal-close modal-delete-close is-large" aria-label="close" item_id={{ $item->id }}></button>
 
 </div>
