@@ -171,6 +171,7 @@ class ImeiSearchController extends Controller
             $motorola = stripos($manufacturer, 'motorola');
             $sony = stripos($manufacturer, 'sony');
             $nokia = stripos($manufacturer, 'nokia');
+            $oneplus = stripos($manufacturer, 'oneplus');
 
             if ($apple !== false) {
                 // 128 - 8 cents - carrier and warranty - he might give a discount
@@ -201,6 +202,9 @@ class ImeiSearchController extends Controller
             } elseif ($nokia !== false) {
                 // 94 - 10 cents - warranty only
                 $result_2 = self::imeiSearchTwo(94, $imei);
+            } elseif ($oneplus !== false) {
+                // 94 - 10 cents - warranty only
+                $result_2 = self::imeiSearchTwo(137, $imei);
             }
         }
 
