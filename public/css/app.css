@@ -18664,6 +18664,10 @@ body.stm-body .add-padding {
   font-weight: 600;
 }
 
+.is-color-primary {
+  color: #1b9aaa;
+}
+
 .modal {
   z-index: 100000;
 }
