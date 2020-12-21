@@ -29,7 +29,7 @@
         @endforeach
       </div>
       @endif
-      <a class="modal-delete-close-button button is-primary" item_id={{ $item->id }}>Cancel</a>
+      <a class="modal-delete-close-button button is-primary" item_id={{ $item->id }}>Close</a>
     </div>
 
   </div>
