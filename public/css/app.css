@@ -18679,6 +18679,11 @@ body.stm-body .add-padding {
   border-radius: 20px;
 }
 
+.modal-box.full-width {
+  padding: 0;
+  overflow: hidden;
+}
+
 .modal-box.left {
   text-align: left;
 }
@@ -18758,6 +18763,13 @@ body.stm-body .add-padding {
 h4.modal-title {
   font-size: 2.1em;
   margin: 0.2em 0 0.5em !important;
+}
+
+h3.title.full-width-title {
+  background: #1b9aaa;
+  font-size: 1.5em;
+  color: #fff;
+  padding: 0.4em;
 }
 
 p.modal-text {

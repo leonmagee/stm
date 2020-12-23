@@ -4,9 +4,9 @@
 
   <div class="modal-content">
 
-    <div class="modal-box">
+    <div class="modal-box full-width">
 
-      <h3 class="title is-color-primary">Compare Products</h3>
+      <h3 class="title full-width-title">Compare Products</h3>
 
       @if($related)
       <div class="compare">
@@ -29,7 +29,7 @@
         @endforeach
       </div>
       @endif
-      <a class="modal-delete-close-button button is-danger" item_id={{ $item->id }}>Close</a>
+      <a class="modal-delete-close-button button" item_id={{ $item->id }}>Close</a>
     </div>
 
   </div>
