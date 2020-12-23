@@ -124561,7 +124561,7 @@ $('.modal-open-rma-approve, .modal-rma-approve-close, #modal-close-rma-approve-i
 $('.modal-open-rma-reject, .modal-rma-reject-close, #modal-close-rma-reject-icon').click(function () {
   $('#rma-reject-modal').toggleClass('is-active');
 });
-$('.modal-open-review, .modal-review-close, .modal-close').click(function () {
+$('.modal-open-review, #review-modal .modal-review-close, #review-modal .modal-close').click(function () {
   $('#review-modal').toggleClass('is-active');
 });
 $('.modal-open-transfer-2, #layout-modal-transfer-2 .modal-close, #layout-modal-transfer-2 .modal-close-button').click(function () {
@@ -124574,7 +124574,7 @@ $('.modal-open-exclude-users, #layout-modal-exclude-users .modal-close, #layout-
  * Modal for deleting note and email
  */
 
-$('.modal-delete-open, .modal-delete-close, .modal-delete-close-button').click(function () {
+$('.modal-delete-open, .modal-delete-close, .delete-item-modal .modal-close, .modal-delete-close-button').click(function () {
   var itemId = $(this).attr('item_id');
   $(".modal#delete-item-modal-".concat(itemId)).toggleClass('is-active');
 });

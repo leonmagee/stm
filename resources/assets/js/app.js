@@ -771,7 +771,9 @@ $(
     $('#rma-reject-modal').toggleClass('is-active');
 });
 
-$('.modal-open-review, .modal-review-close, .modal-close').click(function() {
+$(
+    '.modal-open-review, #review-modal .modal-review-close, #review-modal .modal-close'
+).click(function() {
     $('#review-modal').toggleClass('is-active');
 });
 
@@ -790,12 +792,12 @@ $(
 /**
  * Modal for deleting note and email
  */
-$('.modal-delete-open, .modal-delete-close, .modal-delete-close-button').click(
-    function() {
-        const itemId = $(this).attr('item_id');
-        $(`.modal#delete-item-modal-${itemId}`).toggleClass('is-active');
-    }
-);
+$(
+    '.modal-delete-open, .modal-delete-close, .delete-item-modal .modal-close, .modal-delete-close-button'
+).click(function() {
+    const itemId = $(this).attr('item_id');
+    $(`.modal#delete-item-modal-${itemId}`).toggleClass('is-active');
+});
 
 /**
  * Modal for deleting note and email

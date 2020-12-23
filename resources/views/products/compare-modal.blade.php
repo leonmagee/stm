@@ -1,4 +1,4 @@
-<div class="modal modal-width-65" id="delete-item-modal-{{ $item->id }}">
+<div class="modal modal-width-65 delete-item-modal" id="delete-item-modal-{{ $item->id }}">
 
   <div class="modal-background"></div>
 
@@ -34,6 +34,6 @@
 
   </div>
 
-  <button class="modal-delete-close is-large" aria-label="close" item_id={{ $item->id }}></button>
+  <button class="modal-close is-large" aria-label="close" item_id={{ $item->id }}></button>
 
 </div>
