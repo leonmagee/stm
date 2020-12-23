@@ -23668,39 +23668,50 @@ a.button.custom-button:hover {
 .compare .compare__row.compare__row--header .compare__item {
   color: #0c639d;
   font-weight: 600;
+  padding-left: 0;
 }
 
 .compare .compare__row .compare__item {
-  flex: 0 1 11%;
+  flex: 0 0 11%;
   text-align: left;
+  padding-left: 0.2em;
   font-size: 0.9em;
   font-weight: 600;
 }
 
 .compare .compare__row .compare__item.compare__item--name {
   flex: 1;
-  padding-right: 1em;
+}
+
+.compare .compare__row .compare__item.compare__item--name a {
+  margin: 0;
 }
 
 .compare .compare__row .compare__item.compare__item--discount {
-  flex: 0 1 9%;
+  flex: 0 0 9%;
 }
 
 .compare .compare__row .compare__item.compare__item--rating {
-  flex: 0 1 13%;
+  flex: 0 0 13%;
   padding-right: 1em;
 }
 
+.compare .compare__row .compare__item.compare__item--rating .jq-ry-container {
+  padding: 0;
+}
+
 .compare .compare__row .compare__item.compare__item--action {
-  flex: 0 1 12%;
+  flex: 0 0 12%;
 }
 
 .compare .compare__row .compare__item.compare__item--img {
+  flex: 0 0 13%;
   display: flex;
   justify-content: center;
 }
 
 .compare .compare__row .compare__item.compare__item--img img {
+  margin: 0;
   max-height: 4.5em;
   background: #fff;
   border-radius: 4px;
