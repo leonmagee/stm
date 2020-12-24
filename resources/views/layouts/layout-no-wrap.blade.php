@@ -22,6 +22,7 @@
     <div class="middle-content-banner-wrap">
 
       @include('layouts.banner')
+      @include('layouts.banner-non-coupon')
 
       <div class="middle-content-wrap-no-padding">
 

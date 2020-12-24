@@ -5,6 +5,7 @@ namespace App\Providers;
 use App\Category;
 use App\Coupon;
 use App\Helpers;
+use App\Promotion;
 use App\ReportType;
 use App\Settings;
 use Illuminate\Support\ServiceProvider;
@@ -364,6 +365,10 @@ class AppServiceProvider extends ServiceProvider
                 [
                     'name' => 'Discount Coupons',
                     'link' => '/coupons',
+                ],
+                [
+                    'name' => 'Promotions',
+                    'link' => '/promotions',
                 ],
                 [
                     'name' => 'Purchase Orders',
@@ -963,6 +968,11 @@ class AppServiceProvider extends ServiceProvider
 
             $view->with('promotion', $promotion);
 
+        });
+
+        view()->composer('layouts.banner-non-coupon', function ($view) {
+            $promotion_non_coupon = Promotion::where('active', 1)->first();
+            $view->with('promotion_non_coupon', $promotion_non_coupon);
         });
 
         view()->composer('layouts.header', function ($view) {

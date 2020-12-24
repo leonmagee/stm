@@ -20,6 +20,7 @@
 
     <div class="middle-content-wrap-outer">
       @include('layouts.banner')
+      @include('layouts.banner-non-coupon')
 
       <div class="middle-content-wrap">
 

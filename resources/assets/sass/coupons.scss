@@ -18,7 +18,9 @@
     .coupon__tag {
         padding: 0 0.8em;
         color: $brand-primary;
-        flex: 0 1 6%;
+        flex: 0 1 3.5%;
+        display: flex;
+        justify-content: center;
         background-color: #f5f5f5;
     }
     .coupon__input {
