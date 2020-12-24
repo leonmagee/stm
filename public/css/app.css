@@ -24486,6 +24486,7 @@ a.button.custom-button:hover {
   background: #f5be41;
   padding: 0.7em 0.4em;
   text-shadow: 1px 1px rgba(0, 0, 0, 0.1);
+  text-shadow: none;
   font-weight: 400;
 }
 
