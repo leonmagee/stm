@@ -42,7 +42,7 @@
 
             <h4 class="title modal-title">Are You Sure?</h4>
 
-            <a href="/delete-coupon/{{ $promotion->id }}" class="button is-danger">Delete Promotion</a>
+            <a href="/delete-promotion/{{ $promotion->id }}" class="button is-danger">Delete Promotion</a>
             <a class="modal-delete-close-button button is-primary" item_id={{ $promotion->id }}>Cancel</a>
           </div>
 

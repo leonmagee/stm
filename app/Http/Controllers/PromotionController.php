@@ -114,6 +114,9 @@ class PromotionController extends Controller
      */
     public function destroy(Promotion $promotion)
     {
-        //
+        $promotion->delete();
+        session()->flash('danger', 'Promotion has been deleted.');
+        return redirect()->back();
+
     }
 }

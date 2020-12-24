@@ -73,6 +73,7 @@ Route::group(['middleware' => 'App\Http\Middleware\LockOutUsersManagers'], funct
     Route::post('add-promotion', 'PromotionController@store');
     Route::post('start-promotion-non-coupon/{promotion}', 'PromotionController@start_promotion');
     Route::post('end-promotion-non-coupon/{promotion}', 'PromotionController@end_promotion');
+    Route::get('delete-promotion/{promotion}', 'PromotionController@destroy');
     Route::get('coupons', 'CouponController@index');
     Route::post('add-coupon', 'CouponController@store');
     Route::post('start-promotion/{coupon}', 'CouponController@start_promotion');
