@@ -509,6 +509,13 @@ $('#email-blast-form').on('submit', function(e) {
     $(this)[0].submit();
 });
 
+$('#new-promotion-form').on('submit', function(e) {
+    e.preventDefault();
+    const quillText = $('#quill_editor .ql-editor').html();
+    $('textarea#promotion-text').val(quillText);
+    $(this)[0].submit();
+});
+
 $('#product-form').on('submit', function(e) {
     e.preventDefault();
     const quill_text = $('#quill_editor .ql-editor').html();

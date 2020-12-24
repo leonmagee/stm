@@ -24238,6 +24238,24 @@ a.button.custom-button:hover {
   align-items: center;
 }
 
+.coupon.quill-coupon .coupon__item {
+  height: auto;
+  min-height: 2.5em;
+}
+
+.coupon.quill-coupon .coupon__item .quill-text-wrap {
+  padding: 0.5em 0;
+  font-weight: 400;
+}
+
+.coupon.quill-coupon .coupon__item.quill-activate {
+  position: relative;
+}
+
+.coupon.quill-coupon .coupon__item.quill-activate form {
+  position: absolute;
+}
+
 .coupon .coupon__tag {
   padding: 0 0.8em;
   color: #1b9aaa;
@@ -24359,6 +24377,10 @@ a.button.custom-button:hover {
   margin-right: 1em;
 }
 
+.promotion-form-wrapper {
+  padding: 1em;
+}
+
 .stm-cats {
   padding: 1em;
   display: flex;
@@ -24464,6 +24486,11 @@ a.button.custom-button:hover {
   background: #f5be41;
   padding: 0.7em 0.4em;
   text-shadow: 1px 1px rgba(0, 0, 0, 0.1);
+  font-weight: 400;
+}
+
+.promo-banner.non-coupon strong {
+  color: #fff;
 }
 
 .promo-banner__timer {

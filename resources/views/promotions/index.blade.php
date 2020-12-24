@@ -12,10 +12,14 @@
 
     <div class="coupons">
       @foreach($promotions as $promotion)
-      <div class="coupon">
+      <div class="coupon quill-coupon">
         <div class="coupon__item coupon__tag"><i class="fas fa-bullhorn"></i></div>
-        <div class="coupon__item coupon__code">{{ $promotion->text }}</div>
-        <div class="coupon__item coupon__activate">
+        <div class="coupon__item coupon__code">
+          <div class="quill-text-wrap">
+            {!! $promotion->text !!}
+          </div>
+        </div>
+        <div class="coupon__item coupon__activate quill-activate">
           @if(!$promotion->active)
           <form method="POST" action="/start-promotion-non-coupon/{{ $promotion->id }}">
             @csrf
@@ -53,21 +57,52 @@
       </div>
 
       @endforeach
-      <form method="POST" action="/add-promotion" class="margin-top-2">
+
+    </div>
+
+
+
+    <div class="form-wrap-flex promotion-form-wrapper">
+      <form method="POST" action="/add-promotion" id="new-promotion-form">
         @csrf
-        <div class="coupon">
-          <div class="coupon__item coupon__tag"><i class="fas fa-bullhorn"></i></div>
-          <div class="coupon__item coupon__code coupon__input">
-            <input type="text" name="text" id="text" placeholder="Promotion Text..." autocomplete="off" required />
+        <div class="field description">
+          <label class="label" for="description">Promotion Text</label>
+          <div class="control">
+            <div id="quill_editor" class="quill-wrap"></div>
+            <textarea class="textarea quill_text" id="promotion-text" name="text"></textarea>
           </div>
-          <div class="coupon__item coupon__icon coupon__add"><button type="submit"><i class="fa fa-plus"></i></button>
-          </div>
+        </div>
+        <div class="field">
+          <button class="button is-primary" type="submit">Add Promotion</button>
+        </div>
       </form>
     </div>
+
+
   </div>
 
 </div>
 
 </div>
+
+@endsection
+
+@section('page-script')
+<script src="https://cdn.quilljs.com/1.0.0/quill.js"></script>
+<script>
+  var quill_settings = {
+    modules: {
+    toolbar: [
+    [{ header: [1, 2, 3, 4, false] }],
+    ['bold', 'italic', 'underline', 'strike', 'link'],
+    [{ align: '' }, { align: 'center' }, { align: 'right' }, { align: 'justify' }],
+    [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+    ]
+    },
+    placeholder: 'Enter Promotion Text...',
+    theme: 'snow'
+    };
+    new Quill('#quill_editor', quill_settings);
+</script>
 
 @endsection

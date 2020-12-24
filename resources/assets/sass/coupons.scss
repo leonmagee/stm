@@ -15,6 +15,24 @@
         display: flex;
         align-items: center;
     }
+
+    &.quill-coupon {
+        .coupon__item {
+            height: auto;
+            //align-items: stretch;
+            min-height: 2.5em;
+            .quill-text-wrap {
+                padding: 0.5em 0;
+                font-weight: 400;
+            }
+            &.quill-activate {
+                position: relative;
+                form {
+                    position: absolute;
+                }
+            }
+        }
+    }
     .coupon__tag {
         padding: 0 0.8em;
         color: $brand-primary;
@@ -124,4 +142,9 @@
         max-width: 20%;
         margin-right: 1em;
     }
+}
+
+// promotions
+.promotion-form-wrapper {
+    padding: 1em;
 }

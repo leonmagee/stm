@@ -124378,6 +124378,12 @@ $('#email-blast-form').on('submit', function (e) {
   $('#quill_text').val(quill_text);
   $(this)[0].submit();
 });
+$('#new-promotion-form').on('submit', function (e) {
+  e.preventDefault();
+  var quillText = $('#quill_editor .ql-editor').html();
+  $('textarea#promotion-text').val(quillText);
+  $(this)[0].submit();
+});
 $('#product-form').on('submit', function (e) {
   e.preventDefault();
   var quill_text = $('#quill_editor .ql-editor').html();
