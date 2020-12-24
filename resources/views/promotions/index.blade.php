@@ -58,7 +58,7 @@
         <div class="coupon">
           <div class="coupon__item coupon__tag"><i class="fas fa-bullhorn"></i></div>
           <div class="coupon__item coupon__code coupon__input">
-            <input type="text" name="text" id="text" placeholder="Coupon Code..." autocomplete="off" required />
+            <input type="text" name="text" id="text" placeholder="Promotion Text..." autocomplete="off" required />
           </div>
           <div class="coupon__item coupon__icon coupon__add"><button type="submit"><i class="fa fa-plus"></i></button>
           </div>
