@@ -24488,10 +24488,7 @@ a.button.custom-button:hover {
   text-shadow: 1px 1px rgba(0, 0, 0, 0.1);
   text-shadow: none;
   font-weight: 400;
-}
-
-.promo-banner.non-coupon strong {
-  color: #fff;
+  color: #1b1b1b;
 }
 
 .promo-banner__timer {

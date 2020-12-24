@@ -367,7 +367,7 @@ class AppServiceProvider extends ServiceProvider
                     'link' => '/coupons',
                 ],
                 [
-                    'name' => 'Promotions',
+                    'name' => 'Promotion Banner',
                     'link' => '/promotions',
                 ],
                 [

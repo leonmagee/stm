@@ -1,4 +1,4 @@
-@if(\Auth::user()->isAdmin())
+@if(\Auth::user())
 @if($promotion_non_coupon)
 <div class="promo-banner non-coupon">
   <div class="text">{!! $promotion_non_coupon->text !!}</div>
