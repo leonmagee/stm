@@ -30,6 +30,8 @@ class EmailBlast extends Mailable
         $width = null,
         $hello = null
     ) {
+
+        dd($message);
         $this->user = $user;
         $this->message = $message;
         $this->subject($subject);
