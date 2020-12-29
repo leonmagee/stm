@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Mail\ContactEmail;
 use App\Mail\ContactEmailNewResponse;
 use App\Mail\EmailBlast;
+use App\Product;
 use App\Site;
 use App\User;
 use Illuminate\Http\Request;
@@ -15,6 +16,7 @@ class EmailBlastController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+        $this->max_ads = 3;
     }
     /**
      * Display a listing of the resource.
@@ -26,7 +28,9 @@ class EmailBlastController extends Controller
         $sites = Site::all();
         $users = User::orderBy('company')->get();
         $sites_exclude = Site::whereNotIn('id', [4])->get();
-        return view('email_blast.index', compact('sites', 'sites_exclude', 'users'));
+        $max_ads = $this->max_ads;
+        $products = Product::all();
+        return view('email_blast.index', compact('sites', 'sites_exclude', 'users', 'products', 'max_ads'));
     }
 
     /**
@@ -81,6 +85,16 @@ class EmailBlastController extends Controller
             'cc_manual_email.email' => 'Must be a valid email address.',
         ]);
 
+        $ads_array = [];
+        $max_ads = $this->max_ads;
+
+        //dd('here');
+        for ($i = 1; $i <= $max_ads; $i++) {
+            $prop_name = 'product_ad_' . $i;
+            $product_ad = Product::find($request->{$prop_name});
+            $ads_array[] = $product_ad;
+        }
+
         if (!$request->just_one_user && !$request->email_site) {
             return back()->withErrors('Please choose All Users, One Site or One User.');
         }
@@ -105,7 +119,8 @@ class EmailBlastController extends Controller
                 $file2,
                 $file3,
                 null,
-                $hello
+                $hello,
+                $ads_array
             ));
 
             $email_to_string = $user->company . ' - ' . $user->name;
@@ -124,7 +139,8 @@ class EmailBlastController extends Controller
                     $file2,
                     $file3,
                     null,
-                    $hello_cc
+                    $hello_cc,
+                    $ads_array
                 ));
             }
 
@@ -144,7 +160,8 @@ class EmailBlastController extends Controller
                     $file2,
                     $file3,
                     null,
-                    $hello_cc
+                    $hello_cc,
+                    $ads_array
                 ));
             }
 
@@ -176,7 +193,10 @@ class EmailBlastController extends Controller
                             $request->subject,
                             $file,
                             $file2,
-                            $file3
+                            $file3,
+                            null,
+                            null,
+                            $ads_array
                         ));
                     }
                 }
@@ -194,7 +214,10 @@ class EmailBlastController extends Controller
                             $request->subject,
                             $file,
                             $file2,
-                            $file3
+                            $file3,
+                            null,
+                            null,
+                            $ads_array
                         ));
                     }
                 }

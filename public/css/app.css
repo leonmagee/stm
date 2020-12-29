@@ -18087,6 +18087,10 @@ body.stm-body .stm-subtitle {
   max-width: 25%;
 }
 
+.form-wrapper .form-wrapper-inner form .form-wrap .form-wrap-flex .product-ad-label {
+  margin-top: 25px;
+}
+
 .form-wrapper .form-wrapper-inner form .form-wrap .form-wrap-flex .attachment-wrap {
   padding: 5px 0 25px;
   display: flex;
@@ -24489,6 +24493,14 @@ a.button.custom-button:hover {
   text-shadow: none;
   font-weight: 400;
   color: #1b1b1b;
+}
+
+.promo-banner.non-coupon .text {
+  text-transform: none;
+}
+
+.promo-banner.non-coupon a {
+  color: #209cee;
 }
 
 .promo-banner__timer {

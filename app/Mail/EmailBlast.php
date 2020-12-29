@@ -14,6 +14,7 @@ class EmailBlast extends Mailable
     public $user;
     public $message;
     public $hello;
+    public $ads_array;
 
     /**
      * Create a new message instance.
@@ -28,7 +29,8 @@ class EmailBlast extends Mailable
         $file2 = null,
         $file3 = null,
         $width = null,
-        $hello = null
+        $hello = null,
+        $ads_array = null
     ) {
 
         //dd($subject);
@@ -54,6 +56,7 @@ class EmailBlast extends Mailable
                 'mime' => $file3->getMimeType(),
             ]);
         }
+        $this->ads_array = $ads_array;
 
         $this->callbacks[] = (function ($message) use ($user) {$message->getHeaders()->addTextHeader('user_id', $user->id);});
 

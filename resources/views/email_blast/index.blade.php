@@ -139,6 +139,23 @@
               <div id="quill_editor" class="quill-wrap"></div>
               <textarea name="message" id="quill_text" class="quill_text"></textarea>
             </div>
+
+            @for($i = 1; $i <= $max_ads; $i++) <label class="label product-ad-label">Product Advertisement
+              {{ $i }}</label>
+              <div class="control">
+                <div class="select">
+                  <select name="product_ad_{{ $i }}">
+                    <option value="0">---</option>
+                    @foreach($products as $product)
+                    <option value="{{ $product->id }}">{{ $product->name }}</option>
+                    @endforeach
+                  </select>
+                </div>
+              </div>
+              @endfor
+
+
+
           </div>
         </div>
 

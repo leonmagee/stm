@@ -565,3 +565,26 @@ img.email-header-logo {
 .margin-bottom-35 {
     margin-bottom: 35px;
 }
+
+.email-ad-wrap-outer {
+    display: flex;
+}
+.email-ad-wrap-outer a .email-ad-wrap {
+    padding: 10px;
+    margin: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.email-ad-wrap-outer a .email-ad-wrap .title {
+    font-weight: bold;
+    color: #111;
+    text-decoration: none;
+}
+
+.email-ad-wrap-outer a .email-ad-wrap .description {
+    font-size: 0.7em;
+    color: #444;
+    text-decoration: none;
+}

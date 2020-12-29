@@ -32,6 +32,13 @@
         text-shadow: none;
         font-weight: 400;
         color: #1b1b1b;
+        .text {
+            text-transform: none;
+        }
+        a {
+            //color: red;
+            color: $info;
+        }
         // strong {
         //     color: #fff;
         // }
