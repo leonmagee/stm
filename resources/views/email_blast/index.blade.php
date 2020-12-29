@@ -180,13 +180,13 @@
 @endsection
 
 @section('page-script')
-<script src="https://cdn.quilljs.com/1.0.0/quill.js"></script>
+<script src="https://cdn.quilljs.com/1.3.7/quill.js"></script>
 <script>
   var quill_settings = {
     modules: {
     toolbar: [
     [{ header: [1, 2, 3, 4, false] }],
-    ['bold', 'italic', 'underline'],
+    ['bold', 'italic', 'underline', 'link'],
     [{ align: '' }, { align: 'center' }, { align: 'right' }, { align: 'justify' }]
     ]
     },
