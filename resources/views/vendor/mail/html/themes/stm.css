@@ -613,5 +613,5 @@ img.email-header-logo {
 }
 
 .email-ad-wrap-outer a .email-ad-wrap .img-wrap img {
-    /* max-height: 180px; */
+    margin: 0 auto;
 }
