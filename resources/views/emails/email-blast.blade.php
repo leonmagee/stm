@@ -12,7 +12,6 @@
 
 @if($ads_array)
 @if(count($ads_array))
-We have some ads
 <div class="email-ad-wrap-outer">
   @foreach($ads_array as $ad)
   <a href="{{ env('APP_URL') }}/products/{{ $ad->id }}">
