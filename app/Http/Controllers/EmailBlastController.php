@@ -92,7 +92,9 @@ class EmailBlastController extends Controller
         for ($i = 1; $i <= $max_ads; $i++) {
             $prop_name = 'product_ad_' . $i;
             $product_ad = Product::find($request->{$prop_name});
-            $ads_array[] = $product_ad;
+            if ($product_ad) {
+                $ads_array[] = $product_ad;
+            }
         }
 
         if (!$request->just_one_user && !$request->email_site) {

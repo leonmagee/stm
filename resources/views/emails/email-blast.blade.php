@@ -17,7 +17,9 @@ We have some ads
   @foreach($ads_array as $ad)
   <a href="{{ env('APP_URL') }}/products/{{ $ad->id }}">
     <div class="email-ad-wrap">
-      <img src="{{ $ad->get_cloudinary_thumbnail(250, 250) }}" />
+      <div class="img-wrap">
+        <img src="{{ $ad->get_cloudinary_thumbnail(200, 200) }}" />
+      </div>
       <div class="title">{{ $ad->name }}</div>
       <div class="description">{!! $ad->description !!}</div>
     </div>
