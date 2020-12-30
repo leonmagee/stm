@@ -610,6 +610,7 @@ img.email-header-logo {
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 5px 0;
 }
 
 .email-ad-wrap-outer a .email-ad-wrap .img-wrap img {
