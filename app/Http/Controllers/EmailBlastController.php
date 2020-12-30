@@ -16,7 +16,7 @@ class EmailBlastController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-        $this->max_ads = 3;
+        $this->max_ads = 4;
     }
     /**
      * Display a listing of the resource.
@@ -88,14 +88,17 @@ class EmailBlastController extends Controller
         $ads_array = [];
         $max_ads = $this->max_ads;
 
-        //dd('here');
         for ($i = 1; $i <= $max_ads; $i++) {
             $prop_name = 'product_ad_' . $i;
+            $text_name = 'ad_text_' . $i;
             $product_ad = Product::find($request->{$prop_name});
             if ($product_ad) {
+                $product_ad->ad_text = $request->{$text_name};
                 $ads_array[] = $product_ad;
             }
         }
+
+        //dd($ads_array);
 
         if (!$request->just_one_user && !$request->email_site) {
             return back()->withErrors('Please choose All Users, One Site or One User.');

@@ -124374,10 +124374,25 @@ jQuery('#expiration_date').datetimepicker({
 
 $('#email-blast-form').on('submit', function (e) {
   e.preventDefault();
-  var quill_text = $('#quill_editor .ql-editor').html();
-  $('#quill_text').val(quill_text);
+  var quillText = $('#quill_editor .ql-editor').html();
+  $('#quill_text').val(quillText);
   $(this)[0].submit();
 });
+var emailProducts = 4;
+
+var _loop4 = function _loop4(_i4) {
+  $('#email-blast-form').on('submit', function (e) {
+    e.preventDefault();
+    var quillText = $("#quill_editor_".concat(_i4, " .ql-editor")).html();
+    $("#quill_text_".concat(_i4)).val(quillText);
+    $(this)[0].submit();
+  });
+};
+
+for (var _i4 = 1; _i4 <= emailProducts; _i4++) {
+  _loop4(_i4);
+}
+
 $('#new-promotion-form').on('submit', function (e) {
   e.preventDefault();
   var quillText = $('#quill_editor .ql-editor').html();

@@ -152,10 +152,12 @@
                   </select>
                 </div>
               </div>
+              <label class="label product-ad-label">Product Description {{ $i }}</label>
+              <div class="control">
+                <div id="quill_editor_{{ $i }}" class="quill-wrap"></div>
+                <textarea name="ad_text_{{ $i }}" id="quill_text_{{ $i }}" class="quill_text"></textarea>
+              </div>
               @endfor
-
-
-
           </div>
         </div>
 
@@ -202,7 +204,7 @@
   var quill_settings = {
     modules: {
     toolbar: [
-    [{ header: [1, 2, 3, 4, false] }],
+    [{ header: [1, 2, 3, 4, false] }, { size: ['small', false, 'large', 'huge']}],
     ['bold', 'italic', 'underline', 'link'],
     [{ align: '' }, { align: 'center' }, { align: 'right' }, { align: 'justify' }]
     ]
@@ -210,7 +212,21 @@
     placeholder: 'Enter Your Text...',
     theme: 'snow'
     };
+    var quill_settings_2 = {
+      modules: {
+      toolbar: [
+      [{ header: [1, 2, 3, 4, false] }, { size: ['small', false, 'large', 'huge']}],
+      ['bold', 'italic', 'underline'],
+      [{ align: '' }, { align: 'center' }, { align: 'right' }, { align: 'justify' }]
+      ]
+      },
+      placeholder: 'Enter Your Text...',
+      theme: 'snow'
+      };
     new Quill('#quill_editor', quill_settings);
+    @for($i = 1; $i <= $max_ads; $i++)
+    new Quill('#quill_editor_{{ $i }}', quill_settings_2);
+    @endfor
     //new Quill("#quill_editor-add-new", quill_settings);
 </script>
 

@@ -504,10 +504,20 @@ jQuery('#expiration_date').datetimepicker({
  */
 $('#email-blast-form').on('submit', function(e) {
     e.preventDefault();
-    const quill_text = $('#quill_editor .ql-editor').html();
-    $('#quill_text').val(quill_text);
+    const quillText = $('#quill_editor .ql-editor').html();
+    $('#quill_text').val(quillText);
     $(this)[0].submit();
 });
+
+const emailProducts = 4;
+for (let i = 1; i <= emailProducts; i++) {
+    $('#email-blast-form').on('submit', function(e) {
+        e.preventDefault();
+        const quillText = $(`#quill_editor_${i} .ql-editor`).html();
+        $(`#quill_text_${i}`).val(quillText);
+        $(this)[0].submit();
+    });
+}
 
 $('#new-promotion-form').on('submit', function(e) {
     e.preventDefault();

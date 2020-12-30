@@ -567,14 +567,25 @@ img.email-header-logo {
 }
 
 .email-ad-wrap-outer {
-    display: flex;
+    /* display: flex;
     justify-content: space-between;
+    flex-wrap: wrap; */
+    /* font-size: 0px;
+    letter-spacing: 0px;
+    word-spacing: 0px; */
 }
 
 .email-ad-wrap-outer a {
-    flex: 0 1 31%;
+    display: inline-block;
+    width: 270px;
+    min-height: 375px;
     text-decoration: none;
     color: #111;
+    padding: 10px 10px 5px;
+    margin: 10px 10px 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    overflow: hidden;
 }
 
 .email-ad-wrap-outer a:hover {
@@ -582,12 +593,11 @@ img.email-header-logo {
 }
 
 .email-ad-wrap-outer a .email-ad-wrap {
-    padding: 10px 10px 5px;
-    margin: 10px 10px 10px 0;
-    border: 1px solid #ccc;
-    border-radius: 5px;
     text-align: center;
     height: 100%;
+    /* font-size: medium;
+    letter-spacing: normal;
+    word-spacing: normal; */
 }
 
 .email-ad-wrap-outer a .email-ad-wrap .title {
@@ -607,9 +617,9 @@ img.email-header-logo {
 
 .email-ad-wrap-outer a .email-ad-wrap .img-wrap {
     height: 220px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    /* display: flex; */
+    /* justify-content: center; */
+    /* align-items: center; */
     padding: 5px 0;
 }
 

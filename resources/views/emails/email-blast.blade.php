@@ -20,7 +20,7 @@
         <img src="{{ $ad->get_cloudinary_thumbnail(200, 200) }}" />
       </div>
       <div class="title">{{ $ad->name }}</div>
-      <div class="description">{!! $ad->description !!}</div>
+      <div class="description">{!! $ad->ad_text !!}</div>
     </div>
   </a>
   @endforeach
