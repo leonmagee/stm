@@ -83,6 +83,7 @@ class LoggedOutController extends Controller
             '.com',
             'www',
             'dotcom',
+            'dot com',
         ];
         foreach ($message_block_array as $block) {
             if (strpos($request->message, $block) !== false) {
