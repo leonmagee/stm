@@ -140,59 +140,63 @@
               <textarea name="message" id="quill_text" class="quill_text"></textarea>
             </div>
 
-            @for($i = 1; $i <= $max_ads; $i++) <label class="label product-ad-label">Product Advertisement
-              {{ $i }}</label>
-              <div class="control">
-                <div class="select">
-                  <select name="product_ad_{{ $i }}">
-                    <option value="0">---</option>
-                    @foreach($products as $product)
-                    <option value="{{ $product->id }}">{{ $product->name }}</option>
-                    @endforeach
-                  </select>
+            <div class="columns">
+              @for($i = 1; $i <= $max_ads; $i++) <div class="column">
+                <label class="label product-ad-label">Product Advertisement
+                  {{ $i }}</label>
+                <div class="control">
+                  <div class="select">
+                    <select name="product_ad_{{ $i }}">
+                      <option value="0">---</option>
+                      @foreach($products as $product)
+                      <option value="{{ $product->id }}">{{ $product->name }}</option>
+                      @endforeach
+                    </select>
+                  </div>
                 </div>
-              </div>
-              <label class="label product-ad-label">Product Description {{ $i }}</label>
-              <div class="control">
-                <div id="quill_editor_{{ $i }}" class="quill-wrap"></div>
-                <textarea name="ad_text_{{ $i }}" id="quill_text_{{ $i }}" class="quill_text"></textarea>
-              </div>
-              @endfor
+                <label class="label product-ad-label">Product Description {{ $i }}</label>
+                <div class="control">
+                  <div id="quill_editor_{{ $i }}" class="quill-wrap"></div>
+                  <textarea name="ad_text_{{ $i }}" id="quill_text_{{ $i }}" class="quill_text"></textarea>
+                </div>
+            </div>
+            @endfor
           </div>
         </div>
-
-        <div class="field flex-margin">
-          <div class="control">
-            <a class="button is-primary modal-open-email-blast">Email Selected Users</a>
-          </div>
-        </div>
-
       </div>
 
-      <div class="modal" id="email-blast-modal">
-
-        <div class="modal-background"></div>
-
-        <div class="modal-content">
-
-          <div class="modal-box">
-
-            <h4 class="title">Are You Sure?</h4>
-
-            <button class="button is-danger call-loader" type="submit">Email Selected Users</button>
-
-            <a class="modal-email-close button is-primary">Cancel</a>
-          </div>
-
+      <div class="field flex-margin">
+        <div class="control">
+          <a class="button is-primary modal-open-email-blast">Email Selected Users</a>
         </div>
-
-        <a class="modal-close is-large" aria-label="close"></a>
-
       </div>
-
-    </form>
 
   </div>
+
+  <div class="modal" id="email-blast-modal">
+
+    <div class="modal-background"></div>
+
+    <div class="modal-content">
+
+      <div class="modal-box">
+
+        <h4 class="title">Are You Sure?</h4>
+
+        <button class="button is-danger call-loader" type="submit">Email Selected Users</button>
+
+        <a class="modal-email-close button is-primary">Cancel</a>
+      </div>
+
+    </div>
+
+    <a class="modal-close is-large" aria-label="close"></a>
+
+  </div>
+
+  </form>
+
+</div>
 
 </div>
 
@@ -206,7 +210,11 @@
     toolbar: [
     [{ header: [1, 2, 3, 4, false] }, { size: ['small', false, 'large', 'huge']}],
     ['bold', 'italic', 'underline', 'link'],
-    [{ align: '' }, { align: 'center' }, { align: 'right' }, { align: 'justify' }]
+    [{ align: '' }, { align: 'center' }, { align: 'right' }, { align: 'justify' }],
+    [{'color': ["#000000", "#e60000", "#ff9900", "#ffff00", "#008a00", "#0066cc", "#9933ff", "#ffffff", "#facccc",
+          "#ffebcc", "#ffffcc", "#cce8cc", "#cce0f5", "#ebd6ff", "#bbbbbb", "#f06666", "#ffc266", "#ffff66", "#66b966", "#66a3e0",
+          "#c285ff", "#888888", "#a10000", "#b26b00", "#b2b200", "#006100", "#0047b2", "#6b24b2", "#444444", "#5c0000", "#663d00",
+          "#666600", "#003700", "#002966", "#3d1466", 'custom-color']}]
     ]
     },
     placeholder: 'Enter Your Text...',
@@ -217,7 +225,11 @@
       toolbar: [
       [{ header: [1, 2, 3, 4, false] }, { size: ['small', false, 'large', 'huge']}],
       ['bold', 'italic', 'underline'],
-      [{ align: '' }, { align: 'center' }, { align: 'right' }, { align: 'justify' }]
+      [{ align: '' }, { align: 'center' }, { align: 'right' }, { align: 'justify' }],
+      [{'color': ["#000000", "#e60000", "#ff9900", "#ffff00", "#008a00", "#0066cc", "#9933ff", "#ffffff", "#facccc",
+        "#ffebcc", "#ffffcc", "#cce8cc", "#cce0f5", "#ebd6ff", "#bbbbbb", "#f06666", "#ffc266", "#ffff66", "#66b966", "#66a3e0",
+        "#c285ff", "#888888", "#a10000", "#b26b00", "#b2b200", "#006100", "#0047b2", "#6b24b2", "#444444", "#5c0000", "#663d00",
+        "#666600", "#003700", "#002966", "#3d1466", 'custom-color']}]
       ]
       },
       placeholder: 'Enter Your Text...',
