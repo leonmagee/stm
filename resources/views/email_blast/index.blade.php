@@ -205,16 +205,18 @@
 @section('page-script')
 <script src="https://cdn.quilljs.com/1.3.7/quill.js"></script>
 <script>
+  var colors_ojb = {'color': ["#1b9aaa", "#06e5aa", "#ef476f", "#ffc43d", "#51e5ff", "#55759e", "#e98a15", "#f6c659", "#204e9b", "#751f1c", "#000000", "#e60000", "#ff9900", "#ffff00", "#008a00", "#0066cc", "#9933ff", "#ffffff", "#facccc",
+  "#ffebcc", "#ffffcc", "#cce8cc", "#cce0f5", "#ebd6ff", "#bbbbbb", "#f06666", "#ffc266", "#ffff66", "#66b966", "#66a3e0",
+  "#c285ff", "#888888", "#a10000", "#b26b00", "#b2b200", "#006100", "#0047b2", "#6b24b2", "#444444", "#5c0000", "#663d00",
+  "#666600", "#003700", "#002966", "#3d1466"]};
+
   var quill_settings = {
     modules: {
     toolbar: [
     [{ header: [1, 2, 3, 4, false] }, { size: ['small', false, 'large', 'huge']}],
     ['bold', 'italic', 'underline', 'link'],
     [{ align: '' }, { align: 'center' }, { align: 'right' }, { align: 'justify' }],
-    [{'color': ["#000000", "#e60000", "#ff9900", "#ffff00", "#008a00", "#0066cc", "#9933ff", "#ffffff", "#facccc",
-          "#ffebcc", "#ffffcc", "#cce8cc", "#cce0f5", "#ebd6ff", "#bbbbbb", "#f06666", "#ffc266", "#ffff66", "#66b966", "#66a3e0",
-          "#c285ff", "#888888", "#a10000", "#b26b00", "#b2b200", "#006100", "#0047b2", "#6b24b2", "#444444", "#5c0000", "#663d00",
-          "#666600", "#003700", "#002966", "#3d1466"]}]
+    [colors_ojb]
     ]
     },
     placeholder: 'Enter Your Text...',
@@ -226,10 +228,7 @@
       [{ header: [1, 2, 3, 4, false] }, { size: ['small', false, 'large', 'huge']}],
       ['bold', 'italic', 'underline'],
       [{ align: '' }, { align: 'center' }, { align: 'right' }, { align: 'justify' }],
-      [{'color': ["#000000", "#e60000", "#ff9900", "#ffff00", "#008a00", "#0066cc", "#9933ff", "#ffffff", "#facccc",
-        "#ffebcc", "#ffffcc", "#cce8cc", "#cce0f5", "#ebd6ff", "#bbbbbb", "#f06666", "#ffc266", "#ffff66", "#66b966", "#66a3e0",
-        "#c285ff", "#888888", "#a10000", "#b26b00", "#b2b200", "#006100", "#0047b2", "#6b24b2", "#444444", "#5c0000", "#663d00",
-        "#666600", "#003700", "#002966", "#3d1466"]}]
+      [colors_ojb]
       ]
       },
       placeholder: 'Enter Your Text...',
