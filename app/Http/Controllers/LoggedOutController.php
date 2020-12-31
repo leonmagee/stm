@@ -78,6 +78,17 @@ class LoggedOutController extends Controller
                 return redirect('contact-us');
             }
         }
+        $message_block_array = [
+            'http',
+            '.com',
+        ];
+        foreach ($message_block_array as $block) {
+            if (strpos($request->message, $block) !== false) {
+                session()->flash('message', 'Thank you! We will get in touch as soon as possible.');
+                return redirect('contact-us');
+            }
+        }
+
         if (Helpers::isRussian($request->message)) {
             session()->flash('message', 'Thank you! We will get in touch as soon as possible.');
             return redirect('contact-us');

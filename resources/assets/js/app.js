@@ -92,6 +92,32 @@ require('./components/Timer');
 //     console.log(response);
 // });
 
+// calculate total for new product price
+$('.products-calc-total input#cost, .products-calc-total input#discount').on(
+    'input',
+    function() {
+        // final-price
+        // discount
+        const cost = $('.products-calc-total input#cost').val();
+        const discount = $('.products-calc-total input#discount').val();
+        let finalPrice = 0;
+
+        if (cost && discount) {
+            const costParse = parseFloat(cost);
+            const discountNumber = parseFloat(discount);
+            const costNumber = costParse * ((100 - discountNumber) / 100);
+            finalPrice = `$${costNumber.toFixed(2)}`;
+            $('.products-calc-total input#final-price').val(finalPrice);
+        } else if (cost) {
+            const costNumber = parseFloat(cost);
+            finalPrice = `$${costNumber.toFixed(2)}`;
+            $('.products-calc-total input#final-price').val(finalPrice);
+        } else {
+            $('.products-calc-total input#final-price').val('$0.00');
+        }
+    }
+);
+
 // sortable
 $('#sortable-list').sortable({
     update(event, ui) {

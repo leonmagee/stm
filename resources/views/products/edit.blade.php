@@ -16,7 +16,7 @@
 
         @csrf
 
-        <div class="form-wrap-flex form-wrap-flex-products-top">
+        <div class="form-wrap-flex form-wrap-flex-products-top products-calc-total">
           <div class="field name">
             <label class="label" for="name">Product Name<span class="required">*</span></label>
             <div class="control">
@@ -43,6 +43,13 @@
             <div class="control">
               <input class="input" type="number" min="0" id="discount" name="discount" autocomplete="off"
                 value="{{ $product->discount }}" />
+            </div>
+          </div>
+          <div class="field final-price">
+            <label class="label" for="final-price">Final Price</label>
+            <div class="control">
+              <input class="input" id="final-price" autocomplete="off" disabled
+                value="${{ $product->discount_cost() }}" />
             </div>
           </div>
           <div class="field available-on">

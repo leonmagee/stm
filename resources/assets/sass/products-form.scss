@@ -10,6 +10,12 @@
             .field.discount {
                 flex: 0 1 10%;
             }
+            .field.final-price {
+                flex: 0 1 10%;
+                input {
+                    border-color: #ccc;
+                }
+            }
             .field.available-on {
                 flex: 0 1 11%;
             }

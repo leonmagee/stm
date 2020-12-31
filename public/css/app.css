@@ -22943,6 +22943,14 @@ body.stm-body.about .middle-content-wrap .about-page .video-wrap .video-wrap-inn
   flex: 0 1 10%;
 }
 
+.form-wrapper-inner .form-wrap .form-wrap-flex.form-wrap-flex-products-top .field.final-price {
+  flex: 0 1 10%;
+}
+
+.form-wrapper-inner .form-wrap .form-wrap-flex.form-wrap-flex-products-top .field.final-price input {
+  border-color: #ccc;
+}
+
 .form-wrapper-inner .form-wrap .form-wrap-flex.form-wrap-flex-products-top .field.available-on {
   flex: 0 1 11%;
 }

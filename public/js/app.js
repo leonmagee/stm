@@ -124002,8 +124002,31 @@ __webpack_require__(/*! ./components/Timer */ "./resources/assets/js/components/
 // $.ajax(imeiSettings).done(function(response) {
 //     console.log(response);
 // });
-// sortable
+// calculate total for new product price
 
+
+$('.products-calc-total input#cost, .products-calc-total input#discount').on('input', function () {
+  // final-price
+  // discount
+  var cost = $('.products-calc-total input#cost').val();
+  var discount = $('.products-calc-total input#discount').val();
+  var finalPrice = 0;
+
+  if (cost && discount) {
+    var costParse = parseFloat(cost);
+    var discountNumber = parseFloat(discount);
+    var costNumber = costParse * ((100 - discountNumber) / 100);
+    finalPrice = "$".concat(costNumber.toFixed(2));
+    $('.products-calc-total input#final-price').val(finalPrice);
+  } else if (cost) {
+    var _costNumber = parseFloat(cost);
+
+    finalPrice = "$".concat(_costNumber.toFixed(2));
+    $('.products-calc-total input#final-price').val(finalPrice);
+  } else {
+    $('.products-calc-total input#final-price').val('$0.00');
+  }
+}); // sortable
 
 $('#sortable-list').sortable({
   update: function update(event, ui) {
