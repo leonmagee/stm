@@ -40,7 +40,8 @@
             // }
         }
         @include product_style;
-        background-color: $brand-primary;
+        //background-color: $brand-primary;
+        background: lighten($product-blue, 8%);
         color: #fff;
         .products-header__left {
             display: flex;
