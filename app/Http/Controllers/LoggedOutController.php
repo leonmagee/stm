@@ -81,6 +81,8 @@ class LoggedOutController extends Controller
         $message_block_array = [
             'http',
             '.com',
+            'www',
+            'dotcom',
         ];
         foreach ($message_block_array as $block) {
             if (strpos($request->message, $block) !== false) {
