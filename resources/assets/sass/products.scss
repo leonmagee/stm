@@ -82,9 +82,14 @@
                 margin: 0 0.5em;
                 border: none;
                 color: #363636;
+                //background-color: lighten($primary, 15%);
+                background: darken($product-blue, 3%);
+                text-shadow: 1px 1px rgba(0, 0, 0, 0.05);
+                color: #fff;
                 &.is-selected {
-                    background-color: lighten($primary, 15%);
+                    //background-color: lighten($primary, 15%);
                     background-color: darken($star-gold, 2%);
+                    color: #111;
                     //color: #fff;
                     //text-shadow: 1px 1px rgba(0, 0, 0, 0.05);
                     text-shadow: 1px 1px rgba(255, 255, 255, 0.05);

@@ -22007,12 +22007,15 @@ body.stm-body.about .middle-content-wrap .about-page .video-wrap .video-wrap-inn
   margin: 0 0.5em;
   border: none;
   color: #363636;
+  background: #006da7;
+  text-shadow: 1px 1px rgba(0, 0, 0, 0.05);
+  color: #fff;
 }
 
 .products-header-wrap .products-header .products-header__right button.is-selected,
 .products-header-wrap .products-header .products-header__right a.is-selected {
-  background-color: #33cbdf;
   background-color: #f5c34f;
+  color: #111;
   text-shadow: 1px 1px rgba(255, 255, 255, 0.05);
 }
 
