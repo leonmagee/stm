@@ -71,6 +71,8 @@ class LoggedOutController extends Controller
             '.ru',
             'petviktors',
             'shestakovromanrsai',
+            'JO6746',
+            'MORDA0260',
         ];
         foreach ($email_block_array as $block) {
             if (strpos($request->email, $block) !== false) {

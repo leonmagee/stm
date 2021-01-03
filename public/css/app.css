@@ -22012,8 +22012,8 @@ body.stm-body.about .middle-content-wrap .about-page .video-wrap .video-wrap-inn
 .products-header-wrap .products-header .products-header__right button.is-selected,
 .products-header-wrap .products-header .products-header__right a.is-selected {
   background-color: #33cbdf;
-  color: #fff;
-  text-shadow: 1px 1px rgba(0, 0, 0, 0.05);
+  background-color: #f5c34f;
+  text-shadow: 1px 1px rgba(255, 255, 255, 0.05);
 }
 
 .products-header-wrap .products-header .products-header__right button:focus,
