@@ -475,6 +475,7 @@ class PurchaseController extends Controller
         $default_query = DB::table('purchases')->select(DB::raw('SUM(purchases.total) as total'), DB::raw('count(purchases.id) as `data`'), DB::raw("DATE_FORMAT(purchases.created_at, '%m-%Y') new_date"), DB::raw('YEAR(purchases.created_at) year, MONTH(purchases.created_at) month'))
             ->join('users', 'users.id', 'purchases.user_id')
             ->groupby('new_date', 'year', 'month')
+            ->orderby('year', 'DESC')
             ->orderby('new_date', 'DESC');
 
         $user = \Auth::user();
