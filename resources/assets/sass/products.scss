@@ -458,7 +458,8 @@
                 justify-content: center;
                 &.product__footer--right {
                     //background-color: $product-dark;
-                    background-color: darken($product-blue, 13%);
+                    //background-color: darken($product-blue, 13%);
+                    background: darken($product-blue, 3%);
                     color: #fff;
                     text-shadow: 1px 1px #333;
                     &.product__footer--right-favorite {
@@ -470,7 +471,7 @@
                         }
                     }
                     &.product__footer--right-cart {
-                        border-left: 1px solid #333;
+                        border-left: 1px solid darken($product-blue, 13%);
                     }
                 }
                 &:hover {

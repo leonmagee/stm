@@ -22411,7 +22411,7 @@ body.stm-body.about .middle-content-wrap .about-page .video-wrap .video-wrap-inn
 }
 
 .products-outer .product .product__footer a.product__footer--right {
-  background-color: #004c74;
+  background: #006da7;
   color: #fff;
   text-shadow: 1px 1px #333;
 }
@@ -22425,7 +22425,7 @@ body.stm-body.about .middle-content-wrap .about-page .video-wrap .video-wrap-inn
 }
 
 .products-outer .product .product__footer a.product__footer--right.product__footer--right-cart {
-  border-left: 1px solid #333;
+  border-left: 1px solid #004c74;
 }
 
 .products-outer .product .product__footer a:hover {
