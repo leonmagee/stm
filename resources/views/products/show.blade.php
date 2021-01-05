@@ -71,10 +71,10 @@
       <div id="rateYoDisplay" class="rate_yo_no_hover" rating="{{ (floor($product->rating * 2) / 2) }}">
       </div>
     </div>
-    <a id="review-scroll" href="#product-tabs">Leave a Review</a>
+    <div class="product-details__rating--link">
+      <a id="review-scroll" href="#product-tabs">Leave a Review</a>
+    </div>
   </div>
-  {{-- <div class="product-details__rating-link">
-  </div> --}}
   <div class="product-details__flex-space-wrap">
     @if($product->discount)
     <div class="product-details__cost">${{ $product->cost }}<span

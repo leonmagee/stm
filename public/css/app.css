@@ -22565,7 +22565,11 @@ body.stm-body.about .middle-content-wrap .about-page .video-wrap .video-wrap-inn
   align-items: center;
 }
 
-.product-single .product-details .product-details__rating a {
+.product-single .product-details .product-details__rating .product-details__rating--link {
+  padding-top: 0.1em;
+}
+
+.product-single .product-details .product-details__rating .product-details__rating--link a {
   background-color: #f6c659;
   text-shadow: 1px 1px rgba(0, 0, 0, 0.05);
   padding: 0.1em 0.5em 0.15em;
