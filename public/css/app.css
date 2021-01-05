@@ -22563,6 +22563,14 @@ body.stm-body.about .middle-content-wrap .about-page .video-wrap .video-wrap-inn
   margin-bottom: 0.6rem;
 }
 
+.product-single .product-details .product-details__rating-link {
+  margin-bottom: -0.2em;
+}
+
+.product-single .product-details .product-details__rating-link a {
+  color: #209cee;
+}
+
 .product-single .product-details .product-details__cost {
   color: #05d19b;
   font-size: 2em;

@@ -124454,6 +124454,15 @@ $('#product-tabs li').click(function () {
   $(".tabs-content .tab-item#".concat(tab)).addClass('active');
 });
 /**
+ * Review Link Scroll
+ * @todo this only works if the review tab is number 4
+ */
+
+$('#review-scroll').click(function () {
+  $('.tabs-content .tab-item.active').removeClass('active');
+  $(".tabs-content .tab-item#tab-4").addClass('active');
+});
+/**
  * Credit payment choices
  */
 

@@ -72,6 +72,9 @@
       </div>
     </div>
   </div>
+  <div class="product-details__rating-link">
+    <a id="review-scroll" href="#product-tabs">Leave a Review</a>
+  </div>
   <div class="product-details__flex-space-wrap">
     @if($product->discount)
     <div class="product-details__cost">${{ $product->cost }}<span
