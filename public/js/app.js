@@ -124459,6 +124459,8 @@ $('#product-tabs li').click(function () {
  */
 
 $('#review-scroll').click(function () {
+  $('#product-tabs li.is-active').removeClass('is-active');
+  $('#product-tabs li[tab="tab-4"]').addClass('is-active');
   $('.tabs-content .tab-item.active').removeClass('active');
   $(".tabs-content .tab-item#tab-4").addClass('active');
 });
