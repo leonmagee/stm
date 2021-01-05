@@ -22555,14 +22555,16 @@ body.stm-body.about .middle-content-wrap .about-page .video-wrap .video-wrap-inn
 }
 
 .product-single .product-details .product-details__compare a {
-  color: #05b385;
+  color: #0e72b4;
 }
 
 .product-single .product-details .product-details__rating {
   margin-left: -0.2rem;
-  margin-bottom: 0.6rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
   display: flex;
   align-items: center;
+  position: relative;
 }
 
 .product-single .product-details .product-details__rating .product-details__rating--link {
@@ -22580,6 +22582,12 @@ body.stm-body.about .middle-content-wrap .about-page .video-wrap .video-wrap-inn
 }
 
 .product-single .product-details .product-details__rating-modal {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 100000000000;
+  width: 55%;
   padding: 1em;
   border: 1px solid #ddd;
   min-height: 100px;
@@ -22613,15 +22621,15 @@ body.stm-body.about .middle-content-wrap .about-page .video-wrap .video-wrap-inn
 .product-single .product-details .product-details__rating-modal .percentage-bar {
   display: flex;
   align-items: center;
-  padding: 0.2em 0;
+  padding: 0.3em 0;
 }
 
 .product-single .product-details .product-details__rating-modal .percentage-bar .percentage-bar__stars {
-  flex: 0 1 10%;
+  flex: 0 1 18%;
 }
 
 .product-single .product-details .product-details__rating-modal .percentage-bar .percentage-bar__block {
-  background: #ddd;
+  background: #ccc;
   height: 2em;
   flex: 1;
 }
@@ -22632,7 +22640,7 @@ body.stm-body.about .middle-content-wrap .about-page .video-wrap .video-wrap-inn
 }
 
 .product-single .product-details .product-details__rating-modal .percentage-bar .percentage-bar__percentage {
-  flex: 0 1 8%;
+  flex: 0 1 11%;
   text-align: right;
 }
 

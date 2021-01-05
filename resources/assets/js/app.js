@@ -602,6 +602,20 @@ $('.review-scroll').click(function() {
 });
 
 /**
+ * Review Modal
+ */
+
+$('#rate-yo-wrap').hover(
+    function() {
+        console.log('hover works');
+        $('.product-details__rating-modal').show();
+    },
+    function() {
+        $('.product-details__rating-modal').hide();
+    }
+);
+
+/**
  * Credit payment choices
  */
 $('.form-wrap .credit-redeem-choices .item').click(function() {

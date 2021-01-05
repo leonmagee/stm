@@ -61,40 +61,63 @@
 </div>
 <div class="product-single__right product-details">
   <div class="product-details__title">{{ $product->name }}</div>
-  @if($related_products = $product->get_related())
-  <div class="product-details__compare"><a class="saved-favorites__item--link-compare modal-delete-open"
-      item_id={{ $product->id }}>Compare with Similar
-      Items <i class="fas fa-eye"></i></a></div>
-  @endif
   <div class="product-details__rating">
-    <div>
+    <div id="rate-yo-wrap">
       <div id="rateYoDisplay" class="rate_yo_no_hover" rating="{{ (floor($product->rating * 2) / 2) }}">
+        <div class="product-details__rating-modal">
+          <div class="product-details__rating-modal--header">
+            Total Ratings: {{ $ratings_total }}
+          </div>
+          @foreach($ratings_array as $item)
+          <div class="product-details__rating-item">
+            <?php $percent_width = \App\Helpers::get_percent($item[1], $ratings_total); ?>
+            <div class="percentage-bar">
+              <div class="percentage-bar__stars">{{ $item[0] }} Stars</div>
+              <div class="percentage-bar__block">
+                <div style="width: {{ $percent_width }}%" class="percentage-bar__block--inner"></div>
+              </div>
+              <div class="percentage-bar__percentage">{{ intval($percent_width) }}%</div>
+            </div>
+          </div>
+          @endforeach
+          <div class="product-details__rating-modal--footer">
+            <a class="review-scroll" href="#product-tabs">See All Reviews</a>
+          </div>
+        </div>
       </div>
+      @if($ratings_total)
+      <div class="product-details__rating-modal">
+        <div class="product-details__rating-modal--header">
+          Total Ratings: {{ $ratings_total }}
+        </div>
+        @foreach($ratings_array as $item)
+        <div class="product-details__rating-item">
+          <?php $percent_width = \App\Helpers::get_percent($item[1], $ratings_total); ?>
+          <div class="percentage-bar">
+            <div class="percentage-bar__stars">{{ $item[0] }} Stars</div>
+            <div class="percentage-bar__block">
+              <div style="width: {{ $percent_width }}%" class="percentage-bar__block--inner"></div>
+            </div>
+            <div class="percentage-bar__percentage">{{ intval($percent_width) }}%</div>
+          </div>
+        </div>
+        @endforeach
+        <div class="product-details__rating-modal--footer">
+          <a class="review-scroll" href="#product-tabs">See All Reviews</a>
+        </div>
+      </div>
+      @endif
     </div>
     <div class="product-details__rating--link">
       <a class="review-scroll" href="#product-tabs">Leave a Review</a>
     </div>
   </div>
-  <div class="product-details__rating-modal">
-    <div class="product-details__rating-modal--header">
-      Total Ratings: {{ $ratings_total }}
-    </div>
-    @foreach($ratings_array as $item)
-    <div class="product-details__rating-item">
-      <?php $percent_width = \App\Helpers::get_percent($item[1], $ratings_total); ?>
-      <div class="percentage-bar">
-        <div class="percentage-bar__stars">{{ $item[0] }} Stars</div>
-        <div class="percentage-bar__block">
-          <div style="width: {{ $percent_width }}%" class="percentage-bar__block--inner"></div>
-        </div>
-        <div class="percentage-bar__percentage">{{ $percent_width }}%</div>
-      </div>
-    </div>
-    @endforeach
-    <div class="product-details__rating-modal--footer">
-      <a class="review-scroll" href="#product-tabs">See All Reviews</a>
-    </div>
-  </div>
+  @if($related_products = $product->get_related())
+  <div class="product-details__compare"><a class="saved-favorites__item--link-compare modal-delete-open"
+      item_id={{ $product->id }}>Compare with Similar
+      Items</a></div>
+  @endif
+
   <div class="product-details__flex-space-wrap">
     @if($product->discount)
     <div class="product-details__cost">${{ $product->cost }}<span

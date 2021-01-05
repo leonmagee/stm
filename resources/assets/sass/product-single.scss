@@ -77,19 +77,6 @@
             flex: 0 1 60%;
         }
     }
-
-    // .product-single__top-row {
-    //     @include product_bg_single;
-    //     display: flex;
-    //     align-items: center;
-    //     justify-content: space-between;
-    //     padding: 0.8em 0.5em;
-    //     margin-bottom: 1em;
-    //     > div {
-    //         margin-right: 1em;
-    //     }
-    // }
-
     .product-details {
         padding: 0 2em;
         .product-details__title {
@@ -103,14 +90,16 @@
         .product-details__compare {
             padding-bottom: 0.3em;
             a {
-                color: darken($green, 8%);
+                color: darken($info, 15%);
             }
         }
         .product-details__rating {
             margin-left: -0.2rem;
-            margin-bottom: 0.6rem;
+            margin-top: 0.5rem;
+            margin-bottom: 0.5rem;
             display: flex;
             align-items: center;
+            position: relative;
             .product-details__rating--link {
                 padding-top: 0.1em;
                 a {
@@ -125,11 +114,16 @@
             }
         }
         .product-details__rating-modal {
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 100000000000;
+            width: 55%;
             padding: 1em;
             border: 1px solid #ddd;
             min-height: 100px;
             background-color: #fff;
-            //color: darken($info, 5%);
             color: #111;
             font-weight: 600;
             .product-details__rating-modal--header {
@@ -153,12 +147,12 @@
             .percentage-bar {
                 display: flex;
                 align-items: center;
-                padding: 0.2em 0;
+                padding: 0.3em 0;
                 .percentage-bar__stars {
-                    flex: 0 1 10%;
+                    flex: 0 1 18%;
                 }
                 .percentage-bar__block {
-                    background: #ddd;
+                    background: #ccc;
                     height: 2em;
                     flex: 1;
                     .percentage-bar__block--inner {
@@ -167,7 +161,7 @@
                     }
                 }
                 .percentage-bar__percentage {
-                    flex: 0 1 8%;
+                    flex: 0 1 11%;
                     text-align: right;
                 }
             }

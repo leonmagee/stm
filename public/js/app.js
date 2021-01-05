@@ -124465,6 +124465,16 @@ $('.review-scroll').click(function () {
   $(".tabs-content .tab-item#tab-4").addClass('active');
 });
 /**
+ * Review Modal
+ */
+
+$('#rate-yo-wrap').hover(function () {
+  console.log('hover works');
+  $('.product-details__rating-modal').show();
+}, function () {
+  $('.product-details__rating-modal').hide();
+});
+/**
  * Credit payment choices
  */
 
