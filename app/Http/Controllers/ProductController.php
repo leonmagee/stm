@@ -469,6 +469,33 @@ class ProductController extends Controller
 
         // move to model
         $ratings = ProductRating::where('product_id', $product->id)->get();
+        //dd($ratings);
+        $ratings_array = [
+            [5, 0],
+            [4, 0],
+            [3, 0],
+            [2, 0],
+            [1, 0],
+        ];
+        $ratings_total = $ratings->count();
+        foreach ($ratings as $rating) {
+            if ($rating->stars == 5) {
+                $ratings_array[0][1] = $ratings_array[0][1] + 1;
+            }
+            if ($rating->stars == 4) {
+                $ratings_array[1][1] = $ratings_array[1][1] + 1;
+            }
+            if ($rating->stars == 3) {
+                $ratings_array[2][1] = $ratings_array[2][1] + 1;
+            }
+            if ($rating->stars == 2) {
+                $ratings_array[3][1] = $ratings_array[3][1] + 1;
+            }
+            if ($rating->stars == 1) {
+                $ratings_array[4][1] = $ratings_array[4][1] + 1;
+            }
+        }
+        //dd($ratings_array);
         $stars_total = 0;
         foreach ($ratings as $rating) {
             $stars_total += $rating->stars;
@@ -498,7 +525,9 @@ class ProductController extends Controller
             'products6',
             'num_images',
             'num_tab_images',
-            'num_tab_videos'
+            'num_tab_videos',
+            'ratings_array',
+            'ratings_total'
         ));
     }
 

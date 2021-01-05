@@ -594,7 +594,7 @@ $('#product-tabs li').click(function() {
  * Review Link Scroll
  * @todo this only works if the review tab is number 4
  */
-$('#review-scroll').click(function() {
+$('.review-scroll').click(function() {
     $('#product-tabs li.is-active').removeClass('is-active');
     $('#product-tabs li[tab="tab-4"]').addClass('is-active');
     $('.tabs-content .tab-item.active').removeClass('active');

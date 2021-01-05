@@ -72,7 +72,27 @@
       </div>
     </div>
     <div class="product-details__rating--link">
-      <a id="review-scroll" href="#product-tabs">Leave a Review</a>
+      <a class="review-scroll" href="#product-tabs">Leave a Review</a>
+    </div>
+  </div>
+  <div class="product-details__rating-modal">
+    <div class="product-details__rating-modal--header">
+      Total Ratings: {{ $ratings_total }}
+    </div>
+    @foreach($ratings_array as $item)
+    <div class="product-details__rating-item">
+      <?php $percent_width = \App\Helpers::get_percent($item[1], $ratings_total); ?>
+      <div class="percentage-bar">
+        <div class="percentage-bar__stars">{{ $item[0] }} Stars</div>
+        <div class="percentage-bar__block">
+          <div style="width: {{ $percent_width }}%" class="percentage-bar__block--inner"></div>
+        </div>
+        <div class="percentage-bar__percentage">{{ $percent_width }}%</div>
+      </div>
+    </div>
+    @endforeach
+    <div class="product-details__rating-modal--footer">
+      <a class="review-scroll" href="#product-tabs">See All Reviews</a>
     </div>
   </div>
   <div class="product-details__flex-space-wrap">

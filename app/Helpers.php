@@ -7,6 +7,16 @@ use App\Settings;
 class Helpers
 {
     /**
+     * Return Percentage
+     */
+    public static function get_percent($number, $total)
+    {
+        if ($number) {
+            return ($number / $total) * 100;
+        }
+        return 0;
+    }
+    /**
      * Invoice Status
      */
     public static function status($id)

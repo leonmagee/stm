@@ -22579,6 +22579,63 @@ body.stm-body.about .middle-content-wrap .about-page .video-wrap .video-wrap-inn
   margin-left: 0.5em;
 }
 
+.product-single .product-details .product-details__rating-modal {
+  padding: 1em;
+  border: 1px solid #ddd;
+  min-height: 100px;
+  background-color: #fff;
+  color: #111;
+  font-weight: 600;
+}
+
+.product-single .product-details .product-details__rating-modal .product-details__rating-modal--header {
+  text-align: center;
+  font-size: 1.1em;
+  text-transform: uppercase;
+  padding-bottom: 0.2em;
+}
+
+.product-single .product-details .product-details__rating-modal .product-details__rating-modal--footer {
+  text-align: center;
+  font-size: 1.1em;
+  text-transform: uppercase;
+  padding-top: 0.2em;
+}
+
+.product-single .product-details .product-details__rating-modal .product-details__rating-modal--footer a {
+  color: #118fe4;
+}
+
+.product-single .product-details .product-details__rating-modal .product-details__rating-modal--footer a:hover {
+  text-decoration: underline;
+}
+
+.product-single .product-details .product-details__rating-modal .percentage-bar {
+  display: flex;
+  align-items: center;
+  padding: 0.2em 0;
+}
+
+.product-single .product-details .product-details__rating-modal .percentage-bar .percentage-bar__stars {
+  flex: 0 1 10%;
+}
+
+.product-single .product-details .product-details__rating-modal .percentage-bar .percentage-bar__block {
+  background: #ddd;
+  height: 2em;
+  flex: 1;
+}
+
+.product-single .product-details .product-details__rating-modal .percentage-bar .percentage-bar__block .percentage-bar__block--inner {
+  background-color: #f6c659;
+  height: 100%;
+}
+
+.product-single .product-details .product-details__rating-modal .percentage-bar .percentage-bar__percentage {
+  flex: 0 1 8%;
+  text-align: right;
+}
+
 .product-single .product-details .product-details__cost {
   color: #05d19b;
   font-size: 2em;

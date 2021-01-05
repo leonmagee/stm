@@ -124,6 +124,54 @@
                 }
             }
         }
+        .product-details__rating-modal {
+            padding: 1em;
+            border: 1px solid #ddd;
+            min-height: 100px;
+            background-color: #fff;
+            //color: darken($info, 5%);
+            color: #111;
+            font-weight: 600;
+            .product-details__rating-modal--header {
+                text-align: center;
+                font-size: 1.1em;
+                text-transform: uppercase;
+                padding-bottom: 0.2em;
+            }
+            .product-details__rating-modal--footer {
+                text-align: center;
+                font-size: 1.1em;
+                text-transform: uppercase;
+                padding-top: 0.2em;
+                a {
+                    color: darken($info, 5%);
+                    &:hover {
+                        text-decoration: underline;
+                    }
+                }
+            }
+            .percentage-bar {
+                display: flex;
+                align-items: center;
+                padding: 0.2em 0;
+                .percentage-bar__stars {
+                    flex: 0 1 10%;
+                }
+                .percentage-bar__block {
+                    background: #ddd;
+                    height: 2em;
+                    flex: 1;
+                    .percentage-bar__block--inner {
+                        background-color: $star-gold;
+                        height: 100%;
+                    }
+                }
+                .percentage-bar__percentage {
+                    flex: 0 1 8%;
+                    text-align: right;
+                }
+            }
+        }
         .product-details__cost {
             color: darken($green, 2%);
             font-size: 2em;
