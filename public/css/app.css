@@ -22592,8 +22592,9 @@ body.stm-body.about .middle-content-wrap .about-page .video-wrap .video-wrap-inn
   border: 1px solid #ddd;
   min-height: 100px;
   background-color: #fff;
-  color: #111;
+  color: #222;
   font-weight: 600;
+  font-size: 0.9em;
 }
 
 .product-single .product-details .product-details__rating-modal .product-details__rating-modal--header {
