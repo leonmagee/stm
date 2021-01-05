@@ -175,16 +175,19 @@
             display: flex;
             align-items: center;
             .product-details__cost--orig {
+                padding-top: 0.2em;
                 font-size: 0.5em;
-                margin-left: 0.4em;
+                margin-left: 0.8em;
+                //margin-right: 0.1em;
                 font-weight: normal;
-                color: #c3c3c3;
                 display: flex;
                 align-items: center;
+                text-decoration: line-through;
+                color: lighten($red, 11%);
                 span {
+                    color: #c3c3c3;
+                    color: #bbb;
                     font-size: 1.1em;
-                    text-decoration: line-through;
-                    margin-right: 0.3em;
                 }
             }
         }
@@ -205,13 +208,14 @@
         // }
 
         .product-details__discount {
-            display: flex;
-            align-items: center;
-            margin-left: 0.4em;
+            // display: flex;
+            // align-items: center;
+            // margin-left: 0.4em;
             .product-details__discount--inner {
-                background: darken($red, 2%);
-                color: #fff;
-                text-shadow: 1px 1px rgba(0, 0, 0, 0.1);
+                //background: darken($red, 2%);
+                //color: #fff;
+                color: $red;
+                //text-shadow: 1px 1px rgba(0, 0, 0, 0.1);
                 padding: 0.17em 0.7em 0.18em;
                 border-radius: 4px;
                 display: flex;
@@ -220,6 +224,7 @@
                 font-weight: 600;
                 text-transform: uppercase;
                 i {
+                    display: none;
                     margin-right: 0.5em;
                     padding-top: 0.2em;
                 }

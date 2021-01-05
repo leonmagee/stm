@@ -85,7 +85,6 @@
           </div>
         </div>
       </div>
-      @if($ratings_total)
       <div class="product-details__rating-modal">
         <div class="product-details__rating-modal--header">
           Total Ratings: {{ $ratings_total }}
@@ -103,10 +102,11 @@
         </div>
         @endforeach
         <div class="product-details__rating-modal--footer">
+          @if($ratings_total)
           <a class="review-scroll" href="#product-tabs">See All Reviews</a>
+          @endif
         </div>
       </div>
-      @endif
     </div>
     <div class="product-details__rating--link">
       <a class="review-scroll" href="#product-tabs">Leave a Review</a>
