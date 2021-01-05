@@ -22589,7 +22589,8 @@ body.stm-body.about .middle-content-wrap .about-page .video-wrap .video-wrap-inn
   z-index: 100000000000;
   width: 55%;
   padding: 1em;
-  border: 1px solid #ddd;
+  border: 1px solid #e2e2e2;
+  border-radius: 4px;
   min-height: 100px;
   background-color: #fff;
   color: #222;
