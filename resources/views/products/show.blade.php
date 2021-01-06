@@ -111,9 +111,11 @@
     {{-- <div class="product-details__rating--link">
       <a class="review-scroll" href="#product-tabs">Leave a Review</a>
     </div> --}}
+    <div class="product-details__compare"><a class="review-scroll" href="#product-tabs"><i class="fas fa-pen"></i>Leave
+        a
+        Review</a></div>
   </div>
-  <div class="product-details__compare"><a class="review-scroll" href="#product-tabs"><i class="fas fa-pen"></i>Leave a
-      Review</a></div>
+
   @if($related_products = $product->get_related())
   <div class="product-details__compare"><a class="saved-favorites__item--link-compare modal-delete-open"
       item_id={{ $product->id }}><i class="fas fa-eye"></i>Compare with Similar
