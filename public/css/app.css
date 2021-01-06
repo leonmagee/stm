@@ -22428,6 +22428,10 @@ body.stm-body.about .middle-content-wrap .about-page .video-wrap .video-wrap-inn
   border-left: 1px solid #00527e;
 }
 
+.products-outer .product .product__footer a.product__footer--right.product__footer--right-cart.is-in-cart {
+  color: #f6c659;
+}
+
 .products-outer .product .product__footer a:hover {
   opacity: 0.95;
 }

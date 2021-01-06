@@ -127025,6 +127025,9 @@ var Product = /*#__PURE__*/function (_Component) {
     value: function addToCart(id) {
       var _this3 = this;
 
+      this.setState({
+        ownUpdate: true
+      });
       axios({
         method: 'post',
         url: '/add-to-cart-axios',
@@ -127033,6 +127036,10 @@ var Product = /*#__PURE__*/function (_Component) {
         }
       }).then(function (res) {
         _this3.animateOn();
+
+        _this3.setState({
+          isInCart: true
+        });
 
         $('#cart-number-of-items').html(res.data);
       })["catch"](function (err) {
@@ -127057,7 +127064,8 @@ var Product = /*#__PURE__*/function (_Component) {
       var _this$state = this.state,
           animate = _this$state.animate,
           animateHeart = _this$state.animateHeart,
-          favorite = _this$state.favorite; // const { animate } = this.state;
+          favorite = _this$state.favorite,
+          isInCart = _this$state.isInCart; // const { animate } = this.state;
       // console.log(id, favorite);
 
       var animatePane = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null);
@@ -127081,10 +127089,11 @@ var Product = /*#__PURE__*/function (_Component) {
       }
 
       var addToCartButton = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null);
+      var inCartClass = isInCart ? 'is-in-cart' : '';
 
       if (stock) {
         addToCartButton = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-          className: "product__footer--right product__footer--right-cart",
+          className: "product__footer--right product__footer--right-cart ".concat(inCartClass),
           "data-tooltip": "Add To Cart",
           onClick: function onClick() {
             return _this4.addToCart(id);
@@ -127094,7 +127103,7 @@ var Product = /*#__PURE__*/function (_Component) {
         }));
       } else {
         addToCartButton = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-          className: "product__footer--right product__footer--right-cart",
+          className: "product__footer--right product__footer--right-cart ".concat(inCartClass),
           "data-tooltip": "Out of Stock"
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
           className: "fas fa-cart-plus"
@@ -127138,9 +127147,11 @@ var Product = /*#__PURE__*/function (_Component) {
   }], [{
     key: "getDerivedStateFromProps",
     value: function getDerivedStateFromProps(nextProps, prevState) {
-      if (nextProps.favorite !== prevState.favorite && prevState.ownUpdate === false) {
+      if ( // nextProps.in_cart !== prevState.in_cart &&
+      prevState.ownUpdate === false) {
         return {
-          favorite: nextProps.favorite
+          favorite: nextProps.favorite,
+          isInCart: nextProps.in_cart
         };
       }
 
@@ -127227,7 +127238,8 @@ var ProductList = /*#__PURE__*/function (_Component) {
             rating: product.rating,
             user_id: user_id,
             stock: product.stock,
-            favorite: product.favorite
+            favorite: product.favorite,
+            in_cart: product.is_in_cart
           })
         );
       } // } else {

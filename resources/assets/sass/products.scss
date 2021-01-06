@@ -472,6 +472,9 @@
                     }
                     &.product__footer--right-cart {
                         border-left: 1px solid darken($product-blue, 11%);
+                        &.is-in-cart {
+                            color: $star-gold;
+                        }
                     }
                 }
                 &:hover {

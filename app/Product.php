@@ -9,6 +9,16 @@ class Product extends Model
         return $this->hasMany(ProductAttribute::class);
     }
 
+    public function in_cart()
+    {
+        $user_id = \Auth::user()->id;
+        $is_in_cart = CartProduct::where(['user_id' => $user_id, 'product_id' => $this->id])->first();
+        if ($is_in_cart) {
+            return true;
+        }
+        return false;
+    }
+
     /**
      * This is necessary because 'attributes' functions differently on $this...
      */

@@ -57,6 +57,8 @@ class ProductController extends Controller
         }
 
         foreach ($products as $product) {
+            $product->is_in_cart = $product->in_cart();
+
             if ($image_url = $product->img_url_1) {
                 $match = null;
                 preg_match('(\/STM\/.*)', $image_url, $match);
@@ -125,6 +127,8 @@ class ProductController extends Controller
 
         foreach ($products as $product) {
             $product->img_url_1 = $product->get_cloudinary_thumbnail(600, 600);
+
+            $product->is_in_cart = $product->in_cart();
 
             $orig_cost = number_format($product->cost, 2);
             if ($product->discount) {

@@ -22,6 +22,7 @@ export default class ProductList extends Component {
                     user_id={user_id}
                     stock={product.stock}
                     favorite={product.favorite}
+                    in_cart={product.is_in_cart}
                 />
             )
             // } else {

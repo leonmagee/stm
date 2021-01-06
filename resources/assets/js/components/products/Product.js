@@ -17,11 +17,12 @@ export default class Product extends Component {
 
     static getDerivedStateFromProps(nextProps, prevState) {
         if (
-            nextProps.favorite !== prevState.favorite &&
+            // nextProps.in_cart !== prevState.in_cart &&
             prevState.ownUpdate === false
         ) {
             return {
                 favorite: nextProps.favorite,
+                isInCart: nextProps.in_cart,
             };
         }
         return null;
@@ -94,6 +95,9 @@ export default class Product extends Component {
     }
 
     addToCart(id) {
+        this.setState({
+            ownUpdate: true,
+        });
         axios({
             method: 'post',
             url: '/add-to-cart-axios',
@@ -103,6 +107,9 @@ export default class Product extends Component {
         })
             .then(res => {
                 this.animateOn();
+                this.setState({
+                    isInCart: true,
+                });
                 $('#cart-number-of-items').html(res.data);
             })
             .catch(err => {
@@ -124,7 +131,7 @@ export default class Product extends Component {
             // favorite,
         } = this.props;
 
-        const { animate, animateHeart, favorite } = this.state;
+        const { animate, animateHeart, favorite, isInCart } = this.state;
         // const { animate } = this.state;
         // console.log(id, favorite);
 
@@ -147,10 +154,11 @@ export default class Product extends Component {
         }
 
         let addToCartButton = <div />;
+        const inCartClass = isInCart ? 'is-in-cart' : '';
         if (stock) {
             addToCartButton = (
                 <a
-                    className="product__footer--right product__footer--right-cart"
+                    className={`product__footer--right product__footer--right-cart ${inCartClass}`}
                     data-tooltip="Add To Cart"
                     onClick={() => this.addToCart(id)}
                 >
@@ -160,7 +168,7 @@ export default class Product extends Component {
         } else {
             addToCartButton = (
                 <a
-                    className="product__footer--right product__footer--right-cart"
+                    className={`product__footer--right product__footer--right-cart ${inCartClass}`}
                     data-tooltip="Out of Stock"
                 >
                     <i className="fas fa-cart-plus" />
