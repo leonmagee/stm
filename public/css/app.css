@@ -22551,11 +22551,17 @@ body.stm-body.about .middle-content-wrap .about-page .video-wrap .video-wrap-inn
 }
 
 .product-single .product-details .product-details__compare {
-  padding-bottom: 0.3em;
+  padding-bottom: 0.2em;
 }
 
 .product-single .product-details .product-details__compare a {
   color: #0e72b4;
+}
+
+.product-single .product-details .product-details__compare a i {
+  margin-right: 0.4em;
+  margin-left: 0.3em;
+  font-size: 0.9em;
 }
 
 .product-single .product-details .product-details__rating {
@@ -22869,6 +22875,7 @@ body.stm-body.about .middle-content-wrap .about-page .video-wrap .video-wrap-inn
   border-radius: 4px;
   background-color: #fefefe;
   padding: 0.6em 0.8em;
+  padding: 0.4em 0.5em;
 }
 
 .product-single .product-details .product-details__cart .product-details__cart--inner {
