@@ -602,6 +602,10 @@ img.email-header-logo {
     padding: 0 7px;
 }
 
+.email-ad-wrap-outer a .email-ad-wrap .description p.ql-align-center {
+    text-align: center !important;
+}
+
 .email-ad-wrap-outer a .email-ad-wrap .description ul {
     list-style-type: none;
     padding: 0;
