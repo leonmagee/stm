@@ -224,7 +224,7 @@ class CartProductController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store item in cart.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
@@ -256,6 +256,28 @@ class CartProductController extends Controller
 
             return $cart_items;
         }
+    }
+
+    /**
+     * Remove item from cart.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function remove_axios(Request $request)
+    {
+        $user_id = \Auth::user()->id;
+        $product_id = $request->id;
+        $product = Product::find($product_id);
+        $cart_product = CartProduct::where([
+            'product_id' => $product_id,
+            'user_id' => $user_id,
+        ])->first();
+        $cart_product->delete();
+
+        $cart_items = Helpers::get_number_cart_items();
+
+        return $cart_items;
     }
 
     /**

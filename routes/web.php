@@ -38,6 +38,7 @@ Route::get('cart', 'CartProductController@index');
 Route::post('add-to-cart', 'CartProductController@store');
 Route::get('add-to-cart-sav-fav/{product_id}', 'CartProductController@store_sav_fav');
 Route::post('add-to-cart-axios', 'CartProductController@store_axios');
+Route::post('remove-from-cart-axios', 'CartProductController@remove_axios');
 Route::post('toggle-favorite', 'ProductFavoriteController@store');
 Route::get('remove-favorite/{product_id}', 'ProductFavoriteController@destroy');
 Route::post('update-cart-item/{item}', 'CartProductController@update');

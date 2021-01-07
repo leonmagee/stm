@@ -127028,23 +127028,44 @@ var Product = /*#__PURE__*/function (_Component) {
       this.setState({
         ownUpdate: true
       });
-      axios({
-        method: 'post',
-        url: '/add-to-cart-axios',
-        data: {
-          id: id
-        }
-      }).then(function (res) {
-        _this3.animateOn();
+      var isInCart = this.state.isInCart;
 
-        _this3.setState({
-          isInCart: true
+      if (isInCart) {
+        axios({
+          method: 'post',
+          url: '/remove-from-cart-axios',
+          data: {
+            id: id
+          }
+        }).then(function (res) {
+          // this.animateOn();
+          _this3.setState({
+            isInCart: false
+          });
+
+          $('#cart-number-of-items').html(res.data);
+        })["catch"](function (err) {
+          console.log('error', err);
         });
+      } else {
+        axios({
+          method: 'post',
+          url: '/add-to-cart-axios',
+          data: {
+            id: id
+          }
+        }).then(function (res) {
+          _this3.animateOn();
 
-        $('#cart-number-of-items').html(res.data);
-      })["catch"](function (err) {
-        console.log('error', err);
-      });
+          _this3.setState({
+            isInCart: true
+          });
+
+          $('#cart-number-of-items').html(res.data);
+        })["catch"](function (err) {
+          console.log('error', err);
+        });
+      }
     }
   }, {
     key: "render",
@@ -127090,11 +127111,12 @@ var Product = /*#__PURE__*/function (_Component) {
 
       var addToCartButton = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null);
       var inCartClass = isInCart ? 'is-in-cart' : '';
+      var cartTooltip = isInCart ? 'Item In Cart' : 'Add To Cart';
 
       if (stock) {
         addToCartButton = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
           className: "product__footer--right product__footer--right-cart ".concat(inCartClass),
-          "data-tooltip": "Add To Cart",
+          "data-tooltip": cartTooltip,
           onClick: function onClick() {
             return _this4.addToCart(id);
           }

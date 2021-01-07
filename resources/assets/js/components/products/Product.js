@@ -98,23 +98,44 @@ export default class Product extends Component {
         this.setState({
             ownUpdate: true,
         });
-        axios({
-            method: 'post',
-            url: '/add-to-cart-axios',
-            data: {
-                id,
-            },
-        })
-            .then(res => {
-                this.animateOn();
-                this.setState({
-                    isInCart: true,
-                });
-                $('#cart-number-of-items').html(res.data);
+        const { isInCart } = this.state;
+        if (isInCart) {
+            axios({
+                method: 'post',
+                url: '/remove-from-cart-axios',
+                data: {
+                    id,
+                },
             })
-            .catch(err => {
-                console.log('error', err);
-            });
+                .then(res => {
+                    // this.animateOn();
+                    this.setState({
+                        isInCart: false,
+                    });
+                    $('#cart-number-of-items').html(res.data);
+                })
+                .catch(err => {
+                    console.log('error', err);
+                });
+        } else {
+            axios({
+                method: 'post',
+                url: '/add-to-cart-axios',
+                data: {
+                    id,
+                },
+            })
+                .then(res => {
+                    this.animateOn();
+                    this.setState({
+                        isInCart: true,
+                    });
+                    $('#cart-number-of-items').html(res.data);
+                })
+                .catch(err => {
+                    console.log('error', err);
+                });
+        }
     }
 
     render() {
@@ -155,11 +176,12 @@ export default class Product extends Component {
 
         let addToCartButton = <div />;
         const inCartClass = isInCart ? 'is-in-cart' : '';
+        const cartTooltip = isInCart ? 'Item In Cart' : 'Add To Cart';
         if (stock) {
             addToCartButton = (
                 <a
                     className={`product__footer--right product__footer--right-cart ${inCartClass}`}
-                    data-tooltip="Add To Cart"
+                    data-tooltip={cartTooltip}
                     onClick={() => this.addToCart(id)}
                 >
                     <i className="fas fa-cart-plus" />
