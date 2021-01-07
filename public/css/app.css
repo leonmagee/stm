@@ -18068,12 +18068,19 @@ body.stm-body .stm-subtitle {
 
 .form-wrapper .form-wrapper-inner form .form-wrap .form-wrap-flex .email-blast-wrap-top {
   padding: 5px 0 15px;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .form-wrapper .form-wrapper-inner form .form-wrap .form-wrap-flex .email-blast-wrap-top label {
+  flex: 0 1 17%;
   font-size: 1.1em;
   font-weight: bold;
-  margin-right: 20px;
+  padding: 0.3em 0.4em;
+}
+
+.form-wrapper .form-wrapper-inner form .form-wrap .form-wrap-flex .email-blast-wrap-top label.radio {
+  margin-left: 0;
 }
 
 .form-wrapper .form-wrapper-inner form .form-wrap .form-wrap-flex .email-blast-wrap-top label input {
