@@ -126697,15 +126697,17 @@ var Heart = /*#__PURE__*/function (_Component) {
       var _this$props = this.props,
           fav = _this$props.fav,
           toggle = _this$props.toggle;
+      var heartTooltip = 'Add To Wish List';
       var favClass = '';
 
       if (fav) {
         favClass = 'fav';
+        heartTooltip = 'Remove From Wish List';
       }
 
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
         className: "product__footer--right product__footer--right-favorite ".concat(favClass),
-        "data-tooltip": "Add To Wish List",
+        "data-tooltip": heartTooltip,
         onClick: toggle
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
         className: "fas fa-heart"
