@@ -421,6 +421,7 @@ Route::group(['middleware' => 'App\Http\Middleware\LockOutUsersManagers'], funct
 });
 
 Route::get('invoices/{invoice}', 'InvoiceController@show');
+Route::get('invoice-single/{invoice}', 'InvoiceController@show_single');
 Route::get('your-invoices', 'InvoiceController@your_invoices');
 Route::post('invoice/finalize_user/{invoice}', 'InvoiceController@finalize_user');
 

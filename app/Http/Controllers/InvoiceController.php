@@ -129,7 +129,7 @@ class InvoiceController extends Controller
         } elseif ($site_id = $logged_in->isMasterAgent()) {
             $invoice_user = $invoice->user;
             $role_id = Helpers::get_role_id($site_id);
-            if ($role_id != $invoice_user->role_id) {
+            if (($role_id != $invoice_user->role_id) && ($logged_in->id != $invoice->user_id)) {
                 return redirect('/');
             }
             $users = [];
@@ -139,6 +139,51 @@ class InvoiceController extends Controller
                 return redirect('/');
             } else {
                 return view('invoices.show-user', compact('invoice', 'total', 'subtotal', 'discount'));
+            }
+        }
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Invoice  $invoice
+     * @return \Illuminate\Http\Response
+     */
+    public function show_single(Invoice $invoice)
+    {
+        $total = 0;
+        $discount = 0;
+        $subtotal = 0;
+        foreach ($invoice->items as $item) {
+            if ($item->item == 3) {
+                $total -= ($item->cost * $item->quantity);
+                $discount += ($item->cost * $item->quantity);
+            } else {
+                $total += ($item->cost * $item->quantity);
+                $subtotal += ($item->cost * $item->quantity);
+            }
+        }
+
+        $logged_in = \Auth::user();
+        $user = $invoice->user;
+        if ($logged_in->isAdminManagerEmployee()) {
+
+            $users = User::orderBy('company')->get();
+
+            return view('invoices.invoice-receipt', compact('invoice', 'total', 'subtotal', 'discount', 'user'));
+
+        } elseif ($site_id = $logged_in->isMasterAgent()) {
+            $role_id = Helpers::get_role_id($site_id);
+            if (($role_id != $user->role_id) && ($logged_in->id != $invoice->user_id)) {
+                return redirect('/');
+            }
+            $users = [];
+            return view('invoices.invoice-receipt', compact('invoice', 'total', 'subtotal', 'discount', 'user'));
+        } else {
+            if ($logged_in->id != $invoice->user_id) {
+                return redirect('/');
+            } else {
+                return view('invoices.invoice-receipt', compact('invoice', 'total', 'subtotal', 'discount', 'user'));
             }
         }
     }
