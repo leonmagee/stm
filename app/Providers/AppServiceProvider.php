@@ -347,7 +347,7 @@ class AppServiceProvider extends ServiceProvider
 
             $products_sub = [
                 [
-                    'name' => 'Products List',
+                    'name' => 'Product Inventory',
                     'link' => '/products-list',
                 ],
                 [
@@ -537,7 +537,7 @@ class AppServiceProvider extends ServiceProvider
                         'default' => '/all-users',
                     ],
                     [
-                        'name' => 'Products List',
+                        'name' => 'Product Inventory',
                         'link' => false,
                         'sub' => $products_sub,
                         'icon' => 'flaticon-wifi',
