@@ -27,7 +27,7 @@
   </div>
 
   <div class="invoice-wrap__middle">
-    <table class="table custom small-font">
+    <table class="table custom">
       <tr class="header-row">
         <th class="name-column">Product Name</th>
         <th>Color</th>
