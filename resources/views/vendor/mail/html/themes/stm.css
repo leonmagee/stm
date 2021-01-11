@@ -609,10 +609,17 @@ img.email-header-logo {
 .email-ad-wrap-outer a .email-ad-wrap .description p.ql-align-center {
     text-align: center !important;
 }
-
+.email-ad-wrap-outer a .email-ad-wrap .description .ql-size-small {
+    font-size: 0.8em !important;
+    line-height: 0.9em !important;
+}
 .email-ad-wrap-outer a .email-ad-wrap .description .ql-size-large {
     font-size: 1.3em !important;
     line-height: 1.4em !important;
+}
+.email-ad-wrap-outer a .email-ad-wrap .description .ql-size-huge {
+    font-size: 1.7em !important;
+    line-height: 1.5em !important;
 }
 
 .email-ad-wrap-outer a .email-ad-wrap .description ul {
