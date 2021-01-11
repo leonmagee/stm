@@ -610,6 +610,11 @@ img.email-header-logo {
     text-align: center !important;
 }
 
+.email-ad-wrap-outer a .email-ad-wrap .description .ql-size-large {
+    font-size: 1.3em !important;
+    line-height: 1.4em !important;
+}
+
 .email-ad-wrap-outer a .email-ad-wrap .description ul {
     list-style-type: none;
     padding: 0;
