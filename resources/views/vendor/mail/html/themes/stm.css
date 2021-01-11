@@ -599,7 +599,11 @@ img.email-header-logo {
 .email-ad-wrap-outer a .email-ad-wrap .description {
     font-size: 0.6em;
     color: #444;
-    padding: 0 7px;
+    padding: 7px 7px 0;
+}
+
+.email-ad-wrap-outer a .email-ad-wrap .description p {
+    line-height: 1.3em !important;
 }
 
 .email-ad-wrap-outer a .email-ad-wrap .description p.ql-align-center {
@@ -613,9 +617,6 @@ img.email-header-logo {
 
 .email-ad-wrap-outer a .email-ad-wrap .img-wrap {
     height: 220px;
-    /* display: flex; */
-    /* justify-content: center; */
-    /* align-items: center; */
     padding: 5px 0;
 }
 
