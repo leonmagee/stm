@@ -375,7 +375,39 @@
               @endforeach
             </select>
           </div>
-          <button class="button is-danger call-loader" type="submit">Block Product</button>
+          <button class="button is-danger call-loader" type="submit">Submit</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+@if(count($reserved_users))
+<div class="blocked-users">
+  <label class="label" for="name">Product Exclusive For:</label>
+  @foreach($reserved_users as $reserved)
+  <div class="blocked-users__item"><span>{{ $reserved->user->company . ' - ' . $reserved->user->name }}</span>
+    <a href="/remove-reserved-user/{{ $reserved->id }}"><i class="fas fa-trash-alt"></i></a>
+  </div>
+  @endforeach
+</div>
+@endif
+<form method="POST" action="/reserve-dealer">
+  @csrf
+  <div class="form-wrap">
+    <div class="form-wrap-flex form-wrap-flex-blocked-dealers">
+      <div class="field">
+        <label class="label" for="name">Make This Product Exclusive For:</label>
+        <div class="control item-flex">
+          <input type="hidden" name="product_id" value="{{ $product->id }}" />
+          <div class="select">
+            <select name="user_id">
+              <option>--</option>
+              @foreach($users as $user)
+              <option value="{{ $user->id }}">{{ $user->company }} - {{ $user->name }}</option>
+              @endforeach
+            </select>
+          </div>
+          <button class="button is-danger call-loader" type="submit">Submit</button>
         </div>
       </div>
     </div>

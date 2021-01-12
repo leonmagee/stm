@@ -105,6 +105,8 @@ Route::group(['middleware' => 'App\Http\Middleware\LockOutUsersManagers'], funct
     Route::post('product-update-order', 'ProductController@update_order');
     Route::post('block-dealer', 'ProductUserController@store');
     Route::get('remove-blocked-user/{productUser}', 'ProductUserController@destroy');
+    Route::post('reserve-dealer', 'ProductReservedUserController@store');
+    Route::get('remove-reserved-user/{productReservedUser}', 'ProductReservedUserController@destroy');
     Route::get('categories', 'CategoryController@index');
     Route::get('categories/{category}', 'CategoryController@show');
     Route::get('sub-categories/{category}', 'SubCategoryController@show');

@@ -7,6 +7,7 @@ use App\Product;
 use App\ProductAttribute;
 use App\ProductCategories;
 use App\ProductRating;
+use App\ProductReservedUser;
 use App\ProductSubCategories;
 use App\ProductUser;
 use App\ProductVariation;
@@ -36,6 +37,7 @@ class ProductController extends Controller
     private static function product_data($cat = false, $current = 0)
     {
         $user_id = \Auth::user()->id;
+        $reserved_products = ProductReservedUser::where('user_id', $user_id)->pluck('product_id')->toArray();
         $blocked_products = ProductUser::where('user_id', $user_id)->pluck('product_id')->toArray();
 
         if ($cat) {
@@ -111,18 +113,25 @@ class ProductController extends Controller
     {
         //$cats = Category::all();
         //dd($cats);
-        $user_id = \Auth::user()->id;
+        $logged_in_user = \Auth::user();
+        $user_id = $logged_in_user->id;
         // $products = Product::join('product_categories', 'products.id', 'product_categories.product_id')
         //     ->where('products.archived', 0)
         //     ->orderBy('products.created_at', 'DESC')
         //     ->get();
+
+        $reserved = [];
+        if (!$logged_in_user->isAdminManagerEmployee()) {
+            $reserved_products = ProductReservedUser::where('user_id', '!=', $user_id)->pluck('product_id')->toArray();
+            $reserved_products_user = ProductReservedUser::where('user_id', $user_id)->pluck('product_id')->toArray();
+            $reserved = array_diff($reserved_products, $reserved_products_user);
+        }
         $blocked_products = ProductUser::where('user_id', $user_id)->pluck('product_id')->toArray();
-        //dd($user_id);
-        //dd($blocked_products);
 
         $products = Product::where('products.archived', 0)
             ->orderBy('order', 'ASC')
             ->whereNotIn('id', $blocked_products)
+            ->whereNotIn('id', $reserved)
             ->get();
 
         foreach ($products as $product) {
@@ -560,6 +569,7 @@ class ProductController extends Controller
         $users = User::getAgentsDealersActive();
 
         $blocked_users = ProductUser::where('product_id', $product->id)->get();
+        $reserved_users = ProductReservedUser::where('product_id', $product->id)->get();
 
         return view('products.edit', compact(
             'product',
@@ -570,7 +580,8 @@ class ProductController extends Controller
             'tab_images',
             'tab_videos',
             'users',
-            'blocked_users'
+            'blocked_users',
+            'reserved_users'
         ));
     }
 
