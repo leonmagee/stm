@@ -36,8 +36,16 @@ class ProductController extends Controller
      */
     private static function product_data($cat = false, $current = 0)
     {
-        $user_id = \Auth::user()->id;
-        $reserved_products = ProductReservedUser::where('user_id', $user_id)->pluck('product_id')->toArray();
+        $logged_in_user = \Auth::user();
+        $user_id = $logged_in_user->id;
+
+        $reserved = [];
+        if (!$logged_in_user->isAdminManagerEmployee()) {
+            $reserved_products = ProductReservedUser::where('user_id', '!=', $user_id)->pluck('product_id')->toArray();
+            $reserved_products_user = ProductReservedUser::where('user_id', $user_id)->pluck('product_id')->toArray();
+            $reserved = array_diff($reserved_products, $reserved_products_user);
+        }
+
         $blocked_products = ProductUser::where('user_id', $user_id)->pluck('product_id')->toArray();
 
         if ($cat) {
@@ -47,6 +55,7 @@ class ProductController extends Controller
                 ->where('archived', 0)
                 ->where('id', '!=', $current)
                 ->whereNotIn('id', $blocked_products)
+                ->whereNotIn('id', $reserved)
                 ->orderBy('order', 'ASC')
                 ->get();
 
