@@ -29,7 +29,7 @@
             </div>
           </div>
 
-          <div class="field padding-bottom">
+          <div class="field recaptcha-start">
             <div class="g-recaptcha" data-sitekey="{{ env('RECAPTCHA_KEY') }}"></div>
           </div>
 

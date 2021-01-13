@@ -18127,6 +18127,10 @@ body.stm-body .stm-subtitle {
   }
 }
 
+.recaptcha-start {
+  margin-top: 0.5em;
+}
+
 .select:after {
   border-color: #1b9aaa !important;
 }
