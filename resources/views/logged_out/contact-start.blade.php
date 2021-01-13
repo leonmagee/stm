@@ -16,10 +16,8 @@
 
         @csrf
         <div class="contact-start-message">To contact us please share your email address. You will receive an email with
-          a link to
-          the contact form (please check your
-          spam if you don't receive the email). The link will expire in 60 minutes.</div>
-
+          a link to contact us form (please check
+          your spam). Contact us link will expired in 60 minutes.</div>
 
         <div class="form-wrap-flex">
 
