@@ -15,9 +15,10 @@
       <div class="form-wrap">
 
         @csrf
-        <div class="padding-1">To contact us please share your email address. You will receive and email and from there
-          you can follow a
-          link to the contact page.</div>
+        <div class="contact-start-message">To contact us please share your email address. You will receive an email with
+          a link to
+          the contact form (please check your
+          spam if you don't receive the email). The link will expire in 60 minutes.</div>
 
 
         <div class="form-wrap-flex">

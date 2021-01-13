@@ -18687,6 +18687,11 @@ body.stm-body .add-padding {
   color: #1b9aaa;
 }
 
+.contact-start-message {
+  padding: 1em;
+  font-size: 1.2em;
+}
+
 .modal {
   z-index: 100000;
 }

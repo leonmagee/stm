@@ -52,7 +52,7 @@ class LoggedOutController extends Controller
         if ($access_token = $request->token) {
             $token_check = ContactToken::where('token', $access_token)->first();
             if ($token_check) {
-                $token_date = $token_check->created_at->addDays(1);
+                $token_date = $token_check->created_at->addHour();
                 $expired = \Carbon\Carbon::now()->gt($token_date);
                 if ($expired) {
                     $token_check->delete();
@@ -106,7 +106,7 @@ class LoggedOutController extends Controller
     {
         $token_check = ContactToken::where('token', $request->access_token)->first();
         if ($token_check) {
-            $token_date = $token_check->created_at->addDays(1);
+            $token_date = $token_check->created_at->addHour();
             $expired = \Carbon\Carbon::now()->gt($token_date);
             if ($expired) {
                 $token_check->delete();
