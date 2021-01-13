@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\ContactToken;
 use App\Helpers;
 use App\Mail\ContactEmailNew;
 use App\Mail\ContactEmailNewResponse;
@@ -48,11 +49,21 @@ class LoggedOutController extends Controller
      */
     public function contact(Request $request)
     {
-        if ($request->token) {
-            /**
-             *  Verify Token
-             */
-            return view('logged_out.contact');
+        if ($token = $request->token) {
+            $token_check = ContactToken::where('token', $token)->first();
+            if ($token_check) {
+                $token_date = $token_check->created_at->addDays(1);
+                $expired = \Carbon\Carbon::now()->gt($token_date);
+                if ($expired) {
+                    $token_check->delete();
+                    session()->flash('danger', 'Token has expired. Please submit your email again.');
+                    return view('logged_out.contact-start');
+                }
+                return view('logged_out.contact');
+            } else {
+                session()->flash('danger', 'Token not valid. Please submit your email again.');
+                return view('logged_out.contact-start');
+            }
         } else {
             return view('logged_out.contact-start');
         }
@@ -65,9 +76,9 @@ class LoggedOutController extends Controller
     {
         $this->validate($request, [
             'email' => 'required',
-            //'g-recaptcha-response' => 'required',
+            'g-recaptcha-response' => 'required',
         ], [
-            //'g-recaptcha-response.required' => 'You mush check the reCAPTCHA box.',
+            'g-recaptcha-response.required' => 'You mush check the reCAPTCHA box.',
         ]);
 
         /**
@@ -75,12 +86,16 @@ class LoggedOutController extends Controller
          * 2. Send email which includes token in an email
          * 3.
          */
-        $token = 'sdlfjsdlfjdfjdfsfj';
+        $token = bin2hex(random_bytes(64));
+
+        $save_token = ContactToken::create([
+            'token' => $token,
+        ]);
 
         // 3. confirmation email
         \Mail::to($request->email)->send(new ContactEmailStart(
             'Contact Us - GS Wireless',
-            $token
+            $save_token->token
         ));
 
         session()->flash('message', 'Thank you! Please check your email for the contact link.');
