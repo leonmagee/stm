@@ -49,8 +49,8 @@ class LoggedOutController extends Controller
      */
     public function contact(Request $request)
     {
-        if ($token = $request->token) {
-            $token_check = ContactToken::where('token', $token)->first();
+        if ($access_token = $request->token) {
+            $token_check = ContactToken::where('token', $access_token)->first();
             if ($token_check) {
                 $token_date = $token_check->created_at->addDays(1);
                 $expired = \Carbon\Carbon::now()->gt($token_date);
@@ -59,7 +59,7 @@ class LoggedOutController extends Controller
                     session()->flash('danger', 'Token has expired. Please submit your email again.');
                     return view('logged_out.contact-start');
                 }
-                return view('logged_out.contact');
+                return view('logged_out.contact', compact('access_token'));
             } else {
                 session()->flash('danger', 'Token not valid. Please submit your email again.');
                 return view('logged_out.contact-start');
@@ -81,11 +81,6 @@ class LoggedOutController extends Controller
             'g-recaptcha-response.required' => 'You mush check the reCAPTCHA box.',
         ]);
 
-        /**
-         * 1. Generate new token - save to DB
-         * 2. Send email which includes token in an email
-         * 3.
-         */
         $token = bin2hex(random_bytes(64));
 
         $save_token = ContactToken::create([
@@ -109,6 +104,20 @@ class LoggedOutController extends Controller
      */
     public function contact_submit(Request $request)
     {
+        $token_check = ContactToken::where('token', $request->access_token)->first();
+        if ($token_check) {
+            $token_date = $token_check->created_at->addDays(1);
+            $expired = \Carbon\Carbon::now()->gt($token_date);
+            if ($expired) {
+                $token_check->delete();
+                session()->flash('danger', 'Token has expired. Please submit your email again.');
+                return redirect('/contact-us');
+            }
+        } else {
+            session()->flash('danger', 'Token not valid. Please submit your email again.');
+            return redirect('/contact-us');
+        }
+
         $this->validate($request, [
             'name' => 'required',
             'business' => 'required',

@@ -18,6 +18,8 @@
 
         <div class="form-wrap-flex">
 
+          <input type="hidden" name="access_token" value="{{ $access_token }}" />
+
           <div class="field fourth">
             <div class="control">
               <label class="label">Full Name<span class="required">*</span></label>
