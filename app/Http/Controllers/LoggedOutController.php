@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Helpers;
 use App\Mail\ContactEmailNew;
 use App\Mail\ContactEmailNewResponse;
+use App\Mail\ContactEmailStart;
 use App\User;
 use Cohensive\Embed\Facades\Embed;
 use Illuminate\Http\Request;
@@ -45,9 +46,47 @@ class LoggedOutController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function contact()
+    public function contact(Request $request)
     {
-        return view('logged_out.contact');
+        if ($request->token) {
+            /**
+             *  Verify Token
+             */
+            return view('logged_out.contact');
+        } else {
+            return view('logged_out.contact-start');
+        }
+    }
+
+    /**
+     * Contact form submit
+     */
+    public function contact_start_submit(Request $request)
+    {
+        $this->validate($request, [
+            'email' => 'required',
+            //'g-recaptcha-response' => 'required',
+        ], [
+            //'g-recaptcha-response.required' => 'You mush check the reCAPTCHA box.',
+        ]);
+
+        /**
+         * 1. Generate new token - save to DB
+         * 2. Send email which includes token in an email
+         * 3.
+         */
+        $token = 'sdlfjsdlfjdfjdfsfj';
+
+        // 3. confirmation email
+        \Mail::to($request->email)->send(new ContactEmailStart(
+            'Contact Us - GS Wireless',
+            $token
+        ));
+
+        session()->flash('message', 'Thank you! Please check your email for the contact link.');
+
+        return redirect('contact-us');
+
     }
 
     /**
