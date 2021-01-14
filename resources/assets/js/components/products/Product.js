@@ -208,7 +208,7 @@ export default class Product extends Component {
                     data-tooltip="Compare Products"
                     onClick={() => toggleCompare(id)}
                 >
-                    <i className="fas fa-edit" />
+                    <i className="fas fa-random" />
                 </a>
             );
         }

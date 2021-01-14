@@ -361,16 +361,8 @@ class Product extends Model
                     $sub_cat_final_array = $sub_cats_array;
                 }
             }
-            // $current_count = count($sub_cat_final_array);
-            // if ($current_count < $max_posts) {
-            //     $needed = $max_posts - $current_count;
-            //     $final_final_array = $this->get_cats($needed, $sub_cat_final_array);
-            // } else {
-            //     $final_final_array = $sub_cat_final_array;
-            // }
             $final_final_array = $sub_cat_final_array;
         } else {
-            //$final_final_array = $this->get_cats(3, []);
             $final_final_array = false;
         }
 
@@ -379,7 +371,6 @@ class Product extends Model
             foreach ($final_final_array as $final_product) {
                 $final_products[] = Product::find($final_product);
             }
-            //$final_products = Product::whereIn('id', $final_final_array)->get();
         } else {
             $final_products = false;
         }

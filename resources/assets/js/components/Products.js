@@ -2,6 +2,7 @@ import Axios from 'axios';
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import ProductList from './products/ProductList';
+import Starz from './products/Starz';
 
 export default class Products extends Component {
     constructor(props) {
@@ -32,19 +33,25 @@ export default class Products extends Component {
 
     toggleCompare(id) {
         const { showCompareModal } = this.state;
-        console.log(id);
-        axios({
-            method: 'post',
-            url: 'get-related-products',
-            data: {
-                id,
-            },
-        }).then(res => {
+        if (!showCompareModal) {
+            axios({
+                method: 'post',
+                url: 'get-related-products',
+                data: {
+                    id,
+                },
+            }).then(res => {
+                this.setState({
+                    compareArray: res.data,
+                    showCompareModal: !showCompareModal,
+                });
+            });
+        } else {
             this.setState({
-                compareArray: res.data,
+                compareArray: [],
                 showCompareModal: !showCompareModal,
             });
-        });
+        }
     }
 
     toggleCats() {
@@ -183,12 +190,52 @@ export default class Products extends Component {
 
         let compareModal = <div />;
         if (showCompareModal) {
-            console.log(compareArray);
-            const modalBody = compareArray.map((product, i) => (
-                <div key={i} className="item">
-                    {product.name} - {product.id}
-                </div>
-            ));
+            const modalBody = compareArray.map((product, i) => {
+                let cartButton = '';
+                if (product.stock) {
+                    cartButton = (
+                        <a
+                            className="compare__item--button compare__item--add-to-cart"
+                            href={`/add-to-cart-sav-fav/${product.id}`}
+                        >
+                            Add to Cart <i className="fas fa-cart-plus" />
+                        </a>
+                    );
+                } else {
+                    cartButton = (
+                        <span className="compare__item--button compare__item--sold-out">
+                            Out of Stock
+                        </span>
+                    );
+                }
+                return (
+                    <div key={i} className="compare__row compare__row--top">
+                        <div className="compare__item compare__item--img">
+                            <img alt="Product" src={product.img_url_1} />
+                        </div>
+                        <div className="compare__item compare__item--name">
+                            <a href={`/products/${product.id}`}>
+                                {product.name}
+                            </a>
+                        </div>
+                        <div className="compare__item">
+                            ${product.orig_price}
+                        </div>
+                        <div className="compare__item compare__item--discount">
+                            {product.discount}%
+                        </div>
+                        <div className="compare__item">
+                            ${product.cost_format}
+                        </div>
+                        <div className="compare__item compare__item--rating-react">
+                            <Starz value={product.rating} />
+                        </div>
+                        <div className="compare__item compare__item--action">
+                            {cartButton}
+                        </div>
+                    </div>
+                );
+            });
 
             compareModal = (
                 <div
@@ -201,7 +248,30 @@ export default class Products extends Component {
                             <h3 className="title full-width-title">
                                 Compare Products
                             </h3>
-                            <div className="modal-body">{modalBody}</div>
+
+                            <div className="compare">
+                                <div className="compare__row compare__row--header">
+                                    <div className="compare__item compare__item--img" />
+                                    <div className="compare__item compare__item--name">
+                                        Product Name
+                                    </div>
+                                    <div className="compare__item">
+                                        Orig Price
+                                    </div>
+                                    <div className="compare__item compare__item--discount">
+                                        Discount
+                                    </div>
+                                    <div className="compare__item">Cost</div>
+                                    <div className="compare__item compare__item--rating">
+                                        Rating
+                                    </div>
+                                    <div className="compare__item compare__item--action" />
+                                </div>
+                                {/* <div className="compare__row compare__row--current">
+          @include('products.fav-saved-item', ['item' => $item])
+        </div> */}
+                                {modalBody}
+                            </div>
                             <a
                                 className="button"
                                 onClick={() => this.toggleCompare()}

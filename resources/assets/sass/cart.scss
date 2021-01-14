@@ -541,9 +541,38 @@ a.button.custom-button {
                     padding: 0;
                 }
             }
+            &.compare__item--rating-react {
+                flex: 0 0 13%;
+                padding-right: 1em;
+                padding: 0;
+                display: flex;
+                svg {
+                    width: 1.2em;
+                    &.active {
+                        path {
+                            fill: $star-gold;
+                        }
+                    }
+                    &.inactive {
+                        path {
+                            fill: #444;
+                        }
+                    }
+                    &.half {
+                        path {
+                            fill: #444;
+                        }
+                        polygon {
+                            fill: #444;
+                            &.left {
+                                fill: $star-gold;
+                            }
+                        }
+                    }
+                }
+            }
             &.compare__item--action {
                 flex: 0 0 12%;
-                //padding-right: 1em;
             }
             font-size: 0.9em;
             font-weight: 600;

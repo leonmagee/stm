@@ -309,7 +309,7 @@
                 width: 1.2em;
                 &.active {
                     path {
-                        fill: #ffc43d;
+                        fill: $star-gold;
                     }
                 }
                 &.inactive {
@@ -324,7 +324,7 @@
                     polygon {
                         fill: #444;
                         &.left {
-                            fill: #ffc43d;
+                            fill: $star-gold;
                         }
                     }
                 }
@@ -451,18 +451,18 @@
                 font-weight: 600;
                 color: #fff;
                 font-size: 0.9em;
-                flex: 0 1 15%;
+                flex: 0 1 12%;
                 height: 2em;
                 display: flex;
                 align-items: center;
                 justify-content: center;
                 &.product__footer--right {
-                    //background-color: $product-dark;
-                    //background-color: darken($product-blue, 13%);
                     background: darken($product-blue, 3%);
                     color: #fff;
                     text-shadow: 1px 1px #333;
-                    border-left: 1px solid darken($product-blue, 11%);
+                    &:not(:nth-child(2)) {
+                        border-left: 1px solid darken($product-blue, 11%);
+                    }
                     i {
                         font-size: 0.9em;
                     }

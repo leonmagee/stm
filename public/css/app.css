@@ -22284,7 +22284,7 @@ body.stm-body.about .middle-content-wrap .about-page .video-wrap .video-wrap-inn
 }
 
 .products-outer .product .product__rating svg.active path {
-  fill: #ffc43d;
+  fill: #f6c659;
 }
 
 .products-outer .product .product__rating svg.inactive path {
@@ -22300,7 +22300,7 @@ body.stm-body.about .middle-content-wrap .about-page .video-wrap .video-wrap-inn
 }
 
 .products-outer .product .product__rating svg.half polygon.left {
-  fill: #ffc43d;
+  fill: #f6c659;
 }
 
 .products-outer .product .product__title {
@@ -22423,7 +22423,7 @@ body.stm-body.about .middle-content-wrap .about-page .video-wrap .video-wrap-inn
   font-weight: 600;
   color: #fff;
   font-size: 0.9em;
-  flex: 0 1 15%;
+  flex: 0 1 12%;
   height: 2em;
   display: flex;
   align-items: center;
@@ -22434,6 +22434,9 @@ body.stm-body.about .middle-content-wrap .about-page .video-wrap .video-wrap-inn
   background: #006da7;
   color: #fff;
   text-shadow: 1px 1px #333;
+}
+
+.products-outer .product .product__footer a.product__footer--right:not(:nth-child(2)) {
   border-left: 1px solid #00527e;
 }
 
@@ -23814,6 +23817,37 @@ a.button.custom-button:hover {
 
 .compare .compare__row .compare__item.compare__item--rating .jq-ry-container {
   padding: 0;
+}
+
+.compare .compare__row .compare__item.compare__item--rating-react {
+  flex: 0 0 13%;
+  padding-right: 1em;
+  padding: 0;
+  display: flex;
+}
+
+.compare .compare__row .compare__item.compare__item--rating-react svg {
+  width: 1.2em;
+}
+
+.compare .compare__row .compare__item.compare__item--rating-react svg.active path {
+  fill: #f6c659;
+}
+
+.compare .compare__row .compare__item.compare__item--rating-react svg.inactive path {
+  fill: #444;
+}
+
+.compare .compare__row .compare__item.compare__item--rating-react svg.half path {
+  fill: #444;
+}
+
+.compare .compare__row .compare__item.compare__item--rating-react svg.half polygon {
+  fill: #444;
+}
+
+.compare .compare__row .compare__item.compare__item--rating-react svg.half polygon.left {
+  fill: #f6c659;
 }
 
 .compare .compare__row .compare__item.compare__item--action {
