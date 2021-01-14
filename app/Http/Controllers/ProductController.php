@@ -845,6 +845,13 @@ class ProductController extends Controller
         //\Log::debug('new index ' . $request->productIndex . ' for product ' . $request->productId);
     }
 
+    public function get_related(Request $request)
+    {
+        $product = Product::find($request->id);
+        return $product->get_related();
+        //return $product->get_related();
+    }
+
     // public function cloudinary_upload($file)
     // {
     //     \Cloudinary::config(array(

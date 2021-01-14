@@ -22434,6 +22434,11 @@ body.stm-body.about .middle-content-wrap .about-page .video-wrap .video-wrap-inn
   background: #006da7;
   color: #fff;
   text-shadow: 1px 1px #333;
+  border-left: 1px solid #00527e;
+}
+
+.products-outer .product .product__footer a.product__footer--right i {
+  font-size: 0.9em;
 }
 
 .products-outer .product .product__footer a.product__footer--right.product__footer--right-favorite i {
@@ -22442,10 +22447,6 @@ body.stm-body.about .middle-content-wrap .about-page .video-wrap .video-wrap-inn
 
 .products-outer .product .product__footer a.product__footer--right.product__footer--right-favorite.fav {
   color: #ff3860;
-}
-
-.products-outer .product .product__footer a.product__footer--right.product__footer--right-cart {
-  border-left: 1px solid #00527e;
 }
 
 .products-outer .product .product__footer a.product__footer--right.product__footer--right-cart.is-in-cart {

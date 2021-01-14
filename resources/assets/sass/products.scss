@@ -462,6 +462,10 @@
                     background: darken($product-blue, 3%);
                     color: #fff;
                     text-shadow: 1px 1px #333;
+                    border-left: 1px solid darken($product-blue, 11%);
+                    i {
+                        font-size: 0.9em;
+                    }
                     &.product__footer--right-favorite {
                         i {
                             font-size: 0.9em;
@@ -470,8 +474,9 @@
                             color: $red;
                         }
                     }
+                    //&.product__footer--right-favorite {
+                    //border-left: 1px solid darken($product-blue, 11%);
                     &.product__footer--right-cart {
-                        border-left: 1px solid darken($product-blue, 11%);
                         &.is-in-cart {
                             color: $star-gold;
                         }

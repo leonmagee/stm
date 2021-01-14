@@ -1,3 +1,4 @@
+import Axios from 'axios';
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import ProductList from './products/ProductList';
@@ -7,6 +8,7 @@ export default class Products extends Component {
         super(props);
         const chosen_cat = JSON.parse(props.chosen_cat);
         const catsChecked = chosen_cat ? [chosen_cat] : [1];
+        this.toggleCompare = this.toggleCompare.bind(this);
         this.state = {
             products: JSON.parse(props.products),
             productsDisplay: JSON.parse(props.products),
@@ -16,6 +18,8 @@ export default class Products extends Component {
             catsChecked,
             subCatsChecked: [],
             catsToggle: false,
+            showCompareModal: false,
+            compareArray: [],
         };
     }
 
@@ -24,6 +28,23 @@ export default class Products extends Component {
         if (catsChecked.length) {
             this.updateProducts();
         }
+    }
+
+    toggleCompare(id) {
+        const { showCompareModal } = this.state;
+        console.log(id);
+        axios({
+            method: 'post',
+            url: 'get-related-products',
+            data: {
+                id,
+            },
+        }).then(res => {
+            this.setState({
+                compareArray: res.data,
+                showCompareModal: !showCompareModal,
+            });
+        });
     }
 
     toggleCats() {
@@ -156,7 +177,42 @@ export default class Products extends Component {
             productsDisplay,
             subCatsChecked,
             catsToggle,
+            compareArray,
+            showCompareModal,
         } = this.state;
+
+        let compareModal = <div />;
+        if (showCompareModal) {
+            console.log(compareArray);
+            const modalBody = compareArray.map((product, i) => (
+                <div key={i} className="item">
+                    {product.name} - {product.id}
+                </div>
+            ));
+
+            compareModal = (
+                <div
+                    className="modal modal-width-65 delete-item-modal is-active"
+                    id="delete-item-modal-116"
+                >
+                    <div className="modal-background" />
+                    <div className="modal-content">
+                        <div className="modal-box full-width">
+                            <h3 className="title full-width-title">
+                                Compare Products
+                            </h3>
+                            <div className="modal-body">{modalBody}</div>
+                            <a
+                                className="button"
+                                onClick={() => this.toggleCompare()}
+                            >
+                                Close
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            );
+        }
 
         const catsBlock = categories.map((category, i) => {
             let icon = <i className="far fa-square" />;
@@ -260,10 +316,16 @@ export default class Products extends Component {
         const menuToggled = catsToggle ? menu : '';
         return (
             <div className="products-outer">
+                {/* <div onClick={() => this.toggleCompare()}>Testing</div> */}
+                {compareModal}
                 {menuToggled}
                 <div className="products-inner-wrap">
                     {header}
-                    <ProductList products={productsDisplay} display="basic" />
+                    <ProductList
+                        products={productsDisplay}
+                        display="basic"
+                        toggleCompare={this.toggleCompare}
+                    />
                 </div>
             </div>
         );

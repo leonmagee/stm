@@ -143,12 +143,14 @@ export default class Product extends Component {
             id,
             img_url,
             discount,
+            display,
             name,
             attributes,
             price,
             orig_price,
             rating,
             stock,
+            toggleCompare,
             // favorite,
         } = this.props;
 
@@ -198,6 +200,19 @@ export default class Product extends Component {
             );
         }
 
+        let compare = <div />;
+        if (display == 'basic') {
+            compare = (
+                <a
+                    className="product__footer--right product__footer--right-compare"
+                    data-tooltip="Compare Products"
+                    onClick={() => toggleCompare(id)}
+                >
+                    <i className="fas fa-edit" />
+                </a>
+            );
+        }
+
         // if (id == 95) {
         //     // const favClass = favorite ? 'fav' : '';
         //     console.log(favorite, id);
@@ -224,6 +239,7 @@ export default class Product extends Component {
                         orig_price={orig_price}
                         discount={discount}
                     />
+                    {compare}
                     <Heart
                         fav={favorite}
                         toggle={() => this.toggleFavorite()}

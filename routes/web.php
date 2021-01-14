@@ -33,6 +33,7 @@ Route::get('your-purchases', 'PurchaseController@your_purchases');
 Route::get('purchase-order/{purchase}', 'PurchaseController@your_purchase');
 Route::post('process-paypal', 'PurchaseController@store');
 Route::get('products/{product}', 'ProductController@show');
+Route::post('get-related-products', 'ProductController@get_related');
 Route::post('update-user-rating', 'ProductRatingController@store');
 Route::get('cart', 'CartProductController@index');
 Route::post('add-to-cart', 'CartProductController@store');
