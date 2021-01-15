@@ -31,7 +31,7 @@
       @if($related)
       <span class="sep">|</span>
       <a class="saved-favorites__item--link-compare modal-delete-open" item_id={{ $item->id }}>Compare with Similar
-        Items <i class="fas fa-eye"></i></a>
+        Items <i class="fas fa-random"></i></a>
       @endif
     </div>
   </div>

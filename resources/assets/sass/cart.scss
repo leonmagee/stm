@@ -438,10 +438,12 @@ a.button.custom-button {
                 color: $red;
             }
             .saved-favorites__item--link-add {
-                color: $info;
+                //color: $info;
+                color: darken($green, 8%);
             }
             .saved-favorites__item--link-compare {
-                color: darken($green, 8%);
+                //color: darken($green, 8%);
+                color: $info;
             }
             span {
                 color: #bbb;

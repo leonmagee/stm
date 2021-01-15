@@ -118,7 +118,7 @@
 
   @if($related_products = $product->get_related())
   <div class="product-details__compare"><a class="saved-favorites__item--link-compare modal-delete-open"
-      item_id={{ $product->id }}><i class="fas fa-eye"></i>Compare with Similar
+      item_id={{ $product->id }}><i class="fas fa-random"></i>Compare with Similar
       Items</a></div>
   @endif
 
