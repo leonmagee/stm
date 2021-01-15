@@ -22565,6 +22565,10 @@ body.stm-body.about .middle-content-wrap .about-page .video-wrap .video-wrap-inn
   }
 }
 
+.product-single .product-single__right i.fa-random {
+  font-size: 1em !important;
+}
+
 .product-single .product-details {
   padding: 0 2em;
 }

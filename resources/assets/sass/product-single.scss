@@ -76,6 +76,9 @@
         @media (min-width: $screen-md) {
             flex: 0 1 60%;
         }
+        i.fa-random {
+            font-size: 1em !important;
+        }
     }
     .product-details {
         padding: 0 2em;
