@@ -143,7 +143,7 @@ export default class Product extends Component {
             id,
             img_url,
             discount,
-            display,
+            // display,
             name,
             attributes,
             price,
@@ -200,18 +200,28 @@ export default class Product extends Component {
             );
         }
 
-        let compare = <div />;
-        if (display == 'basic') {
-            compare = (
-                <a
-                    className="product__footer--right product__footer--right-compare"
-                    data-tooltip="Compare Products"
-                    onClick={() => toggleCompare(id)}
-                >
-                    <i className="fas fa-random" />
-                </a>
-            );
-        }
+        // let compare = <div />;
+        // if (display == 'basic') {
+        //     compare = (
+        //         <a
+        //             className="product__footer--right product__footer--right-compare"
+        //             data-tooltip="Compare Products"
+        //             onClick={() => toggleCompare(id)}
+        //         >
+        //             <i className="fas fa-random" />
+        //         </a>
+        //     );
+        // }
+
+        const compare = (
+            <a
+                className="product__footer--right product__footer--right-compare"
+                data-tooltip="Compare Products"
+                onClick={() => toggleCompare(id)}
+            >
+                <i className="fas fa-random" />
+            </a>
+        );
 
         // if (id == 95) {
         //     // const favClass = favorite ? 'fav' : '';

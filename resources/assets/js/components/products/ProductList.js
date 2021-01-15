@@ -5,7 +5,7 @@ import Product from './Product';
 export default class ProductList extends Component {
     render() {
         // const { products, display, user_id } = this.props;
-        const { display, products, user_id, toggleCompare } = this.props;
+        const { products, user_id, toggleCompare } = this.props;
         const productsBlock = products.map(
             (product, i) => (
                 // if(display === 'basic') {
@@ -23,7 +23,6 @@ export default class ProductList extends Component {
                     stock={product.stock}
                     favorite={product.favorite}
                     in_cart={product.is_in_cart}
-                    display={display}
                     toggleCompare={toggleCompare}
                 />
             )

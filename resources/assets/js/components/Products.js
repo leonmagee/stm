@@ -36,7 +36,7 @@ export default class Products extends Component {
         if (!showCompareModal) {
             axios({
                 method: 'post',
-                url: 'get-related-products',
+                url: '/get-related-products',
                 data: {
                     id,
                 },
@@ -267,9 +267,6 @@ export default class Products extends Component {
                                     </div>
                                     <div className="compare__item compare__item--action" />
                                 </div>
-                                {/* <div className="compare__row compare__row--current">
-          @include('products.fav-saved-item', ['item' => $item])
-        </div> */}
                                 {modalBody}
                             </div>
                             <a
@@ -393,7 +390,6 @@ export default class Products extends Component {
                     {header}
                     <ProductList
                         products={productsDisplay}
-                        display="basic"
                         toggleCompare={this.toggleCompare}
                     />
                 </div>

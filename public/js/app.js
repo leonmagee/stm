@@ -125953,7 +125953,7 @@ var Products = /*#__PURE__*/function (_Component) {
       if (!showCompareModal) {
         axios({
           method: 'post',
-          url: 'get-related-products',
+          url: '/get-related-products',
           data: {
             id: id
           }
@@ -126290,7 +126290,6 @@ var Products = /*#__PURE__*/function (_Component) {
         className: "products-inner-wrap"
       }, header, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_products_ProductList__WEBPACK_IMPORTED_MODULE_3__["default"], {
         products: productsDisplay,
-        display: "basic",
         toggleCompare: this.toggleCompare
       })));
     }
@@ -126333,6 +126332,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _products_ProductList__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./products/ProductList */ "./resources/assets/js/components/products/ProductList.js");
+/* harmony import */ var _products_Starz__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./products/Starz */ "./resources/assets/js/components/products/Starz.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -126359,6 +126359,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 
 
+
 var ProductsCarousel = /*#__PURE__*/function (_Component) {
   _inherits(ProductsCarousel, _Component);
 
@@ -126371,15 +126372,45 @@ var ProductsCarousel = /*#__PURE__*/function (_Component) {
 
     _this = _super.call(this, props);
     var products = JSON.parse(props.products);
+    _this.toggleCompare = _this.toggleCompare.bind(_assertThisInitialized(_this));
     _this.state = {
       products: products,
       i: 0,
-      num: products.length > 1 ? 2 : 1
+      num: products.length > 1 ? 2 : 1,
+      showCompareModal: false,
+      compareArray: []
     };
     return _this;
   }
 
   _createClass(ProductsCarousel, [{
+    key: "toggleCompare",
+    value: function toggleCompare(id) {
+      var _this2 = this;
+
+      var showCompareModal = this.state.showCompareModal;
+
+      if (!showCompareModal) {
+        axios({
+          method: 'post',
+          url: '/get-related-products',
+          data: {
+            id: id
+          }
+        }).then(function (res) {
+          _this2.setState({
+            compareArray: res.data,
+            showCompareModal: !showCompareModal
+          });
+        });
+      } else {
+        this.setState({
+          compareArray: [],
+          showCompareModal: !showCompareModal
+        });
+      }
+    }
+  }, {
     key: "parseIndex",
     value: function parseIndex(i, l) {
       var iNew = i;
@@ -126417,14 +126448,97 @@ var ProductsCarousel = /*#__PURE__*/function (_Component) {
   }, {
     key: "render",
     value: function render() {
-      var _this2 = this;
+      var _this3 = this;
 
       var _this$state2 = this.state,
           products = _this$state2.products,
           num = _this$state2.num,
-          i = _this$state2.i;
+          i = _this$state2.i,
+          showCompareModal = _this$state2.showCompareModal,
+          compareArray = _this$state2.compareArray;
       var length = products.length;
       var productsDisplay = [];
+      var compareModal = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null);
+
+      if (showCompareModal) {
+        var modalBody = compareArray.map(function (product, i) {
+          var cartButton = '';
+
+          if (product.stock) {
+            cartButton = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+              className: "compare__item--button compare__item--add-to-cart",
+              href: "/add-to-cart-sav-fav/".concat(product.id)
+            }, "Add to Cart ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+              className: "fas fa-cart-plus"
+            }));
+          } else {
+            cartButton = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+              className: "compare__item--button compare__item--sold-out"
+            }, "Out of Stock");
+          }
+
+          return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            key: i,
+            className: "compare__row compare__row--top"
+          }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            className: "compare__item compare__item--img"
+          }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+            alt: "Product",
+            src: product.img_url_1
+          })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            className: "compare__item compare__item--name"
+          }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+            href: "/products/".concat(product.id)
+          }, product.name)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            className: "compare__item"
+          }, "$", product.orig_price), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            className: "compare__item compare__item--discount"
+          }, product.discount, "%"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            className: "compare__item"
+          }, "$", product.cost_format), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            className: "compare__item compare__item--rating-react"
+          }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_products_Starz__WEBPACK_IMPORTED_MODULE_3__["default"], {
+            value: product.rating
+          })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            className: "compare__item compare__item--action"
+          }, cartButton));
+        });
+        compareModal = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "modal modal-width-65 delete-item-modal is-active",
+          id: "delete-item-modal-116"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "modal-background"
+        }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "modal-content"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "modal-box full-width"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
+          className: "title full-width-title"
+        }, "Compare Products"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "compare"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "compare__row compare__row--header"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "compare__item compare__item--img"
+        }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "compare__item compare__item--name"
+        }, "Product Name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "compare__item"
+        }, "Orig Price"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "compare__item compare__item--discount"
+        }, "Discount"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "compare__item"
+        }, "Cost"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "compare__item compare__item--rating"
+        }, "Rating"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "compare__item compare__item--action"
+        })), modalBody), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+          className: "button",
+          onClick: function onClick() {
+            return _this3.toggleCompare();
+          }
+        }, "Close"))));
+      }
 
       for (var x = 0; x < num; ++x) {
         var _final = this.parseIndex(i + x, length);
@@ -126442,13 +126556,13 @@ var ProductsCarousel = /*#__PURE__*/function (_Component) {
       if (length > 2) {
         leftNav = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
           onClick: function onClick() {
-            return _this2.scroll(-1);
+            return _this3.scroll(-1);
           },
           className: "fas fa-chevron-circle-left products-nav"
         });
         rightNav = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
           onClick: function onClick() {
-            return _this2.scroll(1);
+            return _this3.scroll(1);
           },
           className: "fas fa-chevron-circle-right products-nav"
         });
@@ -126456,11 +126570,11 @@ var ProductsCarousel = /*#__PURE__*/function (_Component) {
 
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "products-outer products-outer--carousel"
-      }, leftNav, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, compareModal, leftNav, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "products-inner-wrap"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_products_ProductList__WEBPACK_IMPORTED_MODULE_2__["default"], {
         products: productsDisplay,
-        display: "carousel"
+        toggleCompare: this.toggleCompare
       })), rightNav);
     }
   }]);
@@ -127198,7 +127312,6 @@ var Product = /*#__PURE__*/function (_Component) {
           id = _this$props.id,
           img_url = _this$props.img_url,
           discount = _this$props.discount,
-          display = _this$props.display,
           name = _this$props.name,
           attributes = _this$props.attributes,
           price = _this$props.price,
@@ -127254,25 +127367,32 @@ var Product = /*#__PURE__*/function (_Component) {
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
           className: "fas fa-cart-plus"
         }));
-      }
+      } // let compare = <div />;
+      // if (display == 'basic') {
+      //     compare = (
+      //         <a
+      //             className="product__footer--right product__footer--right-compare"
+      //             data-tooltip="Compare Products"
+      //             onClick={() => toggleCompare(id)}
+      //         >
+      //             <i className="fas fa-random" />
+      //         </a>
+      //     );
+      // }
 
-      var compare = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null);
 
-      if (display == 'basic') {
-        compare = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-          className: "product__footer--right product__footer--right-compare",
-          "data-tooltip": "Compare Products",
-          onClick: function onClick() {
-            return toggleCompare(id);
-          }
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-          className: "fas fa-random"
-        }));
-      } // if (id == 95) {
+      var compare = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        className: "product__footer--right product__footer--right-compare",
+        "data-tooltip": "Compare Products",
+        onClick: function onClick() {
+          return toggleCompare(id);
+        }
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fas fa-random"
+      })); // if (id == 95) {
       //     // const favClass = favorite ? 'fav' : '';
       //     console.log(favorite, id);
       // }
-
 
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "product"
@@ -127380,7 +127500,6 @@ var ProductList = /*#__PURE__*/function (_Component) {
     value: function render() {
       // const { products, display, user_id } = this.props;
       var _this$props = this.props,
-          display = _this$props.display,
           products = _this$props.products,
           user_id = _this$props.user_id,
           toggleCompare = _this$props.toggleCompare;
@@ -127402,7 +127521,6 @@ var ProductList = /*#__PURE__*/function (_Component) {
             stock: product.stock,
             favorite: product.favorite,
             in_cart: product.is_in_cart,
-            display: display,
             toggleCompare: toggleCompare
           })
         );
