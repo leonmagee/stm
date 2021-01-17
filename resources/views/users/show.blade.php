@@ -79,6 +79,7 @@
         <a href="/transaction-tracker/{{ $user->id }}" class="button is-primary">Credit History</a>
         @if($is_admin)
         <a href="/transaction-change-credit/{{ $user->id }}" class="button is-primary">Add Credit</a>
+        {{-- <a href="/transaction-change-credit/{{ $user->id }}" class="button is-primary">Add Store Credit</a> --}}
         <a href="/bonus-credit/{{ $user->id }}" class="button is-primary">Monthly Bonus</a>
         <a href="/invoices/user/{{ $user->id }}" class="button is-primary">Invoices</a>
         <a href="/new-invoice/{{ $user->id }}" class="button is-primary">Create Invoice</a>

@@ -63,19 +63,21 @@ class APIController extends Controller
     public function getImeiRecords()
     {
         $user = \Auth::user();
+
         if ($user) {
             if ($user->isAdminManagerEmployee()) {
                 $data = ImeiSearch::with('user')->get();
                 foreach ($data as $item) {
                     $item->price = '$' . number_format($item->price, 2);
                     $item->balance = '$' . number_format($item->balance, 2);
+                    $item->blacklist = strtoupper($item->blacklist);
                 }
             } else {
                 $data = ImeiSearch::with('user')->where('user_id', $user->id)->get();
                 foreach ($data as $item) {
-                    //$item->price = '$' . number_format($item->price, 2);
                     $item->price = '$0.00';
                     $item->balance = '$' . number_format($item->balance, 2);
+                    $item->blacklist = strtoupper($item->blacklist);
                 }
             }
             return datatables($data)->make(true);
@@ -93,9 +95,9 @@ class APIController extends Controller
 
             $data = ImeiSearch::select('imei_searches.id', 'users.company', 'imei_searches.imei', 'imei_searches.model', 'imei_searches.manufacturer', 'imei_searches.price', 'imei_searches.blacklist')->join('users', 'users.id', 'imei_searches.user_id')->where('users.role_id', $role_id)->get();
             foreach ($data as $item) {
-                //$item->price = '$' . number_format($item->price, 2);
                 $item->price = '$0.00';
                 $item->balance = '$' . number_format($item->balance, 2);
+                $item->blacklist = strtoupper($item->blacklist);
             }
 
             return datatables($data)->make(true);
