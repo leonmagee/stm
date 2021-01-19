@@ -483,7 +483,7 @@
                     }
                     &.compare-icon {
                         &::before {
-                            color: $red;
+                            color: lighten($red, 13%);
                         }
                     }
                 }
