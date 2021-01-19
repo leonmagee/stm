@@ -22456,6 +22456,11 @@ body.stm-body.about .middle-content-wrap .about-page .video-wrap .video-wrap-inn
   color: #f6c659;
 }
 
+.products-outer .product .product__footer a.product__footer--right.compare-icon::before {
+  color: #ff3860;
+  color: #ff3860;
+}
+
 .products-outer .product .product__footer a:hover {
   opacity: 0.95;
 }

@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { Component } from 'react';
 import Attributes from './Attributes';
 import Price from './Price';
@@ -151,6 +153,7 @@ export default class Product extends Component {
             rating,
             stock,
             toggleCompare,
+            toggleCompareInit,
             // favorite,
         } = this.props;
 
@@ -200,33 +203,17 @@ export default class Product extends Component {
             );
         }
 
-        // let compare = <div />;
-        // if (display == 'basic') {
-        //     compare = (
-        //         <a
-        //             className="product__footer--right product__footer--right-compare"
-        //             data-tooltip="Compare Products"
-        //             onClick={() => toggleCompare(id)}
-        //         >
-        //             <i className="fas fa-random" />
-        //         </a>
-        //     );
-        // }
-
         const compare = (
             <a
                 className="product__footer--right product__footer--right-compare"
                 data-tooltip="Compare Products"
-                onClick={() => toggleCompare(id)}
+                onClick={() => toggleCompare()}
+                onMouseEnter={() => toggleCompareInit(id)}
             >
                 <i className="fas fa-random" />
             </a>
         );
 
-        // if (id == 95) {
-        //     // const favClass = favorite ? 'fav' : '';
-        //     console.log(favorite, id);
-        // }
         return (
             <div className="product" id={`product-${id}`}>
                 {animatePane}

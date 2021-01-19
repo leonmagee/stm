@@ -125919,6 +125919,7 @@ var Products = /*#__PURE__*/function (_Component) {
     var chosen_cat = JSON.parse(props.chosen_cat);
     var catsChecked = chosen_cat ? [chosen_cat] : [1];
     _this.toggleCompare = _this.toggleCompare.bind(_assertThisInitialized(_this));
+    _this.toggleCompareInit = _this.toggleCompareInit.bind(_assertThisInitialized(_this));
     _this.state = {
       products: JSON.parse(props.products),
       productsDisplay: JSON.parse(props.products),
@@ -125929,6 +125930,7 @@ var Products = /*#__PURE__*/function (_Component) {
       subCatsChecked: [],
       catsToggle: false,
       showCompareModal: false,
+      relatedProducts: false,
       compareArray: []
     };
     return _this;
@@ -125944,43 +125946,49 @@ var Products = /*#__PURE__*/function (_Component) {
       }
     }
   }, {
-    key: "toggleCompare",
-    value: function toggleCompare(id) {
+    key: "toggleCompareInit",
+    value: function toggleCompareInit(id) {
       var _this2 = this;
 
-      var showCompareModal = this.state.showCompareModal;
+      axios({
+        method: 'post',
+        url: '/get-related-products',
+        data: {
+          id: id
+        }
+      }).then(function (res) {
+        if (res.data !== 'No Related') {
+          _this2.setState({
+            compareArray: res.data,
+            relatedProducts: true
+          });
+        } else {
+          _this2.setState({
+            relatedProducts: false
+          });
 
-      if (!showCompareModal) {
-        axios({
-          method: 'post',
-          url: '/get-related-products',
-          data: {
-            id: id
-          }
-        }).then(function (res) {
-          if (res.data !== 'No Related') {
-            $('.stm-absolute-wrap#loader-wrap').css({
-              display: 'flex'
-            });
-            setTimeout(function () {
-              $('.stm-absolute-wrap#loader-wrap').css({
-                display: 'none'
-              });
+          $("#product-".concat(id, " .product__footer--right.product__footer--right-compare")).attr('data-tooltip', 'No Related Products').addClass('compare-icon');
+        }
+      });
+    }
+  }, {
+    key: "toggleCompare",
+    value: function toggleCompare() {
+      var _this$state = this.state,
+          showCompareModal = _this$state.showCompareModal,
+          relatedProducts = _this$state.relatedProducts;
 
-              _this2.setState({
-                compareArray: res.data,
-                showCompareModal: !showCompareModal
-              });
-            }, 300);
-          } else {
-            $("#product-".concat(id, " .product__footer--right.product__footer--right-compare")).attr('data-tooltip', 'No Related Products');
-          }
-        });
-      } else {
-        this.setState({
-          compareArray: [],
-          showCompareModal: !showCompareModal
-        });
+      if (relatedProducts) {
+        if (!showCompareModal) {
+          this.setState({
+            showCompareModal: !showCompareModal
+          });
+        } else {
+          this.setState({
+            compareArray: [],
+            showCompareModal: !showCompareModal
+          });
+        }
       }
     }
   }, {
@@ -125994,12 +126002,12 @@ var Products = /*#__PURE__*/function (_Component) {
   }, {
     key: "updateProducts",
     value: function updateProducts() {
-      var _this$state = this.state,
-          products = _this$state.products,
-          catsChecked = _this$state.catsChecked,
-          subCatsChecked = _this$state.subCatsChecked,
-          sub_cat_match = _this$state.sub_cat_match,
-          sub_cats_array = _this$state.sub_cats_array;
+      var _this$state2 = this.state,
+          products = _this$state2.products,
+          catsChecked = _this$state2.catsChecked,
+          subCatsChecked = _this$state2.subCatsChecked,
+          sub_cat_match = _this$state2.sub_cat_match,
+          sub_cats_array = _this$state2.sub_cats_array;
       var productsUpdated = [];
 
       if (catsChecked.length) {
@@ -126113,14 +126121,14 @@ var Products = /*#__PURE__*/function (_Component) {
     value: function render() {
       var _this3 = this;
 
-      var _this$state2 = this.state,
-          categories = _this$state2.categories,
-          catsChecked = _this$state2.catsChecked,
-          productsDisplay = _this$state2.productsDisplay,
-          subCatsChecked = _this$state2.subCatsChecked,
-          catsToggle = _this$state2.catsToggle,
-          compareArray = _this$state2.compareArray,
-          showCompareModal = _this$state2.showCompareModal;
+      var _this$state3 = this.state,
+          categories = _this$state3.categories,
+          catsChecked = _this$state3.catsChecked,
+          productsDisplay = _this$state3.productsDisplay,
+          subCatsChecked = _this$state3.subCatsChecked,
+          catsToggle = _this$state3.catsToggle,
+          compareArray = _this$state3.compareArray,
+          showCompareModal = _this$state3.showCompareModal;
       var compareModal = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", null);
 
       if (showCompareModal) {
@@ -126303,7 +126311,8 @@ var Products = /*#__PURE__*/function (_Component) {
         className: "products-inner-wrap"
       }, header, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_products_ProductList__WEBPACK_IMPORTED_MODULE_3__["default"], {
         products: productsDisplay,
-        toggleCompare: this.toggleCompare
+        toggleCompare: this.toggleCompare,
+        toggleCompareInit: this.toggleCompareInit
       })));
     }
   }]);
@@ -127178,6 +127187,9 @@ function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Re
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 
 
 
@@ -127331,7 +127343,8 @@ var Product = /*#__PURE__*/function (_Component) {
           orig_price = _this$props.orig_price,
           rating = _this$props.rating,
           stock = _this$props.stock,
-          toggleCompare = _this$props.toggleCompare;
+          toggleCompare = _this$props.toggleCompare,
+          toggleCompareInit = _this$props.toggleCompareInit;
       var _this$state = this.state,
           animate = _this$state.animate,
           animateHeart = _this$state.animateHeart,
@@ -127380,33 +127393,20 @@ var Product = /*#__PURE__*/function (_Component) {
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
           className: "fas fa-cart-plus"
         }));
-      } // let compare = <div />;
-      // if (display == 'basic') {
-      //     compare = (
-      //         <a
-      //             className="product__footer--right product__footer--right-compare"
-      //             data-tooltip="Compare Products"
-      //             onClick={() => toggleCompare(id)}
-      //         >
-      //             <i className="fas fa-random" />
-      //         </a>
-      //     );
-      // }
-
+      }
 
       var compare = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
         className: "product__footer--right product__footer--right-compare",
         "data-tooltip": "Compare Products",
         onClick: function onClick() {
-          return toggleCompare(id);
+          return toggleCompare();
+        },
+        onMouseEnter: function onMouseEnter() {
+          return toggleCompareInit(id);
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
         className: "fas fa-random"
-      })); // if (id == 95) {
-      //     // const favClass = favorite ? 'fav' : '';
-      //     console.log(favorite, id);
-      // }
-
+      }));
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "product",
         id: "product-".concat(id)
@@ -127516,7 +127516,8 @@ var ProductList = /*#__PURE__*/function (_Component) {
       var _this$props = this.props,
           products = _this$props.products,
           user_id = _this$props.user_id,
-          toggleCompare = _this$props.toggleCompare;
+          toggleCompare = _this$props.toggleCompare,
+          toggleCompareInit = _this$props.toggleCompareInit;
       var productsBlock = products.map(function (product, i) {
         return (
           /*#__PURE__*/
@@ -127535,7 +127536,8 @@ var ProductList = /*#__PURE__*/function (_Component) {
             stock: product.stock,
             favorite: product.favorite,
             in_cart: product.is_in_cart,
-            toggleCompare: toggleCompare
+            toggleCompare: toggleCompare,
+            toggleCompareInit: toggleCompareInit
           })
         );
       } // } else {
