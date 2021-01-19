@@ -228,7 +228,7 @@ export default class Product extends Component {
         //     console.log(favorite, id);
         // }
         return (
-            <div className="product">
+            <div className="product" id={`product-${id}`}>
                 {animatePane}
                 {animateHeartPane}
                 <a className="product__link" href={`/products/${id}`}>

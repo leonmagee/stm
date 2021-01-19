@@ -125958,10 +125958,24 @@ var Products = /*#__PURE__*/function (_Component) {
             id: id
           }
         }).then(function (res) {
-          _this2.setState({
-            compareArray: res.data,
-            showCompareModal: !showCompareModal
-          });
+          if (res.data !== 'No Related') {
+            $('.stm-absolute-wrap#loader-wrap').css({
+              display: 'flex'
+            });
+            setTimeout(function () {
+              $('.stm-absolute-wrap#loader-wrap').css({
+                display: 'none'
+              });
+
+              _this2.setState({
+                compareArray: res.data,
+                showCompareModal: !showCompareModal
+              });
+            }, 300);
+          } else {
+            $("#product-".concat(id, " .product__footer--right.product__footer--right-compare")).attr('data-tooltip', 'No Related Products');
+            console.log('no related');
+          }
         });
       } else {
         this.setState({
@@ -127395,7 +127409,8 @@ var Product = /*#__PURE__*/function (_Component) {
       // }
 
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "product"
+        className: "product",
+        id: "product-".concat(id)
       }, animatePane, animateHeartPane, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
         className: "product__link",
         href: "/products/".concat(id)

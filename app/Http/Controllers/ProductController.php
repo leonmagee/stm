@@ -148,6 +148,8 @@ class ProductController extends Controller
 
             $product->is_in_cart = $product->in_cart();
 
+            //$product->related = $product->get_related();
+
             $orig_cost = number_format($product->cost, 2);
             if ($product->discount) {
                 $product->orig_price = $orig_cost;
@@ -847,56 +849,60 @@ class ProductController extends Controller
     {
         $product = Product::find($request->id);
         $products = $product->get_related();
-        array_unshift($products, $product);
-        foreach ($products as $product) {
-            $product->img_url_1 = $product->get_cloudinary_thumbnail(200, 200);
+        if ($products) {
+            array_unshift($products, $product);
+            foreach ($products as $product) {
+                $product->img_url_1 = $product->get_cloudinary_thumbnail(200, 200);
 
-            $product->is_in_cart = $product->in_cart();
+                $product->is_in_cart = $product->in_cart();
 
-            $orig_cost = number_format($product->cost, 2);
-            if ($product->discount) {
-                $product->orig_price = $orig_cost;
-                $product->cost_format = number_format($product->cost - ($product->cost * ($product->discount / 100)), 2);
+                $orig_cost = number_format($product->cost, 2);
+                if ($product->discount) {
+                    $product->orig_price = $orig_cost;
+                    $product->cost_format = number_format($product->cost - ($product->cost * ($product->discount / 100)), 2);
 
-            } else {
-                $product->orig_price = null;
-                $product->cost_format = $orig_cost;
-            }
-            // add cat array
-            $cat_array = [];
-            foreach ($product->categories as $cat) {
-                $cat_array[] = $cat->category_id;
-            }
-            $product->cat_array = $cat_array;
-            // add sub cat array
-            $sub_cat_array = [];
-            foreach ($product->sub_categories as $sub_cat) {
-                $sub_cat_array[$sub_cat->sub_category->category->id][] = $sub_cat->sub_category_id;
-            }
-            $product->sub_cat_array = $sub_cat_array;
-            $attributes_array = [];
-            foreach ($product->attributes as $attribute) {
-                if (count($attributes_array) < 4) {
-                    $attributes_array[] = $attribute->text;
+                } else {
+                    $product->orig_price = null;
+                    $product->cost_format = $orig_cost;
                 }
-            }
-            $product->attributes_array = $attributes_array;
+                // add cat array
+                $cat_array = [];
+                foreach ($product->categories as $cat) {
+                    $cat_array[] = $cat->category_id;
+                }
+                $product->cat_array = $cat_array;
+                // add sub cat array
+                $sub_cat_array = [];
+                foreach ($product->sub_categories as $sub_cat) {
+                    $sub_cat_array[$sub_cat->sub_category->category->id][] = $sub_cat->sub_category_id;
+                }
+                $product->sub_cat_array = $sub_cat_array;
+                $attributes_array = [];
+                foreach ($product->attributes as $attribute) {
+                    if (count($attributes_array) < 4) {
+                        $attributes_array[] = $attribute->text;
+                    }
+                }
+                $product->attributes_array = $attributes_array;
 
-            $ratings = ProductRating::where('product_id', $product->id)->get();
-            $stars_total = 0;
-            foreach ($ratings as $rating) {
-                $stars_total += $rating->stars;
+                $ratings = ProductRating::where('product_id', $product->id)->get();
+                $stars_total = 0;
+                foreach ($ratings as $rating) {
+                    $stars_total += $rating->stars;
+                }
+                if ($count = $ratings->count()) {
+                    $rating_calc = ($stars_total / $count);
+                } else {
+                    $rating_calc = 0;
+                }
+                $product->rating = $rating_calc;
+                $product->stock = $product->in_stock();
+                $product->favorite = $product->is_favorite();
             }
-            if ($count = $ratings->count()) {
-                $rating_calc = ($stars_total / $count);
-            } else {
-                $rating_calc = 0;
-            }
-            $product->rating = $rating_calc;
-            $product->stock = $product->in_stock();
-            $product->favorite = $product->is_favorite();
+            return $products;
+        } else {
+            return 'No Related';
         }
-        return $products;
 
     }
 

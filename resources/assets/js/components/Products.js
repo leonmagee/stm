@@ -41,10 +41,26 @@ export default class Products extends Component {
                     id,
                 },
             }).then(res => {
-                this.setState({
-                    compareArray: res.data,
-                    showCompareModal: !showCompareModal,
-                });
+                if (res.data !== 'No Related') {
+                    $('.stm-absolute-wrap#loader-wrap').css({
+                        display: 'flex',
+                    });
+                    setTimeout(() => {
+                        $('.stm-absolute-wrap#loader-wrap').css({
+                            display: 'none',
+                        });
+
+                        this.setState({
+                            compareArray: res.data,
+                            showCompareModal: !showCompareModal,
+                        });
+                    }, 300);
+                } else {
+                    $(
+                        `#product-${id} .product__footer--right.product__footer--right-compare`
+                    ).attr('data-tooltip', 'No Related Products');
+                    console.log('no related');
+                }
             });
         } else {
             this.setState({
@@ -339,17 +355,7 @@ export default class Products extends Component {
                 );
             }
 
-            return (
-                <div key={i}>
-                    {buttonElement}
-                    {/* <button
-                        onClick={() => this.catClick(category.id)}
-                        className={buttonClass}
-                    >
-                    {category.name}
-                    </button> */}
-                </div>
-            );
+            return <div key={i}>{buttonElement}</div>;
         });
 
         const menu = (
