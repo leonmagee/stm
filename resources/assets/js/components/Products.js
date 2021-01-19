@@ -59,7 +59,6 @@ export default class Products extends Component {
                     $(
                         `#product-${id} .product__footer--right.product__footer--right-compare`
                     ).attr('data-tooltip', 'No Related Products');
-                    console.log('no related');
                 }
             });
         } else {

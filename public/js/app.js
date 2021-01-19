@@ -125974,7 +125974,6 @@ var Products = /*#__PURE__*/function (_Component) {
             }, 300);
           } else {
             $("#product-".concat(id, " .product__footer--right.product__footer--right-compare")).attr('data-tooltip', 'No Related Products');
-            console.log('no related');
           }
         });
       } else {
