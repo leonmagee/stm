@@ -62,11 +62,18 @@ export default class Products extends Component {
     toggleCompare() {
         const { showCompareModal, relatedProducts } = this.state;
         if (relatedProducts) {
+            $('.stm-absolute-wrap#loader-wrap').css({ display: 'flex' });
             if (!showCompareModal) {
-                this.setState({
-                    showCompareModal: !showCompareModal,
-                });
+                setTimeout(() => {
+                    this.setState({
+                        showCompareModal: !showCompareModal,
+                    });
+                    $('.stm-absolute-wrap#loader-wrap').css({
+                        display: 'none',
+                    });
+                }, 300);
             } else {
+                $('.stm-absolute-wrap#loader-wrap').css({ display: 'none' });
                 this.setState({
                     compareArray: [],
                     showCompareModal: !showCompareModal,

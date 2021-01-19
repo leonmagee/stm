@@ -125974,16 +125974,31 @@ var Products = /*#__PURE__*/function (_Component) {
   }, {
     key: "toggleCompare",
     value: function toggleCompare() {
+      var _this3 = this;
+
       var _this$state = this.state,
           showCompareModal = _this$state.showCompareModal,
           relatedProducts = _this$state.relatedProducts;
 
       if (relatedProducts) {
+        $('.stm-absolute-wrap#loader-wrap').css({
+          display: 'flex'
+        });
+
         if (!showCompareModal) {
-          this.setState({
-            showCompareModal: !showCompareModal
-          });
+          setTimeout(function () {
+            _this3.setState({
+              showCompareModal: !showCompareModal
+            });
+
+            $('.stm-absolute-wrap#loader-wrap').css({
+              display: 'none'
+            });
+          }, 300);
         } else {
+          $('.stm-absolute-wrap#loader-wrap').css({
+            display: 'none'
+          });
           this.setState({
             compareArray: [],
             showCompareModal: !showCompareModal
@@ -126119,7 +126134,7 @@ var Products = /*#__PURE__*/function (_Component) {
   }, {
     key: "render",
     value: function render() {
-      var _this3 = this;
+      var _this4 = this;
 
       var _this$state3 = this.state,
           categories = _this$state3.categories,
@@ -126206,7 +126221,7 @@ var Products = /*#__PURE__*/function (_Component) {
         })), modalBody), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("a", {
           className: "button",
           onClick: function onClick() {
-            return _this3.toggleCompare();
+            return _this4.toggleCompare();
           }
         }, "Close"))));
       }
@@ -126240,7 +126255,7 @@ var Products = /*#__PURE__*/function (_Component) {
             return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
               key: keyName,
               onClick: function onClick() {
-                return _this3.subCatClick(subCat.id);
+                return _this4.subCatClick(subCat.id);
               },
               className: "product-cat product-cat--sub"
             }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("span", null, subCat.name), subIcon);
@@ -126251,7 +126266,7 @@ var Products = /*#__PURE__*/function (_Component) {
           key: i
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
           onClick: function onClick() {
-            return _this3.catClick(category.id);
+            return _this4.catClick(category.id);
           },
           className: "product-cat"
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("span", null, category.name), icon), subCats);
@@ -126260,7 +126275,7 @@ var Products = /*#__PURE__*/function (_Component) {
         // let buttonClass = 'button is-default is-small';
         var buttonElement = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
           onClick: function onClick() {
-            return _this3.catClick(category.id);
+            return _this4.catClick(category.id);
           },
           className: "button is-default is-small"
         }, category.name);
@@ -126287,7 +126302,7 @@ var Products = /*#__PURE__*/function (_Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("i", {
         className: "fas fa-times",
         onClick: function onClick() {
-          return _this3.toggleCats();
+          return _this4.toggleCats();
         }
       })));
       var header = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
@@ -126297,7 +126312,7 @@ var Products = /*#__PURE__*/function (_Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "products-header__left",
         onClick: function onClick() {
-          return _this3.toggleCats();
+          return _this4.toggleCats();
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("i", {
         className: "fas fa-sliders-h"
