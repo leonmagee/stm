@@ -118,13 +118,12 @@ class PurchaseController extends Controller
             }
         }
 
-        if (floatval(strval($balance)) < floatval(strval($total))) {
-            // if ($current_user->isAdmin()) {
-            //     dd('not enough');
-            // }
-            session()->flash('danger', 'You do not have sufficent funds in your balance for this purchase');
-            return redirect()->back();
-        }
+        // $discount_coupon = CartCoupon::where('user_id', $user_id)->first();
+        // if ($discount_coupon && $discount_coupon->coupon) {
+        //     $coupon_percent = $discount_coupon->coupon->percent;
+        //     $total = floatval(strval(number_format(Helpers::get_discount_price($total, $coupon_percent), 2)));
+        // }
+
         // if ($current_user->isAdmin()) {
         //     dd('so far...');
         // }
@@ -139,6 +138,11 @@ class PurchaseController extends Controller
             $request->total = $total;
         }
 
+        if (floatval(strval($balance)) < floatval(strval($request->total))) {
+            session()->flash('danger', 'You do not have sufficent funds in your balance for this purchase');
+            return redirect()->back();
+        }
+
         /**
          * Store purchase
          */
@@ -146,7 +150,7 @@ class PurchaseController extends Controller
         /**
          * Update user balance
          */
-        $new_balance = $balance - $request->total;
+        $new_balance = floatval(strval($balance)) - floatval(strval($request->total));
         $current_user->balance = $new_balance;
         $current_user->save();
         /**
