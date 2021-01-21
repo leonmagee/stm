@@ -130,6 +130,7 @@
           <div class="stm_inv__header--label">Payment Type</div>
           <div class="stm_inv__header--label">Subtotal</div>
           <div class="stm_inv__header--label">Service Charge</div>
+          <div class="stm_inv__header--label">Coupon Percent</div>
           <div class="stm_inv__header--label">Coupon Discount</div>
           <div class="stm_inv__header--label">Shipping Charge</div>
           <div class="stm_inv__header--label">Total</div>
@@ -145,6 +146,9 @@
             @else
             $0.00
             @endif
+          </div>
+          <div class="stm_inv__header--item">
+            {{ $purchase->coupon_percent }}%
           </div>
           <div class="stm_inv__header--item">
             -${{ number_format($purchase->discount, 2) }}
