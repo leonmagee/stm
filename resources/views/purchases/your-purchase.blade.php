@@ -94,12 +94,14 @@
               <div>$0.00</div>
               @endif
             </div>
+            @if($purchase->coupon_percent)
             <div class="item">
               <div class="label">Coupon Percent</div>
               <div>
                 {{ $purchase->coupon_percent }}%
               </div>
             </div>
+            @endif
             <div class="item">
               <div class="label">Coupon Discount</div>
               <div>
