@@ -126410,41 +126410,77 @@ var ProductsCarousel = /*#__PURE__*/function (_Component) {
     _this = _super.call(this, props);
     var products = JSON.parse(props.products);
     _this.toggleCompare = _this.toggleCompare.bind(_assertThisInitialized(_this));
+    _this.toggleCompareInit = _this.toggleCompareInit.bind(_assertThisInitialized(_this));
     _this.state = {
       products: products,
       i: 0,
       num: products.length > 1 ? 2 : 1,
       showCompareModal: false,
+      relatedProducts: false,
       compareArray: []
     };
     return _this;
   }
 
   _createClass(ProductsCarousel, [{
-    key: "toggleCompare",
-    value: function toggleCompare(id) {
+    key: "toggleCompareInit",
+    value: function toggleCompareInit(id) {
       var _this2 = this;
 
-      var showCompareModal = this.state.showCompareModal;
-
-      if (!showCompareModal) {
-        axios({
-          method: 'post',
-          url: '/get-related-products',
-          data: {
-            id: id
-          }
-        }).then(function (res) {
+      axios({
+        method: 'post',
+        url: '/get-related-products',
+        data: {
+          id: id
+        }
+      }).then(function (res) {
+        if (res.data !== 'No Related') {
           _this2.setState({
             compareArray: res.data,
+            relatedProducts: true
+          });
+        } else {
+          _this2.setState({
+            relatedProducts: false
+          });
+
+          $("#product-".concat(id, " .product__footer--right.product__footer--right-compare")).attr('data-tooltip', 'No Related Products').addClass('compare-icon');
+        }
+      });
+    }
+  }, {
+    key: "toggleCompare",
+    value: function toggleCompare() {
+      var _this3 = this;
+
+      var _this$state = this.state,
+          showCompareModal = _this$state.showCompareModal,
+          relatedProducts = _this$state.relatedProducts;
+
+      if (relatedProducts) {
+        $('.stm-absolute-wrap#loader-wrap').css({
+          display: 'flex'
+        });
+
+        if (!showCompareModal) {
+          setTimeout(function () {
+            _this3.setState({
+              showCompareModal: !showCompareModal
+            });
+
+            $('.stm-absolute-wrap#loader-wrap').css({
+              display: 'none'
+            });
+          }, 300);
+        } else {
+          $('.stm-absolute-wrap#loader-wrap').css({
+            display: 'none'
+          });
+          this.setState({
+            compareArray: [],
             showCompareModal: !showCompareModal
           });
-        });
-      } else {
-        this.setState({
-          compareArray: [],
-          showCompareModal: !showCompareModal
-        });
+        }
       }
     }
   }, {
@@ -126465,9 +126501,9 @@ var ProductsCarousel = /*#__PURE__*/function (_Component) {
   }, {
     key: "scroll",
     value: function scroll(d) {
-      var _this$state = this.state,
-          products = _this$state.products,
-          i = _this$state.i;
+      var _this$state2 = this.state,
+          products = _this$state2.products,
+          i = _this$state2.i;
       var iNew = i + d;
 
       if (iNew == products.length) {
@@ -126485,14 +126521,14 @@ var ProductsCarousel = /*#__PURE__*/function (_Component) {
   }, {
     key: "render",
     value: function render() {
-      var _this3 = this;
+      var _this4 = this;
 
-      var _this$state2 = this.state,
-          products = _this$state2.products,
-          num = _this$state2.num,
-          i = _this$state2.i,
-          showCompareModal = _this$state2.showCompareModal,
-          compareArray = _this$state2.compareArray;
+      var _this$state3 = this.state,
+          products = _this$state3.products,
+          num = _this$state3.num,
+          i = _this$state3.i,
+          showCompareModal = _this$state3.showCompareModal,
+          compareArray = _this$state3.compareArray;
       var length = products.length;
       var productsDisplay = [];
       var compareModal = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null);
@@ -126572,7 +126608,7 @@ var ProductsCarousel = /*#__PURE__*/function (_Component) {
         })), modalBody), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
           className: "button",
           onClick: function onClick() {
-            return _this3.toggleCompare();
+            return _this4.toggleCompare();
           }
         }, "Close"))));
       }
@@ -126593,13 +126629,13 @@ var ProductsCarousel = /*#__PURE__*/function (_Component) {
       if (length > 2) {
         leftNav = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
           onClick: function onClick() {
-            return _this3.scroll(-1);
+            return _this4.scroll(-1);
           },
           className: "fas fa-chevron-circle-left products-nav"
         });
         rightNav = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
           onClick: function onClick() {
-            return _this3.scroll(1);
+            return _this4.scroll(1);
           },
           className: "fas fa-chevron-circle-right products-nav"
         });
@@ -126611,7 +126647,8 @@ var ProductsCarousel = /*#__PURE__*/function (_Component) {
         className: "products-inner-wrap"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_products_ProductList__WEBPACK_IMPORTED_MODULE_2__["default"], {
         products: productsDisplay,
-        toggleCompare: this.toggleCompare
+        toggleCompare: this.toggleCompare,
+        toggleCompareInit: this.toggleCompareInit
       })), rightNav);
     }
   }]);
