@@ -25,7 +25,7 @@ class EmailBalance extends Mailable
      *
      * @return void
      */
-    public function __construct(User $user, $previous, $difference, $current, $note, $date, $admin = false)
+    public function __construct(User $user, $previous, $difference, $current, $note, $date, $admin = false, $subject = 'Credit Balance Update')
     {
         $this->user = $user;
         $this->previous = $previous;
@@ -34,7 +34,7 @@ class EmailBalance extends Mailable
         $this->note = $note;
         $this->date = $date;
         $this->admin = $admin;
-        $this->subject('Credit Balance Update');
+        $this->subject($subject);
         if ($admin) {
             $this->callbacks[] = (function ($message) {$message->getHeaders()->addTextHeader('X-No-Track', Str::random(10));});
         } else {

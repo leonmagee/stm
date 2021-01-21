@@ -11,6 +11,7 @@ use App\Mail\UserUpdate;
 use App\ReportType;
 use App\Settings;
 use App\Site;
+use App\StoreCreditTracker;
 use App\User;
 use App\UserCreditBonus;
 use App\UserPlanValues;
@@ -54,6 +55,18 @@ class UserController extends Controller
     /**
      * Track user balance changes
      */
+    public function transactionTrackerStore()
+    {
+        if (\Auth::user()->isAdminManagerEmployee()) {
+            return view('users.balance-tracker-store');
+        } else {
+            //return view('users.balance-tracker-user');
+        }
+    }
+
+    /**
+     * Track user balance changes
+     */
     public function transactionTrackerDealer()
     {
         if (\Auth::user()->isMasterAgent()) {
@@ -69,6 +82,11 @@ class UserController extends Controller
     public function transactionTrackerAddCredit(User $user)
     {
         return view('users.add-transaction', compact('user'));
+    }
+
+    public function transactionTrackerAddCreditStore(User $user)
+    {
+        return view('users.add-transaction-store', compact('user'));
     }
 
     public function creditComplete(Request $request)
@@ -942,6 +960,104 @@ class UserController extends Controller
         } else {
             // not react
             session()->flash('message', 'User credit has been updated');
+            return redirect('/users/' . $user->id);
+        }
+
+    }
+
+    /**
+     * Axios change user balance
+     * Use same method for both react and laravel forms
+     *
+     */
+    public function changeUserBalanceStore(Request $request, User $user = null)
+    {
+
+        // process for non-react form
+        if (!$request->selectedUserEdit) {
+            $user_id = $user->id;
+            $old_balance = $user->store_credit ? $user->store_credit : 0;
+            if ($request->subtract_credit) {
+                $credit_abs = $request->subtract_credit;
+                if ($credit_abs > $old_balance) {
+                    return \Redirect::back()->withErrors(['Subtraction must not exceed current value.']);
+                }
+                $difference = abs($credit_abs) * -1;
+                $balance = $old_balance + $difference;
+            } else if ($request->add_credit) {
+                $difference = abs($request->add_credit);
+                $balance = $old_balance + $difference;
+            } else {
+                return \Redirect::back()->withErrors(['Plese enter one Add or Subtract value.']);
+            }
+        }
+
+        // end non-react form
+
+        // react only
+        if ($request->selectedUserEdit) {
+            $user_id = intval($request->selectedUserEdit['id']);
+            $balance = floatval($request->newBalance);
+            $difference = $request->difference;
+            $user = User::find($user_id);
+            $old_balance = $user->store_credit ? $user->store_credit : 0;
+        }
+        // end react only
+
+        $note = $request->note;
+        $user->store_credit = $balance;
+        $user->save();
+        $logged_in = \Auth()->user();
+        StoreCreditTracker::create([
+            'admin_id' => $logged_in->id,
+            'user_id' => $user_id,
+            'previous_balance' => $old_balance,
+            'difference' => $difference,
+            'new_balance' => $balance,
+            'note' => $note,
+        ]);
+        $date = \Carbon\Carbon::now()->format('F d, Y');
+        if ($difference > 0) {
+            $difference = '$' . number_format($difference, 2);
+        } else {
+            $difference = '-$' . number_format(abs($difference), 2);
+        }
+        /**
+         * Email user then all admins without note email disabled
+         */
+        \Mail::to($user)->send(new EmailBalance(
+            $user,
+            $old_balance,
+            $difference,
+            $balance,
+            $note,
+            $date,
+            false,
+            'Store Credit Balance Update'
+        ));
+        $admin_users = User::getAdminManageerUsers();
+        foreach ($admin_users as $admin) {
+            if (!$admin->notes_email_disable) {
+                \Mail::to($admin)->send(new EmailBalance(
+                    $user,
+                    $old_balance,
+                    $difference,
+                    $balance,
+                    $note,
+                    $date,
+                    $admin,
+                    'Store Credit Balance Update'
+                ));
+
+            }
+        }
+
+        if ($request->selectedUserEdit) {
+            // react
+            return $user;
+        } else {
+            // not react
+            session()->flash('message', 'User store credit has been updated');
             return redirect('/users/' . $user->id);
         }
 

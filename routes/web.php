@@ -161,7 +161,9 @@ Route::group(['middleware' => 'App\Http\Middleware\LockOutUsersManagers'], funct
     Route::get('delete-order/{order}', 'OrderController@destroy');
     Route::get('resend-email/{email}', 'EmailTrackerController@resend');
     Route::get('transaction-change-credit/{user}', 'UserController@transactionTrackerAddCredit');
+    Route::get('transaction-change-credit-store/{user}', 'UserController@transactionTrackerAddCreditStore');
     Route::post('edit-transaction/{user}', 'UserController@changeUserBalance');
+    Route::post('edit-transaction-store/{user}', 'UserController@changeUserBalanceStore');
     Route::post('credit-complete', 'UserController@creditComplete');
 });
 
@@ -169,6 +171,7 @@ Route::group(['middleware' => 'App\Http\Middleware\LockOutUsersManagers'], funct
  * @todo restrict access here?
  */
 Route::get('transaction-tracker', 'UserController@transactionTracker');
+Route::get('transaction-tracker-store', 'UserController@transactionTrackerStore');
 Route::get('transaction-tracker-dealer', 'UserController@transactionTrackerDealer');
 Route::get('transaction-tracker/{user}', 'UserController@transactionTrackerShow');
 //Route::get('credit-tracker', 'UserController@creditTracker');
@@ -247,6 +250,7 @@ Route::get('/api/v1/purchases-dealer', 'APIController@getPurchasesDealer')->name
 Route::get('/api/v1/rmas', 'APIController@getRmas')->name('api.rmas.index');
 Route::get('/api/v1/notes', 'APIController@getNotes')->name('api.notes.index');
 Route::get('/api/v1/balance', 'APIController@getBalanceChanges')->name('api.balance.index');
+Route::get('/api/v1/store-balance', 'APIController@getBalanceChangesStore')->name('api.store-balance.index');
 Route::get('/api/v1/balance-dealer', 'APIController@getBalanceChangesDealer')->name('api.balance.index-dealer');
 Route::get('/api/v1/balance-show/{user}', 'APIController@getBalanceChangesShow')->name('api.balance.show');
 Route::get('/api/v1/balance-user', 'APIController@getBalanceChangesUser')->name('api.balance.user');

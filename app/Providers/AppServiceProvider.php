@@ -249,6 +249,10 @@ class AppServiceProvider extends ServiceProvider
                     'name' => 'Credit History',
                     'link' => '/transaction-tracker',
                 ],
+                [
+                    'name' => 'Store Credit History',
+                    'link' => '/transaction-tracker-store',
+                ],
             ];
 
             $trackers_sub_dealer = [

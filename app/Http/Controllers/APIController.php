@@ -13,6 +13,7 @@ use App\Rma;
 use App\Sim;
 use App\SimMaster;
 use App\SimResidual;
+use App\StoreCreditTracker;
 use App\User;
 use App\UserLoginLogout;
 use Illuminate\Support\Facades\DB;
@@ -252,6 +253,15 @@ class APIController extends Controller
     public function getBalanceChanges()
     {
         $balance = BalanceTracker::with(['user', 'admin_user'])->get();
+
+        $balance = self::standardizeBalance($balance);
+
+        return datatables($balance)->make(true);
+    }
+
+    public function getBalanceChangesStore()
+    {
+        $balance = StoreCreditTracker::with(['user', 'admin_user'])->get();
 
         $balance = self::standardizeBalance($balance);
 
