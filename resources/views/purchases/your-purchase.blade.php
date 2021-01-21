@@ -95,6 +95,12 @@
               @endif
             </div>
             <div class="item">
+              <div class="label">Coupon Percent</div>
+              <div>
+                {{ $purchase->coupon_percent }}%
+              </div>
+            </div>
+            <div class="item">
               <div class="label">Coupon Discount</div>
               <div>
                 -${{ number_format($purchase->discount, 2) }}
