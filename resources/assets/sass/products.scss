@@ -41,7 +41,8 @@
         }
         @include product_style;
         //background-color: $brand-primary;
-        background: lighten($product-blue, 8%);
+        //background: lighten($product-blue, 8%);
+        background: $brand-primary;
         color: #fff;
         .products-header__left {
             display: flex;
@@ -83,16 +84,22 @@
                 border: none;
                 color: #363636;
                 //background-color: lighten($primary, 15%);
-                background: darken($product-blue, 3%);
-                text-shadow: 1px 1px rgba(0, 0, 0, 0.05);
-                color: #fff;
+                //background: darken($product-blue, 3%);
+                //text-shadow: 1px 1px rgba(0, 0, 0, 0.05);
+                //color: #fff;
+                background-color: darken($star-gold, 2%);
+                color: #111;
+                text-shadow: 1px 1px rgba(255, 255, 255, 0.05);
                 &.is-selected {
                     //background-color: lighten($primary, 15%);
                     background-color: darken($star-gold, 2%);
-                    color: #111;
+                    background-color: #111;
+                    text-shadow: 1px 1px rgba(0, 0, 0, 0.05);
+                    color: #fff;
+                    //color: #111;
                     //color: #fff;
                     //text-shadow: 1px 1px rgba(0, 0, 0, 0.05);
-                    text-shadow: 1px 1px rgba(255, 255, 255, 0.05);
+                    //text-shadow: 1px 1px rgba(255, 255, 255, 0.05);
                 }
                 &:focus {
                     outline: none;
@@ -430,7 +437,8 @@
             justify-content: space-between;
             align-items: center;
             border-top: 1px solid #eee;
-            background: lighten($product-blue, 8%);
+            //background: lighten($product-blue, 8%);
+            background: $brand-primary;
             //background: darken($green, 5%);
             //background: red;
 
@@ -458,10 +466,12 @@
                 justify-content: center;
                 &.product__footer--right {
                     background: darken($product-blue, 3%);
+                    background: #111;
                     color: #fff;
                     text-shadow: 1px 1px #333;
                     &:not(:nth-child(2)) {
                         border-left: 1px solid darken($product-blue, 11%);
+                        border-left: 1px solid #333;
                     }
                     i {
                         font-size: 0.9em;
