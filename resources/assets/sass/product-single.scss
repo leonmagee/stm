@@ -93,7 +93,8 @@
         .product-details__compare {
             padding-bottom: 0.2em;
             a {
-                color: darken($info, 15%);
+                //color: darken($info, 15%);
+                color: $brand-primary;
                 i {
                     margin-right: 0.4em;
                     margin-left: 0.3em;
@@ -495,7 +496,8 @@
             a {
                 font-weight: bold;
                 //color: darken($product-tabs, 4%);
-                color: lighten($product-blue, 5%);
+                //color: lighten($product-blue, 5%);
+                color: $brand-primary;
                 font-size: 0.8em;
                 i {
                     margin-right: 7px;
@@ -507,10 +509,12 @@
                     text-shadow: 1px 1px rgba(0, 0, 0, 0.05);
                     //background-color: $product-tabs;
                     //background-color: $product-blue;
-                    background-color: lighten($product-blue, 8%);
+                    //background-color: lighten($product-blue, 8%);
                     //border-color: $product-tabs;
                     //border-color: $product-blue;
-                    border-color: lighten($product-blue, 8%);
+                    //border-color: lighten($product-blue, 8%);
+                    background-color: $brand-primary;
+                    border-color: $brand-primary;
                 }
             }
         }

@@ -21,17 +21,18 @@
       {{-- {!! $item->description !!} --}}
     </div>
     <div class="saved-favorites__item--links">
-      <a class="saved-favorites__item--link-remove" href="/{{ $link_path }}/{{ $item->id }}">{{ $link }} <i
-          class="fas fa-times-circle"></i></a>
+      <a class="saved-favorites__item--link-remove" href="/{{ $link_path }}/{{ $item->id }}"><i
+          class="fas fa-times-circle"></i> {{ $link }}</a>
       @if($item->in_stock())
       <span class="sep">|</span>
-      <a class="saved-favorites__item--link-add" href="/add-to-cart-sav-fav/{{ $item->id }}">Add to Cart <i
-          class="fas fa-cart-plus"></i></a>
+      <a class="saved-favorites__item--link-add" href="/add-to-cart-sav-fav/{{ $item->id }}"><i
+          class="fas fa-cart-plus"></i> Add to Cart</a>
       @endif
       @if($related)
       <span class="sep">|</span>
-      <a class="saved-favorites__item--link-compare modal-delete-open" item_id={{ $item->id }}>Compare with Similar
-        Items <i class="fas fa-random"></i></a>
+      <a class="saved-favorites__item--link-compare modal-delete-open" item_id={{ $item->id }}><i
+          class="fas fa-random"></i> Compare with Similar
+        Items</a>
       @endif
     </div>
   </div>

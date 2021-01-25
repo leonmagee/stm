@@ -424,26 +424,29 @@ a.button.custom-button {
             a {
                 font-size: 0.9em;
                 color: $brand-primary;
+                //color: #111;
                 display: flex;
                 align-items: center;
                 i {
+                    color: $brand-primary;
                     padding-top: 0.2em;
-                    margin-left: 0.3em;
+                    margin-right: 0.3em;
                 }
                 &:hover {
-                    text-decoration: underline;
+                    //text-decoration: underline;
+                    opacity: 0.8;
                 }
             }
             .saved-favorites__item--link-remove {
-                color: $red;
+                //color: $red;
             }
             .saved-favorites__item--link-add {
                 //color: $info;
-                color: darken($green, 8%);
+                //color: darken($green, 8%);
             }
             .saved-favorites__item--link-compare {
                 //color: darken($green, 8%);
-                color: $info;
+                //color: $info;
             }
             span {
                 color: #bbb;
