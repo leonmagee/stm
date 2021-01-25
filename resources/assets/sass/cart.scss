@@ -62,7 +62,8 @@
         //border: 1px solid #eee;
         h3.cart-h3 {
             //color: darken($info, 11%);
-            color: darken($product-blue, 10%);
+            //color: darken($product-blue, 10%);
+            color: #111;
             border-bottom: 1px solid #ddd;
             background-color: #f5f5f5;
             text-align: center;
@@ -102,19 +103,23 @@
         display: flex;
         align-items: center;
         font-size: 0.8em;
-        a.save-for-later {
-            font-weight: 400;
-            //color: lighten($color-orange, 1%);
-            color: $color-orange;
-            white-space: nowrap;
-            margin-top: 0.1em;
-            &:hover {
-                color: darken($color-orange, 7%);
-            }
-        }
+
         .stm-cart__item--name {
             a {
                 display: block;
+                color: #111;
+                &.save-for-later {
+                    font-weight: 400;
+                    //color: lighten($color-orange, 1%);
+                    //color: $color-orange;
+                    color: $brand-primary;
+                    white-space: nowrap;
+                    margin-top: 0.1em;
+                    &:hover {
+                        opacity: 0.8;
+                        //color: darken($color-orange, 7%);
+                    }
+                }
             }
         }
         &.stm-cart__item--header {
