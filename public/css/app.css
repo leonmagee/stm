@@ -22027,7 +22027,7 @@ body.stm-body.about .middle-content-wrap .about-page .video-wrap .video-wrap-inn
   margin: 0 0.5em;
   border: none;
   color: #363636;
-  background-color: #105a64;
+  background-color: #111;
   color: #fff;
 }
 
@@ -22432,7 +22432,7 @@ body.stm-body.about .middle-content-wrap .about-page .video-wrap .video-wrap-inn
 }
 
 .products-outer .product .product__footer a.product__footer--right {
-  background: #105a64;
+  background: #111;
   color: #fff;
   text-shadow: 1px 1px #333;
 }
