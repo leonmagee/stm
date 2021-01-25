@@ -263,11 +263,12 @@ a.button.custom-button {
     }
     &.continue-shopping {
         margin-top: 0.5em;
-        background-color: lighten($product-blue, 7%);
+        //background-color: lighten($product-blue, 7%);
+        background-color: $brand-primary;
     }
     &:hover {
         color: #fff;
-        opacity: 0.8;
+        opacity: 0.9;
     }
 }
 .stm-cart-footer {

@@ -87,15 +87,18 @@
                 //background: darken($product-blue, 3%);
                 //text-shadow: 1px 1px rgba(0, 0, 0, 0.05);
                 //color: #fff;
-                background-color: darken($star-gold, 2%);
-                color: #111;
-                text-shadow: 1px 1px rgba(255, 255, 255, 0.05);
+                //background-color: darken($star-gold, 2%);
+                //background-color: #111;
+                background-color: darken($brand-primary, 16%);
+                color: #fff;
                 &.is-selected {
-                    //background-color: lighten($primary, 15%);
                     background-color: darken($star-gold, 2%);
-                    background-color: #111;
-                    //text-shadow: 1px 1px rgba(0, 0, 0, 0.05);
+                    background-color: darken($color-green, 1%);
+                    color: #111;
                     color: #fff;
+                    //text-shadow: 1px 1px rgba(255, 255, 255, 0.05);
+                    //background-color: lighten($primary, 15%);
+                    text-shadow: 1px 1px rgba(0, 0, 0, 0.1);
                     //color: #111;
                     //color: #fff;
                     //text-shadow: 1px 1px rgba(0, 0, 0, 0.05);
@@ -465,13 +468,15 @@
                 align-items: center;
                 justify-content: center;
                 &.product__footer--right {
-                    background: darken($product-blue, 3%);
-                    background: #111;
+                    //background: darken($product-blue, 3%);
+                    //background: #111;
+                    background: darken($brand-primary, 16%);
                     color: #fff;
                     text-shadow: 1px 1px #333;
                     &:not(:nth-child(2)) {
                         border-left: 1px solid darken($product-blue, 11%);
                         border-left: 1px solid #333;
+                        border-left: 1px solid darken($brand-primary, 20%);
                     }
                     i {
                         font-size: 0.9em;
