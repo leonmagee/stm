@@ -22027,8 +22027,9 @@ body.stm-body.about .middle-content-wrap .about-page .video-wrap .video-wrap-inn
   margin: 0 0.5em;
   border: none;
   color: #363636;
-  background-color: #111;
-  color: #fff;
+  border-radius: 0.7em;
+  background-color: #ddd;
+  color: #111;
 }
 
 .products-header-wrap .products-header .products-header__right button.is-selected,

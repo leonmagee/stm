@@ -84,6 +84,7 @@
         <div class="stm-cart__item--total"></div>
         <div class="stm-cart__item--delete"></div>
       </div>
+
       <div class="apply-coupon">
         @if(!$coupon)
         <form method="POST" action="/apply-coupon">
@@ -106,9 +107,30 @@
         </form>
         @endif
       </div>
+
+      <div class="apply-coupon">
+        @if(!$store_credit)
+        <form method="POST" action="/apply-credit">
+          @csrf
+          <div class="apply-coupon-form">
+            <input type="text" class="input" name="coupon_code" placeholder="Store Credit..." />
+            <button type="submit" class="button is-primary">Store Credit</button>
+          </div>
+        </form>
+        @endif
+        @if($store_credit)
+        <form method="POST" action="/apply-store-credit">
+          @csrf
+          <div class="apply-coupon-form">
+            <input type="text" class="input" name="coupon_code" value="{{ $store_credit }}" />
+            <button type="submit" class="button is-primary">Apply Credit</button>
+          </div>
+        </form>
+        @endif
+      </div>
+
+
       <div class="cart-wrapper__notification">
-
-
         <div class="free-shipping-alert">
           {{-- <div class="icon-wrap"><i class="fas fa-shipping-fast"></i></div> --}}
           <div class="image-wrap"><img src="{{ asset('img/free-shipping-small.png') }}" /></div>

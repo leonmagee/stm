@@ -31,6 +31,7 @@ class CartProductController extends Controller
     {
         $user = \Auth::user();
         $balance = $user->balance;
+        $store_credit = $user->store_credit;
         $user_id = $user->id;
         $items = CartProduct::where('user_id', $user_id)->get();
         $total = 0;
@@ -135,6 +136,7 @@ class CartProductController extends Controller
             'paypal_total',
             'paypal_total_item',
             'balance',
+            'store_credit',
             'sufficient',
             'shipping_charge',
             'subtotal',
