@@ -108,7 +108,7 @@
         @endif
       </div>
 
-      <div class="apply-coupon">
+      {{-- <div class="apply-coupon">
         @if(!$store_credit)
         <form method="POST" action="/apply-credit">
           @csrf
@@ -123,84 +123,84 @@
           @csrf
           <div class="apply-coupon-form">
             <input type="text" class="input" name="coupon_code" value="{{ $store_credit }}" />
-            <button type="submit" class="button is-primary">Apply Credit</button>
-          </div>
-        </form>
-        @endif
-      </div>
-
-
-      <div class="cart-wrapper__notification">
-        <div class="free-shipping-alert">
-          {{-- <div class="icon-wrap"><i class="fas fa-shipping-fast"></i></div> --}}
-          <div class="image-wrap"><img src="{{ asset('img/free-shipping-small.png') }}" /></div>
-          <div class="text-wrap">
-            <div class="line-1">Free shipping on all orders above ${{ $shipping_max}}.</div>
-            <div class="line-2">A <span>${{ $shipping_default }}</span> shipping charge will be applied for all orders
-              under
-              ${{ $shipping_max }}.
-            </div>
-            <div class="line-3">
-              Returning or exchanging undamaged or undefective phones are subject to 20% restocking fee.
-            </div>
-          </div>
-        </div>
-      </div>
-      @else
-      <div class="stm-cart-empty">
-        Your cart is empty.
-      </div>
-      @endif
+      <button type="submit" class="button is-primary">Apply Credit</button>
     </div>
+    </form>
+    @endif
+  </div> --}}
 
-    {{-- Wish List Section --}}
-    <div class="saved-favorites">
-      <h3 class="wish-list cart-h3">Wish List <i class="far fa-list-alt"></i></h3>
-      @if($fav_products->isEmpty())
-      <div class="saved-favorites__no-items">
-        You have no products in your Wish List.
-      </div>
-      @endif
-      @foreach($fav_products as $item)
-      @include('products.fav-saved', ['item' => $item, 'link' => 'Remove', 'link_path' => 'remove-favorite'])
-      @endforeach
-    </div>
-    {{-- @endif --}}
-  </div>
-  <div class="cart-wrapper-right cart-wrapper-inner">
-    <h3 class="cart-h3">Checkout <i class="far fa-credit-card"></i></h3>
-    <div class="stm-cart-footer">
-      @if(count($items))
-      <div class="stm-total-wrap">
-        @if($shipping_charge || $coupon)
-        <div class="item"><span class="">Subtotal:</span><span class="">${{ number_format($subtotal, 2) }}</span>
+
+  <div class="cart-wrapper__notification">
+    <div class="free-shipping-alert">
+      {{-- <div class="icon-wrap"><i class="fas fa-shipping-fast"></i></div> --}}
+      <div class="image-wrap"><img src="{{ asset('img/free-shipping-small.png') }}" /></div>
+      <div class="text-wrap">
+        <div class="line-1">Free shipping on all orders above ${{ $shipping_max}}.</div>
+        <div class="line-2">A <span>${{ $shipping_default }}</span> shipping charge will be applied for all orders
+          under
+          ${{ $shipping_max }}.
         </div>
-        @endif
-        @if($coupon_discount)
-        <div class="item"><span class="">Coupon:</span><span
-            class="green">-${{ number_format($coupon_discount, 2) }}</span>
-        </div>
-        @endif
-        @if($shipping_charge)
-        <div class="item"><span class="">Shipping:</span><span
-            class="red">${{ number_format($shipping_charge, 2) }}</span>
-        </div>
-        @endif
-        <div class="item total"><span class="">Total Due:</span><span class="">${{ number_format($total, 2) }}</span>
+        <div class="line-3">
+          Returning or exchanging undamaged or undefective phones are subject to 20% restocking fee.
         </div>
       </div>
-      <a class="button custom-button stm-credit modal-open">
-        <img src="{{ URL::asset('img/stm_logo_short.png') }}" />
-        <span>
-          Pay With Balance
-        </span>
-      </a>
-      <div id="paypal-button-container"></div>
-
-      @endif
-      <a class="button custom-button continue-shopping" href="/">Continue Shopping</a>
     </div>
   </div>
+  @else
+  <div class="stm-cart-empty">
+    Your cart is empty.
+  </div>
+  @endif
+</div>
+
+{{-- Wish List Section --}}
+<div class="saved-favorites">
+  <h3 class="wish-list cart-h3">Wish List <i class="far fa-list-alt"></i></h3>
+  @if($fav_products->isEmpty())
+  <div class="saved-favorites__no-items">
+    You have no products in your Wish List.
+  </div>
+  @endif
+  @foreach($fav_products as $item)
+  @include('products.fav-saved', ['item' => $item, 'link' => 'Remove', 'link_path' => 'remove-favorite'])
+  @endforeach
+</div>
+{{-- @endif --}}
+</div>
+<div class="cart-wrapper-right cart-wrapper-inner">
+  <h3 class="cart-h3">Checkout <i class="far fa-credit-card"></i></h3>
+  <div class="stm-cart-footer">
+    @if(count($items))
+    <div class="stm-total-wrap">
+      @if($shipping_charge || $coupon)
+      <div class="item"><span class="">Subtotal:</span><span class="">${{ number_format($subtotal, 2) }}</span>
+      </div>
+      @endif
+      @if($coupon_discount)
+      <div class="item"><span class="">Coupon:</span><span
+          class="green">-${{ number_format($coupon_discount, 2) }}</span>
+      </div>
+      @endif
+      @if($shipping_charge)
+      <div class="item"><span class="">Shipping:</span><span
+          class="red">${{ number_format($shipping_charge, 2) }}</span>
+      </div>
+      @endif
+      <div class="item total"><span class="">Total Due:</span><span class="">${{ number_format($total, 2) }}</span>
+      </div>
+    </div>
+    <a class="button custom-button stm-credit modal-open">
+      <img src="{{ URL::asset('img/stm_logo_short.png') }}" />
+      <span>
+        Pay With Balance
+      </span>
+    </a>
+    <div id="paypal-button-container"></div>
+
+    @endif
+    <a class="button custom-button continue-shopping" href="/">Continue Shopping</a>
+  </div>
+</div>
 </div>
 
 @endsection
