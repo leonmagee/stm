@@ -22027,7 +22027,6 @@ body.stm-body.about .middle-content-wrap .about-page .video-wrap .video-wrap-inn
   margin: 0 0.5em;
   border: none;
   color: #363636;
-  border-radius: 0.7em;
   background-color: #ddd;
   color: #111;
 }
@@ -22290,7 +22289,7 @@ body.stm-body.about .middle-content-wrap .about-page .video-wrap .video-wrap-inn
 }
 
 .products-outer .product .product__rating svg.inactive path {
-  fill: #444;
+  fill: gray;
 }
 
 .products-outer .product .product__rating svg.half path {
@@ -22433,15 +22432,14 @@ body.stm-body.about .middle-content-wrap .about-page .video-wrap .video-wrap-inn
 }
 
 .products-outer .product .product__footer a.product__footer--right {
-  background: #111;
+  background: #333;
   color: #fff;
   text-shadow: 1px 1px #333;
 }
 
 .products-outer .product .product__footer a.product__footer--right:not(:nth-child(2)) {
   border-left: 1px solid #00527e;
-  border-left: 1px solid #333;
-  border-left: 1px solid #0d4a52;
+  border-left: 1px solid #555;
 }
 
 .products-outer .product .product__footer a.product__footer--right i {

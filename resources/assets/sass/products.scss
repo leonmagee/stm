@@ -83,7 +83,7 @@
                 margin: 0 0.5em;
                 border: none;
                 color: #363636;
-                border-radius: 0.7em;
+                //border-radius: 0.7em;
                 //background-color: lighten($primary, 15%);
                 //background: darken($product-blue, 3%);
                 //text-shadow: 1px 1px rgba(0, 0, 0, 0.05);
@@ -94,6 +94,7 @@
                 //background-color: darken($brand-primary, 16%);
                 //color: #fff;
                 color: #111;
+
                 &.is-selected {
                     background-color: darken($star-gold, 2%);
                     background-color: darken($color-green, 1%);
@@ -327,7 +328,8 @@
                 }
                 &.inactive {
                     path {
-                        fill: #444;
+                        //fill: #444;
+                        fill: gray;
                     }
                 }
                 &.half {
@@ -472,14 +474,15 @@
                 justify-content: center;
                 &.product__footer--right {
                     //background: darken($product-blue, 3%);
-                    background: #111;
+                    //background: #111;
+                    background: #333;
                     //background: darken($brand-primary, 16%);
                     color: #fff;
                     text-shadow: 1px 1px #333;
                     &:not(:nth-child(2)) {
                         border-left: 1px solid darken($product-blue, 11%);
-                        border-left: 1px solid #333;
-                        border-left: 1px solid darken($brand-primary, 20%);
+                        border-left: 1px solid #555;
+                        //border-left: 1px solid darken($brand-primary, 20%);
                     }
                     i {
                         font-size: 0.9em;
