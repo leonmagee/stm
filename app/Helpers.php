@@ -266,6 +266,24 @@ class Helpers
         return $cart_items;
     }
 
+    public static function number_format_na($input, $prefix = '')
+    {
+        if ($input) {
+            return $prefix . '$' . number_format($input, 2);
+        } else {
+            return 'N/A';
+        }
+    }
+
+    public static function percent_na($input)
+    {
+        if ($input) {
+            return $input . '%';
+        } else {
+            return 'N/A';
+        }
+    }
+
     public static function date_array()
     {
         return [

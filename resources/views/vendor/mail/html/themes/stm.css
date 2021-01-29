@@ -520,10 +520,10 @@ img.email-header-logo {
     margin-right: auto;
 }
 .invoice-wrap__footer .invoice-wrap__footer--totals .item.discount {
-    color: #ef476f;
+    /* color: #ef476f; */
 }
 .invoice-wrap__footer .invoice-wrap__footer--totals .item.coupon-discount {
-    color: #05c793;
+    /* color: #05c793; */
 }
 .invoice-wrap__footer .invoice-wrap__footer--totals .item.final {
     background-color: #f3f3f3;

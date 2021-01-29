@@ -98,22 +98,32 @@
             <div class="item">
               <div class="label">Coupon Percent</div>
               <div>
-                {{ $purchase->coupon_percent }}%
+                {{ \App\Helpers::percent_na($purchase->coupon_percent) }}
+              </div>
+            </div>
+            <div class="item">
+              <div class="label">Coupon</div>
+              <div>
+                {{ \App\Helpers::number_format_na($purchase->discount, '-') }}
               </div>
             </div>
             @endif
+            @if($purchase->store_credit)
             <div class="item">
-              <div class="label">Coupon Discount</div>
+              <div class="label">Store Credit</div>
               <div>
-                -${{ number_format($purchase->discount, 2) }}
+                {{ \App\Helpers::number_format_na($purchase->store_credit, '-') }}
               </div>
             </div>
+            @endif
+            @if($purchase->shipping)
             <div class="item discount">
               <div class="label">Shipping Charge</div>
               <div>
-                ${{ number_format($purchase->shipping, 2) }}
+                {{ \App\Helpers::number_format_na($purchase->shipping) }}
               </div>
             </div>
+            @endif
             <div class="item final">
               <div class="label">Total</div>
               <div>${{ number_format($purchase->total, 2) }}</div>

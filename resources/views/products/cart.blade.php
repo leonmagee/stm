@@ -108,99 +108,82 @@
         @endif
       </div>
 
-      {{-- <div class="apply-coupon">
-        @if(!$store_credit)
-        <form method="POST" action="/apply-credit">
-          @csrf
-          <div class="apply-coupon-form">
-            <input type="text" class="input" name="coupon_code" placeholder="Store Credit..." />
-            <button type="submit" class="button is-primary">Store Credit</button>
+      <div class="cart-wrapper__notification">
+        <div class="free-shipping-alert">
+          {{-- <div class="icon-wrap"><i class="fas fa-shipping-fast"></i></div> --}}
+          <div class="image-wrap"><img src="{{ asset('img/free-shipping-small.png') }}" /></div>
+          <div class="text-wrap">
+            <div class="line-1">Free shipping on all orders above ${{ $shipping_max}}.</div>
+            <div class="line-2">A <span>${{ $shipping_default }}</span> shipping charge will be applied for all orders
+              under
+              ${{ $shipping_max }}.
+            </div>
+            <div class="line-3">
+              Returning or exchanging undamaged or undefective phones are subject to 20% restocking fee.
+            </div>
           </div>
-        </form>
+        </div>
+      </div>
+      @else
+      <div class="stm-cart-empty">
+        Your cart is empty.
+      </div>
+      @endif
+    </div>
+
+    {{-- Wish List Section --}}
+    <div class="saved-favorites">
+      <h3 class="wish-list cart-h3">Wish List <i class="far fa-list-alt"></i></h3>
+      @if($fav_products->isEmpty())
+      <div class="saved-favorites__no-items">
+        You have no products in your Wish List.
+      </div>
+      @endif
+      @foreach($fav_products as $item)
+      @include('products.fav-saved', ['item' => $item, 'link' => 'Remove', 'link_path' => 'remove-favorite'])
+      @endforeach
+    </div>
+    {{-- @endif --}}
+  </div>
+  <div class="cart-wrapper-right cart-wrapper-inner">
+    <h3 class="cart-h3">Checkout <i class="far fa-credit-card"></i></h3>
+    <div class="stm-cart-footer">
+      @if(count($items))
+      <div class="stm-total-wrap">
+        @if($shipping_charge || $coupon || $store_credit)
+        <div class="item"><span class="">Subtotal:</span><span class="">${{ number_format($subtotal, 2) }}</span>
+        </div>
+        @endif
+        @if($coupon_discount)
+        <div class="item"><span class="">Coupon:</span><span
+            class="green">-${{ number_format($coupon_discount, 2) }}</span>
+        </div>
         @endif
         @if($store_credit)
-        <form method="POST" action="/apply-store-credit">
-          @csrf
-          <div class="apply-coupon-form">
-            <input type="text" class="input" name="coupon_code" value="{{ $store_credit }}" />
-      <button type="submit" class="button is-primary">Apply Credit</button>
-    </div>
-    </form>
-    @endif
-  </div> --}}
-
-
-  <div class="cart-wrapper__notification">
-    <div class="free-shipping-alert">
-      {{-- <div class="icon-wrap"><i class="fas fa-shipping-fast"></i></div> --}}
-      <div class="image-wrap"><img src="{{ asset('img/free-shipping-small.png') }}" /></div>
-      <div class="text-wrap">
-        <div class="line-1">Free shipping on all orders above ${{ $shipping_max}}.</div>
-        <div class="line-2">A <span>${{ $shipping_default }}</span> shipping charge will be applied for all orders
-          under
-          ${{ $shipping_max }}.
+        <div class="item"><span class="">Store Credit:</span><span
+            class="green">-${{ number_format($store_credit, 2) }}</span>
         </div>
-        <div class="line-3">
-          Returning or exchanging undamaged or undefective phones are subject to 20% restocking fee.
+        @endif
+        @if($shipping_charge)
+        <div class="item"><span class="">Shipping:</span><span
+            class="red">${{ number_format($shipping_charge, 2) }}</span>
+        </div>
+        @endif
+        <div class="item total"><span class="">Total Due:</span><span class="">${{ number_format($total, 2) }}</span>
         </div>
       </div>
+      <a class="button custom-button stm-credit modal-open">
+        <img src="{{ URL::asset('img/stm_logo_short.png') }}" />
+        <span>
+          Pay With Balance
+        </span>
+      </a>
+      <div id="paypal-button-container"></div>
+
+      @endif
+      <a class="button custom-button continue-shopping" href="/">Continue Shopping</a>
     </div>
   </div>
-  @else
-  <div class="stm-cart-empty">
-    Your cart is empty.
-  </div>
-  @endif
-</div>
-
-{{-- Wish List Section --}}
-<div class="saved-favorites">
-  <h3 class="wish-list cart-h3">Wish List <i class="far fa-list-alt"></i></h3>
-  @if($fav_products->isEmpty())
-  <div class="saved-favorites__no-items">
-    You have no products in your Wish List.
-  </div>
-  @endif
-  @foreach($fav_products as $item)
-  @include('products.fav-saved', ['item' => $item, 'link' => 'Remove', 'link_path' => 'remove-favorite'])
-  @endforeach
-</div>
-{{-- @endif --}}
-</div>
-<div class="cart-wrapper-right cart-wrapper-inner">
-  <h3 class="cart-h3">Checkout <i class="far fa-credit-card"></i></h3>
-  <div class="stm-cart-footer">
-    @if(count($items))
-    <div class="stm-total-wrap">
-      @if($shipping_charge || $coupon)
-      <div class="item"><span class="">Subtotal:</span><span class="">${{ number_format($subtotal, 2) }}</span>
-      </div>
-      @endif
-      @if($coupon_discount)
-      <div class="item"><span class="">Coupon:</span><span
-          class="green">-${{ number_format($coupon_discount, 2) }}</span>
-      </div>
-      @endif
-      @if($shipping_charge)
-      <div class="item"><span class="">Shipping:</span><span
-          class="red">${{ number_format($shipping_charge, 2) }}</span>
-      </div>
-      @endif
-      <div class="item total"><span class="">Total Due:</span><span class="">${{ number_format($total, 2) }}</span>
-      </div>
-    </div>
-    <a class="button custom-button stm-credit modal-open">
-      <img src="{{ URL::asset('img/stm_logo_short.png') }}" />
-      <span>
-        Pay With Balance
-      </span>
-    </a>
-    <div id="paypal-button-container"></div>
-
-    @endif
-    <a class="button custom-button continue-shopping" href="/">Continue Shopping</a>
-  </div>
-</div>
 </div>
 
 @endsection
@@ -209,26 +192,18 @@
 <script src="https://www.paypal.com/sdk/js?client-id={{ env('PAYPAL_CLIENT_ID') }}"></script>
 @if(count($items))
 <script>
-  let breakdown_obj = false;
-  if("{{ $coupon_discount }}") {
-      breakdown_obj = {
-      item_total: {
-        currency_code: "USD",
-        value: parseFloat("{{ $paypal_total_item }}"),
-      },
-      discount: {
-        currency_code: "USD",
-        value: parseFloat("{{ $coupon_discount }}"),
-      },
+  let breakdown_obj = {
+    item_total: {
+      currency_code: "USD",
+      value: parseFloat("{{ $paypal_total_item }}"),
     }
-  } else {
-    breakdown_obj = {
-      item_total: {
-        currency_code: "USD",
-        value: parseFloat("{{ $paypal_total_item }}"),
-      },
+  };
+  if("{{ $paypal_discount }}") {
+    breakdown_obj.discount = {
+      currency_code: "USD",
+      value: parseFloat("{{ $paypal_discount }}"),
     }
-  }
+  };
 
   paypal.Buttons({
     style: {
@@ -272,6 +247,14 @@
               },
               quantity: "1"
             },
+            // {
+            //   name: "Store Credit",
+            //   unit_amount: {
+            //   currency_code: "USD",
+            //   value: parseFloat("{{ $store_credit }}"),
+            //   },
+            //   quantity: "1"
+            //   },
           ]
         }
       ],
@@ -284,12 +267,11 @@
         axios.post('/process-paypal', {
           sub_total: "{{ $subtotal }}",
           discount: "{{ $coupon_discount }}",
+          store_credit: "{{ $store_credit }}",
           total: "{{ $paypal_total }}",
           type: 'paypal',
           //testers: true,
         }).then(function(res) {
-          //console.log('res', res);
-          //console.log(details, details.payer, details.payer.address);
           // redirect to purchase complete page
           window.location.href = "/purchase-complete";
           //return res.id;

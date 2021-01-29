@@ -106,6 +106,7 @@ class PurchaseController extends Controller
     {
         $current_user = \Auth::user();
         $balance = $current_user->balance;
+        $store_credit = $current_user->store_credit ? $current_user->store_credit : 0;
         $user_id = $current_user->id;
         $items = CartProduct::where('user_id', $user_id)->get();
         $total = 0;
@@ -118,15 +119,6 @@ class PurchaseController extends Controller
             }
         }
 
-        // $discount_coupon = CartCoupon::where('user_id', $user_id)->first();
-        // if ($discount_coupon && $discount_coupon->coupon) {
-        //     $coupon_percent = $discount_coupon->coupon->percent;
-        //     $total = floatval(strval(number_format(Helpers::get_discount_price($total, $coupon_percent), 2)));
-        // }
-
-        // if ($current_user->isAdmin()) {
-        //     dd('so far...');
-        // }
         $request->type = 'STM Balance';
         $request->sub_total = $total;
         if ($total < $this->shipping_max) {
@@ -138,7 +130,7 @@ class PurchaseController extends Controller
             $request->total = $total;
         }
 
-        if (floatval(strval($balance)) < floatval(strval($request->total))) {
+        if (floatval(strval($balance)) < floatval(strval($request->total - $store_credit))) {
             session()->flash('danger', 'You do not have sufficent funds in your balance for this purchase');
             return redirect()->back();
         }
@@ -150,6 +142,9 @@ class PurchaseController extends Controller
         /**
          * Update user balance
          */
+        // if ($store_credit) {
+        //     $request->total = $request->total - $store_credit;
+        // }
         $new_balance = floatval(strval($balance)) - floatval(strval($request->total));
         $current_user->balance = $new_balance;
         $current_user->save();
@@ -167,10 +162,20 @@ class PurchaseController extends Controller
      */
     public function store(Request $request)
     {
-
         //\Log::debug($request);
         // 0. Get logged in user
         $user = \Auth::user();
+
+        // Factor in Store Credit
+        $store_credit = $user->store_credit ? $user->store_credit : 0;
+        // if ($store_credit) {
+        //     if ($store_credit < $request->total) {
+        //         $request->total = $request->total - $store_credit;
+        //     } else {
+        //         $store_credit = $request->total;
+        //         $request->total = 0;
+        //     }
+        // }
 
         if ($request->sub_total < $this->shipping_max) {
             //$total = $request->total + $this->shipping_charge;
@@ -201,6 +206,7 @@ class PurchaseController extends Controller
             'status' => 2, // pending
             'coupon_percent' => $coupon_percent,
             'coupon_text' => $coupon_text,
+            'store_credit' => $store_credit,
             // 'address' => $request->address,
             // 'address2' => $request->address2,
             // 'city' => $request->city,
@@ -234,6 +240,13 @@ class PurchaseController extends Controller
             $product_variation->quantity = $new_quantity;
             $product_variation->save();
             $item->delete();
+
+            // update store credit
+            if ($store_credit) {
+                $store_credit_new = $user->store_credit - $store_credit;
+                $user->store_credit = $store_credit_new;
+                $user->save();
+            }
 
             // 4. Clear out cart item
             /**

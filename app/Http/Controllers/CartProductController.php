@@ -31,7 +31,11 @@ class CartProductController extends Controller
     {
         $user = \Auth::user();
         $balance = $user->balance;
-        $store_credit = $user->store_credit;
+        if ($user->store_credit) {
+            $store_credit = floatval(number_format($user->store_credit, 2));
+        } else {
+            $store_credit = false;
+        }
         $user_id = $user->id;
         $items = CartProduct::where('user_id', $user_id)->get();
         $total = 0;
@@ -62,10 +66,12 @@ class CartProductController extends Controller
         // calculate service charge
         $service_charge = number_format($total * 2 / 100, 2);
         $subtotal = $total;
+        $paypal_discount = 0;
         $coupon_discount = 0;
         $item_total = $total;
         if ($coupon) {
             $coupon_discount = floatval(strval(number_format($total * ($coupon->percent / 100), 2)));
+            $paypal_discount = $coupon_discount;
             $total = $total - $coupon_discount;
             //$coupon_discount_neg = -1 * $coupon_discount;
         }
@@ -87,11 +93,20 @@ class CartProductController extends Controller
         //dd($paypal_total);
         $total_float = floatval(strval($total));
         $balance_float = floatval(strval($balance));
-        if ($balance_float < $total_float) {
+        if ($balance_float < ($total_float - $store_credit)) {
             $sufficient = false;
         } else {
             $sufficient = true;
         }
+        if ($store_credit) {
+            $total = $total - $store_credit;
+            $paypal_total = $paypal_total - $store_credit;
+            $paypal_discount += $store_credit;
+        }
+
+        //dd($service_charge);
+        //dd($paypal_total); // this is minus the discount
+        //dd($paypal_total_item);
 
         // if ($user->isAdmin()) {
         //     var_dump($total);
@@ -145,6 +160,7 @@ class CartProductController extends Controller
             'coupon',
             'cart_coupon',
             'coupon_discount',
+            'paypal_discount',
             //'saved_products',
             'fav_products'
         ));
