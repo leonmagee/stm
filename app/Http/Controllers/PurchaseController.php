@@ -106,7 +106,6 @@ class PurchaseController extends Controller
     {
         $current_user = \Auth::user();
         $balance = $current_user->balance;
-        $store_credit = $current_user->store_credit ? $current_user->store_credit : 0;
         $user_id = $current_user->id;
         $items = CartProduct::where('user_id', $user_id)->get();
         $total = 0;
@@ -130,7 +129,13 @@ class PurchaseController extends Controller
             $request->total = $total;
         }
 
-        if (floatval(strval($balance)) < floatval(strval($request->total - $store_credit))) {
+        if ($current_user->store_credit) {
+            $request->total = ($request->total - $current_user->store_credit);
+        } else {
+            $request->total = $request->total;
+        }
+
+        if (floatval(strval($balance)) < floatval(strval($request->total))) {
             session()->flash('danger', 'You do not have sufficent funds in your balance for this purchase');
             return redirect()->back();
         }
@@ -160,6 +165,62 @@ class PurchaseController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+    public function pay_with_store_credit(Request $request)
+    {
+        $current_user = \Auth::user();
+        $user_id = $current_user->id;
+        $items = CartProduct::where('user_id', $user_id)->get();
+        $total = 0;
+        foreach ($items as $item) {
+            $total += $item->product->discount_cost() * $item->quantity;
+            $variation = ProductVariation::where(['product_id' => $item->product_id, 'text' => $item->variation])->first();
+            if ($variation->quantity < $item->quantity) {
+                session()->flash('danger', 'Quantity Discrepancy. Please refresh and try again.');
+                return redirect()->back();
+            }
+        }
+
+        $request->type = 'STM Store Credit';
+        $request->sub_total = $total;
+        if ($total < $this->shipping_max) {
+            $total = $total + $this->shipping_charge;
+        }
+        if ($request->discount) {
+            $request->total = ($total - $request->discount);
+        } else {
+            $request->total = $total;
+        }
+
+        $initial_total = $request->total;
+
+        $store_credit = $current_user->store_credit;
+        if (floatval(strval($store_credit)) < floatval(strval($request->total))) {
+            session()->flash('danger', 'You do not have sufficent store credit in your balance for this purchase');
+            return redirect()->back();
+        }
+
+        /**
+         * Store purchase
+         */
+        $this->store($request);
+        /**
+         * Update user balance
+         */
+        $new_store_credit = floatval(strval($store_credit)) - floatval(strval($initial_total));
+        $current_user->store_credit = $new_store_credit;
+        $current_user->save();
+        /**
+         * Go to confirmation page
+         */
+        return redirect('purchase-complete');
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
     public function store(Request $request)
     {
         //\Log::debug($request);
@@ -167,7 +228,15 @@ class PurchaseController extends Controller
         $user = \Auth::user();
 
         // Factor in Store Credit
+        /**
+         * Account for reduced store credit... compare with total...
+         */
+
         $store_credit = $user->store_credit ? $user->store_credit : 0;
+        if ($request->total <= $store_credit) {
+            $store_credit = $request->total;
+            $request->total = 0;
+        }
         // if ($store_credit) {
         //     if ($store_credit < $request->total) {
         //         $request->total = $request->total - $store_credit;
@@ -243,6 +312,7 @@ class PurchaseController extends Controller
 
             // update store credit
             if ($store_credit) {
+                // \Log::debug('store credit: ' . $store_credit . ' User Store Credit: ' . $user->store_credit);
                 $store_credit_new = $user->store_credit - $store_credit;
                 $user->store_credit = $store_credit_new;
                 $user->save();

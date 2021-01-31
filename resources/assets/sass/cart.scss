@@ -247,6 +247,9 @@ a.button.custom-button {
         padding: 1em 0.5em;
         span {
             color: #ddd;
+            &.small {
+                font-size: 0.8em;
+            }
         }
         img {
             max-width: 35%;

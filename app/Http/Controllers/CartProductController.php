@@ -98,10 +98,19 @@ class CartProductController extends Controller
         } else {
             $sufficient = true;
         }
+        $covered_by_credit = false;
         if ($store_credit) {
-            $total = $total - $store_credit;
-            $paypal_total = $paypal_total - $store_credit;
-            $paypal_discount += $store_credit;
+            if ($total <= $store_credit) {
+                $store_credit = $total;
+                $total = 0;
+                $covered_by_credit = true;
+            } else {
+                $total = $total - $store_credit;
+                $paypal_total = $paypal_total - $store_credit;
+                $paypal_discount += $store_credit;
+
+            }
+
         }
 
         //dd($service_charge);
@@ -143,6 +152,9 @@ class CartProductController extends Controller
         //     $fav->get_related();
         // }
         // dd($related_array);
+        // if ($total <= 0) {
+        //     $total = 0;
+        // }
 
         return view('products.cart', compact(
             'items',
@@ -162,7 +174,8 @@ class CartProductController extends Controller
             'coupon_discount',
             'paypal_discount',
             //'saved_products',
-            'fav_products'
+            'fav_products',
+            'covered_by_credit'
         ));
     }
 

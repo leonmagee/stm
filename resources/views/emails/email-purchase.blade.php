@@ -85,16 +85,16 @@
         -${{ number_format($purchase->discount, 2) }}
       </div>
       @endif
-      @if($purchase->store_credit)
-      <div class="item coupon-discount">
-        <div class="label">Store Credit</div>
-        -${{ number_format($purchase->store_credit, 2) }}
-      </div>
-      @endif
       @if($purchase->shipping)
       <div class="item discount">
         <div class="label">Shipping Charge</div>
         ${{ number_format($purchase->shipping, 2) }}
+      </div>
+      @endif
+      @if($purchase->store_credit)
+      <div class="item coupon-discount">
+        <div class="label">Store Credit</div>
+        -${{ number_format($purchase->store_credit, 2) }}
       </div>
       @endif
       <div class="item final">

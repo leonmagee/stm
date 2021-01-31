@@ -23509,6 +23509,10 @@ a.button.custom-button.stm-credit span {
   color: #ddd;
 }
 
+a.button.custom-button.stm-credit span.small {
+  font-size: 0.8em;
+}
+
 a.button.custom-button.stm-credit img {
   max-width: 35%;
 }
@@ -24039,7 +24043,8 @@ a.button.custom-button:hover {
 }
 
 .sales-receipt .invoice-wrap .invoice-wrap__middle table th {
-  background-color: #e9e9e9;
+  background-color: #1b9aaa;
+  color: #fff;
 }
 
 .sales-receipt .invoice-wrap .invoice-wrap__footer {

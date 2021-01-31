@@ -108,19 +108,19 @@
               </div>
             </div>
             @endif
-            @if($purchase->store_credit)
-            <div class="item">
-              <div class="label">Store Credit</div>
-              <div>
-                {{ \App\Helpers::number_format_na($purchase->store_credit, '-') }}
-              </div>
-            </div>
-            @endif
             @if($purchase->shipping)
             <div class="item discount">
               <div class="label">Shipping Charge</div>
               <div>
                 {{ \App\Helpers::number_format_na($purchase->shipping) }}
+              </div>
+            </div>
+            @endif
+            @if($purchase->store_credit)
+            <div class="item">
+              <div class="label">Store Credit</div>
+              <div>
+                {{ \App\Helpers::number_format_na($purchase->store_credit, '-') }}
               </div>
             </div>
             @endif

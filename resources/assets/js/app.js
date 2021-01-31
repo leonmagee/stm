@@ -811,7 +811,6 @@ $(
 $(
     '.modal-open-2, #layout-modal-2 .modal-close, #layout-modal-2 .modal-close-button'
 ).click(function() {
-    console.log('clickz...');
     $('.modal#layout-modal-2').toggleClass('is-active');
 });
 

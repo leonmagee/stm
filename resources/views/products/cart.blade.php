@@ -154,6 +154,11 @@
         <div class="item"><span class="">Subtotal:</span><span class="">${{ number_format($subtotal, 2) }}</span>
         </div>
         @endif
+        @if($shipping_charge)
+        <div class="item"><span class="">Shipping:</span><span
+            class="red">${{ number_format($shipping_charge, 2) }}</span>
+        </div>
+        @endif
         @if($coupon_discount)
         <div class="item"><span class="">Coupon:</span><span
             class="green">-${{ number_format($coupon_discount, 2) }}</span>
@@ -164,14 +169,17 @@
             class="green">-${{ number_format($store_credit, 2) }}</span>
         </div>
         @endif
-        @if($shipping_charge)
-        <div class="item"><span class="">Shipping:</span><span
-            class="red">${{ number_format($shipping_charge, 2) }}</span>
-        </div>
-        @endif
         <div class="item total"><span class="">Total Due:</span><span class="">${{ number_format($total, 2) }}</span>
         </div>
       </div>
+      @if($covered_by_credit)
+      <a class="button custom-button stm-credit modal-open-2">
+        <img src="{{ URL::asset('img/stm_logo_short.png') }}" />
+        <span class="small">
+          Pay With Store Credit
+        </span>
+      </a>
+      @else
       <a class="button custom-button stm-credit modal-open">
         <img src="{{ URL::asset('img/stm_logo_short.png') }}" />
         <span>
@@ -179,7 +187,7 @@
         </span>
       </a>
       <div id="paypal-button-container"></div>
-
+      @endif
       @endif
       <a class="button custom-button continue-shopping" href="/">Continue Shopping</a>
     </div>
@@ -188,6 +196,7 @@
 
 @endsection
 
+@if(!$covered_by_credit)
 @section('page-script')
 <script src="https://www.paypal.com/sdk/js?client-id={{ env('PAYPAL_CLIENT_ID') }}"></script>
 @if(count($items))
@@ -282,6 +291,7 @@
 </script>
 @endif
 @endsection
+@endif
 
 @section('modal')
 <h3 class="title">Pay with balance</h3>
@@ -297,6 +307,24 @@
   </div>
   @else
   <button type="submit" class="button is-danger call-loader">Pay Now with Balance</button>
+  @endif
+  <a href="#" class="modal-close-button button is-primary">Cancel</a>
+</form>
+@endsection
+
+@section('modal-2')
+<h3 class="title">Pay with Store Credit</h3>
+<form method="POST" action="pay-with-store-credit">
+  @csrf
+  <input type="hidden" value="{{ $coupon_discount }}" name="discount" />
+  <div class="pay-with-balance-modal">
+    Total Credit to Use: <span>${{ number_format($store_credit, 2) }}</span><br />
+  </div>
+  @if(!$sufficient) <div class="pay-with-balance-warning">
+    Your balance is currently too low to make this purchase.
+  </div>
+  @else
+  <button type="submit" class="button is-danger call-loader">Pay Now with Store Credit</button>
   @endif
   <a href="#" class="modal-close-button button is-primary">Cancel</a>
 </form>

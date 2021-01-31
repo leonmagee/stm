@@ -38,6 +38,7 @@
 
   </div>
 
+  @hassection('modal')
   <div class="modal" id="layout-modal">
 
     <div class="modal-background"></div>
@@ -55,6 +56,45 @@
     <button class="modal-close is-large" aria-label="close"></button>
 
   </div>
+  @endif
+
+  @hassection('modal-2')
+  <div class="modal" id="layout-modal-2">
+
+    <div class="modal-background"></div>
+
+    <div class="modal-content">
+
+      <div class="modal-box">
+
+        @yield('modal-2')
+
+      </div>
+
+    </div>
+
+    <button class="modal-close-2 is-large" aria-label="close"></button>
+
+  </div>
+  @endif
+
+  {{-- <div class="modal" id="layout-modal">
+
+    <div class="modal-background"></div>
+
+    <div class="modal-content">
+
+      <div class="modal-box">
+
+        @yield('modal')
+
+      </div>
+
+    </div>
+
+    <button class="modal-close is-large" aria-label="close"></button>
+
+  </div> --}}
 
   @include('layouts.footer')
 
