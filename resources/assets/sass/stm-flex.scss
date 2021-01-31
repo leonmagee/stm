@@ -79,6 +79,17 @@
                 }
             }
 
+            &.bg-black {
+                background-color: #111;
+                color: #fff;
+                border-color: #111;
+                text-transform: uppercase;
+                font-weight: 600;
+                &:not(:last-child) {
+                    border-right-color: #555;
+                }
+            }
+
             &.status-1 {
                 background-color: darken($brand-fifth, 13%);
                 color: #fff;

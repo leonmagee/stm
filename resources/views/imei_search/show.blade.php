@@ -15,14 +15,14 @@
     <div class="stm-flex">
       <div class="stm-flex-wrap">
         <div class="stm-flex-row">
-          <div class="stm-flex-row__item header bg-blue">User</div>
-          <div class="stm-flex-row__item header bg-blue">IMEI Number</div>
-          <div class="stm-flex-row__item header bg-blue">Model</div>
-          <div class="stm-flex-row__item header bg-blue">Model Name</div>
-          <div class="stm-flex-row__item header bg-blue">Manufacturer</div>
-          <div class="stm-flex-row__item header bg-blue">Search Date</div>
-          <div class="stm-flex-row__item header bg-blue">Price</div>
-          <div class="stm-flex-row__item header bg-blue">Blacklist</div>
+          <div class="stm-flex-row__item header bg-black">User</div>
+          <div class="stm-flex-row__item header bg-black">IMEI Number</div>
+          <div class="stm-flex-row__item header bg-black">Model</div>
+          <div class="stm-flex-row__item header bg-black">Model Name</div>
+          <div class="stm-flex-row__item header bg-black">Manufacturer</div>
+          <div class="stm-flex-row__item header bg-black">Search Date</div>
+          <div class="stm-flex-row__item header bg-black">Price</div>
+          <div class="stm-flex-row__item header bg-black">Blacklist</div>
         </div>
         <div class="stm-flex-row font-small font-bold">
           <div class="stm-flex-row__item">{{ $imei->user->company }}</div>
@@ -45,7 +45,7 @@
         @if($imei->all_data)
         <div class="imei-center-max-wrap">
           <div class="stm-flex-row margin-top-1-5">
-            <div class="stm-flex-row__item header bg-blue font-center">Complete Data Report</div>
+            <div class="stm-flex-row__item header bg-black font-center">Complete Data Report</div>
           </div>
           <div class="stm-flex-row">
             <div class="stm-flex-row__item">

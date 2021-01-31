@@ -24306,6 +24306,18 @@ a.button.custom-button:hover {
   border-right-color: #7fc6f5;
 }
 
+.stm-flex .stm-flex-row .stm-flex-row__item.bg-black {
+  background-color: #111;
+  color: #fff;
+  border-color: #111;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.stm-flex .stm-flex-row .stm-flex-row__item.bg-black:not(:last-child) {
+  border-right-color: #555;
+}
+
 .stm-flex .stm-flex-row .stm-flex-row__item.status-1 {
   background-color: #0fdbff;
   color: #fff;
