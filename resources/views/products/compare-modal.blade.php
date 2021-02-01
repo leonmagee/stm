@@ -6,7 +6,7 @@
 
     <div class="modal-box full-width">
 
-      <h3 class="title full-width-title">Compare Products</h3>
+      <h3 class="title full-width-title no-margin">Compare Products</h3>
 
       @if($related)
       <div class="compare">

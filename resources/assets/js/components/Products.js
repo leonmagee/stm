@@ -273,7 +273,7 @@ export default class Products extends Component {
                     <div className="modal-background" />
                     <div className="modal-content">
                         <div className="modal-box full-width">
-                            <h3 className="title full-width-title">
+                            <h3 className="title full-width-title no-margin">
                                 Compare Products
                             </h3>
 

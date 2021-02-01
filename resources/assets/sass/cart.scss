@@ -529,8 +529,11 @@ a.button.custom-button {
         //     border-color: #ccc;
         // }
         &.compare__row--header {
+            padding-top: 1.7em;
+            padding-bottom: 0.4em;
             .compare__item {
-                color: darken($info, 20%);
+                //color: darken($info, 20%);
+                color: #555;
                 font-weight: 600;
                 padding-left: 0;
             }
