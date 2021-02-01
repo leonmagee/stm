@@ -18167,6 +18167,7 @@ label span.required {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  width: 75%;
 }
 
 .form-wrapper .redeem-credit .credit-redeem-choices .item {
