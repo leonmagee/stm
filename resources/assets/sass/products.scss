@@ -499,7 +499,8 @@
                     //border-left: 1px solid darken($product-blue, 11%);
                     &.product__footer--right-cart {
                         &.is-in-cart {
-                            color: $star-gold;
+                            //color: $star-gold;
+                            color: $color-green;
                         }
                     }
                     &.compare-icon {
