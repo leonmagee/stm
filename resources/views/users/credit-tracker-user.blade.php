@@ -2,7 +2,7 @@
 
 @section('title')
 <div class="with-background">
-  Credit History
+  STM Credit History
 </div>
 @endsection
 

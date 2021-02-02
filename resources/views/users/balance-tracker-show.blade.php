@@ -16,7 +16,7 @@
 
   <div class="form-wrapper-inner">
 
-    <h3>Credit History</h3>
+    <h3>STM Credit History</h3>
 
     <table id="sims_table" class="stripe compact">
       <thead>

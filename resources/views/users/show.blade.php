@@ -81,7 +81,7 @@
         <a href="/login-tracker/{{ $user->id }}" class="button is-primary">Login Tracker</a>
         <a href="/email-tracker/{{ $user->id }}" class="button is-primary">Email Tracker</a>
         @endif
-        <a href="/transaction-tracker/{{ $user->id }}" class="button is-primary">Credit History</a>
+        <a href="/transaction-tracker/{{ $user->id }}" class="button is-primary">STM Credit History</a>
         @if($is_admin)
         <a href="/transaction-change-credit/{{ $user->id }}" class="button is-primary">Add STM Credit</a>
         <a href="/transaction-change-credit-store/{{ $user->id }}" class="button is-primary">Add Store Credit</a>
