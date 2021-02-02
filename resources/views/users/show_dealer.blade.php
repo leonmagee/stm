@@ -1,23 +1,18 @@
 @extends('layouts.layout')
-
 @section('content')
 @include('layouts.errors')
 <div class="users-flex-wrap">
   <div class="users-left-content">
     <div class="single-user-wrap">
-
       <div class="item company">{{ $user->company}}</div>
-
       <div class="item role flex-wrap">
         <i class="fas fa-sitemap"></i>
         <span>{{ $role }}</span>
       </div>
-
       <div class="item name flex-wrap">
         <i class="fas fa-user"></i>
         <span>{{ $user->name }}</span>
       </div>
-
       @if($user->address || $user->city || $user->state || $user->zip)
       <div class="item address-wrap flex-wrap">
         <i class="fas fa-map-marker-alt"></i>
@@ -140,14 +135,17 @@
 
   <div class="notes-wrap">
 
-    <label>Add Credit</label>
+    <label>STM Balance / Store Credit</label>
     <div class="transfer-balance">
       <div class="transfer-balance__row">
         <div class="transfer-balance__item transfer-balance__item--header flex-25 left">
           Your Balance
         </div>
-        <div class="transfer-balance__item transfer-balance__item--header">
+        <div class="transfer-balance__item transfer-balance__item--header flex-25 left">
           Dealer Balance
+        </div>
+        <div class="transfer-balance__item transfer-balance__item--header">
+          Dealer Store Credit
         </div>
       </div>
       <div class="transfer-balance__row">
@@ -155,8 +153,11 @@
           <?php $your_balance = \Auth::user()->balance; ?>
           ${{ number_format($your_balance, 2) }}
         </div>
-        <div class="transfer-balance__item">
+        <div class="transfer-balance__item flex-25 left">
           ${{ number_format($user->balance, 2) }}
+        </div>
+        <div class="transfer-balance__item">
+          ${{ number_format($user->store_credit, 2) }}
         </div>
       </div>
       <div class="transfer-balance__form margin-top-1">
@@ -164,12 +165,11 @@
           @csrf
           <div class="transfer-balance__row">
             <div class="balance-to-transfer">
-              {{-- <label>Balance to Transfer</label> --}}
               <input type="hidden" name="user_id" value="{{ $user->id }}" />
               <div class="field">
                 <div class="control">
                   <input class="input" type="number" name='balance_to_transfer' step=".01" min="0"
-                    max="{{ $your_balance }}" placeholder="Balance to Transfer" />
+                    max="{{ $your_balance }}" placeholder="Transfer to STM Balance" />
                 </div>
               </div>
             </div>
@@ -177,25 +177,47 @@
               <a href="#" class="modal-open button is-danger">Submit</a>
             </div>
           </div>
-
           <div class="modal" id="layout-modal">
-
             <div class="modal-background"></div>
-
             <div class="modal-content">
-
               <div class="modal-box">
-
                 <h3 class="title">Are You Sure?</h3>
-
                 <button class="button is-danger call-loader" type="submit">Process Transfer</button>
                 <a href="#" class="modal-close-button button is-primary">Cancel</a>
-
               </div>
             </div>
             <button class="modal-close is-large" aria-label="close"></button>
           </div>
-
+        </form>
+      </div>
+      <div class="transfer-balance__form margin-top-1">
+        <form method="POST" action="/transfer-store-credit">
+          @csrf
+          <div class="transfer-balance__row">
+            <div class="balance-to-transfer">
+              <input type="hidden" name="user_id" value="{{ $user->id }}" />
+              <div class="field">
+                <div class="control">
+                  <input class="input" type="number" name='balance_to_transfer' step=".01" min="0"
+                    max="{{ $your_balance }}" placeholder="Transfer to Store Credit" />
+                </div>
+              </div>
+            </div>
+            <div class="field">
+              <a href="#" class="modal-open-2 button is-danger">Submit</a>
+            </div>
+          </div>
+          <div class="modal" id="layout-modal-2">
+            <div class="modal-background"></div>
+            <div class="modal-content">
+              <div class="modal-box">
+                <h3 class="title">Are You Sure?</h3>
+                <button class="button is-danger call-loader" type="submit">Process Transfer</button>
+                <a href="#" class="modal-close-button button is-primary">Cancel</a>
+              </div>
+            </div>
+            <button class="modal-close-2 is-large" aria-label="close"></button>
+          </div>
         </form>
       </div>
     </div>

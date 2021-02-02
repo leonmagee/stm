@@ -871,6 +871,124 @@ class UserController extends Controller
     }
 
     /**
+     * Agent transfer balance to dealer
+     */
+    public function transfer_store_credit(Request $request)
+    {
+        $logged_in_user = \Auth::user();
+        $your_current_balance = $logged_in_user->balance;
+        $transfer_amount = floatval($request->balance_to_transfer);
+
+        if ($transfer_amount <= 0) {
+            session()->flash('danger', 'Transfer amount must be a positive value.');
+            return redirect()->back();
+        }
+
+        if ($transfer_amount > $your_current_balance) {
+            session()->flash('danger', 'Balance transfer value is too high');
+            return redirect()->back();
+        }
+
+        $user = User::find($request->user_id);
+        $user_old_balance = $user->store_credit ? $user->balance : 0;
+        $is_master = Helpers::current_user_master_agent($user);
+        if (!$is_master) {
+            session()->flash('danger', 'Dealer not eligible.');
+            return redirect()->back();
+        }
+
+        $logged_new_balance = $logged_in_user->balance - $transfer_amount;
+        $logged_in_user->balance = $logged_new_balance;
+        $transfer_1 = $logged_in_user->save();
+        $transfer_2 = false;
+        if ($transfer_1) {
+            $user_new_balance = $user->store_credit + $transfer_amount;
+            $user->store_credit = $user_new_balance;
+            $transfer_2 = $user->save();
+        }
+        if ($transfer_1 && $transfer_2) {
+            session()->flash('message', 'Transfer Successful.');
+
+            $date = \Carbon\Carbon::now()->format('F d, Y');
+
+            $master_agent_note = 'To: ' . $user->company . ' - ' . $user->name;
+            $master_agent_difference = ($transfer_amount * -1);
+            BalanceTracker::create([
+                'admin_id' => null,
+                'user_id' => $logged_in_user->id,
+                'previous_balance' => $your_current_balance,
+                'difference' => $master_agent_difference,
+                'new_balance' => $logged_new_balance,
+                'note' => $master_agent_note,
+            ]);
+
+            /**
+             * Email user sending balance change
+             */
+            \Mail::to($logged_in_user)->send(new EmailBalance(
+                $logged_in_user,
+                $your_current_balance,
+                $master_agent_difference,
+                $logged_new_balance,
+                $master_agent_note,
+                $date,
+            ));
+
+            $user_note = 'Balance Transfer from ' . $logged_in_user->company;
+            StoreCreditTracker::create([
+                'admin_id' => $logged_in_user->id,
+                'user_id' => $user->id,
+                'previous_balance' => $user_old_balance,
+                'difference' => $transfer_amount,
+                'new_balance' => $user_new_balance,
+                'note' => $user_note,
+            ]);
+
+            /**
+             * Email user receiving balance update
+             */
+            \Mail::to($user)->send(new EmailBalance(
+                $user,
+                $user_old_balance,
+                $transfer_amount,
+                $user_new_balance,
+                $user_note,
+                $date,
+                false,
+                'Store Credit Balance Update'
+            ));
+
+            $admin_note = 'To: ' . $user->company . ' - ' . $user->name . ' from ' . $logged_in_user->company;
+            $admin_users = User::getAdminManageerUsers();
+            foreach ($admin_users as $admin) {
+                if (!$admin->notes_email_disable) {
+                    \Mail::to($admin)->send(new EmailBalance(
+                        $user,
+                        $user_old_balance,
+                        $transfer_amount,
+                        $user_new_balance,
+                        $admin_note,
+                        $date,
+                        $admin,
+                        'Store Credit Balance Transfer'
+                    ));
+
+                }
+            }
+
+            return redirect()->back();
+        } else {
+            session()->flash('danger', 'There was a problem with the transfer.');
+            return redirect()->back();
+        }
+
+        // dd($request);
+        // dd($transfer_amount);
+        // dd($your_current_balance);
+        // dd($request->balance_to_transfer);
+    }
+
+    /**
      * Axios change user balance
      * Use same method for both react and laravel forms
      *

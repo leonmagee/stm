@@ -20114,7 +20114,7 @@ table.dataTable tr td a.imei-view:hover {
 }
 
 .transfer-balance .transfer-balance__form .balance-to-transfer input {
-  min-width: 11em;
+  min-width: 14em;
 }
 
 @media (min-width: 768px) {
