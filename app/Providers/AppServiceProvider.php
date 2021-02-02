@@ -246,7 +246,7 @@ class AppServiceProvider extends ServiceProvider
                     'link' => '/login-tracker',
                 ],
                 [
-                    'name' => 'Credit History',
+                    'name' => 'STM Credit History',
                     'link' => '/transaction-tracker',
                 ],
                 [
@@ -265,7 +265,7 @@ class AppServiceProvider extends ServiceProvider
                     'link' => '/login-tracker',
                 ],
                 [
-                    'name' => 'Credit History',
+                    'name' => 'STM Credit History',
                     'link' => '/transaction-tracker-dealer',
                 ],
                 [
@@ -402,7 +402,7 @@ class AppServiceProvider extends ServiceProvider
                     'link' => '/your-invoices',
                 ],
                 [
-                    'name' => 'Credit History',
+                    'name' => 'STM Credit History',
                     'link' => '/transaction-tracker',
                 ],
             ];
