@@ -931,7 +931,7 @@ class UserController extends Controller
                 $master_agent_difference,
                 $logged_new_balance,
                 $master_agent_note,
-                $date,
+                $date
             ));
 
             $user_note = 'Balance Transfer from ' . $logged_in_user->company;
