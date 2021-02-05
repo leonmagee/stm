@@ -142,6 +142,7 @@
           @if($product->in_stock())
           @if(count($product->variations))
           <div class="product-details__variations">
+            Color: "Curren Color"
             <div class="select is-green">
               <select name="variation" id="variation-select">
                 @foreach($product->variations as $variation)
