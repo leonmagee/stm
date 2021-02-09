@@ -92,6 +92,8 @@ require('./components/Timer');
 //     console.log(response);
 // });
 
+// product color picker
+
 // calculate total for new product price
 $('.products-calc-total input#cost, .products-calc-total input#discount').on(
     'input',
@@ -247,13 +249,35 @@ function change_input_value(max) {
 
 change_input_value(max_quantity);
 
-$('select#variation-select').change(function() {
-    const quantity = $('option:selected', this).attr('quantity');
+// $('select#variation-select').change(function() {
+//     const quantity = $('option:selected', this).attr('quantity');
+//     $('input#quantity-input').attr('max_quantity', quantity);
+//     $('input#quantity-input').attr('placeholder', `${quantity} Max`);
+//     $('input#quantity-input').val('');
+//     $('input#quantity-input').off('change');
+//     change_input_value(quantity);
+// });
+
+function change_input_value_outer(quantity) {
     $('input#quantity-input').attr('max_quantity', quantity);
     $('input#quantity-input').attr('placeholder', `${quantity} Max`);
     $('input#quantity-input').val('');
     $('input#quantity-input').off('change');
     change_input_value(quantity);
+}
+
+$('#colors-select .product-details__colors--box').click(function() {
+    const colorName = $(this).attr('color_name');
+    $('#colors-select .product-details__colors--box.current').removeClass(
+        'current'
+    );
+    $('h3#h3-color-name span').html(colorName);
+    $(this).addClass('current');
+    $('select#variation-select').val(colorName);
+    const quantity = $('select#variation-select option:selected').attr(
+        'quantity'
+    );
+    change_input_value_outer(quantity);
 });
 
 // cart save on change

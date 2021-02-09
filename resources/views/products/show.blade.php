@@ -61,107 +61,138 @@
 </div>
 <div class="product-single__right product-details">
   <div class="product-details__title">{{ $product->name }}</div>
-  <div class="product-details__rating">
-    <div id="rate-yo-wrap">
-      <div id="rateYoDisplay" class="rate_yo_no_hover" rating="{{ (floor($product->rating * 2) / 2) }}">
-        <div class="product-details__rating-modal">
-          <div class="product-details__rating-modal--header">
-            Total Ratings: {{ $ratings_total }}
-          </div>
-          @foreach($ratings_array as $item)
-          <div class="product-details__rating-item">
-            <?php $percent_width = \App\Helpers::get_percent($item[1], $ratings_total); ?>
-            <div class="percentage-bar">
-              <div class="percentage-bar__stars">{{ $item[0] }} Stars</div>
-              <div class="percentage-bar__block">
-                <div style="width: {{ $percent_width }}%" class="percentage-bar__block--inner"></div>
+  <div class="product-details__inner">
+    <div class="product-details__inner-left">
+      <div class="product-details__rating">
+        <div id="rate-yo-wrap">
+          <div id="rateYoDisplay" class="rate_yo_no_hover" rating="{{ (floor($product->rating * 2) / 2) }}">
+            <div class="product-details__rating-modal">
+              <div class="product-details__rating-modal--header">
+                Total Ratings: {{ $ratings_total }}
               </div>
-              <div class="percentage-bar__percentage">{{ intval($percent_width) }}%</div>
+              @foreach($ratings_array as $item)
+              <div class="product-details__rating-item">
+                <?php $percent_width = \App\Helpers::get_percent($item[1], $ratings_total); ?>
+                <div class="percentage-bar">
+                  <div class="percentage-bar__stars">{{ $item[0] }} Stars</div>
+                  <div class="percentage-bar__block">
+                    <div style="width: {{ $percent_width }}%" class="percentage-bar__block--inner"></div>
+                  </div>
+                  <div class="percentage-bar__percentage">{{ intval($percent_width) }}%</div>
+                </div>
+              </div>
+              @endforeach
+              <div class="product-details__rating-modal--footer">
+                <a class="review-scroll" href="#product-tabs">See All Reviews</a>
+              </div>
             </div>
           </div>
-          @endforeach
-          <div class="product-details__rating-modal--footer">
-            <a class="review-scroll" href="#product-tabs">See All Reviews</a>
-          </div>
-        </div>
-      </div>
-      <div class="product-details__rating-modal">
-        <div class="product-details__rating-modal--header">
-          Total Ratings: {{ $ratings_total }}
-        </div>
-        @foreach($ratings_array as $item)
-        <div class="product-details__rating-item">
-          <?php $percent_width = \App\Helpers::get_percent($item[1], $ratings_total); ?>
-          <div class="percentage-bar">
-            <div class="percentage-bar__stars">{{ $item[0] }} Stars</div>
-            <div class="percentage-bar__block">
-              <div style="width: {{ $percent_width }}%" class="percentage-bar__block--inner"></div>
+          <div class="product-details__rating-modal">
+            <div class="product-details__rating-modal--header">
+              Total Ratings: {{ $ratings_total }}
             </div>
-            <div class="percentage-bar__percentage">{{ intval($percent_width) }}%</div>
+            @foreach($ratings_array as $item)
+            <div class="product-details__rating-item">
+              <?php $percent_width = \App\Helpers::get_percent($item[1], $ratings_total); ?>
+              <div class="percentage-bar">
+                <div class="percentage-bar__stars">{{ $item[0] }} Stars</div>
+                <div class="percentage-bar__block">
+                  <div style="width: {{ $percent_width }}%" class="percentage-bar__block--inner"></div>
+                </div>
+                <div class="percentage-bar__percentage">{{ intval($percent_width) }}%</div>
+              </div>
+            </div>
+            @endforeach
+            <div class="product-details__rating-modal--footer">
+              @if($ratings_total)
+              <a class="review-scroll" href="#product-tabs">See All Reviews</a>
+              @endif
+            </div>
           </div>
         </div>
-        @endforeach
-        <div class="product-details__rating-modal--footer">
-          @if($ratings_total)
-          <a class="review-scroll" href="#product-tabs">See All Reviews</a>
-          @endif
+        <div class="product-details__compare"><a class="review-scroll" href="#product-tabs"><i
+              class="fas fa-pen"></i>Leave
+            a
+            Review</a></div>
+      </div>
+
+
+
+      @if($related_products = $product->get_related())
+      <div class="product-details__compare"><a class="saved-favorites__item--link-compare modal-delete-open"
+          item_id={{ $product->id }}><i class="fas fa-random"></i>Compare with Similar
+          Items</a></div>
+      @endif
+      {{-- <div class="product-details__flex-space-wrap"> --}}
+      <div class="product-details__price">
+        @if($product->discount)
+        <div class="product-details__cost">${{ $product->cost }}<span
+            class="product-details__cost--orig"><span>${{ $product->orig_price }}</span></div>
+        <div class="product-details__discount">
+          <div class="product-details__discount--inner"><i class="fas fa-tag"></i>{{ $product->discount }}% Off
+          </div>
         </div>
+        @else
+        <div class="product-details__cost">${{ $product->cost }}</div>
+        @endif
+
       </div>
     </div>
-    {{-- <div class="product-details__rating--link">
-      <a class="review-scroll" href="#product-tabs">Leave a Review</a>
-    </div> --}}
-    <div class="product-details__compare"><a class="review-scroll" href="#product-tabs"><i class="fas fa-pen"></i>Leave
-        a
-        Review</a></div>
-  </div>
 
-  @if($related_products = $product->get_related())
-  <div class="product-details__compare"><a class="saved-favorites__item--link-compare modal-delete-open"
-      item_id={{ $product->id }}><i class="fas fa-random"></i>Compare with Similar
-      Items</a></div>
-  @endif
+    <div class="product-details__inner-right">
+      @if($product->in_stock())
+      <form method="POST" action="/add-to-cart" class="product-details__form">
+        @csrf
+        <div class="product-details__colors-quantity">
+          <div class="product-details__colors-outer">
+            <h3 id="h3-color-name">Color: <span>{{ $product->variations->first->text->text }}</span></h3>
+            @if(count($product->variations))
+            <div class="product-details__colors" id="colors-select">
+              @foreach($product->variations as $variation)
+              @if($variation->quantity)
+              <div
+                class="product-details__colors--box {{ strtolower($variation->text) }} @if($loop->first) current @endif"
+                color_name="{{ $variation->text }}">
+                <div class="product-details__colors--box-inner">
+                </div>
+              </div>
+              @endif
+              @endforeach
+            </div>
+            @endif
+            @if(count($product->variations))
+            <div class="product-details__variations">
+              <div class="select is-green">
+                <select name="variation" id="variation-select">
+                  @foreach($product->variations as $variation)
+                  @if($variation->quantity)
+                  <option quantity="{{ $variation->quantity }}" value="{{ $variation->text }}">{{ $variation->text }}
+                  </option>
+                  @endif
+                  @endforeach
+                </select>
+              </div>
+            </div>
+            @endif
+          </div>
+          <input type="hidden" name="product_id" value="{{ $product->id }}" />
+          <div class="product-details__quantity-outer">
+            <h3>Quantity</h3>
+            <div class="product-details__quantity">
+              <input class="input" type="number" min="1" name="quantity" id="quantity-input" class="quantity-input"
+                placeholder="{{ $product->initial_quantity() }} Max" max_quantity="{{ $product->initial_quantity() }}"
+                required />
+            </div>
+          </div>
+        </div>
+        <button class="add-to-cart"><i class="fas fa-cart-plus"></i>Add To Cart</button>
 
-  <div class="product-details__flex-space-wrap">
-    @if($product->discount)
-    <div class="product-details__cost">${{ $product->cost }}<span
-        class="product-details__cost--orig"><span>${{ $product->orig_price }}</span></div>
-    <div class="product-details__discount">
-      <div class="product-details__discount--inner"><i class="fas fa-tag"></i>{{ $product->discount }}% Off
-      </div>
-    </div>
-    @else
-    <div class="product-details__cost">${{ $product->cost }}</div>
-    @endif
-    <form method="POST" action="/add-to-cart" class="product-details__form">
-      @csrf
-      <input type="hidden" name="product_id" value="{{ $product->id }}" />
+      </form>
+      @else
+
       <div class="product-details__cart">
         <div class="product-details__cart--inner">
 
-          @if($product->in_stock())
-          @if(count($product->variations))
-          <div class="product-details__variations">
-            Color: "Curren Color"
-            <div class="select is-green">
-              <select name="variation" id="variation-select">
-                @foreach($product->variations as $variation)
-                @if($variation->quantity)
-                <option quantity="{{ $variation->quantity }}" value="{{ $variation->text }}">{{ $variation->text }}
-                </option>
-                @endif
-                @endforeach
-              </select>
-            </div>
-          </div>
-          @endif
-          <div class="product-details__quantity">
-            <input class="input" type="number" min="1" name="quantity" id="quantity-input" class="quantity-input"
-              placeholder="{{ $product->initial_quantity() }} Max" max_quantity="{{ $product->initial_quantity() }}"
-              required />
-          </div>
-          <button class="add-to-cart"><i class="fas fa-cart-plus"></i>Add To Cart</button>
-          @else
           <div class="out-of-stock">
             <div class="out-of-stock__text">Sold Out</div>
             @if($product->available_on)
@@ -171,11 +202,14 @@
             @endif
             @endif
           </div>
-          @endif
+
         </div>
       </div>
-    </form>
+      @endif
+    </div>
+
   </div>
+
   <div class="product-details__description">
     {!! $product->description !!}
   </div>
