@@ -142,7 +142,12 @@
                             border: 1px solid #f1f1f1;
                         }
                         &.white {
-                            //background-color: #e7e7e7;
+                            .product-details__colors--box-inner {
+                                background-color: #fff;
+                                border-color: #ddd;
+                            }
+                        }
+                        &.prism_crush_white {
                             .product-details__colors--box-inner {
                                 background-color: #fff;
                                 border-color: #ddd;
@@ -204,6 +209,11 @@
                             }
                         }
                         &.blue {
+                            .product-details__colors--box-inner {
+                                background-color: $info;
+                            }
+                        }
+                        &.prism_crush_blue {
                             .product-details__colors--box-inner {
                                 background-color: $info;
                             }

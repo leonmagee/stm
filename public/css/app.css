@@ -22667,6 +22667,11 @@ body.stm-body.about .middle-content-wrap .about-page .video-wrap .video-wrap-inn
   border-color: #ddd;
 }
 
+.product-single .product-details .product-details__inner .product-details__inner-right .product-details__colors .product-details__colors--box.prism_crush_white .product-details__colors--box-inner {
+  background-color: #fff;
+  border-color: #ddd;
+}
+
 .product-single .product-details .product-details__inner .product-details__inner-right .product-details__colors .product-details__colors--box.black .product-details__colors--box-inner {
   background-color: #111;
 }
@@ -22712,6 +22717,10 @@ body.stm-body.about .middle-content-wrap .about-page .video-wrap .video-wrap-inn
 }
 
 .product-single .product-details .product-details__inner .product-details__inner-right .product-details__colors .product-details__colors--box.blue .product-details__colors--box-inner {
+  background-color: #209cee;
+}
+
+.product-single .product-details .product-details__inner .product-details__inner-right .product-details__colors .product-details__colors--box.prism_crush_blue .product-details__colors--box-inner {
   background-color: #209cee;
 }
 
