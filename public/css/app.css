@@ -22731,6 +22731,10 @@ body.stm-body.about .middle-content-wrap .about-page .video-wrap .video-wrap-inn
   background-color: grey;
 }
 
+.product-single .product-details .product-details__inner .product-details__inner-right .product-details__colors .product-details__colors--box.mystic_grey .product-details__colors--box-inner {
+  background-color: grey;
+}
+
 .product-single .product-details .product-details__inner .product-details__inner-right .product-details__colors .product-details__colors--box.silver .product-details__colors--box-inner {
   background-color: silver;
 }
