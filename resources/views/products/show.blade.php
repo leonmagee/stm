@@ -145,7 +145,25 @@
         @csrf
         <div class="product-details__colors-quantity">
           <div class="product-details__colors-outer">
-            <h3 id="h3-color-name">Color: <span>{{ $product->variations->first->text->text }}</span></h3>
+
+            <?php $variation_first_color = ''; ?>
+            @if(count($product->variations))
+            @foreach($product->variations as $variation)
+            @if($variation->quantity)
+            <?php
+              $variation_first_color = $variation->text;
+              break;
+              ?>
+            @endif
+            @endforeach
+            @endif
+
+
+
+
+
+
+            <h3 id="h3-color-name">Color: <span>{{ $variation_first_color }}</span></h3>
             @if(count($product->variations))
             <div class="product-details__colors" id="colors-select">
               @foreach($product->variations as $variation)

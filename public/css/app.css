@@ -22699,6 +22699,14 @@ body.stm-body.about .middle-content-wrap .about-page .video-wrap .video-wrap-inn
   background-color: #a3c3ab;
 }
 
+.product-single .product-details .product-details__inner .product-details__inner-right .product-details__colors .product-details__colors--box.mystic_green .product-details__colors--box-inner {
+  background-color: #a3c3ab;
+}
+
+.product-single .product-details .product-details__inner .product-details__inner-right .product-details__colors .product-details__colors--box.mystic_bronze .product-details__colors--box-inner {
+  background-color: #bc7e40;
+}
+
 .product-single .product-details .product-details__inner .product-details__inner-right .product-details__colors .product-details__colors--box.purple .product-details__colors--box-inner {
   background-color: purple;
 }

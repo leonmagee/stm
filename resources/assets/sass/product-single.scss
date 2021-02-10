@@ -188,6 +188,16 @@
                                 background-color: darken(#acc9b3, 3%);
                             }
                         }
+                        &.mystic_green {
+                            .product-details__colors--box-inner {
+                                background-color: darken(#acc9b3, 3%);
+                            }
+                        }
+                        &.mystic_bronze {
+                            .product-details__colors--box-inner {
+                                background-color: #bc7e40;
+                            }
+                        }
                         &.purple {
                             .product-details__colors--box-inner {
                                 background-color: purple;
