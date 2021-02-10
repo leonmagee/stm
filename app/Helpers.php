@@ -7,6 +7,13 @@ use App\Settings;
 class Helpers
 {
     /**
+     * Color class name
+     */
+    public static function color_class($color)
+    {
+        return strtolower(str_replace(' ', '_', $color));
+    }
+    /**
      * Return Percentage
      */
     public static function get_percent($number, $total)

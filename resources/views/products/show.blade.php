@@ -151,7 +151,7 @@
               @foreach($product->variations as $variation)
               @if($variation->quantity)
               <div
-                class="product-details__colors--box {{ strtolower($variation->text) }} @if($loop->first) current @endif"
+                class="product-details__colors--box {{ App\Helpers::color_class($variation->text) }} @if($loop->first) current @endif"
                 color_name="{{ $variation->text }}">
                 <div class="product-details__colors--box-inner">
                 </div>
