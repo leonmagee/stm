@@ -4,6 +4,8 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
+// const { default: Picker } = require('vanilla-picker');
+
 require('./bootstrap');
 
 require('datatables.net');
@@ -16,7 +18,7 @@ require('bulma-tooltip');
 
 require('jquery-zoom');
 
-// require('jquery-ui');
+require('spectrum-colorpicker');
 
 require('jquery-ui/ui/widgets/sortable');
 
@@ -92,7 +94,30 @@ require('./components/Timer');
 //     console.log(response);
 // });
 
-// product color picker
+// console.log(Picker);
+
+// app.js?ver=1.1.168:125019 ƒ Picker(options) {
+//         classCallCheck(this, Picker);
+
+//         this.settings = {
+
+//             popup: 'right',
+//             layout: 'default',
+//             alpha: true,
+//             editor: true,
+//     …
+
+// const popupCustom = new Picker({
+//     parent: parentCustom,
+//     popup: 'top',
+//     color: 'violet',
+//     // alpha: false,
+//     // editor: false,
+//     editorFormat: 'rgb',
+//     onDone(color) {
+//         parentCustom.style.backgroundColor = color.rgbaString;
+//     },
+// });
 
 // calculate total for new product price
 $('.products-calc-total input#cost, .products-calc-total input#discount').on(
@@ -756,12 +781,75 @@ $(document)
         return false;
     });
 
+// product color picker
+// const pickerElement = document.querySelector('#picker-tester');
+// const pickerElement = $('#picker-tester');
+
+// const element = $('#picker-tester');
+// const xxx = new Picker(parent);
+
+// const pickerObject = new Picker({
+//     parent: pickerElement,
+//     popup: 'bottom',
+//     color: 'red',
+//     alpha: false,
+//     editorFormat: 'hex',
+//     onDone(color) {
+//         console.log(color);
+//     },
+// });
+
+// $('#picker-tester').spectrum({
+//     showInput: true,
+//     preferredFormat: 'hex',
+// });
+
+// $("#picker").spectrum({
+//     color: tinycolor,
+//     flat: bool,
+//     showInput: bool,
+//     showInitial: bool,
+//     allowEmpty: bool,
+//     showAlpha: bool,
+//     disabled: bool,
+//     localStorageKey: string,
+//     showPalette: bool,
+//     showPaletteOnly: bool,
+//     togglePaletteOnly: bool,
+//     showSelectionPalette: bool,
+//     clickoutFiresChange: bool,
+//     cancelText: string,
+//     chooseText: string,
+//     togglePaletteMoreText: string,
+//     togglePaletteLessText: string,
+//     containerClassName: string,
+//     replacerClassName: string,
+//     preferredFormat: string,
+//     maxSelectionSize: int,
+//     palette: [[string]],
+//     selectionPalette: [string]
+// });
+
+$('#repeater-field-wrap-variation .input-group.existing').each(function() {
+    const link = $(this).find('a.set-color');
+    const colorInput = $(this).find('input.variation-color-input');
+    link.spectrum({
+        showInput: true,
+        preferredFormat: 'hex',
+        change(color) {
+            const hexColor = color.toHexString();
+            colorInput.val(hexColor);
+            // console.log(color);
+        },
+    });
+});
 /**
  * Repeater Field for Variations
  */
 $(document)
     .on('click', '.add-variation', function(e) {
         e.preventDefault();
+        console.log('variation added');
 
         const variation = $(this)
             .parents('.entry:first')

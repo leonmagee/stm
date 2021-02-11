@@ -94,19 +94,23 @@
               </div>
             </div>
           </div>
-          <div class="column is-one-third">
+          <div class="column is-two-thirds">
             {{-- variations --}}
             <div class="form-wrap-flex form-wrap-flex-attributes">
               <div class="field full">
                 <label class="label" for="">Colors / Quantity</label>
                 <div class="repeater-field-wrap" id="repeater-field-wrap-variation">
                   @foreach($product->variations as $variation)
-                  <div class="entry input-group">
+                  <div class="entry input-group existing">
                     <div class="field has-addons">
                       <input type="text" class="input name" name="variation_names[]" placeholder="Color"
                         value="{{ $variation->text }}">
                       <input type="number" class="input quantity" name="variation_quantity[]" placeholder="Quantity"
                         value="{{ $variation->quantity }}">
+                      <input type="text" class="input quantity variation-color-input" name="variation_color[]"
+                        placeholder="Color" value="{{ $variation->color }}">
+                      <div class="color-preview"><a style="background-color: {{ $variation->color }}"
+                          class="set-color"></a></div>
                       <div class="input-group-append">
                         <button class="button is-danger remove-variation" type="button"><i
                             class="fas fa-times"></i></button>
@@ -118,6 +122,8 @@
                     <div class="field has-addons">
                       <input type="text" class="input name" name="variation_names[]" placeholder="Color">
                       <input type="number" class="input quantity" name="variation_quantity[]" placeholder="Quantity">
+                      <input type="text" class="input quantity" name="variation_color[]" placeholder="Color">
+                      <div class="color-preview"><a></a></div>
                       <div class="input-group-append">
                         <button class="button is-primary add-variation" type="button"><i
                             class="fas fa-plus"></i></button>

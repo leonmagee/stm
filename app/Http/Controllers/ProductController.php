@@ -710,28 +710,43 @@ class ProductController extends Controller
             }
         }
 
-        $temp_array = $request->variation_quantity;
-        $combined = array_combine($request->variation_names, $request->variation_quantity);
-        $colors_quantity = [];
-        foreach ($combined as $key => $item) {
-            if ($key) {
-                $colors_quantity[$key] = $item;
-            }
-        }
+        // $combined = array_combine($request->variation_names, $request->variation_quantity);
+        // $colors_quantity = [];
+        // foreach ($combined as $key => $item) {
+        //     if ($key) {
+        //         $colors_quantity[$key] = $item;
+        //     }
+        // }
         // 1. Delete existing variations for product
         ProductVariation::where('product_id', $product->id)->delete();
 
-        // 2. Create new variations
-        foreach ($colors_quantity as $text => $quantity) {
-            if ($text) {
-                if (!$quantity) {$quantity = 0;}
+        $num_items = count(array_filter($request->variation_names));
+        for ($x = 0; $x < $num_items; $x++) {
+            if ($request->variation_names[$x]) {
+                //if (!$request->variation_quantity[$x]) {$request->variation_quantity = 0;}
+                $quantity = $request->variation_quantity[$x] ? $request->variation_quantity[$x] : 0;
                 ProductVariation::create([
                     'product_id' => $product->id,
-                    'text' => $text,
+                    'text' => $request->variation_names[$x],
                     'quantity' => $quantity,
+                    'color' => $request->variation_color[$x],
                 ]);
             }
+
         }
+
+        // 2. Create new variations
+        // foreach ($colors_quantity as $text => $quantity) {
+        //     if ($text) {
+        //         if (!$quantity) {$quantity = 0;}
+        //         ProductVariation::create([
+        //             'product_id' => $product->id,
+        //             'text' => $text,
+        //             'color' => $color,
+        //             'quantity' => $quantity,
+        //         ]);
+        //     }
+        // }
 
         $categories = Category::all();
         $cats_array = [];
