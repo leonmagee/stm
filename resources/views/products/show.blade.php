@@ -152,6 +152,7 @@
             @if($variation->quantity)
             <?php
               $variation_first_color = $variation->text;
+              $variation_first_id = $variation->id;
               break;
               ?>
             @endif
@@ -169,7 +170,7 @@
               @foreach($product->variations as $variation)
               @if($variation->quantity)
               <div
-                class="product-details__colors--box {{ App\Helpers::color_class($variation->text) }} @if($loop->first) current @endif"
+                class="product-details__colors--box {{ App\Helpers::color_class($variation->text) }} @if($variation->id == $variation_first_id) current @endif"
                 color_name="{{ $variation->text }}">
                 <div class="product-details__colors--box-inner">
                 </div>
