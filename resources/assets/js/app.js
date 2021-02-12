@@ -833,15 +833,35 @@ $(document)
 $('#repeater-field-wrap-variation .input-group.existing').each(function() {
     const link = $(this).find('a.set-color');
     const colorInput = $(this).find('input.variation-color-input');
+    const colorPreview = $(this).find('a.set-color');
     link.spectrum({
         showInput: true,
         preferredFormat: 'hex',
         change(color) {
             const hexColor = color.toHexString();
             colorInput.val(hexColor);
+            colorPreview.css({ 'background-color': hexColor });
             // console.log(color);
         },
     });
+    colorInput.on('change', function() {
+        const newColor = $(this).val();
+        colorPreview.css({ 'background-color': newColor });
+        // console.log('changed...');
+    });
+});
+
+const linkInit = $('a#set-color-init');
+const colorInputInit = $('input#variation-color-init');
+linkInit.spectrum({
+    showInput: true,
+    preferredFormat: 'hex',
+    change(color) {
+        const hexColor = color.toHexString();
+        colorInputInit.val(hexColor);
+        $('#set-color-init').css({ 'background-color': hexColor });
+        // console.log(color);
+    },
 });
 /**
  * Repeater Field for Variations

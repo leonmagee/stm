@@ -103,7 +103,7 @@
                   @foreach($product->variations as $variation)
                   <div class="entry input-group existing">
                     <div class="field has-addons">
-                      <input type="text" class="input name" name="variation_names[]" placeholder="Color"
+                      <input type="text" class="input name" name="variation_names[]" placeholder="Color Name"
                         value="{{ $variation->text }}">
                       <input type="number" class="input quantity" name="variation_quantity[]" placeholder="Quantity"
                         value="{{ $variation->quantity }}">
@@ -120,10 +120,11 @@
                   @endforeach
                   <div class="entry input-group">
                     <div class="field has-addons">
-                      <input type="text" class="input name" name="variation_names[]" placeholder="Color">
+                      <input type="text" class="input name" name="variation_names[]" placeholder="Color Name">
                       <input type="number" class="input quantity" name="variation_quantity[]" placeholder="Quantity">
-                      <input type="text" class="input quantity" name="variation_color[]" placeholder="Color">
-                      <div class="color-preview"><a></a></div>
+                      <input type="text" id="variation-color-init" class="input quantity" name="variation_color[]"
+                        placeholder="Color">
+                      <div class="color-preview"><a id="set-color-init" class="set-color"></a></div>
                       <div class="input-group-append">
                         <button class="button is-primary add-variation" type="button"><i
                             class="fas fa-plus"></i></button>

@@ -23914,10 +23914,12 @@ body.stm-body.about .middle-content-wrap .about-page .video-wrap .video-wrap-inn
   display: block;
   height: 100%;
   border: 1px solid #ddd;
+  background-color: #eee;
 }
 
 .repeater-field-wrap button {
   border-radius: 0 4px 4px 0;
+  width: 2.3em;
 }
 
 .repeater-field-wrap .entry.input-group {

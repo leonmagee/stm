@@ -16,12 +16,14 @@
             display: block;
             height: 100%;
             border: 1px solid #ddd;
+            background-color: #eee;
             //width: 3em;
             //height: 2em;
         }
     }
     button {
         border-radius: 0 4px 4px 0;
+        width: 2.3em;
     }
     .entry.input-group {
         margin-bottom: 10px;
