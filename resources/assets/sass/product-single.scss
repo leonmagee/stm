@@ -141,138 +141,138 @@
                             border-radius: 1.55em;
                             border: 1px solid #f1f1f1;
                         }
-                        &.white {
-                            .product-details__colors--box-inner {
-                                background-color: #fff;
-                                border-color: #ddd;
-                            }
-                        }
-                        &.prism_crush_white {
-                            .product-details__colors--box-inner {
-                                background-color: #fff;
-                                border-color: #ddd;
-                            }
-                        }
-                        &.black {
-                            .product-details__colors--box-inner {
-                                background-color: #111;
-                            }
-                        }
-                        &.matte_black {
-                            .product-details__colors--box-inner {
-                                background-color: #111;
-                            }
-                        }
-                        &.onyx_black {
-                            .product-details__colors--box-inner {
-                                background-color: #111;
-                            }
-                        }
-                        &.midnight_black {
-                            .product-details__colors--box-inner {
-                                background-color: #111;
-                            }
-                        }
-                        &.prism_crush_black {
-                            .product-details__colors--box-inner {
-                                background-color: #111;
-                            }
-                        }
-                        &.red {
-                            .product-details__colors--box-inner {
-                                background-color: #b53b3f;
-                            }
-                        }
-                        &.yellow {
-                            .product-details__colors--box-inner {
-                                background-color: #f4e38d;
-                            }
-                        }
-                        &.green {
-                            .product-details__colors--box-inner {
-                                background-color: darken(#acc9b3, 3%);
-                            }
-                        }
-                        &.majestic_green {
-                            .product-details__colors--box-inner {
-                                background-color: darken(#acc9b3, 3%);
-                            }
-                        }
-                        &.mystic_green {
-                            .product-details__colors--box-inner {
-                                background-color: darken(#acc9b3, 3%);
-                            }
-                        }
-                        &.mystic_bronze {
-                            .product-details__colors--box-inner {
-                                background-color: #bc7e40;
-                            }
-                        }
-                        &.purple {
-                            .product-details__colors--box-inner {
-                                background-color: purple;
-                            }
-                        }
-                        &.blue {
-                            .product-details__colors--box-inner {
-                                background-color: $info;
-                            }
-                        }
-                        &.prism_crush_blue {
-                            .product-details__colors--box-inner {
-                                background-color: $info;
-                            }
-                        }
-                        &.sapphire_blue {
-                            .product-details__colors--box-inner {
-                                background-color: #183f88;
-                            }
-                        }
-                        &.deep_sapphire {
-                            .product-details__colors--box-inner {
-                                background-color: #071263;
-                            }
-                        }
-                        &.coral {
-                            .product-details__colors--box-inner {
-                                background-color: #ff7f50;
-                            }
-                        }
-                        &.grey {
-                            .product-details__colors--box-inner {
-                                background-color: grey;
-                            }
-                        }
-                        &.gray {
-                            .product-details__colors--box-inner {
-                                background-color: grey;
-                            }
-                        }
-                        &.midnight_grey {
-                            .product-details__colors--box-inner {
-                                background-color: grey;
-                            }
-                        }
-                        &.mystic_grey {
-                            .product-details__colors--box-inner {
-                                background-color: grey;
-                            }
-                        }
-                        &.silver {
-                            .product-details__colors--box-inner {
-                                background-color: silver;
-                            }
-                        }
-                        &.gold {
-                            .product-details__colors--box-inner {
-                                background-color: $color-yellow;
-                            }
-                        }
-                        &.pink {
-                            .product-details__colors--box-inner {
-                                background-color: lighten(#d56f9c, 2%);
-                            }
-                        }
+                        // &.white {
+                        //     .product-details__colors--box-inner {
+                        //         background-color: #fff;
+                        //         border-color: #ddd;
+                        //     }
+                        // }
+                        // &.prism_crush_white {
+                        //     .product-details__colors--box-inner {
+                        //         background-color: #fff;
+                        //         border-color: #ddd;
+                        //     }
+                        // }
+                        // &.black {
+                        //     .product-details__colors--box-inner {
+                        //         background-color: #111;
+                        //     }
+                        // }
+                        // &.matte_black {
+                        //     .product-details__colors--box-inner {
+                        //         background-color: #111;
+                        //     }
+                        // }
+                        // &.onyx_black {
+                        //     .product-details__colors--box-inner {
+                        //         background-color: #111;
+                        //     }
+                        // }
+                        // &.midnight_black {
+                        //     .product-details__colors--box-inner {
+                        //         background-color: #111;
+                        //     }
+                        // }
+                        // &.prism_crush_black {
+                        //     .product-details__colors--box-inner {
+                        //         background-color: #111;
+                        //     }
+                        // }
+                        // &.red {
+                        //     .product-details__colors--box-inner {
+                        //         background-color: #b53b3f;
+                        //     }
+                        // }
+                        // &.yellow {
+                        //     .product-details__colors--box-inner {
+                        //         background-color: #f4e38d;
+                        //     }
+                        // }
+                        // &.green {
+                        //     .product-details__colors--box-inner {
+                        //         background-color: darken(#acc9b3, 3%);
+                        //     }
+                        // }
+                        // &.majestic_green {
+                        //     .product-details__colors--box-inner {
+                        //         background-color: darken(#acc9b3, 3%);
+                        //     }
+                        // }
+                        // &.mystic_green {
+                        //     .product-details__colors--box-inner {
+                        //         background-color: darken(#acc9b3, 3%);
+                        //     }
+                        // }
+                        // &.mystic_bronze {
+                        //     .product-details__colors--box-inner {
+                        //         background-color: #bc7e40;
+                        //     }
+                        // }
+                        // &.purple {
+                        //     .product-details__colors--box-inner {
+                        //         background-color: purple;
+                        //     }
+                        // }
+                        // &.blue {
+                        //     .product-details__colors--box-inner {
+                        //         background-color: $info;
+                        //     }
+                        // }
+                        // &.prism_crush_blue {
+                        //     .product-details__colors--box-inner {
+                        //         background-color: $info;
+                        //     }
+                        // }
+                        // &.sapphire_blue {
+                        //     .product-details__colors--box-inner {
+                        //         background-color: #183f88;
+                        //     }
+                        // }
+                        // &.deep_sapphire {
+                        //     .product-details__colors--box-inner {
+                        //         background-color: #071263;
+                        //     }
+                        // }
+                        // &.coral {
+                        //     .product-details__colors--box-inner {
+                        //         background-color: #ff7f50;
+                        //     }
+                        // }
+                        // &.grey {
+                        //     .product-details__colors--box-inner {
+                        //         background-color: grey;
+                        //     }
+                        // }
+                        // &.gray {
+                        //     .product-details__colors--box-inner {
+                        //         background-color: grey;
+                        //     }
+                        // }
+                        // &.midnight_grey {
+                        //     .product-details__colors--box-inner {
+                        //         background-color: grey;
+                        //     }
+                        // }
+                        // &.mystic_grey {
+                        //     .product-details__colors--box-inner {
+                        //         background-color: grey;
+                        //     }
+                        // }
+                        // &.silver {
+                        //     .product-details__colors--box-inner {
+                        //         background-color: silver;
+                        //     }
+                        // }
+                        // &.gold {
+                        //     .product-details__colors--box-inner {
+                        //         background-color: $color-yellow;
+                        //     }
+                        // }
+                        // &.pink {
+                        //     .product-details__colors--box-inner {
+                        //         background-color: lighten(#d56f9c, 2%);
+                        //     }
+                        // }
                         &.current {
                             border-color: $color-red;
                         }

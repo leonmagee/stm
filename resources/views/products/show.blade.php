@@ -159,20 +159,14 @@
             @endforeach
             @endif
 
-
-
-
-
-
             <h3 id="h3-color-name">Color: <span>{{ $variation_first_color }}</span></h3>
             @if(count($product->variations))
             <div class="product-details__colors" id="colors-select">
               @foreach($product->variations as $variation)
               @if($variation->quantity)
-              <div
-                class="product-details__colors--box {{ App\Helpers::color_class($variation->text) }} @if($variation->id == $variation_first_id) current @endif"
+              <div class="product-details__colors--box @if($variation->id == $variation_first_id) current @endif"
                 color_name="{{ $variation->text }}">
-                <div class="product-details__colors--box-inner">
+                <div class="product-details__colors--box-inner" style="background-color: {{ $variation->color }}">
                 </div>
               </div>
               @endif
