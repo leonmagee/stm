@@ -833,7 +833,6 @@ $(document)
 $('#repeater-field-wrap-variation .input-group.existing').each(function() {
     const link = $(this).find('a.set-color');
     const colorInput = $(this).find('input.variation-color-input');
-    const colorPreview = $(this).find('a.set-color');
     link.spectrum({
         showInput: true,
         preferredFormat: 'hex',
@@ -846,7 +845,7 @@ $('#repeater-field-wrap-variation .input-group.existing').each(function() {
     });
     colorInput.on('change', function() {
         const newColor = $(this).val();
-        colorPreview.css({ 'background-color': newColor });
+        link.css({ 'background-color': newColor });
         // console.log('changed...');
     });
 });
@@ -863,14 +862,17 @@ linkInit.spectrum({
         // console.log(color);
     },
 });
+colorInputInit.on('change', function() {
+    const newColor = $(this).val();
+    linkInit.css({ 'background-color': newColor });
+    // console.log('changed...');
+});
 /**
  * Repeater Field for Variations
  */
 $(document)
     .on('click', '.add-variation', function(e) {
         e.preventDefault();
-        console.log('variation added');
-
         const variation = $(this)
             .parents('.entry:first')
             .find('input.name')
@@ -879,7 +881,6 @@ $(document)
             .parents('.entry:first')
             .find('input.quantity')
             .val();
-        // var matches = $("#repeater-field-wrap .entry.input-group").length;
 
         if (variation !== '' && quantity !== '') {
             const controlForm = $('#repeater-field-wrap-variation:first');
@@ -893,6 +894,29 @@ $(document)
                 .find('i')
                 .removeClass('fa-plus')
                 .addClass('fa-times');
+
+            newEntry.find('a.set-color').css('background-color', '#eeeeee');
+
+            const linkInitInner = newEntry.find('a.set-color');
+            const colorInputInitInner = newEntry.find(
+                'input.variation-color-input'
+            );
+
+            linkInitInner.spectrum({
+                showInput: true,
+                preferredFormat: 'hex',
+                change(color) {
+                    const hexColor = color.toHexString();
+                    colorInputInitInner.val(hexColor);
+                    linkInitInner.css({ 'background-color': hexColor });
+                    // console.log(color);
+                },
+            });
+            colorInputInitInner.on('change', function() {
+                const newColor = $(this).val();
+                linkInitInner.css({ 'background-color': newColor });
+                // console.log('changed...');
+            });
         }
     })
     .on('click', '.remove-variation', function(e) {
