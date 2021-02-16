@@ -839,7 +839,7 @@ $('#repeater-field-wrap-variation .input-group.existing').each(function() {
         change(color) {
             const hexColor = color.toHexString();
             colorInput.val(hexColor);
-            colorPreview.css({ 'background-color': hexColor });
+            link.css({ 'background-color': hexColor });
             // console.log(color);
         },
     });
