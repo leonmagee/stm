@@ -23102,6 +23102,10 @@ body.stm-body.about .middle-content-wrap .about-page .video-wrap .video-wrap-inn
   min-width: 6em;
 }
 
+.product-single .product-details .product-details__inner .product-details__inner-right h3#h3-color-name span {
+  font-weight: 400;
+}
+
 .product-single .product-details .product-details__inner .product-details__inner-right .product-details__colors-quantity {
   display: flex;
 }

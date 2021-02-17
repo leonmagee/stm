@@ -109,6 +109,9 @@
                     font-weight: 600;
                     &#h3-color-name {
                         min-width: 6em;
+                        span {
+                            font-weight: 400;
+                        }
                     }
                 }
                 .product-details__colors-quantity {
