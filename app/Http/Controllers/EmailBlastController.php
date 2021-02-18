@@ -9,6 +9,7 @@ use App\Product;
 use App\Site;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class EmailBlastController extends Controller
 {
@@ -77,13 +78,31 @@ class EmailBlastController extends Controller
         /**
          * Add required fields here?
          */
-        $this->validate($request, [
+        $validator = Validator::make($request->all(), [
             'subject' => 'required',
             'message' => 'required',
             'cc_manual_email' => 'email|nullable',
         ], [
             'cc_manual_email.email' => 'Must be a valid email address.',
         ]);
+        //dd($request->all());
+
+        if ($validator->fails()) {
+            session()->flash('danger', $validator->messages()->first());
+            return redirect()->back()->withInput();
+        }
+        //dd('test');
+
+        // $validator = Validator::make($request->all(), [
+        //     'email' => 'required|email|unique:users',
+        //     'name' => 'required|string|max:50',
+        //     'password' => 'required',
+        // ]);
+
+        // if ($validator->fails()) {
+        //     Session::flash('error', $validator->messages()->first());
+        //     return redirect()->back()->withInput();
+        // }
 
         $ads_array = [];
         $max_ads = $this->max_ads;
@@ -234,7 +253,7 @@ class EmailBlastController extends Controller
         }
 
         //return redirect('email-blast');
-        return \Redirect::back();
+        return \Redirect::back()->withInput();
     }
 
     /**

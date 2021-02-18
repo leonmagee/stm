@@ -132,11 +132,11 @@
             </div>
             <label class="label">Email Subject<span class="required">*</span></label>
             <div class="control email-blast-wrap-bottom">
-              <input class="input" name="subject" />
+              <input class="input" name="subject" value="{{ old('subject') }}" />
             </div>
             <label class="label">Email Text<span class="required">*</span></label>
             <div class="control">
-              <div id="quill_editor" class="quill-wrap"></div>
+              <div id="quill_editor" class="quill-wrap">{!! old('message') !!}</div>
               <textarea name="message" id="quill_text" class="quill_text"></textarea>
             </div>
 
@@ -149,14 +149,15 @@
                     <select name="product_ad_{{ $i }}">
                       <option value="0">---</option>
                       @foreach($products as $product)
-                      <option value="{{ $product->id }}">{{ $product->name }}</option>
+                      <option @if($product->id == old('product_ad_' . $i))selected="true" @endif
+                        value="{{ $product->id }}">{{ $product->name }}</option>
                       @endforeach
                     </select>
                   </div>
                 </div>
                 <label class="label product-ad-label">Product Description {{ $i }}</label>
                 <div class="control">
-                  <div id="quill_editor_{{ $i }}" class="quill-wrap"></div>
+                  <div id="quill_editor_{{ $i }}" class="quill-wrap">{!! old('ad_text_' . $i) !!}</div>
                   <textarea name="ad_text_{{ $i }}" id="quill_text_{{ $i }}" class="quill_text"></textarea>
                 </div>
             </div>
