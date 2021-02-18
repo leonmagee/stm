@@ -189,7 +189,7 @@ class ImeiSearchController extends Controller
             } elseif ($xiaomi !== false) {
                 // 71 - 1 cent // just basic stuff
                 // 96 - 2 cents // info - no carrier or waranty info
-                $result_2 = self::imeiSearchTwo(71, $imei);
+                $result_2 = self::imeiSearchTwo(96, $imei);
             } elseif ($huawei !== false) {
                 // 80 - 9 cents // lots of warranty info - no carrier
                 $result_2 = self::imeiSearchTwo(80, $imei);
@@ -268,8 +268,8 @@ class ImeiSearchController extends Controller
     public function show(ImeiSearch $imei)
     {
         $all_data = $imei->all_data;
-        $all_data = str_replace(['\\', '<strong>', '</strong>', '<b>', '</b>'], '', $all_data);
-        $all_data = str_replace(['<br />', '<br/>'], '<br>', $all_data);
+        $all_data = str_ireplace(['\\', '<strong>', '</strong>', '<b>', '</b>'], '', $all_data);
+        $all_data = str_ireplace(['<br />', '<br/>'], '<br>', $all_data);
         $all_data = explode('<br>', $all_data);
         $new_string = null;
         foreach ($all_data as $data) {
