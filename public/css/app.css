@@ -23536,10 +23536,11 @@ body.stm-body.about .middle-content-wrap .about-page .video-wrap .video-wrap-inn
   border-radius: 4px;
   background-color: #fefefe;
   padding: 0.6em 0.8em;
-  padding: 0.4em 0.5em;
+  align-self: flex-start;
 }
 
 .product-single .product-details .product-details__cart .product-details__cart--inner {
+  overflow: hidden;
   display: flex;
   align-items: center;
 }

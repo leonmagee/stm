@@ -506,10 +506,10 @@
             }
         }
         .product-details__cart {
-            //display: none;
             @include product_bg_single;
-            padding: 0.4em 0.5em;
+            align-self: flex-start;
             .product-details__cart--inner {
+                overflow: hidden;
                 display: flex;
                 align-items: center;
             }

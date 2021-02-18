@@ -139,8 +139,8 @@
       </div>
     </div>
 
+    @if($product->in_stock())
     <div class="product-details__inner-right">
-      @if($product->in_stock())
       <form method="POST" action="/add-to-cart" class="product-details__form">
         @csrf
         <div class="product-details__colors-quantity">
@@ -201,25 +201,25 @@
         <button class="add-to-cart"><i class="fas fa-cart-plus"></i>Add To Cart</button>
 
       </form>
-      @else
-
-      <div class="product-details__cart">
-        <div class="product-details__cart--inner">
-
-          <div class="out-of-stock">
-            <div class="out-of-stock__text">Sold Out</div>
-            @if($product->available_on)
-            @if(\Carbon\Carbon::parse($product->available_on)->gt(\Carbon\Carbon::now()))
-            <div class="out-of-stock__date">Available on
-              {{ \Carbon\Carbon::parse($product->available_on)->format('F j, Y') }}</div>
-            @endif
-            @endif
-          </div>
-
-        </div>
-      </div>
-      @endif
     </div>
+    @else
+
+    <div class="product-details__cart">
+      <div class="product-details__cart--inner">
+
+        <div class="out-of-stock">
+          <div class="out-of-stock__text">Sold Out</div>
+          @if($product->available_on)
+          @if(\Carbon\Carbon::parse($product->available_on)->gt(\Carbon\Carbon::now()))
+          <div class="out-of-stock__date">Available on
+            {{ \Carbon\Carbon::parse($product->available_on)->format('F j, Y') }}</div>
+          @endif
+          @endif
+        </div>
+
+      </div>
+    </div>
+    @endif
 
   </div>
 
