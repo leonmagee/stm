@@ -81,55 +81,11 @@
                 </div>
               </div>
             </div>
-            <label class="label">Add Attachments</label>
-            <div class="control attachment-wrap">
-              <div class="field">
-                <div class="file has-name">
-                  <label class="file-label">
-                    <input class="file-input upload-file-js" type="file" id="upload-file" name="upload-file-email">
-                    <span class="file-cta">
-                      <span class="file-label">
-                        Select File
-                      </span>
-                    </span>
-                    <span class="file-name" id="upload-file-email">
-                      <i class="fas fa-upload"></i>
-                    </span>
-                  </label>
-                </div>
-              </div>
-              <div class="field">
-                <div class="file has-name">
-                  <label class="file-label">
-                    <input class="file-input upload-file-js" type="file" id="upload-file" name="upload-file-email-2">
-                    <span class="file-cta">
-                      <span class="file-label">
-                        Select File
-                      </span>
-                    </span>
-                    <span class="file-name" id="upload-file-email">
-                      <i class="fas fa-upload"></i>
-                    </span>
-                  </label>
-                </div>
-              </div>
 
-              <div class="field">
-                <div class="file has-name">
-                  <label class="file-label">
-                    <input class="file-input upload-file-js" type="file" id="upload-file" name="upload-file-email-3">
-                    <span class="file-cta">
-                      <span class="file-label">
-                        Select File
-                      </span>
-                    </span>
-                    <span class="file-name" id="upload-file-email">
-                      <i class="fas fa-upload"></i>
-                    </span>
-                  </label>
-                </div>
-              </div>
-            </div>
+
+
+
+
             <label class="label">Email Subject<span class="required">*</span></label>
             <div class="control email-blast-wrap-bottom">
               <input class="input" name="subject" value="{{ old('subject') }}" />
@@ -163,6 +119,75 @@
             </div>
             @endfor
           </div>
+
+          <label class="label">Add Attachments</label>
+          <div class="control attachment-wrap">
+            <div class="field">
+              <div class="file has-name">
+                <label class="file-label">
+                  <input class="file-input upload-file-js" type="file" id="upload-file" name="upload-file-email">
+                  <span class="file-cta">
+                    <span class="file-label">
+                      Select File
+                    </span>
+                  </span>
+                  <span class="file-name" id="upload-file-email">
+                    <i class="fas fa-upload"></i>
+                  </span>
+                </label>
+              </div>
+            </div>
+            <div class="field">
+              <div class="file has-name">
+                <label class="file-label">
+                  <input class="file-input upload-file-js" type="file" id="upload-file" name="upload-file-email-2">
+                  <span class="file-cta">
+                    <span class="file-label">
+                      Select File
+                    </span>
+                  </span>
+                  <span class="file-name" id="upload-file-email">
+                    <i class="fas fa-upload"></i>
+                  </span>
+                </label>
+              </div>
+            </div>
+
+            <div class="field">
+              <div class="file has-name">
+                <label class="file-label">
+                  <input class="file-input upload-file-js" type="file" id="upload-file" name="upload-file-email-3">
+                  <span class="file-cta">
+                    <span class="file-label">
+                      Select File
+                    </span>
+                  </span>
+                  <span class="file-name" id="upload-file-email">
+                    <i class="fas fa-upload"></i>
+                  </span>
+                </label>
+              </div>
+            </div>
+
+            <div class="field">
+              <div class="file has-name">
+                <label class="file-label">
+                  <input class="file-input upload-file-js" type="file" id="upload-file" name="upload-file-email-4">
+                  <span class="file-cta">
+                    <span class="file-label">
+                      Select File
+                    </span>
+                  </span>
+                  <span class="file-name" id="upload-file-email">
+                    <i class="fas fa-upload"></i>
+                  </span>
+                </label>
+              </div>
+            </div>
+          </div>
+
+
+
         </div>
       </div>
 

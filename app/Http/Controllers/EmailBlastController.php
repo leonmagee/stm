@@ -85,24 +85,11 @@ class EmailBlastController extends Controller
         ], [
             'cc_manual_email.email' => 'Must be a valid email address.',
         ]);
-        //dd($request->all());
 
         if ($validator->fails()) {
             session()->flash('danger', $validator->messages()->first());
             return redirect()->back()->withInput();
         }
-        //dd('test');
-
-        // $validator = Validator::make($request->all(), [
-        //     'email' => 'required|email|unique:users',
-        //     'name' => 'required|string|max:50',
-        //     'password' => 'required',
-        // ]);
-
-        // if ($validator->fails()) {
-        //     Session::flash('error', $validator->messages()->first());
-        //     return redirect()->back()->withInput();
-        // }
 
         $ads_array = [];
         $max_ads = $this->max_ads;
@@ -126,14 +113,13 @@ class EmailBlastController extends Controller
         $file = $request->file('upload-file-email');
         $file2 = $request->file('upload-file-email-2');
         $file3 = $request->file('upload-file-email-3');
+        $file4 = $request->file('upload-file-email-4');
 
         if (intval($request->just_one_user)) {
             // email just one user
             $user = User::where('id', $request->just_one_user)->first();
             $hello = '# Hello ' . $user->name . '!';
             $hello_cc = '# Copy of email sent to ' . $user->name . ' - ' . $user->company;
-
-            //dd($request->message);
 
             \Mail::to($user)->send(new EmailBlast(
                 $user,
@@ -142,6 +128,7 @@ class EmailBlastController extends Controller
                 $file,
                 $file2,
                 $file3,
+                $file4,
                 null,
                 $hello,
                 $ads_array
@@ -162,6 +149,7 @@ class EmailBlastController extends Controller
                     $file,
                     $file2,
                     $file3,
+                    $file4,
                     null,
                     $hello_cc,
                     $ads_array
@@ -183,6 +171,7 @@ class EmailBlastController extends Controller
                     $file,
                     $file2,
                     $file3,
+                    $file4,
                     null,
                     $hello_cc,
                     $ads_array
@@ -218,6 +207,7 @@ class EmailBlastController extends Controller
                             $file,
                             $file2,
                             $file3,
+                            $file4,
                             null,
                             null,
                             $ads_array
@@ -239,6 +229,7 @@ class EmailBlastController extends Controller
                             $file,
                             $file2,
                             $file3,
+                            $file4,
                             null,
                             null,
                             $ads_array
@@ -276,6 +267,7 @@ class EmailBlastController extends Controller
             $file = $request->file('upload-file-email');
             $file2 = $request->file('upload-file-email-2');
             $file3 = $request->file('upload-file-email-3');
+            $file4 = $request->file('upload-file-email-4');
 
             // email just one user
             $user = User::where('id', $request->just_one_user)->first();
@@ -289,6 +281,7 @@ class EmailBlastController extends Controller
                 $file,
                 $file2,
                 $file3,
+                $file4,
                 null,
                 $hello
             ));
@@ -308,6 +301,7 @@ class EmailBlastController extends Controller
                     $file,
                     $file2,
                     $file3,
+                    $file4,
                     null,
                     $hello_cc
                 ));
@@ -328,6 +322,7 @@ class EmailBlastController extends Controller
                     $file,
                     $file2,
                     $file3,
+                    $file4,
                     null,
                     $hello_cc
                 ));

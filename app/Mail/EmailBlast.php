@@ -28,12 +28,11 @@ class EmailBlast extends Mailable
         $file = null,
         $file2 = null,
         $file3 = null,
+        $file4 = null,
         $width = null,
         $hello = null,
         $ads_array = null
     ) {
-
-        //dd($subject);
         $this->user = $user;
         $this->message = $message;
         $this->subject($subject);
@@ -56,6 +55,13 @@ class EmailBlast extends Mailable
                 'mime' => $file3->getMimeType(),
             ]);
         }
+        if ($file4) {
+            $this->attach($file4->path(), [
+                'as' => $file4->getClientOriginalName(),
+                'mime' => $file4->getMimeType(),
+            ]);
+        }
+
         $this->ads_array = $ads_array;
 
         $this->callbacks[] = (function ($message) use ($user) {$message->getHeaders()->addTextHeader('user_id', $user->id);});
