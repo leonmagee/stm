@@ -187,12 +187,6 @@
         </span>
       </a>
       <div id="paypal-button-container"></div>
-      <a class="button custom-button behalf">
-        <img src="{{ URL::asset('img/behalf.svg') }}" />
-        <span>
-          Pay With Behalf
-        </span>
-      </a>
       @endif
       @endif
       <a class="button custom-button continue-shopping" href="/">Continue Shopping</a>
@@ -205,7 +199,6 @@
 @if(!$covered_by_credit)
 @section('page-script')
 @if(count($items))
-<script src="https://sdk.demo.behalf.com/sdk/v4/behalf_payment_sdk.js" async></script>
 <script src="https://www.paypal.com/sdk/js?client-id={{ env('PAYPAL_CLIENT_ID') }}"></script>
 <script>
   let breakdown_obj = {
@@ -295,19 +288,6 @@
     });
   }
   }).render('#paypal-button-container');
-</script>
-{{-- <script src="https://sdk.demo.behalf.com/sdk/v4/behalf_payment_sdk.js" async></script> --}}
-<script>
-  var config = {
-  "clientToken" : "<clientToken>",
-    "showPromo" : true,
-    "callToAction" : {
-    "workflow" : "noredirect",
-    "text" : "In order to enjoy these terms, pay with Behalf on your upcoming order."
-    }
-    };
-
-    BehalfPayment.init(config);
 </script>
 @endif
 @endsection
