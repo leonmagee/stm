@@ -296,7 +296,6 @@
   }
   }).render('#paypal-button-container');
 </script>
-{{-- <script src="https://sdk.demo.behalf.com/sdk/v4/behalf_payment_sdk.js" async></script> --}}
 <script>
   var config = {
   "clientToken" : "<clientToken>",
