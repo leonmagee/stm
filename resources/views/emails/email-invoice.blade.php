@@ -1,6 +1,6 @@
 @component('mail::message')
 
-Hello {{ $user->name }}, please remit payment to:
+Hello {{ $user->name }}, please remit payment to GS Wireless through the following options below:
 <div>Zelle: <strong>gs-wireless@att.net</strong></div>
 <div>PayPal: <strong>gs-wireless@att.net</strong></strong>
   (send to friends and family to avoid 3% charge)</div>
