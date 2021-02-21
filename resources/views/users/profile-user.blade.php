@@ -54,7 +54,7 @@
 
   <div class="item credit-bonus flex-wrap">
     <i class="fas fa-dollar-sign"></i>
-    <span>Available Credit: <span class="bonus-val">${{ number_format($user->balance, 2) }}</span></span>
+    <span>Available STM Credit: <span class="bonus-val">${{ number_format($user->balance, 2) }}</span></span>
   </div>
 
 </div>

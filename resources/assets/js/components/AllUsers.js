@@ -19,24 +19,26 @@ export default class AllUsers extends Component {
             creditAmount: '',
             subtractAmount: '',
             currentBalance: 0,
-            note: ''
+            note: '',
         };
     }
 
     componentDidMount() {
-      const { users, usersCount } = this.state;
+        const { users, usersCount } = this.state;
         const userMatrix = {};
         users.map(user => {
             userMatrix[user.id] = user.role_id;
-          let currentCount = usersCount[user.role_id] ? usersCount[user.role_id] : 0;
-          //console.log(user.name, user.role_id);
-          usersCount[user.role_id] = parseInt(currentCount) + 1;
+            const currentCount = usersCount[user.role_id]
+                ? usersCount[user.role_id]
+                : 0;
+            // console.log(user.name, user.role_id);
+            usersCount[user.role_id] = parseInt(currentCount) + 1;
         });
         this.setState({
             usersCount,
             userMatrix,
         });
-        //console.log('arrayz', usersCount);
+        // console.log('arrayz', usersCount);
     }
 
     setUserType(roleId) {
@@ -48,32 +50,34 @@ export default class AllUsers extends Component {
     }
 
     openModal(id) {
-      const { users } = this.state;
-      let selectedUserEdit = null;
-      users.map(user => {
-        if(user.id === id) {
-          selectedUserEdit = user;
-        }
-      });
-      const currentBalance = selectedUserEdit.balance ? selectedUserEdit.balance : 0;
-      //console.log(selectedUserEdit);
-      this.setState({
-        modalActive: true,
-        selectedUserEdit,
-        currentBalance
-      })
+        const { users } = this.state;
+        let selectedUserEdit = null;
+        users.map(user => {
+            if (user.id === id) {
+                selectedUserEdit = user;
+            }
+        });
+        const currentBalance = selectedUserEdit.balance
+            ? selectedUserEdit.balance
+            : 0;
+        // console.log(selectedUserEdit);
+        this.setState({
+            modalActive: true,
+            selectedUserEdit,
+            currentBalance,
+        });
     }
 
     closeModal() {
-      this.setState({
-        modalActive: false,
-        selectedUserEdit: false,
-        newBalance: false,
-        creditAmount: '',
-        subtractAmount: '',
-        currentBalance: false,
-        note: '',
-      })
+        this.setState({
+            modalActive: false,
+            selectedUserEdit: false,
+            newBalance: false,
+            creditAmount: '',
+            subtractAmount: '',
+            currentBalance: false,
+            note: '',
+        });
     }
 
     // updateBalanceInput(e) {
@@ -83,98 +87,107 @@ export default class AllUsers extends Component {
     // }
 
     creditBalanceInput(e) {
-      let value_new = e.target.value;
-      if(e.target.value < 0) {
-        value_new = Math.abs(e.target.value);
-      }
-      this.setState({
-        creditAmount: value_new,
-        subtractAmount: '',
-      });
+        let value_new = e.target.value;
+        if (e.target.value < 0) {
+            value_new = Math.abs(e.target.value);
+        }
+        this.setState({
+            creditAmount: value_new,
+            subtractAmount: '',
+        });
     }
 
     subtractBalanceInput(e) {
-      let subtractAmount = e.target.value;
-      if (e.target.value < 0) {
-        subtractAmount = Math.abs(e.target.value);
-      }
-      const { currentBalance } = this.state;
-      if (subtractAmount > currentBalance) {
-        subtractAmount = currentBalance;
-      }
-      this.setState({
-        subtractAmount,
-        creditAmount: '',
-      });
+        let subtractAmount = e.target.value;
+        if (e.target.value < 0) {
+            subtractAmount = Math.abs(e.target.value);
+        }
+        const { currentBalance } = this.state;
+        if (subtractAmount > currentBalance) {
+            subtractAmount = currentBalance;
+        }
+        this.setState({
+            subtractAmount,
+            creditAmount: '',
+        });
     }
 
     updateNoteValue(e) {
-      this.setState({
-        note: e.target.value
-      })
+        this.setState({
+            note: e.target.value,
+        });
     }
 
     updateBalance() {
-      const { selectedUserEdit, creditAmount, subtractAmount, currentBalance, users, note } = this.state;
-      //console.log(users);
-      $('.stm-absolute-wrap#loader-wrap').css({
-        display: 'flex',
-      });
-      //console.log('we have selected a user:', selectedUserEdit);
-      const balance = selectedUserEdit.balance ? parseFloat(selectedUserEdit.balance) : 0;
-      let updatedBalance = 0;
-      let difference = 0;
-      if(creditAmount) {
-        updatedBalance = balance + parseFloat(creditAmount);
-        difference = creditAmount;
-      } else if (subtractAmount) {
-        updatedBalance = balance - parseFloat(subtractAmount);
-        difference = 0 - subtractAmount;
-      } else {
-        return;
-      }
-
-      axios({
-        method: 'post',
-        url: '/update-user-balance',
-        data: {
-          selectedUserEdit,
-          difference,
-          newBalance: updatedBalance,
-          note
+        const {
+            selectedUserEdit,
+            creditAmount,
+            subtractAmount,
+            currentBalance,
+            users,
+            note,
+        } = this.state;
+        // console.log(users);
+        $('.stm-absolute-wrap#loader-wrap').css({
+            display: 'flex',
+        });
+        // console.log('we have selected a user:', selectedUserEdit);
+        const balance = selectedUserEdit.balance
+            ? parseFloat(selectedUserEdit.balance)
+            : 0;
+        let updatedBalance = 0;
+        let difference = 0;
+        if (creditAmount) {
+            updatedBalance = balance + parseFloat(creditAmount);
+            difference = creditAmount;
+        } else if (subtractAmount) {
+            updatedBalance = balance - parseFloat(subtractAmount);
+            difference = 0 - subtractAmount;
+        } else {
+            return;
         }
-      })
-      .then(response => {
-        let new_users = users.map(user => {
-          if (user.id === response.data.id) {
-            user.balance = response.data.balance;
-          }
-          return user;
-        });
-        //console.log(new_users);
-        this.setState({
-          users: [...new_users],
-          modalActive: false,
-          selectedUserEdit: false,
-          creditAmount: '',
-          subtractAmount: '',
-          newBalance: false,
-          currentBalance: false,
-          note: '',
-        });
 
-        //console.log(new_users);
-        //console.log(users);
-        $('.stm-absolute-wrap#loader-wrap').css({
-          display: 'none',
-        });
-      })
-      .catch(error => {
-        console.error('errorzz', error);
-        $('.stm-absolute-wrap#loader-wrap').css({
-          display: 'none',
-        });
-      });
+        axios({
+            method: 'post',
+            url: '/update-user-balance',
+            data: {
+                selectedUserEdit,
+                difference,
+                newBalance: updatedBalance,
+                note,
+            },
+        })
+            .then(response => {
+                const new_users = users.map(user => {
+                    if (user.id === response.data.id) {
+                        user.balance = response.data.balance;
+                    }
+                    return user;
+                });
+                // console.log(new_users);
+                this.setState({
+                    users: [...new_users],
+                    modalActive: false,
+                    selectedUserEdit: false,
+                    creditAmount: '',
+                    subtractAmount: '',
+                    newBalance: false,
+                    currentBalance: false,
+                    note: '',
+                });
+
+                // console.log(new_users);
+                // console.log(users);
+                $('.stm-absolute-wrap#loader-wrap').css({
+                    display: 'none',
+                });
+            })
+            .catch(error => {
+                console.error('errorzz', error);
+                $('.stm-absolute-wrap#loader-wrap').css({
+                    display: 'none',
+                });
+            });
     }
 
     updateUserSites() {
@@ -243,7 +256,7 @@ export default class AllUsers extends Component {
             selectedUserEdit,
             creditAmount,
             subtractAmount,
-            currentBalance
+            currentBalance,
         } = this.state;
 
         /**
@@ -260,7 +273,9 @@ export default class AllUsers extends Component {
                     checkboxClass = 'fake-checkbox';
                 }
                 const linkUrl = `/users/${item.id}`;
-              const balance = item.balance ? '$' + item.balance.toFixed(2) : '$0.00';
+                const balance = item.balance
+                    ? `$${item.balance.toFixed(2)}`
+                    : '$0.00';
                 return (
                     <div className="allUsersItem" key={key}>
                         <div className="detail-small">
@@ -278,12 +293,21 @@ export default class AllUsers extends Component {
                         <div className="divider" />
                         <div className="detail name">{item.name}</div>
                         <div className="divider hide-mobile" />
-                        <div className="detail hide-mobile email">{item.email}</div>
+                        <div className="detail hide-mobile email">
+                            {item.email}
+                        </div>
                         <div className="divider hide-mobile" />
-                        <div className="detail hide-mobile phone">{item.phone}</div>
+                        <div className="detail hide-mobile phone">
+                            {item.phone}
+                        </div>
                         <div className="divider hide-mobile" />
                         <div className="detail balance">
-                          <a className="balance" onClick={() => this.openModal(item.id)}>{balance}</a>
+                            <a
+                                className="balance"
+                                onClick={() => this.openModal(item.id)}
+                            >
+                                {balance}
+                            </a>
                         </div>
                     </div>
                 );
@@ -319,7 +343,11 @@ export default class AllUsers extends Component {
                         onClick={() => this.setUserType(item.role_id)}
                         key={key}
                     >
-                    {item.name}<span className="user-separator">-</span><span className="user-number">{usersCount[item.role_id] || 0}</span>
+                        {item.name}
+                        <span className="user-separator">-</span>
+                        <span className="user-number">
+                            {usersCount[item.role_id] || 0}
+                        </span>
                     </button>
                 );
             }
@@ -329,7 +357,11 @@ export default class AllUsers extends Component {
                     type="button"
                     key={key}
                 >
-                {item.name}<span className="user-separator">-</span><span className="user-number">{usersCount[item.role_id] || 0}</span>
+                    {item.name}
+                    <span className="user-separator">-</span>
+                    <span className="user-number">
+                        {usersCount[item.role_id] || 0}
+                    </span>
                 </button>
             );
         });
@@ -362,35 +394,77 @@ export default class AllUsers extends Component {
             );
         }
 
-      var allUsersModal = <div></div>;
-        if(this.state.modalActive) {
-          const balance = selectedUserEdit.balance ? selectedUserEdit.balance.toFixed(2) : 0;
-          allUsersModal = <div className="allUserModal">
-            <div className="allUserModalInner">
-              <div className="title-line">
-              <span>{selectedUserEdit.company}</span> / <span>{selectedUserEdit.name}</span>
-              </div>
-              <div className="current-balance">
-                <label>Available Credit: <span>${balance}</span></label>
-              </div>
-              <form action="" className="update-balance">
-                <div className="input-wrap">
-                  <div className="control">
-                    <label className="label">Credit Amount</label>
-                    <input className="input" type="number" placeholder="Enter Value" onChange={e => this.creditBalanceInput(e)}  value={creditAmount} min="0" />
-                    <label className="label label-2">Subtract Amount</label>
-                    <input className="input" type="number" placeholder="Enter Value" onChange={e => this.subtractBalanceInput(e)}  value={subtractAmount} min="0" />
-                  </div>
-                  <div className="control">
-                    <label className="label">Add Note</label>
-                    <textarea className="textarea" onChange={e => this.updateNoteValue(e)} />
-                  </div>
+        let allUsersModal = <div />;
+        if (this.state.modalActive) {
+            const balance = selectedUserEdit.balance
+                ? selectedUserEdit.balance.toFixed(2)
+                : 0;
+            allUsersModal = (
+                <div className="allUserModal">
+                    <div className="allUserModalInner">
+                        <div className="title-line">
+                            <span>{selectedUserEdit.company}</span> /{' '}
+                            <span>{selectedUserEdit.name}</span>
+                        </div>
+                        <div className="current-balance">
+                            <label>
+                                Available STM Credit: <span>${balance}</span>
+                            </label>
+                        </div>
+                        <form action="" className="update-balance">
+                            <div className="input-wrap">
+                                <div className="control">
+                                    <label className="label">
+                                        Credit Amount
+                                    </label>
+                                    <input
+                                        className="input"
+                                        type="number"
+                                        placeholder="Enter Value"
+                                        onChange={e =>
+                                            this.creditBalanceInput(e)
+                                        }
+                                        value={creditAmount}
+                                        min="0"
+                                    />
+                                    <label className="label label-2">
+                                        Subtract Amount
+                                    </label>
+                                    <input
+                                        className="input"
+                                        type="number"
+                                        placeholder="Enter Value"
+                                        onChange={e =>
+                                            this.subtractBalanceInput(e)
+                                        }
+                                        value={subtractAmount}
+                                        min="0"
+                                    />
+                                </div>
+                                <div className="control">
+                                    <label className="label">Add Note</label>
+                                    <textarea
+                                        className="textarea"
+                                        onChange={e => this.updateNoteValue(e)}
+                                    />
+                                </div>
+                            </div>
+                            <a
+                                className="button is-primary call-loader"
+                                onClick={() => this.updateBalance()}
+                            >
+                                Update
+                            </a>
+                        </form>
+                        <a
+                            className="close-icon"
+                            onClick={() => this.closeModal()}
+                        >
+                            <i className="fas fa-times-circle" />
+                        </a>
+                    </div>
                 </div>
-                <a className="button is-primary call-loader" onClick={() => this.updateBalance()}>Update</a>
-              </form>
-              <a className="close-icon" onClick={() => this.closeModal()}><i className="fas fa-times-circle"></i></a>
-            </div>
-          </div>;
+            );
         }
 
         return (

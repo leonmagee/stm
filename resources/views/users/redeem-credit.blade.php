@@ -15,12 +15,12 @@
     <div class="form-wrap redeem-credit">
 
       <div class="balance">
-        Your Available Credit: <span>${{ number_format($user->balance, 2) }}</span>
+        Your Available STM Credit: <span>${{ number_format($user->balance, 2) }}</span>
       </div>
       <label class="label">Choose Payout Method</label>
       <div class="credit-redeem-choices">
         <div class="item paypal" name="paypal">
-          <img src="{{ URL::asset('img/paypal.jpg') }}" />
+          TSSTS
         </div>
         <div class="item zelle" name="zelle">
           <img src="{{ URL::asset('img/zelle.jpg') }}" />

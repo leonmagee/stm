@@ -283,7 +283,7 @@
         @include('layouts.search-user', ['submit_id' => 'user-search-form'])
         @endif
         <div class="field available-credit">
-          Available Credit: <span>${{ number_format(Auth::user()->balance, 2) }}</span>
+          Available STM Credit: <span>${{ number_format(Auth::user()->balance, 2) }}</span>
         </div>
         <div class="field has-addons">
           <p class="control">
