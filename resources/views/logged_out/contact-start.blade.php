@@ -29,7 +29,7 @@
           </div>
 
           <div class="field recaptcha-start">
-            <div class="g-recaptcha" data-sitekey="{{ env('RECAPTCHA_KEY') }}"></div>
+            <div class="g-recaptcha" data-sitekey="{{ env('RECAPTCHA_KEY') }}" data-size="compact"></div>
           </div>
 
         </div>
