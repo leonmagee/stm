@@ -23454,7 +23454,15 @@ body.stm-body.about .middle-content-wrap .about-page .video-wrap .video-wrap-inn
 }
 
 .product-single .product-details .product-details__tabs ul {
+  font-size: 8px;
   display: flex;
+  flex-wrap: wrap;
+}
+
+@media (min-width: 980px) {
+  .product-single .product-details .product-details__tabs ul {
+    font-size: 16px;
+  }
 }
 
 .product-single .product-details .product-details__tabs ul li {

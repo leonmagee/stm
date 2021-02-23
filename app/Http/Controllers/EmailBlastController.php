@@ -107,7 +107,7 @@ class EmailBlastController extends Controller
         //dd($ads_array);
 
         if (!$request->just_one_user && !$request->email_site) {
-            return back()->withErrors('Please choose All Users, One Site or One User.');
+            return back()->withInput()->withErrors('Please choose All Users, One Site or One User.');
         }
 
         $file = $request->file('upload-file-email');
@@ -329,7 +329,6 @@ class EmailBlastController extends Controller
             }
         } else {
             return redirect()->back()->with('danger', 'The user field is required.');
-
         }
 
         session()->flash('message', 'Email has been sent to ' . $email_to_string);

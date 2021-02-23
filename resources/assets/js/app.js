@@ -435,14 +435,14 @@ $('a#user-search-form-mobile-submit').click(function() {
 /**
  * JQuery Zoom
  */
-for (let i = 1; i < number_images + 1; ++i) {
-    this[`img_src_${i}`] = $(`.product-single__images--url-item_${i}`)
-        .find('img')
-        .attr('src');
-    $(`.product-single__images--url-item_${i}`).zoom({
-        url: this[`img_src_${i}`],
-    });
-}
+// for (let i = 1; i < number_images + 1; ++i) {
+//     this[`img_src_${i}`] = $(`.product-single__images--url-item_${i}`)
+//         .find('img')
+//         .attr('src');
+//     $(`.product-single__images--url-item_${i}`).zoom({
+//         url: this[`img_src_${i}`],
+//     });
+// }
 
 /**
  * Main Image Preview (edit page)
