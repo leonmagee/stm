@@ -18,6 +18,10 @@
 
 .products-header-wrap {
     padding: 0.1em 1% 0;
+    margin-top: 0.2em;
+    @media (min-width: $screen-md) {
+        margin-top: 0;
+    }
     //padding: 0;
     //margin-top: -1em;
     &.linking {

@@ -416,6 +416,21 @@
 
       </div>
 
+      <div class="mobile-menu">
+        <div class="field has-addons">
+          <p class="control">
+            <a class="button modal-open login-mobile">
+              <span class="icon is-small">
+                <i class="fas fa-times-circle"></i>
+              </span>
+              <span class="text">Log In</span>
+            </a>
+          </p>
+
+        </div>
+
+      </div>
+
       @endif
 
     </div>

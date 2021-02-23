@@ -304,6 +304,12 @@
 
         .mobile-menu {
             padding-bottom: 15px;
+            a {
+                &.login-mobile {
+                    border-radius: $border-radius !important;
+                    width: auto;
+                }
+            }
             .field {
                 width: 100%;
                 .form-element {

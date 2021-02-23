@@ -19626,6 +19626,11 @@ p.modal-text {
   padding-bottom: 15px;
 }
 
+.header-wrap .header-area .mobile-menu a.login-mobile {
+  border-radius: 4px !important;
+  width: auto;
+}
+
 .header-wrap .header-area .mobile-menu .field {
   width: 100%;
 }
@@ -22441,6 +22446,13 @@ body.stm-body.about .middle-content-wrap .about-page .video-wrap .video-wrap-inn
 
 .products-header-wrap {
   padding: 0.1em 1% 0;
+  margin-top: 0.2em;
+}
+
+@media (min-width: 980px) {
+  .products-header-wrap {
+    margin-top: 0;
+  }
 }
 
 .products-header-wrap.linking {
@@ -24705,8 +24717,6 @@ a.button.custom-button:hover {
   background-size: cover;
   flex: 1;
   display: none;
-  height: 100%;
-  height: auto;
 }
 
 .stm-slider .stm-slider__inner .image-div:first-child {

@@ -10,10 +10,11 @@
             width: 100%;
             background-repeat: no-repeat;
             background-size: cover;
+            //background-size: contain;
             flex: 1;
             display: none;
-            height: 100%;
-            height: auto;
+            //height: 100%;
+            //height: auto;
             &:first-child {
                 display: block;
             }
