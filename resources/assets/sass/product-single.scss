@@ -92,6 +92,7 @@
         }
         .product-details__inner {
             display: flex;
+            flex-wrap: wrap;
             justify-content: space-between;
             white-space: nowrap;
             .product-details__inner-left {
@@ -103,6 +104,10 @@
                 padding: 0.7em 0.9em 0.9em;
                 flex: 0 1;
                 margin-bottom: 0.5em;
+                margin-top: 0.5em;
+                @media (min-width: $screen-md) {
+                    margin-top: 0;
+                }
                 h3 {
                     color: #111;
                     //font-size: 1.1em;

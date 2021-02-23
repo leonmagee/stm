@@ -23107,6 +23107,7 @@ body.stm-body.about .middle-content-wrap .about-page .video-wrap .video-wrap-inn
 
 .product-single .product-details .product-details__inner {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   white-space: nowrap;
 }
@@ -23123,6 +23124,13 @@ body.stm-body.about .middle-content-wrap .about-page .video-wrap .video-wrap-inn
   padding: 0.7em 0.9em 0.9em;
   flex: 0 1;
   margin-bottom: 0.5em;
+  margin-top: 0.5em;
+}
+
+@media (min-width: 980px) {
+  .product-single .product-details .product-details__inner .product-details__inner-right {
+    margin-top: 0;
+  }
 }
 
 .product-single .product-details .product-details__inner .product-details__inner-right h3 {
