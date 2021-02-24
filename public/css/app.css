@@ -23006,6 +23006,7 @@ body.stm-body.about .middle-content-wrap .about-page .video-wrap .video-wrap-inn
 @media (min-width: 980px) {
   .product-single .product-single__images {
     flex: 0 1 40%;
+    order: -1;
   }
 }
 
@@ -23462,6 +23463,7 @@ body.stm-body.about .middle-content-wrap .about-page .video-wrap .video-wrap-inn
 }
 
 .product-single .product-details .product-details__tabs ul {
+  width: 100%;
   display: flex;
   flex-wrap: wrap;
 }

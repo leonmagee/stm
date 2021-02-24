@@ -5,60 +5,7 @@
 @include('layouts.product-menu')
 
 <div class="product-single">
-  <div class="product-single__images">
-    @if($product->img_url_1)
-    <div class="product-single__images--url">
-      @for($i = 1; $i
-      <= $num_images; ++$i) <div class="product-single__images--url-item product-single__images--url-item_{{ $i }}">
-        @if(strpos($product->{"img_url_" . $i}, 'video') !== false)
-        <div class="video-wrap {{ ($i == 1) ? 'active' : 'hidden' }} img_url_{{ $i }}">
-          <video controls>
-            <source src="{{ $product->{'img_url_' . $i } }}" type="video/mp4">
-            Your browser does not support the video tag.
-          </video>
-        </div>
-        @else
-        <img class="{{ ($i == 1) ? 'active' : 'hidden' }} img_url_{{ $i }}" src="{{ $product->{'img_url_' . $i } }}" />
-        @endif
-    </div>
-    @endfor
-  </div>
-  <div class="product-single__images--row">
-    @for($i = 1; $i <= $num_images; ++$i) @if($product->{"img_url_small_" . $i })
-      <div class="product-single__images--item product-single__images--item_{{ $i }}" image_id="{{ $i }}">
-        <img src="{{ $product->{"img_url_small_" . $i } }}" />
-      </div>
-      @endif
-      @endfor
-  </div>
-  @else
-  <div class="product-single__images--default"><i class="far fa-image"></i></div>
-  @endif
-  @if(count($products))
-  <div class="product-single__carousel">
-    <h2>Phones You May Also Like</h2>
-    <div id="products-carousel" class="products-react-carousel" products='{{ $products }}'></div>
-  </div>
-  @endif
-  @if(count($products2))
-  <div class="product-single__carousel">
-    <h2>Tempered Glass You May Also Like</h2>
-    <div id="products-carousel2" class="products-react-carousel" products='{{ $products2 }}'></div>
-  </div>
-  @endif
-  @if(count($products4))
-  <div class="product-single__carousel">
-    <h2>Wall Chargers You May Also Like</h2>
-    <div id="products-carousel4" class="products-react-carousel" products='{{ $products4 }}'></div>
-  </div>
-  @endif
-  @if(count($products6))
-  <div class="product-single__carousel">
-    <h2>Cases You May Also Like</h2>
-    <div id="products-carousel6" class="products-react-carousel" products='{{ $products6 }}'></div>
-  </div>
-  @endif
-</div>
+
 <div class="product-single__right product-details">
   <div class="product-details__title">{{ $product->name }}</div>
   <div class="product-details__inner">
@@ -123,7 +70,6 @@
           item_id={{ $product->id }}><i class="fas fa-random"></i>Compare with Similar
           Items</a></div>
       @endif
-      {{-- <div class="product-details__flex-space-wrap"> --}}
       <div class="product-details__price">
         @if($product->discount)
         <div class="product-details__cost">${{ $product->cost }}<span
@@ -309,6 +255,61 @@
     <a href="/products/edit/{{ $product->id }}">Edit</a>
   </div>
   @endif
+</div>
+<div class="product-single__images">
+  @if($product->img_url_1)
+  <div class="product-single__images--url">
+    @for ($i = 1; $i <= $num_images; ++$i) <div
+      class="product-single__images--url-item product-single__images--url-item_{{ $i }}">
+      @if(strpos($product->{"img_url_" . $i}, 'video') !== false)
+      <div class="video-wrap {{ ($i == 1) ? 'active' : 'hidden' }} img_url_{{ $i }}">
+        <video controls>
+          <source src="{{ $product->{'img_url_' . $i } }}" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+      @else
+      <img class="{{ ($i == 1) ? 'active' : 'hidden' }} img_url_{{ $i }}" src="{{ $product->{'img_url_' . $i } }}" />
+      @endif
+  </div>
+  @endfor
+</div>
+
+<div class="product-single__images--row">
+  @for($i = 1; $i <= $num_images; ++$i) @if($product->{"img_url_small_" . $i })
+    <div class="product-single__images--item product-single__images--item_{{ $i }}" image_id="{{ $i }}">
+      <img src="{{ $product->{"img_url_small_" . $i } }}" />
+    </div>
+    @endif
+    @endfor
+</div>
+@else
+<div class="product-single__images--default"><i class="far fa-image"></i></div>
+@endif
+@if(count($products))
+<div class="product-single__carousel">
+  <h2>Phones You May Also Like</h2>
+  <div id="products-carousel" class="products-react-carousel" products='{{ $products }}'></div>
+</div>
+@endif
+@if(count($products2))
+<div class="product-single__carousel">
+  <h2>Tempered Glass You May Also Like</h2>
+  <div id="products-carousel2" class="products-react-carousel" products='{{ $products2 }}'></div>
+</div>
+@endif
+@if(count($products4))
+<div class="product-single__carousel">
+  <h2>Wall Chargers You May Also Like</h2>
+  <div id="products-carousel4" class="products-react-carousel" products='{{ $products4 }}'></div>
+</div>
+@endif
+@if(count($products6))
+<div class="product-single__carousel">
+  <h2>Cases You May Also Like</h2>
+  <div id="products-carousel6" class="products-react-carousel" products='{{ $products6 }}'></div>
+</div>
+@endif
 </div>
 </div>
 
