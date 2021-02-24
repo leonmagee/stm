@@ -4,15 +4,15 @@
 }
 // grid wrap for products and menu
 .product-single__carousel {
+    //display: none;
     h2 {
         text-align: center;
         color: #242424;
         margin-top: 1.8em;
-        //padding-bottom: 0.1em;
-        //margin-bottom: 0.2em;
-        font-size: 1.3em;
         font-weight: 600;
-        //border-bottom: 1px solid #e5e5e5;
+        @media (min-width: $screen-md) {
+            font-size: 1.3em;
+        }
     }
 }
 
@@ -142,6 +142,10 @@
         background: transparent;
         align-items: center;
         i.products-nav {
+            display: none;
+            @media (min-width: $screen-md) {
+                display: block;
+            }
             font-size: 2em;
             color: rgba(0, 0, 0, 0.2);
             &.fa-chevron-circle-left {
@@ -354,24 +358,19 @@
             }
         }
         .product__title {
-            //background: red;
-            //display: block;
-            //position: relative;
             padding: 0.4em 1.2em 0em;
             color: #111;
             font-weight: 600;
-            font-size: 0.7em;
-            white-space: nowrap;
             overflow: hidden;
             width: 100%;
             max-width: 100%;
             text-overflow: ellipsis;
             text-align: center;
-            //max-width: 18%;
-            //width: 30%;
-            //max-width: 80%;
-            //width: 80%;
-            //display: block;
+            font-size: 0.5em;
+            @media (min-width: $screen-md) {
+                white-space: nowrap;
+                font-size: 0.7em;
+            }
         }
         .product__image {
             height: 220px;

@@ -1,9 +1,3 @@
-/**
- * First we will load all of this project's JavaScript dependencies which
- * includes Vue and other libraries. It is a great starting point when
- * building robust, powerful web applications using Vue and Laravel.
- */
-
 // const { default: Picker } = require('vanilla-picker');
 
 require('./bootstrap');
@@ -37,87 +31,6 @@ require('./components/Products');
 require('./components/ProductsCarousel');
 
 require('./components/Timer');
-
-// sortable list
-// $(document).ready(function() {
-//     console.log('ready!');
-//     // const sortable = $('#sortable-list');
-//     const sortable = document.getElementById('#sortable-list');
-//     new Sortable(sortable, {
-//         animation: 200,
-//     });
-// });
-
-// imei lookup
-// const imeiUrl = 'https://www.imei.info/api/checkimei';
-// const imeiUrl = 'https://api.chucknorris.io/jokes/random';
-
-// fetch(imeiUrl, {
-//     method: 'post',
-//     // mode: 'cors',
-//     body: {
-//         key: 'bb31213cd934cecdd3546016528a8ee26770f10d9ad4b8711f0d0ce0d6cbd179',
-//         imei: '353331072816483',
-//     },
-// })
-//     .then(res => res.json())
-//     .then(data => {
-//         console.log(data);
-//     })
-//     .catch(err => {
-//         console.log(err);
-//     });
-
-// const imeiSettings = {
-//     async: true,
-//     crossDomain: true,
-//     // url: 'https://ismaelc-imei-info.p.rapidapi.com/checkimei',
-//     url: 'https://www.imei.info/api/checkimei',
-//     method: 'POST',
-//     headers: {
-//         'cache-control': 'no-cache',
-//         'content-type':
-//             'multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW',
-//         // 'x-rapidapi-host': 'ismaelc-imei-info.p.rapidapi.com',
-//         // 'x-rapidapi-key': '7f92af3009mshfe041a55ab2ecf1p14ef7ejsn8f081578ce1e',
-//         // 'content-type': 'application/x-www-form-urlencoded',
-//     },
-//     data: {
-//         // imei: "355136052818864",
-//         imei: '353331072816483',
-//         // key: '7f92af3009mshfe041a55ab2ecf1p14ef7ejsn8f081578ce1e',
-//         key: 'bb31213cd934cecdd3546016528a8ee26770f10d9ad4b8711f0d0ce0d6cbd179',
-//     },
-// };
-// console.log('fetch testing');
-// $.ajax(imeiSettings).done(function(response) {
-//     console.log(response);
-// });
-
-// console.log(Picker);
-
-// app.js?ver=1.1.168:125019 ƒ Picker(options) {
-//         classCallCheck(this, Picker);
-
-//         this.settings = {
-
-//             popup: 'right',
-//             layout: 'default',
-//             alpha: true,
-//             editor: true,
-//     …
-
-// const popupCustom = new Picker({
-//     parent: parentCustom,
-//     popup: 'top',
-//     color: 'violet',
-//     // alpha: false,
-//     // editor: false,
-//     editorFormat: 'rgb',
-//     onDone(color) {
-//         parentCustom.style.backgroundColor = color.rgbaString;
-//     },
-// });
 
 // calculate total for new product price
 $('.products-calc-total input#cost, .products-calc-total input#discount').on(
@@ -405,9 +318,9 @@ $('.rate_yo_review').each(function() {
 /**
  * Set Defaults
  */
-const number_images = 6;
+const numberImages = 6;
 const tab_number_videos = 2;
-const tab_number_images = 8;
+const tab_numberImages = 8;
 
 /**
  * Image hover switch
@@ -435,7 +348,7 @@ $('a#user-search-form-mobile-submit').click(function() {
 /**
  * JQuery Zoom
  */
-for (let i = 1; i < number_images + 1; ++i) {
+for (let i = 1; i < numberImages + 1; ++i) {
     this[`img_src_${i}`] = $(`.product-single__images--url-item_${i}`)
         .find('img')
         .attr('src');
@@ -447,7 +360,7 @@ for (let i = 1; i < number_images + 1; ++i) {
 /**
  * Main Image Preview (edit page)
  */
-for (let i = 1; i <= number_images + 1; ++i) {
+for (let i = 1; i <= numberImages + 1; ++i) {
     $(`#preview_images input#product_upload_image_${i}`).change(function() {
         const id_name = `output_${i}`;
         const output = document.getElementById(id_name);
@@ -505,7 +418,7 @@ $('#tab_preview_videos .preview-image__image i.remove-video').click(function() {
 /**
  * Tab Image Preview (edit page)
  */
-for (let i = 1; i <= tab_number_images; ++i) {
+for (let i = 1; i <= tab_numberImages; ++i) {
     $(`#tab_preview_images input#tab_product_upload_image_${i}`).change(
         function() {
             const id_name = `tab_output_${i}`;

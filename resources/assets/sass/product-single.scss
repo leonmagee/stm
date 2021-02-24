@@ -25,16 +25,16 @@
                     display: none;
                 }
             }
-            .video-wrap {
-                height: 30em;
-                background: #111;
-                display: flex;
-                align-items: center;
-                &.hidden {
-                    display: none;
-                }
-                // video {}
-            }
+            // .video-wrap {
+            //     height: 30em;
+            //     background: #111;
+            //     display: flex;
+            //     align-items: center;
+            //     &.hidden {
+            //         display: none;
+            //     }
+            //     // video {}
+            // }
         }
 
         .product-single__images--row {
@@ -44,14 +44,20 @@
                 @include product_border;
                 padding: 0.3em;
                 background-color: #fff;
-                margin: 0.8em 0.4em 0.8em 0.4em;
                 display: flex;
                 align-items: center;
                 overflow: hidden;
+                margin: 0.8em 0.3em 0.8em 0.3em;
+                @media (min-width: $screen-md) {
+                    margin: 0.8em 0.4em 0.8em 0.4em;
+                }
                 img {
                     display: block;
-                    max-width: 3.3em;
+                    max-width: 1.8em;
                     max-height: 4em;
+                    @media (min-width: $screen-md) {
+                        max-width: 3.3em;
+                    }
                 }
                 &:hover {
                     border-color: lighten($brand-primary, 5%);
@@ -82,18 +88,24 @@
         }
     }
     .product-details {
-        padding: 0 2em;
+        @media (min-width: $screen-md) {
+            padding: 0 2em;
+        }
         .product-details__title {
-            font-size: 2.1em;
+            font-size: 1.7em;
+            line-height: 1.3em;
             font-weight: 600;
-            line-height: 1.1em;
             margin-bottom: 0.3em;
-            white-space: nowrap;
             color: #222;
+            @media (min-width: $screen-md) {
+                font-size: 2.1em;
+                line-height: 1.1em;
+            }
         }
         .product-details__inner {
-            display: flex;
-            flex-wrap: wrap;
+            @media (min-width: $screen-md) {
+                display: flex;
+            }
             justify-content: space-between;
             white-space: nowrap;
             .product-details__inner-left {
@@ -145,8 +157,12 @@
                             cursor: pointer;
                         }
                         .product-details__colors--box-inner {
-                            height: 1.55em;
-                            width: 1.55em;
+                            height: 1.15em;
+                            width: 1.15em;
+                            @media (min-width: $screen-md) {
+                                height: 1.55em;
+                                width: 1.55em;
+                            }
                             border-radius: 1.55em;
                             border: 1px solid #f1f1f1;
                         }
@@ -390,17 +406,18 @@
             }
         }
         .product-details__images {
+            width: 100%;
             img {
                 background: #fff;
                 border-radius: 4px;
                 width: 100%;
                 margin-bottom: 1em;
             }
-            video {
-                width: 100%;
-                border-radius: 4px;
-                margin-bottom: 1em;
-            }
+            // video {
+            //     width: 100%;
+            //     border-radius: 4px;
+            //     margin-bottom: 1em;
+            // }
         }
         .product-details__flex-wrap {
             @media (min-width: $screen-md) {
@@ -521,6 +538,10 @@
             }
         }
         button.add-to-cart {
+            margin-top: 0.8em;
+            @media (min-width: $screen-md) {
+                margin-top: 0;
+            }
             font-size: 0.9em;
             font-size: 1em;
             width: 100%;
