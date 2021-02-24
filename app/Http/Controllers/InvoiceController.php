@@ -57,7 +57,8 @@ class InvoiceController extends Controller
      */
     public function create()
     {
-        $users = User::getAgentsDealers();
+        //$users = User::getAgentsDealers();
+        $users = User::orderBy('company')->get();
         return view('invoices.create', compact('users'));
     }
 
