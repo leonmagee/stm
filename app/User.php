@@ -109,7 +109,7 @@ class User extends Authenticatable
     public static function getAgentsDealers()
     {
         $users_array = [1, 2, 6];
-        $users = self::whereNotIn('role_id', $users_array)->get();
+        $users = self::whereNotIn('role_id', $users_array)->orderBy('company')->get();
         return $users;
     }
 
