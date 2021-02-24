@@ -102,7 +102,7 @@ class User extends Authenticatable
 
     public static function getAgents()
     {
-        $agents = self::where('role_id', 3)->get();
+        $agents = self::where('role_id', 3)->orderBy('company')->get();
         return $agents;
     }
 
