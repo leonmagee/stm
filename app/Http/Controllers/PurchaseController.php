@@ -208,7 +208,7 @@ class PurchaseController extends Controller
          */
         $new_store_credit = floatval(strval($store_credit)) - floatval(strval($initial_total));
         if ($new_store_credit < 0) {
-            $new_store_credit == 0;
+            $new_store_credit = 0;
         }
         $current_user->store_credit = $new_store_credit;
         $current_user->save();
@@ -309,8 +309,9 @@ class PurchaseController extends Controller
             if ($store_credit) {
                 // \Log::debug('store credit: ' . $store_credit . ' User Store Credit: ' . $user->store_credit);
                 $store_credit_new = $user->store_credit - $store_credit;
+                //dd($store_credit_new);
                 if ($store_credit_new < 0) {
-                    $store_credit_new == 0;
+                    $store_credit_new = 0;
                 }
                 $user->store_credit = $store_credit_new;
                 $user->save(); // xxxx
