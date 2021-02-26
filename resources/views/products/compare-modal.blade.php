@@ -1,4 +1,4 @@
-<div class="modal modal-width-65 delete-item-modal" id="delete-item-modal-{{ $item->id }}">
+<div class="modal modal-compare delete-item-modal" id="delete-item-modal-{{ $item->id }}">
 
   <div class="modal-background"></div>
 
@@ -13,7 +13,7 @@
         <div class="compare__row compare__row--header">
           <div class="compare__item compare__item--img"></div>
           <div class="compare__item compare__item--name">Product Name</div>
-          <div class="compare__item">Orig Price</div>
+          <div class="compare__item compare__item--orig_price">Orig Price</div>
           <div class="compare__item compare__item--discount">Discount</div>
           <div class="compare__item">Cost</div>
           <div class="compare__item compare__item--rating">Rating</div>

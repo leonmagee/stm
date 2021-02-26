@@ -362,15 +362,12 @@
             </a>
           </p>
           <p class="control">
-            <a class="button mode not-link {{ $mode }}">
+            <a class="button cart cart-add-number" href="/cart">
               <span class="icon is-small">
-                @if($mode == 'online')
-                <i class="fas fa-signal"></i>
-                @else
-                <i class="fas fa-lock"></i>
-                @endif
+                <i class="fas fa-shopping-cart"></i>
               </span>
-              <span class="text">{{ $mode }}</span>
+              <span class="text">Cart</span>
+              <span class="number-of-items" id="cart-number-of-items">{{ $cart_items }}</span>
             </a>
           </p>
         </div>

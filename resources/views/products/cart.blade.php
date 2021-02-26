@@ -35,8 +35,9 @@
                 List)</a>
             </div>
           </div>
-          <div class="stm-cart__item--variation">
+          <div class="stm-cart__item--variation stm-mobile-flex">
             @if(count(($item->cart_variations())))
+            <span>Item Color:</span>
             <div class="select">
               <select name="variation" class="variation-select">
                 @foreach($item->cart_variations() as $variation)
@@ -47,16 +48,16 @@
             </div>
             @endif
           </div>
-          <div class="stm-cart__item--quantity">
-            <input class="input quantity-input" min="0" type="number" name="quantity" value={{ $item->quantity }} />
+          <div class="stm-cart__item--quantity stm-mobile-flex">
+            <span>Item Quantity:</span><input class="input quantity-input" min="0" type="number" name="quantity" value={{ $item->quantity }} />
           </div>
-          <div class="stm-cart__item--available">{{ $item->color_quantity($item->product->id, $item->variation) }}</div>
-          <div class="stm-cart__item--subtotal">${{ number_format($item->product->cost * $item->quantity, 2) }}</div>
-          <div class="stm-cart__item--discount">{{ $item->product->discount ? $item->product->discount . '%' : ''  }}
+          <div class="stm-cart__item--available stm-mobile-flex"><span>Total Available:</span>{{ $item->color_quantity($item->product->id, $item->variation) }}</div>
+          <div class="stm-cart__item--subtotal stm-mobile-flex"><span>Original Cost:</span>${{ number_format($item->product->cost * $item->quantity, 2) }}</div>
+          <div class="stm-cart__item--discount stm-mobile-flex"><span>Discount Percent:</span>{{ $item->product->discount ? $item->product->discount . '%' : ''  }}
           </div>
           <?php $after_discount = ($item->product->discount_cost() * $item->quantity); ?>
-          <div class="stm-cart__item--total">
-            ${{ number_format($after_discount, 2) }}
+          <div class="stm-cart__item--total stm-mobile-flex">
+            <span>Total:</span>${{ number_format($after_discount, 2) }}
           </div>
           <div class="stm-cart__item--delete"><a class="modal-delete-open" item_id={{ $item->id }}><i
                 class="fas fa-minus-circle"></i></a></div>
@@ -131,9 +132,61 @@
       @endif
     </div>
 
-    {{-- Wish List Section --}}
+  </div>
+
+  {{-- checkout sidebar div --}}
+  <div class="cart-wrapper-right cart-wrapper-inner">
+      <h3 class="cart-h3">Checkout <i class="far fa-credit-card"></i></h3>
+      <div class="stm-cart-footer">
+        @if(count($items))
+        <div class="stm-total-wrap">
+          @if($shipping_charge || $coupon || $store_credit)
+          <div class="item"><span class="">Subtotal:</span><span class="">${{ number_format($subtotal, 2) }}</span>
+          </div>
+          @endif
+          @if($shipping_charge)
+          <div class="item"><span class="">Shipping:</span><span
+              class="red">${{ number_format($shipping_charge, 2) }}</span>
+          </div>
+          @endif
+          @if($coupon_discount)
+          <div class="item"><span class="">Coupon:</span><span
+              class="green">-${{ number_format($coupon_discount, 2) }}</span>
+          </div>
+          @endif
+          @if($store_credit)
+          <div class="item"><span class="">Store Credit:</span><span
+              class="green">-${{ number_format($store_credit, 2) }}</span>
+          </div>
+          @endif
+          <div class="item total"><span class="">Total Due:</span><span class="">${{ number_format($total, 2) }}</span>
+          </div>
+        </div>
+        @if($covered_by_credit)
+        <a class="button custom-button stm-credit modal-open-2">
+          <img src="{{ URL::asset('img/stm_logo_short.png') }}" />
+          <span class="small">
+            Pay With Store Credit
+          </span>
+        </a>
+        @else
+        <a class="button custom-button stm-credit modal-open">
+          <img src="{{ URL::asset('img/stm_logo_short.png') }}" />
+          <span>
+            Pay With Balance
+          </span>
+        </a>
+        <div id="paypal-button-container"></div>
+        @endif
+        @endif
+        <a class="button custom-button continue-shopping" href="/">Continue Shopping</a>
+      </div>
+    </div>
+
+  {{-- Wish List Section --}}
+  <div class="cart-wrapper-left cart-wrapper-inner margin-top-1">
+    <h3 class="wish-list cart-h3">Wish List <i class="far fa-list-alt"></i></h3>
     <div class="saved-favorites">
-      <h3 class="wish-list cart-h3">Wish List <i class="far fa-list-alt"></i></h3>
       @if($fav_products->isEmpty())
       <div class="saved-favorites__no-items">
         You have no products in your Wish List.
@@ -145,53 +198,7 @@
     </div>
     {{-- @endif --}}
   </div>
-  <div class="cart-wrapper-right cart-wrapper-inner">
-    <h3 class="cart-h3">Checkout <i class="far fa-credit-card"></i></h3>
-    <div class="stm-cart-footer">
-      @if(count($items))
-      <div class="stm-total-wrap">
-        @if($shipping_charge || $coupon || $store_credit)
-        <div class="item"><span class="">Subtotal:</span><span class="">${{ number_format($subtotal, 2) }}</span>
-        </div>
-        @endif
-        @if($shipping_charge)
-        <div class="item"><span class="">Shipping:</span><span
-            class="red">${{ number_format($shipping_charge, 2) }}</span>
-        </div>
-        @endif
-        @if($coupon_discount)
-        <div class="item"><span class="">Coupon:</span><span
-            class="green">-${{ number_format($coupon_discount, 2) }}</span>
-        </div>
-        @endif
-        @if($store_credit)
-        <div class="item"><span class="">Store Credit:</span><span
-            class="green">-${{ number_format($store_credit, 2) }}</span>
-        </div>
-        @endif
-        <div class="item total"><span class="">Total Due:</span><span class="">${{ number_format($total, 2) }}</span>
-        </div>
-      </div>
-      @if($covered_by_credit)
-      <a class="button custom-button stm-credit modal-open-2">
-        <img src="{{ URL::asset('img/stm_logo_short.png') }}" />
-        <span class="small">
-          Pay With Store Credit
-        </span>
-      </a>
-      @else
-      <a class="button custom-button stm-credit modal-open">
-        <img src="{{ URL::asset('img/stm_logo_short.png') }}" />
-        <span>
-          Pay With Balance
-        </span>
-      </a>
-      <div id="paypal-button-container"></div>
-      @endif
-      @endif
-      <a class="button custom-button continue-shopping" href="/">Continue Shopping</a>
-    </div>
-  </div>
+
 </div>
 
 @endsection

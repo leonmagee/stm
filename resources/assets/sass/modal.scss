@@ -61,9 +61,12 @@
     }
 }
 
-.modal.modal-width-65 {
+.modal.modal-compare {
     .modal-content {
-        width: 65%;
+        width: 100%;
+        @media (min-width: $screen-md) {
+            width: 65%;
+        }
     }
 }
 

@@ -129,7 +129,7 @@ export default class ProductsCarousel extends Component {
                                 {product.name}
                             </a>
                         </div>
-                        <div className="compare__item">
+                        <div className="compare__item compare__item--orig_price">
                             ${product.orig_price}
                         </div>
                         <div className="compare__item compare__item--discount">
@@ -150,7 +150,7 @@ export default class ProductsCarousel extends Component {
 
             compareModal = (
                 <div
-                    className="modal modal-width-65 delete-item-modal is-active"
+                    className="modal modal-compare delete-item-modal is-active"
                     id="delete-item-modal-116"
                 >
                     <div className="modal-background" />
@@ -166,7 +166,7 @@ export default class ProductsCarousel extends Component {
                                     <div className="compare__item compare__item--name">
                                         Product Name
                                     </div>
-                                    <div className="compare__item">
+                                    <div className="compare__item compare__item--orig_price">
                                         Orig Price
                                     </div>
                                     <div className="compare__item compare__item--discount">
