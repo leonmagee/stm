@@ -207,6 +207,9 @@ class PurchaseController extends Controller
          * Update user balance
          */
         $new_store_credit = floatval(strval($store_credit)) - floatval(strval($initial_total));
+        if ($new_store_credit < 0) {
+            $new_store_credit == 0;
+        }
         $current_user->store_credit = $new_store_credit;
         $current_user->save();
         /**
@@ -237,14 +240,6 @@ class PurchaseController extends Controller
             $store_credit = $request->total;
             $request->total = 0;
         }
-        // if ($store_credit) {
-        //     if ($store_credit < $request->total) {
-        //         $request->total = $request->total - $store_credit;
-        //     } else {
-        //         $store_credit = $request->total;
-        //         $request->total = 0;
-        //     }
-        // }
 
         if ($request->sub_total < $this->shipping_max) {
             //$total = $request->total + $this->shipping_charge;
@@ -314,8 +309,11 @@ class PurchaseController extends Controller
             if ($store_credit) {
                 // \Log::debug('store credit: ' . $store_credit . ' User Store Credit: ' . $user->store_credit);
                 $store_credit_new = $user->store_credit - $store_credit;
+                if ($store_credit_new < 0) {
+                    $store_credit_new == 0;
+                }
                 $user->store_credit = $store_credit_new;
-                $user->save();
+                $user->save(); // xxxx
             }
 
             // 4. Clear out cart item
