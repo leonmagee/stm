@@ -236,17 +236,21 @@ class PurchaseController extends Controller
          */
 
         $store_credit = $user->store_credit ? $user->store_credit : 0;
-        if ($request->total <= $store_credit) {
-            $store_credit = $request->total;
-            $request->total = 0;
-        }
 
         if ($request->sub_total < $this->shipping_max) {
             //$total = $request->total + $this->shipping_charge;
             $shipping = $this->shipping_charge;
+            $total_and_shipping = ($request->total + $this->shipping_charge);
         } else {
             //$total = $request->total;
             $shipping = null;
+            $total_and_shipping = $request->total;
+
+        }
+
+        if ($total_and_shipping <= $store_credit) {
+            $store_credit = $total_and_shipping;
+            $request->total = 0;
         }
 
         // 0. Get discount coupon
