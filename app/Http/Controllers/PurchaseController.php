@@ -182,9 +182,9 @@ class PurchaseController extends Controller
 
         $request->type = 'STM Store Credit';
         $request->sub_total = $total;
-        if ($total < $this->shipping_max) {
-            $total = $total + $this->shipping_charge;
-        }
+        // if ($total < $this->shipping_max) {
+        //     $total = $total + $this->shipping_charge;
+        // }
         if ($request->discount) {
             $request->total = ($total - $request->discount);
         } else {
@@ -206,12 +206,12 @@ class PurchaseController extends Controller
         /**
          * Update user balance
          */
-        $new_store_credit = floatval(strval($store_credit)) - floatval(strval($initial_total));
-        if ($new_store_credit < 0) {
-            $new_store_credit = 0;
-        }
-        $current_user->store_credit = $new_store_credit;
-        $current_user->save();
+        // $new_store_credit = floatval(strval($store_credit)) - floatval(strval($initial_total));
+        // if ($new_store_credit < 0) {
+        //     $new_store_credit = 0;
+        // }
+        // $current_user->store_credit = $new_store_credit;
+        // $current_user->save();
         /**
          * Go to confirmation page
          */
@@ -236,21 +236,35 @@ class PurchaseController extends Controller
          */
 
         $store_credit = $user->store_credit ? $user->store_credit : 0;
+        \Log::debug('request total');
+        \Log::debug($request->total);
+        \Log::debug('request sub total');
+        \Log::debug($request->sub_total);
 
         if ($request->sub_total < $this->shipping_max) {
             //$total = $request->total + $this->shipping_charge;
             $shipping = $this->shipping_charge;
             $total_and_shipping = ($request->total + $this->shipping_charge);
+            //$total_and_shipping = $request->total;
         } else {
             //$total = $request->total;
             $shipping = null;
             $total_and_shipping = $request->total;
         }
 
+        \Log::debug('total and shipping');
+        \Log::debug($total_and_shipping);
+        \Log::debug('store credit');
+        \Log::debug($store_credit);
+
         if ($total_and_shipping <= $store_credit) {
+            \Log::debug('we inside this bitch');
             $store_credit = $total_and_shipping;
             $request->total = 0;
         }
+
+        \Log::debug('store credit update');
+        \Log::debug($store_credit);
 
         // 0. Get discount coupon
         $discount_coupon = CartCoupon::where('user_id', $user->id)->first();
@@ -308,18 +322,6 @@ class PurchaseController extends Controller
             $product_variation->save();
             $item->delete();
 
-            // update store credit
-            if ($store_credit) {
-                // \Log::debug('store credit: ' . $store_credit . ' User Store Credit: ' . $user->store_credit);
-                $store_credit_new = $user->store_credit - $store_credit;
-                //dd($store_credit_new);
-                if ($store_credit_new < 0) {
-                    $store_credit_new = 0;
-                }
-                $user->store_credit = $store_credit_new;
-                $user->save(); // xxxx
-            }
-
             // 4. Clear out cart item
             /**
              * @todo delete conditional when done testing
@@ -327,6 +329,18 @@ class PurchaseController extends Controller
             // if (!$request->testers) {
             //     $item->delete();
             // }
+        }
+
+        // update use store credit
+        if ($store_credit) {
+            // \Log::debug('store credit: ' . $store_credit . ' User Store Credit: ' . $user->store_credit);
+            $store_credit_new = $user->store_credit - $store_credit;
+            //dd($store_credit_new);
+            if ($store_credit_new < 0) {
+                $store_credit_new = 0;
+            }
+            $user->store_credit = $store_credit_new;
+            $user->save(); // xxxx
         }
 
         // 5. Email user who made purchse
