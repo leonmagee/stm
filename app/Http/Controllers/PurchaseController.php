@@ -245,7 +245,6 @@ class PurchaseController extends Controller
             //$total = $request->total;
             $shipping = null;
             $total_and_shipping = $request->total;
-
         }
 
         if ($total_and_shipping <= $store_credit) {
