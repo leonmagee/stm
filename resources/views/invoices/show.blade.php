@@ -153,11 +153,12 @@
         @if(\Auth::user()->isAdmin())
         <div class="stm_imv__finalize">
           @if($invoice->status < 4) <a href="#" class="modal-open button is-danger">Email Invoice</a>
-            @if($invoice->status < 3) <a class="button is-primary" href="/invoices/edit/{{ $invoice->id }}">Finalize
+            {{-- @if($invoice->status < 3)  --}}
+            <a class="button is-primary" href="/invoices/edit/{{ $invoice->id }}">Finalize
               Invoice</a>
-              @else
-              <a disabled class="button is-primary">Finalize Invoice</a>
-              @endif
+              {{-- @else
+              <a disabled class="button is-primary">Finalize Invoice</a> --}}
+              {{-- @endif --}}
               @else
               <a disabled class="button is-danger">Email Invoice</a>
               <a disabled class="button is-primary">Finalize Invoice</a>
