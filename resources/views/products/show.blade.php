@@ -288,25 +288,22 @@
 @endif
 @if(count($products))
 <div class="product-single__carousel">
-  <h2>Phones You May Also Like</h2>
+  <h2>You May Also Like</h2>
   <div id="products-carousel" class="products-react-carousel" products='{{ $products }}'></div>
 </div>
 @endif
 @if(count($products2))
 <div class="product-single__carousel">
-  <h2>Tempered Glass You May Also Like</h2>
   <div id="products-carousel2" class="products-react-carousel" products='{{ $products2 }}'></div>
 </div>
 @endif
 @if(count($products4))
 <div class="product-single__carousel">
-  <h2>Wall Chargers You May Also Like</h2>
   <div id="products-carousel4" class="products-react-carousel" products='{{ $products4 }}'></div>
 </div>
 @endif
 @if(count($products6))
 <div class="product-single__carousel">
-  <h2>Cases You May Also Like</h2>
   <div id="products-carousel6" class="products-react-carousel" products='{{ $products6 }}'></div>
 </div>
 @endif

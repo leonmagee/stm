@@ -29,7 +29,7 @@ class CartProductController extends Controller
      */
     public function index()
     {
-        \Log::debug('test');
+        //\Log::debug('test');
         $user = \Auth::user();
         $balance = $user->balance;
         if ($user->store_credit) {

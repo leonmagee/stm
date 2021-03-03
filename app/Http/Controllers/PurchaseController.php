@@ -236,10 +236,10 @@ class PurchaseController extends Controller
          */
 
         $store_credit = $user->store_credit ? $user->store_credit : 0;
-        \Log::debug('request total');
-        \Log::debug($request->total);
-        \Log::debug('request sub total');
-        \Log::debug($request->sub_total);
+        // \Log::debug('request total');
+        // \Log::debug($request->total);
+        // \Log::debug('request sub total');
+        // \Log::debug($request->sub_total);
 
         if ($request->sub_total < $this->shipping_max) {
             //$total = $request->total + $this->shipping_charge;
@@ -252,19 +252,18 @@ class PurchaseController extends Controller
             $total_and_shipping = $request->total;
         }
 
-        \Log::debug('total and shipping');
-        \Log::debug($total_and_shipping);
-        \Log::debug('store credit');
-        \Log::debug($store_credit);
+        // \Log::debug('total and shipping');
+        // \Log::debug($total_and_shipping);
+        // \Log::debug('store credit');
+        // \Log::debug($store_credit);
 
         if ($total_and_shipping <= $store_credit) {
-            \Log::debug('we inside this bitch');
             $store_credit = $total_and_shipping;
             $request->total = 0;
         }
 
-        \Log::debug('store credit update');
-        \Log::debug($store_credit);
+        // \Log::debug('store credit update');
+        // \Log::debug($store_credit);
 
         // 0. Get discount coupon
         $discount_coupon = CartCoupon::where('user_id', $user->id)->first();
