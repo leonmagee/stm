@@ -57,6 +57,9 @@
                 background-color: transparent;
                 padding: 0;
                 font-weight: normal;
+                &.ql-align-center {
+                    text-align: center;
+                }
             }
         }
 

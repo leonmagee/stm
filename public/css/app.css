@@ -18468,6 +18468,10 @@ body.stm-body .stm-subtitle {
   font-weight: normal;
 }
 
+.form-wrapper .form-wrapper-inner .ql-editor h3.ql-align-center {
+  text-align: center;
+}
+
 .form-wrapper .form-wrapper-inner form {
   height: 100%;
 }
