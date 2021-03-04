@@ -18458,6 +18458,16 @@ body.stm-body .stm-subtitle {
   color: #fff;
 }
 
+.form-wrapper .form-wrapper-inner .ql-editor h3 {
+  border-radius: 0;
+  color: #4a4a4a;
+  font-size: 16px;
+  text-align: left;
+  background-color: transparent;
+  padding: 0;
+  font-weight: normal;
+}
+
 .form-wrapper .form-wrapper-inner form {
   height: 100%;
 }
