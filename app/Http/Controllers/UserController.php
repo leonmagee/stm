@@ -1208,7 +1208,7 @@ class UserController extends Controller
          */
         $config_array = [ // this can be changed for different report types
             'current' => 1, // Month
-            'current_instant' => 4, // Emida / GS Posa
+            //'current_instant' => 4, // Emida / GS Posa
             'current_bundles' => 23, // Bundles
             'current_hdn' => 25, // Instant HDN
             // 'current_instant_hdn' => 19, // this isn't necessary
@@ -1219,7 +1219,8 @@ class UserController extends Controller
         ];
 
         $report_type_current = ReportType::find($config_array['current']);
-        $report_type_current_instant = ReportType::find($config_array['current_instant']);
+        //$report_type_current_instant = ReportType::find($config_array['current_instant']);
+        //dd($report_type_current_instant);
         $report_type_current_bundles = ReportType::find($config_array['current_bundles']);
         $report_type_current_hdn = ReportType::find($config_array['current_hdn']);
         $report_type_recharge = ReportType::find($config_array['recharge']);
@@ -1239,7 +1240,7 @@ class UserController extends Controller
             [
                 [
                     'rt_id' => $report_type_current->id,
-                    'rt_i_id' => $report_type_current_instant->id,
+                    //'rt_i_id' => $report_type_current_instant->id,
                     'rt_bnd_id' => $report_type_current_bundles->id,
                     'rt_hdn_id' => $report_type_current_hdn->id,
                     'date' => $one_month_ago,
@@ -1255,7 +1256,7 @@ class UserController extends Controller
             [
                 [
                     'rt_id' => $report_type_current->id,
-                    'rt_i_id' => $report_type_current_instant->id,
+                    //'rt_i_id' => $report_type_current_instant->id,
                     'rt_bnd_id' => $report_type_current_bundles->id,
                     'rt_hdn_id' => $report_type_current_hdn->id,
                     'date' => $two_months_ago,
@@ -1271,7 +1272,7 @@ class UserController extends Controller
             [
                 [
                     'rt_id' => $report_type_current->id,
-                    'rt_i_id' => $report_type_current_instant->id,
+                    //'rt_i_id' => $report_type_current_instant->id,
                     'rt_bnd_id' => $report_type_current_bundles->id,
                     'rt_hdn_id' => $report_type_current_hdn->id,
                     'date' => $three_months_ago,
@@ -1295,7 +1296,8 @@ class UserController extends Controller
                 $matching_sims_count_activation = DB::table('sims')
                     ->select('sims.value')
                     ->join('sim_users', 'sim_users.sim_number', '=', 'sims.sim_number')
-                    ->whereIn('sims.report_type_id', [$item[0]['rt_id'], $item[0]['rt_i_id'], $item[0]['rt_bnd_id'], $item[0]['rt_hdn_id']])
+                //->whereIn('sims.report_type_id', [$item[0]['rt_id'], $item[0]['rt_i_id'], $item[0]['rt_bnd_id'], $item[0]['rt_hdn_id']])
+                    ->whereIn('sims.report_type_id', [$item[0]['rt_id'], $item[0]['rt_bnd_id'], $item[0]['rt_hdn_id']])
                 // ->where('sims.report_type_id', $item[0]['rt_id'])
                 // ->orWhere('sims.report_type_id', $item[0]['rt_i_id'])
                     ->where('sim_users.user_id', $user->id)
