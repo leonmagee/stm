@@ -38,8 +38,10 @@
         border-radius: $border-radius;
         //overflow: hidden;
         padding: 1em;
+        margin-bottom: 1em;
 
         @media (min-width: $screen-md) {
+            margin-bottom: 0;
             display: flex;
             justify-content: space-between;
             // &.center {

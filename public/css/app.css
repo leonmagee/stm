@@ -22490,6 +22490,7 @@ body.stm-body.about .middle-content-wrap .about-page .video-wrap .video-wrap-inn
 .products-header-wrap .products-header {
   border-radius: 4px;
   padding: 1em;
+  margin-bottom: 1em;
   background-color: #fafafa;
   box-shadow: 1px 1px rgba(0, 0, 0, 0.075);
   background: #1b9aaa;
@@ -22498,6 +22499,7 @@ body.stm-body.about .middle-content-wrap .about-page .video-wrap .video-wrap-inn
 
 @media (min-width: 980px) {
   .products-header-wrap .products-header {
+    margin-bottom: 0;
     display: flex;
     justify-content: space-between;
   }
