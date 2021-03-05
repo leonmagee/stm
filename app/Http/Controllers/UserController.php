@@ -1513,8 +1513,8 @@ class UserController extends Controller
         $config_array = [ // this can be changed for different report types
             'current' => 8, // H2O 3rd Recharge
             'current_hdn' => 20, // H2O 3rd Recharge HDN
-            'recharge' => 36, // H2O 4th Recharge
-            'recharge_hdn' => 37, // H2O 4th Recharge HDN
+            'recharge' => 37, // H2O 4th Recharge
+            'recharge_hdn' => 36, // H2O 4th Recharge HDN
         ];
 
         $report_type_current = ReportType::find($config_array['current']);

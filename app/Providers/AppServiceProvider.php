@@ -234,6 +234,10 @@ class AppServiceProvider extends ServiceProvider
                     'name' => '3rd Recharge',
                     'link' => '/3rd-recharge-data',
                 ],
+                [
+                    'name' => '4th Recharge',
+                    'link' => '/4th-recharge-data',
+                ],
             ];
 
             $trackers_sub = [
@@ -430,6 +434,10 @@ class AppServiceProvider extends ServiceProvider
                 [
                     'name' => 'Dealer 3rd Recharge',
                     'link' => '/dealer-3rd-recharge',
+                ],
+                [
+                    'name' => 'Dealer 4th Recharge',
+                    'link' => '/dealer-4th-recharge',
                 ],
             ];
 
