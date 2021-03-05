@@ -391,7 +391,10 @@ a.button.custom-button {
 }
 
 .saved-favorites {
-    padding: 0.5em 2em 2em;
+    padding: 0.5em 1em 2em;
+    @media (min-width: $screen-md) {
+        padding: 0.5em 2em 2em;
+    }
     // h3.wish-list {
     //     border-bottom: none !important;
     //     font-size: 1.5em !important;
@@ -410,11 +413,19 @@ a.button.custom-button {
         align-items: stretch;
         position: relative;
         overflow: hidden;
+        flex-direction: column;
+        @media (min-width: $screen-md) {
+            flex-direction: row;
+        }
         .saved-favorites__item--image {
             display: flex;
             align-items: center;
             justify-content: center;
             flex: 0 1 23%;
+            padding: 1em;
+            @media (min-width: $screen-md) {
+                padding: 0;
+            }
             //padding: 0 1em;
             img {
                 max-width: 9em;
@@ -422,8 +433,11 @@ a.button.custom-button {
             }
         }
         .saved-favorites__item--details {
-            padding: 0.7em 1em 0.7em 0;
-            flex: 0 1 73%;
+            padding: 1.5em;
+            @media (min-width: $screen-md) {
+                padding: 0.7em 1em 0.7em 0;
+                flex: 0 1 73%;
+            }
             // @media (min-width: $screen-md) {
             //     padding-left: 2em;
             // }
@@ -439,10 +453,11 @@ a.button.custom-button {
             justify-content: center;
             flex: 0 0 17%;
             padding: 0.5em;
-            display: none;
+            //display: none;
+            display: flex;
             @media (min-width: $screen-md) {
                 margin-left: auto;
-                display: flex;
+                //display: flex;
             }
             .saved-favorites__item--price-orig {
                 font-size: 0.8em;
@@ -460,20 +475,15 @@ a.button.custom-button {
             font-weight: 600;
             color: darken($info, 10%);
         }
-        .saved-favorites__item--description {
-            //background: red;
-            //height: 6.1em;
-            //overflow: hidden;
-            li {
-                //margin-bottom: 1.1em;
-            }
-        }
         .saved-favorites__item--links {
             display: flex;
             flex-wrap: wrap;
             align-items: center;
             font-size: 1em;
-            padding-top: 0.2em;
+            padding-top: 0.5em;
+            @media (min-width: $screen-md) {
+                padding-top: 0.2em;
+            }
             a {
                 font-size: 0.9em;
                 color: $brand-primary;

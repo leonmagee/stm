@@ -24435,7 +24435,13 @@ a.button.custom-button:hover {
 }
 
 .saved-favorites {
-  padding: 0.5em 2em 2em;
+  padding: 0.5em 1em 2em;
+}
+
+@media (min-width: 980px) {
+  .saved-favorites {
+    padding: 0.5em 2em 2em;
+  }
 }
 
 .saved-favorites .saved-favorites__no-items {
@@ -24455,6 +24461,13 @@ a.button.custom-button:hover {
   align-items: stretch;
   position: relative;
   overflow: hidden;
+  flex-direction: column;
+}
+
+@media (min-width: 980px) {
+  .saved-favorites .saved-favorites__item {
+    flex-direction: row;
+  }
 }
 
 .saved-favorites .saved-favorites__item .saved-favorites__item--image {
@@ -24462,6 +24475,13 @@ a.button.custom-button:hover {
   align-items: center;
   justify-content: center;
   flex: 0 1 23%;
+  padding: 1em;
+}
+
+@media (min-width: 980px) {
+  .saved-favorites .saved-favorites__item .saved-favorites__item--image {
+    padding: 0;
+  }
 }
 
 .saved-favorites .saved-favorites__item .saved-favorites__item--image img {
@@ -24470,8 +24490,14 @@ a.button.custom-button:hover {
 }
 
 .saved-favorites .saved-favorites__item .saved-favorites__item--details {
-  padding: 0.7em 1em 0.7em 0;
-  flex: 0 1 73%;
+  padding: 1.5em;
+}
+
+@media (min-width: 980px) {
+  .saved-favorites .saved-favorites__item .saved-favorites__item--details {
+    padding: 0.7em 1em 0.7em 0;
+    flex: 0 1 73%;
+  }
 }
 
 .saved-favorites .saved-favorites__item .saved-favorites__item--price {
@@ -24485,13 +24511,12 @@ a.button.custom-button:hover {
   justify-content: center;
   flex: 0 0 17%;
   padding: 0.5em;
-  display: none;
+  display: flex;
 }
 
 @media (min-width: 980px) {
   .saved-favorites .saved-favorites__item .saved-favorites__item--price {
     margin-left: auto;
-    display: flex;
   }
 }
 
@@ -24518,7 +24543,13 @@ a.button.custom-button:hover {
   flex-wrap: wrap;
   align-items: center;
   font-size: 1em;
-  padding-top: 0.2em;
+  padding-top: 0.5em;
+}
+
+@media (min-width: 980px) {
+  .saved-favorites .saved-favorites__item .saved-favorites__item--links {
+    padding-top: 0.2em;
+  }
 }
 
 .saved-favorites .saved-favorites__item .saved-favorites__item--links a {
