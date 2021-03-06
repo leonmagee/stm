@@ -19738,7 +19738,7 @@ body.stm-body .large-menu-logged-out {
   display: none;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 980px) {
   body.stm-body .large-menu-logged-out {
     display: flex;
   }
