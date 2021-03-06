@@ -357,13 +357,32 @@ a.button.custom-button {
 }
 .apply-coupon-form {
     display: flex;
+    flex-direction: column;
+    input {
+        width: 100%;
+        max-width: 100%;
+    }
+    @media (min-width: $screen-md) {
+        flex-direction: row;
+    }
     .current-coupon {
         background-color: $green;
-        padding: 0.3em 1em;
+        padding: 0.4em 1em;
         color: #fff;
         font-weight: 600;
         margin-right: 1em;
         border-radius: $border-radius;
+        display: block;
+        margin-bottom: 1em;
+        font-size: 0.9em;
+        width: 100%;
+        text-align: center;
+        @media (min-width: $screen-md) {
+            width: auto;
+            padding: 0.3em 1em;
+            font-size: 1em;
+            margin-bottom: 0;
+        }
     }
 }
 

@@ -24398,15 +24398,41 @@ a.button.custom-button:hover {
 
 .apply-coupon-form {
   display: flex;
+  flex-direction: column;
+}
+
+.apply-coupon-form input {
+  width: 100%;
+  max-width: 100%;
+}
+
+@media (min-width: 980px) {
+  .apply-coupon-form {
+    flex-direction: row;
+  }
 }
 
 .apply-coupon-form .current-coupon {
   background-color: #06dba3;
-  padding: 0.3em 1em;
+  padding: 0.4em 1em;
   color: #fff;
   font-weight: 600;
   margin-right: 1em;
   border-radius: 4px;
+  display: block;
+  margin-bottom: 1em;
+  font-size: 0.9em;
+  width: 100%;
+  text-align: center;
+}
+
+@media (min-width: 980px) {
+  .apply-coupon-form .current-coupon {
+    width: auto;
+    padding: 0.3em 1em;
+    font-size: 1em;
+    margin-bottom: 0;
+  }
 }
 
 .stm-total-wrap {
@@ -25438,13 +25464,15 @@ a.button.custom-button:hover {
 }
 
 .apply-coupon input {
-  max-width: 45%;
+  max-width: 100%;
+  margin-bottom: 1em;
   margin-right: 1em;
 }
 
 @media (min-width: 980px) {
   .apply-coupon input {
     max-width: 20%;
+    margin-bottom: 0;
   }
 }
 
