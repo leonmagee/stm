@@ -41,6 +41,8 @@
             {{ $imei->blacklist }}
           </div>
         </div>
+      </div>
+      <div class="stm-flex-wrap">
 
         @if($imei->all_data)
         <div class="imei-center-max-wrap">

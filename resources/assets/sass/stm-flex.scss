@@ -1,25 +1,44 @@
 .stm-flex {
     padding: 2em;
     .stm-flex-wrap {
-        margin-bottom: 3em;
+        display: flex;
+        @media (min-width: $screen-md) {
+            margin-bottom: 3em;
+            display: block;
+        }
     }
     .stm-flex-row {
-        display: flex;
+        flex: 1;
+        &:first-child {
+            flex: 0 1 30%;
+        }
+        @media (min-width: $screen-md) {
+            display: flex;
+        }
+
         &.separator {
             margin-top: 1em;
             border-top: 1px solid #ddd;
         }
         .stm-flex-row__item {
             padding: 0.6em 1em;
-            font-size: 0.9em;
+            &:first-child {
+                border-top: 1px solid #ddd;
+            }
             border-right: 1px solid #ddd;
             border-bottom: 1px solid #ddd;
+            @media (min-width: $screen-md) {
+                font-size: 0.9em;
+                border-top: none;
+            }
             flex: 1;
             &.font-center {
                 text-align: center;
             }
             &:first-child {
-                border-left: 1px solid #ddd;
+                @media (min-width: $screen-md) {
+                    border-left: 1px solid #ddd;
+                }
             }
             &.flex-4 {
                 flex: 0 1 4%;
@@ -64,7 +83,10 @@
             &.header {
                 font-weight: 600;
                 background-color: $invoice-header;
-                font-size: 0.8em;
+                font-size: 0.6em;
+                @media (min-width: $screen-md) {
+                    font-size: 0.8em;
+                }
             }
 
             &.bg-blue {
@@ -82,7 +104,6 @@
             &.bg-black {
                 background-color: #111;
                 color: #fff;
-                border-color: #111;
                 text-transform: uppercase;
                 font-weight: 600;
                 &:not(:last-child) {
@@ -114,7 +135,10 @@
         // font adjustments
         &.font-small {
             .stm-flex-row__item {
-                font-size: 0.8em;
+                font-size: 0.6em;
+                @media (min-width: $screen-md) {
+                    font-size: 0.8em;
+                }
             }
         }
         &.font-bold {
@@ -125,7 +149,9 @@
         // misc
         &:first-child {
             .stm-flex-row__item {
-                border-top: 1px solid #ddd;
+                @media (min-width: $screen-md) {
+                    border-top: 1px solid #ddd;
+                }
             }
         }
     }

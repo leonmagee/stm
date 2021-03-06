@@ -19159,9 +19159,15 @@ body.stm-body .add-padding {
 }
 
 .imei-center-max-wrap {
-  max-width: 35%;
-  margin-left: auto;
-  margin-right: auto;
+  width: 100%;
+}
+
+@media (min-width: 980px) {
+  .imei-center-max-wrap {
+    max-width: 35%;
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
 
 .imei-all-data-wrap {
@@ -25134,11 +25140,28 @@ a.button.custom-button:hover {
 }
 
 .stm-flex .stm-flex-wrap {
-  margin-bottom: 3em;
+  display: flex;
+}
+
+@media (min-width: 980px) {
+  .stm-flex .stm-flex-wrap {
+    margin-bottom: 3em;
+    display: block;
+  }
 }
 
 .stm-flex .stm-flex-row {
-  display: flex;
+  flex: 1;
+}
+
+.stm-flex .stm-flex-row:first-child {
+  flex: 0 1 30%;
+}
+
+@media (min-width: 980px) {
+  .stm-flex .stm-flex-row {
+    display: flex;
+  }
 }
 
 .stm-flex .stm-flex-row.separator {
@@ -25148,18 +25171,30 @@ a.button.custom-button:hover {
 
 .stm-flex .stm-flex-row .stm-flex-row__item {
   padding: 0.6em 1em;
-  font-size: 0.9em;
   border-right: 1px solid #ddd;
   border-bottom: 1px solid #ddd;
   flex: 1;
+}
+
+.stm-flex .stm-flex-row .stm-flex-row__item:first-child {
+  border-top: 1px solid #ddd;
+}
+
+@media (min-width: 980px) {
+  .stm-flex .stm-flex-row .stm-flex-row__item {
+    font-size: 0.9em;
+    border-top: none;
+  }
 }
 
 .stm-flex .stm-flex-row .stm-flex-row__item.font-center {
   text-align: center;
 }
 
-.stm-flex .stm-flex-row .stm-flex-row__item:first-child {
-  border-left: 1px solid #ddd;
+@media (min-width: 980px) {
+  .stm-flex .stm-flex-row .stm-flex-row__item:first-child {
+    border-left: 1px solid #ddd;
+  }
 }
 
 .stm-flex .stm-flex-row .stm-flex-row__item.flex-4 {
@@ -25217,7 +25252,13 @@ a.button.custom-button:hover {
 .stm-flex .stm-flex-row .stm-flex-row__item.header {
   font-weight: 600;
   background-color: #e9e9e9;
-  font-size: 0.8em;
+  font-size: 0.6em;
+}
+
+@media (min-width: 980px) {
+  .stm-flex .stm-flex-row .stm-flex-row__item.header {
+    font-size: 0.8em;
+  }
 }
 
 .stm-flex .stm-flex-row .stm-flex-row__item.bg-blue {
@@ -25236,7 +25277,6 @@ a.button.custom-button:hover {
 .stm-flex .stm-flex-row .stm-flex-row__item.bg-black {
   background-color: #111;
   color: #fff;
-  border-color: #111;
   text-transform: uppercase;
   font-weight: 600;
 }
@@ -25270,15 +25310,23 @@ a.button.custom-button:hover {
 }
 
 .stm-flex .stm-flex-row.font-small .stm-flex-row__item {
-  font-size: 0.8em;
+  font-size: 0.6em;
+}
+
+@media (min-width: 980px) {
+  .stm-flex .stm-flex-row.font-small .stm-flex-row__item {
+    font-size: 0.8em;
+  }
 }
 
 .stm-flex .stm-flex-row.font-bold .stm-flex-row__item {
   font-weight: 600 !important;
 }
 
-.stm-flex .stm-flex-row:first-child .stm-flex-row__item {
-  border-top: 1px solid #ddd;
+@media (min-width: 980px) {
+  .stm-flex .stm-flex-row:first-child .stm-flex-row__item {
+    border-top: 1px solid #ddd;
+  }
 }
 
 .cats-wrap {
