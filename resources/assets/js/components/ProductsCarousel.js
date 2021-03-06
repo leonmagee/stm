@@ -57,7 +57,7 @@ export default class ProductsCarousel extends Component {
                     $('.stm-absolute-wrap#loader-wrap').css({
                         display: 'none',
                     });
-                }, 300);
+                }, 550);
             } else {
                 $('.stm-absolute-wrap#loader-wrap').css({ display: 'none' });
                 this.setState({
