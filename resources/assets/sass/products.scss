@@ -19,10 +19,10 @@
 }
 
 .products-header-wrap {
-    padding: 0.1em 1% 0;
-    margin-top: 0.2em;
+    //margin-top: 0.2em;
     @media (min-width: $screen-md) {
-        margin-top: 0;
+        padding: 0.1em 1% 0;
+        //margin-top: 0;
     }
     //padding: 0;
     //margin-top: -1em;
@@ -35,8 +35,10 @@
         // overflow: hidden;
     }
     .products-header {
-        border-radius: $border-radius;
         //overflow: hidden;
+        @media (min-width: $screen-md) {
+            border-radius: $border-radius;
+        }
         padding: 1em;
         margin-bottom: 1em;
 
@@ -140,7 +142,9 @@
     background: #ededed;
     .products-inner-wrap {
         flex: 1;
-        padding: 1%;
+        @media (min-width: $screen-md) {
+            padding: 1%;
+        }
     }
     &.products-outer--carousel {
         background: transparent;
