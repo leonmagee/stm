@@ -439,6 +439,9 @@
         .product__attributes {
             padding: 0.4em 1em;
             height: 6em;
+            @media (min-width: $screen-xxlg) {
+                height: 5em;
+            }
             .product__attributes--item {
                 font-size: 0.6em;
                 display: flex;

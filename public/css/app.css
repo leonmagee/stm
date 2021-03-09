@@ -22971,6 +22971,12 @@ body.stm-body.about .middle-content-wrap .about-page .video-wrap .video-wrap-inn
   height: 6em;
 }
 
+@media (min-width: 1700px) {
+  .products-outer .product .product__attributes {
+    height: 5em;
+  }
+}
+
 .products-outer .product .product__attributes .product__attributes--item {
   font-size: 0.6em;
   display: flex;
