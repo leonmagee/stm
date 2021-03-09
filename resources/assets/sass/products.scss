@@ -215,10 +215,16 @@
         //padding: 0 0.5em;
         //justify-content: space-between;
         .product {
-            flex: 0 1 18%;
             margin-bottom: 1em;
             @media (min-width: $screen-md) {
                 margin: 0.9em 1% 0.3em;
+                flex: 0 1 31%;
+            }
+            @media (min-width: $screen-lg) {
+                flex: 0 1 23%;
+            }
+            @media (min-width: $screen-xlg) {
+                flex: 0 1 18%;
             }
             //width: 100%;
             //max-width: 100%;

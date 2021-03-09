@@ -22695,13 +22695,25 @@ body.stm-body.about .middle-content-wrap .about-page .video-wrap .video-wrap-inn
 }
 
 .products-outer .products .product {
-  flex: 0 1 18%;
   margin-bottom: 1em;
 }
 
 @media (min-width: 980px) {
   .products-outer .products .product {
     margin: 0.9em 1% 0.3em;
+    flex: 0 1 31%;
+  }
+}
+
+@media (min-width: 1200px) {
+  .products-outer .products .product {
+    flex: 0 1 23%;
+  }
+}
+
+@media (min-width: 1500px) {
+  .products-outer .products .product {
+    flex: 0 1 18%;
   }
 }
 
