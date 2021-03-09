@@ -247,6 +247,12 @@ body.stm-body {
 .imei-center-max-wrap {
     //max-width: 35%;
     width: 100%;
+    .stm-flex-row__item {
+        border-left: 1px solid #ddd;
+        &.bg-black {
+            border-color: #111;
+        }
+    }
     @media (min-width: $screen-md) {
         max-width: 35%;
         margin-left: auto;
