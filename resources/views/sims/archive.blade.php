@@ -1,11 +1,5 @@
 @extends('layouts.layout')
 
-{{-- @section('title')
-<div class="with-background">
-  {{ $name }} Sims | {{ $current_site_date }}
-</div>
-@endsection --}}
-
 @section('content')
 
 <div class="form-wrapper">
@@ -39,6 +33,7 @@
   $('#sims_table').DataTable({
     "processing": true,
     "serverSide": true,
+    "responsive": true,
     "ajax": "{!! route('api.sims.archive', ['id' => $id]) !!}",
     "columns": [
         { "data": "sim_number" },

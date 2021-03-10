@@ -20324,6 +20324,24 @@ table.dataTable tr td a.imei-view:hover {
   background-color: #05daff;
 }
 
+table.dataTable tr td.child ul.dtr-details li {
+  border-bottom: none !important;
+}
+
+table.dataTable tr td.child ul.dtr-details li span {
+  color: #111;
+}
+
+table.dataTable.dtr-inline.collapsed > tbody > tr > td.dtr-control:before,
+table.dataTable.dtr-inline.collapsed > tbody > tr > th.dtr-control:before {
+  background-color: #1b9aaa !important;
+}
+
+table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td.dtr-control:before,
+table.dataTable.dtr-inline.collapsed > tbody > tr.parent > th.dtr-control:before {
+  background-color: #ef476f !important;
+}
+
 .users-wrap a.user-wrap .flex-item.company-wrap {
   font-size: 0.9em;
   flex: 0 1 45%;

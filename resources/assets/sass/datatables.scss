@@ -175,6 +175,7 @@ table.dataTable {
         td {
             span {
                 color: #fafafa;
+                //color: red;
                 font-weight: bold;
                 display: block;
                 padding: 1px 7px;
@@ -232,6 +233,32 @@ table.dataTable {
                     background-color: darken($brand-fifth, 15%);
                 }
             }
+            &.child {
+                ul.dtr-details {
+                    li {
+                        border-bottom: none !important;
+                        span {
+                            color: #111;
+                        }
+                    }
+                }
+            }
         }
     }
+}
+
+table.dataTable.dtr-inline.collapsed > tbody > tr > td.dtr-control:before,
+table.dataTable.dtr-inline.collapsed > tbody > tr > th.dtr-control:before {
+    background-color: $brand-primary !important;
+}
+
+table.dataTable.dtr-inline.collapsed
+    > tbody
+    > tr.parent
+    > td.dtr-control:before,
+table.dataTable.dtr-inline.collapsed
+    > tbody
+    > tr.parent
+    > th.dtr-control:before {
+    background-color: $color-red !important;
 }

@@ -37,6 +37,8 @@
   $('#sims_table').DataTable({
 "processing": true,
 "serverSide": true,
+"responsive": true,
+//"scrollX": true,
 "ajax": "{!! route('api.imei_search.index') !!}",
 "order": [[ 0, "desc" ]],
 "columns": [
