@@ -1,3 +1,7 @@
+body {
+    table-layout: fixed !important;
+}
+
 // bulma datatables...
 table.dataTable.nowrap th,
 table.dataTable.nowrap td {
