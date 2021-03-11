@@ -6,13 +6,15 @@
     font-weight: 700;
 }
 .reports-wrap {
-    @media (min-width: $screen-md) {
-        display: grid;
-        grid-gap: 15px;
-        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    }
-    @media (min-width: $screen-xlg) {
-        grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
+    &.reports-wrap-grid {
+        @media (min-width: $screen-md) {
+            display: grid;
+            grid-gap: 15px;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        }
+        @media (min-width: $screen-xlg) {
+            grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
+        }
     }
 
     font-size: 0.8em;

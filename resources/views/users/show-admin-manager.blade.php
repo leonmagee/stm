@@ -57,7 +57,7 @@
 
     @if(!$user->isAdminManagerEmployee())
 
-    <div class="reports-wrap">
+    <div class="reports-wrap reports-wrap-grid">
 
       @foreach( $recharge_data_array as $item )
 

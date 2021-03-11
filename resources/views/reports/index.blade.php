@@ -22,7 +22,7 @@
 @include('mixins.user-back', ['user' => $user])
 @endif
 
-<div class="reports-wrap">
+<div class="reports-wrap reports-wrap-grid">
   @foreach( $report_data_array as $item )
 
   <div class="report-wrap">

@@ -62,7 +62,7 @@
 
       @foreach( $recharge_data_array as $item )
 
-      <div class="report-wrap">
+      <div class="report-wrap reports-wrap-grid">
         <h3 class='recharge-title'>2nd Recharge</h3>
 
         <div class="recharge-details">

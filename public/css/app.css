@@ -21373,7 +21373,7 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > th.dtr-control:before
 }
 
 @media (min-width: 980px) {
-  .reports-wrap {
+  .reports-wrap.reports-wrap-grid {
     display: grid;
     grid-gap: 15px;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -21381,7 +21381,7 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > th.dtr-control:before
 }
 
 @media (min-width: 1670px) {
-  .reports-wrap {
+  .reports-wrap.reports-wrap-grid {
     grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
   }
 }
