@@ -10,13 +10,13 @@ body.stm-body {
     min-height: 100%;
     @include current_font;
 
+    table {
+        display: table !important;
+    }
+
     //mobile settings
     .chart-wrap-outer {
         display: none;
-    }
-
-    table {
-        //width: 100%;
     }
 
     @media (min-width: $screen-md) {

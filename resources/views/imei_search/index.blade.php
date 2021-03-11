@@ -8,7 +8,7 @@
 
     <h3>IMEI Check History</h3>
 
-    <table id="sims_table" class="stripe compact" style="width: 100%">
+    <table id="sims_table" class="stripe compact responsive" style="width: 100%">
       <thead>
         <tr>
           <th>Id</th>
@@ -32,18 +32,19 @@
 @endsection
 
 @section('page-script')
-<script type="text/javascript" src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
-<script type="text/javascript" src="https://cdn.datatables.net/responsive/2.2.7/js/dataTables.responsive.min.js">
-</script>
+{{-- <script type="text/javascript" src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script> --}}
+{{-- <script type="text/javascript" src="https://cdn.datatables.net/responsive/2.2.7/js/dataTables.responsive.min.js"> --}}
+{{-- </script> --}}
 <script>
   $('#sims_table').DataTable({
-"processing": true,
-"serverSide": true,
+processing: true,
+serverSide: true,
 responsive: true,
+//autoWidth: false,
 //"scrollX": true,
-"ajax": "{!! route('api.imei_search.index') !!}",
-"order": [[ 0, "desc" ]],
-"columns": [
+ajax: "{!! route('api.imei_search.index') !!}",
+order: [[ 0, "desc" ]],
+columns: [
 { "data": "id" },
 { "data": "user.company" },
 { "data": "imei" },
