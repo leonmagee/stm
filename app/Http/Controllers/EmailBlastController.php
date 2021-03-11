@@ -30,7 +30,7 @@ class EmailBlastController extends Controller
         $users = User::orderBy('company')->get();
         $sites_exclude = Site::whereNotIn('id', [4])->get();
         $max_ads = $this->max_ads;
-        $products = Product::all();
+        $products = Product::orderBy('name')->get();
         return view('email_blast.index', compact('sites', 'sites_exclude', 'users', 'products', 'max_ads'));
     }
 

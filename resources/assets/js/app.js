@@ -4,7 +4,7 @@ require('./bootstrap');
 
 //require('datatables.net');
 
-require('datatables.net-responsive');
+//require('datatables.net-responsive');
 
 require('chart.js');
 
@@ -33,6 +33,7 @@ require('./components/Products');
 require('./components/ProductsCarousel');
 
 require('./components/Timer');
+//console.log('test');
 
 // calculate total for new product price
 $('.products-calc-total input#cost, .products-calc-total input#discount').on(

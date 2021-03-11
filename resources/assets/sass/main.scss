@@ -15,6 +15,10 @@ body.stm-body {
         display: none;
     }
 
+    table {
+        //width: 100%;
+    }
+
     @media (min-width: $screen-md) {
         .chart-wrap-outer {
             display: block;

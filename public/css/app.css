@@ -20074,10 +20074,6 @@ ul.mobile-menu li ul.sub-menu.active li:hover a {
   color: #FFF;
 }
 
-body {
-  table-layout: fixed !important;
-}
-
 table.dataTable.nowrap th,
 table.dataTable.nowrap td {
   white-space: nowrap;
