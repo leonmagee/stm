@@ -105,6 +105,7 @@ table.dataTable thead .sorting_desc_disabled:after {
 
 .dataTables_paginate.paging_simple_numbers {
     font-size: 10px;
+    //font-size: 1em;
     @media (min-width: $screen-sm) {
         font-size: 1em;
     }
@@ -137,8 +138,8 @@ table.dataTable thead .sorting_desc_disabled:after {
 }
 
 #sims_table {
-    font-size: 8px;
-    //width: 100% !important;
+    //font-size: 8px;
+    font-size: 0.8em;
     @media (min-width: $screen-sm) {
         font-size: 1em;
     }

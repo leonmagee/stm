@@ -18929,10 +18929,6 @@ body.stm-body {
   font-weight: 400;
 }
 
-body.stm-body table {
-  display: table !important;
-}
-
 body.stm-body .chart-wrap-outer {
   display: none;
 }
@@ -18968,9 +18964,10 @@ body.stm-body .main-wrap #content {
 }
 
 body.stm-body .main-wrap .middle-content-wrap-outer {
-  flex: 1;
+  flex: 1 100%;
   flex-direction: column;
   display: flex;
+  overflow: hidden;
 }
 
 body.stm-body .main-wrap .middle-content-wrap {
@@ -20222,7 +20219,7 @@ table.dataTable thead .sorting_desc_disabled:after {
 }
 
 #sims_table {
-  font-size: 8px;
+  font-size: 0.8em;
 }
 
 @media (min-width: 768px) {

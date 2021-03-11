@@ -10,10 +10,6 @@ body.stm-body {
     min-height: 100%;
     @include current_font;
 
-    table {
-        display: table !important;
-    }
-
     //mobile settings
     .chart-wrap-outer {
         display: none;
@@ -49,9 +45,10 @@ body.stm-body {
         }
 
         .middle-content-wrap-outer {
-            flex: 1;
+            flex: 1 100%;
             flex-direction: column;
             display: flex;
+            overflow: hidden;
         }
 
         .middle-content-wrap {
