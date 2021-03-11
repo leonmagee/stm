@@ -28,7 +28,7 @@
     },
     "dependencies": {
         "@rateyo/jquery": "^3.0.0-alpha.2",
-        "axios": "^0.20.0",
+        "axios": "^0.21.1",
         "bulma-tooltip": "^3.0.2",
         "chart.js": "^2.9.3",
         "datatables.net-responsive": "^2.2.7",
