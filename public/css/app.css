@@ -21770,13 +21770,25 @@ h4.recharge-subheader {
 }
 
 .email-manager-wrap .email-header-wrap {
-  display: flex;
   padding: 15px 0 30px;
+}
+
+@media (min-width: 980px) {
+  .email-manager-wrap .email-header-wrap {
+    display: flex;
+  }
 }
 
 .email-manager-wrap .email-header-wrap .item {
   flex: 0 1 20%;
   margin-right: 0.8em;
+  margin-bottom: 1em;
+}
+
+@media (min-width: 980px) {
+  .email-manager-wrap .email-header-wrap .item {
+    margin-bottom: 0;
+  }
 }
 
 .email-manager-wrap .email-header-wrap .item.input {

@@ -11,11 +11,17 @@
         }
     }
     .email-header-wrap {
-        display: flex;
+        @media (min-width: $screen-md) {
+            display: flex;
+        }
         padding: 15px 0 30px;
         .item {
             flex: 0 1 20%;
             margin-right: 0.8em;
+            margin-bottom: 1em;
+            @media (min-width: $screen-md) {
+                margin-bottom: 0;
+            }
             &.input {
                 flex: 0 1 30%;
             }

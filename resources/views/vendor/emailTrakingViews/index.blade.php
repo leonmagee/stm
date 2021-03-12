@@ -40,14 +40,14 @@
             <th>Recipient</th>
             <th>Subject</th>
             <th>Opens</th>
-            <th>Clicks</th>
-            <th>Bounced</th>
-            <th>Sent At</th>
+            <th class="hide-mobile">Clicks</th>
+            <th class="hide-mobile">Bounced</th>
+            <th class="hide-mobile">Sent At</th>
             <th>View Email</th>
-            <th>Clicks</th>
+            <th class="hide-mobile">Clicks</th>
             @if(Auth()->user()->isAdmin())
-            <th></th>
-            <th></th>
+            <th class="hide-mobile"></th>
+            <th class="hide-mobile"></th>
             @endif
           </tr>
           @foreach($emails as $email)
@@ -71,15 +71,15 @@
             </td>
             <td>{{$email->subject}}</td>
             <td>{{$email->opens}}</td>
-            <td>{{$email->clicks}}</td>
-            <td>@if($email->bounced)Yes @else No @endif</td>
-            <td>{{$email->created_at->format(config('mail-tracker.date-format'))}}</td>
+            <td class="hide-mobile">{{$email->clicks}}</td>
+            <td class="hide-mobile">@if($email->bounced)Yes @else No @endif</td>
+            <td class="hide-mobile">{{$email->created_at->format(config('mail-tracker.date-format'))}}</td>
             <td>
               <a href="{{route('mailTracker_ShowEmail',$email->id)}}" target="_blank">
                 View
               </a>
             </td>
-            <td>
+            <td class="hide-mobile">
               @if($email->clicks > 0)
               <a href="{{route('mailTracker_UrlDetail',$email->id)}}">Url Report</a>
               @else
@@ -87,8 +87,8 @@
               @endif
             </td>
             @if(Auth()->user()->isAdmin())
-            <td class="icon-wrap"><i class="fas fa-times-circle modal-delete-open" item_id={{ $email->id }}></i></td>
-            <td class="icon-wrap"><i class="fas fa-share modal-resend-open" item_id={{ $email->id }}></i></td>
+            <td class="icon-wrap hide-mobile"><i class="fas fa-times-circle modal-delete-open" item_id={{ $email->id }}></i></td>
+            <td class="icon-wrap hide-mobile"><i class="fas fa-share modal-resend-open" item_id={{ $email->id }}></i></td>
             @endif
           </tr>
           @endforeach
