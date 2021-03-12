@@ -1,5 +1,15 @@
 .email-manager-wrap {
     padding: 15px 25px;
+    font-size: 0.6em;
+    .hide-mobile {
+        display: none;
+    }
+    @media (min-width: $screen-md) {
+        font-size: 1em;
+        .hide-mobile {
+            display: table-cell;
+        }
+    }
     .email-header-wrap {
         display: flex;
         padding: 15px 0 30px;

@@ -21752,6 +21752,21 @@ h4.recharge-subheader {
 
 .email-manager-wrap {
   padding: 15px 25px;
+  font-size: 0.6em;
+}
+
+.email-manager-wrap .hide-mobile {
+  display: none;
+}
+
+@media (min-width: 980px) {
+  .email-manager-wrap {
+    font-size: 1em;
+  }
+
+  .email-manager-wrap .hide-mobile {
+    display: table-cell;
+  }
 }
 
 .email-manager-wrap .email-header-wrap {
