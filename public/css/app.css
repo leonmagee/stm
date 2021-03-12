@@ -18938,10 +18938,6 @@ body.stm-body .chart-wrap-outer {
   body.stm-body .chart-wrap-outer {
     display: block;
   }
-
-  body.stm-body .mobile-only {
-    display: none;
-  }
 }
 
 body.stm-body .layout-simple-wrap {
@@ -20277,7 +20273,7 @@ table.dataTable thead .sorting_desc_disabled:after {
 }
 
 #sims_table {
-  font-size: 0.8em;
+  font-size: 0.7em;
 }
 
 @media (min-width: 768px) {

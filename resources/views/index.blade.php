@@ -20,10 +20,6 @@
 
 </div>
 
-<div class="mobile-only">
-  <h1 class="title">Welcome to Sim Track Manager!</h1>
-</div>
-
 @endsection
 
 @section('page-script')
@@ -139,7 +135,6 @@
 	var data = {
 	//labels: ['April 2018', 'May 2018', 'June 2018'],
 	labels: date_name_array,
-	//labels: date_array,
 	datasets: report_types_array
 	// [
 	// 	{
@@ -211,10 +206,11 @@ var chartType = 'bar';
 function init() {
 	chartReport = new Chart(context, {
 		type: chartType,
-	    //type: 'line',
-	    data: data,
-	    //scaleStartValue : 0,
-	    options: options
+    data: data,
+    options: options,
+    //responsive: true,
+    //type: 'line',
+    //scaleStartValue : 0,
 	});
 }
 
