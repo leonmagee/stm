@@ -18426,6 +18426,7 @@ body.stm-body .stm-subtitle {
   display: flex;
   flex-direction: column;
   border-radius: 10px;
+  overflow: hidden;
   margin-bottom: 30px;
   flex: 1;
   height: 100%;
@@ -20396,6 +20397,7 @@ table.dataTable tr td.child ul.dtr-details li span {
 table.dataTable.dtr-inline.collapsed > tbody > tr > td.dtr-control:before,
 table.dataTable.dtr-inline.collapsed > tbody > tr > th.dtr-control:before {
   background-color: #1b9aaa !important;
+  font-weight: bold;
 }
 
 table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td.dtr-control:before,

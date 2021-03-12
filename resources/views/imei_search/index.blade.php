@@ -12,14 +12,13 @@
       <thead>
         <tr>
           <th>Id</th>
-          <th>User</th>
           <th>IMEI</th>
+          <th>User</th>
           <th>Model</th>
           <th>Manufacturer</th>
           <th>Price</th>
           <th>Balance</th>
           <th>Blacklist</th>
-          <th></th>
         </tr>
       </thead>
       <tbody>
@@ -40,8 +39,11 @@ ajax: "{!! route('api.imei_search.index') !!}",
 order: [[ 0, "desc" ]],
 columns: [
 { "data": "id" },
+{ "data": "imei", "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
+$(nTd).html("<a class='imei-link' href='/imeis/" + oData.id + "'>" + oData.imei + "</a>");
+}
+},
 { "data": "user.company" },
-{ "data": "imei" },
 { "data": "model" },
 { "data": "manufacturer" },
 { "data": "price" },
@@ -55,10 +57,7 @@ if(oData.blacklist == 'BLACKLISTED') {
 }
 }
 },
-{ "data": "id", "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
-$(nTd).html("<a class='imei-view' href='/imeis/" + oData.id + "'>VIEW MORE</a>");
-}
-}
+
 ]
 });
 
