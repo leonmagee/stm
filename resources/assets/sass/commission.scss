@@ -3,6 +3,10 @@
         display: flex;
         justify-content: space-between;
         .commission-header__link {
+            display: none;
+            @media (min-width: $screen-md) {
+                display: block;
+            }
             a {
                 i {
                     margin-right: 7px;
@@ -11,9 +15,21 @@
         }
     }
     .tabs.is-toggle {
+        width: 100%;
+        display: flex;
+        @media (min-width: $screen-md) {
+            display: block;
+            width: auto;
+        }
+        justify-content: center;
         li {
+            flex: 1;
             a {
                 font-weight: bold;
+                font-size: 0.9em;
+                @media (min-width: $screen-md) {
+                    font-size: 1em;
+                }
                 i {
                     margin-right: 7px;
                 }

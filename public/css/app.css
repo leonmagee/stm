@@ -21974,12 +21974,46 @@ body.stm-body.about .middle-content-wrap .about-page .video-wrap .video-wrap-inn
   justify-content: space-between;
 }
 
+.commission-wrap .commission-header .commission-header__link {
+  display: none;
+}
+
+@media (min-width: 980px) {
+  .commission-wrap .commission-header .commission-header__link {
+    display: block;
+  }
+}
+
 .commission-wrap .commission-header .commission-header__link a i {
   margin-right: 7px;
 }
 
+.commission-wrap .tabs.is-toggle {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+@media (min-width: 980px) {
+  .commission-wrap .tabs.is-toggle {
+    display: block;
+    width: auto;
+  }
+}
+
+.commission-wrap .tabs.is-toggle li {
+  flex: 1;
+}
+
 .commission-wrap .tabs.is-toggle li a {
   font-weight: bold;
+  font-size: 0.9em;
+}
+
+@media (min-width: 980px) {
+  .commission-wrap .tabs.is-toggle li a {
+    font-size: 1em;
+  }
 }
 
 .commission-wrap .tabs.is-toggle li a i {
