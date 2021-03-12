@@ -21808,14 +21808,27 @@ h4.recharge-subheader {
 }
 
 .email-manager-wrap .nav-wrap {
-  width: 60%;
+  width: 90%;
   margin: 0 auto;
   color: #777;
 }
 
+@media (min-width: 980px) {
+  .email-manager-wrap .nav-wrap {
+    width: 60%;
+  }
+}
+
 .email-manager-wrap .nav-wrap li.page-item {
-  font-size: 1.2em;
+  font-size: 0.9em;
+  margin: 0 2px;
   font-weight: bold;
+}
+
+@media (min-width: 980px) {
+  .email-manager-wrap .nav-wrap li.page-item {
+    font-size: 1.2em;
+  }
 }
 
 .email-manager-wrap .nav-wrap li.page-item:first-child,

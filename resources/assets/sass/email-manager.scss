@@ -39,11 +39,18 @@
         }
     }
     .nav-wrap {
-        width: 60%;
+        width: 90%;
+        @media (min-width: $screen-md) {
+            width: 60%;
+        }
         margin: 0 auto;
         color: #777;
         li.page-item {
-            font-size: 1.2em;
+            font-size: 0.9em;
+            margin: 0 2px;
+            @media (min-width: $screen-md) {
+                font-size: 1.2em;
+            }
             font-weight: bold;
             &:first-child,
             &:last-child {
