@@ -6,7 +6,7 @@ All Sims | {{ $current_site_date }}
 
 @section('content')
 
-<table id="sims_table" class="stripe compact">
+<table id="sims_table" class="stripe compact" style="width: 100%">
 	<thead>
 		<tr>
 			<th>Sim Number</th>
@@ -29,6 +29,7 @@ All Sims | {{ $current_site_date }}
 $('#sims_table').DataTable({
     "processing": true,
     "serverSide": true,
+    responsive: true,
     "ajax": "{{ route('api.sims.index') }}",
     "columns": [
         { "data": "sim_number" },

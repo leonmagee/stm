@@ -20080,9 +20080,46 @@ table.dataTable.nowrap td {
   white-space: nowrap;
 }
 
+div.dataTables_wrapper div.dataTables_length {
+  font-size: 0.8em;
+}
+
+@media (min-width: 980px) {
+  div.dataTables_wrapper div.dataTables_length {
+    font-size: 1em;
+  }
+}
+
 div.dataTables_wrapper div.dataTables_length select {
-  width: 75px;
-  display: inline-block;
+  font-size: 0.8em;
+}
+
+@media (min-width: 980px) {
+  div.dataTables_wrapper div.dataTables_length select {
+    width: 75px;
+    display: inline-block;
+    font-size: 1em;
+  }
+}
+
+div.dataTables_wrapper div.dataTables_filter {
+  font-size: 0.8em;
+}
+
+@media (min-width: 980px) {
+  div.dataTables_wrapper div.dataTables_filter {
+    font-size: 1em;
+  }
+}
+
+div.dataTables_wrapper div.dataTables_filter input {
+  font-size: 0.8em;
+}
+
+@media (min-width: 980px) {
+  div.dataTables_wrapper div.dataTables_filter input {
+    font-size: 1em;
+  }
 }
 
 div.dataTables_wrapper div.dataTables_filter {
@@ -20113,6 +20150,13 @@ table.dataTable thead > tr > td.sorting_asc,
 table.dataTable thead > tr > td.sorting_desc,
 table.dataTable thead > tr > td.sorting {
   padding-right: 30px;
+}
+
+@media (max-width: 1199px) {
+  table.dataTable thead > tr > th:first-child,
+  table.dataTable tbody > tr > td:first-child {
+    padding-left: 2.7em !important;
+  }
 }
 
 table.dataTable thead .sorting,
@@ -20181,6 +20225,7 @@ table.dataTable thead .sorting_desc_disabled:after {
 }
 
 .dataTables_paginate.paging_simple_numbers {
+  width: 100%;
   font-size: 10px;
 }
 
@@ -20193,6 +20238,18 @@ table.dataTable thead .sorting_desc_disabled:after {
 .dataTables_paginate.paging_simple_numbers a.paginate_button {
   font-weight: bold;
   padding: 2px 10px !important;
+}
+
+.dataTables_paginate.paging_simple_numbers a.paginate_button.next,
+.dataTables_paginate.paging_simple_numbers a.paginate_button.previous {
+  display: none;
+}
+
+@media (min-width: 980px) {
+  .dataTables_paginate.paging_simple_numbers a.paginate_button.next,
+  .dataTables_paginate.paging_simple_numbers a.paginate_button.previous {
+    display: inline-block;
+  }
 }
 
 .dataTables_paginate.paging_simple_numbers a.paginate_button.current,

@@ -8,7 +8,7 @@
 
     <h3>All Products</h3>
 
-    <table id="sims_table" class="stripe compact">
+    <table id="sims_table" class="stripe compact" style="width: 100%">
       <thead>
         <tr>
           <th>Id</th>
@@ -37,6 +37,7 @@
   $('#sims_table').DataTable({
 "processing": true,
 "serverSide": true,
+responsive: true,
 "ajax": "{!! route('api.products.index') !!}",
 "order": [[ 0, "desc" ]],
 "columns": [

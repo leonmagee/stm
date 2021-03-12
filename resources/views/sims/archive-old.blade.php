@@ -6,7 +6,7 @@
 
 @section('content')
 
-    <table id="sims_table" class="stripe compact">
+    <table id="sims_table" class="stripe compact" style="width: 100%">
 
 		<thead>
 			<tr>

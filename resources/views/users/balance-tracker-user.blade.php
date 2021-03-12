@@ -8,7 +8,7 @@
 
     <h3>STM Credit History</h3>
 
-    <table id="sims_table" class="stripe compact">
+    <table id="sims_table" class="stripe compact" style="width: 100%">
       <thead>
         <tr>
           <th>ID</th>
@@ -36,6 +36,7 @@
   $('#sims_table').DataTable({
 "processing": true,
 "serverSide": true,
+responsive: true,
 "ajax": "{!! route('api.balance.user') !!}",
 "order": [[ 0, "desc" ]],
 "columns": [

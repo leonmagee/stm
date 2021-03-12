@@ -8,7 +8,7 @@
 
     <h3>IMEI Check History</h3>
 
-    <table id="sims_table" class="stripe compact" width="100%" cellspacing="0">
+    <table id="sims_table" class="stripe compact" style="width: 100%">
       <thead>
         <tr>
           <th>Id</th>

@@ -8,7 +8,7 @@ Sims For {{ $user->company }} - {{ $user->name }}
 
 @include('mixins.user-back', ['user' => $user])
 
-<table id="sims_table" class="stripe compact">
+<table id="sims_table" class="stripe compact" style="width: 100%">
   <thead>
     <tr>
       <th>Sim Number</th>
@@ -30,6 +30,7 @@ Sims For {{ $user->company }} - {{ $user->name }}
   $('#sims_table').DataTable({
     "processing": true,
     "serverSide": true,
+    responsive: true,
     "ajax": "{!! route('api.sim_users.index_user', ['id' => $user->id]) !!}",
     "columns": [
         { data: "sim_number", name: "sim_users.sim_number" },

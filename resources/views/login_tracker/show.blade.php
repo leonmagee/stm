@@ -15,7 +15,7 @@
 
     <h3>Logins for {{ $user->company . ' - ' . $user->name }}</h3>
     @if($data)
-    <table id="sims_table" class="stripe compact">
+    <table id="sims_table" class="stripe compact" style="width: 100%">
       <thead>
         <tr>
           <th>Id</th>
@@ -43,6 +43,7 @@
   $('#sims_table').DataTable({
 "processing": true,
 "serverSide": true,
+responsive: true,
 "ajax": "{!! route('api.logins.show', ['id' => $user->id]) !!}",
 "order": [[ 0, "desc" ]],
 "columns": [

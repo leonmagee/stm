@@ -7,7 +7,7 @@
 
     <h3>All Invoices</h3>
 
-    <table id="sims_table" class="stripe compact">
+    <table id="sims_table" class="stripe compact" style="width: 100%">
       <thead>
         <tr>
           <th>Invoice #</th>
@@ -33,6 +33,7 @@
   $('#sims_table').DataTable({
 "processing": true,
 "serverSide": true,
+responsive: true,
 "ajax": "{!! route('api.invoice.index') !!}",
 "order": [[ 0, "desc" ]],
 "columns": [

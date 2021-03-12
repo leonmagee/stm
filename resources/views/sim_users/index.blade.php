@@ -9,7 +9,7 @@
 @section('content')
 
 
-<table id="sims_table" class="stripe compact">
+<table id="sims_table" class="stripe compact" style="width: 100%">
   <thead>
     <tr>
       <th>Sim Number</th>
@@ -39,6 +39,7 @@
   $('#sims_table').DataTable({
     "processing": true,
     "serverSide": true,
+    responsive: true,
     "ajax": "{{ route('api.sim_users.index') }}",
     "columns": [
         { data: "sim_number", name: "sim_users.sim_number" },

@@ -8,7 +8,7 @@
 
     <h3>{{ $name }} Sims | {{ $current_site_date }}</h3>
 
-    <table id="sims_table" class="stripe compact">
+    <table id="sims_table" class="stripe compact" style="width: 100%">
 
       <thead>
         <tr>

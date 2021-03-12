@@ -7,7 +7,7 @@
 
     <h3>Invoices for {{ $user->company }} - {{ $user->name }}</h3>
 
-    <table id="sims_table" class="stripe compact">
+    <table id="sims_table" class="stripe compact" style="width: 100%">
       <thead>
         <tr>
           <th>Invoice #</th>
@@ -32,6 +32,7 @@
   $('#sims_table').DataTable({
 "processing": true,
 "serverSide": true,
+responsive: true,
 "ajax": "{!! route('api.invoice.index_user', ['id' => $user->id]) !!}",
 "order": [[ 0, "desc" ]],
 "columns": [
