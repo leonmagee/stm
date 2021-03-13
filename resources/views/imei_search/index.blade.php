@@ -16,6 +16,7 @@
           <th>User</th>
           <th>Model</th>
           <th>Manufacturer</th>
+          <th>Date</th>
           <th>Price</th>
           <th>Balance</th>
           <th>Blacklist</th>
@@ -46,6 +47,7 @@ $(nTd).html("<a class='imei-link' href='/imeis/" + oData.id + "'>" + oData.imei 
 { "data": "user.company" },
 { "data": "model" },
 { "data": "manufacturer" },
+{ "data": "date" },
 { "data": "price" },
 { "data": "balance" },
 { "data": "blacklist",

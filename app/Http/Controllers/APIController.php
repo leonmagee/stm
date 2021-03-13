@@ -72,6 +72,7 @@ class APIController extends Controller
                     $item->price = '$' . number_format($item->price, 2);
                     $item->balance = '$' . number_format($item->balance, 2);
                     $item->blacklist = strtoupper($item->blacklist);
+                    $item->date = $item->created_at->format('M d, Y g:ia');
                 }
             } else {
                 $data = ImeiSearch::with('user')->where('user_id', $user->id)->get();
