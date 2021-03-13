@@ -14,7 +14,7 @@ export default class ProductsCarousel extends Component {
             i: 0,
             num: products.length > 1 ? 2 : 1,
             showCompareModal: false,
-            relatedProducts: false,
+            //relatedProducts: false,
             compareArray: [],
         };
     }
@@ -68,13 +68,13 @@ export default class ProductsCarousel extends Component {
     //     }
     // }
 
-
     toggleCompare(id) {
 
-        const { showCompareModal, relatedProducts } = this.state;
+        const { showCompareModal } = this.state;
 
         if (!showCompareModal) {
 
+        $('.stm-absolute-wrap#loader-wrap').css({ display: 'flex' });
         axios({
             method: 'post',
             url: '/get-related-products',
@@ -83,11 +83,11 @@ export default class ProductsCarousel extends Component {
             },
         }).then(res => {
             if (res.data !== 'No Related') {
+
                 this.setState({
                     compareArray: res.data,
                     relatedProducts: true,
                 });
-                $('.stm-absolute-wrap#loader-wrap').css({ display: 'flex' });
                 setTimeout(() => {
                     this.setState({
                         showCompareModal: !showCompareModal,
@@ -96,15 +96,19 @@ export default class ProductsCarousel extends Component {
                         display: 'none',
                     });
                 }, 300);
+
+
+
             } else {
-                this.setState({
-                    relatedProducts: false,
-                });
+                // this.setState({
+                //     relatedProducts: false,
+                // });
                 $(
                     `#product-${id} .product__footer--right.product__footer--right-compare`
                 )
                     .attr('data-tooltip', 'No Related Products')
                     .addClass('compare-icon');
+                $('.stm-absolute-wrap#loader-wrap').css({ display: 'none' });
             }
         });
 
@@ -115,7 +119,9 @@ export default class ProductsCarousel extends Component {
                   showCompareModal: !showCompareModal,
               });
           }
+
     }
+
 
     parseIndex(i, l) {
         let iNew = i;

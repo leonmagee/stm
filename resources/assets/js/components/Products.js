@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom';
 import ProductList from './products/ProductList';
 import Starz from './products/Starz';
 
+
 export default class Products extends Component {
     constructor(props) {
         super(props);
@@ -21,7 +22,7 @@ export default class Products extends Component {
             subCatsChecked: [],
             catsToggle: false,
             showCompareModal: false,
-            relatedProducts: false,
+            //relatedProducts: false,
             compareArray: [],
         };
     }
@@ -61,10 +62,11 @@ export default class Products extends Component {
 
     toggleCompare(id) {
 
-        const { showCompareModal, relatedProducts } = this.state;
+        const { showCompareModal } = this.state;
 
         if (!showCompareModal) {
 
+        $('.stm-absolute-wrap#loader-wrap').css({ display: 'flex' });
         axios({
             method: 'post',
             url: '/get-related-products',
@@ -73,11 +75,11 @@ export default class Products extends Component {
             },
         }).then(res => {
             if (res.data !== 'No Related') {
+
                 this.setState({
                     compareArray: res.data,
                     relatedProducts: true,
                 });
-                $('.stm-absolute-wrap#loader-wrap').css({ display: 'flex' });
                 setTimeout(() => {
                     this.setState({
                         showCompareModal: !showCompareModal,
@@ -86,15 +88,19 @@ export default class Products extends Component {
                         display: 'none',
                     });
                 }, 300);
+
+
+
             } else {
-                this.setState({
-                    relatedProducts: false,
-                });
+                // this.setState({
+                //     relatedProducts: false,
+                // });
                 $(
                     `#product-${id} .product__footer--right.product__footer--right-compare`
                 )
                     .attr('data-tooltip', 'No Related Products')
                     .addClass('compare-icon');
+                $('.stm-absolute-wrap#loader-wrap').css({ display: 'none' });
             }
         });
 
@@ -105,6 +111,7 @@ export default class Products extends Component {
                   showCompareModal: !showCompareModal,
               });
           }
+
     }
 
     toggleCats() {
