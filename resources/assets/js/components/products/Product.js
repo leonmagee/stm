@@ -145,7 +145,6 @@ export default class Product extends Component {
             id,
             img_url,
             discount,
-            // display,
             name,
             attributes,
             price,
@@ -153,8 +152,7 @@ export default class Product extends Component {
             rating,
             stock,
             toggleCompare,
-            toggleCompareInit,
-            // favorite,
+            //toggleCompareInit,
         } = this.props;
 
         const { animate, animateHeart, favorite, isInCart } = this.state;
@@ -207,8 +205,8 @@ export default class Product extends Component {
             <a
                 className="product__footer--right product__footer--right-compare"
                 data-tooltip="Compare Products"
-                onClick={() => toggleCompare()}
-                onMouseEnter={() => toggleCompareInit(id)}
+                onClick={() => toggleCompare(id)}
+                //onMouseEnter={() => toggleCompareInit(id)}
             >
                 <i className="fas fa-random" />
             </a>

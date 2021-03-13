@@ -8,7 +8,7 @@ export default class ProductsCarousel extends Component {
         super(props);
         const products = JSON.parse(props.products);
         this.toggleCompare = this.toggleCompare.bind(this);
-        this.toggleCompareInit = this.toggleCompareInit.bind(this);
+        //this.toggleCompareInit = this.toggleCompareInit.bind(this);
         this.state = {
             products,
             i: 0,
@@ -19,7 +19,62 @@ export default class ProductsCarousel extends Component {
         };
     }
 
-    toggleCompareInit(id) {
+    // toggleCompareInit(id) {
+    //     axios({
+    //         method: 'post',
+    //         url: '/get-related-products',
+    //         data: {
+    //             id,
+    //         },
+    //     }).then(res => {
+    //         if (res.data !== 'No Related') {
+    //             this.setState({
+    //                 compareArray: res.data,
+    //                 relatedProducts: true,
+    //             });
+    //         } else {
+    //             this.setState({
+    //                 relatedProducts: false,
+    //             });
+    //             $(
+    //                 `#product-${id} .product__footer--right.product__footer--right-compare`
+    //             )
+    //                 .attr('data-tooltip', 'No Related Products')
+    //                 .addClass('compare-icon');
+    //         }
+    //     });
+    // }
+
+    // toggleCompare() {
+    //     const { showCompareModal, relatedProducts } = this.state;
+    //     if (relatedProducts) {
+    //         $('.stm-absolute-wrap#loader-wrap').css({ display: 'flex' });
+    //         if (!showCompareModal) {
+    //             setTimeout(() => {
+    //                 this.setState({
+    //                     showCompareModal: !showCompareModal,
+    //                 });
+    //                 $('.stm-absolute-wrap#loader-wrap').css({
+    //                     display: 'none',
+    //                 });
+    //             }, 550);
+    //         } else {
+    //             $('.stm-absolute-wrap#loader-wrap').css({ display: 'none' });
+    //             this.setState({
+    //                 compareArray: [],
+    //                 showCompareModal: !showCompareModal,
+    //             });
+    //         }
+    //     }
+    // }
+
+
+    toggleCompare(id) {
+
+        const { showCompareModal, relatedProducts } = this.state;
+
+        if (!showCompareModal) {
+
         axios({
             method: 'post',
             url: '/get-related-products',
@@ -32,6 +87,15 @@ export default class ProductsCarousel extends Component {
                     compareArray: res.data,
                     relatedProducts: true,
                 });
+                $('.stm-absolute-wrap#loader-wrap').css({ display: 'flex' });
+                setTimeout(() => {
+                    this.setState({
+                        showCompareModal: !showCompareModal,
+                    });
+                    $('.stm-absolute-wrap#loader-wrap').css({
+                        display: 'none',
+                    });
+                }, 300);
             } else {
                 this.setState({
                     relatedProducts: false,
@@ -43,29 +107,14 @@ export default class ProductsCarousel extends Component {
                     .addClass('compare-icon');
             }
         });
-    }
 
-    toggleCompare() {
-        const { showCompareModal, relatedProducts } = this.state;
-        if (relatedProducts) {
-            $('.stm-absolute-wrap#loader-wrap').css({ display: 'flex' });
-            if (!showCompareModal) {
-                setTimeout(() => {
-                    this.setState({
-                        showCompareModal: !showCompareModal,
-                    });
-                    $('.stm-absolute-wrap#loader-wrap').css({
-                        display: 'none',
-                    });
-                }, 550);
-            } else {
-                $('.stm-absolute-wrap#loader-wrap').css({ display: 'none' });
-                this.setState({
-                    compareArray: [],
-                    showCompareModal: !showCompareModal,
-                });
-            }
-        }
+        } else {
+              $('.stm-absolute-wrap#loader-wrap').css({ display: 'none' });
+              this.setState({
+                  compareArray: [],
+                  showCompareModal: !showCompareModal,
+              });
+          }
     }
 
     parseIndex(i, l) {

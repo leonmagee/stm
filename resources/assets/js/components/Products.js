@@ -10,7 +10,7 @@ export default class Products extends Component {
         const chosen_cat = JSON.parse(props.chosen_cat);
         const catsChecked = chosen_cat ? [chosen_cat] : [1];
         this.toggleCompare = this.toggleCompare.bind(this);
-        this.toggleCompareInit = this.toggleCompareInit.bind(this);
+        //this.toggleCompareInit = this.toggleCompareInit.bind(this);
         this.state = {
             products: JSON.parse(props.products),
             productsDisplay: JSON.parse(props.products),
@@ -33,7 +33,38 @@ export default class Products extends Component {
         }
     }
 
-    toggleCompareInit(id) {
+    // toggleCompareInit(id) {
+    //     axios({
+    //         method: 'post',
+    //         url: '/get-related-products',
+    //         data: {
+    //             id,
+    //         },
+    //     }).then(res => {
+    //         if (res.data !== 'No Related') {
+    //             this.setState({
+    //                 compareArray: res.data,
+    //                 relatedProducts: true,
+    //             });
+    //         } else {
+    //             this.setState({
+    //                 relatedProducts: false,
+    //             });
+    //             $(
+    //                 `#product-${id} .product__footer--right.product__footer--right-compare`
+    //             )
+    //                 .attr('data-tooltip', 'No Related Products')
+    //                 .addClass('compare-icon');
+    //         }
+    //     });
+    // }
+
+    toggleCompare(id) {
+
+        const { showCompareModal, relatedProducts } = this.state;
+
+        if (!showCompareModal) {
+
         axios({
             method: 'post',
             url: '/get-related-products',
@@ -46,6 +77,15 @@ export default class Products extends Component {
                     compareArray: res.data,
                     relatedProducts: true,
                 });
+                $('.stm-absolute-wrap#loader-wrap').css({ display: 'flex' });
+                setTimeout(() => {
+                    this.setState({
+                        showCompareModal: !showCompareModal,
+                    });
+                    $('.stm-absolute-wrap#loader-wrap').css({
+                        display: 'none',
+                    });
+                }, 300);
             } else {
                 this.setState({
                     relatedProducts: false,
@@ -57,29 +97,14 @@ export default class Products extends Component {
                     .addClass('compare-icon');
             }
         });
-    }
 
-    toggleCompare() {
-        const { showCompareModal, relatedProducts } = this.state;
-        if (relatedProducts) {
-            $('.stm-absolute-wrap#loader-wrap').css({ display: 'flex' });
-            if (!showCompareModal) {
-                setTimeout(() => {
-                    this.setState({
-                        showCompareModal: !showCompareModal,
-                    });
-                    $('.stm-absolute-wrap#loader-wrap').css({
-                        display: 'none',
-                    });
-                }, 300);
-            } else {
-                $('.stm-absolute-wrap#loader-wrap').css({ display: 'none' });
-                this.setState({
-                    compareArray: [],
-                    showCompareModal: !showCompareModal,
-                });
-            }
-        }
+        } else {
+              $('.stm-absolute-wrap#loader-wrap').css({ display: 'none' });
+              this.setState({
+                  compareArray: [],
+                  showCompareModal: !showCompareModal,
+              });
+          }
     }
 
     toggleCats() {
@@ -409,7 +434,7 @@ export default class Products extends Component {
                     <ProductList
                         products={productsDisplay}
                         toggleCompare={this.toggleCompare}
-                        toggleCompareInit={this.toggleCompareInit}
+                        // toggleCompareInit={this.toggleCompareInit}
                     />
                 </div>
             </div>

@@ -5,12 +5,15 @@
             &.note-text {
                 font-size: 0.8em;
                 color: #555;
-                flex: 1;
                 padding: 0 20px;
                 padding: 10px 15px;
                 border-left: 1px solid #eee;
-                border-right: 1px solid #eee;
-                margin-right: 15px;
+                flex: 0 1 80%;
+                @media (min-width: $screen-md) {
+                    margin-right: 15px;
+                    flex: 1;
+                    border-right: 1px solid #eee;
+                }
             }
             &.note-date {
                 padding-right: 15px;
@@ -29,6 +32,13 @@
                 flex-direction: column;
                 justify-content: space-around;
                 min-height: 50px;
+                //flex: 0 1 70%;
+                padding-left: 2em;
+                flex: 1;
+                @media (min-width: $screen-md) {
+                    flex: 0 1;
+                    padding-left: 0;
+                }
             }
 
             &.notes-icon-wrap {
@@ -36,8 +46,11 @@
                 display: flex;
                 align-items: center;
                 justify-content: center;
+                flex: 0 1 15%;
                 &.border-left {
-                    border-left: 1px solid #eee;
+                    @media (min-width: $screen-md) {
+                        border-left: 1px solid #eee;
+                    }
                 }
                 i {
                     font-size: 2em;
