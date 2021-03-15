@@ -179,7 +179,7 @@ class ImeiSearchController extends Controller
             } elseif ($samsung !== false) {
                 // 72 - 6 cents - carrier - some warranty
                 // 93 - 10 cents - carrier - some warranty - usa open instead of factory unlocked
-                $result_2 = self::imeiSearchTwo(72, $imei);
+                $result_2 = self::imeiSearchTwo(93, $imei);
             } elseif ($lg !== false) {
                 // 97 - 6 cents // carrier and warranty
                 $result_2 = self::imeiSearchTwo(97, $imei);
