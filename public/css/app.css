@@ -25404,6 +25404,7 @@ a.button.custom-button:hover {
     font-size: 0.8em;
     display: flex;
     flex-wrap: wrap;
+    border-right: none;
   }
 }
 
@@ -25450,6 +25451,12 @@ a.button.custom-button:hover {
   .stm-flex-new .stm-flex-new__row:not(.header):not(:last-child) {
     border-bottom: none;
     margin-bottom: 0;
+  }
+}
+
+@media (max-width: 979px) {
+  .stm-flex-new .stm-flex-new__row:not(.header) .stm-flex-new__item {
+    border-right: 1px solid #ccc;
   }
 }
 

@@ -8,6 +8,7 @@
         font-size: 0.8em;
         display: flex;
         flex-wrap: wrap;
+        border-right: none;
     }
     .stm-flex-new__row {
         flex: 0 1 55%;
@@ -40,6 +41,11 @@
                 @media (min-width: $screen-md) {
                     border-bottom: none;
                     margin-bottom: 0;
+                }
+            }
+            @media (max-width: $screen-md-max) {
+                .stm-flex-new__item {
+                    border-right: 1px solid $flex-border;
                 }
             }
         }
