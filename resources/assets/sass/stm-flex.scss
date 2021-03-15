@@ -1,3 +1,62 @@
+.stm-flex-new {
+    margin: 1em 1em 3em 1em; //xxx
+    color: $flex-color;
+    font-size: 0.9em;
+    border-right: 1px solid $flex-border;
+    border-bottom: 1px solid $flex-border;
+    @media (max-width: $screen-md-max) {
+        font-size: 0.8em;
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .stm-flex-new__row {
+        flex: 0 1 55%;
+
+        @media (min-width: $screen-md) {
+            display: flex;
+            &.mobile {
+                display: none;
+            }
+        }
+
+        &.header {
+            flex: 0 1 45%;
+            .stm-flex-new__item {
+                background-color: $flex-header;
+            }
+            &:not(:nth-last-child(2)) {
+                border-bottom: 1px solid $flex-border;
+                margin-bottom: 1em;
+                @media (min-width: $screen-md) {
+                    border-bottom: none;
+                    margin-bottom: 0;
+                }
+            }
+        }
+        &:not(.header) {
+            &:not(:last-child) {
+                margin-bottom: 1em;
+                border-bottom: 1px solid $flex-border;
+                @media (min-width: $screen-md) {
+                    border-bottom: none;
+                    margin-bottom: 0;
+                }
+            }
+        }
+
+        .stm-flex-new__item {
+            padding: 0.7em 1em;
+            flex: 1;
+            border-top: 1px solid $flex-border;
+            border-left: 1px solid $flex-border;
+
+            &.red {
+                color: $color-red;
+            }
+        }
+    }
+}
+
 .stm-flex {
     padding: 2em;
     .stm-flex-wrap {

@@ -10,6 +10,36 @@
 
     <h3>Invoice</h3>
 
+    <div class="stm-flex-new">
+        <div class="stm-flex-new__row header">
+          <div class="stm-flex-new__item">Invoice Number</div>
+          <div class="stm-flex-new__item">Company</div>
+          <div class="stm-flex-new__item">User</div>
+        </div>
+        <div class="stm-flex-new__row">
+          <div class="stm-flex-new__item red">2342343</div>
+          <div class="stm-flex-new__item">Levon</div>
+          <div class="stm-flex-new__item">Leon</div>
+        </div>
+        <div class="stm-flex-new__row header mobile">
+          <div class="stm-flex-new__item">Invoice Number</div>
+          <div class="stm-flex-new__item">Company</div>
+          <div class="stm-flex-new__item">User</div>
+        </div>
+        <div class="stm-flex-new__row">
+          <div class="stm-flex-new__item">2452343</div>
+          <div class="stm-flex-new__item">GS Wireless</div>
+          <div class="stm-flex-new__item">Kareem</div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
     <div class="stm_inv">
       <div class="stm_inv__header">
         <div class="stm_inv__flex">
